@@ -1,49 +1,44 @@
-/**
- * Core types for the reusable Quiz Engine. This file is intentionally
- * generic — it knows nothing about Physics, Chemistry, Biology, or
- * Maths specifically, only about "a question with a correct answer".
- * Every subject registers its own quiz data (see `data/`) against
- * these same shapes.
- */
-
 import { ReactNode } from "react";
 
-/** Difficulty is tracked from day one even though no quiz surfaces a
- *  selector for it yet — see the feature README for why. */
+/** Difficulty levels supported by the quiz engine. */
 export type QuizDifficulty = "easy" | "medium" | "hard";
 
-/**
- * Discriminant for question shape. Only "multiple-choice" exists
- * today; the union is written this way (rather than a single flat
- * interface) so a future type — e.g. "numeric-input" or
- * "fill-in-the-blank" — can be added as one more member without
- * touching existing questions or existing renderers.
- */
+/** Supported question types. */
 export type QuestionType = "multiple-choice";
 
+/**
+ * Base fields shared by every question.
+ */
 interface QuizQuestionBase {
   id: string;
   type: QuestionType;
-  /** Plain text or LaTeX (rendered via the shared FormulaCard/InlineMath
-   *  helpers where a caller opts in — see QuizQuestionCard). */
+
+  /** Plain text or LaTeX. */
   question: string;
+
+  /** Explanation shown after answering. */
   explanation: string;
+
+  /** Difficulty of this individual question. */
   difficulty: QuizDifficulty;
-  /** Subject slug, e.g. "physics" — matches `Subject["slug"]` in the
-   *  simulation registry, but this module doesn't import that type to
-   *  keep the engine independent of the subjects feature. */
+
+  /** Subject slug, e.g. "physics", "biology", "mathematics". */
   subject: string;
+
+  /** Topic slug, e.g. "cell-structure". */
   topic: string;
 }
 
+/**
+ * Multiple-choice question.
+ */
 export interface MultipleChoiceQuestion extends QuizQuestionBase {
   type: "multiple-choice";
-  /** At least two options. Rendered in the order given unless the
-   *  caller opts into `shuffleOptions` on `<Quiz />`. */
+
+  /** At least two answer options. */
   options: string[];
-  /** Must equal one entry of `options` exactly. Storing the answer as
-   *  the option's *value* (not its index) is what lets options be
-   *  shuffled safely later — nothing needs to remap an index. */
+
+  /** Must exactly match one of the options. */
   correctAnswer: string;
 }
 
@@ -70,31 +65,28 @@ export interface QuizCompletionResult {
   quizId: string;
   score: number;
   totalQuestions: number;
-  /** 0–100, rounded to the nearest whole number. */
+
   percentage: number;
-  /** ISO 8601 timestamp. */
+
   completedAt: string;
+
   answers: QuizAnswerRecord[];
 }
 
 /**
- * Metadata plus questions for one registered quiz. `colorToken`
- * matches the token keys in `subject-colors.ts` so quiz UI can reuse
- * the same subject tinting as the rest of the dashboard.
+ * Metadata and configuration for an entire quiz.
  */
-export interface QuizMeta extends QuizQuestionBase {
-  description: ReactNode;
+export interface QuizMeta {
   id: string;
   title: string;
-  /** Subject slug, e.g. "physics" — used for registry lookups. Kept
-   *  separate from `colorToken` because they don't always match (the
-   *  Mathematics subject's slug is "mathematics" but its color token
-   *  is "math"). */
+  description: ReactNode;
   subjectSlug: string;
   subjectLabel: string;
   topicLabel: string;
   colorToken: string;
   /** Where "Back to Topic" should go from the results screen. */
   backHref: string;
+  difficulty: QuizDifficulty;
+  estimatedTime: number;
   questions: QuizQuestion[];
 }

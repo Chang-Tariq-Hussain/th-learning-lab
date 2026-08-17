@@ -13,7 +13,8 @@ const questions: QuizQuestion[] = [
       "The outer boundary of the cell",
     ],
     correctAnswer: "The control center, containing the cell's DNA",
-    explanation: "The nucleus houses the cell's genetic material and directs the cell's activities, including growth and reproduction.",
+    explanation:
+      "The nucleus houses the cell's genetic material and directs the cell's activities, including growth and reproduction.",
     difficulty: "easy",
     subject: "biology",
     topic: "cell-structure",
@@ -21,10 +22,11 @@ const questions: QuizQuestion[] = [
   {
     id: "biology-cell-explorer-002",
     type: "multiple-choice",
-    question: "Which organelle is often called the \"powerhouse of the cell\"?",
+    question: 'Which organelle is often called the "powerhouse of the cell"?',
     options: ["Mitochondria", "Ribosome", "Golgi apparatus", "Lysosome"],
     correctAnswer: "Mitochondria",
-    explanation: "Mitochondria break down glucose to release energy as ATP, powering the cell's activities.",
+    explanation:
+      "Mitochondria break down glucose to release energy as ATP, powering the cell's activities.",
     difficulty: "easy",
     subject: "biology",
     topic: "cell-structure",
@@ -32,7 +34,8 @@ const questions: QuizQuestion[] = [
   {
     id: "biology-cell-explorer-003",
     type: "multiple-choice",
-    question: "Which structures are found in plant cells but NOT in animal cells?",
+    question:
+      "Which structures are found in plant cells but NOT in animal cells?",
     options: [
       "A cell wall and chloroplasts",
       "A nucleus and mitochondria",
@@ -40,7 +43,8 @@ const questions: QuizQuestion[] = [
       "Cytoplasm and a cell membrane",
     ],
     correctAnswer: "A cell wall and chloroplasts",
-    explanation: "The rigid cell wall provides structural support and chloroplasts carry out photosynthesis — both are unique to plant cells (and absent from animal cells).",
+    explanation:
+      "The rigid cell wall provides structural support and chloroplasts carry out photosynthesis — both are unique to plant cells (and absent from animal cells).",
     difficulty: "medium",
     subject: "biology",
     topic: "cell-structure",
@@ -56,7 +60,8 @@ const questions: QuizQuestion[] = [
       "Break down waste materials",
     ],
     correctAnswer: "Control what substances enter and leave the cell",
-    explanation: "The cell membrane is selectively permeable — it lets some substances pass through while blocking others, regulating the cell's internal environment.",
+    explanation:
+      "The cell membrane is selectively permeable — it lets some substances pass through while blocking others, regulating the cell's internal environment.",
     difficulty: "medium",
     subject: "biology",
     topic: "cell-structure",
@@ -71,8 +76,10 @@ const questions: QuizQuestion[] = [
       "Animal cells are too small to contain chloroplasts",
       "Chloroplasts are a leftover structure with no real function today",
     ],
-    correctAnswer: "Plants make their own food through photosynthesis, which chloroplasts carry out; animals obtain food by eating instead",
-    explanation: "Chloroplasts capture light energy to build glucose. Plants need this to produce their own food, while animals get energy by consuming other organisms, so they don't need chloroplasts.",
+    correctAnswer:
+      "Plants make their own food through photosynthesis, which chloroplasts carry out; animals obtain food by eating instead",
+    explanation:
+      "Chloroplasts capture light energy to build glucose. Plants need this to produce their own food, while animals get energy by consuming other organisms, so they don't need chloroplasts.",
     difficulty: "hard",
     subject: "biology",
     topic: "cell-structure",
@@ -87,7 +94,8 @@ export const biologyCellExplorerQuiz: QuizMeta = {
   topicLabel: "Cell Structure",
   colorToken: "biology",
   backHref: "/dashboard/biology/cell-explorer",
-  description: "Test your understanding of organelles and how plant and animal cells differ.",
+  description:
+    "Test your understanding of organelles and how plant and animal cells differ.",
   difficulty: "medium",
   estimatedTime: 4,
   questions,
