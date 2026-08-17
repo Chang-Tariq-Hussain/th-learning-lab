@@ -441,43 +441,49 @@ export const subjects: Subject[] = [
           },
         ],
       },
-      { slug: "calculus", name: "Calculus", visualizations: [
-        {
-          slug: "calculus-foundations",
-          title: "Calculus Foundations — Functions, Graphs & Limits",
-          description:
-            "Build intuition for functions, graphs, approaching a value, limits, and continuity before ever seeing a derivative.",
-          href: "/dashboard/mathematics/calculus-foundations",
-        },
-        {
-          slug: "derivative-explorer",
-          title: "Derivative Explorer — Tangent Line & Instantaneous Rate of Change",
-          description:
-            "Watch a secant line rotate into a tangent line and see why its slope is called the derivative.",
-          href: "/dashboard/mathematics/derivative-explorer",
-        },
-        {
-          slug: "derivative-rules",
-          title: "Derivative Rules — Learn Differentiation Step by Step",
-          description:
-            "Learn the constant, power, constant multiple, sum, difference, product, and quotient rules for differentiation, one visual step at a time.",
-          href: "/dashboard/mathematics/derivative-rules",
-        },
-        {
-          slug: "chain-rule-explorer",
-          title: "Chain Rule Explorer — Differentiating Composite Functions",
-          description:
-            "Build intuition for the Chain Rule with a function composition machine, inner/outer highlighting, step-by-step differentiation, and Chain Rule vs Power Rule practice.",
-          href: "/dashboard/mathematics/chain-rule-explorer",
-        },
-        {
-          slug: "applications-of-derivatives",
-          title: "Applications of Derivatives — Increasing, Decreasing, Maxima & Minima",
-          description:
-            "See why derivatives are useful: increasing/decreasing regions, derivative sign, critical points, local maxima and minima, a sign chart, and interactive practice.",
-          href: "/dashboard/mathematics/applications-of-derivatives",
-        },
-      ] },
+      {
+        slug: "calculus",
+        name: "Calculus",
+        visualizations: [
+          {
+            slug: "calculus-foundations",
+            title: "Calculus Foundations — Functions, Graphs & Limits",
+            description:
+              "Build intuition for functions, graphs, approaching a value, limits, and continuity before ever seeing a derivative.",
+            href: "/dashboard/mathematics/calculus-foundations",
+          },
+          {
+            slug: "derivative-explorer",
+            title:
+              "Derivative Explorer — Tangent Line & Instantaneous Rate of Change",
+            description:
+              "Watch a secant line rotate into a tangent line and see why its slope is called the derivative.",
+            href: "/dashboard/mathematics/derivative-explorer",
+          },
+          {
+            slug: "derivative-rules",
+            title: "Derivative Rules — Learn Differentiation Step by Step",
+            description:
+              "Learn the constant, power, constant multiple, sum, difference, product, and quotient rules for differentiation, one visual step at a time.",
+            href: "/dashboard/mathematics/derivative-rules",
+          },
+          {
+            slug: "chain-rule-explorer",
+            title: "Chain Rule Explorer — Differentiating Composite Functions",
+            description:
+              "Build intuition for the Chain Rule with a function composition machine, inner/outer highlighting, step-by-step differentiation, and Chain Rule vs Power Rule practice.",
+            href: "/dashboard/mathematics/chain-rule-explorer",
+          },
+          {
+            slug: "applications-of-derivatives",
+            title:
+              "Applications of Derivatives — Increasing, Decreasing, Maxima & Minima",
+            description:
+              "See why derivatives are useful: increasing/decreasing regions, derivative sign, critical points, local maxima and minima, a sign chart, and interactive practice.",
+            href: "/dashboard/mathematics/applications-of-derivatives",
+          },
+        ],
+      },
       {
         slug: "statistics",
         name: "Statistics",
@@ -579,7 +585,6 @@ export const subjects: Subject[] = [
           },
         ],
       },
-      { slug: "statistics", name: "Statistics", visualizations: [] },
       {
         slug: "measurement",
         name: "Measurement",
