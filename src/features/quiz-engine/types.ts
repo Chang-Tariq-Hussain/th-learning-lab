@@ -82,7 +82,7 @@ export interface QuizCompletionResult {
  * matches the token keys in `subject-colors.ts` so quiz UI can reuse
  * the same subject tinting as the rest of the dashboard.
  */
-export interface QuizMeta {
+export interface QuizMeta extends QuizQuestionBase {
   description: ReactNode;
   id: string;
   title: string;
