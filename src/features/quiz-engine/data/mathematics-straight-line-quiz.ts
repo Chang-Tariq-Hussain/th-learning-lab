@@ -1,0 +1,85 @@
+import type { QuizMeta, QuizQuestion } from "../types";
+
+/** Matches the Slope of a Line simulation, under Coordinate Geometry. */
+const questions: QuizQuestion[] = [
+  {
+    id: "mathematics-straight-line-001",
+    type: "multiple-choice",
+    question: "The slope of a line measures:",
+    options: [
+      "How steep the line is, and in which direction",
+      "How long the line is",
+      "Where the line crosses the y-axis",
+      "The area under the line",
+    ],
+    correctAnswer: "How steep the line is, and in which direction",
+    explanation: "Slope describes steepness and direction — a rate of vertical change per unit of horizontal change.",
+    difficulty: "easy",
+    subject: "mathematics",
+    topic: "straight-line",
+  },
+  {
+    id: "mathematics-straight-line-002",
+    type: "multiple-choice",
+    question: "A line with a slope of 0 is:",
+    options: ["Vertical", "Horizontal", "Diagonal, going up", "Diagonal, going down"],
+    correctAnswer: "Horizontal",
+    explanation: "A slope of 0 means no vertical change as x increases, which describes a flat, horizontal line.",
+    difficulty: "easy",
+    subject: "mathematics",
+    topic: "straight-line",
+  },
+  {
+    id: "mathematics-straight-line-003",
+    type: "multiple-choice",
+    question: "What is the slope of the line through (1, 2) and (3, 10)?",
+    options: ["2", "4", "8", "1/4"],
+    correctAnswer: "4",
+    explanation: "m = \\frac{y_2-y_1}{x_2-x_1} = \\frac{10-2}{3-1} = \\frac{8}{2} = 4.",
+    difficulty: "medium",
+    subject: "mathematics",
+    topic: "straight-line",
+  },
+  {
+    id: "mathematics-straight-line-004",
+    type: "multiple-choice",
+    question: "In the slope-intercept form y = mx + c, what does c represent?",
+    options: ["The slope of the line", "The x-intercept", "The y-intercept", "The length of the line"],
+    correctAnswer: "The y-intercept",
+    explanation: "c is the value of y when x = 0 — the point where the line crosses the y-axis.",
+    difficulty: "medium",
+    subject: "mathematics",
+    topic: "straight-line",
+  },
+  {
+    id: "mathematics-straight-line-005",
+    type: "multiple-choice",
+    question: "Why is the slope of a vertical line undefined?",
+    options: [
+      "Because its y-values never change",
+      "Because the formula would require dividing by zero",
+      "Because vertical lines have no y-intercept",
+      "Because vertical lines aren't real functions",
+    ],
+    correctAnswer: "Because the formula would require dividing by zero",
+    explanation:
+      "For a vertical line, every point shares the same x-coordinate, so x_2-x_1 = 0 in m = \\frac{y_2-y_1}{x_2-x_1} — and division by zero is undefined.",
+    difficulty: "hard",
+    subject: "mathematics",
+    topic: "straight-line",
+  },
+];
+
+export const mathematicsStraightLineQuiz: QuizMeta = {
+  id: "mathematics-straight-line",
+  title: "Equation of a Straight Line Quiz",
+  subjectSlug: "mathematics",
+  subjectLabel: "Mathematics",
+  topicLabel: "Coordinate Geometry",
+  colorToken: "math",
+  backHref: "/dashboard/mathematics/slope-of-a-line",
+  description: "Test your understanding of slope and the slope-intercept form of a line.",
+  difficulty: "medium",
+  estimatedTime: 4,
+  questions,
+};
