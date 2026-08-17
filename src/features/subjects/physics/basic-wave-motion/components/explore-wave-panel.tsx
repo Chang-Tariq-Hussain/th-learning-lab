@@ -1,18 +1,28 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { EXPLORE_EXPLANATION, EXPLORE_ITEMS, EXPLORE_LABEL, type ExploreItem } from "../wave-model";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  EXPLORE_EXPLANATION,
+  EXPLORE_ITEMS,
+  EXPLORE_LABEL,
+  type ExploreItem,
+} from "../wave-model";
 
 interface ExploreWavePanelProps {
   selected: ExploreItem | null;
   onSelect: (item: ExploreItem | null) => void;
 }
 
-export function ExploreWavePanel({ selected, onSelect }: ExploreWavePanelProps) {
+export function ExploreWavePanel({
+  selected,
+  onSelect,
+}: ExploreWavePanelProps) {
   return (
     <div className="rounded-card border border-line bg-white/60 p-4 dark:border-line-dark dark:bg-white/[0.03]">
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-physics">Explore the wave</p>
+      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-physics">
+        Explore the wave
+      </p>
 
       <div className="mt-3 flex flex-wrap gap-2">
         {EXPLORE_ITEMS.map((item) => {
@@ -27,7 +37,7 @@ export function ExploreWavePanel({ selected, onSelect }: ExploreWavePanelProps) 
                 "rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
                 isSelected
                   ? "border-transparent bg-pine-600 text-paper dark:bg-pine-300 dark:text-chalkboard"
-                  : "border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink dark:border-bone/20 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone"
+                  : "border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink dark:border-bone/20 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone",
               )}
             >
               {EXPLORE_LABEL[item]}
@@ -50,7 +60,8 @@ export function ExploreWavePanel({ selected, onSelect }: ExploreWavePanelProps) 
           </motion.p>
         ) : (
           <p className="mt-3 text-sm leading-relaxed text-ink-soft/70 dark:text-bone-soft/70">
-            Pick a feature above to highlight it on the wave — playback pauses so it's easy to see.
+            Pick a feature above to highlight it on the wave — playback pauses
+            so it&apos;s easy to see.
           </p>
         )}
       </AnimatePresence>

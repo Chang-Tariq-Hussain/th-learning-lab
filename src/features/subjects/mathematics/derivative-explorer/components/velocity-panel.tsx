@@ -62,45 +62,68 @@ export function VelocityPanel() {
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-6">
       <div className="flex items-center gap-3 font-mono text-sm text-ink dark:text-bone">
-        <span className="rounded-full border border-line px-3 py-1 dark:border-line-dark">Position</span>
-        <ArrowRight className="h-4 w-4 text-ink-soft/60 dark:text-bone-soft/60" strokeWidth={1.75} />
-        <span className="rounded-full border border-line px-3 py-1 dark:border-line-dark">derivative</span>
-        <ArrowRight className="h-4 w-4 text-ink-soft/60 dark:text-bone-soft/60" strokeWidth={1.75} />
+        <span className="rounded-full border border-line px-3 py-1 dark:border-line-dark">
+          Position
+        </span>
+        <ArrowRight
+          className="h-4 w-4 text-ink-soft/60 dark:text-bone-soft/60"
+          strokeWidth={1.75}
+        />
+        <span className="rounded-full border border-line px-3 py-1 dark:border-line-dark">
+          derivative
+        </span>
+        <ArrowRight
+          className="h-4 w-4 text-ink-soft/60 dark:text-bone-soft/60"
+          strokeWidth={1.75}
+        />
         <span className="rounded-full border border-subject-math bg-subject-math-soft px-3 py-1 text-subject-math dark:bg-subject-math/15">
           Velocity
         </span>
       </div>
 
       <p className="max-w-md text-center text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
-        The derivative of position with respect to time represents velocity. Watch the object speed up as it
-        moves — that's the derivative growing.
+        The derivative of position with respect to time represents velocity.
+        Watch the object speed up as it moves — that&apos;s the derivative
+        growing.
       </p>
 
       <div className="relative h-14 w-full rounded-full border border-line bg-white/60 dark:border-line-dark dark:bg-white/[0.03]">
         <div
           className="absolute top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-subject-math shadow-md transition-[left] duration-75"
-          style={{ left: `calc(${trackPercent}% - ${trackPercent / 100} * 2rem)` }}
+          style={{
+            left: `calc(${trackPercent}% - ${trackPercent / 100} * 2rem)`,
+          }}
         />
       </div>
 
       <div className="grid grid-cols-3 gap-3 font-mono text-sm">
         <div className="rounded-card border border-line px-4 py-2.5 text-center dark:border-line-dark">
           <p className="text-ink-soft dark:text-bone-soft">t</p>
-          <p className="tabular-nums text-ink dark:text-bone">{formatValue(t)}s</p>
+          <p className="tabular-nums text-ink dark:text-bone">
+            {formatValue(t)}s
+          </p>
         </div>
         <div className="rounded-card border border-line px-4 py-2.5 text-center dark:border-line-dark">
           <p className="text-ink-soft dark:text-bone-soft">position</p>
-          <p className="tabular-nums text-ink dark:text-bone">{formatValue(pos)}</p>
+          <p className="tabular-nums text-ink dark:text-bone">
+            {formatValue(pos)}
+          </p>
         </div>
         <div className="rounded-card border border-line px-4 py-2.5 text-center dark:border-line-dark">
           <p className="text-ink-soft dark:text-bone-soft">velocity</p>
-          <p className="tabular-nums text-ink dark:text-bone">{formatValue(vel)}</p>
+          <p className="tabular-nums text-ink dark:text-bone">
+            {formatValue(vel)}
+          </p>
         </div>
       </div>
 
       <div className="flex gap-3">
         <Button variant="primary" size="md" onClick={handlePlayPause}>
-          {playing ? <Pause className="h-4 w-4" strokeWidth={1.75} /> : <Play className="h-4 w-4" strokeWidth={1.75} />}
+          {playing ? (
+            <Pause className="h-4 w-4" strokeWidth={1.75} />
+          ) : (
+            <Play className="h-4 w-4" strokeWidth={1.75} />
+          )}
           {playing ? "Pause" : t >= VELOCITY_DURATION ? "Play Again" : "Play"}
         </Button>
         <Button variant="secondary" size="md" onClick={handleReset}>
