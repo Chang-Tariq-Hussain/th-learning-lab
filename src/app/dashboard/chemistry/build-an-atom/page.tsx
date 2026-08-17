@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { BuildAnAtom } from "@/features/subjects/chemistry/build-an-atom";
 
 export const metadata: Metadata = {
@@ -10,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function BuildAnAtomPage() {
+  const quiz = getQuizById("chemistry-atom");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/chemistry/build-an-atom" className="mb-4" />
@@ -37,6 +40,10 @@ export default function BuildAnAtomPage() {
       </div>
 
       <BuildAnAtom />
+
+      {quiz && (
+        <QuizCta href="/dashboard/chemistry/atom-quiz" colorToken="chemistry" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

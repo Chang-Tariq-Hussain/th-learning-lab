@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { CentralTendency } from "@/features/subjects/mathematics/central-tendency";
 
 export const metadata: Metadata = {
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function CentralTendencyPage() {
+  const quiz = getQuizById("mathematics-statistics");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/mathematics/central-tendency" className="mb-4" />
@@ -35,6 +38,10 @@ export default function CentralTendencyPage() {
       </div>
 
       <CentralTendency />
+
+      {quiz && (
+        <QuizCta href="/dashboard/mathematics/statistics-quiz" colorToken="math" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

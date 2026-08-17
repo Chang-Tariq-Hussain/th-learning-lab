@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { NervousSystem } from "@/features/subjects/biology/nervous-system";
 
 export const metadata: Metadata = {
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function NervousSystemPage() {
+  const quiz = getQuizById("biology-nervous-system");
   return (
     <Container className="py-10">
       <SimulationBackLink
@@ -44,6 +47,10 @@ export default function NervousSystemPage() {
       </div>
 
       <NervousSystem />
+
+      {quiz && (
+        <QuizCta href="/dashboard/biology/nervous-system-quiz" colorToken="biology" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

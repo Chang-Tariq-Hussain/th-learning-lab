@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { MagnetExplorer } from "@/features/subjects/physics/magnet-explorer";
 
 export const metadata: Metadata = {
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function MagnetExplorerPage() {
+  const quiz = getQuizById("physics-electromagnetism");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/physics/magnet-explorer" className="mb-4" />
@@ -38,6 +41,10 @@ export default function MagnetExplorerPage() {
       </div>
 
       <MagnetExplorer />
+
+      {quiz && (
+        <QuizCta href="/dashboard/physics/electromagnetism-quiz" colorToken="physics" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

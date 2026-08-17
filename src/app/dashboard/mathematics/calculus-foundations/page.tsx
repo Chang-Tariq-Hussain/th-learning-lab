@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { CalculusFoundations } from "@/features/subjects/mathematics/calculus-foundations";
 
 export const metadata: Metadata = {
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function CalculusFoundationsPage() {
+  const quiz = getQuizById("mathematics-calculus");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/mathematics/calculus-foundations" className="mb-4" />
@@ -35,6 +38,10 @@ export default function CalculusFoundationsPage() {
       </div>
 
       <CalculusFoundations />
+
+      {quiz && (
+        <QuizCta href="/dashboard/mathematics/calculus-quiz" colorToken="math" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

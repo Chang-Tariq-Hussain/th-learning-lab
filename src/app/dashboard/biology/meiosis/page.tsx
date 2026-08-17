@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { Meiosis } from "@/features/subjects/biology/meiosis";
 
 export const metadata: Metadata = {
@@ -10,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function MeiosisPage() {
+  const quiz = getQuizById("biology-meiosis");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/biology/meiosis" className="mb-4" />
@@ -33,6 +36,10 @@ export default function MeiosisPage() {
       </div>
 
       <Meiosis />
+
+      {quiz && (
+        <QuizCta href="/dashboard/biology/meiosis-quiz" colorToken="biology" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { ReactionKinetics } from "@/features/subjects/chemistry/reaction-kinetics";
 
 export const metadata: Metadata = {
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function ReactionKineticsPage() {
+  const quiz = getQuizById("chemistry-reaction-kinetics");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/chemistry/reaction-kinetics" className="mb-4" />
@@ -37,6 +40,10 @@ export default function ReactionKineticsPage() {
       </div>
 
       <ReactionKinetics />
+
+      {quiz && (
+        <QuizCta href="/dashboard/chemistry/reaction-kinetics-quiz" colorToken="chemistry" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

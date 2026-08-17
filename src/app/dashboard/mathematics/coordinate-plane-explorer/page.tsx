@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { CoordinatePlaneExplorer } from "@/features/subjects/mathematics/coordinate-plane-explorer";
 
 export const metadata: Metadata = {
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function CoordinatePlaneExplorerPage() {
+  const quiz = getQuizById("mathematics-coordinate-geometry");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/mathematics/coordinate-plane-explorer" className="mb-4" />
@@ -36,6 +39,10 @@ export default function CoordinatePlaneExplorerPage() {
       </div>
 
       <CoordinatePlaneExplorer />
+
+      {quiz && (
+        <QuizCta href="/dashboard/mathematics/coordinate-geometry-quiz" colorToken="math" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

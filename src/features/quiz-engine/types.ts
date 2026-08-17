@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 /** Difficulty levels supported by the quiz engine. */
 export type QuizDifficulty = "easy" | "medium" | "hard";
 
@@ -79,7 +77,7 @@ export interface QuizCompletionResult {
 export interface QuizMeta {
   id: string;
   title: string;
-  description: ReactNode;
+  description: string;
   subjectSlug: string;
   subjectLabel: string;
   topicLabel: string;

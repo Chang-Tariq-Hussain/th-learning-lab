@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { SimpleMotion } from "@/features/subjects/physics/simple-motion";
 
 export const metadata: Metadata = {
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function SimpleMotionPage() {
+  const quiz = getQuizById("physics-motion");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/physics/simple-motion" className="mb-4" />
@@ -37,6 +40,10 @@ export default function SimpleMotionPage() {
       </div>
 
       <SimpleMotion />
+
+      {quiz && (
+        <QuizCta href="/dashboard/physics/motion-quiz" colorToken="physics" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

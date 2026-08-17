@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { EcosystemExplorer } from "@/features/subjects/biology/ecosystem-explorer";
 
 export const metadata: Metadata = {
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function EcosystemExplorerPage() {
+  const quiz = getQuizById("biology-ecosystem");
   return (
     <Container className="py-10">
       <SimulationBackLink
@@ -44,6 +47,10 @@ export default function EcosystemExplorerPage() {
       </div>
 
       <EcosystemExplorer />
+
+      {quiz && (
+        <QuizCta href="/dashboard/biology/ecosystem-quiz" colorToken="biology" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }

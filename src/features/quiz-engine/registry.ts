@@ -1,5 +1,22 @@
 import type { QuizMeta } from "./types";
+import { biologyCellExplorerQuiz } from "./data/biology-cell-explorer-quiz";
+import { biologyCellularRespirationQuiz } from "./data/biology-cellular-respiration-quiz";
+import { biologyEcosystemQuiz } from "./data/biology-ecosystem-quiz";
+import { biologyMeiosisQuiz } from "./data/biology-meiosis-quiz";
+import { biologyNervousSystemQuiz } from "./data/biology-nervous-system-quiz";
+import { chemistryAcidsBasesQuiz } from "./data/chemistry-acids-bases-quiz";
+import { chemistryAtomQuiz } from "./data/chemistry-atom-quiz";
+import { chemistryChemicalBondingQuiz } from "./data/chemistry-chemical-bonding-quiz";
+import { chemistryPeriodicTrendsQuiz } from "./data/chemistry-periodic-trends-quiz";
+import { chemistryReactionKineticsQuiz } from "./data/chemistry-reaction-kinetics-quiz";
+import { mathematicsCalculusQuiz } from "./data/mathematics-calculus-quiz";
+import { mathematicsCoordinateGeometryQuiz } from "./data/mathematics-coordinate-geometry-quiz";
+import { mathematicsMeasurementQuiz } from "./data/mathematics-measurement-quiz";
+import { mathematicsStatisticsQuiz } from "./data/mathematics-statistics-quiz";
+import { mathematicsStraightLineQuiz } from "./data/mathematics-straight-line-quiz";
+import { physicsElectromagnetismQuiz } from "./data/physics-electromagnetism-quiz";
 import { physicsMotionQuiz } from "./data/physics-motion-quiz";
+import { physicsWaveMotionQuiz } from "./data/physics-wave-motion-quiz";
 
 /**
  * Every registered quiz. Add a new quiz by creating a `QuizMeta` in
@@ -8,7 +25,26 @@ import { physicsMotionQuiz } from "./data/physics-motion-quiz";
  * `features/subjects/data/subjects.ts`: a single array, read by
  * getter functions, instead of scattered lookups.
  */
-export const quizzes: QuizMeta[] = [physicsMotionQuiz];
+export const quizzes: QuizMeta[] = [
+  biologyCellExplorerQuiz,
+  biologyCellularRespirationQuiz,
+  biologyEcosystemQuiz,
+  biologyMeiosisQuiz,
+  biologyNervousSystemQuiz,
+  chemistryAcidsBasesQuiz,
+  chemistryAtomQuiz,
+  chemistryChemicalBondingQuiz,
+  chemistryPeriodicTrendsQuiz,
+  chemistryReactionKineticsQuiz,
+  mathematicsCalculusQuiz,
+  mathematicsCoordinateGeometryQuiz,
+  mathematicsMeasurementQuiz,
+  mathematicsStatisticsQuiz,
+  mathematicsStraightLineQuiz,
+  physicsElectromagnetismQuiz,
+  physicsMotionQuiz,
+  physicsWaveMotionQuiz,
+];
 
 export function getQuizById(id: string): QuizMeta | undefined {
   return quizzes.find((quiz) => quiz.id === id);

@@ -169,6 +169,9 @@ export const physicsMotionQuiz: QuizMeta = {
   subjectLabel: "Physics",
   topicLabel: "Motion",
   colorToken: "physics",
-  backHref: "/dashboard/physics",
+  backHref: "/dashboard/physics/simple-motion",
+  description: "Test your understanding of distance, displacement, speed, velocity, and acceleration.",
+  difficulty: "medium",
+  estimatedTime: 6,
   questions,
 };

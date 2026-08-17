@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { AcidsBasesBasics } from "@/features/subjects/chemistry/acids-bases-basics";
 
 export const metadata: Metadata = {
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function AcidsBasesBasicsPage() {
+  const quiz = getQuizById("chemistry-acids-bases");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/chemistry/acids-bases-basics" className="mb-4" />
@@ -36,6 +39,10 @@ export default function AcidsBasesBasicsPage() {
       </div>
 
       <AcidsBasesBasics />
+
+      {quiz && (
+        <QuizCta href="/dashboard/chemistry/acids-bases-quiz" colorToken="chemistry" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
     </Container>
   );
 }
