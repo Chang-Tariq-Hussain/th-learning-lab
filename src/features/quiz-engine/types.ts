@@ -6,6 +6,8 @@
  * these same shapes.
  */
 
+import { ReactNode } from "react";
+
 /** Difficulty is tracked from day one even though no quiz surfaces a
  *  selector for it yet — see the feature README for why. */
 export type QuizDifficulty = "easy" | "medium" | "hard";
@@ -81,6 +83,7 @@ export interface QuizCompletionResult {
  * the same subject tinting as the rest of the dashboard.
  */
 export interface QuizMeta {
+  description: ReactNode;
   id: string;
   title: string;
   /** Subject slug, e.g. "physics" — used for registry lookups. Kept
