@@ -1,10 +1,10 @@
-import { ArrowLeft } from "lucide-react";
-import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
-import { QuizExperience } from "@/features/quiz-engine";
+import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
 import type { QuizMeta } from "@/features/quiz-engine";
+import { QuizExperience } from "@/features/quiz-engine/quiz-experience";
 import { resolveSubjectColors } from "@/features/subjects/subject-colors";
+import { ArrowLeft } from "lucide-react";
 
 const SUBJECT_HREF: Record<string, string> = {
   physics: "/dashboard/physics",
@@ -46,10 +46,14 @@ export function TopicQuizPage({ quiz, backLabel }: TopicQuizPageProps) {
       />
 
       <div className="mb-8">
-        <p className={`font-mono text-[11px] uppercase tracking-[0.2em] ${colors.text}`}>
+        <p
+          className={`font-mono text-[11px] uppercase tracking-[0.2em] ${colors.text}`}
+        >
           {quiz.subjectLabel} · {quiz.topicLabel}
         </p>
-        <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">{quiz.title}</h1>
+        <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
+          {quiz.title}
+        </h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
           {quiz.description}
         </p>
