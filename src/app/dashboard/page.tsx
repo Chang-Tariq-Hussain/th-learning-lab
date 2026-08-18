@@ -14,8 +14,8 @@ export default function DashboardPage() {
   return (
     <div className="lg:grid lg:grid-cols-[15rem_1fr]">
       <aside className="hidden lg:block">
-        <div className="sticky top-16">
-          <Sidebar className="h-[calc(100vh-4rem)]" />
+        <div className="sticky top-28">
+          <Sidebar className="h-[calc(100vh-7rem)]" />
         </div>
       </aside>
 

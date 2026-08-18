@@ -54,8 +54,8 @@ export function HeaderSearch({ className }: { className?: string }) {
   const activeMatch = matches[activeIndex];
 
   return (
-    <div ref={containerRef} className={cn("relative", className)}>
-      <div className="flex h-9 w-56 items-center gap-2 rounded-full border border-ink/10 bg-transparent px-3.5 text-sm text-ink-soft transition-colors focus-within:border-pine-500 dark:border-bone/15 dark:text-bone-soft">
+    <div ref={containerRef} className={cn("relative w-56", className)}>
+      <div className="flex h-9 w-full items-center gap-2 rounded-full border border-ink/10 bg-transparent px-3.5 text-sm text-ink-soft transition-colors focus-within:border-pine-500 dark:border-bone/15 dark:text-bone-soft">
         <Search className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} aria-hidden="true" />
         <input
           type="text"

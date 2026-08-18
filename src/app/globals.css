@@ -49,4 +49,14 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Hides the scrollbar on horizontally-scrollable rows (e.g. the
+     header's nav-links row) while keeping the element scrollable. */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
