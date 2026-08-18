@@ -8,6 +8,7 @@ export const siteConfig = {
 
 export const mainNav = [
   { label: "Dashboard", href: "/dashboard" },
+  { label: "Practice", href: "/dashboard/practice" },
   { label: "Physics", href: "/dashboard/physics" },
   { label: "Chemistry", href: "/dashboard/chemistry" },
   { label: "Biology", href: "/dashboard/biology" },

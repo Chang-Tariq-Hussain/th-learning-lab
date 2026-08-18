@@ -5,15 +5,36 @@ import { CheckCircle2, RotateCcw, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { QuizAnswerRecord } from "../types";
 
+export interface QuizResultsSecondaryAction {
+  label: string;
+  href?: string;
+  onClick?: () => void;
+}
+
 export interface QuizResultsProps {
   answers: QuizAnswerRecord[];
   totalQuestions: number;
   backHref: string;
   backLabel: string;
   onRetry: () => void;
+  /** Heading above the score, e.g. "Practice Complete!". Defaults to "Quiz Complete" -- every existing topic quiz keeps its current copy. */
+  resultsTitle?: string;
+  /** Label on the primary retry button. Defaults to "Try Again". Practice Mode overrides this to "Practice Again" since its `onRetry` generates a brand new randomized set instead of replaying the same one. */
+  retryLabel?: string;
+  /** An optional third action rendered between "retry" and "back" -- e.g. Practice Mode's "Change Topic", which returns to the configuration screen instead of navigating or retrying. */
+  secondaryAction?: QuizResultsSecondaryAction;
 }
 
-export function QuizResults({ answers, totalQuestions, backHref, backLabel, onRetry }: QuizResultsProps) {
+export function QuizResults({
+  answers,
+  totalQuestions,
+  backHref,
+  backLabel,
+  onRetry,
+  resultsTitle = "Quiz Complete",
+  retryLabel = "Try Again",
+  secondaryAction,
+}: QuizResultsProps) {
   const score = answers.filter((answer) => answer.isCorrect).length;
   const incorrect = totalQuestions - score;
   const percentage = totalQuestions === 0 ? 0 : Math.round((score / totalQuestions) * 100);
@@ -28,7 +49,7 @@ export function QuizResults({ answers, totalQuestions, backHref, backLabel, onRe
     >
       <div className="rounded-[1.75rem] border border-line bg-white/70 p-6 text-center shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:p-10">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
-          Quiz Complete
+          {resultsTitle}
         </p>
         <p className="mt-3 font-display text-4xl font-semibold tabular-nums text-ink dark:text-bone sm:text-5xl">
           {score} / {totalQuestions}
@@ -49,8 +70,13 @@ export function QuizResults({ answers, totalQuestions, backHref, backLabel, onRe
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Button variant="secondary" size="md" onClick={onRetry}>
             <RotateCcw className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-            Try Again
+            {retryLabel}
           </Button>
+          {secondaryAction ? (
+            <Button variant="secondary" size="md" href={secondaryAction.href} onClick={secondaryAction.onClick}>
+              {secondaryAction.label}
+            </Button>
+          ) : null}
           <Button variant="ghost" size="md" href={backHref}>
             {backLabel}
           </Button>

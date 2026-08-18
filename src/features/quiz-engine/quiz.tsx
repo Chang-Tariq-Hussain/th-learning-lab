@@ -8,6 +8,7 @@ import { QuizProgress } from "./components/quiz-progress";
 import { QuizQuestionCard } from "./components/quiz-question-card";
 import { QuizFeedback } from "./components/quiz-feedback";
 import { QuizResults } from "./components/quiz-results";
+import type { QuizResultsSecondaryAction } from "./components/quiz-results";
 import { QuizUnavailable } from "./components/quiz-unavailable";
 import type { QuizCompletionResult, QuizQuestion } from "./types";
 
@@ -25,6 +26,14 @@ export interface QuizProps {
    *  persists it today — this is the hook a future progress-tracking
    *  feature will use. */
   onComplete?: (result: QuizCompletionResult) => void;
+  /** Results-screen heading override — see `QuizResults`. Defaults to "Quiz Complete". */
+  resultsTitle?: string;
+  /** Results-screen retry button label override — see `QuizResults`. Defaults to "Try Again". */
+  retryLabel?: string;
+  /** When provided, called instead of the engine's built-in retry (which just replays the same `questions` array from question one). Practice Mode passes a callback that picks a brand new randomized set instead. */
+  onRetryOverride?: () => void;
+  /** Optional third results-screen action — see `QuizResults`. */
+  secondaryAction?: QuizResultsSecondaryAction;
 }
 
 /**
@@ -43,6 +52,10 @@ export function Quiz({
   backHref,
   backLabel = "Back to Topic",
   onComplete,
+  resultsTitle,
+  retryLabel,
+  onRetryOverride,
+  secondaryAction,
 }: QuizProps) {
   const issues = useMemo(() => validateQuizQuestions(questions), [questions]);
 
@@ -72,7 +85,10 @@ export function Quiz({
         totalQuestions={totalQuestions}
         backHref={backHref}
         backLabel={backLabel}
-        onRetry={retry}
+        onRetry={onRetryOverride ?? retry}
+        resultsTitle={resultsTitle}
+        retryLabel={retryLabel}
+        secondaryAction={secondaryAction}
       />
     );
   }

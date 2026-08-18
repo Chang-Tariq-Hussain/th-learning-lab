@@ -31,6 +31,15 @@ export function Sidebar({ className, onNavigate }: SidebarProps) {
       )}
     >
       <div>
+        <Link
+          href="/dashboard/practice"
+          onClick={onNavigate}
+          className="mb-6 flex items-center gap-3 rounded-md px-2.5 py-2 text-sm font-medium text-ink transition-colors hover:bg-ink/[0.04] dark:text-bone dark:hover:bg-bone/[0.06]"
+        >
+          <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-pine-600 dark:bg-pine-400" />
+          Practice
+        </Link>
+
         <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
           Subjects
         </p>
