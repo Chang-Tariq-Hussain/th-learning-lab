@@ -1,11 +1,15 @@
 import type { QuizMeta, QuizQuestion } from "../types";
 
 /**
- * Sample content for the Quiz Engine's first quiz: basic conceptual
- * Physics/Motion, matching the existing "Simple Motion" and
- * "Projectile Motion" simulations under the Kinematics topic. Kept
- * conceptual (no multi-step numerical problems) — this quiz exists to
- * prove the engine, not to be a finished Kinematics assessment.
+ * Kinematics topic question bank, matching the "Simple Motion" and
+ * "Projectile Motion" simulations. Questions 001–010 cover the core
+ * distance/displacement/speed/velocity/acceleration vocabulary taught
+ * by Simple Motion; 011–030 add numerical speed/distance/time
+ * problems, projectile-motion concepts (range, max height, time of
+ * flight, independence of horizontal/vertical motion, air
+ * resistance), and common-misconception questions (e.g. average of
+ * two speeds vs. true average speed; velocity vs. acceleration at a
+ * projectile's peak).
  */
 const questions: QuizQuestion[] = [
   {
@@ -160,6 +164,246 @@ const questions: QuizQuestion[] = [
     subject: "physics",
     topic: "motion",
   },
+  {
+    id: "physics-motion-011",
+    type: "multiple-choice",
+    question: "A train travels 90 km in 1.5 hours at a constant speed. What is its average speed?",
+    options: ["60 km/h", "135 km/h", "45 km/h", "90 km/h"],
+    correctAnswer: "60 km/h",
+    explanation:
+      "Average speed is distance divided by time: 90 \\text{ km} \\div 1.5 \\text{ h} = 60 \\text{ km/h}.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-012",
+    type: "multiple-choice",
+    question: "You know the distance of a trip and the constant speed travelled. Which formula finds the time taken?",
+    options: ["t = d/v", "t = v/d", "t = d \\times v", "t = v - d"],
+    correctAnswer: "t = d/v",
+    explanation:
+      "Rearranging v = d/t for time gives t = d/v — time equals distance divided by speed.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-013",
+    type: "multiple-choice",
+    question: "A cyclist rides at a constant 4 m/s. How far do they travel in 10 seconds?",
+    options: ["40 m", "2.5 m", "14 m", "6 m"],
+    correctAnswer: "40 m",
+    explanation:
+      "Distance equals speed multiplied by time: 4 \\text{ m/s} \\times 10 \\text{ s} = 40 \\text{ m}.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-014",
+    type: "multiple-choice",
+    question: "In projectile motion, ignoring air resistance, which quantity stays constant throughout the flight?",
+    options: ["The horizontal velocity", "The vertical velocity", "Both horizontal and vertical velocity", "Neither stays constant"],
+    correctAnswer: "The horizontal velocity",
+    explanation:
+      "Gravity only acts vertically, so there's nothing to change the horizontal velocity — it stays constant for the whole flight while the vertical velocity changes.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-015",
+    type: "multiple-choice",
+    question: "What causes a projectile's vertical velocity to change during its flight?",
+    options: ["Gravity acting downward", "The horizontal velocity slowing it down", "Air pushing it sideways", "The launch angle changing mid-flight"],
+    correctAnswer: "Gravity acting downward",
+    explanation:
+      "Gravity is the only vertical force (ignoring air resistance), so it's what continuously changes the vertical velocity — slowing the projectile's rise, then speeding its fall.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-016",
+    type: "multiple-choice",
+    question: "A car speeds up while travelling in a straight line. Which direction does its acceleration point?",
+    options: ["The same direction as its motion", "The opposite direction to its motion", "Perpendicular to its motion", "Acceleration is zero while speeding up"],
+    correctAnswer: "The same direction as its motion",
+    explanation:
+      "Speeding up means velocity is increasing in the direction of travel, so the acceleration points the same way as the motion (contrast this with slowing down, where acceleration points opposite to motion).",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-017",
+    type: "multiple-choice",
+    question: "Car A travels at a constant 20 m/s and Car B at a constant 25 m/s, both starting from the same point and travelling the same direction. After 10 seconds, how much farther has Car B travelled than Car A?",
+    options: ["50 m", "5 m", "250 m", "450 m"],
+    correctAnswer: "50 m",
+    explanation:
+      "Car A covers 20 \\times 10 = 200 \\text{ m}; Car B covers 25 \\times 10 = 250 \\text{ m}. The difference is 250 - 200 = 50 \\text{ m}.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-018",
+    type: "multiple-choice",
+    question: "A projectile is launched at 45° above the horizontal. Compared to launching at 30° with the same speed, the 45° launch produces:",
+    options: ["A greater range", "A lesser range", "Exactly the same range", "It cannot be determined from the angle alone"],
+    correctAnswer: "A greater range",
+    explanation:
+      "Range depends on \\sin(2\\theta). At 45°, 2\\theta = 90° and \\sin(90°) = 1, the maximum possible value. At 30°, 2\\theta = 60° and \\sin(60°) \\approx 0.87, which is smaller — so 45° gives the greater range.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-019",
+    type: "multiple-choice",
+    question: "What determines how high a projectile rises above its launch point?",
+    options: ["The vertical component of its launch velocity", "The horizontal component of its launch velocity", "The total time of flight alone", "The launch angle alone, regardless of speed"],
+    correctAnswer: "The vertical component of its launch velocity",
+    explanation:
+      "Maximum height comes from h_{max} = \\dfrac{v^2\\sin^2(\\theta)}{2g} — it depends on v\\sin(\\theta), the vertical component of the launch velocity, since that's the part gravity has to work against.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-020",
+    type: "multiple-choice",
+    question: "A projectile's launch angle is kept fixed, but its launch speed is increased. What happens to its time of flight?",
+    options: ["It increases", "It decreases", "It stays the same", "It cannot be determined"],
+    correctAnswer: "It increases",
+    explanation:
+      "Time of flight is t = \\dfrac{2v\\sin(\\theta)}{g}. With \\theta fixed, t grows directly with launch speed v, so a faster launch stays in the air longer.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-021",
+    type: "multiple-choice",
+    question: "An object moves at a constant speed. If the time it travels for is tripled, what happens to the distance it covers?",
+    options: ["It triples", "It stays the same", "It doubles", "It becomes one third as much"],
+    correctAnswer: "It triples",
+    explanation:
+      "Distance equals speed multiplied by time (d = vt). With speed fixed, distance is directly proportional to time, so tripling the time triples the distance.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-022",
+    type: "multiple-choice",
+    question: "One ball is thrown horizontally off a cliff with some initial horizontal speed. At the same instant, a second ball is simply dropped from the same height. Ignoring air resistance, which ball reaches the ground first?",
+    options: ["They land at the same time", "The thrown ball lands first", "The dropped ball lands first", "It depends on how hard the first ball was thrown"],
+    correctAnswer: "They land at the same time",
+    explanation:
+      "Both balls start with zero vertical velocity and fall under the same gravity, and horizontal motion doesn't affect vertical motion at all. Since their vertical motion is identical, they hit the ground at the same time, no matter how fast the first ball was thrown horizontally.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-023",
+    type: "multiple-choice",
+    question: "A projectile's launch speed is doubled while its launch angle stays fixed. What happens to its range?",
+    options: ["It becomes 4 times as large", "It becomes 2 times as large", "It stays the same", "It becomes half as large"],
+    correctAnswer: "It becomes 4 times as large",
+    explanation:
+      "Range is R = \\dfrac{v^2\\sin(2\\theta)}{g}. Because it depends on v^2, doubling the speed multiplies the range by 2^2 = 4, not just 2.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-024",
+    type: "multiple-choice",
+    question: "A hiker walks 8 km north, then 6 km east, taking 2 hours in total. What is the hiker's average speed for the trip?",
+    options: ["7 km/h", "5 km/h", "10 km/h", "14 km/h"],
+    correctAnswer: "7 km/h",
+    explanation:
+      "Average speed uses total distance travelled, not displacement: 8 + 6 = 14 \\text{ km} over 2 hours gives 14 \\div 2 = 7 \\text{ km/h}. (5 km/h would be the average velocity, using the 10 km straight-line displacement instead of the 14 km path length.)",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-025",
+    type: "multiple-choice",
+    question: "A projectile is launched at 30° and a second one at 60°, both with the same initial speed. How do their ranges compare (ignoring air resistance)?",
+    options: ["They are equal", "The 30° launch has the greater range", "The 60° launch has the greater range", "There's no relationship between the two"],
+    correctAnswer: "They are equal",
+    explanation:
+      "Range depends on \\sin(2\\theta). For 30°, 2\\theta = 60°; for 60°, 2\\theta = 120°. Since \\sin(60°) = \\sin(120°), the two angles give exactly the same range — any pair of angles that add up to 90° will match this way.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-026",
+    type: "multiple-choice",
+    question: "A car accelerates from rest to 20 m/s in 5 seconds, gaining speed at a constant rate. What is its acceleration?",
+    options: ["4 m/s²", "100 m/s²", "0.25 m/s²", "25 m/s²"],
+    correctAnswer: "4 m/s²",
+    explanation:
+      "Acceleration is the change in velocity divided by the time taken: (20 - 0) \\text{ m/s} \\div 5 \\text{ s} = 4 \\text{ m/s}^2.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-027",
+    type: "multiple-choice",
+    question: "A ball is thrown straight up into the air. At the very top of its path, which statement is correct?",
+    options: ["Its velocity is momentarily zero, but its acceleration is not", "Both its velocity and acceleration are zero", "Its acceleration is zero, but its velocity is not", "Both its velocity and acceleration point upward"],
+    correctAnswer: "Its velocity is momentarily zero, but its acceleration is not",
+    explanation:
+      "At the peak, the ball's velocity is instantaneously zero as it switches from moving up to moving down — but gravity never stops acting on it, so its acceleration is still g, directed downward, the entire time.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-028",
+    type: "multiple-choice",
+    question: "A car travels the first 100 m of a trip at 20 m/s, then the next 100 m at 50 m/s. What is its average speed for the whole 200 m trip?",
+    options: ["≈28.6 m/s", "35 m/s", "40 m/s", "10 m/s"],
+    correctAnswer: "≈28.6 m/s",
+    explanation:
+      "Average speed is total distance over total time, not the average of the two speeds. The first 100 m takes 100 \\div 20 = 5 \\text{ s}; the second takes 100 \\div 50 = 2 \\text{ s}. Total time is 7 s, so average speed is 200 \\div 7 \\approx 28.6 \\text{ m/s} — noticeably less than the simple average of 35 m/s, because more time was spent at the slower speed.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-029",
+    type: "multiple-choice",
+    question: "Two projectiles have different masses but are launched at the same speed and angle, with air resistance ignored. How do their ranges compare?",
+    options: ["They have the same range", "The heavier projectile travels farther", "The lighter projectile travels farther", "It depends on what the projectiles are made of"],
+    correctAnswer: "They have the same range",
+    explanation:
+      "Neither the range formula R = \\dfrac{v^2\\sin(2\\theta)}{g} nor the underlying motion depends on mass — gravity accelerates every mass equally when air resistance is ignored, so mass has no effect on the trajectory.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "motion",
+  },
+  {
+    id: "physics-motion-030",
+    type: "multiple-choice",
+    question: "A projectile is launched with air resistance now switched on, instead of the ideal no-drag case. Compared to the ideal parabola at the same launch speed and angle, the real trajectory will:",
+    options: ["Fall short of the ideal range, with a steeper descent than ascent", "Travel farther than the ideal range", "Follow an identical path to the ideal parabola", "Rise higher than the ideal case before landing at the same range"],
+    correctAnswer: "Fall short of the ideal range, with a steeper descent than ascent",
+    explanation:
+      "Air resistance continuously removes energy from the projectile, so it loses range and peak height compared to the ideal case, and its descending path becomes steeper than its ascending path — unlike the symmetric parabola of the no-drag scenario.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "motion",
+  },
 ];
 
 export const physicsMotionQuiz: QuizMeta = {
@@ -170,8 +414,9 @@ export const physicsMotionQuiz: QuizMeta = {
   topicLabel: "Motion",
   colorToken: "physics",
   backHref: "/dashboard/physics/simple-motion",
-  description: "Test your understanding of distance, displacement, speed, velocity, and acceleration.",
+  description:
+    "Test your understanding of distance, displacement, speed, velocity, and acceleration — plus projectile motion, range, and time of flight.",
   difficulty: "medium",
-  estimatedTime: 6,
+  estimatedTime: 15,
   questions,
 };

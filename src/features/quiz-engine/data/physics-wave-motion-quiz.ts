@@ -1,19 +1,24 @@
 import type { QuizMeta, QuizQuestion } from "../types";
 
-/** Matches Basic Wave Motion, Frequency & Period, and Wave Speed. */
+/**
+ * Wave Motion topic question bank, matching Basic Wave Motion (crest,
+ * trough, equilibrium, amplitude, wavelength), Transverse vs
+ * Longitudinal Waves (particle motion, compression/rarefaction),
+ * Frequency & Period (T = 1/f), and Wave Speed (v = fλ). Questions
+ * 001–005 are the original set; 006–030 extend coverage across
+ * all four simulations with definitions, numerical v = fλ / T = 1/f
+ * problems, real-world identification, and conceptual questions about
+ * energy transport and why sound needs a medium while light doesn't.
+ */
 const questions: QuizQuestion[] = [
   {
     id: "physics-wave-motion-001",
     type: "multiple-choice",
     question: "Wavelength is best described as:",
-    options: [
-      "The distance between two consecutive crests (or troughs) of a wave",
-      "How high a wave rises above its resting position",
-      "How many waves pass a point each second",
-      "The speed at which a wave travels",
-    ],
+    options: ["The distance between two consecutive crests (or troughs) of a wave", "How high a wave rises above its resting position", "How many waves pass a point each second", "The speed at which a wave travels"],
     correctAnswer: "The distance between two consecutive crests (or troughs) of a wave",
-    explanation: "Wavelength is a length measurement — the distance over which the wave's pattern repeats.",
+    explanation:
+      "Wavelength is a length measurement — the distance over which the wave's pattern repeats.",
     difficulty: "easy",
     subject: "physics",
     topic: "wave-motion",
@@ -22,14 +27,10 @@ const questions: QuizQuestion[] = [
     id: "physics-wave-motion-002",
     type: "multiple-choice",
     question: "Amplitude describes:",
-    options: [
-      "How far the wave displaces from its resting (equilibrium) position",
-      "How fast the wave moves",
-      "The time for one full oscillation",
-      "The number of oscillations per second",
-    ],
+    options: ["How far the wave displaces from its resting (equilibrium) position", "How fast the wave moves", "The time for one full oscillation", "The number of oscillations per second"],
     correctAnswer: "How far the wave displaces from its resting (equilibrium) position",
-    explanation: "Amplitude is the maximum displacement from equilibrium — it relates to the wave's energy, not its speed.",
+    explanation:
+      "Amplitude is the maximum displacement from equilibrium — it relates to the wave's energy, not its speed.",
     difficulty: "easy",
     subject: "physics",
     topic: "wave-motion",
@@ -37,12 +38,11 @@ const questions: QuizQuestion[] = [
   {
     id: "physics-wave-motion-003",
     type: "multiple-choice",
-    question:
-      "On the simulation, if you increase a wave's frequency while keeping the wave speed constant, what happens to its wavelength?",
+    question: "On the simulation, if you increase a wave's frequency while keeping the wave speed constant, what happens to its wavelength?",
     options: ["It increases", "It decreases", "It stays the same", "It depends on the amplitude"],
     correctAnswer: "It decreases",
     explanation:
-      "Since v = fλ, if speed v is fixed and frequency f goes up, wavelength λ must go down to keep the product constant.",
+      "Since v = f\\lambda, if speed v is fixed and frequency f goes up, wavelength \\lambda must go down to keep the product constant.",
     difficulty: "medium",
     subject: "physics",
     topic: "wave-motion",
@@ -51,14 +51,10 @@ const questions: QuizQuestion[] = [
     id: "physics-wave-motion-004",
     type: "multiple-choice",
     question: "How is a wave's period related to its frequency?",
-    options: [
-      "Period is the reciprocal of frequency: T = 1/f",
-      "Period and frequency are always equal",
-      "Period is frequency multiplied by wavelength",
-      "Period has no relationship to frequency",
-    ],
+    options: ["Period is the reciprocal of frequency: T = 1/f", "Period and frequency are always equal", "Period is frequency multiplied by wavelength", "Period has no relationship to frequency"],
     correctAnswer: "Period is the reciprocal of frequency: T = 1/f",
-    explanation: "Frequency counts oscillations per second, while period is the time for one oscillation — they're reciprocals of each other.",
+    explanation:
+      "Frequency counts oscillations per second, while period is the time for one oscillation — they're reciprocals of each other.",
     difficulty: "medium",
     subject: "physics",
     topic: "wave-motion",
@@ -69,7 +65,308 @@ const questions: QuizQuestion[] = [
     question: "A wave has a frequency of 2 Hz and a wavelength of 3 m. What is its speed?",
     options: ["1.5 m/s", "5 m/s", "6 m/s", "0.67 m/s"],
     correctAnswer: "6 m/s",
-    explanation: "Using v = fλ: v = 2 \\text{ Hz} \\times 3 \\text{ m} = 6 \\text{ m/s}.",
+    explanation:
+      "Using v = f\\lambda: v = 2 \\text{ Hz} \\times 3 \\text{ m} = 6 \\text{ m/s}.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-006",
+    type: "multiple-choice",
+    question: "What is the crest of a wave?",
+    options: ["The highest point of the wave", "The lowest point of the wave", "The flat resting line of the wave", "The distance the wave travels in one second"],
+    correctAnswer: "The highest point of the wave",
+    explanation:
+      "The crest is the highest point a wave reaches above its resting (equilibrium) position.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-007",
+    type: "multiple-choice",
+    question: "What is the trough of a wave?",
+    options: ["The lowest point of the wave", "The highest point of the wave", "The point where the wave crosses equilibrium", "The starting point of the wave"],
+    correctAnswer: "The lowest point of the wave",
+    explanation:
+      "The trough is the lowest point a wave reaches below its resting (equilibrium) position — the mirror image of the crest.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-008",
+    type: "multiple-choice",
+    question: "What is the equilibrium position of a wave?",
+    options: ["The resting position the medium would sit at if there were no wave at all", "The exact midpoint between two wavelengths", "The position of the wave's highest point", "The point where wave speed is measured"],
+    correctAnswer: "The resting position the medium would sit at if there were no wave at all",
+    explanation:
+      "The equilibrium position is the flat middle line the wave moves above and below — where the medium would sit if it weren't disturbed by a wave.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-009",
+    type: "multiple-choice",
+    question: "In a transverse wave, which way do the particles of the medium move relative to the direction the wave travels?",
+    options: ["Perpendicular to it (e.g. up and down while the wave moves sideways)", "Parallel to it, back and forth along the same line", "In circles around the wave's path", "They don't move at all"],
+    correctAnswer: "Perpendicular to it (e.g. up and down while the wave moves sideways)",
+    explanation:
+      "A transverse wave is defined by particles moving perpendicular to the wave's direction of travel — up and down, while the wave pattern itself moves sideways.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-010",
+    type: "multiple-choice",
+    question: "In a longitudinal wave, which way do the particles of the medium move relative to the direction the wave travels?",
+    options: ["Parallel to it, back and forth along the same line", "Perpendicular to it", "In circles around the wave's path", "They don't move at all"],
+    correctAnswer: "Parallel to it, back and forth along the same line",
+    explanation:
+      "A longitudinal wave is defined by particles moving parallel to the wave's direction of travel — back and forth along the same line the wave is moving.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-011",
+    type: "multiple-choice",
+    question: "In a longitudinal wave, what is a compression?",
+    options: ["A region where particles are bunched close together", "A region where particles are spread far apart", "The highest point of the wave", "The wave's equilibrium position"],
+    correctAnswer: "A region where particles are bunched close together",
+    explanation:
+      "A compression is where the particles of the medium are pushed close together — the longitudinal-wave equivalent of a crest.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-012",
+    type: "multiple-choice",
+    question: "In a longitudinal wave, what is a rarefaction?",
+    options: ["A region where particles are spread farther apart", "A region where particles are bunched close together", "The lowest point of the wave", "The point where the wave changes speed"],
+    correctAnswer: "A region where particles are spread farther apart",
+    explanation:
+      "A rarefaction is where the particles of the medium are stretched farther apart than normal — the longitudinal-wave equivalent of a trough.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-013",
+    type: "multiple-choice",
+    question: "What is the SI unit of frequency?",
+    options: ["Hertz (Hz)", "Seconds (s)", "Metres (m)", "Metres per second (m/s)"],
+    correctAnswer: "Hertz (Hz)",
+    explanation:
+      "Frequency is measured in hertz (Hz), where 1 Hz means one complete oscillation, or cycle, per second.",
+    difficulty: "easy",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-014",
+    type: "multiple-choice",
+    question: "Light is a transverse wave, while sound is a longitudinal wave. Which of these correctly matches a wave type to a real-world example?",
+    options: ["Ripples spreading on a pond's surface are transverse, like light", "Sound waves are transverse, just like light", "Light waves are longitudinal, just like sound", "Both sound and light are longitudinal waves"],
+    correctAnswer: "Ripples spreading on a pond's surface are transverse, like light",
+    explanation:
+      "Water ripples move the water's surface up and down (perpendicular to the ripple's outward travel), making them transverse — the same broad category as light, while sound is longitudinal.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-015",
+    type: "multiple-choice",
+    question: "A vibrating source completes 5 full oscillations in 1 second. What is its frequency?",
+    options: ["5 Hz", "0.2 Hz", "5 s", "1/5 Hz"],
+    correctAnswer: "5 Hz",
+    explanation:
+      "Frequency is the number of complete oscillations per second, so 5 oscillations in 1 second gives a frequency of 5 Hz directly.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-016",
+    type: "multiple-choice",
+    question: "A wave has a period of 0.5 s. What is its frequency?",
+    options: ["2 Hz", "0.5 Hz", "1 Hz", "5 Hz"],
+    correctAnswer: "2 Hz",
+    explanation:
+      "Frequency is the reciprocal of period: f = 1/T = 1 \\div 0.5 = 2 \\text{ Hz}.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-017",
+    type: "multiple-choice",
+    question: "Two waves travel through the same medium at the same speed, but wave A has a larger amplitude than wave B. What can you say about wave A?",
+    options: ["It's carrying more energy than wave B", "It has a longer wavelength than wave B", "It has a lower frequency than wave B", "It travels faster than wave B"],
+    correctAnswer: "It's carrying more energy than wave B",
+    explanation:
+      "A larger amplitude means a taller wave, and generally a taller wave is carrying more energy — amplitude relates to energy, not to speed, wavelength, or frequency directly.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-018",
+    type: "multiple-choice",
+    question: "Why can't sound waves travel through the vacuum of outer space?",
+    options: ["Sound is a longitudinal wave and needs a medium (like air) to compress and expand", "Sound waves move too slowly to cross large distances", "Sound is a transverse wave and transverse waves can't exist in a vacuum", "Sound waves lose their frequency completely once they leave Earth's atmosphere"],
+    correctAnswer: "Sound is a longitudinal wave and needs a medium (like air) to compress and expand",
+    explanation:
+      "Sound is a longitudinal wave, which travels by compressing and stretching the particles of a medium — with no particles present in a vacuum, there's nothing for a sound wave to compress or rarefy.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-019",
+    type: "multiple-choice",
+    question: "A guitar string vibrates up and down while a wave travels along its length. What type of wave is this?",
+    options: ["Transverse", "Longitudinal", "Neither — strings don't carry waves", "It depends on how loud the note is"],
+    correctAnswer: "Transverse",
+    explanation:
+      "The string's particles move up and down, perpendicular to the direction the wave travels along the string — that perpendicular motion is exactly what defines a transverse wave.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-020",
+    type: "multiple-choice",
+    question: "A wave travels at 10 m/s and has a frequency of 5 Hz. What is its wavelength?",
+    options: ["2 m", "50 m", "0.5 m", "15 m"],
+    correctAnswer: "2 m",
+    explanation:
+      "Rearranging v = f\\lambda for wavelength gives \\lambda = v/f = 10 \\div 5 = 2 \\text{ m}.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-021",
+    type: "multiple-choice",
+    question: "A wave travels at 20 m/s and has a wavelength of 4 m. What is its frequency?",
+    options: ["5 Hz", "80 Hz", "0.2 Hz", "24 Hz"],
+    correctAnswer: "5 Hz",
+    explanation:
+      "Rearranging v = f\\lambda for frequency gives f = v/\\lambda = 20 \\div 4 = 5 \\text{ Hz}.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-022",
+    type: "multiple-choice",
+    question: "A wave has a frequency of 50 Hz and a wavelength of 2 m. What is its speed?",
+    options: ["100 m/s", "52 m/s", "25 m/s", "0.04 m/s"],
+    correctAnswer: "100 m/s",
+    explanation:
+      "Using v = f\\lambda: v = 50 \\text{ Hz} \\times 2 \\text{ m} = 100 \\text{ m/s}.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-023",
+    type: "multiple-choice",
+    question: "A sound wave travels through air at 340 m/s with a frequency of 170 Hz. What is its wavelength?",
+    options: ["2 m", "0.5 m", "170 m", "57,800 m"],
+    correctAnswer: "2 m",
+    explanation:
+      "Rearranging v = f\\lambda: \\lambda = v/f = 340 \\div 170 = 2 \\text{ m}.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-024",
+    type: "multiple-choice",
+    question: "A wave travels at 1500 m/s with a wavelength of 0.5 m. What is its frequency?",
+    options: ["3000 Hz", "750 Hz", "3 Hz", "3,000,000 Hz"],
+    correctAnswer: "3000 Hz",
+    explanation:
+      "Rearranging v = f\\lambda: f = v/\\lambda = 1500 \\div 0.5 = 3000 \\text{ Hz}.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-025",
+    type: "multiple-choice",
+    question: "A wave's speed through a medium stays fixed. If its wavelength triples, what happens to its frequency?",
+    options: ["It becomes one third as large", "It triples", "It stays the same", "It becomes nine times as large"],
+    correctAnswer: "It becomes one third as large",
+    explanation:
+      "Since v = f\\lambda and v is fixed, f and \\lambda are inversely proportional. Tripling the wavelength means the frequency must become one third as large to keep their product (the speed) constant.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-026",
+    type: "multiple-choice",
+    question: "A wave travelling at a fixed 12 m/s has its frequency reduced from 4 Hz to 2 Hz. What happens to its wavelength?",
+    options: ["It doubles, from 3 m to 6 m", "It halves, from 6 m to 3 m", "It stays the same at 3 m", "It triples, from 3 m to 9 m"],
+    correctAnswer: "It doubles, from 3 m to 6 m",
+    explanation:
+      "At 4 Hz, \\lambda = v/f = 12 \\div 4 = 3 \\text{ m}. At 2 Hz, \\lambda = 12 \\div 2 = 6 \\text{ m}. Halving the frequency doubles the wavelength, since speed stays constant.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-027",
+    type: "multiple-choice",
+    question: "As a wave passes through a medium, does the medium itself travel along with the wave?",
+    options: ["No — the particles oscillate in place; only the wave pattern (and its energy) moves through the medium", "Yes — each particle of the medium travels all the way along with the wave to its destination", "Yes, but only in transverse waves, not longitudinal ones", "No — the particles stay completely motionless while only the wave's energy passes by"],
+    correctAnswer: "No — the particles oscillate in place; only the wave pattern (and its energy) moves through the medium",
+    explanation:
+      "A wave transports energy without transporting matter. Each particle of the medium oscillates around its own equilibrium position — it doesn't travel with the wave — while the disturbance pattern itself propagates onward.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-028",
+    type: "multiple-choice",
+    question: "If you track a single particle in a medium as a longitudinal wave passes through, which best describes its motion?",
+    options: ["It oscillates back and forth along the same line the wave travels, alternating between compression and rarefaction regions", "It moves in a full circle around its starting point", "It moves steadily forward in the direction of the wave and never returns", "It moves perpendicular to the wave's direction of travel"],
+    correctAnswer: "It oscillates back and forth along the same line the wave travels, alternating between compression and rarefaction regions",
+    explanation:
+      "In a longitudinal wave, each particle moves parallel to the wave's direction, oscillating back and forth — momentarily part of a compression, then a rarefaction, then back again, as the wave pattern passes through its position.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-029",
+    type: "multiple-choice",
+    question: "Which explanation correctly accounts for why sound cannot cross the vacuum of space, while light can?",
+    options: ["Sound is longitudinal and needs a medium to compress and expand; light is transverse and doesn't need a medium at all", "Sound travels faster than light, so it runs out of energy before crossing space", "Light is longitudinal and can travel through anything; sound is transverse and needs air", "Both need a medium, but light's medium is far more common in space than air"],
+    correctAnswer: "Sound is longitudinal and needs a medium to compress and expand; light is transverse and doesn't need a medium at all",
+    explanation:
+      "Sound relies on compressing and stretching particles in a medium, so it cannot exist where there's no matter, like in a vacuum. Light, as an electromagnetic (transverse) wave, doesn't require a medium and can travel through empty space.",
+    difficulty: "hard",
+    subject: "physics",
+    topic: "wave-motion",
+  },
+  {
+    id: "physics-wave-motion-030",
+    type: "multiple-choice",
+    question: "A wave has a period of 0.1 s and travels at 20 m/s through a medium. What is its wavelength?",
+    options: ["2 m", "0.2 m", "200 m", "20 m"],
+    correctAnswer: "2 m",
+    explanation:
+      "First find the frequency from the period: f = 1/T = 1 \\div 0.1 = 10 \\text{ Hz}. Then use v = f\\lambda to find wavelength: \\lambda = v/f = 20 \\div 10 = 2 \\text{ m}.",
     difficulty: "hard",
     subject: "physics",
     topic: "wave-motion",
@@ -84,8 +381,9 @@ export const physicsWaveMotionQuiz: QuizMeta = {
   topicLabel: "Wave Motion",
   colorToken: "physics",
   backHref: "/dashboard/physics/basic-wave-motion",
-  description: "Test your understanding of wavelength, amplitude, frequency, period, and wave speed.",
+  description:
+    "Test your understanding of wavelength, amplitude, transverse and longitudinal waves, frequency, period, and wave speed.",
   difficulty: "medium",
-  estimatedTime: 4,
+  estimatedTime: 15,
   questions,
 };

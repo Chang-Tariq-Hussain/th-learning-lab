@@ -1,7 +1,9 @@
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { QuizCta } from "@/components/dashboard/quiz-cta";
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
+import { getQuizById } from "@/features/quiz-engine/registry";
 import { NewtonsLaws } from "@/features/subjects/physics/newtons-laws";
 import type { Metadata } from "next";
 
@@ -12,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function NewtonsLawsPage() {
+  const quiz = getQuizById("physics-newtonian-mechanics");
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/physics/newtons-laws" className="mb-4" />
@@ -39,6 +42,10 @@ export default function NewtonsLawsPage() {
       </div>
 
       <NewtonsLaws />
+
+      {quiz && (
+        <QuizCta href="/dashboard/physics/newtonian-mechanics-quiz" colorToken="physics" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      )}
 
       <SimulationLearnMore
         colorToken="physics"
