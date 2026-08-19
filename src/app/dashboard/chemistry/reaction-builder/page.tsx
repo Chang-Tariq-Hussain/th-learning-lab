@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { ReactionBuilder } from "@/features/subjects/chemistry/reaction-builder";
 
 export const metadata: Metadata = {
@@ -40,6 +41,52 @@ export default function ReactionBuilderPage() {
       </div>
 
       <ReactionBuilder />
+
+      <SimulationLearnMore
+        colorToken="chemistry"
+        objectives={[
+          "Explain the law of conservation of mass as it applies to chemical reactions.",
+          "Identify reactants and products in a chemical equation.",
+          "Balance a simple equation by adjusting coefficients, not subscripts.",
+          "Describe a chemical reaction as atoms rearranging, not disappearing.",
+        ]}
+        concepts={[
+          {
+            term: "Conservation of mass",
+            explanation:
+              "Atoms are never created or destroyed in a chemical reaction — only rearranged into new combinations. Every atom present in the reactants has to show up somewhere in the products.",
+          },
+          {
+            term: "Reactants and products",
+            explanation:
+              "Reactants are the substances you start with, written on the left of the arrow. Products are the substances you end up with, written on the right.",
+            formula: "2H_2 + O_2 \\rightarrow 2H_2O",
+            formulaCaption: "Reactants → products",
+          },
+          {
+            term: "Coefficients vs. subscripts",
+            explanation:
+              "The subscript in a formula (like the 2 in H₂O) tells you how many atoms are in one molecule and can never be changed. The coefficient in front of a formula (like the 2 in 2H₂O) tells you how many molecules you have, and that's the number you adjust to balance an equation.",
+          },
+          {
+            term: "Balancing",
+            explanation:
+              "An equation is balanced when the same number of each type of atom appears on both sides. Balancing an equation is really just accounting for where every atom went.",
+          },
+        ]}
+        howToUse={[
+          "Pick a reaction and look at the reactants on the left side.",
+          "Step through the reaction and watch the bonds break apart.",
+          "Watch the same atoms come back together into new products on the right.",
+          "Count the atoms on each side before and after — the totals should match exactly.",
+        ]}
+        whyItMatters="Every chemical process you rely on, from your car's engine burning fuel to your own cells releasing energy from food, is atoms rearranging according to this same principle. Balancing equations isn't just a classroom exercise — it's how chemists calculate exactly how much of each ingredient a reaction needs, which matters everywhere from manufacturing medicine to designing rocket fuel."
+        tryThis={[
+          "Count every atom in the reactants and every atom in the products. Do the totals for each element match?",
+          "Try changing a coefficient and predict whether the equation is still balanced.",
+          "Pick a different reaction and predict its products before running the simulation.",
+        ]}
+      />
     </Container>
   );
 }

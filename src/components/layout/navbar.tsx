@@ -1,17 +1,17 @@
 "use client";
 
-import { HeaderSearch } from "@/components/layout/header-search";
-import { Logo } from "@/components/layout/logo";
-import { MobileSearchModal } from "@/components/layout/mobile-search-modal";
-import { UserMenu } from "@/components/layout/user-menu";
-import { Container } from "@/components/ui/container";
-import { mainNav, siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Search, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, Search, X } from "lucide-react";
+import { mainNav, siteConfig } from "@/config/site";
+import { Container } from "@/components/ui/container";
+import { Logo } from "@/components/layout/logo";
+import { HeaderSearch } from "@/components/layout/header-search";
+import { MobileSearchModal } from "@/components/layout/mobile-search-modal";
+import { UserMenu } from "@/components/layout/user-menu";
+import { cn } from "@/lib/utils";
 
 /**
  * Global header, split into two stacked rows so each row only has to
@@ -103,11 +103,7 @@ export function Navbar() {
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 text-ink dark:border-bone/15 dark:text-bone sm:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500"
             >
-              {menuOpen ? (
-                <X className="h-4 w-4" strokeWidth={1.75} />
-              ) : (
-                <Menu className="h-4 w-4" strokeWidth={1.75} />
-              )}
+              {menuOpen ? <X className="h-4 w-4" strokeWidth={1.75} /> : <Menu className="h-4 w-4" strokeWidth={1.75} />}
             </button>
 
             <UserMenu />
@@ -175,9 +171,7 @@ export function Navbar() {
       </AnimatePresence>
 
       <AnimatePresence>
-        {mobileSearchOpen ? (
-          <MobileSearchModal onClose={() => setMobileSearchOpen(false)} />
-        ) : null}
+        {mobileSearchOpen ? <MobileSearchModal onClose={() => setMobileSearchOpen(false)} /> : null}
       </AnimatePresence>
     </header>
   );

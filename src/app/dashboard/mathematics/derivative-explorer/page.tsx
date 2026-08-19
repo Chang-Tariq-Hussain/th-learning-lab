@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { DerivativeExplorer } from "@/features/subjects/mathematics/derivative-explorer";
 
 export const metadata: Metadata = {
@@ -35,6 +36,50 @@ export default function DerivativeExplorerPage() {
       </div>
 
       <DerivativeExplorer />
+
+      <SimulationLearnMore
+        colorToken="math"
+        objectives={[
+          "Explain what a secant line represents on a graph.",
+          "Describe what happens to a secant line as its two points move closer together.",
+          "Define a tangent line as the limit of secant lines.",
+          "Connect the tangent line's slope to the idea of a derivative.",
+        ]}
+        concepts={[
+          {
+            term: "Secant line",
+            explanation:
+              "A straight line connecting two distinct points on a curve. Its slope represents the average rate of change of the function between those two points.",
+          },
+          {
+            term: "Points getting closer",
+            explanation:
+              "As the second point on the secant line slides closer and closer to the first, the secant line rotates and starts to hug the curve more tightly around that one point.",
+          },
+          {
+            term: "Tangent line",
+            explanation:
+              "The line the secant line approaches as the two points merge into one — it touches the curve at exactly that single point and matches the curve's direction there.",
+          },
+          {
+            term: "Derivative as slope",
+            explanation:
+              "The slope of the tangent line at a point is called the derivative of the function at that point. It measures the instantaneous rate of change, rather than the average rate of change over an interval.",
+          },
+        ]}
+        howToUse={[
+          "Watch the secant line connecting two points on the curve.",
+          "Drag the second point closer to the first and watch the secant line's slope change.",
+          "Keep moving the point closer until the secant line settles into the tangent line.",
+          "Read off the tangent line's slope as the derivative at that point.",
+        ]}
+        whyItMatters="This transition from average rate of change to instantaneous rate of change is the entire idea behind a derivative, and it's how you get from a speedometer's constant readout to describing the exact speed of a car at one precise instant. Every derivative formula you'll learn afterward is just a faster way to compute what this tangent-line process already shows you visually."
+        tryThis={[
+          "Move the second point extremely close to the first and estimate the slope by eye before checking the exact value.",
+          "Compare the tangent line's slope at a steep part of the curve versus a flat part. What does that tell you about the derivative there?",
+          "Explain in your own words why a secant line's slope is called an average rate of change but a tangent line's slope is called instantaneous.",
+        ]}
+      />
     </Container>
   );
 }

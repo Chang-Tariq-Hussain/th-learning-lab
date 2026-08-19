@@ -1,9 +1,9 @@
 "use client";
 
-import { groupBySubject, searchIndex } from "@/lib/search-index";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Search, X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { groupBySubject, searchIndex } from "@/lib/search-index";
 import { SearchResultsList } from "./search-results-list";
 
 export interface MobileSearchModalProps {
@@ -50,14 +50,10 @@ export function MobileSearchModal({ onClose }: MobileSearchModalProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Search"
-      className="fixed h-[100vh] inset-0 z-[70] flex flex-col bg-paper dark:bg-chalkboard sm:hidden"
+      className="fixed inset-0 z-[70] flex flex-col bg-paper dark:bg-chalkboard sm:hidden"
     >
       <div className="flex items-center gap-2 border-b border-line px-4 py-3 dark:border-line-dark">
-        <Search
-          className="h-4 w-4 shrink-0 text-ink-soft dark:text-bone-soft"
-          strokeWidth={1.75}
-          aria-hidden="true"
-        />
+        <Search className="h-4 w-4 shrink-0 text-ink-soft dark:text-bone-soft" strokeWidth={1.75} aria-hidden="true" />
         <input
           ref={inputRef}
           type="text"
@@ -84,9 +80,7 @@ export function MobileSearchModal({ onClose }: MobileSearchModalProps) {
             Search across Physics, Chemistry, Biology, and Mathematics.
           </p>
         ) : groups.length === 0 ? (
-          <p className="px-3 py-6 text-center text-sm text-ink-soft dark:text-bone-soft">
-            No results for &ldquo;{query.trim()}&rdquo;
-          </p>
+          <p className="px-3 py-6 text-center text-sm text-ink-soft dark:text-bone-soft">No results for &ldquo;{query.trim()}&rdquo;</p>
         ) : (
           <div className="flex flex-col gap-4">
             {groups.map((group) => (
@@ -94,11 +88,7 @@ export function MobileSearchModal({ onClose }: MobileSearchModalProps) {
                 <p className="px-3 pb-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-ink-soft dark:text-bone-soft">
                   {group.subjectName}
                 </p>
-                <SearchResultsList
-                  matches={group.entries}
-                  activeId={null}
-                  onSelect={onClose}
-                />
+                <SearchResultsList matches={group.entries} activeId={null} onSelect={onClose} />
               </div>
             ))}
           </div>

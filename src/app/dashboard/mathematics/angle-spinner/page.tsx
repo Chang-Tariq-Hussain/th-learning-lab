@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
+import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { AngleSpinner } from "@/features/subjects/mathematics/angle-spinner";
 
 export const metadata: Metadata = {
@@ -32,6 +33,47 @@ export default function AngleSpinnerPage() {
       </div>
 
       <AngleSpinner />
+
+      <SimulationLearnMore
+        colorToken="math"
+        objectives={[
+          "Classify an angle as acute, right, obtuse, straight, or reflex.",
+          "Estimate an angle's measure by its appearance before checking the exact value.",
+          "Explain what makes 90° and 180° special reference points.",
+          "Recognize the range of degrees that falls into each angle category.",
+        ]}
+        concepts={[
+          {
+            term: "Acute angle",
+            explanation: "An angle measuring less than 90° — smaller and sharper than a right angle.",
+          },
+          {
+            term: "Right angle",
+            explanation: "An angle of exactly 90°, forming a perfect corner, like the edge of a square.",
+          },
+          {
+            term: "Obtuse angle",
+            explanation: "An angle measuring more than 90° but less than 180° — wider than a right angle but not yet a straight line.",
+          },
+          {
+            term: "Straight and reflex angles",
+            explanation:
+              "A straight angle measures exactly 180°, forming a straight line. A reflex angle measures more than 180°, sweeping around past a straight line toward a full circle at 360°.",
+          },
+        ]}
+        howToUse={[
+          "Drag the arm and watch the angle measure update as you rotate it.",
+          "Try to stop at exactly 90° without looking at the number first.",
+          "Sweep past 180° and notice how the angle becomes reflex.",
+          "Move through each category — acute, right, obtuse, straight, reflex — in order.",
+        ]}
+        whyItMatters="Recognizing angle types by sight is a skill you'll use constantly in geometry, from classifying triangles by their angles to reading blueprints, adjusting a ramp's incline, or even judging whether a photo is level. Once acute, right, and obtuse angles are instantly recognizable, geometry problems get much faster to reason through."
+        tryThis={[
+          "Estimate the angle's category before checking the exact degree measure — how close were you?",
+          "Find the exact halfway point between a right angle and a straight angle. What category is it in?",
+          "Sweep the arm all the way around. At what point does an angle stop being reflex and become a full circle?",
+        ]}
+      />
     </Container>
   );
 }
