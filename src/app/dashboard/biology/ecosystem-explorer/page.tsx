@@ -5,7 +5,11 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { QuizCta } from "@/components/dashboard/quiz-cta";
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { getQuizById } from "@/features/quiz-engine/registry";
+import { CrossSubjectConnections } from "@/components/dashboard/cross-subject-connections";
+import { getConnectionsForHref } from "@/features/cross-subject-connections";
 import { EcosystemExplorer } from "@/features/subjects/biology/ecosystem-explorer";
+
+const SIMULATION_HREF = "/dashboard/biology/ecosystem-explorer";
 
 export const metadata: Metadata = {
   title: "Ecosystem Explorer — Living & Non-Living Components",
@@ -96,6 +100,8 @@ export default function EcosystemExplorerPage() {
           "Sort five things you clicked on into biotic and abiotic — were any harder to classify than others?",
         ]}
       />
+
+      <CrossSubjectConnections connections={getConnectionsForHref(SIMULATION_HREF)} />
     </Container>
   );
 }

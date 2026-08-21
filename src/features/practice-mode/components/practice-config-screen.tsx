@@ -4,7 +4,9 @@ import { useId, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { DropdownSelector } from "@/features/simulation/components/controls/dropdown-selector";
 import { resolveSubjectColors } from "@/features/subjects/subject-colors";
+import { usePracticePerformance } from "@/hooks/use-practice-performance";
 import { cn } from "@/lib/utils";
+import { ConceptMasteryPanel } from "./concept-mastery-panel";
 import {
   countAvailableQuestions,
   describeAvailability,
@@ -50,6 +52,10 @@ export function PracticeConfigScreen({ subjects, initialConfig, onStart }: Pract
 
   const subject = subjects.find((candidate) => candidate.slug === subjectSlug) ?? firstSubject;
   const topicOptions = useMemo(() => (subject ? getTopicOptionsForSubject(subject) : []), [subject]);
+
+  const { getTopicMastery } = usePracticePerformance();
+  const masterySummary =
+    subject && topicSlug !== ALL_TOPICS_VALUE ? getTopicMastery(subject.slug, topicSlug) : null;
 
   const availableCount = subject ? countAvailableQuestions(subject.slug, topicSlug, difficulty) : 0;
   const hasNoQuestions = availableCount === 0;
@@ -106,6 +112,8 @@ export function PracticeConfigScreen({ subjects, initialConfig, onStart }: Pract
           }))}
           onChange={setTopicSlug}
         />
+
+        {masterySummary ? <ConceptMasteryPanel summary={masterySummary} colorToken={subject.colorToken} /> : null}
 
         <fieldset>
           <legend className={labelClasses}>Difficulty</legend>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { ExplanationPanel } from "./components/explanation-panel";
 import { FormulaStrip } from "./components/formula-strip";
 import { MotionControls } from "./components/motion-controls";
@@ -40,6 +40,10 @@ import {
  * shared engine).
  */
 export function SimpleMotion() {
+  // Unique per mounted instance, so the slider ids below never
+  // collide — this simulation can now be embedded more than once at
+  // a time (e.g. inside multiple Predict-section experiment steps).
+  const instanceId = useId();
   const [state, setState] = useState<MotionState>(() =>
     solve(INITIAL_MOTION_STATE),
   );
@@ -183,7 +187,7 @@ export function SimpleMotion() {
       <div className="grid w-full max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2">
         {state.unknown !== "distance" && (
           <PlanSlider
-            id="distance-slider"
+            id={`${instanceId}-distance-slider`}
             label="Distance"
             unit="m"
             value={state.distanceM}
@@ -196,7 +200,7 @@ export function SimpleMotion() {
         )}
         {state.unknown !== "time" && (
           <PlanSlider
-            id="time-slider"
+            id={`${instanceId}-time-slider`}
             label="Time"
             unit="s"
             value={state.timeSec}
@@ -209,7 +213,7 @@ export function SimpleMotion() {
         )}
         {state.unknown !== "speed" && (
           <PlanSlider
-            id="speed-slider"
+            id={`${instanceId}-speed-slider`}
             label="Speed"
             unit="m/s"
             value={state.speedMps}

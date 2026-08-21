@@ -3,7 +3,11 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
+import { CrossSubjectConnections } from "@/components/dashboard/cross-subject-connections";
+import { getConnectionsForHref } from "@/features/cross-subject-connections";
 import { ReactionBuilder } from "@/features/subjects/chemistry/reaction-builder";
+
+const SIMULATION_HREF = "/dashboard/chemistry/reaction-builder";
 
 export const metadata: Metadata = {
   title: "Chemical Reaction Builder",
@@ -87,6 +91,8 @@ export default function ReactionBuilderPage() {
           "Pick a different reaction and predict its products before running the simulation.",
         ]}
       />
+
+      <CrossSubjectConnections connections={getConnectionsForHref(SIMULATION_HREF)} />
     </Container>
   );
 }

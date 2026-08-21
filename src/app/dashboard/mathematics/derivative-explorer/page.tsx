@@ -3,7 +3,11 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
+import { CrossSubjectConnections } from "@/components/dashboard/cross-subject-connections";
+import { getConnectionsForHref } from "@/features/cross-subject-connections";
 import { DerivativeExplorer } from "@/features/subjects/mathematics/derivative-explorer";
+
+const SIMULATION_HREF = "/dashboard/mathematics/derivative-explorer";
 
 export const metadata: Metadata = {
   title: "Derivative Explorer — Tangent Line & Instantaneous Rate of Change",
@@ -80,6 +84,8 @@ export default function DerivativeExplorerPage() {
           "Explain in your own words why a secant line's slope is called an average rate of change but a tangent line's slope is called instantaneous.",
         ]}
       />
+
+      <CrossSubjectConnections connections={getConnectionsForHref(SIMULATION_HREF)} />
     </Container>
   );
 }

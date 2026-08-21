@@ -3,7 +3,11 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
+import { CrossSubjectConnections } from "@/components/dashboard/cross-subject-connections";
+import { getConnectionsForHref } from "@/features/cross-subject-connections";
 import { StatisticsFoundations } from "@/features/subjects/mathematics/statistics-foundations";
+
+const SIMULATION_HREF = "/dashboard/mathematics/statistics-foundations";
 
 export const metadata: Metadata = {
   title: "Statistics Foundations — Data, Variables & Sampling",
@@ -80,6 +84,8 @@ export default function StatisticsFoundationsPage() {
           "Think of a survey you've seen or heard about — was its sample likely representative of the population it claimed to describe?",
         ]}
       />
+
+      <CrossSubjectConnections connections={getConnectionsForHref(SIMULATION_HREF)} />
     </Container>
   );
 }

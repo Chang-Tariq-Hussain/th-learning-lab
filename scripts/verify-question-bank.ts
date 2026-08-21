@@ -82,19 +82,19 @@ for (const topic of physics.topics) {
   }
 }
 
-const pool = selectPracticeQuestions({ subjectSlug: "mathematics", topicSlug: "coordinate-geometry", difficulty: "mixed", requestedCount: 10 });
-const pool2 = selectPracticeQuestions({ subjectSlug: "mathematics", topicSlug: "coordinate-geometry", difficulty: "mixed", requestedCount: 10 });
+const pool = selectPracticeQuestions({ subjectSlug: "mathematics", topicSlug: "coordinate-geometry", difficulty: "mixed", requestedCount: 10 }, []);
+const pool2 = selectPracticeQuestions({ subjectSlug: "mathematics", topicSlug: "coordinate-geometry", difficulty: "mixed", requestedCount: 10 }, []);
 const sameOrder = JSON.stringify(pool.questions.map(q=>q.id)) === JSON.stringify(pool2.questions.map(q=>q.id));
 console.log("\ncoordinate-geometry: availableCount=", pool.availableCount, "selected=", pool.questions.length, "identical two draws?", sameOrder);
 
 for (const topicSlug of ["motion", "newtonian-mechanics", "electromagnetism", "wave-motion"]) {
-  const a = selectPracticeQuestions({ subjectSlug: "physics", topicSlug, difficulty: "mixed", requestedCount: 10 });
-  const b = selectPracticeQuestions({ subjectSlug: "physics", topicSlug, difficulty: "mixed", requestedCount: 10 });
+  const a = selectPracticeQuestions({ subjectSlug: "physics", topicSlug, difficulty: "mixed", requestedCount: 10 }, []);
+  const b = selectPracticeQuestions({ subjectSlug: "physics", topicSlug, difficulty: "mixed", requestedCount: 10 }, []);
   const identical = JSON.stringify(a.questions.map(q=>q.id)) === JSON.stringify(b.questions.map(q=>q.id));
   console.log(`${topicSlug}: availableCount=`, a.availableCount, "selected=", a.questions.length, "identical two draws?", identical);
 
   for (const diff of ["easy", "medium", "hard"] as const) {
-    const r = selectPracticeQuestions({ subjectSlug: "physics", topicSlug, difficulty: diff, requestedCount: 10 });
+    const r = selectPracticeQuestions({ subjectSlug: "physics", topicSlug, difficulty: diff, requestedCount: 10 }, []);
     const allMatchDiff = r.questions.every(q => q.difficulty === diff);
     console.log(`  ${topicSlug}/${diff}: selected=${r.questions.length} allMatchDifficulty=${allMatchDiff}`);
   }

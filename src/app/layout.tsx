@@ -5,6 +5,8 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SkipLink } from "@/components/layout/skip-link";
 import { UserProfileProvider } from "@/hooks/use-user-profile";
+import { LearningProgressProvider } from "@/hooks/use-learning-progress";
+import { PracticePerformanceProvider } from "@/hooks/use-practice-performance";
 import { UsernameSetup } from "@/components/onboarding/username-setup";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
@@ -58,15 +60,19 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <UserProfileProvider>
-            <SkipLink />
-            <div className="flex min-h-screen flex-col">
-              <Navbar />
-              <main id="main-content" className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
-            <UsernameSetup />
+            <LearningProgressProvider>
+              <PracticePerformanceProvider>
+                <SkipLink />
+                <div className="flex min-h-screen flex-col">
+                  <Navbar />
+                  <main id="main-content" className="flex-1">
+                    {children}
+                  </main>
+                  <Footer />
+                </div>
+                <UsernameSetup />
+              </PracticePerformanceProvider>
+            </LearningProgressProvider>
           </UserProfileProvider>
         </ThemeProvider>
       </body>

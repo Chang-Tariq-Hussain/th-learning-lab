@@ -1,11 +1,11 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { QuizCta } from "@/components/dashboard/quiz-cta";
-import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { getQuizById } from "@/features/quiz-engine/registry";
 import { NewtonsLaws } from "@/features/subjects/physics/newtons-laws";
-import type { Metadata } from "next";
+import { TopicLearningExperience, getTopicContent } from "@/features/learning";
 
 export const metadata: Metadata = {
   title: "Newton's Laws of Motion",
@@ -15,6 +15,8 @@ export const metadata: Metadata = {
 
 export default function NewtonsLawsPage() {
   const quiz = getQuizById("physics-newtonian-mechanics");
+  const content = getTopicContent("physics", "newtons-laws");
+
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/physics/newtons-laws" className="mb-4" />
@@ -41,56 +43,20 @@ export default function NewtonsLawsPage() {
         </p>
       </div>
 
-      <NewtonsLaws />
-
-      {quiz && (
-        <QuizCta href="/dashboard/physics/newtonian-mechanics-quiz" colorToken="physics" questionCount={quiz.questions.length} className="mx-auto max-w-2xl" />
+      {content ? (
+        <TopicLearningExperience content={content} simulation={<NewtonsLaws />} />
+      ) : (
+        <NewtonsLaws />
       )}
 
-      <SimulationLearnMore
-        colorToken="physics"
-        objectives={[
-          "State Newton's three laws of motion in your own words.",
-          "Explain why an object at rest stays at rest unless a force acts on it.",
-          "Use F = ma to relate force, mass, and acceleration.",
-          "Recognize action-reaction pairs and explain why they don't cancel each other out.",
-        ]}
-        concepts={[
-          {
-            term: "Newton's First Law — Inertia",
-            explanation:
-              "An object at rest stays at rest, and an object in motion stays in motion at a constant velocity, unless acted on by a net force. This resistance to a change in motion is called inertia.",
-          },
-          {
-            term: "Newton's Second Law",
-            explanation: "The acceleration of an object is directly proportional to the net force acting on it, and inversely proportional to its mass.",
-            formula: "F = ma",
-            formulaCaption: "F = net force, m = mass, a = acceleration",
-          },
-          {
-            term: "Newton's Third Law — Action-Reaction",
-            explanation:
-              "For every action force, there's a reaction force equal in size and opposite in direction, acting on a different object. They don't cancel out because they act on two separate things.",
-          },
-          {
-            term: "Mass vs. weight",
-            explanation:
-              "Mass is how much matter an object has and stays constant everywhere. Weight is the force of gravity on that mass, and changes depending on where the object is.",
-          },
-        ]}
-        howToUse={[
-          "Pick a Law tab — Law 1, Law 2, or Law 3 — each uses its own setup to isolate that law.",
-          "Adjust the sliders, then apply a force or run the scenario's action and watch the live data update.",
-          "Try Learning Mode for guided \"why does this happen?\" walkthroughs.",
-          "Try Challenge Mode to test your intuition before seeing the result.",
-        ]}
-        whyItMatters="Newton's laws aren't just physics-class trivia — they're the reason seatbelts exist (inertia keeps your body moving forward in a crash), why a loaded truck accelerates slower than an empty one at the same engine power (F = ma), and how rockets can push themselves forward in the vacuum of space with nothing to push against but their own exhaust (action-reaction). These three laws are the foundation nearly all of classical mechanics — and modern engineering — is built on."
-        tryThis={[
-          "In Law 1, try applying a very small force to a heavy object — does it move right away, or does inertia resist it?",
-          "In Law 2, double the mass while keeping the force the same. What happens to the acceleration?",
-          "In Law 3, push two skaters of very different mass apart. Do they end up moving at the same speed?",
-        ]}
-      />
+      {quiz && (
+        <QuizCta
+          href="/dashboard/physics/newtonian-mechanics-quiz"
+          colorToken="physics"
+          questionCount={quiz.questions.length}
+          className="mx-auto mt-10 max-w-2xl"
+        />
+      )}
     </Container>
   );
 }

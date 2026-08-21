@@ -2,8 +2,9 @@
 
 import { useCallback, useState } from "react";
 import { Quiz } from "@/features/quiz-engine/quiz";
-import type { QuizQuestion } from "@/features/quiz-engine/types";
+import type { QuizCompletionResult, QuizQuestion } from "@/features/quiz-engine/types";
 import { resolveSubjectColors } from "@/features/subjects/subject-colors";
+import { usePracticePerformance } from "@/hooks/use-practice-performance";
 import { PracticeConfigScreen } from "./components/practice-config-screen";
 import { getPracticeSubjects, getTopicOptionsForSubject, selectPracticeQuestions } from "./question-bank";
 import { ALL_TOPICS_VALUE, type PracticeConfig } from "./types";
@@ -20,21 +21,27 @@ interface ActiveRound {
 
 /**
  * Practice Mode's top-level client component: configuration screen →
- * hand a randomized question set to the existing `<Quiz />` → results.
- * This is the only place Practice Mode owns any state; question
- * selection lives in `question-bank.ts` and the actual quiz-taking UI
- * is entirely the Quiz Engine's, untouched.
+ * hand an adaptively-selected question set to the existing `<Quiz />`
+ * → results. This is the only place Practice Mode owns any state;
+ * question selection lives in `question-bank.ts` /
+ * `adaptive-selection.ts`, performance tracking lives in
+ * `@/hooks/use-practice-performance`, and the actual quiz-taking UI is
+ * entirely the Quiz Engine's, untouched.
  */
 export function PracticeSession() {
   const [subjects] = useState(() => getPracticeSubjects());
   const [round, setRound] = useState<ActiveRound | null>(null);
   const [lastConfig, setLastConfig] = useState<PracticeConfig | undefined>(undefined);
+  const { attempts, recordQuizCompletion } = usePracticePerformance();
 
-  const startRound = useCallback((config: PracticeConfig, roundKey: number) => {
-    const selection = selectPracticeQuestions(config);
-    setRound({ config, questions: selection.questions, roundKey });
-    setLastConfig(config);
-  }, []);
+  const startRound = useCallback(
+    (config: PracticeConfig, roundKey: number) => {
+      const selection = selectPracticeQuestions(config, attempts);
+      setRound({ config, questions: selection.questions, roundKey });
+      setLastConfig(config);
+    },
+    [attempts],
+  );
 
   function handleStart(config: PracticeConfig) {
     startRound(config, Date.now());
@@ -43,12 +50,17 @@ export function PracticeSession() {
   function handlePracticeAgain() {
     if (!round) return;
     // Re-select from the question bank rather than reusing `round.questions`,
-    // so a new random draw (and a new option order) is possible each time.
+    // so a fresh adaptive draw (informed by whatever was just answered)
+    // and a new option order are both possible each time.
     startRound(round.config, round.roundKey + 1);
   }
 
   function handleChangeTopic() {
     setRound(null);
+  }
+
+  function handleComplete(result: QuizCompletionResult) {
+    recordQuizCompletion(result);
   }
 
   if (subjects.length === 0) {
@@ -92,6 +104,7 @@ export function PracticeSession() {
         resultsTitle="Practice Complete!"
         retryLabel="Practice Again"
         onRetryOverride={handlePracticeAgain}
+        onComplete={handleComplete}
         secondaryAction={{ label: "Change Topic", onClick: handleChangeTopic }}
       />
     </div>

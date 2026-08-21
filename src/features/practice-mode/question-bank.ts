@@ -1,6 +1,8 @@
 import { quizzes } from "@/features/quiz-engine/registry";
 import type { QuizQuestion } from "@/features/quiz-engine/types";
-import { shuffleArray, shuffleQuestionOptions } from "@/features/quiz-engine/utils/shuffle";
+import { shuffleQuestionOptions } from "@/features/quiz-engine/utils/shuffle";
+import { selectAdaptiveQuestions } from "./adaptive-selection";
+import type { QuestionAttemptRecord } from "./mastery-types";
 import {
   ALL_TOPICS_VALUE,
   PRACTICE_DIFFICULTY_LABEL,
@@ -116,20 +118,36 @@ export interface PracticeSelectionResult {
 }
 
 /**
- * Builds one randomized practice round: filters the subject/topic's
- * question pool by difficulty, shuffles it (Fisher–Yates, same
- * utility every topic quiz's engine could reuse for question-order
- * randomization), then takes up to the requested count — never more
- * than what's actually available, so a request for more questions
- * than exist degrades gracefully instead of crashing or duplicating
- * questions. Each question's own options are shuffled too, safely by
- * construction (`correctAnswer` is matched by value, not index — see
- * `quiz-engine/utils/shuffle.ts`).
+ * Builds one practice round: filters the subject/topic's question
+ * pool by difficulty, then hands it to the adaptive selector
+ * (`adaptive-selection.ts`) along with the student's relevant recent
+ * attempts — so the round prioritizes weak concepts, mixes in
+ * previously-missed questions, and avoids repeating whatever was just
+ * seen, rather than a flat random draw. Each selected question's own
+ * options are still shuffled, safely by construction (`correctAnswer`
+ * is matched by value, not index — see `quiz-engine/utils/shuffle.ts`).
+ *
+ * Never returns more than what's actually available, so a request for
+ * more questions than exist degrades gracefully instead of crashing
+ * or duplicating questions.
  */
-export function selectPracticeQuestions(config: PracticeConfig): PracticeSelectionResult {
+export function selectPracticeQuestions(
+  config: PracticeConfig,
+  attempts: readonly QuestionAttemptRecord[],
+): PracticeSelectionResult {
   const pool = filterByDifficulty(collectQuestions(config.subjectSlug, config.topicSlug), config.difficulty);
-  const shuffled = shuffleArray(pool).map(shuffleQuestionOptions);
-  const questions = shuffled.slice(0, config.requestedCount);
+
+  const relevantAttempts = attempts.filter(
+    (attempt) =>
+      attempt.subjectSlug === config.subjectSlug &&
+      (config.topicSlug === ALL_TOPICS_VALUE || attempt.topicSlug === config.topicSlug),
+  );
+
+  const questions = selectAdaptiveQuestions({
+    pool,
+    attempts: relevantAttempts,
+    requestedCount: config.requestedCount,
+  }).map(shuffleQuestionOptions);
 
   return { questions, availableCount: pool.length };
 }

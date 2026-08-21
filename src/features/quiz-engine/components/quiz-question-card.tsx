@@ -1,8 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { resolveSubjectColors } from "@/features/subjects/subject-colors";
 import type { QuizQuestion } from "../types";
 import { QuizOptionButton } from "./quiz-option-button";
@@ -36,6 +38,7 @@ export function QuizQuestionCard({
 }: QuizQuestionCardProps) {
   const colors = resolveSubjectColors(colorToken);
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const [hintsShown, setHintsShown] = useState(0);
 
   // Roving-tabindex arrow-key navigation for the radiogroup, per the
   // WAI-ARIA authoring practices for a radio group: Up/Left moves to
@@ -111,6 +114,28 @@ export function QuizQuestionCard({
           );
         })}
       </div>
+
+      {question.hints && question.hints.length > 0 && !isSubmitted ? (
+        <div className="mt-4">
+          {hintsShown < question.hints.length ? (
+            <button
+              type="button"
+              onClick={() => setHintsShown((count) => count + 1)}
+              className={cn("inline-flex items-center gap-1.5 text-xs font-medium", colors.text)}
+            >
+              <Lightbulb className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
+              Show a hint ({hintsShown}/{question.hints.length} used)
+            </button>
+          ) : null}
+          {hintsShown > 0 ? (
+            <ul className="mt-2 flex flex-col gap-1 text-xs text-ink-soft dark:text-bone-soft">
+              {question.hints.slice(0, hintsShown).map((hint, index) => (
+                <li key={index}>{hint}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ) : null}
 
       {!isSubmitted && (
         <div className="mt-6 flex justify-end">

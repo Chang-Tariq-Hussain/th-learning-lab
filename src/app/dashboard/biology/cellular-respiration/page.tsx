@@ -5,7 +5,11 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { QuizCta } from "@/components/dashboard/quiz-cta";
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { getQuizById } from "@/features/quiz-engine/registry";
+import { CrossSubjectConnections } from "@/components/dashboard/cross-subject-connections";
+import { getConnectionsForHref } from "@/features/cross-subject-connections";
 import { CellularRespiration } from "@/features/subjects/biology/cellular-respiration";
+
+const SIMULATION_HREF = "/dashboard/biology/cellular-respiration";
 
 export const metadata: Metadata = {
   title: "Cellular Respiration",
@@ -85,6 +89,8 @@ export default function CellularRespirationPage() {
           "Count how many CO₂ and H₂O molecules the equation produces — why do you think it's six of each?",
         ]}
       />
+
+      <CrossSubjectConnections connections={getConnectionsForHref(SIMULATION_HREF)} />
     </Container>
   );
 }

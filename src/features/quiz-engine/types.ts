@@ -25,6 +25,27 @@ interface QuizQuestionBase {
 
   /** Topic slug, e.g. "cell-structure". */
   topic: string;
+
+  /** Optional fine-grained concept this question tests within its
+   *  topic (e.g. "Speed", "Formula Rearrangement", "Distance") —
+   *  distinct from `topic`, which identifies the whole question bank.
+   *  Powers the Practice Engine's per-concept mastery breakdown and
+   *  weak-concept detection (see `features/practice-mode/mastery.ts`).
+   *  Optional so existing untagged quizzes keep working unchanged;
+   *  untagged questions are grouped under "General" wherever mastery
+   *  is computed. */
+  concept?: string;
+
+  /** Optional label identifying which common misconception this
+   *  question specifically targets or corrects (e.g.
+   *  "average-of-speeds"). Purely descriptive metadata today — not
+   *  yet read anywhere — but kept alongside `concept` so question
+   *  data can carry it without a future shape change. */
+  misconceptionTag?: string;
+
+  /** Optional progressive hints, revealed one at a time on request
+   *  before the student submits an answer — most general first. */
+  hints?: string[];
 }
 
 /**
