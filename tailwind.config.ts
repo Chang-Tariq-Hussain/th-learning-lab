@@ -33,14 +33,30 @@ const config: Config = {
           DEFAULT: "#DDE3DD",
           dark: "#243430",
         },
+        /**
+         * Physics (`physics`) and Mathematics (`math`) resolve through a
+         * CSS variable — see `:root` / `.dark` in `globals.css` — so the
+         * same bare class (`text-subject-physics`, `bg-subject-math`,
+         * etc.) renders a softer, dark-mode-tuned shade automatically
+         * wherever it's used, without touching each of the ~200 call
+         * sites individually. This was needed because, unlike most
+         * colors in this app, these two are referenced directly with no
+         * `dark:` companion class at most call sites (subject cards,
+         * nav, badges, breadcrumb kickers...), and the original fixed
+         * hex values (a saturated electric blue and violet) read as
+         * overly vivid/neon against the dark chalkboard background,
+         * particularly in small text on mobile screens. Chemistry and
+         * Biology stay as plain hex — their mid-tone green/teal already
+         * reads fine on both light and dark surfaces.
+         */
         subject: {
-          physics: "#3D5AFE",
+          physics: "rgb(var(--color-subject-physics) / <alpha-value>)",
           "physics-soft": "#E8EBFF",
           chemistry: "#2E9E5B",
           "chemistry-soft": "#E5F6EC",
           biology: "#0D9488",
           "biology-soft": "#DFF5F2",
-          math: "#7C4FE0",
+          math: "rgb(var(--color-subject-math) / <alpha-value>)",
           "math-soft": "#EFE7FB",
         },
       },

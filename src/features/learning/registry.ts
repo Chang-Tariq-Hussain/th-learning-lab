@@ -1,5 +1,7 @@
 import type { TopicContent } from "./types";
 import { physicsSimpleMotionContent } from "./data/physics-simple-motion";
+import { physicsVelocityContent } from "./data/physics-velocity";
+import { physicsAccelerationContent } from "./data/physics-acceleration";
 import { physicsSimpleForcesContent } from "./data/physics-simple-forces";
 import { physicsNewtonsLawsContent } from "./data/physics-newtons-laws";
 import { physicsSimpleEnergyContent } from "./data/physics-simple-energy";
@@ -12,14 +14,20 @@ import { physicsSimpleEnergyContent } from "./data/physics-simple-energy";
  * `features/quiz-engine/registry.ts`: one array, read by getters,
  * instead of scattered lookups.
  *
- * Four entries so far: Simple Motion is the full reference
- * implementation; Simple Forces, Newton's Laws, and Simple Energy are
- * Learn + Explore only (see their `data/` files) — enough to make
- * their progress trackable, which is what the `physics-foundations`
- * learning path (`@/features/learning-path`) is built on.
+ * Simple Motion is the full reference implementation. Velocity and
+ * Acceleration are brought up to that same full standard (Learn,
+ * Predict, Explore, Explain, Practice, Challenge) reusing the
+ * existing Newton's Laws Lab simulation as their Explore experience —
+ * see their `data/` files for why that simulation is the right fit.
+ * Simple Forces, Newton's Laws, and Simple Energy remain Learn +
+ * Explore only for now — enough to make their progress trackable,
+ * which is what the `physics-foundations` learning path
+ * (`@/features/learning-path`) is built on.
  */
 export const topicContentList: TopicContent[] = [
   physicsSimpleMotionContent,
+  physicsVelocityContent,
+  physicsAccelerationContent,
   physicsSimpleForcesContent,
   physicsNewtonsLawsContent,
   physicsSimpleEnergyContent,

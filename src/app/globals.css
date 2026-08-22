@@ -5,10 +5,24 @@
 @layer base {
   :root {
     color-scheme: light;
+    /* Subject accent colors that need to shift between light and dark
+       mode — see the comment on `subject.physics` / `subject.math` in
+       tailwind.config.ts for why these two specifically use CSS
+       variables instead of the app's usual light/dark token pairing. */
+    --color-subject-physics: 61 90 254; /* #3D5AFE */
+    --color-subject-math: 124 79 224; /* #7C4FE0 */
   }
 
   .dark {
     color-scheme: dark;
+    /* Softened, lighter versions of the same blue/violet hues for
+       dark surfaces — the light-mode values are a fully saturated
+       "electric" blue and violet that read as too vivid/neon against
+       the dark chalkboard background, especially at small text sizes
+       on mobile. Same hue family, just lifted and desaturated so they
+       sit calmly on dark backgrounds instead of vibrating against them. */
+    --color-subject-physics: 129 140 248; /* #818CF8 */
+    --color-subject-math: 167 139 250; /* #A78BFA */
   }
 
   * {

@@ -45,6 +45,20 @@ export const subjects: Subject[] = [
               "Launch a projectile and see how angle and speed shape its arc.",
             href: "/dashboard/physics/projectile-motion",
           },
+          {
+            slug: "velocity",
+            title: "Velocity",
+            description:
+              "Push, coast, and stop a cart to see what keeps velocity constant — and what changes it.",
+            href: "/dashboard/physics/velocity",
+          },
+          {
+            slug: "acceleration",
+            title: "Acceleration",
+            description:
+              "Apply a force and watch acceleration respond to F = ma in real time, live on a velocity-time graph.",
+            href: "/dashboard/physics/acceleration",
+          },
         ],
       },
       {

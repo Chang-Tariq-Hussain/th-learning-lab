@@ -2,18 +2,17 @@ import type { LearningPath } from "../types";
 
 /**
  * The reference example: Physics' core mechanics sequence, in the
- * order each idea builds on the last — motion, then forces, then how
- * Newton's Laws formalize force and motion together, then energy.
+ * order each idea builds on the last — motion, then velocity and
+ * acceleration (the quantities that describe motion changing), then
+ * forces, then how Newton's Laws formalize force and motion
+ * together, then energy.
  *
- * The brief's illustrative chain (Motion -> Velocity -> Acceleration
- * -> Force -> Newton's Laws -> Energy -> Momentum) names several
- * ideas — velocity, acceleration, momentum — that aren't (yet) their
- * own standalone topics in this codebase; they're covered *within*
- * Simple Motion and Newton's Laws rather than as separate
- * simulations. This path sequences the four topics that do exist as
- * real, registered content (`@/features/learning/registry.ts`), so
- * every lock/unlock, completion, and recommendation below reflects
- * genuine student progress rather than a topic nobody can ever finish.
+ * Velocity and Acceleration reuse the Newton's Laws Lab simulation as
+ * their own Explore experience (see
+ * `@/features/learning/data/physics-velocity.tsx` and
+ * `physics-acceleration.tsx` for why) — they're real, registered
+ * topics now, not merely folded into Simple Motion and Newton's Laws
+ * as they were before.
  *
  * Projectile Motion is included as an optional challenge topic: it
  * applies motion and forces together, so it depends on *both* Simple
@@ -27,7 +26,7 @@ export const physicsFoundationsPath: LearningPath = {
   subjectSlug: "physics",
   title: "Physics Foundations",
   description:
-    "The core mechanics sequence, one idea building on the last: motion, forces, Newton's Laws, then energy.",
+    "The core mechanics sequence, one idea building on the last: motion, velocity, acceleration, forces, Newton's Laws, then energy.",
   colorToken: "physics",
   topics: [
     {
@@ -40,11 +39,27 @@ export const physicsFoundationsPath: LearningPath = {
     },
     {
       subjectSlug: "physics",
+      topicSlug: "velocity",
+      title: "Velocity",
+      description: "What keeps velocity constant, and what changes it.",
+      href: "/dashboard/physics/velocity",
+      // No explicit prerequisites — defaults to depending on Motion.
+    },
+    {
+      subjectSlug: "physics",
+      topicSlug: "acceleration",
+      title: "Acceleration",
+      description: "How fast velocity itself is changing, and F = ma.",
+      href: "/dashboard/physics/acceleration",
+      // No explicit prerequisites — defaults to depending on Velocity.
+    },
+    {
+      subjectSlug: "physics",
       topicSlug: "simple-forces",
       title: "Forces",
       description: "Balanced and unbalanced forces.",
       href: "/dashboard/physics/simple-forces",
-      // No explicit prerequisites — defaults to depending on Motion,
+      // No explicit prerequisites — defaults to depending on Acceleration,
       // the previous core topic.
     },
     {

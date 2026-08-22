@@ -17,6 +17,8 @@ import { mathematicsStraightLineQuiz } from "./data/mathematics-straight-line-qu
 import { physicsElectromagnetismQuiz } from "./data/physics-electromagnetism-quiz";
 import { physicsMotionQuiz } from "./data/physics-motion-quiz";
 import { physicsSimpleMotionQuiz } from "./data/physics-simple-motion-quiz";
+import { physicsVelocityQuiz } from "./data/physics-velocity-quiz";
+import { physicsAccelerationQuiz } from "./data/physics-acceleration-quiz";
 import { physicsNewtonianMechanicsQuiz } from "./data/physics-newtonian-mechanics-quiz";
 import { physicsWaveMotionQuiz } from "./data/physics-wave-motion-quiz";
 
@@ -46,6 +48,8 @@ export const quizzes: QuizMeta[] = [
   physicsElectromagnetismQuiz,
   physicsMotionQuiz,
   physicsSimpleMotionQuiz,
+  physicsVelocityQuiz,
+  physicsAccelerationQuiz,
   physicsNewtonianMechanicsQuiz,
   physicsWaveMotionQuiz,
 ];
