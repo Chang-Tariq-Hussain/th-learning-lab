@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   ControlPanel,
   ParameterDropdownSelector,
@@ -8,13 +7,12 @@ import {
   ToggleSwitch,
   useSimulation,
 } from "@/features/simulation";
-import type { CartEngine } from "../cart-engine";
 import type { CartReadouts } from "../physics";
 import { newtonsLawsSchema } from "../schema";
 
 const massParam = newtonsLawsSchema.numeric!.find((p) => p.key === "mass")!;
-const appliedForceParam = newtonsLawsSchema.numeric!.find(
-  (p) => p.key === "appliedForce",
+const maxPushForceParam = newtonsLawsSchema.numeric!.find(
+  (p) => p.key === "maxPushForce",
 )!;
 const surfaceSelect = newtonsLawsSchema.select!.find(
   (p) => p.key === "surface",
@@ -24,12 +22,10 @@ const frictionCoefficientParam = newtonsLawsSchema.numeric!.find(
 )!;
 
 export interface Law2PanelProps {
-  engine: CartEngine;
-  forceOn: boolean;
   readouts: CartReadouts;
 }
 
-export function Law2Panel({ engine, forceOn, readouts }: Law2PanelProps) {
+export function Law2Panel({ readouts }: Law2PanelProps) {
   const { values, setSelect } = useSimulation();
   const surface = String(values.surface ?? "wood");
   const frictionOn = values.frictionEnabled !== "off";
@@ -38,7 +34,7 @@ export function Law2Panel({ engine, forceOn, readouts }: Law2PanelProps) {
     <div className="flex flex-col gap-4">
       <ControlPanel title="Law 2 — F = ma">
         <ParameterSlider parameter={massParam} />
-        <ParameterSlider parameter={appliedForceParam} />
+        <ParameterSlider parameter={maxPushForceParam} />
         <ParameterDropdownSelector parameter={surfaceSelect} />
         {surface === "custom" ? (
           <ParameterSlider parameter={frictionCoefficientParam} />
@@ -51,22 +47,26 @@ export function Law2Panel({ engine, forceOn, readouts }: Law2PanelProps) {
           }
         />
 
-        <div className="flex gap-2 border-t border-line pt-3 dark:border-line-dark">
-          <Button
-            size="sm"
-            onClick={() => engine.setForceOn(true)}
-            disabled={forceOn}
-          >
-            Apply force
-          </Button>
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => engine.setForceOn(false)}
-            disabled={!forceOn}
-          >
-            Remove force
-          </Button>
+        {/* Live readouts for the two people — dragging them in the scene
+            above is the primary control, so these are values, not
+            another pair of sliders. */}
+        <div className="flex gap-3 border-t border-line pt-3 text-sm dark:border-line-dark">
+          <div className="flex-1">
+            <div className="text-ink-soft dark:text-bone-soft">
+              Left person force
+            </div>
+            <div className="font-mono text-base font-semibold text-ink dark:text-bone">
+              {readouts.leftForce.toFixed(0)} N
+            </div>
+          </div>
+          <div className="flex-1">
+            <div className="text-ink-soft dark:text-bone-soft">
+              Right person force
+            </div>
+            <div className="font-mono text-base font-semibold text-ink dark:text-bone">
+              {readouts.rightForce.toFixed(0)} N
+            </div>
+          </div>
         </div>
       </ControlPanel>
 
@@ -83,9 +83,9 @@ export function Law2Panel({ engine, forceOn, readouts }: Law2PanelProps) {
       <div className="rounded-lg border border-dashed border-pine-500/40 bg-pine-50 p-4 text-sm leading-relaxed text-pine-900 dark:border-pine-300/25 dark:bg-pine-900/20 dark:text-pine-50">
         <p className="mb-2 font-medium">F = ma, made concrete</p>
         <p>
-          Net force (applied force minus friction) equals mass times
-          acceleration. Hold the force fixed and raise the mass slider —
-          acceleration drops. Hold the mass fixed and raise the force —
+          Net force (left push minus right push minus friction) equals mass
+          times acceleration. Hold the leans fixed and raise the mass slider —
+          acceleration drops. Drag a person in further and — mass held fixed —
           acceleration climbs proportionally. The graphs below make both
           relationships visible at once: a straight line for force vs.
           acceleration, a curve for mass vs. acceleration.

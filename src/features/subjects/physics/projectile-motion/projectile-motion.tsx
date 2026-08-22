@@ -217,12 +217,56 @@ function ProjectileMotionBody() {
           <ProjectileCanvas
             trajectory={trajectory}
             gravity={gravity}
+            angleDeg={angleDeg}
+            mass={mass}
             options={{
               ...displayOptions,
               highlightVectors: teacherSettings.highlightVectors,
             }}
             target={target}
           />
+
+          {/* SECONDARY: the three measurements every student needs at a
+              glance, right under the experiment — not buried in the full
+              data table below. */}
+          {!presentation ? (
+            <dl className="grid grid-cols-3 divide-x divide-line rounded-card border border-line bg-white/50 text-center dark:divide-line-dark dark:border-line-dark dark:bg-white/[0.03]">
+              <div className="px-2 py-3">
+                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+                  Max height
+                </dt>
+                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
+                  {trajectory.maxHeight.toFixed(1)}
+                  <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">
+                    m
+                  </span>
+                </dd>
+              </div>
+              <div className="px-2 py-3">
+                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+                  Range
+                </dt>
+                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
+                  {trajectory.range.toFixed(1)}
+                  <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">
+                    m
+                  </span>
+                </dd>
+              </div>
+              <div className="px-2 py-3">
+                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+                  Flight time
+                </dt>
+                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
+                  {trajectory.timeOfFlight.toFixed(2)}
+                  <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">
+                    s
+                  </span>
+                </dd>
+              </div>
+            </dl>
+          ) : null}
+
           <Toolbar exportFilename="projectile-motion" />
           {!presentation ? (
             <Legend
@@ -243,49 +287,61 @@ function ProjectileMotionBody() {
         {!presentation ? (
           <div className="flex flex-col gap-4">
             {mode === "explore" ? (
-              <ControlPanel title="Launch parameters">
-                <ParameterSlider parameter={speedParam} />
-                <ParameterSlider parameter={angleParam} />
-                <ParameterDropdownSelector parameter={gravitySelect} />
-                {gravityPreset === "custom" ? (
-                  <ParameterSlider parameter={customGravityParam} />
-                ) : null}
-                <ParameterSlider parameter={massParam} />
-                <ParameterDropdownSelector parameter={airResistanceSelect} />
+              <>
+                {/* PRIMARY: the two variables every launch depends on. */}
+                <ControlPanel title="Launch">
+                  <ParameterSlider parameter={speedParam} />
+                  <ParameterSlider parameter={angleParam} />
+                </ControlPanel>
 
-                <fieldset className="flex flex-col gap-2 border-t border-line pt-3 dark:border-line-dark">
-                  <legend className="mb-1 text-sm font-medium text-ink dark:text-bone">
-                    Display
-                  </legend>
-                  {(
-                    [
-                      ["showTrail", "Show trail"],
-                      ["showVelocityVector", "Show velocity vector"],
-                      ["showAccelerationVector", "Show acceleration vector"],
-                      ["showGrid", "Show grid"],
-                      ["showLabels", "Show labels"],
-                    ] as const
-                  ).map(([key, label]) => (
-                    <label
-                      key={key}
-                      className="flex items-center gap-2 text-sm text-ink-soft dark:text-bone-soft"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={displayOptions[key]}
-                        onChange={(e) =>
-                          setDisplayOptions((prev) => ({
-                            ...prev,
-                            [key]: e.target.checked,
-                          }))
-                        }
-                        className="h-4 w-4 rounded accent-pine-600 dark:accent-pine-300"
-                      />
-                      {label}
-                    </label>
-                  ))}
-                </fieldset>
-              </ControlPanel>
+                {/* SECONDARY: the environment the launch happens in — one
+                    step removed from the two primary controls above. */}
+                <ControlPanel title="Environment">
+                  <ParameterDropdownSelector parameter={gravitySelect} />
+                  {gravityPreset === "custom" ? (
+                    <ParameterSlider parameter={customGravityParam} />
+                  ) : null}
+                  <ParameterSlider parameter={massParam} />
+                  <ParameterDropdownSelector parameter={airResistanceSelect} />
+                </ControlPanel>
+
+                {/* OPTIONAL: advanced display toggles, collapsed by
+                    default so they don't compete with the controls above. */}
+                <details className="group rounded-card border border-line bg-white/50 dark:border-line-dark dark:bg-white/[0.03]">
+                  <summary className="cursor-pointer select-none rounded-card px-4 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink dark:text-bone-soft dark:hover:text-bone">
+                    Display options
+                  </summary>
+                  <fieldset className="flex flex-col gap-2 border-t border-line p-4 dark:border-line-dark">
+                    {(
+                      [
+                        ["showTrail", "Show trail"],
+                        ["showVelocityVector", "Show velocity vector"],
+                        ["showAccelerationVector", "Show acceleration vector"],
+                        ["showGrid", "Show grid"],
+                        ["showLabels", "Show labels"],
+                      ] as const
+                    ).map(([key, label]) => (
+                      <label
+                        key={key}
+                        className="flex items-center gap-2 text-sm text-ink-soft dark:text-bone-soft"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={displayOptions[key]}
+                          onChange={(e) =>
+                            setDisplayOptions((prev) => ({
+                              ...prev,
+                              [key]: e.target.checked,
+                            }))
+                          }
+                          className="h-4 w-4 rounded accent-pine-600 dark:accent-pine-300"
+                        />
+                        {label}
+                      </label>
+                    ))}
+                  </fieldset>
+                </details>
+              </>
             ) : null}
 
             {mode === "learn" ? <LearningMode /> : null}
@@ -298,12 +354,23 @@ function ProjectileMotionBody() {
               />
             ) : null}
 
-            <LiveDataPanel
-              state={currentState}
-              trajectory={trajectory}
-              mass={mass}
-              gravity={gravity}
-            />
+            {/* OPTIONAL: the full numeric breakdown — velocity components,
+                energy, distance travelled — for students who want it,
+                collapsed by default so the primary/secondary numbers above
+                the fold aren't drowned out by a dozen extra readouts. */}
+            <details className="group rounded-card border border-line bg-white/50 dark:border-line-dark dark:bg-white/[0.03]">
+              <summary className="cursor-pointer select-none rounded-card px-4 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink dark:text-bone-soft dark:hover:text-bone">
+                Advanced data
+              </summary>
+              <div className="border-t border-line p-4 pt-0 dark:border-line-dark">
+                <LiveDataPanel
+                  state={currentState}
+                  trajectory={trajectory}
+                  mass={mass}
+                  gravity={gravity}
+                />
+              </div>
+            </details>
           </div>
         ) : null}
       </div>

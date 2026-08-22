@@ -19,9 +19,9 @@ export const learningScenarios: LearningScenario[] = [
     explanation:
       "F = ma rearranges to a = F/m — for the same force, acceleration is inversely proportional to mass. This isn't heavier objects being \"harder to move\" in some vague sense; it's a precise, testable ratio. Watch the acceleration readout as mass increases with the force held fixed.",
     law: 2,
-    patch: { mass: 3, appliedForce: 60, frictionEnabled: "off" },
+    patch: { mass: 3, maxPushForce: 60, frictionEnabled: "off" },
     instruction:
-      "Press Apply Force, note the acceleration, then raise the Mass slider to 15 kg and apply force again.",
+      "Drag the left person toward the box to push, note the acceleration, then raise the Mass slider to 15 kg and drag again with the same lean.",
   },
   {
     id: "friction-changes-motion",
@@ -29,9 +29,9 @@ export const learningScenarios: LearningScenario[] = [
     explanation:
       "Without friction, any nonzero net force keeps accelerating an object forever (Law 1's other case — no equilibrium). With friction on, the object accelerates while the applied force exceeds friction, but settles at a constant velocity once you remove the push and friction alone decelerates it to a stop — friction always opposes the direction of motion.",
     law: 1,
-    patch: { mass: 5, appliedForce: 50, surface: "ice", frictionEnabled: "on" },
+    patch: { mass: 5, maxPushForce: 50, surface: "ice", frictionEnabled: "on" },
     instruction:
-      "Apply force, let it move, then remove the force and watch friction bring it to rest. Try switching Surface to Rubber mat and repeat.",
+      "Drag the left person in, let the box move, then let go and watch friction bring it to rest. Try switching Surface to Rubber mat and repeat.",
   },
   {
     id: "equal-force-different-acceleration",
@@ -41,12 +41,12 @@ export const learningScenarios: LearningScenario[] = [
     law: 2,
     patch: {
       mass: 5,
-      appliedForce: 50,
+      maxPushForce: 50,
       surface: "wood",
       frictionEnabled: "on",
     },
     instruction:
-      "Note the acceleration with Wood + 5 kg, then switch Surface to Rubber mat (more friction) with the same force and mass — acceleration drops even though the push didn't change.",
+      "Note the acceleration with Wood + 5 kg at a given lean, then switch Surface to Rubber mat (more friction) with the same lean and mass — acceleration drops even though the push didn't change.",
   },
   {
     id: "action-reaction-no-cancel",
@@ -63,15 +63,15 @@ export const learningScenarios: LearningScenario[] = [
     id: "misconception-motion-needs-force",
     question: "Common misconception: does motion always need a force?",
     explanation:
-      "A common intuition is that a constant force is needed to keep something moving — true only because everyday friction constantly removes energy. On a genuinely frictionless surface, Law 1 says a moving object keeps moving at constant velocity with zero applied force. Try it: apply a force, remove it on ice, and watch the object coast rather than stop.",
+      "A common intuition is that a constant force is needed to keep something moving — true only because everyday friction constantly removes energy. On a genuinely frictionless surface, Law 1 says a moving object keeps moving at constant velocity with zero applied force. Try it: push briefly, let go on ice, and watch the object coast rather than stop.",
     law: 1,
     patch: {
       mass: 5,
-      appliedForce: 50,
+      maxPushForce: 50,
       surface: "ice",
       frictionEnabled: "off",
     },
     instruction:
-      "Apply force briefly, then remove it — with friction off, the cart should coast at constant velocity instead of slowing down.",
+      "Drag the left person in briefly, then let go — with friction off, the box should coast at constant velocity instead of slowing down.",
   },
 ];

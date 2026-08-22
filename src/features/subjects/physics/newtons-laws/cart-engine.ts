@@ -12,6 +12,7 @@ import {
   OBJECT_PRESETS,
   resolveFriction,
   resolveGravity,
+  SURFACE_PRESETS,
   type CartReadouts,
   type CartRig,
 } from "./physics";
@@ -25,9 +26,17 @@ export interface CartTrailSample {
 
 export interface CartEngine {
   rig: CartRig;
-  /** Whether a continuous applied force is currently being exerted — toggled by the "Apply force" / "Remove force" buttons, not a slider. Real state (not a ref) so the buttons' disabled-state updates immediately, including while paused. */
-  forceOn: boolean;
-  setForceOn: (on: boolean) => void;
+  /** Live lean (0–1) for each person, mirrored into React state purely so
+   * the controls/labels that show force can re-render — the physics
+   * itself reads `rig.state.leftLean`/`rightLean` directly every step,
+   * so dragging is never gated on a React re-render. */
+  leftLean: number;
+  rightLean: number;
+  /** Called continuously while dragging a person; writes straight into
+   * `rig.state` (so physics feels immediate) and mirrors into React
+   * state (so the UI catches up too). */
+  setLeftLean: (lean: number) => void;
+  setRightLean: (lean: number) => void;
   reset: () => void;
 }
 
@@ -44,10 +53,18 @@ export function useCartEngine(): CartEngine {
   if (!rigRef.current) rigRef.current = createCartRig();
   const rig = rigRef.current;
 
-  const [forceOn, setForceOnState] = useState(false);
-  const setForceOn = (on: boolean) => {
-    rig.state.forceOn = on;
-    setForceOnState(on);
+  const [leftLean, setLeftLeanState] = useState(0);
+  const [rightLean, setRightLeanState] = useState(0);
+
+  const setLeftLean = (lean: number) => {
+    const clamped = Math.max(0, Math.min(1, lean));
+    rig.state.leftLean = clamped;
+    setLeftLeanState(clamped);
+  };
+  const setRightLean = (lean: number) => {
+    const clamped = Math.max(0, Math.min(1, lean));
+    rig.state.rightLean = clamped;
+    setRightLeanState(clamped);
   };
 
   const { subscribeFrame } = useSimulation();
@@ -60,11 +77,13 @@ export function useCartEngine(): CartEngine {
 
   const reset = () => {
     rig.world.reset();
-    rig.state.forceOn = false;
-    setForceOnState(false);
+    rig.state.leftLean = 0;
+    rig.state.rightLean = 0;
+    setLeftLeanState(0);
+    setRightLeanState(0);
   };
 
-  return { rig, forceOn, setForceOn, reset };
+  return { rig, leftLean, rightLean, setLeftLean, setRightLean, reset };
 }
 
 /**
@@ -76,8 +95,8 @@ export function useCartEngine(): CartEngine {
  */
 export function syncCartState(rig: CartRig, values: ParameterValues): void {
   rig.state.mass = Number(values.mass ?? rig.state.mass);
-  rig.state.appliedForce = Number(
-    values.appliedForce ?? rig.state.appliedForce,
+  rig.state.maxPushForce = Number(
+    values.maxPushForce ?? rig.state.maxPushForce,
   );
   rig.state.frictionEnabled = values.frictionEnabled !== "off";
   const surfaceKey = String(values.surface ?? "wood");
@@ -87,6 +106,8 @@ export function syncCartState(rig: CartRig, values: ParameterValues): void {
       : resolveFriction(surfaceKey, 0);
   rig.friction.kinetic = rig.state.frictionCoefficient;
   rig.friction.staticCoefficient = rig.state.frictionCoefficient * 1.2;
+  rig.cart.userData.surfaceLabel =
+    SURFACE_PRESETS.find((s) => s.key === surfaceKey)?.label ?? "Custom surface";
   rig.state.gravity = resolveGravity(
     String(values.gravityPreset ?? "earth"),
     Number(values.customGravity ?? 9.81),
@@ -101,6 +122,7 @@ export function syncCartState(rig: CartRig, values: ParameterValues): void {
     OBJECT_PRESETS.find((o) => o.key === String(values.objectPreset ?? "box")) ?? OBJECT_PRESETS[0]!;
   rig.cart.userData.color = objectPreset.color;
   rig.cart.userData.label = objectPreset.label;
+  rig.cart.userData.key = objectPreset.key;
 
   // Mass can change live (slider), so keep invMass in sync — RigidBody
   // only computes this once in its constructor.
@@ -124,6 +146,8 @@ const EMPTY_READOUTS: CartReadouts = {
   weight: 0,
   normalForce: 0,
   appliedForce: 0,
+  leftForce: 0,
+  rightForce: 0,
   frictionForce: 0,
   elapsedTime: 0,
   distance: 0,

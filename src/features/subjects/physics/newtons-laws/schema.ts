@@ -24,14 +24,15 @@ export const newtonsLawsSchema: ParameterSchema = {
       defaultValue: 5,
     },
     {
-      key: "appliedForce",
-      label: "Applied force",
-      description: "Magnitude of the push, while it's switched on.",
+      key: "maxPushForce",
+      label: "Max push force",
+      description:
+        "The force each person applies at a full lean — drag either person toward the box to approach this ceiling.",
       unit: "N",
-      min: 0,
+      min: 20,
       max: 200,
       step: 5,
-      defaultValue: 50,
+      defaultValue: 80,
     },
     {
       key: "frictionCoefficient",

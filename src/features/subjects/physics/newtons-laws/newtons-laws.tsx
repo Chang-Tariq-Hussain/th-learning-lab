@@ -185,18 +185,88 @@ function NewtonsLawsBody() {
               />
             )
           ) : null}
+          {/* PRIMARY readouts for the cart rig — the numbers Newton's
+              Second Law is actually about, right under the experiment.
+              Law 3's own data panel already keeps to a short, focused
+              list, so this strip is cart-only. */}
+          {!presentation && !teacher.formulasOnly && law !== 3 ? (
+            <>
+              <p className="text-sm text-ink-soft dark:text-bone-soft">
+                Drag either person toward the box to change the force they
+                apply to it.
+              </p>
+              <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-card border border-line bg-line text-center dark:border-line-dark dark:bg-line-dark sm:grid-cols-3 lg:grid-cols-6">
+                {(
+                  [
+                    ["Mass", cartSnapshot.readouts.mass.toFixed(1), "kg"],
+                    [
+                      "Left force",
+                      cartSnapshot.readouts.leftForce.toFixed(0),
+                      "N",
+                    ],
+                    [
+                      "Right force",
+                      cartSnapshot.readouts.rightForce.toFixed(0),
+                      "N",
+                    ],
+                    ["Net force", cartSnapshot.readouts.netForce.toFixed(0), "N"],
+                    [
+                      "Acceleration",
+                      cartSnapshot.readouts.acceleration.toFixed(2),
+                      "m/s²",
+                    ],
+                    [
+                      "Velocity",
+                      cartSnapshot.readouts.velocity.toFixed(2),
+                      "m/s",
+                    ],
+                  ] as const
+                ).map(([label, value, unit]) => (
+                  <div
+                    key={label}
+                    className="bg-white/50 px-2 py-3 dark:bg-chalkboard/90"
+                  >
+                    <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+                      {label}
+                    </dt>
+                    <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
+                      {value}
+                      <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">
+                        {unit}
+                      </span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </>
+          ) : null}
+
           <Toolbar exportFilename="newtons-laws" />
           {!presentation && !teacher.formulasOnly ? (
             <Legend
-              items={[
-                { label: "Applied / action", color: "#3D5AFE", shape: "line" },
-                {
-                  label: "Friction / reaction",
-                  color: "#E0524F",
-                  shape: "line",
-                },
-                { label: "Velocity", color: "#2E9E5B", shape: "line" },
-              ]}
+              items={
+                law === 3
+                  ? [
+                      {
+                        label: "Applied / action",
+                        color: "#3D5AFE",
+                        shape: "line",
+                      },
+                      {
+                        label: "Friction / reaction",
+                        color: "#E0524F",
+                        shape: "line",
+                      },
+                      { label: "Velocity", color: "#2E9E5B", shape: "line" },
+                    ]
+                  : [
+                      { label: "Left push", color: "#3D5AFE", shape: "line" },
+                      { label: "Right push", color: "#D97706", shape: "line" },
+                      { label: "Friction", color: "#E0524F", shape: "line" },
+                      { label: "Net force", color: "#7C4FE0", shape: "line" },
+                      { label: "Velocity", color: "#2E9E5B", shape: "line" },
+                    ]
+              }
             />
           ) : null}
         </div>
@@ -207,16 +277,12 @@ function NewtonsLawsBody() {
               law === 1 ? (
                 <Law1Panel
                   engine={cartEngine}
-                  forceOn={cartEngine.forceOn}
+                  readouts={cartSnapshot.readouts}
                   viewOptions={cartView}
                   onViewOptionsChange={setCartView}
                 />
               ) : law === 2 ? (
-                <Law2Panel
-                  engine={cartEngine}
-                  forceOn={cartEngine.forceOn}
-                  readouts={cartSnapshot.readouts}
-                />
+                <Law2Panel readouts={cartSnapshot.readouts} />
               ) : (
                 <Law3Panel engine={law3Engine} />
               )
@@ -225,7 +291,19 @@ function NewtonsLawsBody() {
             {law === 3 ? (
               <Law3DataPanel readouts={law3Readouts} />
             ) : (
-              <CartDataPanel readouts={cartSnapshot.readouts} />
+              // OPTIONAL: the full readout table (momentum, weight,
+              // normal force, elapsed time, distance...) — everything
+              // beyond the five primary numbers already shown above the
+              // canvas, collapsed by default so it doesn't compete with
+              // them.
+              <details className="group rounded-card border border-line bg-white/50 dark:border-line-dark dark:bg-white/[0.03]">
+                <summary className="cursor-pointer select-none rounded-card px-4 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink dark:text-bone-soft dark:hover:text-bone">
+                  Advanced data
+                </summary>
+                <div className="border-t border-line p-4 pt-0 dark:border-line-dark">
+                  <CartDataPanel readouts={cartSnapshot.readouts} />
+                </div>
+              </details>
             )}
           </div>
         ) : null}
@@ -238,7 +316,7 @@ function NewtonsLawsBody() {
             defaultOpen={false}
             steps={[
               "Pick a Law tab above — each one uses the same underlying physics engine, with different controls surfaced.",
-              "Adjust sliders, then Apply Force (Law 1/2) or run the scenario's action (Law 3) and watch the live data update.",
+              "For Law 1/2, drag either person toward the box to push (or use arrow keys once focused); for Law 3, run the scenario's action and watch the live data update.",
               'Switch to Learning Mode for guided "why does this happen?" walkthroughs, or Challenge Mode to test your intuition.',
               "Teacher Mode adds presentation controls: freeze, slow motion, bolder vectors, formulas-only, and fullscreen.",
             ]}

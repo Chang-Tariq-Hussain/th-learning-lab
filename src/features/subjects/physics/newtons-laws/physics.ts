@@ -176,14 +176,17 @@ export interface CartRig {
   world: World;
   cart: RigidBody;
   friction: SurfaceFriction;
-  /** Mutable knobs the tick handler reads every frame — see `newtons-laws.tsx` for how these are kept in sync with the sliders. */
+  /** Mutable knobs the tick handler reads every frame — see `newtons-laws.tsx` for how these are kept in sync with the sliders and the two draggable people. */
   state: {
     mass: number;
     gravity: number;
     frictionCoefficient: number;
     frictionEnabled: boolean;
-    appliedForce: number;
-    forceOn: boolean;
+    /** How far each person is currently leaning into their push, 0 (resting, not touching) to 1 (fully engaged) — written directly by the person drag handles every pointer move, read here every physics step. */
+    leftLean: number;
+    rightLean: number;
+    /** Ceiling each person's full lean maps to, in Newtons — set by the "Max push force" slider. */
+    maxPushForce: number;
   };
 }
 
@@ -207,8 +210,9 @@ export function createCartRig(): CartRig {
     gravity: 9.81,
     frictionCoefficient: 0.35,
     frictionEnabled: true,
-    appliedForce: 50,
-    forceOn: false,
+    leftLean: 0,
+    rightLean: 0,
+    maxPushForce: 80,
   };
 
   const friction = new SurfaceFriction([cart], {
@@ -219,9 +223,15 @@ export function createCartRig(): CartRig {
   // Order matters: the applied-force generator must run first so that,
   // by the time `friction.apply()` reads `body.netForce` to compute
   // static friction, this step's push has already been accumulated.
+  // Left pushes +x (toward the box from the left), right pushes -x
+  // (toward the box from the right) — two people converging on the box
+  // from opposite sides, exactly the "person → force → box" setup the
+  // two draggable figures represent. Lean is read fresh every step, so
+  // dragging feels immediate rather than quantized to a slider commit.
   world.addForce({
     apply: () => {
-      if (state.forceOn) cart.applyForce(new Vector2(state.appliedForce, 0));
+      const net = (state.leftLean - state.rightLean) * state.maxPushForce;
+      if (net !== 0) cart.applyForce(new Vector2(net, 0));
     },
   });
   world.addForce(friction);
@@ -244,7 +254,12 @@ export interface CartReadouts {
   netForce: number;
   weight: number;
   normalForce: number;
+  /** Net of the two people's pushes (leftForce − rightForce), before friction. */
   appliedForce: number;
+  /** Left person's push magnitude, ≥0. */
+  leftForce: number;
+  /** Right person's push magnitude, ≥0. */
+  rightForce: number;
   frictionForce: number;
   elapsedTime: number;
   distance: number;
@@ -258,7 +273,9 @@ export function computeCartReadouts(
   const { cart, state } = rig;
   const weight = state.mass * state.gravity;
   const normalForce = weight; // level surface: N balances weight exactly
-  const appliedForce = state.forceOn ? state.appliedForce : 0;
+  const leftForce = state.leftLean * state.maxPushForce;
+  const rightForce = state.rightLean * state.maxPushForce;
+  const appliedForce = leftForce - rightForce;
 
   const speed = cart.velocity.x;
   const maxStatic = friction_staticMax(rig);
@@ -282,6 +299,8 @@ export function computeCartReadouts(
     weight,
     normalForce,
     appliedForce,
+    leftForce,
+    rightForce,
     frictionForce,
     elapsedTime,
     distance,

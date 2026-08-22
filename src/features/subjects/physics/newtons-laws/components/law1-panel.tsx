@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   ControlPanel,
   ParameterDropdownSelector,
@@ -9,12 +8,13 @@ import {
   useSimulation,
 } from "@/features/simulation";
 import type { CartEngine } from "../cart-engine";
+import type { CartReadouts } from "../physics";
 import { newtonsLawsSchema } from "../schema";
 import type { CartDisplayOptions } from "./cart-canvas";
 
 const massParam = newtonsLawsSchema.numeric!.find((p) => p.key === "mass")!;
-const appliedForceParam = newtonsLawsSchema.numeric!.find(
-  (p) => p.key === "appliedForce",
+const maxPushForceParam = newtonsLawsSchema.numeric!.find(
+  (p) => p.key === "maxPushForce",
 )!;
 const frictionCoefficientParam = newtonsLawsSchema.numeric!.find(
   (p) => p.key === "frictionCoefficient",
@@ -28,14 +28,14 @@ const objectSelect = newtonsLawsSchema.select!.find(
 
 export interface Law1PanelProps {
   engine: CartEngine;
-  forceOn: boolean;
+  readouts: CartReadouts;
   viewOptions: CartDisplayOptions;
   onViewOptionsChange: (next: CartDisplayOptions) => void;
 }
 
 export function Law1Panel({
   engine,
-  forceOn,
+  readouts,
   viewOptions,
   onViewOptionsChange,
 }: Law1PanelProps) {
@@ -60,24 +60,28 @@ export function Law1Panel({
             setSelect("frictionEnabled", checked ? "on" : "off")
           }
         />
-        <ParameterSlider parameter={appliedForceParam} />
+        <ParameterSlider parameter={maxPushForceParam} />
 
-        <div className="flex gap-2 border-t border-line pt-3 dark:border-line-dark">
-          <Button
-            size="sm"
-            onClick={() => engine.setForceOn(true)}
-            disabled={forceOn}
-          >
-            Apply force
-          </Button>
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => engine.setForceOn(false)}
-            disabled={!forceOn}
-          >
-            Remove force
-          </Button>
+        {/* Live readouts for the two people — the primary interaction is
+            dragging them in the scene above, so these are values, not
+            another pair of sliders. */}
+        <div className="flex gap-3 border-t border-line pt-3 text-sm dark:border-line-dark">
+          <div className="flex-1">
+            <div className="text-ink-soft dark:text-bone-soft">
+              Left person force
+            </div>
+            <div className="font-mono text-base font-semibold text-ink dark:text-bone">
+              {readouts.leftForce.toFixed(0)} N
+            </div>
+          </div>
+          <div className="flex-1">
+            <div className="text-ink-soft dark:text-bone-soft">
+              Right person force
+            </div>
+            <div className="font-mono text-base font-semibold text-ink dark:text-bone">
+              {readouts.rightForce.toFixed(0)} N
+            </div>
+          </div>
         </div>
       </ControlPanel>
 
@@ -109,14 +113,14 @@ export function Law1Panel({
         <p className="mb-2 font-medium">Inertia, visually</p>
         <p>
           An object at rest stays at rest, and an object in motion keeps moving
-          at constant velocity, unless an unbalanced force acts on it. Apply a
-          force and the cart accelerates; remove it and — with friction off —
-          the cart coasts forever at whatever velocity it had. Turn friction
-          back on and that same coast slows to a stop, not because the cart
+          at constant velocity, unless an unbalanced force acts on it. Drag one
+          person in and the box accelerates; let go and — with friction off —
+          the box coasts forever at whatever velocity it had. Turn friction
+          back on and that same coast slows to a stop, not because the box
           &ldquo;wants&rdquo; to stop, but because friction is an outside unbalanced force
           opposing the motion. The free-body diagram shows exactly this: when
-          Applied and Friction arrows are equal and opposite, the cart neither
-          speeds up nor slows down.
+          the two pushes and friction sum to zero, the box neither speeds up
+          nor slows down.
         </p>
       </div>
     </div>

@@ -22,7 +22,17 @@ export function CartDataPanel({ readouts }: { readouts: CartReadouts }) {
       unit: "N",
     },
     {
-      label: "Applied force",
+      label: "Left person force",
+      value: readouts.leftForce.toFixed(1),
+      unit: "N",
+    },
+    {
+      label: "Right person force",
+      value: readouts.rightForce.toFixed(1),
+      unit: "N",
+    },
+    {
+      label: "Applied force (net of the two people)",
       value: readouts.appliedForce.toFixed(1),
       unit: "N",
     },
