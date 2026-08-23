@@ -118,22 +118,34 @@ export const physicsNewtonsLawsContent: TopicContent = {
     ],
     misconceptions: [
       {
+        id: "misconception-needs-force-to-keep-moving",
+        misconception: "An object needs a force to keep moving.",
+        correction:
+          "Newton's First Law says the opposite: an object already in motion keeps moving at a constant velocity all by itself, with zero net force needed. A continuous push is only needed in everyday life to overcome friction or air resistance — on the Rocket scenario with friction turned almost all the way down, the rocket keeps coasting at whatever speed it reached even after thrust cuts off.",
+      },
+      {
+        id: "misconception-moving-means-net-force",
+        misconception: "If an object is moving, there must be a net force acting on it.",
+        correction:
+          "Motion and net force are independent — a net force is only required to change velocity (accelerate), not to sustain it. An object can coast along at a constant speed in a straight line with exactly zero net force, which is precisely Newton's First Law's description of motion left alone.",
+      },
+      {
+        id: "misconception-larger-mass-larger-force",
+        misconception: "A larger mass always means a larger force.",
+        correction:
+          "Mass and force are different quantities — a heavier object doesn't automatically push or pull with more force just by being heavier. What mass actually changes is how much a given force accelerates the object: F = ma means the same force produces a smaller acceleration on a larger mass, not a bigger force.",
+      },
+      {
         id: "misconception-action-reaction-cancels",
-        misconception: "Action and reaction forces cancel each other out, so nothing should ever move.",
+        misconception: "Action and reaction forces cancel each other.",
         correction:
           "They can't cancel — they act on two different objects. A force only cancels another force that acts on the same object. In the Skaters scenario below, the push on Skater A and the push on Skater B are equal and opposite, but each skater only feels the one force acting on them, which is exactly what sends both of them moving.",
       },
       {
-        id: "misconception-constant-force-constant-velocity",
-        misconception: "A constant force keeps an object moving at a constant velocity.",
+        id: "misconception-net-force-vs-individual-force",
+        misconception: "Net force and individual force are the same thing.",
         correction:
-          "A constant net force produces a constant acceleration, not a constant velocity — the velocity keeps climbing the entire time the force is applied, as F = ma predicts. A constant velocity is exactly what happens when the net force is zero (Law 1), the opposite situation.",
-      },
-      {
-        id: "misconception-bigger-object-hits-harder",
-        misconception: "In a collision, the bigger or faster object exerts more force on the smaller one than the smaller one exerts back.",
-        correction:
-          "Newton's Third Law says the two forces in any interaction are always exactly equal in size, regardless of size, speed, or mass — a truck and a bicycle exert the same-sized force on each other in a collision. What differs is the resulting acceleration: F = ma means the same force produces a much larger acceleration on the lighter object.",
+          "An individual force is just one push or pull acting on an object; net force is what's left after every individual force is combined. Two people pushing a box with 40 N each from opposite sides are each applying a very real 40 N individual force, but the net force on the box is 0 N — treating the two as interchangeable would predict motion that never happens.",
       },
     ],
   },
@@ -147,6 +159,37 @@ export const physicsNewtonsLawsContent: TopicContent = {
     scenarios: [
       {
         id: "physics-newtons-laws-predict-001",
+        scenario:
+          "On the Law 1 or Law 2 tab, have the left person push with 40 N and the right person push with 40 N — equal forces, opposite directions.",
+        question: "What do you predict will happen to the box?",
+        options: [
+          { id: "accelerate-left", label: "Accelerate left" },
+          { id: "accelerate-right", label: "Accelerate right" },
+          { id: "remain-at-rest", label: "Remain at rest" },
+          { id: "constant-velocity", label: "Move at constant velocity" },
+        ],
+        actualResultOptionId: "remain-at-rest",
+        explanation:
+          "Net force = 40 N − 40 N = 0 N. Both 40 N pushes are real, individual forces acting on the box, but with equal size and opposite direction they combine to a net force of zero — and Newton's First Law says zero net force on a box starting at rest means it stays at rest.",
+        hint: "Net force is what's left after combining every individual force on the box, not any one force by itself. What's 40 N − 40 N?",
+      },
+      {
+        id: "physics-newtons-laws-predict-002",
+        scenario: "On the Law 1 or Law 2 tab, have the left person push with 40 N and the right person push with 80 N.",
+        question: "What do you predict will happen to the box?",
+        options: [
+          { id: "accelerate-left", label: "Accelerate left" },
+          { id: "accelerate-right", label: "Accelerate right" },
+          { id: "remain-at-rest", label: "Remain at rest" },
+          { id: "constant-velocity", label: "Move at constant velocity" },
+        ],
+        actualResultOptionId: "accelerate-right",
+        explanation:
+          "Net force = 80 N − 40 N = 40 N to the right. The two individual pushes don't cancel this time, since they're unequal — a 40 N net force remains, unbalanced, on the right side. Therefore the box accelerates to the right, in the direction of the larger push.",
+        hint: "Subtract the smaller push from the larger one to find the net force — which direction, and how big, is what's left over?",
+      },
+      {
+        id: "physics-newtons-laws-predict-003",
         scenario:
           "On the Law 1 tab, set the surface to Rubber mat (high friction) and the object to Steel sled (heavy), then apply only a very gentle push.",
         question: "What happens to the sled?",
@@ -162,7 +205,7 @@ export const physicsNewtonsLawsContent: TopicContent = {
         hint: "Static friction doesn't just slow a push down — up to its maximum, it can match a push completely.",
       },
       {
-        id: "physics-newtons-laws-predict-002",
+        id: "physics-newtons-laws-predict-004",
         scenario:
           "On the Law 2 tab, apply a force to the cart and note the acceleration. Now double the applied force while keeping the mass the same.",
         question: "What happens to the acceleration?",
@@ -178,7 +221,7 @@ export const physicsNewtonsLawsContent: TopicContent = {
         hint: "F = ma — with mass held fixed, how does acceleration scale with force?",
       },
       {
-        id: "physics-newtons-laws-predict-003",
+        id: "physics-newtons-laws-predict-005",
         scenario:
           "On the Law 3 tab, select the Skaters scenario, set Mass A and Mass B to the same value, and push them apart from rest.",
         question: "How do their resulting speeds compare?",
@@ -194,7 +237,7 @@ export const physicsNewtonsLawsContent: TopicContent = {
         hint: "The push gives both skaters equal and opposite momentum, not equal and opposite speed — what does that mean when their masses are equal?",
       },
       {
-        id: "physics-newtons-laws-predict-004",
+        id: "physics-newtons-laws-predict-006",
         scenario:
           "On the Law 3 tab, select the Rocket scenario, turn friction as low as it will go, and switch thrust on continuously.",
         question: "What happens to the rocket's velocity while the thrust stays on?",
@@ -239,24 +282,36 @@ export const physicsNewtonsLawsContent: TopicContent = {
     questions: [
       {
         id: "physics-newtons-laws-explain-001",
+        question: "Two equal 40 N pushes from opposite sides both act on the box — why doesn't the box move at all, if 40 N is a real force either way?",
+        answer:
+          "Both 40 N pushes are genuinely real, individual forces acting on the box — neither one stops existing. But net force is the combination of every individual force, not any single one of them: 40 N right minus 40 N left leaves 0 N net force. Newton's First Law says zero net force on a box starting at rest means the box stays exactly where it is, even though two real forces are actively pushing on it the whole time.",
+      },
+      {
+        id: "physics-newtons-laws-explain-002",
+        question: "When the right push is 80 N and the left push is 40 N, why does the box accelerate right instead of just accelerating with a force of 80 N?",
+        answer:
+          "It's the net force, not the larger individual force by itself, that determines the acceleration. Net force = 80 N − 40 N = 40 N to the right — the left push doesn't disappear, it just partially offsets the right push, leaving 40 N unbalanced. That's the number to plug into F = ma, not the raw 80 N.",
+      },
+      {
+        id: "physics-newtons-laws-explain-003",
         question: "Why did a gentle push produce no motion at all on the high-friction surface, rather than just slow motion?",
         answer:
           "Static friction isn't a fixed drag — it grows to match whatever force is trying to start the object moving, up to a maximum set by the surface and the object's weight. A gentle push stays under that maximum, so static friction cancels it exactly, holding the object perfectly still rather than letting it creep. Only once the push exceeds the maximum does the object break free and kinetic friction take over.",
       },
       {
-        id: "physics-newtons-laws-explain-002",
+        id: "physics-newtons-laws-explain-004",
         question: "Why does doubling the force double the acceleration, but doubling the mass halves it?",
         answer:
           "F = ma rearranges to a = F / m: acceleration is directly proportional to force (double the force, double the top of the fraction, double the result) and inversely proportional to mass (double the mass, double the bottom of the fraction, halve the result). Force and acceleration move together; mass and acceleration move opposite each other.",
       },
       {
-        id: "physics-newtons-laws-explain-003",
+        id: "physics-newtons-laws-explain-005",
         question: "Why do equal-mass skaters end up moving at equal speeds, but unequal-mass skaters don't?",
         answer:
           "The push always applies equal-and-opposite momentum to the two skaters — that part never changes. But momentum is mass times velocity, so with unequal masses, the same momentum split translates into unequal speeds: the lighter skater has to move faster to carry the same amount of momentum the heavier skater carries at a slower speed. Equal masses is just the one special case where equal momentum happens to mean equal speed too.",
       },
       {
-        id: "physics-newtons-laws-explain-004",
+        id: "physics-newtons-laws-explain-006",
         question: "Why can a rocket accelerate in the vacuum of space, where there's no air or ground to push against?",
         answer:
           "A rocket doesn't need anything external to push against — by Newton's Third Law, it pushes its exhaust gas backward, and the exhaust pushes the rocket forward with an equal and opposite force. That action-reaction pair happens entirely between the rocket and its own exhaust, which is exactly why rockets work in the vacuum of space, where propellers and wheels (which do need something external to push against) don't.",
@@ -360,24 +415,27 @@ export const physicsNewtonsLawsContent: TopicContent = {
       },
       {
         id: "physics-newtons-laws-challenge-004",
-        title: "Real-World Mission: Model Rocket Acceleration Test",
+        title: "Real-World Mission: Warehouse Box Challenge",
         scenario:
-          "A model-rocketry club wants to estimate how quickly their 2 kg test rocket accelerates off the pad under a given thrust, before committing to a launch.",
+          "A warehouse worker needs to get a heavy 20 kg crate moving across the floor at a controlled, steady pace — fast enough to be efficient, but not so hard a push that it's straining or unsafe.",
         objective:
-          "Use the Law 3 tab's Rocket scenario to set the Thrust slider to 30 N, switch thrust on, and read off the acceleration once it settles.",
+          "On the Law 1 or Law 2 tab, set the mass to 20 kg and have the people push the crate so its acceleration reads close to 2 m/s², without the net force on the crate exceeding 50 N.",
         constraints: [
-          { id: "c1", label: "Set Thrust to exactly 30 N before switching thrust on." },
+          { id: "c1", label: "Set mass to 20 kg." },
+          { id: "c2", label: "Keep net force at or below 50 N." },
         ],
         tools: [
-          { id: "thrust-slider", label: "Thrust slider (1–50 N)" },
-          { id: "accel-readout", label: "Rocket's live acceleration/velocity readout" },
+          { id: "mass-slider", label: "Mass slider (1–30 kg)" },
+          { id: "push", label: "Drag a person to apply a push" },
+          { id: "force-readout", label: "Live Net Force readout" },
+          { id: "accel-readout", label: "Live Acceleration readout" },
         ],
-        answer: { mode: "numeric", unit: "m/s²", target: 15, tolerance: 2 },
+        answer: { mode: "numeric", unit: "m/s²", target: 2, tolerance: 0.3 },
         explanation:
-          "The rocket's mass is fixed at 2 kg with only a small amount of friction resisting it. With 30 N of thrust and only a fraction of a newton of opposing friction, the net force is close to 30 N, so F = ma gives an acceleration close to 30 N ÷ 2 kg = 15 m/s² — matching what the live readout shows once the burn is underway.",
+          "F = ma means a 20 kg crate needs a net force of 20 kg × 2 m/s² = 40 N to hit the target pace — comfortably under the 50 N ceiling, with 10 N of headroom to spare. Pushing harder than that 40 N doesn't get the crate moving any more 'correctly'; it just risks blowing past the safety limit for no real benefit, since the crate only ever needed 40 N to reach the target acceleration.",
         hints: [
-          "The rocket's mass is fixed at 2 kg — this is a direct F = ma calculation once you know the (nearly unopposed) thrust.",
-          "a = F/m. With F ≈ 30 N and m = 2 kg, what does that give you?",
+          "Work out the net force a 20 kg crate needs for 2 m/s² with F = ma before you push — then compare that to the 50 N limit.",
+          "You don't need to push right up to the ceiling — there's headroom between what the target acceleration requires and what the limit allows.",
         ],
       },
     ],

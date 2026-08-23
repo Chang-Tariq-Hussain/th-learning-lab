@@ -21,6 +21,7 @@ import { physicsVelocityQuiz } from "./data/physics-velocity-quiz";
 import { physicsAccelerationQuiz } from "./data/physics-acceleration-quiz";
 import { physicsNewtonianMechanicsQuiz } from "./data/physics-newtonian-mechanics-quiz";
 import { physicsNewtonsLawsQuiz } from "./data/physics-newtons-laws-quiz";
+import { physicsProjectileMotionQuiz } from "./data/physics-projectile-motion-quiz";
 import { physicsWaveMotionQuiz } from "./data/physics-wave-motion-quiz";
 
 /**
@@ -53,6 +54,7 @@ export const quizzes: QuizMeta[] = [
   physicsAccelerationQuiz,
   physicsNewtonianMechanicsQuiz,
   physicsNewtonsLawsQuiz,
+  physicsProjectileMotionQuiz,
   physicsWaveMotionQuiz,
 ];
 

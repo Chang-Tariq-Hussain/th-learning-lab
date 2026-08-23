@@ -10,14 +10,17 @@ import type { QuizMeta, QuizQuestion } from "../types";
  * Energy together) so a student practicing this specific topic is
  * only ever quizzed on what its own Learn section actually covers.
  *
- * 34 questions across seven kinds of understanding, in this order:
+ * 37 questions across seven kinds of understanding, in this order:
  * 001-007 recall (definitions, vocabulary, the three laws themselves),
  * 008-014 conceptual (why the relationships hold, not just what they are),
  * 015-020 application (numeric F = ma, weight, and momentum problems),
  * 021-026 prediction (reasoning about a change before observing it),
  * 027-030 interpretation (reading readouts and free-body-diagram-style setups),
  * 031-032 real-world identification (seatbelts, rockets),
- * 033-034 misconception (directly confronting common wrong mental models).
+ * 033-037 misconception (directly confronting the five wrong mental models
+ * called out in the topic's Learn section: force-to-keep-moving,
+ * moving-means-net-force, larger-mass-means-larger-force,
+ * action-reaction-cancels, and net-force-vs-individual-force).
  */
 const questions: QuizQuestion[] = [
   // --- Recall -----------------------------------------------------
@@ -559,7 +562,64 @@ const questions: QuizQuestion[] = [
   {
     id: "physics-newtons-laws-quiz-033",
     type: "multiple-choice",
-    question: "\"Action and reaction forces cancel each other out, so nothing should ever move.\" What's wrong with this reasoning?",
+    question: "\"An object needs a force to keep moving.\" What does Newton's First Law actually say about this?",
+    options: [
+      "An object already in motion keeps moving at constant velocity with zero net force needed",
+      "The statement is correct — no force means no continued motion",
+      "Only heavy objects need a continuous force to keep moving",
+      "A force is needed to keep moving, but only on Earth",
+    ],
+    correctAnswer: "An object already in motion keeps moving at constant velocity with zero net force needed",
+    explanation:
+      "Newton's First Law says the opposite: an object in motion stays in motion at constant velocity unless a net force acts on it. Everyday life feels otherwise only because friction and air resistance are almost always present, constantly working to slow things down.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "newtons-laws",
+    concept: "Misconception",
+    misconceptionTag: "needs-force-to-keep-moving",
+  },
+  {
+    id: "physics-newtons-laws-quiz-034",
+    type: "multiple-choice",
+    question: "\"If an object is moving, there must be a net force acting on it.\" Is this true?",
+    options: [
+      "No — a net force is only required to change velocity, not to sustain it",
+      "Yes — motion is always evidence of an unbalanced force",
+      "Only true for objects moving in a straight line",
+      "Only true above a certain speed",
+    ],
+    correctAnswer: "No — a net force is only required to change velocity, not to sustain it",
+    explanation:
+      "An object can move at a constant velocity with exactly zero net force — that's precisely what Newton's First Law describes. Net force is needed only to accelerate an object, not to keep it moving once it already is.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "newtons-laws",
+    concept: "Misconception",
+    misconceptionTag: "moving-means-net-force",
+  },
+  {
+    id: "physics-newtons-laws-quiz-035",
+    type: "multiple-choice",
+    question: "\"A larger mass always means a larger force.\" What's wrong with this statement?",
+    options: [
+      "Mass and force are different quantities — a bigger mass doesn't automatically push or pull harder",
+      "It's correct — heavier objects always exert more force",
+      "It's only wrong for objects lighter than 1 kg",
+      "Mass and force are actually the same thing, just measured differently",
+    ],
+    correctAnswer: "Mass and force are different quantities — a bigger mass doesn't automatically push or pull harder",
+    explanation:
+      "Mass measures how much matter an object has; force is a push or pull applied to it. A heavier object isn't automatically exerting more force by virtue of being heavy — what mass changes is how much a given force accelerates it (F = ma), not how much force it produces on its own.",
+    difficulty: "medium",
+    subject: "physics",
+    topic: "newtons-laws",
+    concept: "Misconception",
+    misconceptionTag: "larger-mass-larger-force",
+  },
+  {
+    id: "physics-newtons-laws-quiz-036",
+    type: "multiple-choice",
+    question: "\"Action and reaction forces cancel each other.\" What's wrong with this reasoning?",
     options: [
       "The two forces act on two different objects, so they never cancel — each object only feels one of them",
       "Nothing is wrong — objects generally shouldn't move because of this",
@@ -576,23 +636,23 @@ const questions: QuizQuestion[] = [
     misconceptionTag: "action-reaction-cancels",
   },
   {
-    id: "physics-newtons-laws-quiz-034",
+    id: "physics-newtons-laws-quiz-037",
     type: "multiple-choice",
-    question: "\"A constant force keeps an object moving at a constant velocity.\" What does a constant net force actually produce?",
+    question: "A box has a 40 N push from the left and an 80 N push from the right. A student says \"the force on the box is 80 N.\" What's the mistake?",
     options: [
-      "A constant acceleration — velocity keeps changing the whole time the force is applied",
-      "A constant velocity, exactly as stated",
-      "No motion at all",
-      "A velocity that oscillates back and forth",
+      "They're treating one individual force as the net force, instead of combining both",
+      "Nothing — 80 N is the correct net force",
+      "The two forces should be added together to get 120 N",
+      "Only the smaller force matters for determining motion",
     ],
-    correctAnswer: "A constant acceleration — velocity keeps changing the whole time the force is applied",
+    correctAnswer: "They're treating one individual force as the net force, instead of combining both",
     explanation:
-      "F = ma: a constant net force means a constant acceleration, not a constant velocity. Velocity stays constant only when the net force is zero — the opposite situation.",
+      "80 N is just one individual force acting on the box — the left push doesn't stop existing. Net force is the combination of every individual force: 80 N − 40 N = 40 N to the right is the number that actually determines the box's acceleration, not the raw 80 N.",
     difficulty: "medium",
     subject: "physics",
     topic: "newtons-laws",
     concept: "Misconception",
-    misconceptionTag: "constant-force-constant-velocity",
+    misconceptionTag: "net-force-vs-individual-force",
   },
 ];
 
@@ -607,6 +667,6 @@ export const physicsNewtonsLawsQuiz: QuizMeta = {
   description:
     "Recall, reasoning, numeric F = ma, and prediction questions covering all three of Newton's Laws, mass vs. weight, static vs. kinetic friction, and momentum — as taught in the Newton's Laws topic.",
   difficulty: "medium",
-  estimatedTime: 20,
+  estimatedTime: 22,
   questions,
 };
