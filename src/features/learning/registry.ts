@@ -14,15 +14,19 @@ import { physicsSimpleEnergyContent } from "./data/physics-simple-energy";
  * `features/quiz-engine/registry.ts`: one array, read by getters,
  * instead of scattered lookups.
  *
- * Simple Motion is the full reference implementation. Velocity and
- * Acceleration are brought up to that same full standard (Learn,
- * Predict, Explore, Explain, Practice, Challenge) reusing the
- * existing Newton's Laws Lab simulation as their Explore experience —
- * see their `data/` files for why that simulation is the right fit.
- * Simple Forces, Newton's Laws, and Simple Energy remain Learn +
- * Explore only for now — enough to make their progress trackable,
- * which is what the `physics-foundations` learning path
- * (`@/features/learning-path`) is built on.
+ * Simple Motion is the full reference implementation. Velocity,
+ * Acceleration, and Newton's Laws are brought up to that same full
+ * standard (Learn, Predict, Explore, Explain, Practice, Challenge) —
+ * Velocity and Acceleration reuse the Newton's Laws Lab simulation as
+ * their Explore experience (see their `data/` files for why that
+ * simulation is the right fit), while Newton's Laws is that same
+ * simulation's own home topic, now with its own dedicated question
+ * bank (`physics-newtons-laws` in `@/features/quiz-engine`) rather
+ * than the shared `physics-newtonian-mechanics` quiz it used to point
+ * at. Simple Forces and Simple Energy remain Learn + Explore only for
+ * now — enough to make their progress trackable, which is what the
+ * `physics-foundations` learning path (`@/features/learning-path`) is
+ * built on.
  */
 export const topicContentList: TopicContent[] = [
   physicsSimpleMotionContent,

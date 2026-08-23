@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
-import { QuizCta } from "@/components/dashboard/quiz-cta";
-import { getQuizById } from "@/features/quiz-engine/registry";
 import { NewtonsLaws } from "@/features/subjects/physics/newtons-laws";
 import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { CrossSubjectConnections } from "@/components/dashboard/cross-subject-connections";
+import { getConnectionsForHref } from "@/features/cross-subject-connections";
+
+const SIMULATION_HREF = "/dashboard/physics/newtons-laws";
 
 export const metadata: Metadata = {
   title: "Newton's Laws of Motion",
@@ -14,12 +16,11 @@ export const metadata: Metadata = {
 };
 
 export default function NewtonsLawsPage() {
-  const quiz = getQuizById("physics-newtonian-mechanics");
   const content = getTopicContent("physics", "newtons-laws");
 
   return (
     <Container className="py-10">
-      <SimulationBackLink simulationHref="/dashboard/physics/newtons-laws" className="mb-4" />
+      <SimulationBackLink simulationHref={SIMULATION_HREF} className="mb-4" />
       <Breadcrumbs
         items={[
           { label: "Dashboard", href: "/dashboard" },
@@ -46,17 +47,13 @@ export default function NewtonsLawsPage() {
       {content ? (
         <TopicLearningExperience content={content} simulation={<NewtonsLaws />} />
       ) : (
+        // Falls back to the bare simulation if this topic's learning
+        // content is ever removed from the registry — keeps the page
+        // from 404ing outright.
         <NewtonsLaws />
       )}
 
-      {quiz && (
-        <QuizCta
-          href="/dashboard/physics/newtonian-mechanics-quiz"
-          colorToken="physics"
-          questionCount={quiz.questions.length}
-          className="mx-auto mt-10 max-w-2xl"
-        />
-      )}
+      <CrossSubjectConnections connections={getConnectionsForHref(SIMULATION_HREF)} />
     </Container>
   );
 }
