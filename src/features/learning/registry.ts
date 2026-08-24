@@ -6,6 +6,7 @@ import { physicsProjectileMotionContent } from "./data/physics-projectile-motion
 import { physicsSimpleForcesContent } from "./data/physics-simple-forces";
 import { physicsNewtonsLawsContent } from "./data/physics-newtons-laws";
 import { physicsSimpleEnergyContent } from "./data/physics-simple-energy";
+import { physicsWorkEnergyPowerContent } from "./data/physics-work-energy-power";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -28,7 +29,9 @@ import { physicsSimpleEnergyContent } from "./data/physics-simple-energy";
  * topics. Simple Forces and Simple Energy remain Learn + Explore only
  * for now — enough to make their progress trackable, which is what
  * the `physics-foundations` learning path (`@/features/learning-path`)
- * is built on.
+ * is built on. Work, Energy & Power is that same full standard again,
+ * applied to its own dedicated `WorkEnergyPower` lab and its own
+ * question bank (`physics-work-energy-power` in `@/features/quiz-engine`).
  */
 export const topicContentList: TopicContent[] = [
   physicsSimpleMotionContent,
@@ -38,6 +41,7 @@ export const topicContentList: TopicContent[] = [
   physicsSimpleForcesContent,
   physicsNewtonsLawsContent,
   physicsSimpleEnergyContent,
+  physicsWorkEnergyPowerContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

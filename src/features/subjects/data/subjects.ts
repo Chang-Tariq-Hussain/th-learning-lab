@@ -86,6 +86,13 @@ export const subjects: Subject[] = [
               "Release a ball down a hill and watch potential energy turn into kinetic energy.",
             href: "/dashboard/physics/simple-energy",
           },
+          {
+            slug: "work-energy-power",
+            title: "Work, Energy & Power",
+            description:
+              "Push, lift, and race machines — see work, kinetic and potential energy, and power as real, calculated numbers.",
+            href: "/dashboard/physics/work-energy-power",
+          },
         ],
       },
       {

@@ -190,12 +190,39 @@ export const physicsProjectileMotionContent: TopicContent = {
           "Drag continuously removes energy from the projectile throughout the flight, so it never quite reaches the ideal (no-drag) height or distance. It also breaks the ideal case's up-down symmetry: by the time the projectile is falling, it's lost speed to drag on the way up, so the descending half of the path is steeper and quicker than the climb.",
         hint: "Drag removes energy the whole flight, not just at one instant — how would that change the up-half versus the down-half of the arc?",
       },
+      {
+        id: "physics-projectile-motion-predict-005",
+        scenario:
+          "Launch at 30 m/s and 15°, note the time of flight, then launch again at 30 m/s and 75° — the complementary angle, which you already know lands at the same range.",
+        question: "How does the 75° time of flight compare to the 15° time of flight?",
+        options: [
+          { id: "much-longer", label: "It's much longer, even though the range is identical" },
+          { id: "same", label: "It's exactly the same, since the range is identical" },
+          { id: "shorter", label: "It's shorter" },
+          { id: "zero", label: "The projectile never lands" },
+        ],
+        actualResultOptionId: "much-longer",
+        explanation:
+          "Range only depends on sin(2θ), so complementary angles share it — but time of flight depends on sin(θ) alone (t = 2v·sinθ/g), which is very different for 15° and 75°. The high, arcing 75° shot spends far longer in the air than the low, flat 15° shot, even though gravity, speed, and landing spot are all identical. (This is the same relationship a launch height would change, too — anything that stretches the vertical part of the flight stretches time of flight, independent of range.)",
+        hint: "Range and time of flight depend on different things — range uses sin(2θ), time of flight uses sin(θ) alone. Complementary angles matching one doesn't mean they match the other.",
+      },
+      {
+        id: "physics-projectile-motion-predict-006",
+        scenario: "Launch at any speed and angle, and watch the live Vertical velocity readout as the projectile passes through the highest point of its arc.",
+        question: "What does the vertical velocity readout show at that exact instant?",
+        options: [
+          { id: "zero", label: "0 m/s" },
+          { id: "max", label: "Its maximum value for the whole flight" },
+          { id: "equal-horizontal", label: "Exactly equal to the horizontal velocity" },
+          { id: "negative-max", label: "Its most negative value" },
+        ],
+        actualResultOptionId: "zero",
+        explanation:
+          "The highest point of the trajectory is defined by the vertical velocity crossing from positive (still rising) to negative (starting to fall) — the one instant in between is exactly 0 m/s. The horizontal velocity readout, meanwhile, doesn't change at all through this moment — it's the same before, during, and after the apex.",
+        hint: "The apex is the moment the projectile stops rising and starts falling — what value does vertical velocity have to pass through to switch from positive to negative?",
+      },
     ],
   },
-
-  // -------------------------------------------------------------
-  // EXPLORE — the guided experiment
-  // -------------------------------------------------------------
   explore: {
     howToUse: [
       "Set a launch speed and angle on the Explore tab, then fire the projectile and watch the path trace out.",
@@ -218,6 +245,30 @@ export const physicsProjectileMotionContent: TopicContent = {
   // -------------------------------------------------------------
   explain: {
     questions: [
+      {
+        id: "physics-projectile-motion-explain-000a",
+        question: "Why is a projectile's trajectory curved instead of a straight line?",
+        answer:
+          "Horizontal motion continues at a steady pace with nothing acting to change it, while gravity continuously accelerates the projectile downward the entire flight. A straight line would need both directions to behave the same way — instead, one stays constant and the other keeps bending downward faster and faster, and the combination of 'steady sideways drift' with 'accelerating downward pull' is exactly what traces out a curve rather than a line.",
+      },
+      {
+        id: "physics-projectile-motion-explain-000b",
+        question: "Why does the projectile keep moving horizontally the whole flight, instead of slowing down like it does vertically?",
+        answer:
+          "Gravity is a purely vertical force — it never has any horizontal component to push against horizontal motion. With nothing opposing it (no air resistance in the ideal case), horizontal velocity has no reason to change at all, so it holds its launch value from the first instant to the last.",
+      },
+      {
+        id: "physics-projectile-motion-explain-000c",
+        question: "Why does the projectile reach a maximum height at all, instead of continuing to rise?",
+        answer:
+          "Gravity is constantly working against the upward part of the launch velocity, shrinking it a little more every instant. Eventually that vertical velocity is worn all the way down to zero — the instant it does, the projectile has stopped rising and is about to start falling, which is exactly what 'maximum height' means. After that instant, gravity keeps acting the same way it always has, just now building speed in the downward direction instead.",
+      },
+      {
+        id: "physics-projectile-motion-explain-000d",
+        question: "Why does changing the launch angle affect the trajectory at all, if the launch speed stays the same?",
+        answer:
+          "A single launch speed splits into a horizontal share and a vertical share depending on the angle — a low angle puts most of the speed into the horizontal direction, a high angle puts most of it into the vertical direction. Since range comes from the horizontal share and height comes from the vertical share, changing the angle without changing the total speed just trades one for the other, reshaping the whole arc.",
+      },
       {
         id: "physics-projectile-motion-explain-001",
         question: "Why do 30° and 60° launches at the same speed land at the same distance, even though they look completely different in the air?",
