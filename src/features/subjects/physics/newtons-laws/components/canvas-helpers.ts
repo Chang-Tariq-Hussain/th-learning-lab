@@ -113,6 +113,49 @@ export function drawPlatformSurface(
   ctx.restore();
 }
 
+/**
+ * Two short vertical bumpers marking where the fixed experiment track
+ * ends, drawn in world space at ±`limitMeters` so they stay put as the
+ * cart moves between them — the visible counterpart of the same wall
+ * `cart-engine.ts`'s `clampToTrack` physically stops the cart at, plus
+ * light tick marks every meter so displacement across the track reads
+ * as an actual distance, not just "moved some."
+ */
+export function drawTrackWalls(
+  ctx: CanvasRenderingContext2D,
+  projection: Projection,
+  isDark: boolean,
+  limitMeters: number,
+) {
+  ctx.save();
+  const wallColor = isDark ? "rgba(231,236,232,0.5)" : "rgba(20,32,25,0.45)";
+  const tickColor = isDark ? "rgba(231,236,232,0.18)" : "rgba(20,32,25,0.15)";
+  const wallHeightPx = 34;
+
+  ctx.strokeStyle = tickColor;
+  ctx.lineWidth = 1;
+  for (let m = -Math.floor(limitMeters); m <= Math.floor(limitMeters); m += 1) {
+    if (m === 0) continue;
+    const p = projection.toScreen({ x: m, y: 0 });
+    ctx.beginPath();
+    ctx.moveTo(p.x, projection.groundY);
+    ctx.lineTo(p.x, projection.groundY - 6);
+    ctx.stroke();
+  }
+
+  ctx.strokeStyle = wallColor;
+  ctx.lineWidth = 3;
+  ctx.lineCap = "round";
+  for (const m of [-limitMeters, limitMeters]) {
+    const p = projection.toScreen({ x: m, y: 0 });
+    ctx.beginPath();
+    ctx.moveTo(p.x, projection.groundY + 2);
+    ctx.lineTo(p.x, projection.groundY - wallHeightPx);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
 export type ObjectKind = "box" | "crate" | "sled";
 
 /**

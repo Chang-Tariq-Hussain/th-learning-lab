@@ -59,8 +59,8 @@ export interface Law3Engine {
  * are genuinely different `World`s (different body counts, different
  * forces), not the same rig with different parameters.
  */
-export function useLaw3Engine(active: boolean): Law3Engine {
-  const [scenario, setScenarioState] = useState<Law3ScenarioKey>("skaters");
+export function useLaw3Engine(active: boolean, initialScenario: Law3ScenarioKey = "skaters"): Law3Engine {
+  const [scenario, setScenarioState] = useState<Law3ScenarioKey>(initialScenario);
   const rigRef = useRef<Law3Rig>(buildRig(scenario));
   const [, forceRender] = useState(0);
 

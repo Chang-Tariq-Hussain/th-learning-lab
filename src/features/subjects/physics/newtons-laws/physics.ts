@@ -172,6 +172,22 @@ export class SurfaceFriction implements ForceGenerator {
 // only which controls/readouts are surfaced differs between the two.
 // ---------------------------------------------------------------------------
 
+/**
+ * Half-length (meters) of the fixed experimental track the cart moves
+ * within. The floor/background never scrolls (see `cart-canvas.tsx`),
+ * so this bounds how far the box can physically travel on screen — a
+ * wall at each end, not a camera limit. Chosen so a hard push at max
+ * force still has meaningful room to visibly accelerate before
+ * reaching either wall.
+ */
+export const CART_TRACK_LIMIT_M = 7;
+
+/** Half-width (meters) of the cart's box shape — matches `createCartRig`'s `shape.width / 2` below. Exported so `cart-canvas.tsx` can position the two person overlays against the box's actual edges without needing a `RigidBody` reference. */
+export const CART_HALF_WIDTH_M = 0.8;
+
+/** Whether a person is pushing the box away from themselves, or pulling it toward themselves — see the force generator in `createCartRig` for how this flips the sign of their contribution. */
+export type PushPullMode = "push" | "pull";
+
 export interface CartRig {
   world: World;
   cart: RigidBody;
@@ -185,6 +201,9 @@ export interface CartRig {
     /** How far each person is currently leaning into their push, 0 (resting, not touching) to 1 (fully engaged) — written directly by the person drag handles every pointer move, read here every physics step. */
     leftLean: number;
     rightLean: number;
+    /** Push or pull, per person — independent, so one can push while the other pulls. */
+    leftMode: PushPullMode;
+    rightMode: PushPullMode;
     /** Ceiling each person's full lean maps to, in Newtons — set by the "Max push force" slider. */
     maxPushForce: number;
   };
@@ -198,7 +217,7 @@ export function createCartRig(): CartRig {
     new RigidBody({
       position: { x: 0, y: 0 },
       mass: 5,
-      shape: { kind: "rect", width: 1.6, height: 1 },
+      shape: { kind: "rect", width: CART_HALF_WIDTH_M * 2, height: 1 },
       restitution: 0,
       friction: 0,
       userData: { color: "#7C4FE0", label: "Cart" },
@@ -212,6 +231,8 @@ export function createCartRig(): CartRig {
     frictionEnabled: true,
     leftLean: 0,
     rightLean: 0,
+    leftMode: "push",
+    rightMode: "push",
     maxPushForce: 80,
   };
 
@@ -223,20 +244,44 @@ export function createCartRig(): CartRig {
   // Order matters: the applied-force generator must run first so that,
   // by the time `friction.apply()` reads `body.netForce` to compute
   // static friction, this step's push has already been accumulated.
-  // Left pushes +x (toward the box from the left), right pushes -x
-  // (toward the box from the right) — two people converging on the box
-  // from opposite sides, exactly the "person → force → box" setup the
-  // two draggable figures represent. Lean is read fresh every step, so
-  // dragging feels immediate rather than quantized to a slider commit.
+  //
+  // Pushing: the left person pushes +x (toward the box from the left,
+  // sending it away from them), the right person pushes -x — two
+  // people converging on the box from opposite sides. Pulling flips
+  // that person's sign: a left pull drags the box toward the left
+  // person (-x), a right pull drags it toward the right person (+x).
+  // `signedForce` below is exactly `leftForce`/`rightForce` from
+  // `computeCartReadouts`, so the readouts and the physics can never
+  // disagree about which way a given lean actually pushes/pulls.
   world.addForce({
     apply: () => {
-      const net = (state.leftLean - state.rightLean) * state.maxPushForce;
+      const net = signedForce(state.leftLean, "left", state.leftMode, state.maxPushForce)
+        + signedForce(state.rightLean, "right", state.rightMode, state.maxPushForce);
       if (net !== 0) cart.applyForce(new Vector2(net, 0));
     },
   });
   world.addForce(friction);
 
   return { world, cart, friction, state };
+}
+
+/**
+ * Signed force (Newtons) one person contributes, given their lean
+ * (0–1), which side they're on, and whether they're pushing or
+ * pulling. Pure function shared by the force generator above and
+ * `computeCartReadouts`, so "what the physics does" and "what the
+ * readouts/arrows say" are computed from the same rule rather than two
+ * hand-kept-in-sync copies of it.
+ */
+export function signedForce(
+  lean: number,
+  side: "left" | "right",
+  mode: PushPullMode,
+  maxPushForce: number,
+): number {
+  const sideSign = side === "left" ? 1 : -1;
+  const modeSign = mode === "push" ? 1 : -1;
+  return lean * maxPushForce * sideSign * modeSign;
 }
 
 // ---------------------------------------------------------------------------
@@ -254,15 +299,17 @@ export interface CartReadouts {
   netForce: number;
   weight: number;
   normalForce: number;
-  /** Net of the two people's pushes (leftForce − rightForce), before friction. */
+  /** Net of the two people's signed contributions (push = away from that person, pull = toward them), before friction. */
   appliedForce: number;
-  /** Left person's push magnitude, ≥0. */
+  /** Left person's push/pull magnitude, ≥0. */
   leftForce: number;
-  /** Right person's push magnitude, ≥0. */
+  /** Right person's push/pull magnitude, ≥0. */
   rightForce: number;
   frictionForce: number;
   elapsedTime: number;
   distance: number;
+  /** The cart's raw world-space x position (meters) — used by `cart-canvas.tsx` to keep the two person overlays attached to the box's actual edges as it moves along the track, instead of pinned to fixed screen positions. */
+  positionX: number;
 }
 
 export function computeCartReadouts(
@@ -275,7 +322,9 @@ export function computeCartReadouts(
   const normalForce = weight; // level surface: N balances weight exactly
   const leftForce = state.leftLean * state.maxPushForce;
   const rightForce = state.rightLean * state.maxPushForce;
-  const appliedForce = leftForce - rightForce;
+  const appliedForce =
+    signedForce(state.leftLean, "left", state.leftMode, state.maxPushForce) +
+    signedForce(state.rightLean, "right", state.rightMode, state.maxPushForce);
 
   const speed = cart.velocity.x;
   const maxStatic = friction_staticMax(rig);
@@ -304,6 +353,7 @@ export function computeCartReadouts(
     frictionForce,
     elapsedTime,
     distance,
+    positionX: cart.position.x,
   };
 }
 

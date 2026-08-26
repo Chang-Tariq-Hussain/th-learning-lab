@@ -68,7 +68,7 @@ export function Law1Panel({
         <div className="flex gap-3 border-t border-line pt-3 text-sm dark:border-line-dark">
           <div className="flex-1">
             <div className="text-ink-soft dark:text-bone-soft">
-              Left person force
+              Left person {engine.leftMode === "push" ? "push" : "pull"}
             </div>
             <div className="font-mono text-base font-semibold text-ink dark:text-bone">
               {readouts.leftForce.toFixed(0)} N
@@ -76,7 +76,7 @@ export function Law1Panel({
           </div>
           <div className="flex-1">
             <div className="text-ink-soft dark:text-bone-soft">
-              Right person force
+              Right person {engine.rightMode === "push" ? "push" : "pull"}
             </div>
             <div className="font-mono text-base font-semibold text-ink dark:text-bone">
               {readouts.rightForce.toFixed(0)} N

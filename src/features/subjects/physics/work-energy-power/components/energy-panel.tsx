@@ -39,6 +39,14 @@ export function EnergyPanel() {
   const shelfFraction = height / HEIGHT_MAX;
   const ballY = 10 + (1 - shelfFraction) * SHELF_HEIGHT_PX;
 
+  // Continuous motion, not just a bigger number: a box that actually
+  // crosses the track, faster at higher velocity. Duration is inversely
+  // proportional to velocity (double the speed, half the time to cross)
+  // so "faster" is something the eye can compare, not just read off a
+  // slider. At velocity = 0 the animation is paused outright — a
+  // resting box shouldn't twitch.
+  const crossingDurationS = velocity > 0 ? 20 / velocity : 0;
+
   return (
     <div className="grid w-full grid-cols-1 gap-6 py-4 lg:grid-cols-2">
       {/* Kinetic energy */}
@@ -54,18 +62,43 @@ export function EnergyPanel() {
             rx={6}
             className="fill-subject-physics-soft stroke-subject-physics dark:fill-subject-physics/20"
             strokeWidth={2}
+            style={{ transition: "x 0.4s ease-out" }}
           />
-          {Array.from({ length: 3 }).map((_, i) => (
-            <line
-              key={i}
-              x1={10 + i * 5}
-              y1={55}
-              x2={16 + i * 5 + velocity}
-              y2={55}
-              strokeWidth={2}
-              className="stroke-subject-physics/50"
-            />
-          ))}
+          {/* Motion streaks rushing past behind the box — native SVG
+              `<animate>`, no separate animation system, and paused
+              entirely at velocity = 0 so a resting box reads as at
+              rest, not just slow. Their cycle time is tied to the same
+              `crossingDurationS` derived from velocity above, so
+              "faster" is something visibly, continuously true rather
+              than a single bigger number. */}
+          {velocity > 0
+            ? Array.from({ length: 3 }).map((_, i) => (
+                <line
+                  key={i}
+                  y1={55}
+                  y2={55}
+                  strokeWidth={2}
+                  className="stroke-subject-physics/50"
+                >
+                  <animate
+                    attributeName="x1"
+                    values="24;-6;24"
+                    keyTimes="0;0.999;1"
+                    dur={`${crossingDurationS}s`}
+                    begin={`${i * (crossingDurationS / 3)}s`}
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="x2"
+                    values="12;-18;12"
+                    keyTimes="0;0.999;1"
+                    dur={`${crossingDurationS}s`}
+                    begin={`${i * (crossingDurationS / 3)}s`}
+                    repeatCount="indefinite"
+                  />
+                </line>
+              ))
+            : null}
         </svg>
         <ReadoutCard label="Kinetic Energy" value={formatEnergyValue(ke)} unit="J" substitution={`½ × ${keMass} kg × (${velocity} m/s)²`} />
         <div className="grid w-full grid-cols-2 gap-4">
@@ -89,8 +122,19 @@ export function EnergyPanel() {
         <svg viewBox="0 0 220 100" className="h-24 w-full" role="img" aria-label={`A ${peMass} kilogram ball held ${height} meters above the ground`}>
           <rect x={0} y={90} width={220} height={10} rx={3} className="fill-ink/10 dark:fill-bone/10" />
           <line x1={30} y1={90} x2={30} y2={8} strokeWidth={2} strokeDasharray="3,3" className="stroke-ink/25 dark:stroke-bone/25" />
-          <circle cx={30} cy={ballY} r={11} className="fill-subject-physics" />
-          <text x={48} y={ballY + 4} className="fill-ink-soft font-mono text-[10px] dark:fill-bone-soft">
+          <circle
+            cx={30}
+            cy={ballY}
+            r={11}
+            className="fill-subject-physics"
+            style={{ transition: "cy 0.5s cubic-bezier(0.22,1,0.36,1)" }}
+          />
+          <text
+            x={48}
+            y={ballY + 4}
+            className="fill-ink-soft font-mono text-[10px] dark:fill-bone-soft"
+            style={{ transition: "y 0.5s cubic-bezier(0.22,1,0.36,1)" }}
+          >
             h = {height} m
           </text>
         </svg>

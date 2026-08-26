@@ -2,15 +2,19 @@
 
 import {
   SimulationCanvas,
+  useCanvasViewport,
   type SimulationCanvasRenderInfo,
 } from "@/features/simulation";
+import { useEffect, useRef, useState } from "react";
 import type { CartEngine, CartSnapshot } from "../cart-engine";
+import { CART_HALF_WIDTH_M, CART_TRACK_LIMIT_M } from "../physics";
 import {
   createProjection,
   drawForceVector,
   drawLabel,
   drawPlatformSurface,
   drawRealisticObject,
+  drawTrackWalls,
   drawVelocityVector,
   type ObjectKind,
 } from "./canvas-helpers";
@@ -36,9 +40,41 @@ const FRICTION_COLOR = "#E0524F";
 const NET_COLOR = "#7C4FE0";
 const VELOCITY_COLOR = "#2E9E5B";
 
+// Kept in sync with the world span passed to `createProjection` inside
+// `render` below — both the canvas draw and the person overlays need to
+// agree on exactly how world meters map to screen space, or the two
+// people will drift out of sync with the box they're supposed to be
+// touching.
+const WORLD_SPAN_METERS = (CART_TRACK_LIMIT_M + 1.5) * 2;
+// How far (meters) a person's foot anchor sits outside the box's edge
+// at rest, closing in as they lean further into their push/pull — the
+// same "lean closes the gap" idea the old fixed REST_PCT/ENGAGE_PCT
+// percentages used, just measured from the box's real edge now instead
+// of a fixed screen position.
+const STANDOFF_REST_M = 0.6;
+const STANDOFF_ENGAGED_M = 0.35;
+
 function isDarkMode(): boolean {
   if (typeof document === "undefined") return false;
   return document.documentElement.classList.contains("dark");
+}
+
+/** World x (meters) → percent from the container's left edge, using the
+ *  exact same mapping `createProjection` uses (fixed focus at 0, same
+ *  world span, same margin) so a person anchored here lines up with
+ *  where the canvas actually draws the box's edge. */
+function worldXToPercent(
+  worldX: number,
+  containerWidthPx: number,
+  zoom: number,
+  offsetX: number,
+): number {
+  if (containerWidthPx <= 0) return 50;
+  const usableWidth = Math.max(1, containerWidthPx - 48);
+  const pxPerMeter = (usableWidth / WORLD_SPAN_METERS) * zoom;
+  const centerX = containerWidthPx / 2;
+  const screenX = centerX + (worldX + offsetX) * pxPerMeter;
+  return Math.max(0, Math.min(100, (screenX / containerWidthPx) * 100));
 }
 
 /**
@@ -51,10 +87,46 @@ function isDarkMode(): boolean {
  * compute the applied force. The box's on-screen position comes
  * entirely from `engine.rig.cart.position`, updated by `World.step()` —
  * nothing here ever sets it directly, so it can't be dragged.
+ *
+ * The projection's focus point is fixed at world x = 0 (the track's
+ * center), never at `cart.position.x` — a camera that re-centers on
+ * the box every frame would keep it visually glued to the middle of
+ * the screen no matter how fast it's actually moving, which is exactly
+ * the "diagram, not experiment" problem this redesign fixes. With a
+ * fixed focus, the box's screen position is a direct, undisguised
+ * readout of its physics state, and it visibly travels toward the
+ * track walls drawn by `drawTrackWalls` (see `CART_TRACK_LIMIT_M` in
+ * `physics.ts`), which is also where `cart-engine.ts` physically stops
+ * it, so the wall the student sees is the same wall the physics obeys.
+ *
+ * Because the box now really moves, the two person overlays can no
+ * longer sit at fixed screen stations (that was the old camera-follows
+ * design, where the box never left the center) — a fixed-station
+ * person would have the box slide past or behind them the moment it
+ * traveled more than a few centimeters. Instead each person's screen
+ * position is recomputed from `readouts.positionX` (the box's live
+ * world x) every ~100ms tick via `worldXToPercent`, so they stay
+ * visually attached to whichever edge of the box they're push/pulling.
  */
 export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
   const { readouts } = snapshot;
   const isDark = isDarkMode();
+  const { viewport } = useCanvasViewport();
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver((entries) => {
+      const width = entries[0]?.contentRect.width;
+      if (width) setContainerWidth(width);
+    });
+    observer.observe(el);
+    setContainerWidth(el.clientWidth);
+    return () => observer.disconnect();
+  }, []);
 
   const render = (
     ctx: CanvasRenderingContext2D,
@@ -64,11 +136,15 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
     const cart = engine.rig.cart;
     const dark = isDarkMode();
 
-    const projection = createProjection(size, viewport, cart.position.x, 20);
+    // Fixed focus (world x = 0), NOT cart.position.x — see doc comment
+    // above. World span covers the track plus a small margin past each
+    // wall so the walls themselves stay on-screen at the limit.
+    const projection = createProjection(size, viewport, 0, WORLD_SPAN_METERS);
     const surfaceLabel = (cart.userData.surfaceLabel as string) ?? undefined;
     drawPlatformSurface(ctx, size, projection, dark, surfaceLabel);
+    drawTrackWalls(ctx, projection, dark, CART_TRACK_LIMIT_M);
 
-    let halfWidthM = 0.8;
+    let halfWidthM = CART_HALF_WIDTH_M;
     if (cart.shape.kind === "rect") {
       halfWidthM = cart.shape.width / 2;
       const screenCenter = projection.toScreen(cart.position);
@@ -84,16 +160,22 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
     const leftEdge = { x: cart.position.x - halfWidthM, y: midHeight };
     const rightEdge = { x: cart.position.x + halfWidthM, y: midHeight };
 
+    // Push points the arrow into the box (away from that person); pull
+    // points it out toward the person (the direction of the tension
+    // actually pulling the box) — see `signedForce` in physics.ts,
+    // which this mirrors exactly so the arrow can never disagree with
+    // what the physics is doing.
+    const leftArrowX = readouts.leftForce * (engine.leftMode === "push" ? 1 : -1);
+    const rightArrowX = readouts.rightForce * (engine.rightMode === "push" ? -1 : 1);
+
     if (options.showVectors) {
-      // Left push — originates at the box's left edge, points right
-      // (toward/into the box), sized by how hard the left person is
-      // currently leaning in.
+      // Left force — originates at the box's left edge.
       if (readouts.leftForce > 0.5) {
         drawForceVector(
           ctx,
           projection,
           leftEdge,
-          readouts.leftForce,
+          leftArrowX,
           0,
           LEFT_COLOR,
           vectorWidth,
@@ -103,19 +185,18 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
           drawLabel(
             ctx,
             `${readouts.leftForce.toFixed(0)} N`,
-            { x: tip.x + readouts.leftForce * 0.3, y: tip.y - 10 },
+            { x: tip.x + leftArrowX * 0.3, y: tip.y - 10 },
             LEFT_COLOR,
           );
         }
       }
-      // Right push — mirrors the left: originates at the box's right
-      // edge, points left.
+      // Right force — mirrors the left: originates at the box's right edge.
       if (readouts.rightForce > 0.5) {
         drawForceVector(
           ctx,
           projection,
           rightEdge,
-          -readouts.rightForce,
+          rightArrowX,
           0,
           RIGHT_COLOR,
           vectorWidth,
@@ -125,7 +206,7 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
           drawLabel(
             ctx,
             `${readouts.rightForce.toFixed(0)} N`,
-            { x: tip.x - readouts.rightForce * 0.3, y: tip.y - 10 },
+            { x: tip.x + rightArrowX * 0.3, y: tip.y - 10 },
             RIGHT_COLOR,
           );
         }
@@ -201,19 +282,26 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
     }
   };
 
+  const leftStandoff = STANDOFF_REST_M - engine.leftLean * (STANDOFF_REST_M - STANDOFF_ENGAGED_M);
+  const rightStandoff = STANDOFF_REST_M - engine.rightLean * (STANDOFF_REST_M - STANDOFF_ENGAGED_M);
+  const leftWorldX = readouts.positionX - CART_HALF_WIDTH_M - leftStandoff;
+  const rightWorldX = readouts.positionX + CART_HALF_WIDTH_M + rightStandoff;
+  const leftPersonPercent = worldXToPercent(leftWorldX, containerWidth, viewport.zoom, viewport.offset.x);
+  const rightPersonPercent = worldXToPercent(rightWorldX, containerWidth, viewport.zoom, viewport.offset.x);
+
   return (
-    <div className="relative">
+    <div ref={containerRef} className="relative">
       {/*
         Pan/zoom is switched off for this canvas (`pointer-events-none`)
         so no pointer interaction on the canvas itself — background,
         floor, or box — can ever move the camera or relocate anything.
-        `createProjection` always centers the box at the canvas's
-        horizontal midpoint, so the two person overlays below (fixed
-        percentages from each edge) stay correctly flanking the box
-        without needing to track its world position themselves.
+        The two person overlays below track the box's real screen
+        position (via `worldXToPercent`, computed from `readouts.positionX`)
+        rather than sitting at a fixed station, so the box can never
+        visually slide past or behind either of them.
       */}
       <SimulationCanvas
-        ariaLabel="A box on a surface, flanked by two people who push it from opposite sides"
+        ariaLabel="A box on a surface, flanked by two people who push or pull it from opposite sides"
         render={render}
         showGrid={false}
         showAxes={false}
@@ -224,6 +312,9 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
         side="left"
         lean={engine.leftLean}
         onLeanChange={engine.setLeftLean}
+        mode={engine.leftMode}
+        onModeChange={engine.setLeftMode}
+        leftPercent={leftPersonPercent}
         forceLabel={`${readouts.leftForce.toFixed(0)} N`}
         color={LEFT_COLOR}
         isDark={isDark}
@@ -232,6 +323,9 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
         side="right"
         lean={engine.rightLean}
         onLeanChange={engine.setRightLean}
+        mode={engine.rightMode}
+        onModeChange={engine.setRightMode}
+        leftPercent={rightPersonPercent}
         forceLabel={`${readouts.rightForce.toFixed(0)} N`}
         color={RIGHT_COLOR}
         isDark={isDark}
@@ -242,15 +336,15 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
           <FreeBodyDiagram
             forces={[
               {
-                label: "Left push",
+                label: engine.leftMode === "push" ? "Left push" : "Left pull",
                 value: readouts.leftForce,
-                direction: "right",
+                direction: leftArrowXSign(engine, readouts.leftForce),
                 color: LEFT_COLOR,
               },
               {
-                label: "Right push",
+                label: engine.rightMode === "push" ? "Right push" : "Right pull",
                 value: readouts.rightForce,
-                direction: "left",
+                direction: rightArrowXSign(engine, readouts.rightForce),
                 color: RIGHT_COLOR,
               },
               {
@@ -277,4 +371,14 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
       ) : null}
     </div>
   );
+}
+
+function leftArrowXSign(engine: CartEngine, magnitude: number): "left" | "right" {
+  if (magnitude <= 0) return "right";
+  return engine.leftMode === "push" ? "right" : "left";
+}
+
+function rightArrowXSign(engine: CartEngine, magnitude: number): "left" | "right" {
+  if (magnitude <= 0) return "left";
+  return engine.rightMode === "push" ? "left" : "right";
 }

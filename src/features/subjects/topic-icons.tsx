@@ -37,6 +37,7 @@ const topicIconMap: Record<string, LucideIcon> = {
   // Physics
   kinematics: Gauge,
   "newtonian-mechanics": Dumbbell,
+  "circular-motion-and-gravitation": CircleDot,
   electromagnetism: Zap,
   "wave-motion": Waves,
 

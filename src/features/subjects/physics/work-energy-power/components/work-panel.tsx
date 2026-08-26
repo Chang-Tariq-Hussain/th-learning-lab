@@ -41,11 +41,17 @@ export function WorkPanel() {
   const sign = workSign(work);
   const tone = sign === "positive" ? "positive" : sign === "negative" ? "negative" : "default";
 
+  // Single source of truth: the box's screen offset is driven directly
+  // by the `displacement` value (the same number the Work readout
+  // uses), scaled at 8px/m — nothing here animates independently of
+  // that state. A CSS transition on the wrapping `<g>` (below) is what
+  // turns a slider change into visible travel instead of a jump.
+  const travelPx = displacement * 8;
   const angleRad = (angle * Math.PI) / 180;
-  const arrowEndX = BOX_X + BOX_SIZE / 2 + ARROW_LENGTH * Math.cos(angleRad);
-  const arrowEndY = BOX_Y_TOP + BOX_SIZE / 2 - ARROW_LENGTH * Math.sin(angleRad);
-  const arrowStartX = BOX_X + BOX_SIZE / 2;
-  const arrowStartY = BOX_Y_TOP + BOX_SIZE / 2;
+  const arrowEndX = BOX_SIZE / 2 + ARROW_LENGTH * Math.cos(angleRad);
+  const arrowEndY = BOX_SIZE / 2 - ARROW_LENGTH * Math.sin(angleRad);
+  const arrowStartX = BOX_SIZE / 2;
+  const arrowStartY = BOX_SIZE / 2;
 
   return (
     <div className="flex flex-col items-center gap-6 py-4">
@@ -59,59 +65,84 @@ export function WorkPanel() {
           >
             <rect x={0} y={GROUND_Y} width={VIEW_WIDTH} height={16} rx={4} className="fill-ink/10 dark:fill-bone/10" />
 
-            {/* Displacement track */}
-            <line
-              x1={BOX_X + BOX_SIZE / 2}
-              y1={GROUND_Y + 8}
-              x2={displacement > 0 ? BOX_X + BOX_SIZE / 2 + displacement * 8 : BOX_X + BOX_SIZE / 2}
-              y2={GROUND_Y + 8}
-              strokeWidth={3}
-              strokeDasharray="4,4"
-              className="stroke-ink/40 dark:stroke-bone/40"
-            />
-            <text
-              x={BOX_X + BOX_SIZE / 2 + (displacement * 8) / 2}
-              y={GROUND_Y + 26}
-              textAnchor="middle"
-              className="fill-ink-soft font-mono text-[10px] dark:fill-bone-soft"
-            >
-              displacement = {displacement} m
-            </text>
-
-            {/* Box */}
+            {/* Ghost outline marking the box's starting position, so the
+                travel distance below reads against a fixed reference. */}
             <rect
               x={BOX_X}
               y={BOX_Y_TOP}
               width={BOX_SIZE}
               height={BOX_SIZE}
               rx={6}
-              className="fill-subject-physics-soft stroke-subject-physics dark:fill-subject-physics/20"
-              strokeWidth={2}
+              fill="none"
+              strokeDasharray="3,3"
+              className="stroke-ink/25 dark:stroke-bone/25"
+              strokeWidth={1.5}
             />
 
-            {/* Force arrow */}
+            {/* Displacement track — from the starting position to the
+                box's live position, so it always matches where the box
+                actually is, not just the target value. */}
             <line
-              x1={arrowStartX}
-              y1={arrowStartY}
-              x2={arrowEndX}
-              y2={arrowEndY}
+              x1={BOX_X + BOX_SIZE / 2}
+              y1={GROUND_Y + 8}
+              x2={BOX_X + BOX_SIZE / 2 + travelPx}
+              y2={GROUND_Y + 8}
               strokeWidth={3}
-              className="stroke-[#E0524F]"
-              markerEnd="url(#work-arrowhead)"
+              strokeDasharray="4,4"
+              className="stroke-ink/40 dark:stroke-bone/40"
+              style={{ transition: "x2 0.6s cubic-bezier(0.22,1,0.36,1)" }}
             />
+            <text
+              x={BOX_X + BOX_SIZE / 2 + travelPx / 2}
+              y={GROUND_Y + 26}
+              textAnchor="middle"
+              className="fill-ink-soft font-mono text-[10px] dark:fill-bone-soft"
+              style={{ transition: "x 0.6s cubic-bezier(0.22,1,0.36,1)" }}
+            >
+              displacement = {displacement} m
+            </text>
+
+            {/* The box itself travels: this group's transform is driven
+                directly by `displacement` (via `travelPx`), and the CSS
+                transition is purely visual polish on top of that single
+                source of truth — turning a slider commit into the box
+                actually crossing the floor rather than teleporting. */}
+            <g
+              transform={`translate(${BOX_X + travelPx}, ${BOX_Y_TOP})`}
+              style={{ transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1)" }}
+            >
+              <rect
+                width={BOX_SIZE}
+                height={BOX_SIZE}
+                rx={6}
+                className="fill-subject-physics-soft stroke-subject-physics dark:fill-subject-physics/20"
+                strokeWidth={2}
+              />
+
+              {/* Force arrow, anchored to the box so it travels with it. */}
+              <line
+                x1={arrowStartX}
+                y1={arrowStartY}
+                x2={arrowEndX}
+                y2={arrowEndY}
+                strokeWidth={3}
+                className="stroke-[#E0524F]"
+                markerEnd="url(#work-arrowhead)"
+              />
+              <text
+                x={arrowEndX}
+                y={arrowEndY - 8}
+                textAnchor="middle"
+                className="fill-[#E0524F] font-mono text-[10px] font-semibold"
+              >
+                F = {force} N, θ = {angle}°
+              </text>
+            </g>
             <defs>
               <marker id="work-arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
                 <path d="M0,0 L8,4 L0,8 Z" className="fill-[#E0524F]" />
               </marker>
             </defs>
-            <text
-              x={arrowEndX}
-              y={arrowEndY - 8}
-              textAnchor="middle"
-              className="fill-[#E0524F] font-mono text-[10px] font-semibold"
-            >
-              F = {force} N, θ = {angle}°
-            </text>
           </svg>
         </div>
 

@@ -7,6 +7,7 @@ import {
   ToggleSwitch,
   useSimulation,
 } from "@/features/simulation";
+import type { CartEngine } from "../cart-engine";
 import type { CartReadouts } from "../physics";
 import { newtonsLawsSchema } from "../schema";
 
@@ -22,10 +23,11 @@ const frictionCoefficientParam = newtonsLawsSchema.numeric!.find(
 )!;
 
 export interface Law2PanelProps {
+  engine: CartEngine;
   readouts: CartReadouts;
 }
 
-export function Law2Panel({ readouts }: Law2PanelProps) {
+export function Law2Panel({ engine, readouts }: Law2PanelProps) {
   const { values, setSelect } = useSimulation();
   const surface = String(values.surface ?? "wood");
   const frictionOn = values.frictionEnabled !== "off";
@@ -53,7 +55,7 @@ export function Law2Panel({ readouts }: Law2PanelProps) {
         <div className="flex gap-3 border-t border-line pt-3 text-sm dark:border-line-dark">
           <div className="flex-1">
             <div className="text-ink-soft dark:text-bone-soft">
-              Left person force
+              Left person {engine.leftMode === "push" ? "push" : "pull"}
             </div>
             <div className="font-mono text-base font-semibold text-ink dark:text-bone">
               {readouts.leftForce.toFixed(0)} N
@@ -61,7 +63,7 @@ export function Law2Panel({ readouts }: Law2PanelProps) {
           </div>
           <div className="flex-1">
             <div className="text-ink-soft dark:text-bone-soft">
-              Right person force
+              Right person {engine.rightMode === "push" ? "push" : "pull"}
             </div>
             <div className="font-mono text-base font-semibold text-ink dark:text-bone">
               {readouts.rightForce.toFixed(0)} N

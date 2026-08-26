@@ -140,7 +140,25 @@ function MachineCard({
           </span>
         ) : null}
       </div>
-      <div className="h-6 w-full overflow-hidden rounded-full bg-white/70 shadow-card dark:bg-white/[0.04]">
+      {/* A box physically crossing the same fixed track — its position
+          is `fraction` (real elapsed time / this machine's time), the
+          exact number the requestAnimationFrame loop above is already
+          driving, so a faster machine is something you watch arrive
+          first rather than a number you have to compare separately. */}
+      <svg viewBox="0 0 220 46" className="h-11 w-full" role="img" aria-label={`${label} has completed ${percent}% of ${work} joules of work`}>
+        <rect x={4} y={34} width={212} height={8} rx={3} className="fill-ink/10 dark:fill-bone/10" />
+        <rect
+          x={4 + fraction * 176}
+          y={10}
+          width={28}
+          height={24}
+          rx={5}
+          className={isWinner ? "fill-subject-physics stroke-subject-physics" : "fill-subject-physics-soft stroke-subject-physics dark:fill-subject-physics/20"}
+          strokeWidth={2}
+          style={{ transition: fraction === 0 ? "none" : "x 0.1s linear" }}
+        />
+      </svg>
+      <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/70 shadow-card dark:bg-white/[0.04]">
         <div
           className="h-full rounded-full bg-subject-physics transition-[width] duration-100 ease-linear"
           style={{ width: `${percent}%` }}

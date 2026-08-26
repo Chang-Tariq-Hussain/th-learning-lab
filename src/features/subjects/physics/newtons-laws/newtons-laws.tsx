@@ -192,8 +192,9 @@ function NewtonsLawsBody() {
           {!presentation && !teacher.formulasOnly && law !== 3 ? (
             <>
               <p className="text-sm text-ink-soft dark:text-bone-soft">
-                Drag either person toward the box to change the force they
-                apply to it.
+                Drag either person toward the box to push, or away from it to
+                pull — use the Push/Pull button above each figure to switch
+                which one they&apos;re doing.
               </p>
               <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-card border border-line bg-line text-center dark:border-line-dark dark:bg-line-dark sm:grid-cols-3 lg:grid-cols-6">
                 {(
@@ -282,7 +283,7 @@ function NewtonsLawsBody() {
                   onViewOptionsChange={setCartView}
                 />
               ) : law === 2 ? (
-                <Law2Panel readouts={cartSnapshot.readouts} />
+                <Law2Panel engine={cartEngine} readouts={cartSnapshot.readouts} />
               ) : (
                 <Law3Panel engine={law3Engine} />
               )

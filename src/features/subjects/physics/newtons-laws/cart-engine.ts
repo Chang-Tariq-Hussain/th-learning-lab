@@ -7,6 +7,7 @@ import {
 } from "@/features/simulation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
+  CART_TRACK_LIMIT_M,
   computeCartReadouts,
   createCartRig,
   OBJECT_PRESETS,
@@ -15,7 +16,30 @@ import {
   SURFACE_PRESETS,
   type CartReadouts,
   type CartRig,
+  type PushPullMode,
 } from "./physics";
+
+/**
+ * Stops the cart at the track's walls instead of letting it run off
+ * into the void. This is a physical boundary (like a bumper at each
+ * end of the experiment track), not a camera trick — it's the "keep a
+ * defined experimental track" option, applied after the physics step
+ * so `world.step()` itself stays a pure F=ma integrator. Zeroing
+ * velocity on contact means a moving cart visibly stops dead at the
+ * wall rather than clipping through or teleporting back.
+ */
+function clampToTrack(rig: CartRig): void {
+  const { cart } = rig;
+  const halfWidth = cart.shape.kind === "rect" ? cart.shape.width / 2 : 0.5;
+  const limit = CART_TRACK_LIMIT_M - halfWidth;
+  if (cart.position.x > limit) {
+    cart.position.x = limit;
+    if (cart.velocity.x > 0) cart.velocity.x = 0;
+  } else if (cart.position.x < -limit) {
+    cart.position.x = -limit;
+    if (cart.velocity.x < 0) cart.velocity.x = 0;
+  }
+}
 
 export interface CartTrailSample {
   t: number;
@@ -32,11 +56,17 @@ export interface CartEngine {
    * so dragging is never gated on a React re-render. */
   leftLean: number;
   rightLean: number;
+  /** Push or pull, per person — mirrored into React state the same way
+   * lean is, so the toggle buttons re-render immediately. */
+  leftMode: PushPullMode;
+  rightMode: PushPullMode;
   /** Called continuously while dragging a person; writes straight into
    * `rig.state` (so physics feels immediate) and mirrors into React
    * state (so the UI catches up too). */
   setLeftLean: (lean: number) => void;
   setRightLean: (lean: number) => void;
+  setLeftMode: (mode: PushPullMode) => void;
+  setRightMode: (mode: PushPullMode) => void;
   reset: () => void;
 }
 
@@ -55,6 +85,8 @@ export function useCartEngine(): CartEngine {
 
   const [leftLean, setLeftLeanState] = useState(0);
   const [rightLean, setRightLeanState] = useState(0);
+  const [leftMode, setLeftModeState] = useState<PushPullMode>("push");
+  const [rightMode, setRightModeState] = useState<PushPullMode>("push");
 
   const setLeftLean = (lean: number) => {
     const clamped = Math.max(0, Math.min(1, lean));
@@ -66,12 +98,21 @@ export function useCartEngine(): CartEngine {
     rig.state.rightLean = clamped;
     setRightLeanState(clamped);
   };
+  const setLeftMode = (mode: PushPullMode) => {
+    rig.state.leftMode = mode;
+    setLeftModeState(mode);
+  };
+  const setRightMode = (mode: PushPullMode) => {
+    rig.state.rightMode = mode;
+    setRightModeState(mode);
+  };
 
   const { subscribeFrame } = useSimulation();
 
   useEffect(() => {
     return subscribeFrame((frame: FrameInfo) => {
       rig.world.step(frame.deltaTime);
+      clampToTrack(rig);
     });
   }, [subscribeFrame, rig]);
 
@@ -79,11 +120,26 @@ export function useCartEngine(): CartEngine {
     rig.world.reset();
     rig.state.leftLean = 0;
     rig.state.rightLean = 0;
+    rig.state.leftMode = "push";
+    rig.state.rightMode = "push";
     setLeftLeanState(0);
     setRightLeanState(0);
+    setLeftModeState("push");
+    setRightModeState("push");
   };
 
-  return { rig, leftLean, rightLean, setLeftLean, setRightLean, reset };
+  return {
+    rig,
+    leftLean,
+    rightLean,
+    leftMode,
+    rightMode,
+    setLeftLean,
+    setRightLean,
+    setLeftMode,
+    setRightMode,
+    reset,
+  };
 }
 
 /**
@@ -151,6 +207,7 @@ const EMPTY_READOUTS: CartReadouts = {
   frictionForce: 0,
   elapsedTime: 0,
   distance: 0,
+  positionX: 0,
 };
 
 const MAX_TRAIL_SAMPLES = 600;

@@ -7,6 +7,9 @@ import { physicsSimpleForcesContent } from "./data/physics-simple-forces";
 import { physicsNewtonsLawsContent } from "./data/physics-newtons-laws";
 import { physicsSimpleEnergyContent } from "./data/physics-simple-energy";
 import { physicsWorkEnergyPowerContent } from "./data/physics-work-energy-power";
+import { physicsMomentumContent } from "./data/physics-momentum";
+import { physicsCircularMotionContent } from "./data/physics-circular-motion";
+import { physicsGravitationContent } from "./data/physics-gravitation";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -32,6 +35,10 @@ import { physicsWorkEnergyPowerContent } from "./data/physics-work-energy-power"
  * is built on. Work, Energy & Power is that same full standard again,
  * applied to its own dedicated `WorkEnergyPower` lab and its own
  * question bank (`physics-work-energy-power` in `@/features/quiz-engine`).
+ * Momentum is that same full standard once more, reusing Newton's
+ * Laws' existing "Law 3" rig as its own `Momentum` lab (see that
+ * component's doc comment) rather than a new physics engine, with its
+ * own dedicated question bank (`physics-momentum`).
  */
 export const topicContentList: TopicContent[] = [
   physicsSimpleMotionContent,
@@ -42,6 +49,9 @@ export const topicContentList: TopicContent[] = [
   physicsNewtonsLawsContent,
   physicsSimpleEnergyContent,
   physicsWorkEnergyPowerContent,
+  physicsMomentumContent,
+  physicsCircularMotionContent,
+  physicsGravitationContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

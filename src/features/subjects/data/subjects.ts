@@ -73,6 +73,13 @@ export const subjects: Subject[] = [
             href: "/dashboard/physics/newtons-laws",
           },
           {
+            slug: "momentum",
+            title: "Momentum",
+            description:
+              "Push skaters apart or collide two carts — watch mass times velocity add up to a quantity that's always conserved.",
+            href: "/dashboard/physics/momentum",
+          },
+          {
             slug: "simple-forces",
             title: "Simple Forces",
             description:
@@ -92,6 +99,26 @@ export const subjects: Subject[] = [
             description:
               "Push, lift, and race machines — see work, kinetic and potential energy, and power as real, calculated numbers.",
             href: "/dashboard/physics/work-energy-power",
+          },
+        ],
+      },
+      {
+        slug: "circular-motion-and-gravitation",
+        name: "Circular Motion & Gravitation",
+        visualizations: [
+          {
+            slug: "circular-motion",
+            title: "Circular Motion",
+            description:
+              "Send an object around a circle at constant speed and watch it accelerate anyway — velocity and centripetal force vectors included.",
+            href: "/dashboard/physics/circular-motion",
+          },
+          {
+            slug: "gravitation",
+            title: "Gravitation",
+            description:
+              "Explore Newton's law of universal gravitation, compare weight across worlds, and launch a satellite into a real, physics-driven orbit.",
+            href: "/dashboard/physics/gravitation",
           },
         ],
       },
