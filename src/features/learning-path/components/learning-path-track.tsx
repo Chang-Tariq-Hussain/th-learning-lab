@@ -43,9 +43,11 @@ export function LearningPathTrack({ path, className }: LearningPathTrackProps) {
         </div>
 
         <div className="flex flex-col items-end gap-1 text-right">
-          <span className="font-mono text-2xl font-semibold text-ink dark:text-bone">{state.pathMasteryPercent}%</span>
+          <span className="font-mono text-2xl font-semibold text-ink dark:text-bone">
+            {state.startedCoreCount}/{state.totalCoreCount}
+          </span>
           <span className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
-            {state.completedCoreCount}/{state.totalCoreCount} complete
+            topics started
           </span>
         </div>
       </div>
@@ -53,9 +55,12 @@ export function LearningPathTrack({ path, className }: LearningPathTrackProps) {
       <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-line dark:bg-line-dark" role="presentation">
         <div
           className={cn("h-full rounded-full transition-all duration-500", colors.bar)}
-          style={{ width: `${state.pathMasteryPercent}%` }}
+          style={{ width: `${state.totalCoreCount === 0 ? 0 : Math.round((state.startedCoreCount / state.totalCoreCount) * 100)}%` }}
         />
       </div>
+      <p className="mt-1.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft/70 dark:text-bone-soft/60">
+        {state.completedCoreCount}/{state.totalCoreCount} fully complete · {state.pathMasteryPercent}% average mastery
+      </p>
 
       <ol className="mt-7 flex flex-col" aria-label="Path topics, in order">
         {coreTopics.map((topicState, index) => (

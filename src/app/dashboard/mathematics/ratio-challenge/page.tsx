@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { RatioChallenge } from "@/features/subjects/mathematics/ratio-challenge";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Ratio Challenge",
   description: "Random ratio challenges from beginner to advanced — missing values, simplifying, equivalent ratios, and word problems with instant feedback.",
@@ -81,6 +82,8 @@ export default function RatioChallengePage() {
           "See how many levels you can climb by staying accurate rather than rushing.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

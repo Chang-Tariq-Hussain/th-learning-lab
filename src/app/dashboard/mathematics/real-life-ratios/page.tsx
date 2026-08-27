@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { RealLifeRatios } from "@/features/subjects/mathematics/real-life-ratios";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Real-Life Ratios",
   description: "Solve illustrated ratio problems — paint mixing, recipes, marbles, trees, and more.",
@@ -75,6 +76,8 @@ export default function RealLifeRatiosPage() {
           "Try to think of one more real-life situation, outside this simulation, that hides a ratio.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

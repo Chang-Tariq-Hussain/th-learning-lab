@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { RatioComparison } from "@/features/subjects/mathematics/ratio-comparison";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Ratio Comparison",
   description: "Drag sliders on two ratios and see instantly whether they're equivalent — and why.",
@@ -77,6 +78,8 @@ export default function RatioComparisonPage() {
           "Try to build two ratios that are close in value but not actually equivalent — how far off are they?",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

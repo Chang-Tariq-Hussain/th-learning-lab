@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { ChainRuleExplorer } from "@/features/subjects/mathematics/chain-rule-explorer";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Chain Rule Explorer — Differentiating Composite Functions",
   description:
@@ -78,6 +79,8 @@ export default function ChainRuleExplorerPage() {
           "Predict which derivative will have more terms: a simple power function or a composite function of similar complexity.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

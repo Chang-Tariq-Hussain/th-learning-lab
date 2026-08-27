@@ -10,6 +10,11 @@ import { physicsWorkEnergyPowerContent } from "./data/physics-work-energy-power"
 import { physicsMomentumContent } from "./data/physics-momentum";
 import { physicsCircularMotionContent } from "./data/physics-circular-motion";
 import { physicsGravitationContent } from "./data/physics-gravitation";
+import { mathematicsNumberLineContent } from "./data/mathematics-number-line";
+import { mathematicsEvenOddContent } from "./data/mathematics-even-odd";
+import { mathematicsFactorsMultiplesContent } from "./data/mathematics-factors-multiples";
+import { mathematicsFractionsContent } from "./data/mathematics-fractions";
+import { mathematicsFractionOperationsContent } from "./data/mathematics-fraction-operations";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -39,6 +44,23 @@ import { physicsGravitationContent } from "./data/physics-gravitation";
  * Laws' existing "Law 3" rig as its own `Momentum` lab (see that
  * component's doc comment) rather than a new physics engine, with its
  * own dedicated question bank (`physics-momentum`).
+ *
+ * Mathematics Batch 1 (Number Sense & Fractions) follows the same
+ * pattern, but per the Mathematics design principle it's framed as
+ * visualize → manipulate → discover a pattern → reason → solve,
+ * rather than physics' observe → understand → apply. Number Line and
+ * Fractions reuse the pre-existing `NumberLine` and `FractionPizza`
+ * simulations as-is. Even & Odd Numbers and Factors & Multiples had
+ * no existing simulation, so minimal new ones were built — the Even
+ * & Odd Explorer and Factor Finder (see their own doc comments in
+ * `@/features/subjects/mathematics/`) — reusing the existing
+ * challenge-banner/confetti/chime conventions from `number-line`
+ * rather than inventing new ones. Fraction Operations is likewise a
+ * new minimal simulation, the Fraction Operations Lab, with a
+ * dedicated visual per operation (common-denominator bars for
+ * add/subtract, an area-model grid for multiply, a grouped-chunk bar
+ * for divide). Each of these five topics has its own 30-question
+ * bank in `@/features/quiz-engine/data/mathematics-*-quiz.ts`.
  */
 export const topicContentList: TopicContent[] = [
   physicsSimpleMotionContent,
@@ -52,6 +74,11 @@ export const topicContentList: TopicContent[] = [
   physicsMomentumContent,
   physicsCircularMotionContent,
   physicsGravitationContent,
+  mathematicsNumberLineContent,
+  mathematicsEvenOddContent,
+  mathematicsFactorsMultiplesContent,
+  mathematicsFractionsContent,
+  mathematicsFractionOperationsContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

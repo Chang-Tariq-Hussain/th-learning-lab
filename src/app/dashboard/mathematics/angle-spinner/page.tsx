@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { AngleSpinner } from "@/features/subjects/mathematics/angle-spinner";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Angle Spinner",
   description: "Drag an arm to explore acute, right, obtuse, straight, and reflex angles.",
@@ -74,6 +75,8 @@ export default function AngleSpinnerPage() {
           "Sweep the arm all the way around. At what point does an angle stop being reflex and become a full circle?",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

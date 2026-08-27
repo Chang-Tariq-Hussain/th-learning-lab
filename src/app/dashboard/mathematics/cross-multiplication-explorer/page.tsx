@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { CrossMultiplicationExplorer } from "@/features/subjects/mathematics/cross-multiplication-explorer";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Cross Multiplication Explorer",
   description: "Watch the two diagonal multiplications animate to see why 2/3 = 4/6 — then try your own fractions.",
@@ -77,6 +78,8 @@ export default function CrossMultiplicationExplorerPage() {
           "Think of a proportion problem from real life where cross multiplication would be the fastest way to solve it.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

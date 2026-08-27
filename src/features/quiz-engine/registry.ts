@@ -12,6 +12,11 @@ import { chemistryReactionKineticsQuiz } from "./data/chemistry-reaction-kinetic
 import { mathematicsCalculusQuiz } from "./data/mathematics-calculus-quiz";
 import { mathematicsCoordinateGeometryQuiz } from "./data/mathematics-coordinate-geometry-quiz";
 import { mathematicsMeasurementQuiz } from "./data/mathematics-measurement-quiz";
+import { mathematicsNumberLineQuiz } from "./data/mathematics-number-line-quiz";
+import { mathematicsEvenOddQuiz } from "./data/mathematics-even-odd-quiz";
+import { mathematicsFactorsMultiplesQuiz } from "./data/mathematics-factors-multiples-quiz";
+import { mathematicsFractionsQuiz } from "./data/mathematics-fractions-quiz";
+import { mathematicsFractionOperationsQuiz } from "./data/mathematics-fraction-operations-quiz";
 import { mathematicsStatisticsQuiz } from "./data/mathematics-statistics-quiz";
 import { mathematicsStraightLineQuiz } from "./data/mathematics-straight-line-quiz";
 import { physicsElectromagnetismQuiz } from "./data/physics-electromagnetism-quiz";
@@ -51,6 +56,11 @@ export const quizzes: QuizMeta[] = [
   mathematicsMeasurementQuiz,
   mathematicsStatisticsQuiz,
   mathematicsStraightLineQuiz,
+  mathematicsNumberLineQuiz,
+  mathematicsEvenOddQuiz,
+  mathematicsFactorsMultiplesQuiz,
+  mathematicsFractionsQuiz,
+  mathematicsFractionOperationsQuiz,
   physicsElectromagnetismQuiz,
   physicsMotionQuiz,
   physicsSimpleMotionQuiz,

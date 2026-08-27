@@ -9,6 +9,7 @@ import { DerivativeExplorer } from "@/features/subjects/mathematics/derivative-e
 
 const SIMULATION_HREF = "/dashboard/mathematics/derivative-explorer";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Derivative Explorer — Tangent Line & Instantaneous Rate of Change",
   description:
@@ -86,6 +87,8 @@ export default function DerivativeExplorerPage() {
       />
 
       <CrossSubjectConnections connections={getConnectionsForHref(SIMULATION_HREF)} />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

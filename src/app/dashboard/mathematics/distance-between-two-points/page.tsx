@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { DistanceBetweenTwoPoints } from "@/features/subjects/mathematics/distance-between-two-points";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Distance Between Two Points",
   description:
@@ -76,6 +77,8 @@ export default function DistanceBetweenTwoPointsPage() {
           "Predict what happens to the distance if you double both Δx and Δy.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

@@ -7,6 +7,7 @@ import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-mor
 import { getQuizById } from "@/features/quiz-engine/registry";
 import { CoordinatePlaneExplorer } from "@/features/subjects/mathematics/coordinate-plane-explorer";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Coordinate Plane Explorer",
   description:
@@ -83,6 +84,8 @@ export default function CoordinatePlaneExplorerPage() {
           "Move the point to each of the four quadrants in turn and describe the sign pattern you see each time.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

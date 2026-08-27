@@ -463,6 +463,18 @@ export const subjects: Subject[] = [
               "Drag a marker to feel positive, negative, and zero by hand.",
             href: "/dashboard/mathematics/number-line",
           },
+          {
+            slug: "even-odd-explorer",
+            title: "Even & Odd Explorer",
+            description: "Build expressions and watch the leftover dot decide even or odd.",
+            href: "/dashboard/mathematics/even-odd-explorer",
+          },
+          {
+            slug: "factor-finder",
+            title: "Factor Finder",
+            description: "Tap out factor pairs and multiples to build a feel for both.",
+            href: "/dashboard/mathematics/factor-finder",
+          },
         ],
       },
       {
@@ -474,6 +486,12 @@ export const subjects: Subject[] = [
             title: "Fraction Pizza",
             description: "Slice a pizza to see fractions as pieces of a whole.",
             href: "/dashboard/mathematics/fraction-pizza",
+          },
+          {
+            slug: "fraction-operations",
+            title: "Fraction Operations Lab",
+            description: "Add, subtract, multiply, and divide fractions with a visual for each.",
+            href: "/dashboard/mathematics/fraction-operations",
           },
         ],
       },

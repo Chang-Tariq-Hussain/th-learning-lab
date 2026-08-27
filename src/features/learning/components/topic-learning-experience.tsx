@@ -7,6 +7,7 @@ import { getQuizById } from "@/features/quiz-engine/registry";
 import { QuizExperience } from "@/features/quiz-engine/quiz-experience";
 import { useLearningProgress } from "@/hooks/use-learning-progress";
 import { usePracticePerformance } from "@/hooks/use-practice-performance";
+import { LearningPathNextTopic } from "@/features/learning-path";
 import { computeApplicableSteps } from "../mastery";
 import type { TopicContent } from "../types";
 import { ChallengeSection } from "./challenge-section";
@@ -137,6 +138,8 @@ export function TopicLearningExperience({ content, simulation, className }: Topi
 
         <RulerDivider />
         <MasterySection content={content} />
+
+        <LearningPathNextTopic />
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-mor
 import { getQuizById } from "@/features/quiz-engine/registry";
 import { SlopeOfALine } from "@/features/subjects/mathematics/slope-of-a-line";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Slope of a Line",
   description:
@@ -85,6 +86,8 @@ export default function SlopeOfALinePage() {
           "Pick two points with a negative slope, then move point B so the slope becomes positive without moving point A.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

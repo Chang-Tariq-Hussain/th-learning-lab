@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { PlotAPoint } from "@/features/subjects/mathematics/plot-a-point";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Plot a Point",
   description: "Given a coordinate, place the point on the Cartesian plane — a short, focused plotting challenge.",
@@ -71,6 +72,8 @@ export default function PlotAPointPage() {
           "Try plotting a point where the x-value is negative and the y-value is zero. Where does it land?",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

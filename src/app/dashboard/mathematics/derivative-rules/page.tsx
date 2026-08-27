@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { DerivativeRules } from "@/features/subjects/mathematics/derivative-rules";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Derivative Rules — Learn Differentiation Step by Step",
   description:
@@ -87,6 +88,8 @@ export default function DerivativeRulesPage() {
           "Explain why the product rule isn't just \"multiply the two derivatives together.\"",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

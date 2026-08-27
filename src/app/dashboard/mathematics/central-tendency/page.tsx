@@ -7,6 +7,7 @@ import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-mor
 import { getQuizById } from "@/features/quiz-engine/registry";
 import { CentralTendency } from "@/features/subjects/mathematics/central-tendency";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Measures of Central Tendency — Mean, Median, Mode & Range",
   description:
@@ -96,6 +97,8 @@ export default function CentralTendencyPage() {
           "Find a dataset with no mode at all — is that possible with any values you choose?",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

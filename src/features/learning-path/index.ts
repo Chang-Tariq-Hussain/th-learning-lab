@@ -17,6 +17,7 @@ export type {
 } from "./engine";
 export { computeLearningPathState } from "./engine";
 
-export { learningPathList, getLearningPathById, getLearningPathsForSubject } from "./registry";
+export { learningPathList, getLearningPathById, getLearningPathsForSubject, findPathTopicByHref } from "./registry";
 
 export { LearningPathTrack } from "./components/learning-path-track";
+export { LearningPathNextTopic } from "./components/next-topic-nav";

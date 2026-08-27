@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { MidpointOfALineSegment } from "@/features/subjects/mathematics/midpoint-of-a-line-segment";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Midpoint of a Line Segment",
   description:
@@ -74,6 +75,8 @@ export default function MidpointOfALineSegmentPage() {
           "Find two different pairs of points that share the exact same midpoint.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

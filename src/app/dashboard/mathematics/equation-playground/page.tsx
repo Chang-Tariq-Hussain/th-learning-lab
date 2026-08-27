@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { EquationPlayground } from "@/features/subjects/mathematics/equation-playground";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Equation Playground",
   description:
@@ -75,6 +76,8 @@ export default function EquationPlaygroundPage() {
           "Once you find the right value, explain in words why it's the only number that works.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

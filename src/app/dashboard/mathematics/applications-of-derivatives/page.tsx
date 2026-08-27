@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { ApplicationsOfDerivatives } from "@/features/subjects/mathematics/applications-of-derivatives";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Applications of Derivatives — Increasing, Decreasing, Maxima & Minima",
   description:
@@ -82,6 +83,8 @@ export default function ApplicationsOfDerivativesPage() {
           "Explain why a critical point isn't always a maximum or minimum — what else could happen there?",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

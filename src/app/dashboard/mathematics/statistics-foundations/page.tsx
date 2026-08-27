@@ -9,6 +9,7 @@ import { StatisticsFoundations } from "@/features/subjects/mathematics/statistic
 
 const SIMULATION_HREF = "/dashboard/mathematics/statistics-foundations";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Statistics Foundations — Data, Variables & Sampling",
   description:
@@ -86,6 +87,8 @@ export default function StatisticsFoundationsPage() {
       />
 
       <CrossSubjectConnections connections={getConnectionsForHref(SIMULATION_HREF)} />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

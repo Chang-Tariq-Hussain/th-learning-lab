@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { ProportionBuilder } from "@/features/subjects/mathematics/proportion-builder";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Proportion Builder",
   description: "Drag a slider to find the missing value in a : b = c : d, and see visually why both sides stay equal.",
@@ -79,6 +80,8 @@ export default function ProportionBuilderPage() {
           "Predict the missing value before dragging the slider, then check yourself.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

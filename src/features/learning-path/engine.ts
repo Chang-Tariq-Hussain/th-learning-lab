@@ -34,9 +34,28 @@ export interface LearningPathTopicState {
   masteryLevel: MasteryLevel;
   /** 0-100, derived from `masteryLevel` via `MASTERY_SCORE`. */
   masteryPercent: number;
-  /** Whether this topic counts as "done" for path-progression
-   *  purposes — see `isPathTopicDone` for what that means when a
-   *  topic doesn't have a registered `TopicContent` yet. */
+  /**
+   * Whether the student has meaningfully *begun* this topic — the
+   * signal that unlocks whatever comes next (see `PART 8` of the
+   * unlocking brief: "the simplest reliable existing progress
+   * signal"). Concretely: at least one Learning Step has been
+   * recorded (`stepsCompleted.length > 0`), the same signal for every
+   * topic regardless of whether it has a full Golden Learning
+   * Experience or is a bare simulation page. Deliberately *not* the
+   * same thing as `isDone` — see that field's doc comment for why
+   * completion and unlocking are kept separate.
+   */
+  isStarted: boolean;
+  /**
+   * Whether this topic counts as fully *done* — real completion, not
+   * merely started. Used for the "completed" status, the mastery
+   * checkmark, and the path's completion metrics. Deliberately NOT
+   * used to decide unlocking: a student does not need to finish
+   * (let alone master) Topic 1 before Topic 2 becomes available,
+   * only to have started it (see `isStarted`). See
+   * `isPathTopicDone` for what "done" means when a topic doesn't
+   * have a registered `TopicContent` yet.
+   */
   isDone: boolean;
   /** Resolved prerequisite topics (explicit, or the default linear
    *  chain — see `LearningPathTopicRef.prerequisites`) that are not
@@ -78,6 +97,10 @@ export interface LearningPathState {
   currentTopic: LearningPathTopicState | null;
   recommendation: LearningPathRecommendation | null;
   completedCoreCount: number;
+  /** Core topics with `isStarted`, i.e. at least begun — the metric
+   *  the brief's progress visualization wants ("5/27 topics
+   *  started"), independent of the stricter `completedCoreCount`. */
+  startedCoreCount: number;
   totalCoreCount: number;
   /** 0-100 average of every core topic's `masteryPercent`. */
   pathMasteryPercent: number;
@@ -94,6 +117,16 @@ export interface LearningPathState {
  *  instead of leaving that topic permanently unlockable. */
 function isPathTopicDone(progress: TopicProgress, content: TopicContent | undefined): boolean {
   if (content) return isTopicComplete(content, progress);
+  return progress.stepsCompleted.length > 0;
+}
+
+/** The unlocking signal (see `LearningPathTopicState.isStarted`):
+ *  true once any Learning Step has been recorded, regardless of
+ *  whether a full `TopicContent` is registered for this topic. This
+ *  is intentionally the *only* thing prerequisite-resolution checks
+ *  — completing/mastering the previous topic is never required to
+ *  unlock the next one. */
+function isPathTopicStarted(progress: TopicProgress): boolean {
   return progress.stepsCompleted.length > 0;
 }
 
@@ -150,8 +183,10 @@ export interface LearningPathLookups {
 export function computeLearningPathState(path: LearningPath, lookups: LearningPathLookups): LearningPathState {
   const byId = new Map(path.topics.map((t) => [pathTopicKeyId(t), t]));
 
-  // Pass 1: per-topic progress/mastery/done-ness, independent of
-  // prerequisite locking (which needs every topic's done-ness first).
+  // Pass 1: per-topic progress/mastery/started/done-ness, independent
+  // of prerequisite locking (which needs every topic's started-ness
+  // first — see `isStarted`'s doc comment for why *started*, not
+  // *done*, is what gates the next topic).
   const partial = path.topics.map((ref) => {
     const progress = lookups.getProgress(ref);
     const content = lookups.getContent(ref);
@@ -161,17 +196,20 @@ export function computeLearningPathState(path: LearningPath, lookups: LearningPa
       progress,
       masteryLevel,
       masteryPercent: Math.round(MASTERY_SCORE[masteryLevel] * 100),
+      isStarted: isPathTopicStarted(progress),
       isDone: isPathTopicDone(progress, content),
     };
   });
-  const doneById = new Map(partial.map((p) => [pathTopicKeyId(p.ref), p.isDone]));
+  const startedById = new Map(partial.map((p) => [pathTopicKeyId(p.ref), p.isStarted]));
   const progressById = new Map(partial.map((p) => [pathTopicKeyId(p.ref), p.progress]));
 
   // Pass 2: resolve locking + weak-prerequisite review flags now that
-  // every topic's done-ness is known.
+  // every topic's started-ness is known. A prerequisite is "unmet"
+  // (and so blocks unlocking) only while it hasn't been started at
+  // all — not until it's finished, and never until it's mastered.
   const topics: LearningPathTopicState[] = partial.map((p) => {
     const prerequisites = resolvePrerequisites(p.ref, path, byId);
-    const unmetPrerequisites = prerequisites.filter((prereq) => !doneById.get(pathTopicKeyId(prereq)));
+    const unmetPrerequisites = prerequisites.filter((prereq) => !startedById.get(pathTopicKeyId(prereq)));
     const weakPrerequisites = prerequisites.filter((prereq) => {
       if (unmetPrerequisites.includes(prereq)) return false;
       const prereqProgress = progressById.get(pathTopicKeyId(prereq));
@@ -185,6 +223,7 @@ export function computeLearningPathState(path: LearningPath, lookups: LearningPa
       progress: p.progress,
       masteryLevel: p.masteryLevel,
       masteryPercent: p.masteryPercent,
+      isStarted: p.isStarted,
       isDone: p.isDone,
       status,
       unmetPrerequisites,
@@ -201,6 +240,7 @@ export function computeLearningPathState(path: LearningPath, lookups: LearningPa
   if (currentTopic) currentTopic.status = "current";
 
   const completedCoreCount = coreTopicStates.filter((t) => t.isDone).length;
+  const startedCoreCount = coreTopicStates.filter((t) => t.isStarted).length;
   const totalCoreCount = coreTopicStates.length;
   const isPathComplete = totalCoreCount > 0 && completedCoreCount === totalCoreCount;
   const pathMasteryPercent =
@@ -214,6 +254,7 @@ export function computeLearningPathState(path: LearningPath, lookups: LearningPa
     currentTopic,
     recommendation,
     completedCoreCount,
+    startedCoreCount,
     totalCoreCount,
     pathMasteryPercent,
     isPathComplete,

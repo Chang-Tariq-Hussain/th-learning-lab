@@ -7,6 +7,7 @@ import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-mor
 import { getQuizById } from "@/features/quiz-engine/registry";
 import { CalculusFoundations } from "@/features/subjects/mathematics/calculus-foundations";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Calculus Foundations — Functions, Graphs & Limits",
   description:
@@ -84,6 +85,8 @@ export default function CalculusFoundationsPage() {
           "Explain in your own words the difference between a function being defined at a point and having a limit at that point.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

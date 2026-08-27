@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { RatioExplorer } from "@/features/subjects/mathematics/ratio-explorer";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Ratio Explorer",
   description: "Add blue and red circles to discover what a ratio means, see it simplify, and match target ratios.",
@@ -77,6 +78,8 @@ export default function RatioExplorerPage() {
           "Predict how many red circles you'd need to keep a 3:1 ratio if you have 9 blue circles.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

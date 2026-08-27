@@ -5,6 +5,7 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { SymmetryMirror } from "@/features/subjects/mathematics/symmetry-mirror";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Symmetry Mirror",
   description: "Click squares on the left and watch them mirror instantly on the right — a hands-on introduction to line symmetry.",
@@ -72,6 +73,8 @@ export default function SymmetryMirrorPage() {
           "Think of an object in the real world with no line of symmetry at all. What makes it asymmetric?",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }

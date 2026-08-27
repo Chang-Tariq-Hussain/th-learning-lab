@@ -7,6 +7,7 @@ import { MeasurementExplorer } from "@/features/subjects/mathematics/measurement
 import { QuizCta } from "@/components/dashboard/quiz-cta";
 import { getQuizById } from "@/features/quiz-engine/registry";
 
+import { LearningPathNextTopic } from "@/features/learning-path";
 export const metadata: Metadata = {
   title: "Measurement Explorer — Length, Distance & Rulers",
   description:
@@ -84,6 +85,8 @@ export default function MeasurementExplorerPage() {
           "Convert a measurement in centimeters into millimeters and into meters without a calculator.",
         ]}
       />
-    </Container>
+      <LearningPathNextTopic className="mt-10" />
+
+      </Container>
   );
 }
