@@ -13,6 +13,7 @@ import { mathematicsCalculusQuiz } from "./data/mathematics-calculus-quiz";
 import { mathematicsCoordinateGeometryQuiz } from "./data/mathematics-coordinate-geometry-quiz";
 import { mathematicsCoordinatePlaneQuiz } from "./data/mathematics-coordinate-plane-quiz";
 import { mathematicsPlottingPointsQuiz } from "./data/mathematics-plotting-points-quiz";
+import { mathematicsDistanceQuiz } from "./data/mathematics-distance-quiz";
 import { mathematicsMeasurementQuiz } from "./data/mathematics-measurement-quiz";
 import { mathematicsNumberLineQuiz } from "./data/mathematics-number-line-quiz";
 import { mathematicsEvenOddQuiz } from "./data/mathematics-even-odd-quiz";
@@ -63,6 +64,7 @@ export const quizzes: QuizMeta[] = [
   mathematicsCoordinateGeometryQuiz,
   mathematicsCoordinatePlaneQuiz,
   mathematicsPlottingPointsQuiz,
+  mathematicsDistanceQuiz,
   mathematicsMeasurementQuiz,
   mathematicsStatisticsQuiz,
   mathematicsStraightLineQuiz,
