@@ -47,6 +47,9 @@ export type {
 export { useCanvasViewport } from "./context/canvas-viewport-context";
 export { useSimulationSurface } from "./context/surface-context";
 
+export { SimulationDensityProvider, useSimulationDensity } from "./context/density-context";
+export type { SimulationDensity } from "./context/density-context";
+
 export { useAnimation } from "./hooks/use-animation";
 export type { UseAnimationOptions, UseAnimationResult } from "./hooks/use-animation";
 

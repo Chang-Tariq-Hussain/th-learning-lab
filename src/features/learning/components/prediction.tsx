@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { CheckCircle2, FlaskConical, Lightbulb, XCircle } from "lucide-react";
+import { CheckCircle2, Lightbulb, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { resolveSubjectColors } from "@/features/subjects/subject-colors";
+import { ExperimentFrame } from "./experiment-frame";
 import type { PredictionScenario } from "../types";
 
 type PredictionPhase = "predicting" | "experimenting" | "revealed";
@@ -149,13 +150,9 @@ export function Prediction({ scenario, colorToken, experiment, onRecord }: Predi
 
       {/* Step 4 — allow the simulation experiment, gated behind a committed prediction. */}
       {phase === "experimenting" || phase === "revealed" ? (
-        <div className="mt-4 rounded-card border border-dashed border-line bg-white/40 p-4 dark:border-line-dark dark:bg-white/[0.02]">
-          <p className={cn("mb-3 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wide", colors.text)}>
-            <FlaskConical className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
-            Run the experiment to check your prediction
-          </p>
+        <ExperimentFrame label="Run the experiment to check your prediction" colorTextClassName={colors.text} className="mt-4">
           {experiment}
-        </div>
+        </ExperimentFrame>
       ) : null}
 
       {phase === "experimenting" ? (

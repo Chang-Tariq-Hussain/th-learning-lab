@@ -74,3 +74,25 @@
     display: none;
   }
 }
+
+/* KaTeX equations (physics/math formulas, rendered via react-katex's
+   BlockMath/InlineMath — used both by the shared `FormulaCard` and by
+   ~30 topic components that render KaTeX directly) don't wrap: a long
+   equation, fraction, or multi-term expression renders at its natural
+   width regardless of the viewport. Scoping the scroll to the
+   equation itself here (rather than each call site) means every
+   current and future formula gets this for free, and it's a real fix
+   rather than `overflow-x: hidden` on the page — the equation stays
+   fully readable, it just scrolls within its own small box instead of
+   forcing the whole page wider. A little breathing room on both axes
+   keeps KaTeX's own vertical spacing (sub/superscripts, fraction
+   bars) from clipping against the scroll box's edge. */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.15em;
+  margin-block: 0.5em;
+}
+.katex {
+  max-width: 100%;
+}

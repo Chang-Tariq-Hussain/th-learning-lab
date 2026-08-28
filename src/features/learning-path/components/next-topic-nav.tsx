@@ -69,32 +69,40 @@ export function LearningPathNextTopic({ className }: LearningPathNextTopicProps)
   const colors = resolveSubjectColors(found.path.colorToken);
   const next = found.path.topics[found.index + 1];
 
+  // `min-w-0` on the flex container plus `max-w-full` on the pill
+  // itself matters here, not just style: a flex item's default
+  // `min-width` is `auto`, which for text content means its own
+  // max-content (unwrapped) width — so without this, a long topic
+  // title (e.g. "Next Topic: Equation of a Straight Line") would
+  // refuse to wrap and push the pill past the viewport on mobile
+  // instead of breaking onto a second line. `break-words` is the
+  // actual wrap behavior; the rest just lets the flex layout permit it.
   return (
-    <div className={cn("flex justify-end border-t border-line pt-6 dark:border-line-dark", className)}>
+    <div className={cn("flex min-w-0 justify-end border-t border-line pt-6 dark:border-line-dark", className)}>
       {next ? (
         <Link
           href={next.href}
           className={cn(
-            "group inline-flex items-center gap-2 rounded-full border px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors",
+            "group inline-flex min-w-0 max-w-full items-center gap-2 rounded-full border px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors",
             colors.border,
             colors.text,
             "border-line dark:border-line-dark",
           )}
         >
-          Next Topic: {next.title}
-          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" strokeWidth={2} aria-hidden="true" />
+          <span className="min-w-0 break-words">Next Topic: {next.title}</span>
+          <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" strokeWidth={2} aria-hidden="true" />
         </Link>
       ) : (
         <Link
           href={`/dashboard/${found.path.subjectSlug}`}
           className={cn(
-            "group inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors",
+            "group inline-flex min-w-0 max-w-full items-center gap-2 rounded-full px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors",
             colors.bg,
             colors.text,
           )}
         >
-          <PartyPopper className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
-          Learning Path Complete — Return to {found.path.title}
+          <PartyPopper className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden="true" />
+          <span className="min-w-0 break-words">Learning Path Complete — Return to {found.path.title}</span>
         </Link>
       )}
     </div>

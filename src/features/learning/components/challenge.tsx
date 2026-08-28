@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { CheckCircle2, FlaskConical, Lightbulb, ListChecks, Wrench, XCircle } from "lucide-react";
+import { CheckCircle2, Lightbulb, ListChecks, Wrench, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { resolveSubjectColors } from "@/features/subjects/subject-colors";
+import { ExperimentFrame } from "./experiment-frame";
 import type { ChallengeScenario } from "../types";
 
 export interface ChallengeAttemptResult {
@@ -130,13 +131,9 @@ export function Challenge({ scenario, colorToken, experiment, alreadySolved, onA
       ) : null}
 
       {showExperiment ? (
-        <div className="mt-4 rounded-card border border-dashed border-line bg-white/40 p-4 dark:border-line-dark dark:bg-white/[0.02]">
-          <p className={cn("mb-3 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wide", colors.text)}>
-            <FlaskConical className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
-            Use the simulation to work this out
-          </p>
+        <ExperimentFrame label="Use the simulation to work this out" colorTextClassName={colors.text} className="mt-4">
           {experiment}
-        </div>
+        </ExperimentFrame>
       ) : null}
 
       {!revealed ? (

@@ -180,7 +180,7 @@ function GravitationBody() {
                 <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">{formatReadout(orbitReadouts.speed)}</dd>
               </div>
               <div className="px-2 py-3">
-                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Circular orbit speed here</dt>
+                <dt className="text-[11px] leading-tight uppercase tracking-wide text-ink-soft dark:text-bone-soft">Circular orbit speed here</dt>
                 <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">{formatReadout(orbitReadouts.circularOrbitalSpeed)}</dd>
               </div>
             </dl>

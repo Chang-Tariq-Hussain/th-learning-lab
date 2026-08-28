@@ -133,13 +133,19 @@ export function PersonDragHandle({
       style={positionStyle}
     >
       {/* Push/pull toggle — always visible (not just on hover), since
-          which mode a person is in changes what dragging them does. */}
+          which mode a person is in changes what dragging them does.
+          The visible pill stays small by design (it sits right above
+          a compact figure), but its actual tap target is enlarged via
+          a transparent `::before` hit-slop rather than growing the
+          pill itself — the usual fix for a touch target that needs to
+          clear ~44px without changing how a small control looks. */}
       <button
         type="button"
         disabled={disabled}
         onClick={() => onModeChange(mode === "push" ? "pull" : "push")}
         className={cn(
-          "mb-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide shadow-sm transition-colors",
+          "relative mb-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide shadow-sm transition-colors",
+          "before:absolute before:-inset-x-2 before:-inset-y-2.5 before:content-['']",
           mode === "push"
             ? "border-transparent bg-ink text-paper dark:bg-bone dark:text-chalkboard"
             : "border-ink/30 bg-white/90 text-ink dark:border-bone/30 dark:bg-chalkboard/90 dark:text-bone",
