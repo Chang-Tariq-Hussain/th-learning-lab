@@ -17,6 +17,12 @@ import { mathematicsEvenOddQuiz } from "./data/mathematics-even-odd-quiz";
 import { mathematicsFactorsMultiplesQuiz } from "./data/mathematics-factors-multiples-quiz";
 import { mathematicsFractionsQuiz } from "./data/mathematics-fractions-quiz";
 import { mathematicsFractionOperationsQuiz } from "./data/mathematics-fraction-operations-quiz";
+import { mathematicsRatioQuiz } from "./data/mathematics-ratio-quiz";
+import { mathematicsRatioComparisonQuiz } from "./data/mathematics-ratio-comparison-quiz";
+import { mathematicsProportionQuiz } from "./data/mathematics-proportion-quiz";
+import { mathematicsCrossMultiplicationQuiz } from "./data/mathematics-cross-multiplication-quiz";
+import { mathematicsRealLifeRatiosQuiz } from "./data/mathematics-real-life-ratios-quiz";
+import { mathematicsPerimeterAreaQuiz } from "./data/mathematics-perimeter-area-quiz";
 import { mathematicsStatisticsQuiz } from "./data/mathematics-statistics-quiz";
 import { mathematicsStraightLineQuiz } from "./data/mathematics-straight-line-quiz";
 import { physicsElectromagnetismQuiz } from "./data/physics-electromagnetism-quiz";
@@ -61,6 +67,12 @@ export const quizzes: QuizMeta[] = [
   mathematicsFactorsMultiplesQuiz,
   mathematicsFractionsQuiz,
   mathematicsFractionOperationsQuiz,
+  mathematicsRatioQuiz,
+  mathematicsRatioComparisonQuiz,
+  mathematicsProportionQuiz,
+  mathematicsCrossMultiplicationQuiz,
+  mathematicsRealLifeRatiosQuiz,
+  mathematicsPerimeterAreaQuiz,
   physicsElectromagnetismQuiz,
   physicsMotionQuiz,
   physicsSimpleMotionQuiz,

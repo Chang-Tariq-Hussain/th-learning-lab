@@ -15,6 +15,13 @@ import { mathematicsEvenOddContent } from "./data/mathematics-even-odd";
 import { mathematicsFactorsMultiplesContent } from "./data/mathematics-factors-multiples";
 import { mathematicsFractionsContent } from "./data/mathematics-fractions";
 import { mathematicsFractionOperationsContent } from "./data/mathematics-fraction-operations";
+import { mathematicsRatioContent } from "./data/mathematics-ratio";
+import { mathematicsRatioComparisonContent } from "./data/mathematics-ratio-comparison";
+import { mathematicsProportionContent } from "./data/mathematics-proportion";
+import { mathematicsCrossMultiplicationContent } from "./data/mathematics-cross-multiplication";
+import { mathematicsRealLifeRatiosContent } from "./data/mathematics-real-life-ratios";
+import { mathematicsMeasurementContent } from "./data/mathematics-measurement";
+import { mathematicsPerimeterAreaContent } from "./data/mathematics-perimeter-area";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -61,6 +68,15 @@ import { mathematicsFractionOperationsContent } from "./data/mathematics-fractio
  * add/subtract, an area-model grid for multiply, a grouped-chunk bar
  * for divide). Each of these five topics has its own 30-question
  * bank in `@/features/quiz-engine/data/mathematics-*-quiz.ts`.
+ *
+ * Mathematics Batch 2 (Ratio, Proportion & Measurement) follows the
+ * same pattern and design principle, reusing the pre-existing Ratio
+ * Explorer, Ratio Comparison, Proportion Builder, Cross Multiplication
+ * Explorer, Real-Life Ratios, Measurement Explorer, and Perimeter &
+ * Area Explorer simulations as-is — no new simulations were built for
+ * this batch. Each topic has its own 30-question bank, except
+ * Measurement, which reuses the pre-existing `mathematics-measurement`
+ * bank rather than duplicating it.
  */
 export const topicContentList: TopicContent[] = [
   physicsSimpleMotionContent,
@@ -79,6 +95,13 @@ export const topicContentList: TopicContent[] = [
   mathematicsFactorsMultiplesContent,
   mathematicsFractionsContent,
   mathematicsFractionOperationsContent,
+  mathematicsRatioContent,
+  mathematicsRatioComparisonContent,
+  mathematicsProportionContent,
+  mathematicsCrossMultiplicationContent,
+  mathematicsRealLifeRatiosContent,
+  mathematicsMeasurementContent,
+  mathematicsPerimeterAreaContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {
