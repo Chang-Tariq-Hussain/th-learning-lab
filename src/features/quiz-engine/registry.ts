@@ -11,6 +11,8 @@ import { chemistryPeriodicTrendsQuiz } from "./data/chemistry-periodic-trends-qu
 import { chemistryReactionKineticsQuiz } from "./data/chemistry-reaction-kinetics-quiz";
 import { mathematicsCalculusQuiz } from "./data/mathematics-calculus-quiz";
 import { mathematicsCoordinateGeometryQuiz } from "./data/mathematics-coordinate-geometry-quiz";
+import { mathematicsCoordinatePlaneQuiz } from "./data/mathematics-coordinate-plane-quiz";
+import { mathematicsPlottingPointsQuiz } from "./data/mathematics-plotting-points-quiz";
 import { mathematicsMeasurementQuiz } from "./data/mathematics-measurement-quiz";
 import { mathematicsNumberLineQuiz } from "./data/mathematics-number-line-quiz";
 import { mathematicsEvenOddQuiz } from "./data/mathematics-even-odd-quiz";
@@ -59,6 +61,8 @@ export const quizzes: QuizMeta[] = [
   chemistryReactionKineticsQuiz,
   mathematicsCalculusQuiz,
   mathematicsCoordinateGeometryQuiz,
+  mathematicsCoordinatePlaneQuiz,
+  mathematicsPlottingPointsQuiz,
   mathematicsMeasurementQuiz,
   mathematicsStatisticsQuiz,
   mathematicsStraightLineQuiz,

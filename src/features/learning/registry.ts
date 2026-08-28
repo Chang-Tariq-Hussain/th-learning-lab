@@ -22,6 +22,8 @@ import { mathematicsCrossMultiplicationContent } from "./data/mathematics-cross-
 import { mathematicsRealLifeRatiosContent } from "./data/mathematics-real-life-ratios";
 import { mathematicsMeasurementContent } from "./data/mathematics-measurement";
 import { mathematicsPerimeterAreaContent } from "./data/mathematics-perimeter-area";
+import { mathematicsCoordinatePlaneContent } from "./data/mathematics-coordinate-plane";
+import { mathematicsPlottingPointsContent } from "./data/mathematics-plotting-points";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -77,6 +79,21 @@ import { mathematicsPerimeterAreaContent } from "./data/mathematics-perimeter-ar
  * this batch. Each topic has its own 30-question bank, except
  * Measurement, which reuses the pre-existing `mathematics-measurement`
  * bank rather than duplicating it.
+ *
+ * Mathematics Batch 3 (Coordinate Geometry) is in progress. Coordinate
+ * Plane and Plotting Points are done, each reusing its pre-existing
+ * simulation as-is — Coordinate Plane Explorer (draggable point,
+ * quadrant highlighting, two built-in mini-challenges) and Plot a
+ * Point (a three-level click-to-plot game with a final mixed
+ * challenge) — with their own dedicated 30-question banks
+ * (`mathematics-coordinate-plane` / `mathematics-plotting-points` in
+ * `@/features/quiz-engine`). Distance Between Two Points, Midpoint,
+ * Slope of a Line, and Equation of a Straight Line remain — each
+ * already has a working simulation (`distance-between-two-points`,
+ * `midpoint-of-a-line-segment`, `slope-of-a-line`,
+ * `equation-playground`) and a Learning Path entry; only their
+ * `TopicContent` (this file) and dedicated question banks are
+ * outstanding.
  */
 export const topicContentList: TopicContent[] = [
   physicsSimpleMotionContent,
@@ -102,6 +119,8 @@ export const topicContentList: TopicContent[] = [
   mathematicsRealLifeRatiosContent,
   mathematicsMeasurementContent,
   mathematicsPerimeterAreaContent,
+  mathematicsCoordinatePlaneContent,
+  mathematicsPlottingPointsContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {
