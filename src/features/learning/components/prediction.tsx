@@ -86,103 +86,113 @@ export function Prediction({ scenario, colorToken, experiment, onRecord }: Predi
   }
 
   return (
-    <div className="rounded-card border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
-      {/* Step 1 — present scenario. Always visible, in every phase. */}
-      <p className="text-sm leading-relaxed text-ink-soft dark:text-bone-soft">{scenario.scenario}</p>
-      <p className="mt-2 font-display text-base font-medium text-ink dark:text-bone">{scenario.question}</p>
+    <div className="flex flex-col gap-4">
+      <div className="rounded-card border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
+        {/* Step 1 — present scenario. Always visible, in every phase. */}
+        <p className="text-sm leading-relaxed text-ink-soft dark:text-bone-soft">{scenario.scenario}</p>
+        <p className="mt-2 font-display text-base font-medium text-ink dark:text-bone">{scenario.question}</p>
 
-      {/* Step 2/3 — ask for and record a prediction. */}
-      <div className="mt-3 flex flex-wrap gap-2">
-        {scenario.options.map((option) => {
-          const isSelected = phase === "predicting" ? selectedOptionId === option.id : predictedOptionId === option.id;
-          const isLocked = phase !== "predicting";
-          return (
-            <button
-              key={option.id}
-              type="button"
-              disabled={isLocked}
-              onClick={() => setSelectedOptionId(option.id)}
-              aria-pressed={isSelected}
-              className={cn(
-                "rounded-full border px-4 py-1.5 text-sm font-medium transition-colors disabled:cursor-default",
-                "border-line dark:border-line-dark",
-                isSelected
-                  ? "border-transparent bg-white dark:bg-white/[0.06]"
-                  : "bg-white/40 hover:border-ink/25 dark:bg-white/[0.02] dark:hover:border-bone/25",
-                isLocked && !isSelected && "opacity-50",
-              )}
-              style={
-                phase === "revealed" && isSelected
-                  ? { boxShadow: `0 0 0 2px ${isCorrect ? "#5A9E6F" : "#E0663D"}` }
-                  : undefined
-              }
-            >
-              {option.label}
-            </button>
-          );
-        })}
+        {/* Step 2/3 — ask for and record a prediction. */}
+        <div className="mt-3 flex flex-wrap gap-2">
+          {scenario.options.map((option) => {
+            const isSelected = phase === "predicting" ? selectedOptionId === option.id : predictedOptionId === option.id;
+            const isLocked = phase !== "predicting";
+            return (
+              <button
+                key={option.id}
+                type="button"
+                disabled={isLocked}
+                onClick={() => setSelectedOptionId(option.id)}
+                aria-pressed={isSelected}
+                className={cn(
+                  "rounded-full border px-4 py-1.5 text-sm font-medium transition-colors disabled:cursor-default",
+                  "border-line dark:border-line-dark",
+                  isSelected
+                    ? "border-transparent bg-white dark:bg-white/[0.06]"
+                    : "bg-white/40 hover:border-ink/25 dark:bg-white/[0.02] dark:hover:border-bone/25",
+                  isLocked && !isSelected && "opacity-50",
+                )}
+                style={
+                  phase === "revealed" && isSelected
+                    ? { boxShadow: `0 0 0 2px ${isCorrect ? "#5A9E6F" : "#E0663D"}` }
+                    : undefined
+                }
+              >
+                {option.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {phase === "predicting" ? (
+          <>
+            {scenario.hint ? (
+              <div className="mt-3">
+                {!hintShown ? (
+                  <button
+                    type="button"
+                    onClick={() => setHintShown(true)}
+                    className={cn("inline-flex items-center gap-1.5 text-xs font-medium", colors.text)}
+                  >
+                    <Lightbulb className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
+                    Show a hint
+                  </button>
+                ) : (
+                  <p className="mt-1 text-xs text-ink-soft dark:text-bone-soft">{scenario.hint}</p>
+                )}
+              </div>
+            ) : null}
+
+            <Button variant="secondary" size="sm" className="mt-3" disabled={!selectedOptionId} onClick={handleLockIn}>
+              Lock in my prediction
+            </Button>
+          </>
+        ) : null}
       </div>
 
-      {phase === "predicting" ? (
-        <>
-          {scenario.hint ? (
-            <div className="mt-3">
-              {!hintShown ? (
-                <button
-                  type="button"
-                  onClick={() => setHintShown(true)}
-                  className={cn("inline-flex items-center gap-1.5 text-xs font-medium", colors.text)}
-                >
-                  <Lightbulb className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
-                  Show a hint
-                </button>
-              ) : (
-                <p className="mt-1 text-xs text-ink-soft dark:text-bone-soft">{scenario.hint}</p>
-              )}
-            </div>
-          ) : null}
-
-          <Button variant="secondary" size="sm" className="mt-3" disabled={!selectedOptionId} onClick={handleLockIn}>
-            Lock in my prediction
-          </Button>
-        </>
-      ) : null}
-
-      {/* Step 4 — allow the simulation experiment, gated behind a committed prediction. */}
+      {/* Step 4 — allow the simulation experiment, gated behind a
+          committed prediction. A plain sibling of the cards here, not
+          nested inside either one — full width, exactly like
+          Explore's presentation, rather than boxed in by this
+          scenario's own card padding. */}
       {phase === "experimenting" || phase === "revealed" ? (
-        <ExperimentFrame label="Run the experiment to check your prediction" colorTextClassName={colors.text} className="mt-4">
+        <ExperimentFrame label="Run the experiment to check your prediction" colorTextClassName={colors.text}>
           {experiment}
         </ExperimentFrame>
       ) : null}
 
-      {phase === "experimenting" ? (
-        <Button variant="primary" size="sm" className="mt-4" onClick={handleReveal}>
-          Reveal what happened
-        </Button>
-      ) : null}
+      {phase === "experimenting" || phase === "revealed" ? (
+        <div className="rounded-card border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
+          {phase === "experimenting" ? (
+            <Button variant="primary" size="sm" onClick={handleReveal}>
+              Reveal what happened
+            </Button>
+          ) : null}
 
-      {/* Step 5/6 — reveal, compare, and explain. */}
-      {phase === "revealed" && predictedOption && actualOption ? (
-        <div className="mt-4 flex flex-col gap-2 text-sm leading-relaxed">
-          <div className="flex items-start gap-2">
-            {isCorrect ? (
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-pine-600" strokeWidth={1.75} aria-hidden="true" />
-            ) : (
-              <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#E0663D]" strokeWidth={1.75} aria-hidden="true" />
-            )}
-            <p className="text-ink dark:text-bone">
-              <span className="font-medium">You predicted:</span> {predictedOption.label}
-              {!isCorrect ? (
-                <>
-                  {" — "}
-                  <span className="font-medium">actual result:</span> {actualOption.label}
-                </>
-              ) : (
-                " — that's what happened."
-              )}
-            </p>
-          </div>
-          <p className="text-ink-soft dark:text-bone-soft">{scenario.explanation}</p>
+          {/* Step 5/6 — reveal, compare, and explain. */}
+          {phase === "revealed" && predictedOption && actualOption ? (
+            <div className="flex flex-col gap-2 text-sm leading-relaxed">
+              <div className="flex items-start gap-2">
+                {isCorrect ? (
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-pine-600" strokeWidth={1.75} aria-hidden="true" />
+                ) : (
+                  <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#E0663D]" strokeWidth={1.75} aria-hidden="true" />
+                )}
+                <p className="text-ink dark:text-bone">
+                  <span className="font-medium">You predicted:</span> {predictedOption.label}
+                  {!isCorrect ? (
+                    <>
+                      {" — "}
+                      <span className="font-medium">actual result:</span> {actualOption.label}
+                    </>
+                  ) : (
+                    " — that's what happened."
+                  )}
+                </p>
+              </div>
+              <p className="text-ink-soft dark:text-bone-soft">{scenario.explanation}</p>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </div>

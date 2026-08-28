@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { FlaskConical } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { SimulationDensityProvider } from "@/features/simulation";
 
 export interface ExperimentFrameProps {
   /** The instruction line above the embedded simulation, e.g. "Run
@@ -16,33 +15,24 @@ export interface ExperimentFrameProps {
 }
 
 /**
- * The "here's a live simulation to work with" frame — previously
- * duplicated, identically, inside both `Prediction` and `Challenge`.
- * Beyond deduplication, this is also where nested-simulation spacing
- * gets fixed once for both call sites: this frame's own padding is
- * intentionally light (rather than matching a full comfortable card),
- * and it wraps `children` in `SimulationDensityProvider density=
- * "compact"` so the simulation's own root wrapper
- * (`SimulationContainer`) trims its padding to match, instead of two
- * full-padding cards stacking on top of each other on mobile — the
- * exact nesting depth described as "Predict/Challenge → nested card →
- * Simulation Container → Simulation". Explore renders the same
- * simulation directly (no frame, "default" density), which is why its
- * large/dedicated presentation is untouched by this.
+ * The "here's a live simulation to work with" frame used by both
+ * `Prediction` and `Challenge` — previously duplicated markup in
+ * both. Deliberately *not* a bordered/padded card of its own: it's a
+ * plain block (just the label, then the simulation) so the
+ * simulation gets exactly the same full width, bounded only by
+ * whatever contains this frame, as it gets in Explore. `Prediction`
+ * and `Challenge` render this as a sibling of their own scenario
+ * card rather than a child inside it — see those components — so the
+ * simulation is never actually nested inside another card's padding.
  */
 export function ExperimentFrame({ label, colorTextClassName, children, className }: ExperimentFrameProps) {
   return (
-    <div
-      className={cn(
-        "rounded-card border border-dashed border-line bg-white/40 p-2 dark:border-line-dark dark:bg-white/[0.02] sm:p-4",
-        className,
-      )}
-    >
-      <p className={cn("mb-3 flex items-center gap-1.5 px-1 font-mono text-[11px] uppercase tracking-wide", colorTextClassName)}>
+    <div className={cn(className)}>
+      <p className={cn("mb-3 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wide", colorTextClassName)}>
         <FlaskConical className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} aria-hidden="true" />
         {label}
       </p>
-      <SimulationDensityProvider density="compact">{children}</SimulationDensityProvider>
+      {children}
     </div>
   );
 }

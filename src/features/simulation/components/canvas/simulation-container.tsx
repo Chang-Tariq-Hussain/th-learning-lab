@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { SimulationProvider } from "../../context/simulation-context";
 import { SimulationSurfaceProvider } from "../../context/surface-context";
 import { CanvasViewportProvider } from "../../context/canvas-viewport-context";
-import { useSimulationDensity } from "../../context/density-context";
 import { usePlayback } from "../../hooks/use-playback";
 import { cn } from "@/lib/utils";
 import type { ParameterSchema, SimulationUpdateFn, SpeedMultiplier } from "../../types";
@@ -66,7 +65,6 @@ function SimulationSurface({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const density = useSimulationDensity();
 
   const toggleFullscreen = useCallback(() => {
     const node = containerRef.current;
@@ -96,21 +94,7 @@ function SimulationSurface({
         aria-label={`${label}. Keyboard shortcuts: space to play or pause, R to reset, arrow keys to step, F for fullscreen.`}
         {...keyboardProps}
         className={cn(
-          "flex flex-col rounded-card border border-line bg-paper outline-none focus-visible:ring-2 focus-visible:ring-pine-500 dark:border-line-dark dark:bg-chalkboard",
-          // "compact" (set via `SimulationDensityProvider`, see
-          // `ExperimentFrame`) is for a simulation nested inside
-          // another already-padded card — Predict/Challenge, not
-          // Explore's own large/dedicated area. Every step here stays
-          // strictly ≤ the "default" step at the same breakpoint, so
-          // a nested simulation never gets *more* padding than the
-          // full presentation, only ever less. Padding still grows
-          // back at `lg` even when compact, since a nested simulation
-          // isn't short on room on a wide screen — only mobile/tablet
-          // actually need the space back (fullscreen mode always gets
-          // the roomy values regardless, since it's never "nested").
-          density === "compact" && !isFullscreen
-            ? "gap-3 p-2 sm:gap-4 sm:p-4 lg:p-6"
-            : "gap-4 p-4 sm:p-6",
+          "flex flex-col gap-4 rounded-card border border-line bg-paper p-4 outline-none focus-visible:ring-2 focus-visible:ring-pine-500 dark:border-line-dark dark:bg-chalkboard sm:p-6",
           isFullscreen && "h-screen w-screen overflow-y-auto",
           className
         )}
