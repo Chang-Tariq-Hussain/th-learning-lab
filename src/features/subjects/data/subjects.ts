@@ -589,6 +589,13 @@ export const subjects: Subject[] = [
               "Edit a dataset's values and see it rendered as a bar graph, pie chart, or line graph — and learn when each one fits.",
             href: "/dashboard/mathematics/graph-builder",
           },
+          {
+            slug: "data-comparison",
+            title: "Data Interpretation & Comparison",
+            description:
+              "Edit two datasets side by side and see mean, median, range, and a chart update together — then decide which one is more consistent.",
+            href: "/dashboard/mathematics/data-comparison",
+          },
         ],
       },
       {

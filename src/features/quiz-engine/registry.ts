@@ -33,6 +33,8 @@ import { mathematicsDataCollectionQuiz } from "./data/mathematics-data-collectio
 import { mathematicsGraphBuilderQuiz } from "./data/mathematics-graph-builder-quiz";
 import { mathematicsStatisticsFoundationsQuiz } from "./data/mathematics-statistics-foundations-quiz";
 import { mathematicsMeasuresOfDispersionQuiz } from "./data/mathematics-measures-of-dispersion-quiz";
+import { mathematicsCentralTendencyQuiz } from "./data/mathematics-central-tendency-quiz";
+import { mathematicsDataComparisonQuiz } from "./data/mathematics-data-comparison-quiz";
 import { mathematicsStatisticsQuiz } from "./data/mathematics-statistics-quiz";
 import { mathematicsStraightLineQuiz } from "./data/mathematics-straight-line-quiz";
 import { physicsElectromagnetismQuiz } from "./data/physics-electromagnetism-quiz";
@@ -93,6 +95,8 @@ export const quizzes: QuizMeta[] = [
   mathematicsGraphBuilderQuiz,
   mathematicsStatisticsFoundationsQuiz,
   mathematicsMeasuresOfDispersionQuiz,
+  mathematicsCentralTendencyQuiz,
+  mathematicsDataComparisonQuiz,
   physicsElectromagnetismQuiz,
   physicsMotionQuiz,
   physicsSimpleMotionQuiz,

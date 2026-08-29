@@ -286,6 +286,13 @@ export const mathematicsFoundationsPath: LearningPath = {
       description: "Bar graphs, pie charts, and line graphs — and when to use each.",
       href: "/dashboard/mathematics/graph-builder",
     },
+    {
+      subjectSlug: "mathematics",
+      topicSlug: "data-comparison",
+      title: "Data Interpretation & Comparison",
+      description: "Compare two datasets side by side and draw a real conclusion from the numbers.",
+      href: "/dashboard/mathematics/data-comparison",
+    },
 
     // --- Calculus ------------------------------------------------------------
     {

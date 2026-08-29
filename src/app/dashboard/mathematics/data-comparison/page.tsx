@@ -2,22 +2,21 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
-import { CentralTendency } from "@/features/subjects/mathematics/central-tendency";
+import { DataComparisonLab } from "@/features/subjects/mathematics/data-comparison";
 import { TopicExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
 
 export const metadata: Metadata = {
-  title: "Measures of Central Tendency — Mean, Median, Mode & Range",
-  description:
-    "Build intuition for mean, median, mode, and range with a balancing-point visualization, sorting, frequency charts, and an outlier comparison.",
+  title: "Data Interpretation & Comparison",
+  description: "Compare two datasets side by side — mean, median, range, and a chart, all updating together.",
 };
 
-export default function CentralTendencyPage() {
-  const content = getTopicContent("mathematics", "central-tendency");
+export default function DataComparisonPage() {
+  const content = getTopicContent("mathematics", "data-comparison");
 
   return (
     <Container className="py-10">
-      <SimulationBackLink simulationHref="/dashboard/mathematics/central-tendency" className="mb-4" />
+      <SimulationBackLink simulationHref="/dashboard/mathematics/data-comparison" className="mb-4" />
       <Breadcrumbs
         items={[
           { label: "Dashboard", href: "/dashboard" },
@@ -32,18 +31,18 @@ export default function CentralTendencyPage() {
           Mathematics · Statistics
         </p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
-          Measures of Central Tendency — Mean, Median, Mode & Range
+          Data Interpretation & Comparison
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-sm text-ink-soft dark:text-bone-soft">
-          Edit a dataset and watch mean, median, mode, and range respond — then see why an outlier can shift the
-          mean far more than the median.
+          Edit two datasets side by side and watch mean, median, range, and a chart update together — then decide
+          which one is more consistent.
         </p>
       </div>
 
       {content ? (
-        <TopicExperience content={content} simulation={<CentralTendency />} />
+        <TopicExperience content={content} simulation={<DataComparisonLab />} />
       ) : (
-        <CentralTendency />
+        <DataComparisonLab />
       )}
 
       <LearningPathNextTopic className="mt-10" />
