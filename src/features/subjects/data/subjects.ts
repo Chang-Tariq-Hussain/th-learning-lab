@@ -710,6 +710,13 @@ export const subjects: Subject[] = [
               "Drag two points and watch rise, run, and the right triangle between them build the slope of the line.",
             href: "/dashboard/mathematics/slope-of-a-line",
           },
+          {
+            slug: "line-designer",
+            title: "Line Designer",
+            description:
+              "Move slope and y-intercept sliders and watch the line — and the equation y = mx + b — update together.",
+            href: "/dashboard/mathematics/line-designer",
+          },
         ],
       },
     ],

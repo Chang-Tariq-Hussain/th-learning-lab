@@ -2,22 +2,21 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
-import { MidpointOfALineSegment } from "@/features/subjects/mathematics/midpoint-of-a-line-segment";
+import { LineDesigner } from "@/features/subjects/mathematics/line-designer";
 import { TopicLearningExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
 
 export const metadata: Metadata = {
-  title: "Midpoint of a Line Segment",
-  description:
-    "Drag two points on a coordinate plane and watch the midpoint stay exactly halfway between them.",
+  title: "Line Designer",
+  description: "Adjust slope and y-intercept sliders and watch the equation y = mx + b and its graph update together.",
 };
 
-export default function MidpointOfALineSegmentPage() {
-  const content = getTopicContent("mathematics", "midpoint-of-a-line-segment");
+export default function LineDesignerPage() {
+  const content = getTopicContent("mathematics", "line-designer");
 
   return (
     <Container className="py-10">
-      <SimulationBackLink simulationHref="/dashboard/mathematics/midpoint-of-a-line-segment" className="mb-4" />
+      <SimulationBackLink simulationHref="/dashboard/mathematics/line-designer" className="mb-4" />
       <Breadcrumbs
         items={[
           { label: "Dashboard", href: "/dashboard" },
@@ -29,16 +28,16 @@ export default function MidpointOfALineSegmentPage() {
 
       <div className="mb-8">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">Mathematics · Coordinate Geometry</p>
-        <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">Midpoint of a Line Segment</h1>
+        <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">Line Designer</h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
-          Drag point A or B and watch the midpoint M stay exactly halfway between them.
+          Move the m and b sliders and watch the line — and the equation y = mx + b — update together.
         </p>
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<MidpointOfALineSegment />} />
+        <TopicLearningExperience content={content} simulation={<LineDesigner />} />
       ) : (
-        <MidpointOfALineSegment />
+        <LineDesigner />
       )}
 
       <LearningPathNextTopic className="mt-10" />

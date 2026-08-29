@@ -25,6 +25,9 @@ import { mathematicsPerimeterAreaContent } from "./data/mathematics-perimeter-ar
 import { mathematicsCoordinatePlaneContent } from "./data/mathematics-coordinate-plane";
 import { mathematicsPlottingPointsContent } from "./data/mathematics-plotting-points";
 import { mathematicsDistanceContent } from "./data/mathematics-distance";
+import { mathematicsMidpointContent } from "./data/mathematics-midpoint";
+import { mathematicsSlopeContent } from "./data/mathematics-slope";
+import { mathematicsEquationOfLineContent } from "./data/mathematics-equation-of-line";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -81,22 +84,24 @@ import { mathematicsDistanceContent } from "./data/mathematics-distance";
  * Measurement, which reuses the pre-existing `mathematics-measurement`
  * bank rather than duplicating it.
  *
- * Mathematics Batch 3 (Coordinate Geometry) is in progress. Coordinate
- * Plane, Plotting Points, and Distance Between Two Points are done,
- * each reusing its pre-existing simulation as-is — Coordinate Plane
- * Explorer (draggable point, quadrant highlighting, two built-in
- * mini-challenges), Plot a Point (a three-level click-to-plot game
- * with a final mixed challenge), and Distance Between Two Points
- * (two draggable points, a live Δx/Δy/right-triangle breakdown, a
- * Special Cases panel, and its own Calculate mode) — with their own
- * dedicated 30-question banks (`mathematics-coordinate-plane` /
- * `mathematics-plotting-points` / `mathematics-distance` in
- * `@/features/quiz-engine`). Midpoint, Slope of a Line, and Equation
- * of a Straight Line remain — each already has a working simulation
- * (`midpoint-of-a-line-segment`, `slope-of-a-line`,
- * `equation-playground`) and a Learning Path entry; only their
- * `TopicContent` (this file) and dedicated question banks are
- * outstanding.
+ * Mathematics Batch 3 (Coordinate Geometry) is complete: Coordinate
+ * Plane, Plotting Points, Distance Between Two Points, Midpoint,
+ * Slope of a Line, and Equation of a Straight Line all have full
+ * `TopicContent` and their own dedicated 30-question banks
+ * (`mathematics-coordinate-plane` / `mathematics-plotting-points` /
+ * `mathematics-distance` / `mathematics-midpoint` /
+ * `mathematics-slope` / `mathematics-equation-of-line` in
+ * `@/features/quiz-engine`) — 180 questions total. Five of the six
+ * topics reuse a pre-existing simulation as-is: Coordinate Plane
+ * Explorer, Plot a Point, Distance Between Two Points, Midpoint of a
+ * Line Segment, and Slope of a Line. The sixth, Equation of a
+ * Straight Line, uses a new Line Designer simulation
+ * (`@/features/subjects/mathematics/line-designer`) — the Learning
+ * Path previously pointed this topic at Equation Playground, which
+ * turned out on inspection to be an unrelated arithmetic simulation
+ * with no slope/intercept graphing at all; see the correction and
+ * full explanation in
+ * `@/features/learning-path/data/mathematics-foundations.ts`.
  */
 export const topicContentList: TopicContent[] = [
   physicsSimpleMotionContent,
@@ -125,6 +130,9 @@ export const topicContentList: TopicContent[] = [
   mathematicsCoordinatePlaneContent,
   mathematicsPlottingPointsContent,
   mathematicsDistanceContent,
+  mathematicsMidpointContent,
+  mathematicsSlopeContent,
+  mathematicsEquationOfLineContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

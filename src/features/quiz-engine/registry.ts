@@ -14,6 +14,9 @@ import { mathematicsCoordinateGeometryQuiz } from "./data/mathematics-coordinate
 import { mathematicsCoordinatePlaneQuiz } from "./data/mathematics-coordinate-plane-quiz";
 import { mathematicsPlottingPointsQuiz } from "./data/mathematics-plotting-points-quiz";
 import { mathematicsDistanceQuiz } from "./data/mathematics-distance-quiz";
+import { mathematicsMidpointQuiz } from "./data/mathematics-midpoint-quiz";
+import { mathematicsSlopeQuiz } from "./data/mathematics-slope-quiz";
+import { mathematicsEquationOfLineQuiz } from "./data/mathematics-equation-of-line-quiz";
 import { mathematicsMeasurementQuiz } from "./data/mathematics-measurement-quiz";
 import { mathematicsNumberLineQuiz } from "./data/mathematics-number-line-quiz";
 import { mathematicsEvenOddQuiz } from "./data/mathematics-even-odd-quiz";
@@ -65,6 +68,9 @@ export const quizzes: QuizMeta[] = [
   mathematicsCoordinatePlaneQuiz,
   mathematicsPlottingPointsQuiz,
   mathematicsDistanceQuiz,
+  mathematicsMidpointQuiz,
+  mathematicsSlopeQuiz,
+  mathematicsEquationOfLineQuiz,
   mathematicsMeasurementQuiz,
   mathematicsStatisticsQuiz,
   mathematicsStraightLineQuiz,

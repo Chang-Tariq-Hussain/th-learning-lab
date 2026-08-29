@@ -32,14 +32,20 @@ import type { LearningPath } from "../types";
  * the content/progress slug; `href` is always the real route — see
  * each entry's comment.
  *
- * "Equation of a Straight Line" from the requested curriculum order
- * maps to the existing Equation Playground simulation (Algebra topic
- * group in `@/features/subjects/data/subjects.ts`) — no dedicated
- * "Equation of a Straight Line" page exists, and Equation Playground
- * already covers graphing a line from its equation, so it's placed
- * here rather than duplicated. "Limits" has no dedicated topic either
- * — Calculus Foundations' own title ("Functions, Graphs & Limits")
- * already covers it, so it isn't a separate path node.
+ * "Equation of a Straight Line" now maps to a dedicated Line Designer
+ * simulation (`@/features/subjects/mathematics/line-designer`), built
+ * as part of Mathematics Batch 3. It previously pointed at the
+ * existing Equation Playground simulation on the assumption that
+ * Equation Playground already covered graphing a line from its
+ * equation — on inspection, Equation Playground turned out to be an
+ * unrelated "find the missing number in a + b = c" arithmetic game
+ * with no slope/intercept graphing at all, so that mapping was wrong
+ * and has been corrected. Equation Playground itself is untouched and
+ * still reachable at its own page (Algebra topic group in
+ * `@/features/subjects/data/subjects.ts`), just no longer mapped to
+ * this topic. "Limits" has no dedicated topic either — Calculus
+ * Foundations' own title ("Functions, Graphs & Limits") already
+ * covers it, so it isn't a separate path node.
  *
  * Two existing topics — Angle Spinner (Geometry) and Symmetry Mirror
  * (Symmetry) — aren't part of the curriculum order the brief listed,
@@ -225,13 +231,23 @@ export const mathematicsFoundationsPath: LearningPath = {
       href: "/dashboard/mathematics/slope-of-a-line",
     },
     {
-      // Maps to the existing Equation Playground simulation — see the
-      // file-level comment for why there's no separate dedicated topic.
+      // NOTE: this previously pointed at the existing Equation
+      // Playground simulation, on the assumption that it already
+      // covered graphing a line from its equation. On inspection
+      // while building out this topic's Golden Learning Experience,
+      // Equation Playground turned out to be an unrelated "find the
+      // missing number in a + b = c" arithmetic game — it has no
+      // slope/intercept graphing at all. Rather than build this
+      // topic's GLE content on top of the wrong simulation, this now
+      // points at a new, purpose-built Line Designer simulation
+      // instead (`@/features/subjects/mathematics/line-designer`).
+      // Equation Playground itself is untouched and still reachable
+      // at its own page, just no longer mapped to this topic.
       subjectSlug: "mathematics",
-      topicSlug: "equation-playground",
+      topicSlug: "line-designer",
       title: "Equation of a Straight Line",
       description: "Graph a line from its equation and see how slope and intercept shape it.",
-      href: "/dashboard/mathematics/equation-playground",
+      href: "/dashboard/mathematics/line-designer",
     },
 
     // --- Statistics --------------------------------------------------------
