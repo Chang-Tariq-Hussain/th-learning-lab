@@ -1,10 +1,10 @@
-import type { ReactNode } from "react";
-import { BookOpen, FlaskConical, Sparkles, Target } from "lucide-react";
+import { RulerDivider } from "@/components/ui/ruler-divider";
 import { InstructionsPanel } from "@/features/simulation";
 import { FormulaCard } from "@/features/simulation/components/formula/formula-card";
-import { RulerDivider } from "@/components/ui/ruler-divider";
 import { resolveSubjectColors } from "@/features/subjects/subject-colors";
 import { cn } from "@/lib/utils";
+import { BookOpen, FlaskConical, Sparkles, Target } from "lucide-react";
+import type { ReactNode } from "react";
 
 export interface LearnMoreConcept {
   /** Short name of the concept, e.g. "Atomic number". */
@@ -47,12 +47,20 @@ function SectionCard({
   children: ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
+    <div className="min-w-0 rounded-2xl border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
       <div className="mb-4 flex items-center gap-2.5">
-        <span className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-full", bgClass, colorClass)}>
+        <span
+          className={cn(
+            "flex h-8 w-8 shrink-0 items-center justify-center rounded-full",
+            bgClass,
+            colorClass,
+          )}
+        >
           {icon}
         </span>
-        <h3 className="font-display text-base font-medium text-ink dark:text-bone">{label}</h3>
+        <h3 className="font-display text-base font-medium text-ink dark:text-bone">
+          {label}
+        </h3>
       </div>
       {children}
     </div>
@@ -85,11 +93,20 @@ export function SimulationLearnMore({
     <div className={cn("mt-10", className)}>
       <RulerDivider className="mb-8" />
 
-      <p className={cn("mb-6 font-mono text-[11px] uppercase tracking-[0.2em]", colors.text)}>Learn more</p>
+      <p
+        className={cn(
+          "mb-6 font-mono text-[11px] uppercase tracking-[0.2em]",
+          colors.text,
+        )}
+      >
+        Learn more
+      </p>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <SectionCard
-          icon={<Target className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />}
+          icon={
+            <Target className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+          }
           label="Learning objectives"
           colorClass={colors.text}
           bgClass={colors.bg}
@@ -97,7 +114,13 @@ export function SimulationLearnMore({
           <ul className="flex flex-col gap-2 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
             {objectives.map((objective, index) => (
               <li key={index} className="flex gap-2">
-                <span className={cn("mt-2 h-1 w-1 shrink-0 rounded-full", colors.bar)} aria-hidden="true" />
+                <span
+                  className={cn(
+                    "mt-2 h-1 w-1 shrink-0 rounded-full",
+                    colors.bar,
+                  )}
+                  aria-hidden="true"
+                />
                 {objective}
               </li>
             ))}
@@ -105,7 +128,13 @@ export function SimulationLearnMore({
         </SectionCard>
 
         <SectionCard
-          icon={<BookOpen className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />}
+          icon={
+            <BookOpen
+              className="h-4 w-4"
+              strokeWidth={1.75}
+              aria-hidden="true"
+            />
+          }
           label="Key concepts"
           colorClass={colors.text}
           bgClass={colors.bg}
@@ -113,10 +142,18 @@ export function SimulationLearnMore({
           <div className="flex flex-col gap-4">
             {concepts.map((concept, index) => (
               <div key={index}>
-                <p className="text-sm font-medium text-ink dark:text-bone">{concept.term}</p>
-                <p className="mt-1 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">{concept.explanation}</p>
+                <p className="text-sm font-medium text-ink dark:text-bone">
+                  {concept.term}
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
+                  {concept.explanation}
+                </p>
                 {concept.formula ? (
-                  <FormulaCard formula={concept.formula} caption={concept.formulaCaption} className="mt-2 py-3" />
+                  <FormulaCard
+                    formula={concept.formula}
+                    caption={concept.formulaCaption}
+                    className="mt-2 py-3"
+                  />
                 ) : null}
               </div>
             ))}
@@ -124,21 +161,45 @@ export function SimulationLearnMore({
         </SectionCard>
       </div>
 
-      <InstructionsPanel title="How to use this simulation" steps={howToUse} defaultOpen={false} className="mt-4" />
+      <InstructionsPanel
+        title="How to use this simulation"
+        steps={howToUse}
+        defaultOpen={false}
+        className="mt-4"
+      />
 
-      <div className={cn("mt-4 grid gap-4", tryThis && tryThis.length > 0 ? "lg:grid-cols-2" : "grid-cols-1")}>
+      <div
+        className={cn(
+          "mt-4 grid gap-4",
+          tryThis && tryThis.length > 0 ? "lg:grid-cols-2" : "grid-cols-1",
+        )}
+      >
         <SectionCard
-          icon={<Sparkles className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />}
+          icon={
+            <Sparkles
+              className="h-4 w-4"
+              strokeWidth={1.75}
+              aria-hidden="true"
+            />
+          }
           label="Why it matters"
           colorClass={colors.text}
           bgClass={colors.bg}
         >
-          <p className="text-sm leading-relaxed text-ink-soft dark:text-bone-soft">{whyItMatters}</p>
+          <p className="text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
+            {whyItMatters}
+          </p>
         </SectionCard>
 
         {tryThis && tryThis.length > 0 ? (
           <SectionCard
-            icon={<FlaskConical className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />}
+            icon={
+              <FlaskConical
+                className="h-4 w-4"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+            }
             label="Try this"
             colorClass={colors.text}
             bgClass={colors.bg}
@@ -146,7 +207,13 @@ export function SimulationLearnMore({
             <ul className="flex flex-col gap-2 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
               {tryThis.map((challenge, index) => (
                 <li key={index} className="flex gap-2">
-                  <span className={cn("mt-2 h-1 w-1 shrink-0 rounded-full", colors.bar)} aria-hidden="true" />
+                  <span
+                    className={cn(
+                      "mt-2 h-1 w-1 shrink-0 rounded-full",
+                      colors.bar,
+                    )}
+                    aria-hidden="true"
+                  />
                   {challenge}
                 </li>
               ))}
