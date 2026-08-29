@@ -106,6 +106,12 @@ export function PracticeSession() {
         onRetryOverride={handlePracticeAgain}
         onComplete={handleComplete}
         secondaryAction={{ label: "Change Topic", onClick: handleChangeTopic }}
+        // `round.questions` already comes out of the adaptive selector
+        // in a deliberate order (weak concepts first, previously-missed
+        // questions mixed in) — reshuffling that here would silently
+        // undo it. Each question's own options are still shuffled
+        // unconditionally by the engine either way.
+        shuffleQuestionOrder={false}
       />
     </div>
   );

@@ -1,6 +1,5 @@
 import { quizzes } from "@/features/quiz-engine/registry";
 import type { QuizQuestion } from "@/features/quiz-engine/types";
-import { shuffleQuestionOptions } from "@/features/quiz-engine/utils/shuffle";
 import { selectAdaptiveQuestions } from "./adaptive-selection";
 import type { QuestionAttemptRecord } from "./mastery-types";
 import {
@@ -123,9 +122,10 @@ export interface PracticeSelectionResult {
  * (`adaptive-selection.ts`) along with the student's relevant recent
  * attempts — so the round prioritizes weak concepts, mixes in
  * previously-missed questions, and avoids repeating whatever was just
- * seen, rather than a flat random draw. Each selected question's own
- * options are still shuffled, safely by construction (`correctAnswer`
- * is matched by value, not index — see `quiz-engine/utils/shuffle.ts`).
+ * seen, rather than a flat random draw. The Quiz Engine itself now
+ * shuffles every question's options unconditionally
+ * (`useQuiz`/`utils/shuffle.ts`), so this no longer needs to do it —
+ * one shuffle site instead of two.
  *
  * Never returns more than what's actually available, so a request for
  * more questions than exist degrades gracefully instead of crashing
@@ -147,7 +147,7 @@ export function selectPracticeQuestions(
     pool,
     attempts: relevantAttempts,
     requestedCount: config.requestedCount,
-  }).map(shuffleQuestionOptions);
+  });
 
   return { questions, availableCount: pool.length };
 }

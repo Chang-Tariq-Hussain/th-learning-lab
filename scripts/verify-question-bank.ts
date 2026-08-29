@@ -3,6 +3,7 @@
 // counts, difficulty distribution, ID uniqueness, and Practice Mode wiring after edits.
 import { quizzes } from "../src/features/quiz-engine/registry";
 import { validateQuizQuestions } from "../src/features/quiz-engine/utils/validate-quiz";
+import { shuffleQuestionOptions } from "../src/features/quiz-engine/utils/shuffle";
 import { getPracticeSubjects, countAvailableQuestions, selectPracticeQuestions } from "../src/features/practice-mode/question-bank";
 
 const mathQuizzes = quizzes.filter(q => q.subjectSlug === "mathematics");
@@ -99,3 +100,79 @@ for (const topicSlug of ["motion", "newtonian-mechanics", "electromagnetism", "w
     console.log(`  ${topicSlug}/${diff}: selected=${r.questions.length} allMatchDifficulty=${allMatchDiff}`);
   }
 }
+
+// --- Answer position distribution -------------------------------------------
+//
+// Checks where `correctAnswer` sits in each question's *stored*
+// `options` array (i.e. as authored in the data file, before the Quiz
+// Engine's runtime shuffle in `useQuiz` reorders it for display). This
+// is a bias check on the source data, not a check of what a student
+// actually sees — the engine now shuffles every question's options on
+// every attempt, so a stored-order skew like this no longer reaches
+// the UI. It's still worth flagging here: a skewed source makes it
+// too easy for the *next* skewed skew to slip in unnoticed, and it's
+// a decent proxy for "were these options written carefully" in
+// general (e.g. distractor variety, not just position).
+console.log("\n=== Stored answer-position distribution (source data, pre-shuffle) ===");
+const POSITION_LABELS = ["A", "B", "C", "D", "E", "F"];
+let anySevereBias = false;
+for (const quiz of quizzes) {
+  if (quiz.questions.length === 0) continue;
+  const counts = new Map<number, number>();
+  for (const question of quiz.questions) {
+    const index = question.options.indexOf(question.correctAnswer);
+    counts.set(index, (counts.get(index) ?? 0) + 1);
+  }
+  const total = quiz.questions.length;
+  const breakdown = POSITION_LABELS.slice(0, Math.max(...quiz.questions.map(q => q.options.length)))
+    .map((label, i) => `${label}=${counts.get(i) ?? 0}`)
+    .join(" ");
+  const maxShare = Math.max(...counts.values()) / total;
+  const severe = maxShare >= 0.6 && total >= 10; // e.g. 60%+ of a 10+ question quiz landing on one position
+  if (severe) anySevereBias = true;
+  console.log(`${quiz.id}: ${breakdown}${severe ? "  <-- SEVERE BIAS" : ""}`);
+}
+console.log(anySevereBias ? "\nSevere stored-position bias detected in at least one quiz (see above)." : "\nNo severe stored-position bias detected.");
+
+// --- Shuffle correctness & runtime distribution self-test -------------------
+//
+// Exercises `shuffleQuestionOptions` directly (the same function
+// `useQuiz` now calls on every question, every attempt) many times
+// over a real question, and checks two things: (1) it never breaks —
+// the shuffled options are always exactly the same set as the
+// original, and `correctAnswer` is always present in them, so scoring
+// can never desync; (2) over many trials, the correct answer's
+// *position* lands roughly evenly across all option slots rather than
+// piling up on one — i.e. the actual runtime fix, not just the
+// stored-data check above.
+
+console.log("\n=== Runtime shuffle self-test ===");
+const sampleQuiz = quizzes.find(q => q.questions.length >= 10);
+if (sampleQuiz) {
+  const sampleQuestion = sampleQuiz.questions[0]!;
+  const TRIALS = 2000;
+  const positionCounts = new Map<number, number>();
+  let everBroken = false;
+
+  for (let i = 0; i < TRIALS; i++) {
+    const shuffled = shuffleQuestionOptions(sampleQuestion);
+    const sameSet =
+      shuffled.options.length === sampleQuestion.options.length &&
+      [...shuffled.options].sort().join("|") === [...sampleQuestion.options].sort().join("|");
+    const hasCorrectAnswer = shuffled.options.includes(shuffled.correctAnswer) && shuffled.correctAnswer === sampleQuestion.correctAnswer;
+    if (!sameSet || !hasCorrectAnswer) everBroken = true;
+
+    const position = shuffled.options.indexOf(shuffled.correctAnswer);
+    positionCounts.set(position, (positionCounts.get(position) ?? 0) + 1);
+  }
+
+  const distribution = POSITION_LABELS.slice(0, sampleQuestion.options.length)
+    .map((label, i) => `${label}=${(((positionCounts.get(i) ?? 0) / TRIALS) * 100).toFixed(1)}%`)
+    .join(" ");
+  console.log(`Sample question "${sampleQuestion.id}" over ${TRIALS} shuffles: ${distribution}`);
+  console.log(everBroken ? "SCORING INTEGRITY: BROKEN (options/correctAnswer mismatch detected)" : "Scoring integrity: OK (every shuffle preserved the option set and correct answer)");
+} else {
+  console.log("No quiz with >=10 questions found to sample.");
+}
+
+

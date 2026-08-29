@@ -582,6 +582,13 @@ export const subjects: Subject[] = [
               "See why two datasets with the same mean can have very different spread, then build up variance and standard deviation step by step.",
             href: "/dashboard/mathematics/measures-of-dispersion",
           },
+          {
+            slug: "graph-builder",
+            title: "Graphs & Data Visualization",
+            description:
+              "Edit a dataset's values and see it rendered as a bar graph, pie chart, or line graph — and learn when each one fits.",
+            href: "/dashboard/mathematics/graph-builder",
+          },
         ],
       },
       {

@@ -198,7 +198,7 @@ const questions: QuizQuestion[] = [
       "Only range increases with lower gravity, not height",
       "Gravity has no effect on range or height, only time of flight",
     ],
-    correctAnswer: "Gravity is in the denominator of both the range and height formulas, so a smaller g increases both",
+    correctAnswer: "Gravity is in the denominator of both formulas, so a smaller g increases both",
     explanation: "Both R = v²sin(2θ)/g and h = v²sin²θ/2g have gravity in the denominator — a weaker gravity means less downward pull cutting the flight short, so both grow.",
     difficulty: "medium",
     subject: "physics",

@@ -34,6 +34,10 @@ export interface QuizProps {
   onRetryOverride?: () => void;
   /** Optional third results-screen action — see `QuizResults`. */
   secondaryAction?: QuizResultsSecondaryAction;
+  /** Whether to randomize question order for this attempt — see
+   *  `useQuiz`'s docblock. Defaults to `true`; Practice Mode passes
+   *  `false` since it hands in an already deliberately-ordered set. */
+  shuffleQuestionOrder?: boolean;
 }
 
 /**
@@ -56,6 +60,7 @@ export function Quiz({
   retryLabel,
   onRetryOverride,
   secondaryAction,
+  shuffleQuestionOrder = true,
 }: QuizProps) {
   const issues = useMemo(() => validateQuizQuestions(questions), [questions]);
 
@@ -66,13 +71,15 @@ export function Quiz({
     totalQuestions,
     selectedAnswer,
     isSubmitted,
+    isRevealed,
     answers,
     isLastQuestion,
     selectAnswer,
     submitAnswer,
+    revealAnswer,
     goToNextQuestion,
     retry,
-  } = useQuiz({ quizId, questions, onComplete });
+  } = useQuiz({ quizId, questions, onComplete, shuffleQuestionOrder });
 
   if (issues.length > 0 || !currentQuestion) {
     return <QuizUnavailable backHref={backHref} backLabel={backLabel} />;
@@ -115,15 +122,17 @@ export function Quiz({
             colorToken={colorToken}
             selectedAnswer={selectedAnswer}
             isSubmitted={isSubmitted}
+            isRevealed={isRevealed}
             onSelectAnswer={selectAnswer}
             onCheckAnswer={submitAnswer}
+            onShowAnswer={revealAnswer}
           />
         </motion.div>
       </AnimatePresence>
 
       {showFeedbackForCurrent && lastAnswer && (
         <QuizFeedback
-          isCorrect={lastAnswer.isCorrect}
+          outcome={lastAnswer.wasRevealed ? "revealed" : lastAnswer.isCorrect ? "correct" : "incorrect"}
           explanation={lastAnswer.question.explanation}
           isLastQuestion={isLastQuestion}
           onNext={goToNextQuestion}

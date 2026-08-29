@@ -279,6 +279,13 @@ export const mathematicsFoundationsPath: LearningPath = {
       description: "Variance and standard deviation — how spread out a data set really is.",
       href: "/dashboard/mathematics/measures-of-dispersion",
     },
+    {
+      subjectSlug: "mathematics",
+      topicSlug: "graph-builder",
+      title: "Graphs & Data Visualization",
+      description: "Bar graphs, pie charts, and line graphs — and when to use each.",
+      href: "/dashboard/mathematics/graph-builder",
+    },
 
     // --- Calculus ------------------------------------------------------------
     {

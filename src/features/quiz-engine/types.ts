@@ -72,6 +72,14 @@ export interface QuizAnswerRecord {
   question: QuizQuestion;
   selectedAnswer: string | null;
   isCorrect: boolean;
+  /** True when the student used "Show Answer" on this question before
+   *  submitting it. A revealed question is never counted correct
+   *  (`isCorrect` is always false in that case), even if the student's
+   *  final selection happens to match — it's tracked as its own
+   *  outcome ("answered independently" vs "answered after reveal"),
+   *  not folded into the incorrect count. Defaults to `false`/absent
+   *  for older code paths that don't set it. */
+  wasRevealed?: boolean;
 }
 
 /**

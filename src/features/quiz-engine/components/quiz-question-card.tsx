@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Lightbulb } from "lucide-react";
+import { Eye, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -22,8 +22,18 @@ export interface QuizQuestionCardProps {
   colorToken: string;
   selectedAnswer: string | null;
   isSubmitted: boolean;
+  /** True once the student has used "Show Answer" on this question.
+   *  Distinct from `isSubmitted` in *why* the answer became visible,
+   *  though visually both lock the options the same way — see
+   *  `QuizOptionButton`, which only needs `isSubmitted`. */
+  isRevealed: boolean;
   onSelectAnswer: (value: string) => void;
   onCheckAnswer: () => void;
+  /** Explicitly requested by the student — reveals the correct option
+   *  and explanation without requiring a selection first, and marks
+   *  the question as "answered after reveal" rather than scored
+   *  normally. Never called automatically. */
+  onShowAnswer: () => void;
 }
 
 export function QuizQuestionCard({
@@ -33,8 +43,10 @@ export function QuizQuestionCard({
   colorToken,
   selectedAnswer,
   isSubmitted,
+  isRevealed,
   onSelectAnswer,
   onCheckAnswer,
+  onShowAnswer,
 }: QuizQuestionCardProps) {
   const colors = resolveSubjectColors(colorToken);
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -75,7 +87,15 @@ export function QuizQuestionCard({
         <p className={`font-mono text-[11px] uppercase tracking-[0.2em] ${colors.text}`}>
           {subjectLabel} · {topicLabel}
         </p>
-        <Badge>{DIFFICULTY_LABEL[question.difficulty]}</Badge>
+        <div className="flex items-center gap-2">
+          {isRevealed ? (
+            <Badge>
+              <Eye className="h-3 w-3" strokeWidth={1.75} aria-hidden="true" />
+              Revealed
+            </Badge>
+          ) : null}
+          <Badge>{DIFFICULTY_LABEL[question.difficulty]}</Badge>
+        </div>
       </div>
 
       <p className="mb-6 text-lg font-medium leading-snug text-ink dark:text-bone sm:text-xl">
@@ -138,7 +158,15 @@ export function QuizQuestionCard({
       ) : null}
 
       {!isSubmitted && (
-        <div className="mt-6 flex justify-end">
+        <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
+          <button
+            type="button"
+            onClick={onShowAnswer}
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-sm font-medium text-ink-soft underline-offset-4 hover:text-ink hover:underline dark:text-bone-soft dark:hover:text-bone"
+          >
+            <Eye className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+            Show Answer
+          </button>
           <Button variant="primary" size="md" onClick={onCheckAnswer} disabled={selectedAnswer === null}>
             Check Answer
           </Button>

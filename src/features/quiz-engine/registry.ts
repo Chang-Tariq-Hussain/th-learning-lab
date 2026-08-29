@@ -30,7 +30,6 @@ import { mathematicsCrossMultiplicationQuiz } from "./data/mathematics-cross-mul
 import { mathematicsRealLifeRatiosQuiz } from "./data/mathematics-real-life-ratios-quiz";
 import { mathematicsPerimeterAreaQuiz } from "./data/mathematics-perimeter-area-quiz";
 import { mathematicsStatisticsQuiz } from "./data/mathematics-statistics-quiz";
-import { mathematicsDataCollectionQuiz } from "./data/mathematics-data-collection-quiz";
 import { mathematicsStraightLineQuiz } from "./data/mathematics-straight-line-quiz";
 import { physicsElectromagnetismQuiz } from "./data/physics-electromagnetism-quiz";
 import { physicsMotionQuiz } from "./data/physics-motion-quiz";
@@ -86,7 +85,6 @@ export const quizzes: QuizMeta[] = [
   mathematicsCrossMultiplicationQuiz,
   mathematicsRealLifeRatiosQuiz,
   mathematicsPerimeterAreaQuiz,
-  mathematicsDataCollectionQuiz,
   physicsElectromagnetismQuiz,
   physicsMotionQuiz,
   physicsSimpleMotionQuiz,
