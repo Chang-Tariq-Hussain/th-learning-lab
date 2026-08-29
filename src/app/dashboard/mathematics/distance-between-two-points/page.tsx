@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { DistanceBetweenTwoPoints } from "@/features/subjects/mathematics/distance-between-two-points";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ export default function DistanceBetweenTwoPointsPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<DistanceBetweenTwoPoints />} />
+        <TopicExperience content={content} simulation={<DistanceBetweenTwoPoints />} />
       ) : (
         <DistanceBetweenTwoPoints />
       )}

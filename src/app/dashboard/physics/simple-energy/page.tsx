@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { SimpleEnergy } from "@/features/subjects/physics/simple-energy";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 
 export const metadata: Metadata = {
   title: "Simple Energy",
@@ -43,7 +43,7 @@ export default function SimpleEnergyPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<SimpleEnergy />} />
+        <TopicExperience content={content} simulation={<SimpleEnergy />} />
       ) : (
         <SimpleEnergy />
       )}

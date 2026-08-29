@@ -42,6 +42,9 @@ export type { StepStatus, StepBreakdownEntry } from "./mastery";
 export { getTopicContent, topicContentList } from "./registry";
 
 export { TopicLearningExperience } from "./components/topic-learning-experience";
+export { TopicExperience } from "./components/topic-experience";
+export { TopicModeSwitch } from "./components/topic-mode-switch";
+export type { TopicMode } from "./components/topic-mode-switch";
 export { TopicJourney } from "./components/topic-journey";
 export { MasteryBadge } from "./components/mastery-badge";
 export { MasterySection } from "./components/mastery-section";

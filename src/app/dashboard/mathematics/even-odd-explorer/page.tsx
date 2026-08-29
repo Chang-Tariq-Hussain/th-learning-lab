@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { EvenOddExplorer } from "@/features/subjects/mathematics/even-odd-explorer";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 
 const SIMULATION_HREF = "/dashboard/mathematics/even-odd-explorer";
 
@@ -39,7 +39,7 @@ export default function EvenOddExplorerPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<EvenOddExplorer />} />
+        <TopicExperience content={content} simulation={<EvenOddExplorer />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page

@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { NumberLine } from "@/features/subjects/mathematics/number-line";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 
 const SIMULATION_HREF = "/dashboard/mathematics/number-line";
 
@@ -38,7 +38,7 @@ export default function NumberLinePage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<NumberLine />} />
+        <TopicExperience content={content} simulation={<NumberLine />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page

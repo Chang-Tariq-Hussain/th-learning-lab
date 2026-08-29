@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { ProjectileMotion } from "@/features/subjects/physics/projectile-motion";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { CrossSubjectConnections } from "@/components/dashboard/cross-subject-connections";
 import { getConnectionsForHref } from "@/features/cross-subject-connections";
 
@@ -44,7 +44,7 @@ export default function ProjectileMotionPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<ProjectileMotion />} />
+        <TopicExperience content={content} simulation={<ProjectileMotion />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page

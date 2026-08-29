@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { MeasurementExplorer } from "@/features/subjects/mathematics/measurement-explorer";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default function MeasurementExplorerPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<MeasurementExplorer />} />
+        <TopicExperience content={content} simulation={<MeasurementExplorer />} />
       ) : (
         <MeasurementExplorer />
       )}

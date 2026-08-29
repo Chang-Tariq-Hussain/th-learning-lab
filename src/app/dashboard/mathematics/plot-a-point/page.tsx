@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { PlotAPoint } from "@/features/subjects/mathematics/plot-a-point";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default function PlotAPointPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<PlotAPoint />} />
+        <TopicExperience content={content} simulation={<PlotAPoint />} />
       ) : (
         <PlotAPoint />
       )}

@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { CoordinatePlaneExplorer } from "@/features/subjects/mathematics/coordinate-plane-explorer";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export default function CoordinatePlaneExplorerPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<CoordinatePlaneExplorer />} />
+        <TopicExperience content={content} simulation={<CoordinatePlaneExplorer />} />
       ) : (
         <CoordinatePlaneExplorer />
       )}

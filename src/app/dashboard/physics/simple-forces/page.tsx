@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { SimpleForces } from "@/features/subjects/physics/simple-forces";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 
 export const metadata: Metadata = {
   title: "Simple Forces",
@@ -42,7 +42,7 @@ export default function SimpleForcesPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<SimpleForces />} />
+        <TopicExperience content={content} simulation={<SimpleForces />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page

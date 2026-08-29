@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { FractionOperationsLab } from "@/features/subjects/mathematics/fraction-operations";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 
 const SIMULATION_HREF = "/dashboard/mathematics/fraction-operations";
 
@@ -39,7 +39,7 @@ export default function FractionOperationsPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<FractionOperationsLab />} />
+        <TopicExperience content={content} simulation={<FractionOperationsLab />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page

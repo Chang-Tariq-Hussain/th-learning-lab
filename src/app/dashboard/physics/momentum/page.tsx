@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { Momentum } from "@/features/subjects/physics/momentum";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { CrossSubjectConnections } from "@/components/dashboard/cross-subject-connections";
 import { getConnectionsForHref } from "@/features/cross-subject-connections";
 
@@ -45,7 +45,7 @@ export default function MomentumPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<Momentum />} />
+        <TopicExperience content={content} simulation={<Momentum />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page

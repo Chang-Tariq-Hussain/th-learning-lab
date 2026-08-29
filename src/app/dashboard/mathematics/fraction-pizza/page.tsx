@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { FractionPizza } from "@/features/subjects/mathematics/fraction-pizza";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 
 const SIMULATION_HREF = "/dashboard/mathematics/fraction-pizza";
 
@@ -41,7 +41,7 @@ export default function FractionPizzaPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<FractionPizza />} />
+        <TopicExperience content={content} simulation={<FractionPizza />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page

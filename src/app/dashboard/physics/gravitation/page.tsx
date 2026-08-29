@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { Gravitation } from "@/features/subjects/physics/gravitation";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { CrossSubjectConnections } from "@/components/dashboard/cross-subject-connections";
 import { getConnectionsForHref } from "@/features/cross-subject-connections";
 
@@ -45,7 +45,7 @@ export default function GravitationPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<Gravitation />} />
+        <TopicExperience content={content} simulation={<Gravitation />} />
       ) : (
         <Gravitation />
       )}

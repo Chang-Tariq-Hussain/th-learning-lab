@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { StatisticsFoundations } from "@/features/subjects/mathematics/statistics-foundations";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default function StatisticsFoundationsPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<StatisticsFoundations />} />
+        <TopicExperience content={content} simulation={<StatisticsFoundations />} />
       ) : (
         <StatisticsFoundations />
       )}

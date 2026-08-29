@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
 import { CrossMultiplicationExplorer } from "@/features/subjects/mathematics/cross-multiplication-explorer";
-import { TopicLearningExperience, getTopicContent } from "@/features/learning";
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default function CrossMultiplicationExplorerPage() {
       </div>
 
       {content ? (
-        <TopicLearningExperience content={content} simulation={<CrossMultiplicationExplorer />} />
+        <TopicExperience content={content} simulation={<CrossMultiplicationExplorer />} />
       ) : (
         <CrossMultiplicationExplorer />
       )}
