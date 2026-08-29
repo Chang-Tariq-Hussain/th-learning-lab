@@ -31,6 +31,7 @@ import { mathematicsEquationOfLineContent } from "./data/mathematics-equation-of
 import { mathematicsDataCollectionContent } from "./data/mathematics-data-collection";
 import { mathematicsGraphBuilderContent } from "./data/mathematics-graph-builder";
 import { mathematicsStatisticsFoundationsContent } from "./data/mathematics-statistics-foundations";
+import { mathematicsMeasuresOfDispersionContent } from "./data/mathematics-measures-of-dispersion";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -139,6 +140,7 @@ export const topicContentList: TopicContent[] = [
   mathematicsDataCollectionContent,
   mathematicsGraphBuilderContent,
   mathematicsStatisticsFoundationsContent,
+  mathematicsMeasuresOfDispersionContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

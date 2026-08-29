@@ -32,6 +32,7 @@ import { mathematicsPerimeterAreaQuiz } from "./data/mathematics-perimeter-area-
 import { mathematicsDataCollectionQuiz } from "./data/mathematics-data-collection-quiz";
 import { mathematicsGraphBuilderQuiz } from "./data/mathematics-graph-builder-quiz";
 import { mathematicsStatisticsFoundationsQuiz } from "./data/mathematics-statistics-foundations-quiz";
+import { mathematicsMeasuresOfDispersionQuiz } from "./data/mathematics-measures-of-dispersion-quiz";
 import { mathematicsStatisticsQuiz } from "./data/mathematics-statistics-quiz";
 import { mathematicsStraightLineQuiz } from "./data/mathematics-straight-line-quiz";
 import { physicsElectromagnetismQuiz } from "./data/physics-electromagnetism-quiz";
@@ -91,6 +92,7 @@ export const quizzes: QuizMeta[] = [
   mathematicsDataCollectionQuiz,
   mathematicsGraphBuilderQuiz,
   mathematicsStatisticsFoundationsQuiz,
+  mathematicsMeasuresOfDispersionQuiz,
   physicsElectromagnetismQuiz,
   physicsMotionQuiz,
   physicsSimpleMotionQuiz,
