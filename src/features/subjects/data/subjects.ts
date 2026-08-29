@@ -562,6 +562,13 @@ export const subjects: Subject[] = [
             href: "/dashboard/mathematics/statistics-foundations",
           },
           {
+            slug: "data-collection",
+            title: "Data Collection & Representation",
+            description:
+              "Collect survey observations one at a time and watch the same data become a raw list, a frequency table, and a bar graph.",
+            href: "/dashboard/mathematics/data-collection",
+          },
+          {
             slug: "central-tendency",
             title: "Measures of Central Tendency — Mean, Median, Mode & Range",
             description:

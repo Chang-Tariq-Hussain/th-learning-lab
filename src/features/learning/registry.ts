@@ -28,6 +28,7 @@ import { mathematicsDistanceContent } from "./data/mathematics-distance";
 import { mathematicsMidpointContent } from "./data/mathematics-midpoint";
 import { mathematicsSlopeContent } from "./data/mathematics-slope";
 import { mathematicsEquationOfLineContent } from "./data/mathematics-equation-of-line";
+import { mathematicsDataCollectionContent } from "./data/mathematics-data-collection";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -133,6 +134,7 @@ export const topicContentList: TopicContent[] = [
   mathematicsMidpointContent,
   mathematicsSlopeContent,
   mathematicsEquationOfLineContent,
+  mathematicsDataCollectionContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

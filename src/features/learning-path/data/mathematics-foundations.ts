@@ -260,6 +260,13 @@ export const mathematicsFoundationsPath: LearningPath = {
     },
     {
       subjectSlug: "mathematics",
+      topicSlug: "data-collection",
+      title: "Data Collection & Representation",
+      description: "Turn raw observations into a frequency table and a bar graph.",
+      href: "/dashboard/mathematics/data-collection",
+    },
+    {
+      subjectSlug: "mathematics",
       topicSlug: "central-tendency",
       title: "Central Tendency",
       description: "Mean, median, mode, and range — different ways to summarize a data set.",
