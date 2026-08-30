@@ -9,7 +9,6 @@
  * (closer to how plant cells are conventionally drawn) while staying
  * organic rather than a perfect shape.
  */
-import { motion } from "framer-motion";
 import { blobPath } from "../utils/organic-path";
 import { OrganelleHotspot } from "./organelle-hotspot";
 
@@ -169,39 +168,20 @@ export function PlantCellBody({ selectedId, onSelect }: PlantCellBodyProps) {
         </g>
       </OrganelleHotspot>
 
-      {/* ---- Cell Membrane ----
-          TASK 9 SCOPE ADDS: a thin highlight stroke with a slow opacity
-          pulse — the plant-cell equivalent of the animal cell's bilayer
-          highlight "breathing" animation. The plant cell didn't have an
-          inner highlight line before this, since its rigid cell wall
-          already carries most of the outer visual detail; this gives
-          the (biologically real, flexible) membrane layer underneath
-          the same ambient "alive" cue the animal cell has. Opacity
-          only, no scale, same as every other Task 9 animation. */}
+      {/* ---- Cell Membrane ---- */}
       <OrganelleHotspot
         id="cellMembrane"
         label="Cell Membrane"
         isSelected={selectedId === "cellMembrane"}
         onSelect={onSelect}
       >
-        <g>
-          <path
-            d={MEMBRANE_PATH}
-            fill="url(#plant-membrane-fill)"
-            stroke="#A99257"
-            strokeWidth={2}
-            strokeLinejoin="round"
-          />
-          <motion.path
-            d={MEMBRANE_PATH}
-            fill="none"
-            stroke="#FFFFFF"
-            strokeWidth={1.5}
-            strokeLinejoin="round"
-            animate={{ strokeOpacity: [0.25, 0.45, 0.25] }}
-            transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </g>
+        <path
+          d={MEMBRANE_PATH}
+          fill="url(#plant-membrane-fill)"
+          stroke="#A99257"
+          strokeWidth={2}
+          strokeLinejoin="round"
+        />
       </OrganelleHotspot>
 
       {/* ---- Cytoplasm ---- */}

@@ -6,6 +6,8 @@ import { ExplanationPanel } from "./components/explanation-panel";
 import { FinalResult } from "./components/final-result";
 import { StageControls } from "./components/stage-controls";
 import { StageIndicator } from "./components/stage-indicator";
+import { StructureInfoPanel } from "./components/structure-info-panel";
+import { getStructureInfo } from "./data/structure-info";
 import { INITIAL_MITOSIS_STATE, LAST_STAGE_INDEX, STAGE_ADVANCE_MS, isFinished } from "./model";
 import type { MitosisState } from "./types";
 
@@ -14,16 +16,26 @@ import type { MitosisState } from "./types";
  * through Cytokinesis), not one continuous playback clock: `stageIndex`
  * is the entire piece of state this component owns. Start schedules a
  * timer that advances it one stage at a time and stops itself at
- * Cytokinesis; Pause just clears that timer; Next Stage advances it
- * once by hand and always pauses first (same "manual and auto are
- * exclusive" rule Chemical Reaction Builder uses). Every visual reads
- * `stageIndex` straight off `cell-scene.tsx`'s lookup tables, so Start
- * and Next Stage always land on identical-looking stages.
+ * Cytokinesis; Pause just clears that timer; Next Stage/Previous Stage
+ * step it by hand one at a time and always pause first (same "manual
+ * and auto are exclusive" rule Chemical Reaction Builder uses). Every
+ * visual reads `stageIndex` straight off `cell-scene.tsx`'s lookup
+ * tables, so Start and manual stepping always land on identical-looking
+ * stages.
  */
 export function Mitosis() {
   const [state, setState] = useState<MitosisState>(INITIAL_MITOSIS_STATE);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const { running, stageIndex } = state;
   const finished = isFinished(state);
+
+  // A selected structure can go out of view as the stage changes (e.g. the
+  // original nucleus is gone by Metaphase) — clear the selection whenever
+  // the stage moves rather than leave the info panel pointing at something
+  // no longer on screen.
+  useEffect(() => {
+    setSelectedId(null);
+  }, [stageIndex]);
 
   useEffect(() => {
     if (!running || stageIndex >= LAST_STAGE_INDEX) return;
@@ -55,9 +67,22 @@ export function Mitosis() {
     }));
   };
 
+  const handlePreviousStage = () => {
+    setState((prev) => ({
+      running: false,
+      stageIndex: Math.max(prev.stageIndex - 1, 0),
+    }));
+  };
+
   const handleReset = () => {
     setState(INITIAL_MITOSIS_STATE);
   };
+
+  const handleSelect = (id: string) => {
+    setSelectedId((current) => (current === id ? null : id));
+  };
+
+  const selectedStructure = getStructureInfo(selectedId);
 
   return (
     <div className="flex flex-col items-center gap-6 py-4">
@@ -67,13 +92,17 @@ export function Mitosis() {
         <ExplanationPanel stageIndex={stageIndex} />
 
         <div className="h-[300px] rounded-[1.75rem] border border-line bg-white/70 p-2 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[340px]">
-          <CellScene stageIndex={stageIndex} />
+          <CellScene stageIndex={stageIndex} selectedId={selectedId} onSelect={handleSelect} />
         </div>
       </div>
+
+      <StructureInfoPanel structure={selectedStructure} />
 
       <StageControls
         running={running}
         finished={finished}
+        atStart={stageIndex === 0}
+        onPreviousStage={handlePreviousStage}
         onStart={handleStart}
         onPause={handlePause}
         onNextStage={handleNextStage}

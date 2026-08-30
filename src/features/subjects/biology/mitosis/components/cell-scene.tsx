@@ -1,9 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
+import { OrganelleHotspot } from "@/features/subjects/biology/cell-explorer/components/organelle-hotspot";
 
 export interface CellSceneProps {
   stageIndex: number;
+  /** Currently selected structure id ("chromosome" | "spindle" | "centrosome" | "nucleus"), or null. */
+  selectedId: string | null;
+  onSelect: (id: string) => void;
 }
 
 const VIEW_WIDTH = 440;
@@ -34,21 +39,57 @@ const CHROMOSOME_LAYOUT: ChromosomeStageLayout[] = [
   { dx: [0, 0, 0, 0], dy: [-20, -7, 7, 20], rotation: [0, 0, 0, 0], splitDistance: 78, opacity: 0, scale: 0.78 },
 ];
 
+const CENTROSOME_COLOR = "#475569";
+
+interface CentrosomeLayout {
+  /** Horizontal distance of each pole from CENTER.x (poles are mirrored left/right). */
+  poleOffset: number;
+  opacity: number;
+}
+
+/**
+ * Centrosomes duplicate before mitosis begins, so both are already
+ * present (faint, still close together) at Interphase — they're just
+ * not yet organizing anything. They migrate apart through Prophase,
+ * hold their positions at the two poles for Metaphase/Anaphase (this
+ * is what "opposite poles" means visually), then fade as the spindle
+ * disassembles during Telophase/Cytokinesis.
+ */
+const CENTROSOME_LAYOUT: CentrosomeLayout[] = [
+  { poleOffset: 16, opacity: 0.5 },
+  { poleOffset: 95, opacity: 1 },
+  { poleOffset: 140, opacity: 1 },
+  { poleOffset: 140, opacity: 1 },
+  { poleOffset: 140, opacity: 0.8 },
+  { poleOffset: 140, opacity: 0 },
+];
+
+/**
+ * Spindle fiber opacity per stage. Fibers are absent at Interphase
+ * (nothing to attach to yet), fade in through Prophase as the spindle
+ * apparatus assembles, stay fully visible while doing the actual work
+ * of aligning (Metaphase) and separating (Anaphase) chromosomes, then
+ * fade out as the spindle disassembles (Telophase/Cytokinesis).
+ */
+const SPINDLE_OPACITY = [0, 0.45, 1, 1, 0.3, 0];
+
 interface NucleusLayout {
   mainOpacity: number;
   poleOpacity: number;
   poleCx: number;
   poleR: number;
+  /** True only while the envelope is actively breaking down (Prophase) — rendered as a perforated/dashed outline instead of a solid one, a distinct visual cue from "fading out." */
+  envelopeDashed: boolean;
 }
 
 /** Main (single, pre-division) nucleus fades out across Prophase; the two new nuclei fade in at Telophase and recenter once the cell has physically split at Cytokinesis. */
 const NUCLEUS_LAYOUT: NucleusLayout[] = [
-  { mainOpacity: 1, poleOpacity: 0, poleCx: 150, poleR: 40 },
-  { mainOpacity: 0.25, poleOpacity: 0, poleCx: 150, poleR: 40 },
-  { mainOpacity: 0, poleOpacity: 0, poleCx: 150, poleR: 40 },
-  { mainOpacity: 0, poleOpacity: 0, poleCx: 150, poleR: 40 },
-  { mainOpacity: 0, poleOpacity: 1, poleCx: 150, poleR: 40 },
-  { mainOpacity: 0, poleOpacity: 1, poleCx: 125, poleR: 36 },
+  { mainOpacity: 1, poleOpacity: 0, poleCx: 150, poleR: 40, envelopeDashed: false },
+  { mainOpacity: 0.25, poleOpacity: 0, poleCx: 150, poleR: 40, envelopeDashed: true },
+  { mainOpacity: 0, poleOpacity: 0, poleCx: 150, poleR: 40, envelopeDashed: false },
+  { mainOpacity: 0, poleOpacity: 0, poleCx: 150, poleR: 40, envelopeDashed: false },
+  { mainOpacity: 0, poleOpacity: 1, poleCx: 150, poleR: 40, envelopeDashed: false },
+  { mainOpacity: 0, poleOpacity: 1, poleCx: 125, poleR: 36, envelopeDashed: false },
 ];
 
 interface MembraneLayout {
@@ -143,7 +184,91 @@ function ChromosomePair({
   );
 }
 
-function Nucleus({ cx, cy, r, opacity, dna }: { cx: number; cy: number; r: number; opacity: number; dna?: boolean }) {
+/** A centrosome, drawn as a small aster: a pair of short perpendicular rods with a few radiating microtubule stubs, rather than a plain dot, so it visually reads as "the thing spindle fibers come from." */
+function Centrosome({ cx, cy, opacity }: { cx: number; cy: number; opacity: number }) {
+  const spokes = [-60, -20, 20, 60, 100, 140, 180, 220];
+  return (
+    <motion.g animate={{ opacity }} transition={TWEEN}>
+      {spokes.map((deg) => {
+        const rad = (deg * Math.PI) / 180;
+        return (
+          <line
+            key={deg}
+            x1={cx}
+            y1={cy}
+            x2={cx + Math.cos(rad) * 9}
+            y2={cy + Math.sin(rad) * 9}
+            stroke={CENTROSOME_COLOR}
+            strokeWidth={1.5}
+            strokeLinecap="round"
+          />
+        );
+      })}
+      <circle cx={cx} cy={cy} r={3} fill={CENTROSOME_COLOR} />
+    </motion.g>
+  );
+}
+
+/** One kinetochore-style spindle fiber, from a centrosome to the point on a chromosome pair it's currently pulling toward/holding. */
+function SpindleFiber({ x1, y1, x2, y2, opacity }: { x1: number; y1: number; x2: number; y2: number; opacity: number }) {
+  return (
+    <motion.line
+      stroke={CENTROSOME_COLOR}
+      strokeWidth={1.25}
+      strokeOpacity={0.55}
+      animate={{ x1, y1, x2, y2, opacity }}
+      transition={TWEEN}
+    />
+  );
+}
+
+/**
+ * Wraps `children` in `OrganelleHotspot` only when `interactive` is
+ * true, so an invisible/near-invisible structure (opacity ~0 for its
+ * current stage) never leaves behind a clickable-but-unseeable hit
+ * area. Kept local to this file rather than changing
+ * `OrganelleHotspot` itself, since that component is shared with Cell
+ * Explorer and doesn't need a visibility concept of its own.
+ */
+function MaybeHotspot({
+  interactive,
+  id,
+  label,
+  selectedId,
+  onSelect,
+  children,
+}: {
+  interactive: boolean;
+  id: string;
+  label: string;
+  selectedId: string | null;
+  onSelect: (id: string) => void;
+  children: ReactNode;
+}) {
+  if (!interactive) return <>{children}</>;
+  return (
+    <OrganelleHotspot id={id} label={label} isSelected={selectedId === id} onSelect={onSelect}>
+      {children}
+    </OrganelleHotspot>
+  );
+}
+
+function Nucleus({
+  cx,
+  cy,
+  r,
+  opacity,
+  dna,
+  envelopeDashed,
+}: {
+  cx: number;
+  cy: number;
+  r: number;
+  opacity: number;
+  dna?: boolean;
+  /** Renders the envelope's outline as perforated dashes instead of a solid ring — the visual cue for "the envelope is breaking down," distinct from just fading. */
+  envelopeDashed?: boolean;
+}) {
   return (
     <motion.g animate={{ opacity }} transition={TWEEN}>
       <motion.circle
@@ -152,6 +277,7 @@ function Nucleus({ cx, cy, r, opacity, dna }: { cx: number; cy: number; r: numbe
         fillOpacity={0.4}
         stroke="#5B4B9E"
         strokeWidth={2}
+        strokeDasharray={envelopeDashed ? "6 5" : undefined}
         animate={{ cx, r }}
         transition={TWEEN}
       />
@@ -174,19 +300,25 @@ function Nucleus({ cx, cy, r, opacity, dna }: { cx: number; cy: number; r: numbe
  * with framer-motion supplying the tween whenever that index changes
  * (whether from Start's timer or a manual Next Stage click).
  */
-export function CellScene({ stageIndex }: CellSceneProps) {
+export function CellScene({ stageIndex, selectedId, onSelect }: CellSceneProps) {
   const chromosomes = CHROMOSOME_LAYOUT[stageIndex] ?? CHROMOSOME_LAYOUT[0]!;
   const nucleus = NUCLEUS_LAYOUT[stageIndex] ?? NUCLEUS_LAYOUT[0]!;
   const membrane = MEMBRANE_LAYOUT[stageIndex] ?? MEMBRANE_LAYOUT[0]!;
+  const centrosome = CENTROSOME_LAYOUT[stageIndex] ?? CENTROSOME_LAYOUT[0]!;
+  const spindleOpacity = SPINDLE_OPACITY[stageIndex] ?? 0;
 
   const rightPoleCx = VIEW_WIDTH - membrane.splitCx;
+  const leftCentrosomeX = CENTER.x - centrosome.poleOffset;
+  const rightCentrosomeX = CENTER.x + centrosome.poleOffset;
+  /** How far each chromosome pair's kinetochore attach point has traveled off-center — 0 at Metaphase (still at the plate), growing through Anaphase as chromatids separate. */
+  const attachSpread = chromosomes.splitDistance * chromosomes.scale;
 
   return (
     <svg
       viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
       className="h-full w-full"
       role="img"
-      aria-label="An animal cell dividing through the stages of mitosis into two daughter cells"
+      aria-label="An animal cell dividing through the stages of mitosis into two daughter cells, showing chromosomes, centrosomes, and spindle fibers"
     >
       <defs>
         <radialGradient id="cytoplasm-fill-mitosis" cx="38%" cy="32%" r="75%">
@@ -229,25 +361,86 @@ export function CellScene({ stageIndex }: CellSceneProps) {
         <ellipse cx={rightPoleCx} cy={CENTER.y} rx={membrane.splitRx} ry={100} fill="url(#cytoplasm-fill-mitosis)" stroke="#0D9488" strokeWidth={3} />
       </motion.g>
 
-      {/* Main nucleus (Interphase → early Prophase) */}
-      <Nucleus cx={CENTER.x} cy={CENTER.y} r={58} opacity={nucleus.mainOpacity} dna />
+      {/* Main nucleus (Interphase → early Prophase) — dashed outline during Prophase signals the envelope actively perforating/breaking down, not just fading */}
+      <MaybeHotspot
+        interactive={nucleus.mainOpacity > 0.05}
+        id="nucleus"
+        label="Nucleus"
+        selectedId={selectedId}
+        onSelect={onSelect}
+      >
+        <Nucleus cx={CENTER.x} cy={CENTER.y} r={58} opacity={nucleus.mainOpacity} dna envelopeDashed={nucleus.envelopeDashed} />
+      </MaybeHotspot>
 
       {/* Two new nuclei (Telophase onward), recentering into the split cells at Cytokinesis */}
-      <Nucleus cx={nucleus.poleCx} cy={CENTER.y} r={nucleus.poleR} opacity={nucleus.poleOpacity} />
-      <Nucleus cx={VIEW_WIDTH - nucleus.poleCx} cy={CENTER.y} r={nucleus.poleR} opacity={nucleus.poleOpacity} />
+      <MaybeHotspot interactive={nucleus.poleOpacity > 0.05} id="nucleus" label="Nucleus" selectedId={selectedId} onSelect={onSelect}>
+        <Nucleus cx={nucleus.poleCx} cy={CENTER.y} r={nucleus.poleR} opacity={nucleus.poleOpacity} />
+      </MaybeHotspot>
+      <MaybeHotspot interactive={nucleus.poleOpacity > 0.05} id="nucleus" label="Nucleus" selectedId={selectedId} onSelect={onSelect}>
+        <Nucleus cx={VIEW_WIDTH - nucleus.poleCx} cy={CENTER.y} r={nucleus.poleR} opacity={nucleus.poleOpacity} />
+      </MaybeHotspot>
+
+      {/* Spindle fibers — one pair per chromosome row, pole → kinetochore, drawn under the chromosomes they're attached to */}
+      <MaybeHotspot
+        interactive={spindleOpacity > 0.05}
+        id="spindle"
+        label="Spindle fibers"
+        selectedId={selectedId}
+        onSelect={onSelect}
+      >
+        <>
+          {CHROMOSOME_COLORS.map((_, i) => {
+            const cy = CENTER.y + chromosomes.dy[i]!;
+            return (
+              <g key={i}>
+                <SpindleFiber
+                  x1={leftCentrosomeX}
+                  y1={CENTER.y}
+                  x2={CENTER.x - attachSpread}
+                  y2={cy}
+                  opacity={spindleOpacity}
+                />
+                <SpindleFiber
+                  x1={rightCentrosomeX}
+                  y1={CENTER.y}
+                  x2={CENTER.x + attachSpread}
+                  y2={cy}
+                  opacity={spindleOpacity}
+                />
+              </g>
+            );
+          })}
+        </>
+      </MaybeHotspot>
+
+      {/* Centrosomes — one pair, migrating to opposite poles and organizing the spindle */}
+      <MaybeHotspot interactive={centrosome.opacity > 0.05} id="centrosome" label="Centrosome" selectedId={selectedId} onSelect={onSelect}>
+        <Centrosome cx={leftCentrosomeX} cy={CENTER.y} opacity={centrosome.opacity} />
+      </MaybeHotspot>
+      <MaybeHotspot interactive={centrosome.opacity > 0.05} id="centrosome" label="Centrosome" selectedId={selectedId} onSelect={onSelect}>
+        <Centrosome cx={rightCentrosomeX} cy={CENTER.y} opacity={centrosome.opacity} />
+      </MaybeHotspot>
 
       {/* Chromosomes — four pairs of sister chromatids, positioned/split per stage */}
       {CHROMOSOME_COLORS.map((color, i) => (
-        <ChromosomePair
+        <MaybeHotspot
           key={i}
-          cx={CENTER.x + chromosomes.dx[i]!}
-          cy={CENTER.y + chromosomes.dy[i]!}
-          rotation={chromosomes.rotation[i]!}
-          splitDistance={chromosomes.splitDistance}
-          opacity={chromosomes.opacity}
-          scale={chromosomes.scale}
-          color={color}
-        />
+          interactive={chromosomes.opacity > 0.05}
+          id="chromosome"
+          label="Chromosome"
+          selectedId={selectedId}
+          onSelect={onSelect}
+        >
+          <ChromosomePair
+            cx={CENTER.x + chromosomes.dx[i]!}
+            cy={CENTER.y + chromosomes.dy[i]!}
+            rotation={chromosomes.rotation[i]!}
+            splitDistance={chromosomes.splitDistance}
+            opacity={chromosomes.opacity}
+            scale={chromosomes.scale}
+            color={color}
+          />
+        </MaybeHotspot>
       ))}
     </svg>
   );
