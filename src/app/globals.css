@@ -11,6 +11,51 @@
        variables instead of the app's usual light/dark token pairing. */
     --color-subject-physics: 61 90 254; /* #3D5AFE */
     --color-subject-math: 124 79 224; /* #7C4FE0 */
+
+    /* Surface tokens (see `src/config/themes.ts` for the full theme
+       registry). These defaults are the original, unchanged Light
+       theme values. Every theme overrides only the half of these
+       variables it actually uses (a light theme overrides
+       paper/ink/ink-soft/line; a dark theme overrides
+       chalkboard/bone/bone-soft/line-dark) and inherits the rest from
+       here — e.g. the always-dark CTA band (`bg-pine-900 text-bone`)
+       stays legible the same way regardless of which theme is active,
+       exactly as it did before this system existed. */
+    --color-paper: 246 247 244; /* #F6F7F4 */
+    --color-chalkboard: 15 22 19; /* #0F1613 */
+    --color-ink: 20 32 25; /* #142019 */
+    --color-ink-soft: 61 74 68; /* #3D4A44 */
+    --color-bone: 231 236 232; /* #E7ECE8 */
+    --color-bone-soft: 169 182 175; /* #A9B6AF */
+    --color-line: 221 227 221; /* #DDE3DD */
+    --color-line-dark: 36 52 48; /* #243430 */
+  }
+
+  /* Soft Light — warmer, lower-contrast paper than the default Light. */
+  .soft-light {
+    color-scheme: light;
+    --color-paper: 250 246 239; /* #FAF6EF */
+    --color-ink: 43 38 32; /* #2B2620 */
+    --color-ink-soft: 107 97 86; /* #6B6156 */
+    --color-line: 232 224 210; /* #E8E0D2 */
+  }
+
+  /* Solarized Light — inspired by the Solarized Light palette. */
+  .solarized-light {
+    color-scheme: light;
+    --color-paper: 253 246 227; /* #FDF6E3 */
+    --color-ink: 88 110 117; /* #586E75 */
+    --color-ink-soft: 101 123 131; /* #657B83 */
+    --color-line: 238 232 213; /* #EEE8D5 */
+  }
+
+  /* GitHub Light — inspired by GitHub's light interface. */
+  .github-light {
+    color-scheme: light;
+    --color-paper: 255 255 255; /* #FFFFFF */
+    --color-ink: 31 35 40; /* #1F2328 */
+    --color-ink-soft: 89 99 110; /* #59636E */
+    --color-line: 209 217 224; /* #D1D9E0 */
   }
 
   .dark {
@@ -23,6 +68,58 @@
        sit calmly on dark backgrounds instead of vibrating against them. */
     --color-subject-physics: 129 140 248; /* #818CF8 */
     --color-subject-math: 167 139 250; /* #A78BFA */
+  }
+
+  /* The remaining dark-family themes share the same softened subject
+     accent as Dark — they're all dark surfaces for the same reason. */
+  .midnight,
+  .dracula,
+  .nord,
+  .monokai,
+  .one-dark {
+    color-scheme: dark;
+    --color-subject-physics: 129 140 248; /* #818CF8 */
+    --color-subject-math: 167 139 250; /* #A78BFA */
+  }
+
+  /* Midnight — deep blue/near-black. */
+  .midnight {
+    --color-chalkboard: 5 7 13; /* #05070D */
+    --color-bone: 227 232 245; /* #E3E8F5 */
+    --color-bone-soft: 141 150 179; /* #8D96B3 */
+    --color-line-dark: 23 27 46; /* #171B2E */
+  }
+
+  /* Dracula — inspired by the Dracula editor palette. */
+  .dracula {
+    --color-chalkboard: 40 42 54; /* #282A36 */
+    --color-bone: 248 248 242; /* #F8F8F2 */
+    --color-bone-soft: 139 147 199; /* #8B93C7 */
+    --color-line-dark: 68 71 90; /* #44475A */
+  }
+
+  /* Nord — inspired by the Nord palette. */
+  .nord {
+    --color-chalkboard: 46 52 64; /* #2E3440 */
+    --color-bone: 236 239 244; /* #ECEFF4 */
+    --color-bone-soft: 154 165 177; /* #9AA5B1 */
+    --color-line-dark: 59 66 82; /* #3B4252 */
+  }
+
+  /* Monokai — inspired by the classic Monokai editor palette. */
+  .monokai {
+    --color-chalkboard: 39 40 34; /* #272822 */
+    --color-bone: 248 248 242; /* #F8F8F2 */
+    --color-bone-soft: 166 162 140; /* #A6A28C */
+    --color-line-dark: 62 61 50; /* #3E3D32 */
+  }
+
+  /* One Dark — inspired by the Atom/VS Code One Dark theme. */
+  .one-dark {
+    --color-chalkboard: 40 44 52; /* #282C34 */
+    --color-bone: 171 178 191; /* #ABB2BF */
+    --color-bone-soft: 127 136 153; /* #7F8899 */
+    --color-line-dark: 62 68 81; /* #3E4451 */
   }
 
   * {

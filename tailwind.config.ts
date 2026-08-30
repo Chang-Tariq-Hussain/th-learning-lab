@@ -1,24 +1,48 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
+  // Extended from the original `darkMode: "class"` so every `dark:` utility
+  // used throughout the app (unchanged) also activates for the new
+  // dark-family themes below, not just the original `.dark` class. See
+  // `src/config/themes.ts` for the theme registry and `globals.css` for the
+  // per-theme CSS variable values.
+  darkMode: [
+    "selector",
+    ":is(.dark, .midnight, .dracula, .nord, .monokai, .one-dark)",
+  ],
   content: [
     "./src/app/**/*.{ts,tsx}",
     "./src/components/**/*.{ts,tsx}",
     "./src/features/**/*.{ts,tsx}",
+    // Theme class names (dracula, nord, monokai, etc.) live as string
+    // literals in the registry here, not as literal `className`s in
+    // JSX — they're applied at runtime by next-themes. Tailwind's JIT
+    // only keeps a hand-written `@layer base` rule (see the theme
+    // blocks in globals.css) if its class name text is found
+    // somewhere in the scanned content, so this file must be included
+    // or every non-"dark"-named theme's CSS gets silently stripped.
+    "./src/config/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        paper: "#F6F7F4",
-        chalkboard: "#0F1613",
+        // paper/chalkboard/ink/bone/line were flat hex values before the
+        // multi-theme system; they now resolve through CSS variables (same
+        // pattern as `subject.physics`/`subject.math` below) so every
+        // existing `bg-paper`, `dark:bg-chalkboard`, `text-ink`,
+        // `dark:text-bone`, `border-line`, etc. call site repaints per
+        // theme with zero changes at the call site. Values are defined
+        // per-theme in `globals.css`. `pine` (the brand accent) is
+        // intentionally left as-is and stays constant across every theme.
+        paper: "rgb(var(--color-paper) / <alpha-value>)",
+        chalkboard: "rgb(var(--color-chalkboard) / <alpha-value>)",
         ink: {
-          DEFAULT: "#142019",
-          soft: "#3D4A44",
+          DEFAULT: "rgb(var(--color-ink) / <alpha-value>)",
+          soft: "rgb(var(--color-ink-soft) / <alpha-value>)",
         },
         bone: {
-          DEFAULT: "#E7ECE8",
-          soft: "#A9B6AF",
+          DEFAULT: "rgb(var(--color-bone) / <alpha-value>)",
+          soft: "rgb(var(--color-bone-soft) / <alpha-value>)",
         },
         pine: {
           50: "#EAF2EF",
@@ -30,8 +54,8 @@ const config: Config = {
           900: "#0D2E26",
         },
         line: {
-          DEFAULT: "#DDE3DD",
-          dark: "#243430",
+          DEFAULT: "rgb(var(--color-line) / <alpha-value>)",
+          dark: "rgb(var(--color-line-dark) / <alpha-value>)",
         },
         /**
          * Physics (`physics`) and Mathematics (`math`) resolve through a
