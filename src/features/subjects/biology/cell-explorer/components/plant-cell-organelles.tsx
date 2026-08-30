@@ -9,6 +9,7 @@
  * layout and the additional plant-only structures. The Animal Cell's
  * component is untouched.
  */
+import { motion } from "framer-motion";
 import {
   beanPath,
   blobPath,
@@ -16,6 +17,7 @@ import {
   wavyTubePath,
 } from "../utils/organic-path";
 import { OrganelleHotspot } from "./organelle-hotspot";
+import { OrganelleLabel } from "./organelle-label";
 
 const NUCLEUS = { cx: 118, cy: 135, r: 46 };
 const NUCLEOLUS = { cx: 128, cy: 124, r: 14 };
@@ -39,14 +41,54 @@ const FREE_RIBOSOMES = [
   { cx: 88, cy: 236, count: 5 },
 ];
 
+/**
+ * Hand-placed label anchors for the "Show labels" toggle, same
+ * one-pill-per-distinct-id approach as `animal-cell-organelles.tsx`
+ * (mitochondria and chloroplasts each only label their first
+ * instance). Initial positions came from pushing each organelle's
+ * center outward from the cell's own center (200, 200) by its
+ * approximate radius + a fixed gap, then were hand-nudged where that
+ * heuristic put two labels too close together — Golgi, rough ER, and
+ * smooth ER in particular sit close enough to each other that the
+ * naive push alone wasn't enough.
+ */
+const LABELS: { id: string; x: number; y: number; text: string }[] = [
+  { id: "nucleus", x: 60, y: 84, text: "Nucleus" },
+  { id: "nucleolus", x: 118, y: 96, text: "Nucleolus" },
+  { id: "largeVacuole", x: 300, y: 268, text: "Large Central Vacuole" },
+  { id: "golgi", x: 85, y: 252, text: "Golgi Apparatus" },
+  { id: "roughER", x: 232, y: 145, text: "Rough ER" },
+  { id: "smoothER", x: 150, y: 272, text: "Smooth ER" },
+  { id: "mitochondria", x: 214, y: 40, text: "Mitochondria" },
+  { id: "chloroplast", x: 330, y: 68, text: "Chloroplast" },
+  { id: "ribosomes", x: 152, y: 46, text: "Ribosomes" },
+];
+
+/** Same purpose as `ANIMAL_ORGANELLE_CENTERS` — feeds `useZoom` a point to re-center on for the plant cell. */
+export const PLANT_ORGANELLE_CENTERS: Record<string, { x: number; y: number }> =
+  {
+    nucleus: { x: NUCLEUS.cx, y: NUCLEUS.cy },
+    nucleolus: { x: NUCLEOLUS.cx, y: NUCLEOLUS.cy },
+    largeVacuole: { x: LARGE_VACUOLE.cx, y: LARGE_VACUOLE.cy },
+    golgi: { x: GOLGI.cx, y: GOLGI.cy },
+    roughER: { x: ROUGH_ER.cx, y: ROUGH_ER.cy },
+    smoothER: { x: SMOOTH_ER.cx, y: SMOOTH_ER.cy },
+    mitochondria: { x: MITOCHONDRIA[0]!.cx, y: MITOCHONDRIA[0]!.cy },
+    chloroplast: { x: CHLOROPLASTS[0]!.cx, y: CHLOROPLASTS[0]!.cy },
+    ribosomes: { x: FREE_RIBOSOMES[0]!.cx, y: FREE_RIBOSOMES[0]!.cy },
+  };
+
 export interface PlantCellOrganellesProps {
   selectedId: string | null;
   onSelect: (id: string) => void;
+  /** TASK 7 SCOPE — extends the animal cell's "Show labels" toggle to the plant cell, covering all nine of its distinct organelle ids. */
+  showLabels?: boolean;
 }
 
 export function PlantCellOrganelles({
   selectedId,
   onSelect,
+  showLabels = false,
 }: PlantCellOrganellesProps) {
   const nucleusOuter = blobPath(NUCLEUS.cx, NUCLEUS.cy, NUCLEUS.r, {
     phase: 1.2,
@@ -67,25 +109,26 @@ export function PlantCellOrganelles({
   return (
     <g>
       <defs>
-        <radialGradient id="plant-nucleus-fill" cx="35%" cy="30%" r="80%">
-          <stop offset="0%" stopColor="#B9A0F2" />
-          <stop offset="55%" stopColor="#8A5FE0" />
-          <stop offset="100%" stopColor="#5E3AAE" />
+        <radialGradient id="plant-nucleus-fill" cx="35%" cy="28%" r="82%">
+          <stop offset="0%" stopColor="#E4DBFB" />
+          <stop offset="50%" stopColor="#B7A3E8" />
+          <stop offset="100%" stopColor="#8871C9" />
         </radialGradient>
-        <radialGradient id="plant-nucleolus-fill" cx="35%" cy="30%" r="80%">
-          <stop offset="0%" stopColor="#4C2E86" />
-          <stop offset="100%" stopColor="#331F5C" />
+        <radialGradient id="plant-nucleolus-fill" cx="32%" cy="28%" r="85%">
+          <stop offset="0%" stopColor="#8873C7" />
+          <stop offset="60%" stopColor="#6552A3" />
+          <stop offset="100%" stopColor="#4B3A82" />
         </radialGradient>
         <linearGradient
           id="plant-mito-fill"
-          x1="20%"
-          y1="15%"
+          x1="15%"
+          y1="10%"
           x2="85%"
-          y2="90%"
+          y2="95%"
         >
-          <stop offset="0%" stopColor="#F0857D" />
-          <stop offset="55%" stopColor="#D6534A" />
-          <stop offset="100%" stopColor="#A9382F" />
+          <stop offset="0%" stopColor="#F7B79A" />
+          <stop offset="55%" stopColor="#E8825F" />
+          <stop offset="100%" stopColor="#C65A3E" />
         </linearGradient>
         <linearGradient
           id="plant-golgi-fill"
@@ -94,8 +137,9 @@ export function PlantCellOrganelles({
           x2="90%"
           y2="100%"
         >
-          <stop offset="0%" stopColor="#F5B573" />
-          <stop offset="100%" stopColor="#DE7F35" />
+          <stop offset="0%" stopColor="#FBE1B8" />
+          <stop offset="55%" stopColor="#F0A85B" />
+          <stop offset="100%" stopColor="#D97D35" />
         </linearGradient>
         <linearGradient
           id="plant-roughER-fill"
@@ -104,7 +148,7 @@ export function PlantCellOrganelles({
           x2="100%"
           y2="100%"
         >
-          <stop offset="0%" stopColor="#7FCB9E" />
+          <stop offset="0%" stopColor="#A9DFC0" />
           <stop offset="100%" stopColor="#3E9C6C" />
         </linearGradient>
         <linearGradient
@@ -202,28 +246,48 @@ export function PlantCellOrganelles({
               i * 1.15,
             );
             return (
-              <path
-                key={i}
-                d={d}
-                stroke="url(#plant-roughER-fill)"
-                strokeWidth={5}
-                fill="none"
-                strokeLinecap="round"
-                opacity={0.92}
-              />
+              <g key={i}>
+                <path
+                  d={d}
+                  stroke="#2E7A52"
+                  strokeWidth={6}
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity={0.9}
+                />
+                <path
+                  d={d}
+                  stroke="url(#plant-roughER-fill)"
+                  strokeWidth={5}
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity={0.95}
+                />
+              </g>
             );
           })}
+          {/* Same drift animation as the animal cell's rough ER ribosomes — position only, staggered per-dot. */}
           {Array.from({ length: 12 }, (_, i) => {
             const x = -ROUGH_ER.width / 2 + (i / 11) * ROUGH_ER.width;
             const rowOffset = (i % 4) - 1.5;
             const y = rowOffset * 10 + (i % 2 === 0 ? -4 : 4);
             return (
-              <circle
+              <motion.circle
                 key={i}
                 cx={x}
                 cy={y}
                 r={1.8}
                 fill="url(#plant-ribosome-fill)"
+                stroke="#2036B0"
+                strokeWidth={0.3}
+                opacity={0.95}
+                animate={{ x: [0, 2, 0, -2, 0] }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: (i % 8) * 0.3,
+                }}
               />
             );
           })}
@@ -252,15 +316,24 @@ export function PlantCellOrganelles({
               i * 1.4,
             );
             return (
-              <path
-                key={i}
-                d={d}
-                stroke="url(#plant-smoothER-fill)"
-                strokeWidth={4.5}
-                fill="none"
-                strokeLinecap="round"
-                opacity={0.9}
-              />
+              <g key={i}>
+                <path
+                  d={d}
+                  stroke="#3E8562"
+                  strokeWidth={5.5}
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity={0.85}
+                />
+                <path
+                  d={d}
+                  stroke="url(#plant-smoothER-fill)"
+                  strokeWidth={4.5}
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity={0.95}
+                />
+              </g>
             );
           })}
         </g>
@@ -292,16 +365,26 @@ export function PlantCellOrganelles({
               y,
               GOLGI.rotate,
             );
+            const d = `M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} Q ${c.x.toFixed(2)} ${c.y.toFixed(2)}, ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`;
             return (
-              <path
-                key={i}
-                d={`M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} Q ${c.x.toFixed(2)} ${c.y.toFixed(2)}, ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`}
-                stroke="url(#plant-golgi-fill)"
-                strokeWidth={4.5}
-                strokeLinecap="round"
-                fill="none"
-                opacity={0.95 - i * 0.05}
-              />
+              <g key={i}>
+                <path
+                  d={d}
+                  stroke="#A85F2A"
+                  strokeWidth={5.5}
+                  strokeLinecap="round"
+                  fill="none"
+                  opacity={0.9 - i * 0.04}
+                />
+                <path
+                  d={d}
+                  stroke="url(#plant-golgi-fill)"
+                  strokeWidth={4.5}
+                  strokeLinecap="round"
+                  fill="none"
+                  opacity={0.97 - i * 0.04}
+                />
+              </g>
             );
           })}
           {[-1, 1].map((side) => {
@@ -319,18 +402,35 @@ export function PlantCellOrganelles({
                 cy={p.y}
                 r={3.6}
                 fill="url(#plant-golgi-fill)"
-                stroke="#B85E1D"
-                strokeWidth={1}
+                stroke="#A85F2A"
+                strokeWidth={1.2}
               />
             );
           })}
         </g>
       </OrganelleHotspot>
 
-      {/* ---- Mitochondria ---- */}
+      {/* ---- Mitochondria (same folded-ridge cristae + opacity shimmer as the animal cell) ---- */}
       {MITOCHONDRIA.map((m, index) => {
         const path = beanPath(m.cx, m.cy, m.rx, m.ry, m.rotate);
-        const cristaeCount = 3;
+        const cristaeWidth = m.rx * 1.05;
+        const cristaeAmplitude = m.ry * 0.34;
+        const ridgePath = wavyTubePath(
+          -cristaeWidth / 2,
+          0,
+          cristaeWidth,
+          cristaeAmplitude,
+          3,
+          0,
+        );
+        const highlightPath = wavyTubePath(
+          -cristaeWidth / 2,
+          -m.ry * 0.06,
+          cristaeWidth * 0.9,
+          cristaeAmplitude * 0.8,
+          3,
+          0.15,
+        );
         return (
           <OrganelleHotspot
             key={index}
@@ -343,40 +443,36 @@ export function PlantCellOrganelles({
               <path
                 d={path}
                 fill="url(#plant-mito-fill)"
-                stroke="#8C2E26"
+                stroke="#A8432C"
                 strokeWidth={1.6}
               />
-              {Array.from({ length: cristaeCount }, (_, i) => {
-                const t = (i + 1) / (cristaeCount + 1) - 0.5;
-                const localX = t * m.rx * 1.3;
-                const p1 = rotatePoint(
-                  m.cx,
-                  m.cy,
-                  localX,
-                  -m.ry * 0.55,
-                  m.rotate,
-                );
-                const p2 = rotatePoint(
-                  m.cx,
-                  m.cy,
-                  localX,
-                  m.ry * 0.55,
-                  m.rotate,
-                );
-                return (
-                  <line
-                    key={i}
-                    x1={p1.x}
-                    y1={p1.y}
-                    x2={p2.x}
-                    y2={p2.y}
-                    stroke="#5E1D17"
-                    strokeWidth={1.3}
-                    opacity={0.6}
-                    strokeLinecap="round"
-                  />
-                );
-              })}
+              <motion.g
+                transform={`translate(${m.cx} ${m.cy}) rotate(${m.rotate})`}
+                animate={{ opacity: [0.85, 1, 0.85] }}
+                transition={{
+                  duration: 2.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.45,
+                }}
+              >
+                <path
+                  d={ridgePath}
+                  stroke="#B94B34"
+                  strokeWidth={1.5}
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity={0.85}
+                />
+                <path
+                  d={highlightPath}
+                  stroke="#F7CBAA"
+                  strokeWidth={0.9}
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity={0.6}
+                />
+              </motion.g>
             </g>
           </OrganelleHotspot>
         );
@@ -444,7 +540,7 @@ export function PlantCellOrganelles({
         );
       })}
 
-      {/* ---- Free ribosomes ---- */}
+      {/* ---- Free ribosomes (same two-lobe subunit shape as the animal cell) ---- */}
       {FREE_RIBOSOMES.map((cluster, ci) => (
         <OrganelleHotspot
           key={ci}
@@ -457,16 +553,33 @@ export function PlantCellOrganelles({
             {Array.from({ length: cluster.count }, (_, i) => {
               const angle = (i / cluster.count) * Math.PI * 2 + i;
               const radius = 12 * (0.5 + (0.5 * ((i * 53) % 7)) / 7);
+              const x = cluster.cx + Math.cos(angle) * radius;
+              const y = cluster.cy + Math.sin(angle) * radius;
+              const spin = (((i * 47) % 12) - 6) * 6;
               return (
-                <circle
+                <g
                   key={i}
-                  cx={cluster.cx + Math.cos(angle) * radius}
-                  cy={cluster.cy + Math.sin(angle) * radius}
-                  r={2.2}
-                  fill="url(#plant-ribosome-fill)"
-                  stroke="#2036B0"
-                  strokeWidth={0.4}
-                />
+                  transform={`translate(${x.toFixed(2)} ${y.toFixed(2)}) rotate(${spin})`}
+                >
+                  <ellipse
+                    cx={0}
+                    cy={0.95}
+                    rx={1.7}
+                    ry={1.45}
+                    fill="url(#plant-ribosome-fill)"
+                    stroke="#2036B0"
+                    strokeWidth={0.32}
+                  />
+                  <ellipse
+                    cx={0}
+                    cy={-1.1}
+                    rx={1.2}
+                    ry={1.05}
+                    fill="url(#plant-ribosome-fill)"
+                    stroke="#2036B0"
+                    strokeWidth={0.32}
+                  />
+                </g>
               );
             })}
           </g>
@@ -484,13 +597,13 @@ export function PlantCellOrganelles({
           <path
             d={nucleusOuter}
             fill="url(#plant-nucleus-fill)"
-            stroke="#4C2E86"
+            stroke="#5A4A94"
             strokeWidth={2.1}
           />
           <path
             d={nucleusInner}
             fill="none"
-            stroke="#4C2E86"
+            stroke="#5A4A94"
             strokeWidth={1}
             opacity={0.5}
           />
@@ -501,9 +614,27 @@ export function PlantCellOrganelles({
                 key={i}
                 cx={NUCLEUS.cx + Math.cos(theta) * NUCLEUS.r * 0.985}
                 cy={NUCLEUS.cy + Math.sin(theta) * NUCLEUS.r * 0.985}
-                r={1.6}
-                fill="#F4E3C4"
-                opacity={0.9}
+                r={1.9}
+                fill="#6B5A9E"
+                opacity={0.85}
+              />
+            );
+          })}
+          {[0, 1, 2].map((i) => {
+            const len = NUCLEUS.r * (0.9 + i * 0.08);
+            const d = wavyTubePath(-len / 2, 0, len, 4, 3, i * 1.4);
+            const angle = -25 + i * 28;
+            const offsetY = (i - 1) * NUCLEUS.r * 0.28;
+            return (
+              <path
+                key={`chromatin-${i}`}
+                d={d}
+                transform={`translate(${NUCLEUS.cx - NUCLEUS.r * 0.08} ${NUCLEUS.cy + offsetY}) rotate(${angle})`}
+                stroke="#6552A3"
+                strokeWidth={1}
+                fill="none"
+                opacity={0.22}
+                strokeLinecap="round"
               />
             );
           })}
@@ -513,7 +644,7 @@ export function PlantCellOrganelles({
             rx={NUCLEUS.r * 0.3}
             ry={NUCLEUS.r * 0.2}
             fill="#FFFFFF"
-            opacity={0.16}
+            opacity={0.22}
           />
         </g>
       </OrganelleHotspot>
@@ -532,6 +663,18 @@ export function PlantCellOrganelles({
           fill="url(#plant-nucleolus-fill)"
         />
       </OrganelleHotspot>
+
+      {/* ---- "Show labels" pills — drawn last so they sit above every organelle. ---- */}
+      {showLabels
+        ? LABELS.map((label) => (
+            <OrganelleLabel
+              key={label.id}
+              x={label.x}
+              y={label.y}
+              text={label.text}
+            />
+          ))
+        : null}
     </g>
   );
 }

@@ -11,6 +11,10 @@ export interface CellIllustrationProps {
   cellKind: CellKind;
   selectedId: string | null;
   onSelect: (id: string) => void;
+  /** TASK 7 SCOPE — now wired to both cell kinds; originally animal-only (Task 6), extended to the plant cell's nine organelle ids here. */
+  showLabels?: boolean;
+  /** TASK 8 SCOPE — the `transform` string from `useZoom`, applied to a `<g>` wrapping the cell content, nested *inside* the existing enter/exit fade so the two animations don't fight each other. Defaults to identity so callers that don't zoom (yet) don't have to think about it. */
+  zoomTransform?: string;
 }
 
 /**
@@ -27,6 +31,8 @@ export function CellIllustration({
   cellKind,
   selectedId,
   onSelect,
+  showLabels = false,
+  zoomTransform = "translate(0 0) scale(1)",
 }: CellIllustrationProps) {
   const isPlant = cellKind === "plant";
 
@@ -49,23 +55,34 @@ export function CellIllustration({
           exit={{ opacity: 0, scale: 0.96 }}
           transition={{ duration: 0.35, ease: "easeInOut" }}
         >
-          {isPlant ? (
-            <>
-              <PlantCellBody selectedId={selectedId} onSelect={onSelect} />
-              <PlantCellOrganelles
-                selectedId={selectedId}
-                onSelect={onSelect}
-              />
-            </>
-          ) : (
-            <>
-              <AnimalCellBody />
-              <AnimalCellOrganelles
-                selectedId={selectedId}
-                onSelect={onSelect}
-              />
-            </>
-          )}
+          {/* Plain SVG `transform` attribute + CSS transition (not framer-motion) --
+              framer-motion's `transform` style key expects CSS transform syntax
+              (translateX(10px)), not SVG's own `translate(10 20)` argument format,
+              so animating a raw useZoom() transform string through it would be
+              fighting two different transform dialects. The `transform` presentation
+              attribute is itself CSS-transition-animatable in current browsers, so a
+              plain inline transition covers the "smooth zoom" case correctly. */}
+          <g transform={zoomTransform} style={{ transition: "transform 320ms cubic-bezier(0.4, 0, 0.2, 1)" }}>
+            {isPlant ? (
+              <>
+                <PlantCellBody selectedId={selectedId} onSelect={onSelect} />
+                <PlantCellOrganelles
+                  selectedId={selectedId}
+                  onSelect={onSelect}
+                  showLabels={showLabels}
+                />
+              </>
+            ) : (
+              <>
+                <AnimalCellBody />
+                <AnimalCellOrganelles
+                  selectedId={selectedId}
+                  onSelect={onSelect}
+                  showLabels={showLabels}
+                />
+              </>
+            )}
+          </g>
         </motion.g>
       </AnimatePresence>
     </svg>
