@@ -256,6 +256,7 @@ export const biologyCellOrganellesContent: TopicContent = {
     scenarios: [
       {
         id: "biology-cell-organelles-challenge-001",
+        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
         title: "Cell Explorer Challenge: Nucleus",
         scenario: "Find the organelle that stores the cell's DNA and directs its activities.",
         objective: "Identify which organelle this description matches.",
@@ -275,6 +276,7 @@ export const biologyCellOrganellesContent: TopicContent = {
       },
       {
         id: "biology-cell-organelles-challenge-002",
+        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
         title: "Cell Explorer Challenge: Mitochondria",
         scenario: "Find the organelle nicknamed the \"powerhouse of the cell.\"",
         objective: "Identify which organelle this description matches.",
@@ -294,6 +296,7 @@ export const biologyCellOrganellesContent: TopicContent = {
       },
       {
         id: "biology-cell-organelles-challenge-003",
+        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
         title: "Cell Explorer Challenge: Ribosomes",
         scenario: "Find the tiny structures responsible for building the proteins a cell needs.",
         objective: "Identify which organelle this description matches.",
@@ -313,6 +316,7 @@ export const biologyCellOrganellesContent: TopicContent = {
       },
       {
         id: "biology-cell-organelles-challenge-004",
+        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
         title: "Cell Explorer Challenge: Golgi Apparatus",
         scenario: "Find the organelle that packages and ships proteins to wherever they're needed in the cell.",
         objective: "Identify which organelle this description matches.",
@@ -332,6 +336,7 @@ export const biologyCellOrganellesContent: TopicContent = {
       },
       {
         id: "biology-cell-organelles-challenge-005",
+        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
         title: "Cell Explorer Challenge: Chloroplast",
         scenario: "In the Plant Cell view, find the organelle that captures sunlight for photosynthesis.",
         objective: "Identify which organelle this description matches, and note that it doesn't appear in the Animal Cell view.",

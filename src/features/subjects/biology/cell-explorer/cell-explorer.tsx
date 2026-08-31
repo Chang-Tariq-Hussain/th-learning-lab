@@ -38,6 +38,12 @@ import type { CellKind } from "./types";
  * lookup is meaningless in the other's layout, so carrying a zoom
  * level across the switch would either mis-center or silently do
  * nothing.
+ *
+ * BUGFIX/ENHANCEMENT — `zoom.isPannable`/`zoom.panBy` are now passed
+ * straight through to `CellIllustration`, which owns the actual
+ * pointer-drag handling. Previously, zooming in just clipped the cell
+ * at the SVG's edges with no way to look around; now it can be dragged
+ * like the zoomed view in any other app.
  */
 export function CellExplorer() {
   const [cellKind, setCellKind] = useState<CellKind>("animal");
@@ -80,6 +86,8 @@ export function CellExplorer() {
             onSelect={handleSelect}
             showLabels={showLabels}
             zoomTransform={zoom.transform}
+            isPannable={zoom.isPannable}
+            onPanBy={zoom.panBy}
           />
           <div className="absolute bottom-2 right-2 flex flex-col gap-2">
             <button

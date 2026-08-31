@@ -136,25 +136,37 @@ export function AnimalCellOrganelles({ selectedId, onSelect, showLabels = false 
           circles rather than the two-lobed subunit shape used for the
           free-floating ribosome clusters below: at 16-per-ER and this
           small a radius, individual subunit detail would just read as
-          noise: circle density is what communicates "rough" ER here. */}
+          noise: circle density is what communicates "rough" ER here.
+
+          BUGFIX: `filter` and `transform` used to sit on the exact same
+          `<g>` here — the only organelle in this file built that way
+          (Golgi and Mitochondria both keep `filter` on an outer `<g>`
+          and `transform`/`rotate` on a separate inner `<g>`). Combining
+          a CSS filter (whose region is computed in the element's own,
+          pre-transform local bounding box) with a `transform` on one
+          element is unreliable across browsers with `feDropShadow` and
+          could render the whole stroke-only shape as invisible. Now
+          split the same way Golgi/Mitochondria already do. */}
       <OrganelleHotspot id="roughER" label={ORGANELLE_NAMES.roughER} isSelected={selectedId === "roughER"} onSelect={onSelect}>
-        <g transform={`translate(${ROUGH_ER.cx} ${ROUGH_ER.cy}) rotate(${ROUGH_ER.rotate})`} filter="url(#organelle-soft-shadow)">
-          {[0, 1, 2, 3].map((i) => {
-            const y = (i - 1.5) * 11;
-            const d = wavyTubePath(-ROUGH_ER.width / 2, y, ROUGH_ER.width, 7.5, 5, i * 1.15);
-            return (
-              <g key={i}>
-                <path d={d} stroke="#2E7A52" strokeWidth={6.5} fill="none" strokeLinecap="round" opacity={0.9} />
-                <path d={d} stroke="url(#organelle-er-fill)" strokeWidth={5.5} fill="none" strokeLinecap="round" opacity={0.95} />
-              </g>
-            );
-          })}
-          {Array.from({ length: 16 }, (_, i) => {
-            const x = -ROUGH_ER.width / 2 + (i / 15) * ROUGH_ER.width;
-            const rowOffset = (i % 4) - 1.5;
-            const y = rowOffset * 11 + (i % 2 === 0 ? -4 : 4);
-            return <circle key={i} cx={x} cy={y} r={2} fill="url(#organelle-ribosome-fill)" stroke="#2036B0" strokeWidth={0.3} opacity={0.95} />;
-          })}
+        <g filter="url(#organelle-soft-shadow)">
+          <g transform={`translate(${ROUGH_ER.cx} ${ROUGH_ER.cy}) rotate(${ROUGH_ER.rotate})`}>
+            {[0, 1, 2, 3].map((i) => {
+              const y = (i - 1.5) * 11;
+              const d = wavyTubePath(-ROUGH_ER.width / 2, y, ROUGH_ER.width, 7.5, 5, i * 1.15);
+              return (
+                <g key={i}>
+                  <path d={d} stroke="#2E7A52" strokeWidth={6.5} fill="none" strokeLinecap="round" opacity={0.9} />
+                  <path d={d} stroke="url(#organelle-er-fill)" strokeWidth={5.5} fill="none" strokeLinecap="round" opacity={0.95} />
+                </g>
+              );
+            })}
+            {Array.from({ length: 16 }, (_, i) => {
+              const x = -ROUGH_ER.width / 2 + (i / 15) * ROUGH_ER.width;
+              const rowOffset = (i % 4) - 1.5;
+              const y = rowOffset * 11 + (i % 2 === 0 ? -4 : 4);
+              return <circle key={i} cx={x} cy={y} r={2} fill="url(#organelle-ribosome-fill)" stroke="#2036B0" strokeWidth={0.3} opacity={0.95} />;
+            })}
+          </g>
         </g>
       </OrganelleHotspot>
 

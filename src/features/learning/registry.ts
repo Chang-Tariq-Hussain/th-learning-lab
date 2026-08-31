@@ -2,6 +2,9 @@ import type { TopicContent } from "./types";
 import { biologyWhatIsACellContent } from "./data/biology-what-is-a-cell";
 import { biologyCellStructureOrganizationContent } from "./data/biology-cell-structure-organization";
 import { biologyCellOrganellesContent } from "./data/biology-cell-organelles";
+import { biologyPlantVsAnimalCellsContent } from "./data/biology-plant-vs-animal-cells";
+import { biologyCellMembraneContent } from "./data/biology-cell-membrane";
+import { biologyDiffusionOsmosisContent } from "./data/biology-diffusion-osmosis";
 import { physicsSimpleMotionContent } from "./data/physics-simple-motion";
 import { physicsVelocityContent } from "./data/physics-velocity";
 import { physicsAccelerationContent } from "./data/physics-acceleration";
@@ -93,21 +96,25 @@ import { mathematicsDataComparisonContent } from "./data/mathematics-data-compar
  * Measurement, which reuses the pre-existing `mathematics-measurement`
  * bank rather than duplicating it.
  *
- * Biology Batch 1 (Cell Biology Foundations) is the first Biology
- * content brought up to the full Golden Learning Experience standard.
- * All three topics — What Is a Cell?, Cell Structure & Organization,
- * and Cell Organelles — reuse the pre-existing Interactive Cell
- * Explorer simulation (`@/features/subjects/biology/cell-explorer`)
- * as their Explore experience rather than a new simulation; no new
- * simulation was built for this batch. Cell Structure & Organization
- * and Cell Organelles additionally use Challenge scenarios as a
- * guided "Cell Explorer Mission" — find a specific structure in the
- * simulation, then answer a question about it — scoped strictly to
- * organelles and boundary structures the simulation actually exposes
- * as clickable (see each file's own doc comment for exactly which).
- * Each topic has its own dedicated question bank
- * (`biology-what-is-a-cell` / `biology-cell-structure-organization` /
- * `biology-cell-organelles` in `@/features/quiz-engine`).
+ * Biology Batch 1 (Cell Biology Foundations) is up to six of its
+ * seven planned topics: What Is a Cell?, Cell Structure &
+ * Organization, and Cell Organelles reuse the Interactive Cell
+ * Explorer (`@/features/subjects/biology/cell-explorer`); Plant vs
+ * Animal Cells also reuses the Cell Explorer, this time built around
+ * its Animal/Plant switch; Cell Membrane and Diffusion & Osmosis both
+ * reuse the existing Cell Membrane & Transport simulation
+ * (`@/features/subjects/biology/membrane-transport`). No new
+ * simulation was built for any of these six topics. Cell Structure &
+ * Organization, Cell Organelles, Plant vs Animal Cells, and Cell
+ * Membrane all use Challenge scenarios as a guided "mission" — find or
+ * observe something specific in the simulation, then answer a question
+ * about it — scoped strictly to what each simulation actually supports
+ * (see each file's own doc comment for exactly what). Topic 7 (Active
+ * Transport) is not yet implemented. Each topic has its own dedicated
+ * question bank in `@/features/quiz-engine` (`biology-what-is-a-cell`,
+ * `biology-cell-structure-organization`, `biology-cell-organelles`,
+ * `biology-plant-vs-animal-cells`, `biology-cell-membrane`,
+ * `biology-diffusion-osmosis`).
  *
  * Mathematics Batch 3 (Coordinate Geometry) is complete: Coordinate
  * Plane, Plotting Points, Distance Between Two Points, Midpoint,
@@ -132,6 +139,9 @@ export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
   biologyCellStructureOrganizationContent,
   biologyCellOrganellesContent,
+  biologyPlantVsAnimalCellsContent,
+  biologyCellMembraneContent,
+  biologyDiffusionOsmosisContent,
   physicsSimpleMotionContent,
   physicsVelocityContent,
   physicsAccelerationContent,

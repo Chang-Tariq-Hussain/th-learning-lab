@@ -2,6 +2,9 @@ import type { QuizMeta } from "./types";
 import { biologyWhatIsACellQuiz } from "./data/biology-what-is-a-cell-quiz";
 import { biologyCellStructureOrganizationQuiz } from "./data/biology-cell-structure-organization-quiz";
 import { biologyCellOrganellesQuiz } from "./data/biology-cell-organelles-quiz";
+import { biologyPlantVsAnimalCellsQuiz } from "./data/biology-plant-vs-animal-cells-quiz";
+import { biologyCellMembraneQuiz } from "./data/biology-cell-membrane-quiz";
+import { biologyDiffusionOsmosisQuiz } from "./data/biology-diffusion-osmosis-quiz";
 import { biologyCellExplorerQuiz } from "./data/biology-cell-explorer-quiz";
 import { biologyCellularRespirationQuiz } from "./data/biology-cellular-respiration-quiz";
 import { biologyEcosystemQuiz } from "./data/biology-ecosystem-quiz";
@@ -65,6 +68,9 @@ export const quizzes: QuizMeta[] = [
   biologyWhatIsACellQuiz,
   biologyCellStructureOrganizationQuiz,
   biologyCellOrganellesQuiz,
+  biologyPlantVsAnimalCellsQuiz,
+  biologyCellMembraneQuiz,
+  biologyDiffusionOsmosisQuiz,
   biologyCellExplorerQuiz,
   biologyCellularRespirationQuiz,
   biologyEcosystemQuiz,

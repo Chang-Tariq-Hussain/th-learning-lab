@@ -225,6 +225,7 @@ export const biologyCellStructureOrganizationContent: TopicContent = {
     scenarios: [
       {
         id: "biology-cell-structure-organization-challenge-001",
+        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
         title: "Cell Explorer Mission: Find the Boundary",
         scenario: "In the Plant Cell view, the outermost layer sits just outside a second, thinner layer.",
         objective: "Click the outermost structure and identify which layer of the boundary it is.",
@@ -243,6 +244,7 @@ export const biologyCellStructureOrganizationContent: TopicContent = {
       },
       {
         id: "biology-cell-structure-organization-challenge-002",
+        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
         title: "Cell Explorer Mission: Find the Genetic Material",
         scenario: "Somewhere inside the Plant Cell view is the structure that stores the cell's DNA.",
         objective: "Click the structure that holds the cell's genetic material.",
@@ -261,6 +263,7 @@ export const biologyCellStructureOrganizationContent: TopicContent = {
       },
       {
         id: "biology-cell-structure-organization-challenge-003",
+        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
         title: "Cell Explorer Mission: Find the Fluid Interior",
         scenario: "Between the boundary and the organelles, the whole cell is filled with a gel-like fluid.",
         objective: "Click that fluid interior and identify it.",
@@ -279,6 +282,7 @@ export const biologyCellStructureOrganizationContent: TopicContent = {
       },
       {
         id: "biology-cell-structure-organization-challenge-004",
+        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
         title: "Cell Explorer Mission: Three More Structures",
         scenario: "Beyond the boundary, cytoplasm, and nucleus, the Plant Cell view has several more distinct organelles to click.",
         objective: "Click at least three organelles you haven't identified yet, then identify one that helps the plant capture sunlight.",

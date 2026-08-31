@@ -345,6 +345,27 @@ export const subjects: Subject[] = [
             href: "/dashboard/biology/cell-organelles",
           },
           {
+            slug: "plant-vs-animal-cells",
+            title: "Plant vs Animal Cells",
+            description:
+              "What plant and animal cells share, and what makes plant cells different.",
+            href: "/dashboard/biology/plant-vs-animal-cells",
+          },
+          {
+            slug: "cell-membrane",
+            title: "Cell Membrane",
+            description:
+              "Selective permeability, and why a cell controls what crosses its boundary.",
+            href: "/dashboard/biology/cell-membrane",
+          },
+          {
+            slug: "diffusion-osmosis",
+            title: "Diffusion & Osmosis",
+            description:
+              "How particles and water move across the membrane on their own, without energy.",
+            href: "/dashboard/biology/diffusion-osmosis",
+          },
+          {
             slug: "cell-explorer",
             title: "Interactive Cell Explorer",
             description:

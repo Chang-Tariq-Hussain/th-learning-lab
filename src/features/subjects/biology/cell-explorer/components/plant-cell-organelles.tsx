@@ -222,51 +222,57 @@ export function PlantCellOrganelles({
         </g>
       </OrganelleHotspot>
 
-      {/* ---- Rough ER ---- */}
+      {/* ---- Rough ER ----
+          BUGFIX: see the matching comment in `animal-cell-organelles.tsx`
+          — `filter` and `transform` used to sit on the same `<g>` here,
+          unlike Golgi/Mitochondria in this same file, which was the
+          likely cause of this organelle rendering invisibly (label
+          visible, shape not) in some browsers. Split onto a separate
+          outer (filter) / inner (transform) `<g>`, matching the pattern
+          every other organelle in this file already uses. */}
       <OrganelleHotspot
         id="roughER"
         label="Rough Endoplasmic Reticulum"
         isSelected={selectedId === "roughER"}
         onSelect={onSelect}
       >
-        <g
-          transform={`translate(${ROUGH_ER.cx} ${ROUGH_ER.cy}) rotate(${ROUGH_ER.rotate})`}
-          filter="url(#plant-organelle-soft-shadow)"
-        >
-          {[0, 1, 2, 3].map((i) => {
-            const y = (i - 1.5) * 10;
-            const d = wavyTubePath(
-              -ROUGH_ER.width / 2,
-              y,
-              ROUGH_ER.width,
-              6.5,
-              4,
-              i * 1.15,
-            );
-            return (
-              <g key={i}>
-                <path d={d} stroke="#2E7A52" strokeWidth={6} fill="none" strokeLinecap="round" opacity={0.9} />
-                <path d={d} stroke="url(#plant-roughER-fill)" strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.95} />
-              </g>
-            );
-          })}
-          {Array.from({ length: 12 }, (_, i) => {
-            const x = -ROUGH_ER.width / 2 + (i / 11) * ROUGH_ER.width;
-            const rowOffset = (i % 4) - 1.5;
-            const y = rowOffset * 10 + (i % 2 === 0 ? -4 : 4);
-            return (
-              <circle
-                key={i}
-                cx={x}
-                cy={y}
-                r={1.8}
-                fill="url(#plant-ribosome-fill)"
-                stroke="#2036B0"
-                strokeWidth={0.3}
-                opacity={0.95}
-              />
-            );
-          })}
+        <g filter="url(#plant-organelle-soft-shadow)">
+          <g transform={`translate(${ROUGH_ER.cx} ${ROUGH_ER.cy}) rotate(${ROUGH_ER.rotate})`}>
+            {[0, 1, 2, 3].map((i) => {
+              const y = (i - 1.5) * 10;
+              const d = wavyTubePath(
+                -ROUGH_ER.width / 2,
+                y,
+                ROUGH_ER.width,
+                6.5,
+                4,
+                i * 1.15,
+              );
+              return (
+                <g key={i}>
+                  <path d={d} stroke="#2E7A52" strokeWidth={6} fill="none" strokeLinecap="round" opacity={0.9} />
+                  <path d={d} stroke="url(#plant-roughER-fill)" strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.95} />
+                </g>
+              );
+            })}
+            {Array.from({ length: 12 }, (_, i) => {
+              const x = -ROUGH_ER.width / 2 + (i / 11) * ROUGH_ER.width;
+              const rowOffset = (i % 4) - 1.5;
+              const y = rowOffset * 10 + (i % 2 === 0 ? -4 : 4);
+              return (
+                <circle
+                  key={i}
+                  cx={x}
+                  cy={y}
+                  r={1.8}
+                  fill="url(#plant-ribosome-fill)"
+                  stroke="#2036B0"
+                  strokeWidth={0.3}
+                  opacity={0.95}
+                />
+              );
+            })}
+          </g>
         </g>
       </OrganelleHotspot>
 
@@ -277,27 +283,27 @@ export function PlantCellOrganelles({
         isSelected={selectedId === "smoothER"}
         onSelect={onSelect}
       >
-        <g
-          transform={`translate(${SMOOTH_ER.cx} ${SMOOTH_ER.cy}) rotate(${SMOOTH_ER.rotate})`}
-          filter="url(#plant-organelle-soft-shadow)"
-        >
-          {[0, 1, 2].map((i) => {
-            const y = (i - 1) * 10;
-            const d = wavyTubePath(
-              -SMOOTH_ER.width / 2,
-              y,
-              SMOOTH_ER.width,
-              6,
-              4,
-              i * 1.4,
-            );
-            return (
-              <g key={i}>
-                <path d={d} stroke="#3E8562" strokeWidth={5.5} fill="none" strokeLinecap="round" opacity={0.85} />
-                <path d={d} stroke="url(#plant-smoothER-fill)" strokeWidth={4.5} fill="none" strokeLinecap="round" opacity={0.95} />
-              </g>
-            );
-          })}
+        {/* BUGFIX: same filter/transform-on-one-g issue as Rough ER above — split here too, preventatively. */}
+        <g filter="url(#plant-organelle-soft-shadow)">
+          <g transform={`translate(${SMOOTH_ER.cx} ${SMOOTH_ER.cy}) rotate(${SMOOTH_ER.rotate})`}>
+            {[0, 1, 2].map((i) => {
+              const y = (i - 1) * 10;
+              const d = wavyTubePath(
+                -SMOOTH_ER.width / 2,
+                y,
+                SMOOTH_ER.width,
+                6,
+                4,
+                i * 1.4,
+              );
+              return (
+                <g key={i}>
+                  <path d={d} stroke="#3E8562" strokeWidth={5.5} fill="none" strokeLinecap="round" opacity={0.85} />
+                  <path d={d} stroke="url(#plant-smoothER-fill)" strokeWidth={4.5} fill="none" strokeLinecap="round" opacity={0.95} />
+                </g>
+              );
+            })}
+          </g>
         </g>
       </OrganelleHotspot>
 
