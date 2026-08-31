@@ -1,4 +1,5 @@
 import type { LearningPath, LearningPathTopicRef } from "./types";
+import { biologyCellFoundationsPath } from "./data/biology-cell-foundations";
 import { physicsFoundationsPath } from "./data/physics-foundations";
 import { mathematicsFoundationsPath } from "./data/mathematics-foundations";
 
@@ -9,7 +10,11 @@ import { mathematicsFoundationsPath } from "./data/mathematics-foundations";
  * same convention as `@/features/learning/registry.ts` and
  * `@/features/quiz-engine/registry.ts`.
  */
-export const learningPathList: LearningPath[] = [physicsFoundationsPath, mathematicsFoundationsPath];
+export const learningPathList: LearningPath[] = [
+  biologyCellFoundationsPath,
+  physicsFoundationsPath,
+  mathematicsFoundationsPath,
+];
 
 export function getLearningPathById(id: string): LearningPath | undefined {
   return learningPathList.find((path) => path.id === id);

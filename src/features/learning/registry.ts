@@ -1,4 +1,7 @@
 import type { TopicContent } from "./types";
+import { biologyWhatIsACellContent } from "./data/biology-what-is-a-cell";
+import { biologyCellStructureOrganizationContent } from "./data/biology-cell-structure-organization";
+import { biologyCellOrganellesContent } from "./data/biology-cell-organelles";
 import { physicsSimpleMotionContent } from "./data/physics-simple-motion";
 import { physicsVelocityContent } from "./data/physics-velocity";
 import { physicsAccelerationContent } from "./data/physics-acceleration";
@@ -90,6 +93,22 @@ import { mathematicsDataComparisonContent } from "./data/mathematics-data-compar
  * Measurement, which reuses the pre-existing `mathematics-measurement`
  * bank rather than duplicating it.
  *
+ * Biology Batch 1 (Cell Biology Foundations) is the first Biology
+ * content brought up to the full Golden Learning Experience standard.
+ * All three topics — What Is a Cell?, Cell Structure & Organization,
+ * and Cell Organelles — reuse the pre-existing Interactive Cell
+ * Explorer simulation (`@/features/subjects/biology/cell-explorer`)
+ * as their Explore experience rather than a new simulation; no new
+ * simulation was built for this batch. Cell Structure & Organization
+ * and Cell Organelles additionally use Challenge scenarios as a
+ * guided "Cell Explorer Mission" — find a specific structure in the
+ * simulation, then answer a question about it — scoped strictly to
+ * organelles and boundary structures the simulation actually exposes
+ * as clickable (see each file's own doc comment for exactly which).
+ * Each topic has its own dedicated question bank
+ * (`biology-what-is-a-cell` / `biology-cell-structure-organization` /
+ * `biology-cell-organelles` in `@/features/quiz-engine`).
+ *
  * Mathematics Batch 3 (Coordinate Geometry) is complete: Coordinate
  * Plane, Plotting Points, Distance Between Two Points, Midpoint,
  * Slope of a Line, and Equation of a Straight Line all have full
@@ -110,6 +129,9 @@ import { mathematicsDataComparisonContent } from "./data/mathematics-data-compar
  * `@/features/learning-path/data/mathematics-foundations.ts`.
  */
 export const topicContentList: TopicContent[] = [
+  biologyWhatIsACellContent,
+  biologyCellStructureOrganizationContent,
+  biologyCellOrganellesContent,
   physicsSimpleMotionContent,
   physicsVelocityContent,
   physicsAccelerationContent,

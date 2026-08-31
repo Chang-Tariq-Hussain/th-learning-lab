@@ -324,6 +324,27 @@ export const subjects: Subject[] = [
         name: "Cell Structure",
         visualizations: [
           {
+            slug: "what-is-a-cell",
+            title: "What Is a Cell?",
+            description:
+              "The basic unit of life, and unicellular vs multicellular organisms — start here.",
+            href: "/dashboard/biology/what-is-a-cell",
+          },
+          {
+            slug: "cell-structure-organization",
+            title: "Cell Structure & Organization",
+            description:
+              "The boundary, cytoplasm, and genetic material every cell is built from, explored hands-on.",
+            href: "/dashboard/biology/cell-structure-organization",
+          },
+          {
+            slug: "cell-organelles",
+            title: "Cell Organelles",
+            description:
+              "What the nucleus, mitochondria, ribosomes, and other organelles actually do.",
+            href: "/dashboard/biology/cell-organelles",
+          },
+          {
             slug: "cell-explorer",
             title: "Interactive Cell Explorer",
             description:

@@ -1,4 +1,7 @@
 import type { QuizMeta } from "./types";
+import { biologyWhatIsACellQuiz } from "./data/biology-what-is-a-cell-quiz";
+import { biologyCellStructureOrganizationQuiz } from "./data/biology-cell-structure-organization-quiz";
+import { biologyCellOrganellesQuiz } from "./data/biology-cell-organelles-quiz";
 import { biologyCellExplorerQuiz } from "./data/biology-cell-explorer-quiz";
 import { biologyCellularRespirationQuiz } from "./data/biology-cellular-respiration-quiz";
 import { biologyEcosystemQuiz } from "./data/biology-ecosystem-quiz";
@@ -59,6 +62,9 @@ import { physicsWaveMotionQuiz } from "./data/physics-wave-motion-quiz";
  * getter functions, instead of scattered lookups.
  */
 export const quizzes: QuizMeta[] = [
+  biologyWhatIsACellQuiz,
+  biologyCellStructureOrganizationQuiz,
+  biologyCellOrganellesQuiz,
   biologyCellExplorerQuiz,
   biologyCellularRespirationQuiz,
   biologyEcosystemQuiz,
