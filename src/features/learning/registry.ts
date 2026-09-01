@@ -47,6 +47,8 @@ import { mathematicsStatisticsFoundationsContent } from "./data/mathematics-stat
 import { mathematicsMeasuresOfDispersionContent } from "./data/mathematics-measures-of-dispersion";
 import { mathematicsCentralTendencyContent } from "./data/mathematics-central-tendency";
 import { mathematicsDataComparisonContent } from "./data/mathematics-data-comparison";
+import { chemistryBuildAnAtomContent } from "./data/chemistry-build-an-atom";
+import { chemistryPeriodicTrendsContent } from "./data/chemistry-periodic-trends";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -160,6 +162,20 @@ import { mathematicsDataComparisonContent } from "./data/mathematics-data-compar
  * with no slope/intercept graphing at all; see the correction and
  * full explanation in
  * `@/features/learning-path/data/mathematics-foundations.ts`.
+ *
+ * Chemistry Batch 1 (Foundations) is Chemistry's first Golden
+ * Learning Experience content, brought up to the same full standard
+ * (Learn, Predict, Explore, Explain, Practice, Challenge) as the
+ * Physics/Mathematics reference implementations above. Build an Atom
+ * and Periodic Trends both reuse their existing, pre-built
+ * simulations as-is (`@/features/subjects/chemistry/build-an-atom`
+ * and `@/features/subjects/chemistry/periodic-trends`) — no new
+ * simulation or 3D upgrade was needed for either: Build an Atom's
+ * existing 2D shell diagram already makes isotopes and ions directly
+ * interactive, and Periodic Trends' table/compare-panel format is
+ * inherently 2D. Each has its own dedicated question bank
+ * (`chemistry-atom`, `chemistry-periodic-trends` in
+ * `@/features/quiz-engine`).
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -210,6 +226,8 @@ export const topicContentList: TopicContent[] = [
   mathematicsMeasuresOfDispersionContent,
   mathematicsCentralTendencyContent,
   mathematicsDataComparisonContent,
+  chemistryBuildAnAtomContent,
+  chemistryPeriodicTrendsContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {
