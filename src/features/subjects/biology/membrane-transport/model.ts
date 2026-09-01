@@ -150,3 +150,73 @@ export function createOsmosedWaterParticles(particles: Particle[]): Particle[] {
 /** Water-level fill height (percent of chamber height) for the two chambers, before and after osmosis. */
 export const WATER_LEVEL_IDLE = { low: 55, high: 55 } as const;
 export const WATER_LEVEL_DONE = { low: 40, high: 70 } as const;
+
+// ---------------------------------------------------------------------------
+// Active Transport
+// ---------------------------------------------------------------------------
+
+/**
+ * Deliberately mirrors Diffusion's starting concentrations (outside
+ * crowded/"high", inside sparse/"low") so the two modes are directly
+ * comparable — same starting picture, opposite outcome. Diffusion
+ * moves particles from crowded toward sparse until they even out, on
+ * their own, no energy required. Active transport does the reverse:
+ * a pump spends energy to move particles from the sparse side to the
+ * already-crowded side, making the imbalance *greater*, not smaller —
+ * the one idea this mode exists to teach.
+ */
+const ACTIVE_TRANSPORT_OUTSIDE_COUNT = 9;
+const ACTIVE_TRANSPORT_INSIDE_COUNT = 3;
+export const ACTIVE_TRANSPORT_TOTAL = ACTIVE_TRANSPORT_OUTSIDE_COUNT + ACTIVE_TRANSPORT_INSIDE_COUNT;
+
+/** How many of the inside (low-concentration) particles the pump moves per run — matches `ATP_COST_PER_PARTICLE` below for a simple, visible "ATP used" count. */
+export const ACTIVE_TRANSPORT_PUMP_COUNT = 2;
+
+/** One "unit" of ATP spent per particle the pump moves — kept at 1 so the ATP-used readout is just a particle count, not a separate formula the student has to track. */
+export const ATP_COST_PER_PARTICLE = 1;
+
+export function createInitialActiveTransportParticles(): Particle[] {
+  const particles: Particle[] = [];
+
+  for (let i = 0; i < ACTIVE_TRANSPORT_OUTSIDE_COUNT; i++) {
+    particles.push({
+      id: `at-outside-${i}`,
+      xPercent: LEFT_MIN + ((i * 43) % 100) * ((LEFT_MAX - LEFT_MIN) / 100),
+      yPercent: Y_MIN + ((i * 59) % 100) * ((Y_MAX - Y_MIN) / 100),
+    });
+  }
+
+  for (let i = 0; i < ACTIVE_TRANSPORT_INSIDE_COUNT; i++) {
+    particles.push({
+      id: `at-inside-${i}`,
+      xPercent: RIGHT_MIN + ((i * 41) % 100) * ((RIGHT_MAX - RIGHT_MIN) / 100),
+      yPercent: Y_MIN + ((i * 73) % 100) * ((Y_MAX - Y_MIN) / 100),
+    });
+  }
+
+  return particles;
+}
+
+/**
+ * Pumps `ACTIVE_TRANSPORT_PUMP_COUNT` of the inside (low-concentration)
+ * particles across to the outside (already high-concentration) side —
+ * against the gradient, unlike diffusion. The rest stay put, so the
+ * scene visibly still has *some* particles on the low side afterward
+ * (a pump moves specific particles; it doesn't sweep the whole side
+ * empty in one run).
+ */
+export function createActivelyTransportedParticles(particles: Particle[]): Particle[] {
+  let pumped = 0;
+  return particles.map((particle) => {
+    const startedInside = particle.id.startsWith("at-inside-");
+    if (startedInside && pumped < ACTIVE_TRANSPORT_PUMP_COUNT) {
+      pumped += 1;
+      return {
+        ...particle,
+        xPercent: LEFT_MIN + Math.random() * (LEFT_MAX - LEFT_MIN),
+        yPercent: Y_MIN + Math.random() * (Y_MAX - Y_MIN),
+      };
+    }
+    return particle;
+  });
+}

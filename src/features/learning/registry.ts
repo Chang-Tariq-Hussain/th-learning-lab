@@ -5,6 +5,13 @@ import { biologyCellOrganellesContent } from "./data/biology-cell-organelles";
 import { biologyPlantVsAnimalCellsContent } from "./data/biology-plant-vs-animal-cells";
 import { biologyCellMembraneContent } from "./data/biology-cell-membrane";
 import { biologyDiffusionOsmosisContent } from "./data/biology-diffusion-osmosis";
+import { biologyActiveTransportContent } from "./data/biology-active-transport";
+import { biologyCellularEnergyContent } from "./data/biology-cellular-energy";
+import { biologyPhotosynthesisContent } from "./data/biology-photosynthesis";
+import { biologyPhotosynthesisFactorsContent } from "./data/biology-photosynthesis-factors";
+import { biologyCellularRespirationContent } from "./data/biology-cellular-respiration";
+import { biologyAtpEnergyReleaseContent } from "./data/biology-atp-energy-release";
+import { biologyPhotosynthesisVsRespirationContent } from "./data/biology-photosynthesis-vs-respiration";
 import { physicsSimpleMotionContent } from "./data/physics-simple-motion";
 import { physicsVelocityContent } from "./data/physics-velocity";
 import { physicsAccelerationContent } from "./data/physics-acceleration";
@@ -116,6 +123,25 @@ import { mathematicsDataComparisonContent } from "./data/mathematics-data-compar
  * `biology-plant-vs-animal-cells`, `biology-cell-membrane`,
  * `biology-diffusion-osmosis`).
  *
+ * Biology Batch 2 ("Cellular Energy & Life Processes") begins with
+ * its first three (of three) planned topics: Introduction to
+ * Cellular Energy, Photosynthesis, and Factors Affecting
+ * Photosynthesis. Introduction to Cellular Energy reuses the
+ * existing Cellular Respiration simulation
+ * (`@/features/subjects/biology/cellular-respiration`) purely for its
+ * energy-release visual, staying at an introductory ATP level rather
+ * than teaching the full respiration pathway. Photosynthesis reuses
+ * the existing Photosynthesis simulation
+ * (`@/features/subjects/biology/photosynthesis`) as-is. Factors
+ * Affecting Photosynthesis reuses that same simulation with its new
+ * `showFactorControls` prop (a minimal, additive extension — see that
+ * component's doc comment), which reveals Light/CO2/Temperature
+ * sliders that scale the existing scene's playback rate rather than
+ * introducing a second simulation. No new simulation was built for
+ * any of these three topics. Each has its own dedicated 15-question
+ * bank (`biology-cellular-energy`, `biology-photosynthesis`,
+ * `biology-photosynthesis-factors`).
+ *
  * Mathematics Batch 3 (Coordinate Geometry) is complete: Coordinate
  * Plane, Plotting Points, Distance Between Two Points, Midpoint,
  * Slope of a Line, and Equation of a Straight Line all have full
@@ -142,6 +168,13 @@ export const topicContentList: TopicContent[] = [
   biologyPlantVsAnimalCellsContent,
   biologyCellMembraneContent,
   biologyDiffusionOsmosisContent,
+  biologyActiveTransportContent,
+  biologyCellularEnergyContent,
+  biologyPhotosynthesisContent,
+  biologyPhotosynthesisFactorsContent,
+  biologyCellularRespirationContent,
+  biologyAtpEnergyReleaseContent,
+  biologyPhotosynthesisVsRespirationContent,
   physicsSimpleMotionContent,
   physicsVelocityContent,
   physicsAccelerationContent,

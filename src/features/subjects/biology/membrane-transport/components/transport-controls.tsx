@@ -11,9 +11,15 @@ export interface TransportControlsProps {
   onReset: () => void;
 }
 
+const START_LABEL: Record<Mode, string> = {
+  diffusion: "Start Diffusion",
+  osmosis: "Start Osmosis",
+  "active-transport": "Start Pump",
+};
+
 /** Exactly the controls the spec calls for — one Start button (label matches the active mode) and Reset. No extra panel. */
 export function TransportControls({ mode, phase, onStart, onReset }: TransportControlsProps) {
-  const startLabel = mode === "diffusion" ? "Start Diffusion" : "Start Osmosis";
+  const startLabel = START_LABEL[mode];
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-3">

@@ -9,16 +9,21 @@ export interface TransportStageProps {
   diffusionParticles: Particle[];
   waterParticles: Particle[];
   soluteParticles: Particle[];
+  activeTransportParticles: Particle[];
+  /** Running count of ATP the pump has spent this run — only shown in Active Transport mode. */
+  atpUsed: number;
   waterLevels: { low: number; high: number };
 }
 
 const leftLabel: Record<Mode, string> = {
   diffusion: "High Concentration",
   osmosis: "Low Solute",
+  "active-transport": "High Concentration",
 };
 const rightLabel: Record<Mode, string> = {
   diffusion: "Low Concentration",
   osmosis: "High Solute",
+  "active-transport": "Low Concentration",
 };
 
 export function TransportStage({
@@ -27,6 +32,8 @@ export function TransportStage({
   diffusionParticles,
   waterParticles,
   soluteParticles,
+  activeTransportParticles,
+  atpUsed,
   waterLevels,
 }: TransportStageProps) {
   return (
@@ -77,6 +84,18 @@ export function TransportStage({
             ))}
           </>
         ) : null}
+
+        {mode === "active-transport" ? (
+          <>
+            {activeTransportParticles.map((particle) => (
+              <ParticleDot key={particle.id} xPercent={particle.xPercent} yPercent={particle.yPercent} colorClassName="bg-rose-500" title="Particle" />
+            ))}
+            <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-white/85 px-3 py-1 text-xs font-medium text-ink shadow-card backdrop-blur dark:bg-chalkboard/70 dark:text-bone">
+              <span aria-hidden="true">⚡</span>
+              <span aria-live="polite">ATP used: {atpUsed}</span>
+            </div>
+          </>
+        ) : null}
       </div>
 
       <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 px-2 text-xs text-ink-soft dark:text-bone-soft">
@@ -84,7 +103,8 @@ export function TransportStage({
           <span className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full bg-sky-600" /> Particle
           </span>
-        ) : (
+        ) : null}
+        {mode === "osmosis" ? (
           <>
             <span className="flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-full bg-sky-500" /> Water
@@ -93,7 +113,12 @@ export function TransportStage({
               <span className="h-2.5 w-2.5 rounded-full bg-amber-500" /> Solute
             </span>
           </>
-        )}
+        ) : null}
+        {mode === "active-transport" ? (
+          <span className="flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-rose-500" /> Particle (pumped against its gradient)
+          </span>
+        ) : null}
         <span className="flex items-center gap-1.5">
           <span className="h-2.5 w-1.5 rounded-full bg-subject-biology" /> Cell Membrane
         </span>

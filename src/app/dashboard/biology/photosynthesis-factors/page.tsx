@@ -5,15 +5,15 @@ import { SimulationBackLink } from "@/components/dashboard/simulation-back-link"
 import { Photosynthesis } from "@/features/subjects/biology/photosynthesis";
 import { TopicExperience, getTopicContent } from "@/features/learning";
 
-const SIMULATION_HREF = "/dashboard/biology/photosynthesis";
+const SIMULATION_HREF = "/dashboard/biology/photosynthesis-factors";
 
 export const metadata: Metadata = {
-  title: "Photosynthesis",
-  description: "Watch a simple plant turn light, water, and carbon dioxide into glucose and oxygen — predict, run, and explain the process.",
+  title: "Factors Affecting Photosynthesis",
+  description: "See how light, carbon dioxide, and temperature speed up or slow down photosynthesis — predict, experiment, and explain.",
 };
 
-export default function PhotosynthesisPage() {
-  const content = getTopicContent("biology", "photosynthesis");
+export default function PhotosynthesisFactorsPage() {
+  const content = getTopicContent("biology", "photosynthesis-factors");
 
   return (
     <Container className="py-10">
@@ -32,22 +32,22 @@ export default function PhotosynthesisPage() {
           Biology · Plant Biology
         </p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
-          Photosynthesis
+          Factors Affecting Photosynthesis
         </h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
-          How a plant turns light, water, and carbon dioxide into glucose and
-          oxygen. Predict what will happen, then run the simulation to check
-          yourself.
+          Light, carbon dioxide, and temperature can all speed up or slow
+          down the rate of photosynthesis. Change one variable at a time and
+          see what happens.
         </p>
       </div>
 
       {content ? (
-        <TopicExperience content={content} simulation={<Photosynthesis />} />
+        <TopicExperience content={content} simulation={<Photosynthesis showFactorControls />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page
         // from 404ing outright.
-        <Photosynthesis />
+        <Photosynthesis showFactorControls />
       )}
     </Container>
   );

@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
-import { Photosynthesis } from "@/features/subjects/biology/photosynthesis";
+import { CellularRespiration } from "@/features/subjects/biology/cellular-respiration";
 import { TopicExperience, getTopicContent } from "@/features/learning";
 
-const SIMULATION_HREF = "/dashboard/biology/photosynthesis";
+const SIMULATION_HREF = "/dashboard/biology/cellular-energy";
 
 export const metadata: Metadata = {
-  title: "Photosynthesis",
-  description: "Watch a simple plant turn light, water, and carbon dioxide into glucose and oxygen — predict, run, and explain the process.",
+  title: "Introduction to Cellular Energy",
+  description: "Why cells need energy, where it comes from, and what ATP does — predict, observe, and explain.",
 };
 
-export default function PhotosynthesisPage() {
-  const content = getTopicContent("biology", "photosynthesis");
+export default function CellularEnergyPage() {
+  const content = getTopicContent("biology", "cellular-energy");
 
   return (
     <Container className="py-10">
@@ -22,32 +22,32 @@ export default function PhotosynthesisPage() {
         items={[
           { label: "Dashboard", href: "/dashboard" },
           { label: "Biology", href: "/dashboard/biology" },
-          { label: "Plant Biology", href: "/dashboard/biology/plant-biology" },
+          { label: "Cell Structure", href: "/dashboard/biology/cell-structure" },
         ]}
         className="mb-6"
       />
 
       <div className="mb-8">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-biology">
-          Biology · Plant Biology
+          Biology · Cell Structure
         </p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
-          Photosynthesis
+          Introduction to Cellular Energy
         </h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
-          How a plant turns light, water, and carbon dioxide into glucose and
-          oxygen. Predict what will happen, then run the simulation to check
-          yourself.
+          Every cell needs energy to do its work. See where that energy
+          comes from, and what ATP does with it, using the same cell scene
+          from the Cellular Respiration simulation.
         </p>
       </div>
 
       {content ? (
-        <TopicExperience content={content} simulation={<Photosynthesis />} />
+        <TopicExperience content={content} simulation={<CellularRespiration />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page
         // from 404ing outright.
-        <Photosynthesis />
+        <CellularRespiration />
       )}
     </Container>
   );

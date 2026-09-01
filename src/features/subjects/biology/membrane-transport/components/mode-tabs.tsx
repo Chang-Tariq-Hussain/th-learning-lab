@@ -11,6 +11,7 @@ export interface ModeTabsProps {
 const OPTIONS: { mode: Mode; label: string }[] = [
   { mode: "diffusion", label: "Diffusion" },
   { mode: "osmosis", label: "Osmosis" },
+  { mode: "active-transport", label: "Active Transport" },
 ];
 
 export function ModeTabs({ value, onChange }: ModeTabsProps) {
@@ -18,7 +19,7 @@ export function ModeTabs({ value, onChange }: ModeTabsProps) {
     <div
       role="tablist"
       aria-label="Transport type"
-      className="flex gap-1 rounded-full border border-line bg-white/60 p-1 dark:border-line-dark dark:bg-white/[0.03]"
+      className="flex flex-wrap justify-center gap-1 rounded-full border border-line bg-white/60 p-1 dark:border-line-dark dark:bg-white/[0.03]"
     >
       {OPTIONS.map((option) => (
         <button

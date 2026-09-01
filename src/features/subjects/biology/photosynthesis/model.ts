@@ -1,4 +1,4 @@
-import type { PhotosynthesisState, StepId } from "./types";
+import type { PhotosynthesisFactors, PhotosynthesisState, StepId } from "./types";
 
 /**
  * One continuous playback clock (same pattern as Simple Motion /
@@ -9,10 +9,49 @@ import type { PhotosynthesisState, StepId } from "./types";
  */
 export const PLAYBACK_DURATION_S = 10;
 
+/** "Optimal" conditions — light and CO2 maxed out, temperature at its
+ *  mid-range peak. `factorRate` below returns 1 (100%) exactly here,
+ *  which is what keeps every existing caller's animation timing
+ *  unchanged: nothing renders factor controls today, so every scene
+ *  runs at these defaults. */
+export const DEFAULT_FACTORS: PhotosynthesisFactors = {
+  light: 100,
+  co2: 100,
+  temperature: 50,
+};
+
 export const INITIAL_PHOTOSYNTHESIS_STATE: PhotosynthesisState = {
   running: false,
   playbackSeconds: 0,
+  factors: DEFAULT_FACTORS,
 };
+
+/**
+ * Combines the three environmental factors into one 0–1 rate
+ * multiplier that scales how fast the playback clock advances —
+ * "Factors Affecting Photosynthesis" made visible as the whole scene
+ * speeding up, slowing down, or nearly stalling, rather than a
+ * separate readout disconnected from what the student sees.
+ *
+ * - Light and CO2 are each a limiting *raw material*: photosynthesis
+ *   can't go faster than whichever one is scarcest, so they combine
+ *   with a minimum rather than an average (a simplified version of
+ *   Liebig's Law of the Minimum) — deliberately teaching "more of
+ *   only one factor doesn't help if another is still limiting."
+ * - Temperature instead peaks in the middle (around the default 50)
+ *   and falls off toward either extreme, so the model doesn't imply
+ *   "hotter is always better" — too cold or too hot both slow the
+ *   reaction down.
+ *
+ * Returns a value in [0.05, 1] — never fully zero, so an extreme
+ * setting reads as "very slow" rather than a frozen, ambiguous scene.
+ */
+export function factorRate(factors: PhotosynthesisFactors): number {
+  const materialRate = Math.min(factors.light, factors.co2) / 100;
+  const distanceFromOptimal = Math.abs(factors.temperature - DEFAULT_FACTORS.temperature) / DEFAULT_FACTORS.temperature;
+  const temperatureRate = Math.max(0, 1 - distanceFromOptimal);
+  return Math.max(0.05, materialRate * temperatureRate);
+}
 
 export function progressFor(state: Pick<PhotosynthesisState, "playbackSeconds">): number {
   return Math.min(1, Math.max(0, state.playbackSeconds / PLAYBACK_DURATION_S));

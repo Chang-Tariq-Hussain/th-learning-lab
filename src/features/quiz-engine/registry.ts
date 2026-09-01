@@ -5,6 +5,12 @@ import { biologyCellOrganellesQuiz } from "./data/biology-cell-organelles-quiz";
 import { biologyPlantVsAnimalCellsQuiz } from "./data/biology-plant-vs-animal-cells-quiz";
 import { biologyCellMembraneQuiz } from "./data/biology-cell-membrane-quiz";
 import { biologyDiffusionOsmosisQuiz } from "./data/biology-diffusion-osmosis-quiz";
+import { biologyActiveTransportQuiz } from "./data/biology-active-transport-quiz";
+import { biologyCellularEnergyQuiz } from "./data/biology-cellular-energy-quiz";
+import { biologyPhotosynthesisQuiz } from "./data/biology-photosynthesis-quiz";
+import { biologyPhotosynthesisFactorsQuiz } from "./data/biology-photosynthesis-factors-quiz";
+import { biologyAtpEnergyReleaseQuiz } from "./data/biology-atp-energy-release-quiz";
+import { biologyPhotosynthesisVsRespirationQuiz } from "./data/biology-photosynthesis-vs-respiration-quiz";
 import { biologyCellExplorerQuiz } from "./data/biology-cell-explorer-quiz";
 import { biologyCellularRespirationQuiz } from "./data/biology-cellular-respiration-quiz";
 import { biologyEcosystemQuiz } from "./data/biology-ecosystem-quiz";
@@ -71,6 +77,12 @@ export const quizzes: QuizMeta[] = [
   biologyPlantVsAnimalCellsQuiz,
   biologyCellMembraneQuiz,
   biologyDiffusionOsmosisQuiz,
+  biologyActiveTransportQuiz,
+  biologyCellularEnergyQuiz,
+  biologyPhotosynthesisQuiz,
+  biologyPhotosynthesisFactorsQuiz,
+  biologyAtpEnergyReleaseQuiz,
+  biologyPhotosynthesisVsRespirationQuiz,
   biologyCellExplorerQuiz,
   biologyCellularRespirationQuiz,
   biologyEcosystemQuiz,

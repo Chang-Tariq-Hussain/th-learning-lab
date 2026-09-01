@@ -366,6 +366,13 @@ export const subjects: Subject[] = [
             href: "/dashboard/biology/diffusion-osmosis",
           },
           {
+            slug: "active-transport",
+            title: "Active Transport",
+            description:
+              "How a cell pumps particles against their concentration gradient, spending energy to do it.",
+            href: "/dashboard/biology/active-transport",
+          },
+          {
             slug: "cell-explorer",
             title: "Interactive Cell Explorer",
             description:
@@ -380,11 +387,25 @@ export const subjects: Subject[] = [
             href: "/dashboard/biology/membrane-transport",
           },
           {
+            slug: "cellular-energy",
+            title: "Introduction to Cellular Energy",
+            description:
+              "Why cells need energy, where it comes from, and what ATP does with it.",
+            href: "/dashboard/biology/cellular-energy",
+          },
+          {
             slug: "cellular-respiration",
             title: "Cellular Respiration",
             description:
               "Watch a cell use glucose and oxygen to release energy, carbon dioxide, and water.",
             href: "/dashboard/biology/cellular-respiration",
+          },
+          {
+            slug: "atp-energy-release",
+            title: "ATP & Energy Release",
+            description:
+              "Follow the energy: how ATP is released and made available for a cell to spend on its work.",
+            href: "/dashboard/biology/atp-energy-release",
           },
           {
             slug: "mitosis",
@@ -425,6 +446,20 @@ export const subjects: Subject[] = [
             description:
               "Watch light, water, and carbon dioxide reach the leaf and turn into glucose and oxygen.",
             href: "/dashboard/biology/photosynthesis",
+          },
+          {
+            slug: "photosynthesis-factors",
+            title: "Factors Affecting Photosynthesis",
+            description:
+              "Adjust light, carbon dioxide, and temperature and see how each one speeds up or slows down the rate of photosynthesis.",
+            href: "/dashboard/biology/photosynthesis-factors",
+          },
+          {
+            slug: "photosynthesis-vs-respiration",
+            title: "Photosynthesis vs Cellular Respiration",
+            description:
+              "Compare the two processes side by side, and see how their inputs and outputs connect.",
+            href: "/dashboard/biology/photosynthesis-vs-respiration",
           },
         ],
       },

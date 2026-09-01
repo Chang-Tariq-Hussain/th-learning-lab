@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
-import { Photosynthesis } from "@/features/subjects/biology/photosynthesis";
+import { PhotosynthesisVsRespiration } from "@/features/subjects/biology/photosynthesis-vs-respiration";
 import { TopicExperience, getTopicContent } from "@/features/learning";
 
-const SIMULATION_HREF = "/dashboard/biology/photosynthesis";
+const SIMULATION_HREF = "/dashboard/biology/photosynthesis-vs-respiration";
 
 export const metadata: Metadata = {
-  title: "Photosynthesis",
-  description: "Watch a simple plant turn light, water, and carbon dioxide into glucose and oxygen — predict, run, and explain the process.",
+  title: "Photosynthesis vs Cellular Respiration",
+  description: "Compare photosynthesis and cellular respiration side by side, and see how their inputs and outputs connect.",
 };
 
-export default function PhotosynthesisPage() {
-  const content = getTopicContent("biology", "photosynthesis");
+export default function PhotosynthesisVsRespirationPage() {
+  const content = getTopicContent("biology", "photosynthesis-vs-respiration");
 
   return (
     <Container className="py-10">
@@ -32,22 +32,21 @@ export default function PhotosynthesisPage() {
           Biology · Plant Biology
         </p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
-          Photosynthesis
+          Photosynthesis vs Cellular Respiration
         </h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
-          How a plant turns light, water, and carbon dioxide into glucose and
-          oxygen. Predict what will happen, then run the simulation to check
-          yourself.
+          Two connected processes, side by side: what each one uses,
+          what each one produces, and how they feed into each other.
         </p>
       </div>
 
       {content ? (
-        <TopicExperience content={content} simulation={<Photosynthesis />} />
+        <TopicExperience content={content} simulation={<PhotosynthesisVsRespiration />} />
       ) : (
-        // Falls back to the bare simulation if this topic's learning
-        // content is ever removed from the registry — keeps the page
-        // from 404ing outright.
-        <Photosynthesis />
+        // Falls back to the bare comparison component if this topic's
+        // learning content is ever removed from the registry — keeps
+        // the page from 404ing outright.
+        <PhotosynthesisVsRespiration />
       )}
     </Container>
   );

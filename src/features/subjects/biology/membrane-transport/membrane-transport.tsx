@@ -7,10 +7,14 @@ import { StatusMessage } from "./components/status-message";
 import { TransportControls } from "./components/transport-controls";
 import { TransportStage } from "./components/transport-stage";
 import {
+  ACTIVE_TRANSPORT_PUMP_COUNT,
+  ATP_COST_PER_PARTICLE,
   TRANSITION_MS,
   WATER_LEVEL_DONE,
   WATER_LEVEL_IDLE,
+  createActivelyTransportedParticles,
   createDiffusedParticles,
+  createInitialActiveTransportParticles,
   createInitialDiffusionParticles,
   createInitialWaterParticles,
   createOsmosedWaterParticles,
@@ -19,20 +23,34 @@ import {
 import type { Mode, Particle, Phase } from "./types";
 
 /**
- * Cell Membrane & Transport — two small, independent activities under
- * one shared membrane visual. Diffusion moves a single kind of
+ * Cell Membrane & Transport — three small, independent activities
+ * under one shared membrane visual. Diffusion moves a single kind of
  * particle from crowded to sparse; Osmosis moves water toward the
- * side with more solute while the solute itself stays put. Each mode
- * keeps its own particle positions so switching back and forth (or
- * Reset) always returns to a clean starting layout.
+ * side with more solute while the solute itself stays put; Active
+ * Transport pumps particles the *other* direction — from sparse to
+ * crowded, against the gradient — while spending a visible "ATP
+ * used" count, the one thing diffusion and osmosis never need. Each
+ * mode keeps its own particle positions so switching back and forth
+ * (or Reset) always returns to a clean starting layout.
  */
-export function MembraneTransport() {
-  const [mode, setMode] = useState<Mode>("diffusion");
+export interface MembraneTransportProps {
+  /** Which tab is active on first render — defaults to "diffusion" so
+   *  every existing caller (Cell Membrane, the standalone simulation
+   *  page) is unaffected. The Active Transport topic page passes
+   *  "active-transport" so it opens straight into its own tab instead
+   *  of making the student click past Diffusion first. */
+  initialMode?: Mode;
+}
+
+export function MembraneTransport({ initialMode = "diffusion" }: MembraneTransportProps) {
+  const [mode, setMode] = useState<Mode>(initialMode);
   const [phase, setPhase] = useState<Phase>("idle");
 
   const [diffusionParticles, setDiffusionParticles] = useState<Particle[]>(createInitialDiffusionParticles);
   const [waterParticles, setWaterParticles] = useState<Particle[]>(createInitialWaterParticles);
   const [soluteParticles] = useState<Particle[]>(createSoluteParticles);
+  const [activeTransportParticles, setActiveTransportParticles] = useState<Particle[]>(createInitialActiveTransportParticles);
+  const [atpUsed, setAtpUsed] = useState(0);
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -48,6 +66,8 @@ export function MembraneTransport() {
     setPhase("idle");
     setDiffusionParticles(createInitialDiffusionParticles());
     setWaterParticles(createInitialWaterParticles());
+    setActiveTransportParticles(createInitialActiveTransportParticles());
+    setAtpUsed(0);
   };
 
   const handleStart = () => {
@@ -56,8 +76,11 @@ export function MembraneTransport() {
 
     if (mode === "diffusion") {
       setDiffusionParticles((prev) => createDiffusedParticles(prev));
-    } else {
+    } else if (mode === "osmosis") {
       setWaterParticles((prev) => createOsmosedWaterParticles(prev));
+    } else {
+      setActiveTransportParticles((prev) => createActivelyTransportedParticles(prev));
+      setAtpUsed(ACTIVE_TRANSPORT_PUMP_COUNT * ATP_COST_PER_PARTICLE);
     }
 
     timeoutRef.current = setTimeout(() => setPhase("done"), TRANSITION_MS);
@@ -68,6 +91,8 @@ export function MembraneTransport() {
     setPhase("idle");
     setDiffusionParticles(createInitialDiffusionParticles());
     setWaterParticles(createInitialWaterParticles());
+    setActiveTransportParticles(createInitialActiveTransportParticles());
+    setAtpUsed(0);
   };
 
   const waterLevels = phase === "done" ? WATER_LEVEL_DONE : WATER_LEVEL_IDLE;
@@ -84,6 +109,8 @@ export function MembraneTransport() {
         diffusionParticles={diffusionParticles}
         waterParticles={waterParticles}
         soluteParticles={soluteParticles}
+        activeTransportParticles={activeTransportParticles}
+        atpUsed={atpUsed}
         waterLevels={waterLevels}
       />
 
