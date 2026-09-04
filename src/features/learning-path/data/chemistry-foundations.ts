@@ -37,9 +37,12 @@ import type { LearningPath } from "../types";
  * assumes the bonding vocabulary Bond Builder introduces).
  *
  * Batch 3 — Chemical Reactions: Reaction Builder (how atoms
- * rearrange without being created/destroyed) before Reaction
- * Kinetics (how fast that rearranging happens) — rate only makes
- * sense once the learner has a reaction to point it at.
+ * rearrange without being created/destroyed) → Equation Balancer
+ * (the coefficient-adjusting skill that keeps an equation honest
+ * about that conservation) → Reaction Kinetics (how fast that
+ * rearranging happens) — rate only makes sense once the learner has
+ * a reaction to point it at, and balancing only makes sense once
+ * they've seen why atoms have to be conserved in the first place.
  *
  * Batch 4 — Acids & Bases: six existing simulations, ordered from
  * the everyday/observational (Acids & Bases — The Basics) through
@@ -108,11 +111,19 @@ export const chemistryFoundationsPath: LearningPath = {
     },
     {
       subjectSlug: "chemistry",
+      topicSlug: "equation-balancer",
+      title: "Equation Balancer",
+      description: "Adjusting coefficients — never subscripts — until a chemical equation's atom counts match.",
+      href: "/dashboard/chemistry/equation-balancer",
+      // No explicit prerequisites — defaults to depending on Chemical Reaction Builder.
+    },
+    {
+      subjectSlug: "chemistry",
       topicSlug: "reaction-kinetics",
       title: "Reaction Kinetics",
       description: "How concentration, temperature, surface area, and catalysts change reaction rate.",
       href: "/dashboard/chemistry/reaction-kinetics",
-      // No explicit prerequisites — defaults to depending on Chemical Reaction Builder.
+      // No explicit prerequisites — defaults to depending on Equation Balancer.
     },
 
     // Batch 4 — Acids & Bases

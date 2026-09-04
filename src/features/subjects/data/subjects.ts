@@ -244,6 +244,13 @@ export const subjects: Subject[] = [
               "Step through reactions like 2H₂ + O₂ → 2H₂O and see how atoms rearrange without being created or destroyed.",
             href: "/dashboard/chemistry/reaction-builder",
           },
+          {
+            slug: "equation-balancer",
+            title: "Equation Balancer",
+            description:
+              "Adjust coefficients — never subscripts — until a chemical equation's atom counts match on both sides.",
+            href: "/dashboard/chemistry/equation-balancer",
+          },
         ],
       },
       {

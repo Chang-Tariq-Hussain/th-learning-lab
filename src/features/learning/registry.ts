@@ -51,6 +51,9 @@ import { chemistryBuildAnAtomContent } from "./data/chemistry-build-an-atom";
 import { chemistryPeriodicTrendsContent } from "./data/chemistry-periodic-trends";
 import { chemistryBondBuilderContent } from "./data/chemistry-bond-builder";
 import { chemistryMolecularGeometryContent } from "./data/chemistry-molecular-geometry";
+import { chemistryReactionBuilderContent } from "./data/chemistry-reaction-builder";
+import { chemistryEquationBalancerContent } from "./data/chemistry-equation-balancer";
+import { chemistryReactionKineticsContent } from "./data/chemistry-reaction-kinetics";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -197,6 +200,16 @@ import { chemistryMolecularGeometryContent } from "./data/chemistry-molecular-ge
  * (`chemistry-molecular-geometry` below) and needed no further
  * upgrade for this batch beyond the cross-link added to Bond
  * Builder's `relatedTopics`.
+ *
+ * Chemistry Batch 3 (Chemical Reactions) brings Reaction Builder and
+ * Reaction Kinetics up from the older `SimulationLearnMore` pattern
+ * to this same full standard, and adds one new topic, Equation
+ * Balancer, to sit between them — see
+ * `@/features/subjects/chemistry/equation-balancer` for why that
+ * simulation didn't already exist and what it reuses. All three keep
+ * their own dedicated question banks in `@/features/quiz-engine`
+ * (`chemistry-reaction-builder`, `chemistry-equation-balancer`, and
+ * an expanded `chemistry-reaction-kinetics`).
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -251,6 +264,9 @@ export const topicContentList: TopicContent[] = [
   chemistryPeriodicTrendsContent,
   chemistryBondBuilderContent,
   chemistryMolecularGeometryContent,
+  chemistryReactionBuilderContent,
+  chemistryEquationBalancerContent,
+  chemistryReactionKineticsContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {
