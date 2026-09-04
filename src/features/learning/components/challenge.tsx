@@ -23,6 +23,13 @@ export interface ChallengeProps {
    *  appropriate, interact with the simulation." Optional: a
    *  reasoning-only challenge can simply omit it. */
   experiment?: ReactNode;
+  /** Required when `scenario.answer.mode === "interactive"` — called
+   *  when the student clicks the verify button, and should inspect
+   *  whatever live state the embedded `experiment` holds (e.g. "does
+   *  the student's current 3D structure match the target?") and
+   *  return whether it's correct. Ignored for `choice`/`numeric`
+   *  scenarios. */
+  onVerify?: () => boolean;
   /** Whether this scenario was already solved in an earlier session —
    *  renders it as already-complete on first mount instead of asking
    *  the student to redo it. */
@@ -35,12 +42,15 @@ export interface ChallengeProps {
 /**
  * A single Challenge, rendered end to end: scenario, objective,
  * constraints, available tools, an optional embedded experiment, an
- * answer (multiple-choice or numeric, from `scenario.answer.mode`),
- * progressive hints, attempt tracking, and — once solved or out of
- * attempts — the worked solution. One generic component for every
- * subject; everything that varies is `scenario` data.
+ * answer (multiple-choice, numeric, or — for scenarios where the
+ * embedded experiment itself should be inspected — interactive, from
+ * `scenario.answer.mode`), progressive hints, attempt tracking, and —
+ * once solved or out of attempts — the worked solution. One generic
+ * component for every subject; everything that varies is `scenario`
+ * data (plus, for interactive scenarios, the `onVerify` callback the
+ * page supplies alongside its own experiment instance).
  */
-export function Challenge({ scenario, colorToken, experiment, alreadySolved, onAttempt }: ChallengeProps) {
+export function Challenge({ scenario, colorToken, experiment, onVerify, alreadySolved, onAttempt }: ChallengeProps) {
   const colors = resolveSubjectColors(colorToken);
 
   const [attempts, setAttempts] = useState(0);
@@ -51,12 +61,20 @@ export function Challenge({ scenario, colorToken, experiment, alreadySolved, onA
   const [numericValue, setNumericValue] = useState("");
 
   const showExperiment = Boolean(experiment) && scenario.requiresExperiment !== false;
-  const hasAnswer = scenario.answer.mode === "choice" ? selectedOptionId !== null : numericValue.trim() !== "";
+  const hasAnswer =
+    scenario.answer.mode === "choice"
+      ? selectedOptionId !== null
+      : scenario.answer.mode === "numeric"
+        ? numericValue.trim() !== ""
+        : true;
   const atMaxAttempts = scenario.maxAttempts != null && attempts >= scenario.maxAttempts;
 
   function isCorrect(): boolean {
     if (scenario.answer.mode === "choice") {
       return selectedOptionId === scenario.answer.correctOptionId;
+    }
+    if (scenario.answer.mode === "interactive") {
+      return onVerify?.() ?? false;
     }
     const parsed = Number.parseFloat(numericValue);
     if (Number.isNaN(parsed)) return false;
@@ -169,7 +187,7 @@ export function Challenge({ scenario, colorToken, experiment, alreadySolved, onA
                   );
                 })}
               </div>
-            ) : (
+            ) : scenario.answer.mode === "numeric" ? (
               <div className="flex flex-wrap items-center gap-2">
                 <input
                   type="number"
@@ -182,6 +200,11 @@ export function Challenge({ scenario, colorToken, experiment, alreadySolved, onA
                 />
                 {scenario.answer.unit ? <span className="text-sm text-ink-soft dark:text-bone-soft">{scenario.answer.unit}</span> : null}
               </div>
+            ) : (
+              <p className="text-sm text-ink-soft dark:text-bone-soft">
+                {scenario.answer.instructions ??
+                  "Build it in the lab above, then check your work below."}
+              </p>
             )}
 
             {scenario.hints && scenario.hints.length > 0 ? (
@@ -208,7 +231,7 @@ export function Challenge({ scenario, colorToken, experiment, alreadySolved, onA
 
             <div className="mt-4 flex items-center gap-3">
               <Button variant="primary" size="sm" disabled={!hasAnswer} onClick={handleSubmit}>
-                Submit
+                {scenario.answer.mode === "interactive" ? scenario.answer.verifyLabel ?? "Check my work" : "Submit"}
               </Button>
               {attempts > 0 ? (
                 <span className="text-xs text-ink-soft dark:text-bone-soft">

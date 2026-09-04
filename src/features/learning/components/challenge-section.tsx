@@ -15,6 +15,16 @@ export interface ChallengeSectionProps {
   /** The topic's live simulation, forwarded to each `Challenge` for
    *  scenarios that need it (see `ChallengeScenario.requiresExperiment`). */
   experiment?: ReactNode;
+  /** Per-scenario experiment override, keyed by `ChallengeScenario.id`
+   *  — for a scenario whose interaction needs a differently-configured
+   *  instance than the topic's shared `experiment` (e.g. a build lab
+   *  locked to one target, wired to its own verify callback below).
+   *  Falls back to `experiment` for any scenario id not listed here. */
+  experimentOverrides?: Record<string, ReactNode>;
+  /** Per-scenario correctness check, keyed by `ChallengeScenario.id`,
+   *  for scenarios with `answer.mode === "interactive"` — see
+   *  `Challenge`'s `onVerify` prop. */
+  onVerifyByScenarioId?: Record<string, () => boolean>;
   className?: string;
 }
 
@@ -28,7 +38,16 @@ export interface ChallengeSectionProps {
  * session still completes correctly instead of requiring a full
  * re-solve in one sitting).
  */
-export function ChallengeSection({ subjectSlug, topicSlug, colorToken, content, experiment, className }: ChallengeSectionProps) {
+export function ChallengeSection({
+  subjectSlug,
+  topicSlug,
+  colorToken,
+  content,
+  experiment,
+  experimentOverrides,
+  onVerifyByScenarioId,
+  className,
+}: ChallengeSectionProps) {
   const { getTopicProgress, recordChallengeAttempt, completeStep } = useLearningProgress();
   const progress = getTopicProgress(subjectSlug, topicSlug);
   const total = content.scenarios.length;
@@ -56,7 +75,8 @@ export function ChallengeSection({ subjectSlug, topicSlug, colorToken, content, 
             key={scenario.id}
             scenario={scenario}
             colorToken={colorToken}
-            experiment={experiment}
+            experiment={experimentOverrides?.[scenario.id] ?? experiment}
+            onVerify={onVerifyByScenarioId?.[scenario.id]}
             alreadySolved={progress.challengeSolvedIds.includes(scenario.id)}
             onAttempt={handleAttempt}
           />

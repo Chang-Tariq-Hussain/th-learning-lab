@@ -13,6 +13,11 @@ export interface TopicExperienceProps {
    *  Quick Explore and Learn & Master always share one simulation,
    *  never two separate implementations. */
   simulation: ReactNode;
+  /** Forwarded to `TopicLearningExperience` — see its props of the
+   *  same names. Only relevant in Learn & Master mode; Quick Explore
+   *  doesn't render Challenge at all. */
+  challengeExperimentOverrides?: Record<string, ReactNode>;
+  challengeVerifiers?: Record<string, () => boolean>;
   className?: string;
 }
 
@@ -41,7 +46,13 @@ export interface TopicExperienceProps {
  * `completeStep`, so browsing it never marks any Golden Learning step
  * complete.
  */
-export function TopicExperience({ content, simulation, className }: TopicExperienceProps) {
+export function TopicExperience({
+  content,
+  simulation,
+  challengeExperimentOverrides,
+  challengeVerifiers,
+  className,
+}: TopicExperienceProps) {
   const [mode, setMode] = useState<TopicMode>("quick");
 
   return (
@@ -62,7 +73,12 @@ export function TopicExperience({ content, simulation, className }: TopicExperie
           />
         </div>
       ) : (
-        <TopicLearningExperience content={content} simulation={simulation} />
+        <TopicLearningExperience
+          content={content}
+          simulation={simulation}
+          challengeExperimentOverrides={challengeExperimentOverrides}
+          challengeVerifiers={challengeVerifiers}
+        />
       )}
     </div>
   );

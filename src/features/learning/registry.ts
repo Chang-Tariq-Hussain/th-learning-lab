@@ -49,6 +49,7 @@ import { mathematicsCentralTendencyContent } from "./data/mathematics-central-te
 import { mathematicsDataComparisonContent } from "./data/mathematics-data-comparison";
 import { chemistryBuildAnAtomContent } from "./data/chemistry-build-an-atom";
 import { chemistryPeriodicTrendsContent } from "./data/chemistry-periodic-trends";
+import { chemistryMolecularGeometryContent } from "./data/chemistry-molecular-geometry";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -228,6 +229,7 @@ export const topicContentList: TopicContent[] = [
   mathematicsDataComparisonContent,
   chemistryBuildAnAtomContent,
   chemistryPeriodicTrendsContent,
+  chemistryMolecularGeometryContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

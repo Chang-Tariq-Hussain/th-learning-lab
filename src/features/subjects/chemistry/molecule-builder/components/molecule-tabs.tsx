@@ -19,7 +19,7 @@ export function MoleculeTabs({
     <div
       role="tablist"
       aria-label="Molecule to build"
-      className="flex gap-1 rounded-full border border-line p-1 dark:border-line-dark"
+      className="flex flex-wrap gap-1 rounded-full border border-line p-1 dark:border-line-dark"
     >
       {MOLECULE_ORDER.map((id) => (
         <button

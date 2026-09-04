@@ -19,6 +19,7 @@ import { biologyNervousSystemQuiz } from "./data/biology-nervous-system-quiz";
 import { chemistryAcidsBasesQuiz } from "./data/chemistry-acids-bases-quiz";
 import { chemistryAtomQuiz } from "./data/chemistry-atom-quiz";
 import { chemistryChemicalBondingQuiz } from "./data/chemistry-chemical-bonding-quiz";
+import { chemistryMolecularGeometryQuiz } from "./data/chemistry-molecular-geometry-quiz";
 import { chemistryPeriodicTrendsQuiz } from "./data/chemistry-periodic-trends-quiz";
 import { chemistryReactionKineticsQuiz } from "./data/chemistry-reaction-kinetics-quiz";
 import { mathematicsCalculusQuiz } from "./data/mathematics-calculus-quiz";
@@ -91,6 +92,7 @@ export const quizzes: QuizMeta[] = [
   chemistryAcidsBasesQuiz,
   chemistryAtomQuiz,
   chemistryChemicalBondingQuiz,
+  chemistryMolecularGeometryQuiz,
   chemistryPeriodicTrendsQuiz,
   chemistryReactionKineticsQuiz,
   mathematicsCalculusQuiz,

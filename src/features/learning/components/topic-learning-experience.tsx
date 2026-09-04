@@ -26,6 +26,12 @@ export interface TopicLearningExperienceProps {
    *  that isn't generic — everything else (journey, sections,
    *  progress, mastery) is shared across every subject. */
   simulation: ReactNode;
+  /** Per-Challenge-scenario overrides — see `ChallengeSection`'s props
+   *  of the same names. Optional; omit entirely for topics that don't
+   *  need a scenario-specific experiment or an interactive verify
+   *  callback (the vast majority). */
+  challengeExperimentOverrides?: Record<string, ReactNode>;
+  challengeVerifiers?: Record<string, () => boolean>;
   className?: string;
 }
 
@@ -48,7 +54,13 @@ export interface TopicLearningExperienceProps {
  * section; a topic that only has Learn + Explore renders a shorter
  * page automatically, with no special-casing here.
  */
-export function TopicLearningExperience({ content, simulation, className }: TopicLearningExperienceProps) {
+export function TopicLearningExperience({
+  content,
+  simulation,
+  challengeExperimentOverrides,
+  challengeVerifiers,
+  className,
+}: TopicLearningExperienceProps) {
   const { subjectSlug, topicSlug, colorToken } = content;
   const { getTopicProgress, completeStep, recordQuizResult, hydrated } = useLearningProgress();
   const { recordQuizCompletion } = usePracticePerformance();
@@ -132,6 +144,8 @@ export function TopicLearningExperience({ content, simulation, className }: Topi
               colorToken={colorToken}
               content={content.challenge}
               experiment={simulation}
+              experimentOverrides={challengeExperimentOverrides}
+              onVerifyByScenarioId={challengeVerifiers}
             />
           </>
         ) : null}

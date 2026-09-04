@@ -228,7 +228,7 @@ export const subjects: Subject[] = [
           {
             slug: "molecule-builder",
             title: "Molecule Builder",
-            description: "Join atoms step by step to build H₂, H₂O, and CO₂.",
+            description: "Rotate real 3D molecules and see how electron-pair repulsion shapes them.",
             href: "/dashboard/chemistry/molecule-builder",
           },
         ],

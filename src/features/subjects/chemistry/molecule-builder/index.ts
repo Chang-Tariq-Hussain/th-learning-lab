@@ -17,3 +17,21 @@ export const MoleculeBuilder = dynamic(() => import("./molecule-builder").then((
   ssr: false,
   loading: () => createElement(SimulationSkeleton),
 });
+
+/**
+ * The free-build lab on its own, code-split the same way — used both
+ * inside `MoleculeBuilder`'s "Build your own" tab and, standalone,
+ * as a GLE Challenge scenario's per-scenario experiment override
+ * (see `src/app/dashboard/chemistry/molecule-builder/challenge-experiments.tsx`),
+ * where it's locked to one target and wired to a `checkTarget` ref
+ * so the Challenge scenario can grade the student's real structure.
+ */
+export const MoleculeBuildLab = dynamic(
+  () => import("./components/molecule-build-lab").then((mod) => mod.MoleculeBuildLab),
+  {
+    ssr: false,
+    loading: () => createElement(SimulationSkeleton),
+  },
+);
+
+export type { MoleculeBuildLabHandle } from "./components/molecule-build-lab";

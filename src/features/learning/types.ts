@@ -179,6 +179,15 @@ export interface PracticeSectionContent {
  *    disrupted." → `answer.mode: "choice"`.
  *  - Mathematics: "Find the function parameters that satisfy the
  *    required conditions." → `answer.mode: "numeric"`.
+ *
+ * A fifth mode, `"interactive"`, was added for scenarios where none
+ * of the above fit: the student has to build something in the
+ * simulation itself and have that real result checked, rather than
+ * describe it via a typed number or a chosen option. See
+ * `ChallengeAnswer`'s `"interactive"` variant and `Challenge`'s
+ * `onVerify` prop — Chemistry's Molecule Builder Challenge uses it
+ * for "construct this molecule and I'll check what you actually
+ * built."
  */
 export interface ChallengeConstraint {
   id: string;
@@ -205,11 +214,20 @@ export interface ChallengeOption {
  * How a scenario's answer is checked. `choice` is a locked-in
  * multiple-choice pick (for "which of these is true" problems);
  * `numeric` accepts any value within `target ± tolerance` (for
- * "find a configuration that achieves X" design problems).
+ * "find a configuration that achieves X" design problems);
+ * `interactive` has no typed/chosen answer at all — correctness is
+ * reported by the embedded experiment itself (see `Challenge`'s
+ * `onVerify` prop), for scenarios where the right way to check the
+ * student's work is to inspect what they actually built in the
+ * simulation, not to ask them to describe it in words. This is for
+ * scenarios like "construct this molecule" where evaluating the real
+ * structure is the point — a multiple-choice restatement of the goal
+ * would let the student guess without ever building anything.
  */
 export type ChallengeAnswer =
   | { mode: "choice"; options: ChallengeOption[]; correctOptionId: string }
-  | { mode: "numeric"; unit?: string; target: number; tolerance: number };
+  | { mode: "numeric"; unit?: string; target: number; tolerance: number }
+  | { mode: "interactive"; instructions?: string; verifyLabel?: string };
 
 export interface ChallengeScenario {
   id: string;
