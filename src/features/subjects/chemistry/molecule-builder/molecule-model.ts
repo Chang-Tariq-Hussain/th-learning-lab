@@ -124,6 +124,19 @@ export interface MoleculeAtomSpec {
   position: readonly [number, number, number];
   /** The atom VSEPR geometry is built around — used for labeling and camera framing, not just cosmetics. */
   role: "central" | "terminal";
+  /**
+   * 2D x-position (scene units, same SCENE_WIDTH/ATOM_Y axis as `layout.ts`)
+   * used by `MoleculeStage`'s flat build animation — deliberately NOT a
+   * projection of `position`. This is an abstract "atoms drift apart /
+   * together" beat (same idea as Bond Builder's `COVALENT_H_X`), not a
+   * depiction of true VSEPR geometry — the 3D lab is the source of truth
+   * for actual shape. Atoms are laid out left-to-right in array order,
+   * evenly spaced, wider apart at `separateX` and pulled together at
+   * `closeX`. Revisit if a molecule needs its stage animation to reflect
+   * real geometry (would need per-molecule custom layout instead).
+   */
+  separateX: number;
+  closeX: number;
 }
 
 export interface MoleculeBondSpec {
@@ -152,6 +165,10 @@ export interface MoleculeConfig {
   lonePairsOnCentral: number;
   explanation: string;
   geometryExplanation: string;
+  /** Formula text shown in `MoleculeStage`'s step-4 reveal. Same content as `formula` today — kept as its own field in case the reveal ever needs different styling/markup than the tab label. */
+  formulaDisplay: string;
+  /** One-line caption under the formula in `MoleculeStage`'s step-4 reveal. */
+  caption: string;
 }
 
 const TETRA_A = 1 / Math.sqrt(3);
@@ -163,8 +180,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
     name: "Hydrogen",
     tabLabel: "H₂",
     atoms: [
-      { id: "h1", element: "H", position: [-0.55, 0, 0], role: "terminal" },
-      { id: "h2", element: "H", position: [0.55, 0, 0], role: "terminal" },
+      { id: "h1", element: "H", position: [-0.55, 0, 0], role: "terminal", separateX: 90, closeX: 300 },
+      { id: "h2", element: "H", position: [0.55, 0, 0], role: "terminal", separateX: 610, closeX: 400 },
     ],
     bonds: [{ id: "h1-h2", from: "h1", to: "h2", order: 1 }],
     geometry: "linear",
@@ -176,6 +193,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
       "Two hydrogen atoms share one pair of electrons, forming a single covalent bond.",
     geometryExplanation:
       "With only two atoms, there's no angle to speak of — the molecule is simply a straight line between them.",
+    formulaDisplay: "H₂",
+    caption: "Single covalent bond",
   },
   h2o: {
     id: "h2o",
@@ -183,7 +202,7 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
     name: "Water",
     tabLabel: "H₂O",
     atoms: [
-      { id: "o", element: "O", position: [0, 0, 0], role: "central" },
+      { id: "o", element: "O", position: [0, 0, 0], role: "central", separateX: 90, closeX: 250 },
       {
         id: "h1",
         element: "H",
@@ -193,6 +212,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
           0,
         ],
         role: "terminal",
+        separateX: 350,
+        closeX: 350,
       },
       {
         id: "h2",
@@ -203,6 +224,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
           0,
         ],
         role: "terminal",
+        separateX: 610,
+        closeX: 450,
       },
     ],
     bonds: [
@@ -218,6 +241,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
       "Oxygen shares one electron pair with each hydrogen atom, forming two single covalent bonds.",
     geometryExplanation:
       "Oxygen has four electron groups around it — two bonds and two lone pairs. All four push apart toward a tetrahedral arrangement, but only the two bonds are visible as the molecule's shape, so it reads as bent rather than straight. The extra push from the lone pairs also squeezes the H–O–H angle down from 109.5° to about 104.5°.",
+    formulaDisplay: "H₂O",
+    caption: "Bent, 104.5° angle",
   },
   co2: {
     id: "co2",
@@ -225,9 +250,9 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
     name: "Carbon Dioxide",
     tabLabel: "CO₂",
     atoms: [
-      { id: "c", element: "C", position: [0, 0, 0], role: "central" },
-      { id: "o1", element: "O", position: [1.4, 0, 0], role: "terminal" },
-      { id: "o2", element: "O", position: [-1.4, 0, 0], role: "terminal" },
+      { id: "c", element: "C", position: [0, 0, 0], role: "central", separateX: 90, closeX: 250 },
+      { id: "o1", element: "O", position: [1.4, 0, 0], role: "terminal", separateX: 350, closeX: 350 },
+      { id: "o2", element: "O", position: [-1.4, 0, 0], role: "terminal", separateX: 610, closeX: 450 },
     ],
     bonds: [
       { id: "c-o1", from: "c", to: "o1", order: 2 },
@@ -242,6 +267,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
       "Carbon shares two electron pairs with each oxygen atom, forming two double covalent bonds.",
     geometryExplanation:
       "Carbon has only two electron groups (the two double bonds) and no lone pairs, so they push as far apart as possible — directly opposite each other — giving a straight, 180° molecule.",
+    formulaDisplay: "CO₂",
+    caption: "Linear, 180° angle",
   },
   bf3: {
     id: "bf3",
@@ -249,8 +276,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
     name: "Boron Trifluoride",
     tabLabel: "BF₃",
     atoms: [
-      { id: "b", element: "B", position: [0, 0, 0], role: "central" },
-      { id: "f1", element: "F", position: [1.5, 0, 0], role: "terminal" },
+      { id: "b", element: "B", position: [0, 0, 0], role: "central", separateX: 90, closeX: 200 },
+      { id: "f1", element: "F", position: [1.5, 0, 0], role: "terminal", separateX: 263, closeX: 300 },
       {
         id: "f2",
         element: "F",
@@ -260,6 +287,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
           0,
         ],
         role: "terminal",
+        separateX: 437,
+        closeX: 400,
       },
       {
         id: "f3",
@@ -270,6 +299,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
           0,
         ],
         role: "terminal",
+        separateX: 610,
+        closeX: 500,
       },
     ],
     bonds: [
@@ -286,6 +317,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
       "Boron shares one electron pair with each fluorine atom, forming three single covalent bonds.",
     geometryExplanation:
       "Boron has three electron groups and no lone pairs, so they spread out evenly in a flat plane, as far apart as possible — 120° between every pair — giving a flat, triangular shape.",
+    formulaDisplay: "BF₃",
+    caption: "Trigonal planar, 120° angle",
   },
   ch4: {
     id: "ch4",
@@ -293,30 +326,38 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
     name: "Methane",
     tabLabel: "CH₄",
     atoms: [
-      { id: "c", element: "C", position: [0, 0, 0], role: "central" },
+      { id: "c", element: "C", position: [0, 0, 0], role: "central", separateX: 90, closeX: 150 },
       {
         id: "h1",
         element: "H",
         position: [1.3 * TETRA_A, 1.3 * TETRA_A, 1.3 * TETRA_A],
         role: "terminal",
+        separateX: 220,
+        closeX: 250,
       },
       {
         id: "h2",
         element: "H",
         position: [1.3 * TETRA_A, -1.3 * TETRA_A, -1.3 * TETRA_A],
         role: "terminal",
+        separateX: 350,
+        closeX: 350,
       },
       {
         id: "h3",
         element: "H",
         position: [-1.3 * TETRA_A, 1.3 * TETRA_A, -1.3 * TETRA_A],
         role: "terminal",
+        separateX: 480,
+        closeX: 450,
       },
       {
         id: "h4",
         element: "H",
         position: [-1.3 * TETRA_A, -1.3 * TETRA_A, 1.3 * TETRA_A],
         role: "terminal",
+        separateX: 610,
+        closeX: 550,
       },
     ],
     bonds: [
@@ -334,6 +375,8 @@ export const MOLECULES: Record<MoleculeId, MoleculeConfig> = {
       "Carbon shares one electron pair with each hydrogen atom, forming four single covalent bonds.",
     geometryExplanation:
       "Carbon has four electron groups and no lone pairs, so they spread out into three dimensions as far apart as possible — a tetrahedron — giving 109.5° between every pair of bonds. This is the one shape here that a flat drawing can't represent honestly; you have to rotate it to see why.",
+    formulaDisplay: "CH₄",
+    caption: "Tetrahedral, 109.5° angle",
   },
 };
 

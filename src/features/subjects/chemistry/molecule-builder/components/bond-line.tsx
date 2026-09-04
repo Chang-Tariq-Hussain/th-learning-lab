@@ -9,7 +9,7 @@ interface BondLineProps {
   y1: number;
   x2: number;
   y2: number;
-  order: 1 | 2;
+  order: 1 | 2 | 3;
 }
 
 const lineClass = "stroke-ink/70 dark:stroke-bone/70";
@@ -37,6 +37,27 @@ export function BondLine({ visible, x1, y1, x2, y2, order }: BondLineProps) {
               className={lineClass}
               strokeLinecap="round"
             />
+          ) : order === 2 ? (
+            <>
+              <line
+                x1={edges.x1}
+                y1={edges.y1 - DOUBLE_BOND_GAP}
+                x2={edges.x2}
+                y2={edges.y2 - DOUBLE_BOND_GAP}
+                strokeWidth={4}
+                className={lineClass}
+                strokeLinecap="round"
+              />
+              <line
+                x1={edges.x1}
+                y1={edges.y1 + DOUBLE_BOND_GAP}
+                x2={edges.x2}
+                y2={edges.y2 + DOUBLE_BOND_GAP}
+                strokeWidth={4}
+                className={lineClass}
+                strokeLinecap="round"
+              />
+            </>
           ) : (
             <>
               <line
@@ -44,6 +65,15 @@ export function BondLine({ visible, x1, y1, x2, y2, order }: BondLineProps) {
                 y1={edges.y1 - DOUBLE_BOND_GAP}
                 x2={edges.x2}
                 y2={edges.y2 - DOUBLE_BOND_GAP}
+                strokeWidth={4}
+                className={lineClass}
+                strokeLinecap="round"
+              />
+              <line
+                x1={edges.x1}
+                y1={edges.y1}
+                x2={edges.x2}
+                y2={edges.y2}
                 strokeWidth={4}
                 className={lineClass}
                 strokeLinecap="round"
