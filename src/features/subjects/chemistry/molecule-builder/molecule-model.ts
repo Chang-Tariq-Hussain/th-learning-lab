@@ -26,6 +26,16 @@ export type VseprGeometry =
  *  1 = atoms separate, 2 = atoms drawn together, 3 = bonds formed, 4 = final formula/caption revealed. */
 export type BuildStep = 1 | 2 | 3 | 4;
 
+/** Label shown in the step-status pill (see `ReactionStepStatus`, which
+ *  mirrors this same pattern for Reaction Builder) for each stage of
+ *  `MoleculeStage`'s build animation. */
+export const STEP_STATUS: Record<BuildStep, string> = {
+  1: "Atoms apart",
+  2: "Atoms approaching",
+  3: "Bond formed",
+  4: "Molecule complete",
+};
+
 export const OXYGEN: BondAtomInfo = {
   symbol: "O",
   name: "Oxygen",
