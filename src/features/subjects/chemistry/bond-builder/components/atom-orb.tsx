@@ -9,8 +9,8 @@ interface AtomOrbProps {
   x: number;
   y: number;
   radius?: number;
-  /** e.g. "+" or "−" once the atom has become an ion; omitted while neutral. */
-  charge?: "+" | "−" | null;
+  /** e.g. "+", "−", "2+", or "2−" once the atom has become an ion; omitted while neutral. */
+  charge?: string | null;
 }
 
 /**
@@ -62,7 +62,7 @@ export function AtomOrb({
             cx={radius * 0.72}
             cy={-radius * 0.72}
             r={15}
-            fill={charge === "+" ? "#3D5AFE" : "#0D9488"}
+            fill={charge?.endsWith("+") ? "#3D5AFE" : "#0D9488"}
             stroke="white"
             strokeWidth={2}
           />

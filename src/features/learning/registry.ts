@@ -49,6 +49,7 @@ import { mathematicsCentralTendencyContent } from "./data/mathematics-central-te
 import { mathematicsDataComparisonContent } from "./data/mathematics-data-comparison";
 import { chemistryBuildAnAtomContent } from "./data/chemistry-build-an-atom";
 import { chemistryPeriodicTrendsContent } from "./data/chemistry-periodic-trends";
+import { chemistryBondBuilderContent } from "./data/chemistry-bond-builder";
 import { chemistryMolecularGeometryContent } from "./data/chemistry-molecular-geometry";
 
 /**
@@ -177,6 +178,25 @@ import { chemistryMolecularGeometryContent } from "./data/chemistry-molecular-ge
  * inherently 2D. Each has its own dedicated question bank
  * (`chemistry-atom`, `chemistry-periodic-trends` in
  * `@/features/quiz-engine`).
+ *
+ * Chemistry Batch 2 (Chemical Bonding & Molecules) brings Bond
+ * Builder up from its earlier Learn + Explore + quiz-link pattern
+ * (`SimulationLearnMore`) to that same full standard. The Batch 2
+ * audit found the underlying simulation itself too thin to teach
+ * bond order (it only ever showed Na+Cl and H–H), so it was extended
+ * with a second ionic pair (Mg+O — two electrons transfer instead of
+ * one) and two more covalent pairs (O₂'s double bond, N₂'s triple
+ * bond), all reusing the same scene/electron-animation components,
+ * just parametrized by pair instead of hardcoded
+ * (`@/features/subjects/chemistry/bond-builder`). Its question bank
+ * was expanded from 5 to the standard 30 questions to actually cover
+ * valence electrons, the octet rule, bond order, and lone pairs
+ * (`chemistry-chemical-bonding` in `@/features/quiz-engine`) — not
+ * just ionic-vs-covalent recognition. Molecule Builder was already a
+ * full, high-quality GLE topic with real 3D VSEPR geometry
+ * (`chemistry-molecular-geometry` below) and needed no further
+ * upgrade for this batch beyond the cross-link added to Bond
+ * Builder's `relatedTopics`.
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -229,6 +249,7 @@ export const topicContentList: TopicContent[] = [
   mathematicsDataComparisonContent,
   chemistryBuildAnAtomContent,
   chemistryPeriodicTrendsContent,
+  chemistryBondBuilderContent,
   chemistryMolecularGeometryContent,
 ];
 
