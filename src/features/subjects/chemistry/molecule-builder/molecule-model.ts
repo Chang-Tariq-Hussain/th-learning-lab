@@ -22,6 +22,10 @@ export type VseprGeometry =
   | "trigonal-planar"
   | "tetrahedral";
 
+/** The four stages of the step-by-step build animation in `MoleculeStage`:
+ *  1 = atoms separate, 2 = atoms drawn together, 3 = bonds formed, 4 = final formula/caption revealed. */
+export type BuildStep = 1 | 2 | 3 | 4;
+
 export const OXYGEN: BondAtomInfo = {
   symbol: "O",
   name: "Oxygen",
@@ -63,6 +67,19 @@ export const FLUORINE: BondAtomInfo = {
 };
 
 export { HYDROGEN };
+
+/** SVG gradient id per element, used by `MoleculeStage`. H reuses Bond
+ *  Builder's gradient as-is; O/C/B/F are defined in `MoleculeDefs`.
+ *  N has no preset molecule yet, so it falls back to the oxygen gradient —
+ *  revisit if a nitrogen-containing molecule is added. */
+export const GRADIENT_ID: Record<ElementSymbol, string> = {
+  H: "bond-hydrogen-gradient",
+  O: "molecule-oxygen-gradient",
+  C: "molecule-carbon-gradient",
+  N: "molecule-oxygen-gradient",
+  B: "molecule-boron-gradient",
+  F: "molecule-fluorine-gradient",
+};
 
 export const ATOM_INFO: Record<ElementSymbol, BondAtomInfo> = {
   H: HYDROGEN,
