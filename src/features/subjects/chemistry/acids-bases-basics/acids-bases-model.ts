@@ -113,3 +113,92 @@ export function comparePrompt(a: Substance, b: Substance): string {
   const moreAcidic = a.approxPH < b.approxPH ? a : b;
   return `${moreAcidic.name} is more acidic — it sits further to the left on the scale.`;
 }
+
+// ---------------------------------------------------------------------------
+// pH Scale — interactive mode (arbitrary pH, not tied to a named substance)
+// ---------------------------------------------------------------------------
+
+/** Builds a `Substance`-shaped object for any pH the student dials in on the
+ *  interactive scale, so the existing `PhScale` and `ParticleView` components
+ *  can render it without needing a second, parallel set of components. */
+export function substanceFromPH(ph: number): Substance {
+  const rounded = Math.round(ph * 10) / 10;
+  const classification = classificationForPH(rounded);
+  return {
+    slug: "custom-ph",
+    name: "Your solution",
+    approxPH: rounded,
+    classification,
+    blurb:
+      classification === "neutral"
+        ? "At this pH, H⁺ and OH⁻ are present in equal amounts — just like pure water."
+        : classification === "acidic"
+          ? "This pH is below 7, so H⁺ ions outnumber OH⁻ ions in this solution."
+          : "This pH is above 7, so OH⁻ ions outnumber H⁺ ions in this solution.",
+  };
+}
+
+/** Simple, non-log-scale ion readout for the pH slider: how far the dial has
+ *  moved from neutral, on a 0–6 bar so it stays legible. Not a real
+ *  concentration calculation — purely for building the "further from 7 means
+ *  more of that ion" intuition. */
+export function ionBarsForPH(ph: number): { hBars: number; ohBars: number } {
+  const distance = Math.max(0, Math.min(7, Math.abs(ph - 7)));
+  const bars = Math.max(1, Math.round((distance / 7) * 6) || 1);
+  if (ph < 6.5) return { hBars: bars, ohBars: 1 };
+  if (ph > 7.5) return { hBars: 1, ohBars: bars };
+  return { hBars: 3, ohBars: 3 };
+}
+
+// ---------------------------------------------------------------------------
+// Neutralization — simple, illustrative mixing model (not a real equilibrium
+// calculation). Acid and base each contribute a fixed number of "ion units"
+// based on how far their pH sits from neutral; adding base cancels acid
+// units one-for-one into water until one side runs out.
+// ---------------------------------------------------------------------------
+
+export interface NeutralizationResult {
+  /** Total H⁺ units the chosen acid starts with. */
+  acidUnits: number;
+  /** Total OH⁻ units the chosen base can contribute at 100% added. */
+  baseUnits: number;
+  /** OH⁻ units added so far, given the "amount of base added" slider. */
+  baseUnitsAdded: number;
+  /** H⁺ + OH⁻ pairs that have combined into water. */
+  waterFormed: number;
+  leftoverH: number;
+  leftoverOH: number;
+  classification: Classification;
+  approxPH: number;
+}
+
+/** `percentAdded` is 0–150: 100% is the exact amount needed to fully
+ *  neutralize the acid; beyond that, excess base is left over. */
+export function computeNeutralization(
+  acid: Substance,
+  base: Substance,
+  percentAdded: number
+): NeutralizationResult {
+  const acidUnits = particleCount(acid);
+  const baseUnits = acidUnits; // stoichiometric match at 100% added, by design
+  const clampedPercent = Math.max(0, Math.min(150, percentAdded));
+  const baseUnitsAdded = Math.round((clampedPercent / 100) * baseUnits);
+
+  const waterFormed = Math.min(acidUnits, baseUnitsAdded);
+  const leftoverH = Math.max(0, acidUnits - baseUnitsAdded);
+  const leftoverOH = Math.max(0, baseUnitsAdded - acidUnits);
+
+  let classification: Classification = "neutral";
+  let approxPH = 7;
+  if (leftoverH > 0) {
+    classification = "acidic";
+    const fractionRemaining = leftoverH / acidUnits;
+    approxPH = 7 - fractionRemaining * (7 - acid.approxPH);
+  } else if (leftoverOH > 0) {
+    classification = "basic";
+    const fractionExcess = Math.min(1, leftoverOH / Math.max(1, baseUnits));
+    approxPH = 7 + fractionExcess * (base.approxPH - 7);
+  }
+
+  return { acidUnits, baseUnits, baseUnitsAdded, waterFormed, leftoverH, leftoverOH, classification, approxPH };
+}

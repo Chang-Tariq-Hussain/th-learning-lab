@@ -44,6 +44,20 @@ export function LearnPanel() {
       <p className="mt-4 text-xs leading-relaxed text-ink-soft/80 dark:text-bone-soft/80">
         pH is a measure related to hydrogen-ion concentration.
       </p>
+
+      <div className="mt-4 rounded-card border border-dashed border-line p-3 dark:border-line-dark">
+        <p className="font-display text-sm font-medium text-ink dark:text-bone">Strong vs. weak (a quick intro)</p>
+        <p className="mt-1 text-xs leading-relaxed text-ink-soft dark:text-bone-soft">
+          &ldquo;Strong&rdquo; and &ldquo;weak&rdquo; describe how completely an acid or base breaks apart into
+          ions in water — a strong acid or base ionizes almost entirely, a weak one only partially. It&apos;s a
+          different idea from pH: a weak acid can still have a low pH if there&apos;s a lot of it. For a deeper,
+          particle-level look, try the{" "}
+          <a href="/dashboard/chemistry/strong-weak-acids-bases" className="underline underline-offset-2 hover:text-ink dark:hover:text-bone">
+            Strong vs Weak Acids and Bases
+          </a>{" "}
+          simulation.
+        </p>
+      </div>
     </div>
   );
 }

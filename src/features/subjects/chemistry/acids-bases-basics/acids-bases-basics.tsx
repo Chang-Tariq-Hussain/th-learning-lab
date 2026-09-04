@@ -10,8 +10,19 @@ import { PhScale } from "./components/ph-scale";
 import { SubstanceInfoPanel } from "./components/substance-info-panel";
 import { ComparePanel } from "./components/compare-panel";
 import { LearnPanel } from "./components/learn-panel";
+import { PhExplorer } from "./components/ph-explorer";
+import { NeutralizationLab } from "./components/neutralization-lab";
+
+type Mode = "substances" | "ph" | "neutralization";
+
+const MODES: { id: Mode; label: string }[] = [
+  { id: "substances", label: "Substances" },
+  { id: "ph", label: "pH Scale" },
+  { id: "neutralization", label: "Neutralization" },
+];
 
 export function AcidsBasesBasics() {
+  const [mode, setMode] = useState<Mode>("substances");
   const [selected, setSelected] = useState<string[]>([]);
   const [compareMode, setCompareMode] = useState(false);
 
@@ -37,52 +48,81 @@ export function AcidsBasesBasics() {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Top controls */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <SubstancePicker selected={selected} compareMode={compareMode} onSelect={handleSelect} />
-        <div className="flex shrink-0 items-center gap-2 self-start sm:self-auto">
+      {/* Mode tabs: Substances / pH Scale / Neutralization */}
+      <div role="tablist" aria-label="Acids & bases mode" className="flex flex-wrap gap-2">
+        {MODES.map((m) => (
           <button
+            key={m.id}
             type="button"
-            onClick={() => {
-              setCompareMode((v) => !v);
-              setSelected([]);
-            }}
-            aria-pressed={compareMode}
+            role="tab"
+            aria-selected={mode === m.id}
+            onClick={() => setMode(m.id)}
             className={cn(
-              "flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
-              compareMode
-                ? "border-pine-500 bg-pine-600 text-paper dark:border-pine-300 dark:bg-pine-300 dark:text-chalkboard"
+              "rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors",
+              mode === m.id
+                ? "border-transparent bg-subject-chemistry text-paper"
                 : "border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink dark:border-bone/20 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone"
             )}
           >
-            <Rows3 className="h-3.5 w-3.5" strokeWidth={1.75} />
-            Compare
+            {m.label}
           </button>
-          <Button variant="secondary" size="sm" onClick={handleReset}>
-            <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
-            Reset
-          </Button>
-        </div>
+        ))}
       </div>
 
-      {/* Scale + result */}
-      {!compareMode ? (
-        <div className="rounded-card border border-line bg-white/40 p-4 dark:border-line-dark dark:bg-white/[0.02] sm:p-6">
-          <PhScale markers={primary ? [{ substance: primary, label: primary.name }] : []} />
-        </div>
-      ) : null}
+      {mode === "substances" ? (
+        <>
+          {/* Top controls */}
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <SubstancePicker selected={selected} compareMode={compareMode} onSelect={handleSelect} />
+            <div className="flex shrink-0 items-center gap-2 self-start sm:self-auto">
+              <button
+                type="button"
+                onClick={() => {
+                  setCompareMode((v) => !v);
+                  setSelected([]);
+                }}
+                aria-pressed={compareMode}
+                className={cn(
+                  "flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                  compareMode
+                    ? "border-pine-500 bg-pine-600 text-paper dark:border-pine-300 dark:bg-pine-300 dark:text-chalkboard"
+                    : "border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink dark:border-bone/20 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone"
+                )}
+              >
+                <Rows3 className="h-3.5 w-3.5" strokeWidth={1.75} />
+                Compare
+              </button>
+              <Button variant="secondary" size="sm" onClick={handleReset}>
+                <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
+                Reset
+              </Button>
+            </div>
+          </div>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        {compareMode ? (
-          <div className="lg:col-span-2">
-            <ComparePanel a={selectedSubstances[0] ?? null} b={selectedSubstances[1] ?? null} />
+          {/* Scale + result */}
+          {!compareMode ? (
+            <div className="rounded-card border border-line bg-white/40 p-4 dark:border-line-dark dark:bg-white/[0.02] sm:p-6">
+              <PhScale markers={primary ? [{ substance: primary, label: primary.name }] : []} />
+            </div>
+          ) : null}
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            {compareMode ? (
+              <div className="lg:col-span-2">
+                <ComparePanel a={selectedSubstances[0] ?? null} b={selectedSubstances[1] ?? null} />
+              </div>
+            ) : (
+              <div className="lg:col-span-2">
+                <SubstanceInfoPanel substance={primary} />
+              </div>
+            )}
           </div>
-        ) : (
-          <div className="lg:col-span-2">
-            <SubstanceInfoPanel substance={primary} />
-          </div>
-        )}
-      </div>
+        </>
+      ) : mode === "ph" ? (
+        <PhExplorer />
+      ) : (
+        <NeutralizationLab />
+      )}
 
       <LearnPanel />
     </div>

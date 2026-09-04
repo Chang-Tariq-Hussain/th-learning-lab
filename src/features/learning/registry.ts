@@ -54,6 +54,7 @@ import { chemistryMolecularGeometryContent } from "./data/chemistry-molecular-ge
 import { chemistryReactionBuilderContent } from "./data/chemistry-reaction-builder";
 import { chemistryEquationBalancerContent } from "./data/chemistry-equation-balancer";
 import { chemistryReactionKineticsContent } from "./data/chemistry-reaction-kinetics";
+import { chemistryAcidsBasesContent } from "./data/chemistry-acids-bases";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -210,6 +211,21 @@ import { chemistryReactionKineticsContent } from "./data/chemistry-reaction-kine
  * their own dedicated question banks in `@/features/quiz-engine`
  * (`chemistry-reaction-builder`, `chemistry-equation-balancer`, and
  * an expanded `chemistry-reaction-kinetics`).
+ *
+ * Chemistry Batch 4 (Acids, Bases & pH) brings Acids & Bases — The
+ * Basics up from the older `SimulationLearnMore` pattern to this same
+ * full standard. Its existing simulation already covered picking a
+ * substance and reading a 2D pH scale, so that part reused as-is; it
+ * was extended with two new modes on the same shell — an interactive
+ * pH slider (drag 0–14, watch classification/ion balance respond
+ * live) and a Neutralization lab (mix an acid and base, watch H⁺/OH⁻
+ * combine into water) — rather than new, separate simulations. Strong
+ * vs. weak is covered only at an introductory level here, since a
+ * full particle-level treatment already exists as its own topic
+ * (`strong-weak-acids-bases`, cross-linked via `relatedTopics`) — no
+ * need to duplicate that simulation's ionized-fraction visuals. Its
+ * question bank was expanded from 5 to the standard 30 questions
+ * (`chemistry-acids-bases` in `@/features/quiz-engine`).
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -267,6 +283,7 @@ export const topicContentList: TopicContent[] = [
   chemistryReactionBuilderContent,
   chemistryEquationBalancerContent,
   chemistryReactionKineticsContent,
+  chemistryAcidsBasesContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {
