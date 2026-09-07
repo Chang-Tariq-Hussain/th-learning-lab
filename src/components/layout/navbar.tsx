@@ -40,12 +40,9 @@ import { cn } from "@/lib/utils";
  * both in lockstep here is what actually fixes that.
  *
  * Combined header height (sm and up) is 4rem (top row) + 3rem (nav
- * row) = 7rem. A few dashboard sidebars position themselves with
- * `sticky top-28` to sit just below that -- keep those in sync if
- * either row's height changes. Below `sm` the nav row is replaced by
- * the hamburger dropdown instead, and none of those sidebars render
- * at that width (they're `lg:block`), so there's nothing to keep in
- * sync there.
+ * row) = 7rem. The `#simulations` anchor on dashboard subject pages
+ * uses `scroll-mt-28` (7rem) to sit just below that when scrolled to
+ * -- keep that in sync if either row's height changes.
  */
 export function Navbar() {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Sidebar } from "@/components/layout/sidebar";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { RulerDivider } from "@/components/ui/ruler-divider";
@@ -44,43 +43,33 @@ export default function TopicPage({ params }: TopicPageProps) {
   const Icon = topic.slug;
 
   return (
-    <div className="lg:grid lg:grid-cols-[15rem_1fr]">
-      <aside className="hidden lg:block">
-        <div className="sticky top-28">
-          <Sidebar className="h-[calc(100vh-7rem)]" />
-        </div>
-      </aside>
+    <Container className="py-14">
+      <Breadcrumbs
+        items={[
+          { label: "Dashboard", href: "/dashboard" },
+          { label: subject.name, href: `/dashboard/${subject.slug}` },
+          { label: topic.name },
+        ]}
+        className="mb-6"
+      />
 
-      <div className="min-w-0">
-        <Container className="py-14">
-          <Breadcrumbs
-            items={[
-              { label: "Dashboard", href: "/dashboard" },
-              { label: subject.name, href: `/dashboard/${subject.slug}` },
-              { label: topic.name },
-            ]}
-            className="mb-6"
-          />
+      <SectionHeading
+        eyebrow={subject.name}
+        title={topic.name}
+        description={
+          topic.visualizations.length > 0
+            ? `${topic.visualizations.length} interactive ${topic.visualizations.length === 1 ? "activity" : "activities"} to explore.`
+            : "This topic doesn't have any activities yet."
+        }
+      />
 
-          <SectionHeading
-            eyebrow={subject.name}
-            title={topic.name}
-            description={
-              topic.visualizations.length > 0
-                ? `${topic.visualizations.length} interactive ${topic.visualizations.length === 1 ? "activity" : "activities"} to explore.`
-                : "This topic doesn't have any activities yet."
-            }
-          />
+      <RulerDivider className="my-10" />
 
-          <RulerDivider className="my-10" />
-
-          <TopicVisualizationsSection
-            visualizations={topic.visualizations}
-            icon={Icon}
-            colorToken={subject.colorToken}
-          />
-        </Container>
-      </div>
-    </div>
+      <TopicVisualizationsSection
+        visualizations={topic.visualizations}
+        icon={Icon}
+        colorToken={subject.colorToken}
+      />
+    </Container>
   );
 }

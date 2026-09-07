@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Sidebar } from "@/components/layout/sidebar";
 import { Container } from "@/components/ui/container";
 import { WelcomeHeading } from "@/components/dashboard/welcome-heading";
 import { SubjectGrid } from "@/components/dashboard/subject-grid";
@@ -12,22 +11,12 @@ export const metadata: Metadata = {
 
 export default function DashboardPage() {
   return (
-    <div className="lg:grid lg:grid-cols-[15rem_1fr]">
-      <aside className="hidden lg:block">
-        <div className="sticky top-28">
-          <Sidebar className="h-[calc(100vh-7rem)]" />
-        </div>
-      </aside>
+    <Container className="py-14">
+      <WelcomeHeading />
 
-      <div className="min-w-0">
-        <Container className="py-14">
-          <WelcomeHeading />
+      <RulerDivider className="my-10" />
 
-          <RulerDivider className="my-10" />
-
-          <SubjectGrid />
-        </Container>
-      </div>
-    </div>
+      <SubjectGrid />
+    </Container>
   );
 }

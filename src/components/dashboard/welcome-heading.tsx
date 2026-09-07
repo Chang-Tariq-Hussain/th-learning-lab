@@ -5,9 +5,9 @@ import { useUserProfile } from "@/hooks/use-user-profile";
 
 /**
  * The only part of the dashboard page that needs to be a client
- * component — everything else (`Sidebar`, `SubjectGrid`, the page
- * shell) stays server-rendered. Falls back to the generic copy until
- * hydration confirms a saved name, so there's no mismatch flash.
+ * component — everything else (`SubjectGrid`, the page shell) stays
+ * server-rendered. Falls back to the generic copy until hydration
+ * confirms a saved name, so there's no mismatch flash.
  */
 export function WelcomeHeading() {
   const { username, hydrated } = useUserProfile();

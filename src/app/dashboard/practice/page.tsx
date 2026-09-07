@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Sidebar } from "@/components/layout/sidebar";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { RulerDivider } from "@/components/ui/ruler-divider";
@@ -21,33 +20,23 @@ export const metadata: Metadata = {
  */
 export default function PracticePage() {
   return (
-    <div className="lg:grid lg:grid-cols-[15rem_1fr]">
-      <aside className="hidden lg:block">
-        <div className="sticky top-28">
-          <Sidebar className="h-[calc(100vh-7rem)]" />
-        </div>
-      </aside>
+    <Container className="py-14">
+      <Breadcrumbs
+        items={[{ label: "Dashboard", href: "/dashboard" }, { label: "Practice" }]}
+        className="mb-6"
+      />
 
-      <div className="min-w-0">
-        <Container className="py-14">
-          <Breadcrumbs
-            items={[{ label: "Dashboard", href: "/dashboard" }, { label: "Practice" }]}
-            className="mb-6"
-          />
+      <SectionHeading
+        eyebrow="Practice Mode"
+        title="Practice what you're learning"
+        description="Pick a subject and topic, choose a difficulty, and practice with a randomized set of questions from the question bank."
+      />
 
-          <SectionHeading
-            eyebrow="Practice Mode"
-            title="Practice what you're learning"
-            description="Pick a subject and topic, choose a difficulty, and practice with a randomized set of questions from the question bank."
-          />
+      <RulerDivider className="my-10" />
 
-          <RulerDivider className="my-10" />
-
-          <div className="py-4">
-            <PracticeMode />
-          </div>
-        </Container>
+      <div className="py-4">
+        <PracticeMode />
       </div>
-    </div>
+    </Container>
   );
 }
