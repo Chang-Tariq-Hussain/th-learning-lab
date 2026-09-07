@@ -47,6 +47,9 @@ import { mathematicsStatisticsFoundationsContent } from "./data/mathematics-stat
 import { mathematicsMeasuresOfDispersionContent } from "./data/mathematics-measures-of-dispersion";
 import { mathematicsCentralTendencyContent } from "./data/mathematics-central-tendency";
 import { mathematicsDataComparisonContent } from "./data/mathematics-data-comparison";
+import { mathematicsEquationPlaygroundContent } from "./data/mathematics-equation-playground";
+import { mathematicsAngleSpinnerContent } from "./data/mathematics-angle-spinner";
+import { mathematicsSymmetryMirrorContent } from "./data/mathematics-symmetry-mirror";
 import { chemistryBuildAnAtomContent } from "./data/chemistry-build-an-atom";
 import { chemistryPeriodicTrendsContent } from "./data/chemistry-periodic-trends";
 import { chemistryBondBuilderContent } from "./data/chemistry-bond-builder";
@@ -262,6 +265,30 @@ import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-we
  * bank (`chemistry-lewis-acid-base`, `chemistry-strong-weak-acids-bases`
  * in `@/features/quiz-engine`). This completes GLE coverage for all
  * six Acids & Bases topics.
+ *
+ * Mathematics Batch 5 (Algebra & Geometry Basics) brings three
+ * existing, previously unregistered simulations up to the same full
+ * standard: Equation Playground, Angle Spinner, and Symmetry Mirror.
+ * Equation Playground is a distinct Algebra topic from Equation of a
+ * Straight Line (`line-designer`) — see the correction note in
+ * `@/features/learning-path/data/mathematics-foundations.ts` for the
+ * full history of why those two were previously (incorrectly)
+ * conflated; this batch adds Equation Playground to the Learning Path
+ * for the first time, as its own Algebra entry, without touching
+ * Line Designer or its topic. Angle Spinner and Symmetry Mirror were
+ * already present in the Learning Path's "Geometry Basics" unit but
+ * had no registered `TopicContent`; both reuse their existing
+ * simulations exactly as-is — Angle Spinner's drag-to-rotate dial
+ * with live degree/classification readout, and Symmetry Mirror's
+ * click-to-fill grid whose right half is always derived as the live
+ * mirror image of the left half. No simulation was modified for any
+ * of the three topics. Each has its own dedicated 30-question bank
+ * (`mathematics-equation-playground`, `mathematics-angle-spinner`,
+ * `mathematics-symmetry-mirror` in `@/features/quiz-engine`), and
+ * Challenge scenarios follow the existing "Slope Target" pattern —
+ * manipulate the live simulation toward a described target, then
+ * answer a question about it — since none of the three simulations
+ * expose an `onVerify`-style hook for automated interactive checking.
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -312,6 +339,9 @@ export const topicContentList: TopicContent[] = [
   mathematicsMeasuresOfDispersionContent,
   mathematicsCentralTendencyContent,
   mathematicsDataComparisonContent,
+  mathematicsEquationPlaygroundContent,
+  mathematicsAngleSpinnerContent,
+  mathematicsSymmetryMirrorContent,
   chemistryBuildAnAtomContent,
   chemistryPeriodicTrendsContent,
   chemistryBondBuilderContent,

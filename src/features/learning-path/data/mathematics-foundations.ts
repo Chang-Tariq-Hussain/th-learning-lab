@@ -40,12 +40,16 @@ import type { LearningPath } from "../types";
  * equation — on inspection, Equation Playground turned out to be an
  * unrelated "find the missing number in a + b = c" arithmetic game
  * with no slope/intercept graphing at all, so that mapping was wrong
- * and has been corrected. Equation Playground itself is untouched and
- * still reachable at its own page (Algebra topic group in
- * `@/features/subjects/data/subjects.ts`), just no longer mapped to
- * this topic. "Limits" has no dedicated topic either — Calculus
- * Foundations' own title ("Functions, Graphs & Limits") already
- * covers it, so it isn't a separate path node.
+ * and has been corrected. Equation Playground now has its own
+ * dedicated node in this Learning Path (see the short "Algebra" unit
+ * below, placed right after Number Sense and before Ratio &
+ * Measurement — it builds directly on number sense and doesn't
+ * depend on ratio, measurement, or coordinate-geometry skills), with
+ * its own full Golden Learning Experience content registered in
+ * `@/features/learning/registry.ts` (Mathematics Batch 5). "Limits"
+ * has no dedicated topic either — Calculus Foundations' own title
+ * ("Functions, Graphs & Limits") already covers it, so it isn't a
+ * separate path node.
  *
  * Two existing topics — Angle Spinner (Geometry) and Symmetry Mirror
  * (Symmetry) — aren't part of the curriculum order the brief listed,
@@ -53,7 +57,10 @@ import type { LearningPath } from "../types";
  * existing Mathematics topic" they're placed in a short "Geometry
  * Basics" unit between Measurement and Coordinate Geometry, the most
  * logical spot given their prerequisites (basic shape/angle sense,
- * ahead of coordinate-plane work).
+ * ahead of coordinate-plane work). Both now also have full Golden
+ * Learning Experience content (Mathematics Batch 5, alongside
+ * Equation Playground above) — their existing path entries below were
+ * untouched; only their registered `TopicContent` is new.
  *
  * Ratio Challenge is included as an optional challenge topic, the
  * same pattern as Physics' Projectile Motion: it mixes every ratio
@@ -108,6 +115,21 @@ export const mathematicsFoundationsPath: LearningPath = {
       title: "Fraction Operations",
       description: "Add, subtract, multiply, and divide fractions with a visual model for each.",
       href: "/dashboard/mathematics/fraction-operations",
+    },
+
+    // --- Algebra ---------------------------------------------------------
+    {
+      // Distinct from "Equation of a Straight Line" (topicSlug
+      // "line-designer", in Coordinate Geometry below) — see the note
+      // above this array's declaration for the full history. This is
+      // the arithmetic "missing number" Equation Playground
+      // simulation, newly added to the Learning Path here as its own
+      // Algebra topic.
+      subjectSlug: "mathematics",
+      topicSlug: "equation-playground",
+      title: "Equation Playground",
+      description: "Slide a number into the missing box and discover whether it makes the equation true.",
+      href: "/dashboard/mathematics/equation-playground",
     },
 
     // --- Ratio & Measurement -------------------------------------------

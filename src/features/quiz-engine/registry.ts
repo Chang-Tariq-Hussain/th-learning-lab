@@ -37,6 +37,9 @@ import { mathematicsDistanceQuiz } from "./data/mathematics-distance-quiz";
 import { mathematicsMidpointQuiz } from "./data/mathematics-midpoint-quiz";
 import { mathematicsSlopeQuiz } from "./data/mathematics-slope-quiz";
 import { mathematicsEquationOfLineQuiz } from "./data/mathematics-equation-of-line-quiz";
+import { mathematicsEquationPlaygroundQuiz } from "./data/mathematics-equation-playground-quiz";
+import { mathematicsAngleSpinnerQuiz } from "./data/mathematics-angle-spinner-quiz";
+import { mathematicsSymmetryMirrorQuiz } from "./data/mathematics-symmetry-mirror-quiz";
 import { mathematicsMeasurementQuiz } from "./data/mathematics-measurement-quiz";
 import { mathematicsNumberLineQuiz } from "./data/mathematics-number-line-quiz";
 import { mathematicsEvenOddQuiz } from "./data/mathematics-even-odd-quiz";
@@ -117,6 +120,9 @@ export const quizzes: QuizMeta[] = [
   mathematicsMidpointQuiz,
   mathematicsSlopeQuiz,
   mathematicsEquationOfLineQuiz,
+  mathematicsEquationPlaygroundQuiz,
+  mathematicsAngleSpinnerQuiz,
+  mathematicsSymmetryMirrorQuiz,
   mathematicsMeasurementQuiz,
   mathematicsStatisticsQuiz,
   mathematicsStraightLineQuiz,
