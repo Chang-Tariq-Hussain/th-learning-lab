@@ -17,6 +17,11 @@ import { biologyEcosystemQuiz } from "./data/biology-ecosystem-quiz";
 import { biologyMeiosisQuiz } from "./data/biology-meiosis-quiz";
 import { biologyNervousSystemQuiz } from "./data/biology-nervous-system-quiz";
 import { chemistryAcidsBasesQuiz } from "./data/chemistry-acids-bases-quiz";
+import { chemistryArrheniusTheoryQuiz } from "./data/chemistry-arrhenius-theory-quiz";
+import { chemistryBronstedLowryQuiz } from "./data/chemistry-bronsted-lowry-quiz";
+import { chemistryConjugateAcidBasePairsQuiz } from "./data/chemistry-conjugate-acid-base-pairs-quiz";
+import { chemistryLewisAcidBaseQuiz } from "./data/chemistry-lewis-acid-base-quiz";
+import { chemistryStrongWeakAcidsBasesQuiz } from "./data/chemistry-strong-weak-acids-bases-quiz";
 import { chemistryAtomQuiz } from "./data/chemistry-atom-quiz";
 import { chemistryChemicalBondingQuiz } from "./data/chemistry-chemical-bonding-quiz";
 import { chemistryMolecularGeometryQuiz } from "./data/chemistry-molecular-geometry-quiz";
@@ -99,6 +104,11 @@ export const quizzes: QuizMeta[] = [
   chemistryReactionBuilderQuiz,
   chemistryEquationBalancerQuiz,
   chemistryReactionKineticsQuiz,
+  chemistryArrheniusTheoryQuiz,
+  chemistryBronstedLowryQuiz,
+  chemistryConjugateAcidBasePairsQuiz,
+  chemistryLewisAcidBaseQuiz,
+  chemistryStrongWeakAcidsBasesQuiz,
   mathematicsCalculusQuiz,
   mathematicsCoordinateGeometryQuiz,
   mathematicsCoordinatePlaneQuiz,

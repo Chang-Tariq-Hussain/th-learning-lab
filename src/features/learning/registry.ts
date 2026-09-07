@@ -55,6 +55,11 @@ import { chemistryReactionBuilderContent } from "./data/chemistry-reaction-build
 import { chemistryEquationBalancerContent } from "./data/chemistry-equation-balancer";
 import { chemistryReactionKineticsContent } from "./data/chemistry-reaction-kinetics";
 import { chemistryAcidsBasesContent } from "./data/chemistry-acids-bases";
+import { chemistryArrheniusTheoryContent } from "./data/chemistry-arrhenius-theory";
+import { chemistryBronstedLowryContent } from "./data/chemistry-bronsted-lowry";
+import { chemistryConjugateAcidBasePairsContent } from "./data/chemistry-conjugate-acid-base-pairs";
+import { chemistryLewisAcidBaseContent } from "./data/chemistry-lewis-acid-base";
+import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-weak-acids-bases";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -226,6 +231,37 @@ import { chemistryAcidsBasesContent } from "./data/chemistry-acids-bases";
  * need to duplicate that simulation's ionized-fraction visuals. Its
  * question bank was expanded from 5 to the standard 30 questions
  * (`chemistry-acids-bases` in `@/features/quiz-engine`).
+ *
+ * Chemistry Batch 5 (Acid-Base Theories) brings Arrhenius Theory,
+ * Brønsted–Lowry Theory, and Conjugate Acid–Base Pairs up from the
+ * older `SimulationLearnMore` pattern to this same full standard.
+ * All three simulations already had complete, working interactions —
+ * Arrhenius Theory's dissociation containers and dose controls,
+ * Brønsted–Lowry's step-through proton-transfer scene, and Conjugate
+ * Acid–Base Pairs' pair picker/transformation diagram — so no
+ * simulation was rebuilt or extended; Predict/Explore/Explain/
+ * Challenge were all written to refer directly to those existing
+ * controls. Each has its own small, focused question bank — quality
+ * over quantity, per spec, rather than the standard 30 — covering
+ * exactly what its Learn section teaches (`chemistry-arrhenius-theory`,
+ * `chemistry-bronsted-lowry`, `chemistry-conjugate-acid-base-pairs`
+ * in `@/features/quiz-engine`).
+ *
+ * Batch 5 Part 2 completes the Acids & Bases section with its
+ * remaining two topics, Lewis Acid–Base Theory and Strong vs Weak
+ * Acids and Bases, brought up to the same standard from the same
+ * older pattern. Lewis Acid–Base Theory reuses its existing
+ * reaction-picker/step-through electron-transfer simulation exactly
+ * as-is (same "one discrete stepIndex" pattern as Brønsted–Lowry).
+ * Strong vs Weak Acids and Bases reuses its existing Acid/Base
+ * toggle + Ionize/Reset particle-view simulation as-is; its Explore
+ * section documents the simulation's real controls (a fixed
+ * ionized-fraction split per example, no concentration slider) rather
+ * than the older `SimulationLearnMore` copy's inaccurate mention of
+ * "adjusting concentration." Each has its own small, focused question
+ * bank (`chemistry-lewis-acid-base`, `chemistry-strong-weak-acids-bases`
+ * in `@/features/quiz-engine`). This completes GLE coverage for all
+ * six Acids & Bases topics.
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -284,6 +320,11 @@ export const topicContentList: TopicContent[] = [
   chemistryEquationBalancerContent,
   chemistryReactionKineticsContent,
   chemistryAcidsBasesContent,
+  chemistryArrheniusTheoryContent,
+  chemistryBronstedLowryContent,
+  chemistryConjugateAcidBasePairsContent,
+  chemistryLewisAcidBaseContent,
+  chemistryStrongWeakAcidsBasesContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {
