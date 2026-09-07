@@ -50,6 +50,8 @@ import { mathematicsDataComparisonContent } from "./data/mathematics-data-compar
 import { mathematicsEquationPlaygroundContent } from "./data/mathematics-equation-playground";
 import { mathematicsAngleSpinnerContent } from "./data/mathematics-angle-spinner";
 import { mathematicsSymmetryMirrorContent } from "./data/mathematics-symmetry-mirror";
+import { mathematicsCalculusFoundationsContent } from "./data/mathematics-calculus-foundations";
+import { mathematicsDerivativeExplorerContent } from "./data/mathematics-derivative-explorer";
 import { chemistryBuildAnAtomContent } from "./data/chemistry-build-an-atom";
 import { chemistryPeriodicTrendsContent } from "./data/chemistry-periodic-trends";
 import { chemistryBondBuilderContent } from "./data/chemistry-bond-builder";
@@ -289,6 +291,32 @@ import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-we
  * manipulate the live simulation toward a described target, then
  * answer a question about it — since none of the three simulations
  * expose an `onVerify`-style hook for automated interactive checking.
+ *
+ * Mathematics Batch 6 (Calculus) brings Calculus Foundations and
+ * Derivative Explorer up from the older `SimulationLearnMore` pattern
+ * to this same full standard — the first two topics in the Calculus
+ * unit. Both reuse their existing, already-multi-level simulations
+ * exactly as-is (`@/features/subjects/mathematics/calculus-foundations`
+ * and `@/features/subjects/mathematics/derivative-explorer`); neither
+ * needed any changes, since each already has its own nine- or
+ * ten-level guided progression and a small internal mini-challenge —
+ * this batch wraps that existing depth in the shared GLE
+ * Learn/Predict/Explore/Explain/Practice/Challenge shell rather than
+ * rebuilding it. Every Predict, Explain, and Challenge item is
+ * grounded in each simulation's own fixed worked examples (Calculus
+ * Foundations' f(x) = x² limit at x → 2, its jump and hole examples;
+ * Derivative Explorer's two functions, f(x) = x² and f(x) = x³) —
+ * neither simulation was extended with new functions or examples.
+ * Challenge scenarios follow the same "Slope Target" pattern as
+ * Mathematics Batch 5, since neither simulation exposes an
+ * `onVerify`-style hook. Calculus Foundations' `practice.quizId`
+ * points at the pre-existing `mathematics-calculus` bank, which
+ * already had the full 30 questions covering exactly this content,
+ * rather than duplicating it under a new id. Derivative Explorer gets
+ * a new, dedicated 30-question bank (`mathematics-derivative-explorer`
+ * in `@/features/quiz-engine`), since no bank previously covered
+ * derivatives. Derivative Rules, the next topic in the Calculus unit,
+ * is intentionally left unimplemented this batch.
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -342,6 +370,8 @@ export const topicContentList: TopicContent[] = [
   mathematicsEquationPlaygroundContent,
   mathematicsAngleSpinnerContent,
   mathematicsSymmetryMirrorContent,
+  mathematicsCalculusFoundationsContent,
+  mathematicsDerivativeExplorerContent,
   chemistryBuildAnAtomContent,
   chemistryPeriodicTrendsContent,
   chemistryBondBuilderContent,

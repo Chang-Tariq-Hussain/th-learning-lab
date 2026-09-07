@@ -30,6 +30,7 @@ import { chemistryReactionBuilderQuiz } from "./data/chemistry-reaction-builder-
 import { chemistryEquationBalancerQuiz } from "./data/chemistry-equation-balancer-quiz";
 import { chemistryReactionKineticsQuiz } from "./data/chemistry-reaction-kinetics-quiz";
 import { mathematicsCalculusQuiz } from "./data/mathematics-calculus-quiz";
+import { mathematicsDerivativeExplorerQuiz } from "./data/mathematics-derivative-explorer-quiz";
 import { mathematicsCoordinateGeometryQuiz } from "./data/mathematics-coordinate-geometry-quiz";
 import { mathematicsCoordinatePlaneQuiz } from "./data/mathematics-coordinate-plane-quiz";
 import { mathematicsPlottingPointsQuiz } from "./data/mathematics-plotting-points-quiz";
@@ -113,6 +114,7 @@ export const quizzes: QuizMeta[] = [
   chemistryLewisAcidBaseQuiz,
   chemistryStrongWeakAcidsBasesQuiz,
   mathematicsCalculusQuiz,
+  mathematicsDerivativeExplorerQuiz,
   mathematicsCoordinateGeometryQuiz,
   mathematicsCoordinatePlaneQuiz,
   mathematicsPlottingPointsQuiz,
