@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
-import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { ChainRuleExplorer } from "@/features/subjects/mathematics/chain-rule-explorer";
-
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
+
 export const metadata: Metadata = {
   title: "Chain Rule Explorer — Differentiating Composite Functions",
   description:
@@ -13,6 +13,8 @@ export const metadata: Metadata = {
 };
 
 export default function ChainRuleExplorerPage() {
+  const content = getTopicContent("mathematics", "chain-rule-explorer");
+
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/mathematics/chain-rule-explorer" className="mb-4" />
@@ -37,50 +39,16 @@ export default function ChainRuleExplorerPage() {
         </p>
       </div>
 
-      <ChainRuleExplorer />
+      {content ? (
+        <TopicExperience content={content} simulation={<ChainRuleExplorer />} />
+      ) : (
+        // Falls back to the bare simulation if this topic's learning
+        // content is ever removed from the registry — keeps the page
+        // from 404ing outright.
+        <ChainRuleExplorer />
+      )}
 
-      <SimulationLearnMore
-        colorToken="math"
-        objectives={[
-          "Identify the inner function and outer function in a composite function.",
-          "State the Chain Rule and explain what each part of it represents.",
-          "Differentiate a composite function step by step using the Chain Rule.",
-          "Distinguish when to use the Chain Rule versus the Power Rule alone.",
-        ]}
-        concepts={[
-          {
-            term: "Composite function",
-            explanation:
-              "A function built by plugging one function into another. In f(g(x)), g is applied first, and its result is fed into f — the inner function's output becomes the outer function's input.",
-          },
-          {
-            term: "Inner and outer functions",
-            explanation:
-              "In f(g(x)), g(x) is the inner function — the first thing that happens to x. f is the outer function, applied to whatever g(x) produces.",
-          },
-          {
-            term: "The Chain Rule",
-            explanation:
-              "To differentiate a composite function, take the derivative of the outer function (leaving the inner function alone inside it), then multiply by the derivative of the inner function.",
-            formula: "\\dfrac{d}{dx}\\big[f(g(x))\\big] = f'(g(x)) \\cdot g'(x)",
-            formulaCaption: "Chain Rule",
-          },
-        ]}
-        howToUse={[
-          "Look at the function machine and identify which operation happens first (inner) and which happens second (outer).",
-          "Step through the differentiation one piece at a time.",
-          "Watch the outer function's derivative get multiplied by the inner function's derivative.",
-          "Compare a Chain Rule example to a Power Rule–only example to see when the extra factor is needed.",
-        ]}
-        whyItMatters="The Chain Rule is essential the moment a function is layered inside another — which happens constantly in real applications, like a cost function that depends on production, which itself depends on time. Anywhere one changing quantity depends on another changing quantity, the Chain Rule is what lets you find the combined rate of change."
-        tryThis={[
-          "Given a new composite function, identify the inner and outer functions before differentiating.",
-          "Try differentiating a function that only needs the Power Rule, then one that needs the Chain Rule. What's different about their structure?",
-          "Predict which derivative will have more terms: a simple power function or a composite function of similar complexity.",
-        ]}
-      />
       <LearningPathNextTopic className="mt-10" />
-
-      </Container>
+    </Container>
   );
 }

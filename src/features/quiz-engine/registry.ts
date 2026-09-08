@@ -31,6 +31,9 @@ import { chemistryEquationBalancerQuiz } from "./data/chemistry-equation-balance
 import { chemistryReactionKineticsQuiz } from "./data/chemistry-reaction-kinetics-quiz";
 import { mathematicsCalculusQuiz } from "./data/mathematics-calculus-quiz";
 import { mathematicsDerivativeExplorerQuiz } from "./data/mathematics-derivative-explorer-quiz";
+import { mathematicsDerivativeRulesQuiz } from "./data/mathematics-derivative-rules-quiz";
+import { mathematicsChainRuleQuiz } from "./data/mathematics-chain-rule-quiz";
+import { mathematicsApplicationsOfDerivativesQuiz } from "./data/mathematics-applications-of-derivatives-quiz";
 import { mathematicsCoordinateGeometryQuiz } from "./data/mathematics-coordinate-geometry-quiz";
 import { mathematicsCoordinatePlaneQuiz } from "./data/mathematics-coordinate-plane-quiz";
 import { mathematicsPlottingPointsQuiz } from "./data/mathematics-plotting-points-quiz";
@@ -40,6 +43,7 @@ import { mathematicsSlopeQuiz } from "./data/mathematics-slope-quiz";
 import { mathematicsEquationOfLineQuiz } from "./data/mathematics-equation-of-line-quiz";
 import { mathematicsEquationPlaygroundQuiz } from "./data/mathematics-equation-playground-quiz";
 import { mathematicsAngleSpinnerQuiz } from "./data/mathematics-angle-spinner-quiz";
+import { mathematicsTriangleExplorerQuiz } from "./data/mathematics-triangle-explorer-quiz";
 import { mathematicsSymmetryMirrorQuiz } from "./data/mathematics-symmetry-mirror-quiz";
 import { mathematicsMeasurementQuiz } from "./data/mathematics-measurement-quiz";
 import { mathematicsNumberLineQuiz } from "./data/mathematics-number-line-quiz";
@@ -52,6 +56,7 @@ import { mathematicsRatioComparisonQuiz } from "./data/mathematics-ratio-compari
 import { mathematicsProportionQuiz } from "./data/mathematics-proportion-quiz";
 import { mathematicsCrossMultiplicationQuiz } from "./data/mathematics-cross-multiplication-quiz";
 import { mathematicsRealLifeRatiosQuiz } from "./data/mathematics-real-life-ratios-quiz";
+import { mathematicsRatioChallengeQuiz } from "./data/mathematics-ratio-challenge-quiz";
 import { mathematicsPerimeterAreaQuiz } from "./data/mathematics-perimeter-area-quiz";
 import { mathematicsDataCollectionQuiz } from "./data/mathematics-data-collection-quiz";
 import { mathematicsGraphBuilderQuiz } from "./data/mathematics-graph-builder-quiz";
@@ -115,6 +120,9 @@ export const quizzes: QuizMeta[] = [
   chemistryStrongWeakAcidsBasesQuiz,
   mathematicsCalculusQuiz,
   mathematicsDerivativeExplorerQuiz,
+  mathematicsDerivativeRulesQuiz,
+  mathematicsChainRuleQuiz,
+  mathematicsApplicationsOfDerivativesQuiz,
   mathematicsCoordinateGeometryQuiz,
   mathematicsCoordinatePlaneQuiz,
   mathematicsPlottingPointsQuiz,
@@ -124,6 +132,7 @@ export const quizzes: QuizMeta[] = [
   mathematicsEquationOfLineQuiz,
   mathematicsEquationPlaygroundQuiz,
   mathematicsAngleSpinnerQuiz,
+  mathematicsTriangleExplorerQuiz,
   mathematicsSymmetryMirrorQuiz,
   mathematicsMeasurementQuiz,
   mathematicsStatisticsQuiz,
@@ -138,6 +147,7 @@ export const quizzes: QuizMeta[] = [
   mathematicsProportionQuiz,
   mathematicsCrossMultiplicationQuiz,
   mathematicsRealLifeRatiosQuiz,
+  mathematicsRatioChallengeQuiz,
   mathematicsPerimeterAreaQuiz,
   mathematicsDataCollectionQuiz,
   mathematicsGraphBuilderQuiz,

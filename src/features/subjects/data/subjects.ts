@@ -741,6 +741,13 @@ export const subjects: Subject[] = [
               "Spin a wheel to build a feel for degrees and angle types.",
             href: "/dashboard/mathematics/angle-spinner",
           },
+          {
+            slug: "triangle-explorer",
+            title: "Triangle Explorer",
+            description:
+              "Drag a triangle's corners to explore side lengths, angles, the angle sum theorem, and the Pythagorean theorem.",
+            href: "/dashboard/mathematics/triangle-explorer",
+          },
         ],
       },
       {

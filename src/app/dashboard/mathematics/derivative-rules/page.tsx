@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
-import { SimulationLearnMore } from "@/components/dashboard/simulation-learn-more";
 import { DerivativeRules } from "@/features/subjects/mathematics/derivative-rules";
-
+import { TopicExperience, getTopicContent } from "@/features/learning";
 import { LearningPathNextTopic } from "@/features/learning-path";
+
 export const metadata: Metadata = {
   title: "Derivative Rules — Learn Differentiation Step by Step",
   description:
@@ -13,6 +13,8 @@ export const metadata: Metadata = {
 };
 
 export default function DerivativeRulesPage() {
+  const content = getTopicContent("mathematics", "derivative-rules");
+
   return (
     <Container className="py-10">
       <SimulationBackLink simulationHref="/dashboard/mathematics/derivative-rules" className="mb-4" />
@@ -37,59 +39,16 @@ export default function DerivativeRulesPage() {
         </p>
       </div>
 
-      <DerivativeRules />
+      {content ? (
+        <TopicExperience content={content} simulation={<DerivativeRules />} />
+      ) : (
+        // Falls back to the bare simulation if this topic's learning
+        // content is ever removed from the registry — keeps the page
+        // from 404ing outright.
+        <DerivativeRules />
+      )}
 
-      <SimulationLearnMore
-        colorToken="math"
-        objectives={[
-          "Apply the power rule to differentiate a term like xⁿ.",
-          "Apply the sum and difference rules to differentiate a multi-term function.",
-          "Explain when the product rule and quotient rule are needed instead of simple term-by-term differentiation.",
-          "Choose the correct rule for a given expression before differentiating it.",
-        ]}
-        concepts={[
-          {
-            term: "Power rule",
-            explanation:
-              "To differentiate xⁿ, bring the exponent down as a multiplier and reduce the exponent by one.",
-            formula: "\\dfrac{d}{dx}\\big[x^n\\big] = nx^{n-1}",
-            formulaCaption: "Power Rule",
-          },
-          {
-            term: "Constant multiple and sum/difference rules",
-            explanation:
-              "A constant multiplying a term just carries through the derivative unchanged, and a function made of several terms added or subtracted can be differentiated term by term.",
-          },
-          {
-            term: "Product rule",
-            explanation:
-              "For two functions multiplied together, the derivative isn't just the product of their derivatives — you need the first function times the derivative of the second, plus the second function times the derivative of the first.",
-            formula: "\\dfrac{d}{dx}\\big[f(x)g(x)\\big] = f'(x)g(x) + f(x)g'(x)",
-            formulaCaption: "Product Rule",
-          },
-          {
-            term: "Quotient rule",
-            explanation:
-              "For one function divided by another, a similar but slightly longer pattern applies, with the denominator squared at the bottom.",
-            formula: "\\dfrac{d}{dx}\\left[\\dfrac{f(x)}{g(x)}\\right] = \\dfrac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}",
-            formulaCaption: "Quotient Rule",
-          },
-        ]}
-        howToUse={[
-          "Pick a rule and watch it applied visually, step by step, to an example expression.",
-          "Try to predict the next step before it's revealed.",
-          "Move through the rules in order — constant, power, sum/difference, product, quotient.",
-          "Compare a product rule example to a case where the terms could just be multiplied out first instead.",
-        ]}
-        whyItMatters="These rules turn the tangent-line idea from Derivative Explorer into a fast, mechanical process you can apply to almost any function without redrawing a graph each time. Engineers, economists, and scientists use exactly these rules daily to find rates of change in formulas involving multiplied or divided quantities, like cost per unit or force over distance."
-        tryThis={[
-          "Differentiate a simple polynomial using only the power and sum rules.",
-          "Find an expression where you must choose between multiplying out first or using the product rule directly — which is faster?",
-          "Explain why the product rule isn't just \"multiply the two derivatives together.\"",
-        ]}
-      />
       <LearningPathNextTopic className="mt-10" />
-
-      </Container>
+    </Container>
   );
 }

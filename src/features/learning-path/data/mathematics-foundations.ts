@@ -60,7 +60,12 @@ import type { LearningPath } from "../types";
  * ahead of coordinate-plane work). Both now also have full Golden
  * Learning Experience content (Mathematics Batch 5, alongside
  * Equation Playground above) — their existing path entries below were
- * untouched; only their registered `TopicContent` is new.
+ * untouched; only their registered `TopicContent` is new. Triangle
+ * Explorer (Mathematics Batch 7) is a brand-new third topic in this
+ * same unit, placed between Angles and Symmetry since it builds
+ * directly on single-angle intuition before combining three angles
+ * into a shape, and comes ahead of Symmetry since neither depends on
+ * the other.
  *
  * Ratio Challenge is included as an optional challenge topic, the
  * same pattern as Physics' Projectile Motion: it mixes every ratio
@@ -207,6 +212,13 @@ export const mathematicsFoundationsPath: LearningPath = {
       title: "Angles",
       description: "Drag an arm to explore acute, right, obtuse, straight, and reflex angles.",
       href: "/dashboard/mathematics/angle-spinner",
+    },
+    {
+      subjectSlug: "mathematics",
+      topicSlug: "triangle-explorer",
+      title: "Triangles",
+      description: "Drag a triangle's corners to explore classification, the angle sum theorem, and the Pythagorean theorem.",
+      href: "/dashboard/mathematics/triangle-explorer",
     },
     {
       subjectSlug: "mathematics",

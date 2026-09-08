@@ -49,9 +49,14 @@ import { mathematicsCentralTendencyContent } from "./data/mathematics-central-te
 import { mathematicsDataComparisonContent } from "./data/mathematics-data-comparison";
 import { mathematicsEquationPlaygroundContent } from "./data/mathematics-equation-playground";
 import { mathematicsAngleSpinnerContent } from "./data/mathematics-angle-spinner";
+import { mathematicsTriangleExplorerContent } from "./data/mathematics-triangle-explorer";
 import { mathematicsSymmetryMirrorContent } from "./data/mathematics-symmetry-mirror";
 import { mathematicsCalculusFoundationsContent } from "./data/mathematics-calculus-foundations";
 import { mathematicsDerivativeExplorerContent } from "./data/mathematics-derivative-explorer";
+import { mathematicsDerivativeRulesContent } from "./data/mathematics-derivative-rules";
+import { mathematicsChainRuleExplorerContent } from "./data/mathematics-chain-rule-explorer";
+import { mathematicsApplicationsOfDerivativesContent } from "./data/mathematics-applications-of-derivatives";
+import { mathematicsRatioChallengeContent } from "./data/mathematics-ratio-challenge";
 import { chemistryBuildAnAtomContent } from "./data/chemistry-build-an-atom";
 import { chemistryPeriodicTrendsContent } from "./data/chemistry-periodic-trends";
 import { chemistryBondBuilderContent } from "./data/chemistry-bond-builder";
@@ -317,6 +322,96 @@ import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-we
  * in `@/features/quiz-engine`), since no bank previously covered
  * derivatives. Derivative Rules, the next topic in the Calculus unit,
  * is intentionally left unimplemented this batch.
+ *
+ * Mathematics Batch 7 (Geometry: Triangle Explorer) adds a brand-new
+ * simulation — the first new Mathematics simulation since Batch 3 —
+ * rather than wrapping an existing one. Triangle Explorer
+ * (`@/features/subjects/mathematics/triangle-explorer`) is a freeform
+ * SVG canvas where all three vertices are independently draggable
+ * (pointer-capture drag, same convention as Angle Spinner's dial and
+ * Distance Between Two Points' plane), with live side lengths,
+ * interior angles, perimeter, area, side/angle classification badges,
+ * a right-angle marker, five quick-load presets plus a randomizer,
+ * and two animated demonstrations built with Framer Motion: an "Angle
+ * Sum" proof (the triangle's three corners animate to share one point
+ * on a line, visibly completing a straight 180° angle) and a
+ * "Pythagorean Theorem" panel (animated squares grown on each side of
+ * a right triangle, with the real a² + b² = c² numbers plugged in).
+ * All geometry (side lengths via the distance formula, angles via the
+ * Law of Cosines, area via the shoelace formula) lives in a pure,
+ * React-free `model.ts`. Complements Angle Spinner, which teaches a
+ * single isolated angle, by combining three angles into a real shape
+ * and showing what constrains them together. Has its own dedicated
+ * 30-question bank (`mathematics-triangle-explorer` in
+ * `@/features/quiz-engine`), and its Challenge scenarios follow the
+ * same "manipulate the live simulation, then answer" pattern as Angle
+ * Spinner, plus one `interactive`-mode scenario that has the student
+ * open the Pythagorean panel and confirm the equation balances.
+ *
+ * Mathematics Batch 8 (Calculus) brings Derivative Rules and Chain
+ * Rule Explorer up from the older `SimulationLearnMore` pattern to
+ * this same full standard — topics 3 and 4 of 5 in the Calculus
+ * unit. Both reuse their existing, already-multi-level simulations
+ * exactly as-is (`@/features/subjects/mathematics/derivative-rules`,
+ * nine levels covering the Constant, Power, Constant Multiple,
+ * Sum/Difference, Product, and Quotient rules; and
+ * `@/features/subjects/mathematics/chain-rule-explorer`, seven
+ * levels covering composite functions, inner/outer identification,
+ * the Chain Rule itself, a step-by-step workspace, a Chain-Rule-vs-
+ * Power-Rule comparison, and nested functions); neither needed any
+ * changes. Every Predict, Explain, and Challenge item is grounded in
+ * each simulation's own fixed worked examples (Derivative Rules'
+ * f(x) = x³, 4x², 3x³ + 2x² − 5x + 7, x²(x + 1), and x²/(x + 1);
+ * Chain Rule Explorer's three composite functions, its (3x² + 2)⁴
+ * workspace, its x⁵-vs-(x+2)⁵ and x³+2x-vs-(3x²+1)⁴ comparisons, and
+ * its ((x+1)² + 2)³ nested example) — neither simulation was
+ * extended with new expressions. Challenge scenarios use `choice`
+ * mode throughout, rather than the `numeric` "Slope Target" pattern
+ * of earlier Calculus batches, since both topics' worked answers are
+ * full symbolic expressions rather than single numbers. Each topic
+ * gets a new, dedicated 30-question bank (`mathematics-derivative-
+ * rules` and `mathematics-chain-rule` in `@/features/quiz-engine`),
+ * since no bank previously covered either topic. Applications of
+ * Derivatives, the next topic in the Calculus unit, was left
+ * unimplemented that batch and is completed below.
+ *
+ * Mathematics Batch 9 completes the Calculus unit (5 of 5) with
+ * Applications of Derivatives, brought up from the older
+ * `SimulationLearnMore` pattern to the same full standard. Its
+ * existing nine-level simulation
+ * (`@/features/subjects/mathematics/applications-of-derivatives`)
+ * reuses exactly as-is — Increasing & Decreasing, Derivative Sign,
+ * Critical Points, two Turning Point levels, Maximum vs Minimum (with
+ * its togglable Profit note), Critical Point Finder, Sign Chart, and
+ * its own mini Practice panel — no simulation changes were needed.
+ * Every Learn, Predict, Explain, and Challenge item is grounded in the
+ * simulation's own three fixed functions from `applications-model.ts`
+ * (f(x) = x², f(x) = -x², and f(x) = x³ - 3x), never an invented
+ * expression, and Challenge scenarios use `choice` mode for the same
+ * reason as Batch 8. Gets a new, dedicated 30-question bank
+ * (`mathematics-applications-of-derivatives` in
+ * `@/features/quiz-engine`), since no bank previously covered it —
+ * completing GLE coverage for the entire Calculus unit.
+ *
+ * This same batch also completes Ratio Challenge, the Ratio &
+ * Proportion unit's advanced consolidation/challenge topic (already
+ * present in the Learning Path, marked `isChallenge: true`, since an
+ * earlier batch). Its existing self-scaling challenge simulation
+ * (`@/features/subjects/mathematics/ratio-challenge`) — five
+ * generated question kinds across three auto-adjusting difficulty
+ * levels, with a streak-based level-up/level-down and instant worked
+ * feedback — reuses exactly as-is; it already functions as its own
+ * practice engine, so Learn stays deliberately brief (a review, not a
+ * re-teach of the topics that precede it: Ratio, Ratio Comparison,
+ * Proportion Builder, Cross Multiplication, and Real-Life Ratios,
+ * which already own those full lessons). Its Challenge section is a
+ * small, hand-picked set of harder, multi-step problems — a step up
+ * from what the simulation generates on its own — rather than
+ * duplicating the endless generator. Gets a new, dedicated
+ * 30-question bank (`mathematics-ratio-challenge` in
+ * `@/features/quiz-engine`) that deliberately mixes concepts across
+ * problems rather than duplicating any single-concept question
+ * already in the five earlier ratio banks.
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -353,6 +448,7 @@ export const topicContentList: TopicContent[] = [
   mathematicsProportionContent,
   mathematicsCrossMultiplicationContent,
   mathematicsRealLifeRatiosContent,
+  mathematicsRatioChallengeContent,
   mathematicsMeasurementContent,
   mathematicsPerimeterAreaContent,
   mathematicsCoordinatePlaneContent,
@@ -369,9 +465,13 @@ export const topicContentList: TopicContent[] = [
   mathematicsDataComparisonContent,
   mathematicsEquationPlaygroundContent,
   mathematicsAngleSpinnerContent,
+  mathematicsTriangleExplorerContent,
   mathematicsSymmetryMirrorContent,
   mathematicsCalculusFoundationsContent,
   mathematicsDerivativeExplorerContent,
+  mathematicsDerivativeRulesContent,
+  mathematicsChainRuleExplorerContent,
+  mathematicsApplicationsOfDerivativesContent,
   chemistryBuildAnAtomContent,
   chemistryPeriodicTrendsContent,
   chemistryBondBuilderContent,

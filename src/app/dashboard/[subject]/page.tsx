@@ -48,10 +48,6 @@ export default function SubjectHubPage({ params }: SubjectPageProps) {
 
       {learningPaths.length > 0 ? (
         <div className="my-10 flex flex-col gap-6">
-          {learningPaths.map((path) => (
-            <LearningPathTrack key={path.id} path={path} />
-          ))}
-
           <div className="flex flex-col items-start gap-3 rounded-card border border-dashed border-ink/15 px-5 py-4 dark:border-bone/20 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-xl text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
               Follow the Learning Path for guided progression, or explore any simulation freely.
@@ -61,6 +57,10 @@ export default function SubjectHubPage({ params }: SubjectPageProps) {
               <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
             </Button>
           </div>
+
+          {learningPaths.map((path) => (
+            <LearningPathTrack key={path.id} path={path} />
+          ))}
         </div>
       ) : null}
 
