@@ -17,16 +17,17 @@ import type { LearningPath } from "../types";
  * new physics engine (see `physics-momentum.tsx`).
  *
  * Every topic below has a full registered `TopicContent` (Learn
- * through Mastery) — this path currently covers the complete
- * Golden Learning Experience curriculum for Physics. Electromagnetism
- * (Magnet/Compass Explorer) and Wave Motion aren't included: neither
- * has a Golden Learning Experience authored yet (see
- * `@/features/learning/registry.ts`), so — same as Mathematics topics
- * without full content yet — they'd need to fall back to the "any
- * step recorded" unlocking signal rather than a real mastery-tracked
- * one. They weren't part of the curriculum this pass was scoped to
- * (Batches 1-3: Motion through Gravitation); adding them is a
- * follow-up, not a rename/remap of what's here.
+ * through Mastery) — this path covers the complete Golden Learning
+ * Experience curriculum for core Mechanics. Electromagnetism (Magnet
+ * Explorer, Compass Explorer) is intentionally NOT included here —
+ * those two topics have no prerequisite relationship with motion,
+ * forces, or energy, so Physics Batch 4 gave them their own separate,
+ * two-topic path instead (`physics-electromagnetism`, in
+ * `./physics-electromagnetism.ts`) rather than appending them to the
+ * end of this Mechanics sequence. Wave Motion still has no Golden
+ * Learning Experience authored yet, so it isn't part of any path yet
+ * and would fall back to the "any step recorded" unlocking signal
+ * rather than a real mastery-tracked one if it were added here.
  *
  * Projectile Motion is included as an optional challenge topic: it
  * applies motion and forces together, so it depends on *both* Simple

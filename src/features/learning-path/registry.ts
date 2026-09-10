@@ -2,6 +2,8 @@ import type { LearningPath, LearningPathTopicRef } from "./types";
 import { biologyCellFoundationsPath } from "./data/biology-cell-foundations";
 import { chemistryFoundationsPath } from "./data/chemistry-foundations";
 import { physicsFoundationsPath } from "./data/physics-foundations";
+import { physicsElectromagnetismPath } from "./data/physics-electromagnetism";
+import { physicsWaveMotionPath } from "./data/physics-wave-motion";
 import { mathematicsFoundationsPath } from "./data/mathematics-foundations";
 
 /**
@@ -15,6 +17,8 @@ export const learningPathList: LearningPath[] = [
   biologyCellFoundationsPath,
   chemistryFoundationsPath,
   physicsFoundationsPath,
+  physicsElectromagnetismPath,
+  physicsWaveMotionPath,
   mathematicsFoundationsPath,
 ];
 

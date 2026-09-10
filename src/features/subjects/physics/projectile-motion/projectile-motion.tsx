@@ -213,7 +213,13 @@ function ProjectileMotionBody() {
           !presentation && "lg:grid-cols-[1fr_360px]",
         )}
       >
-        <div className="flex flex-col gap-4">
+        {/* min-w-0: CSS Grid items default to min-width: auto, so
+            without this the track can't shrink back below its content's
+            intrinsic width once Presentation mode (which drops the
+            lg:grid-cols-[1fr_360px] class above) has let it grow to full
+            width — that's what was causing the horizontal-scroll-on-exit
+            bug. See the matching comment in newtons-laws.tsx. */}
+        <div className="flex min-w-0 flex-col gap-4">
           <ProjectileCanvas
             trajectory={trajectory}
             gravity={gravity}
@@ -285,7 +291,7 @@ function ProjectileMotionBody() {
         </div>
 
         {!presentation ? (
-          <div className="flex flex-col gap-4">
+          <div className="flex min-w-0 flex-col gap-4">
             {mode === "explore" ? (
               <>
                 {/* PRIMARY: the two variables every launch depends on. */}

@@ -9,8 +9,9 @@ import type { TopicContent } from "../types";
  * (`Newton's Laws Lab`) as its Explore experience, and now owns a
  * dedicated question bank (`physics-newtons-laws-quiz.ts`) instead of
  * sharing `physics-newtonian-mechanics-quiz.ts` with Simple Forces
- * and Simple Energy — those two topics still point at the shared
- * quiz via `QuizCta` on their own pages until they're upgraded.
+ * and Simple Energy — those two topics have since been upgraded to
+ * the same full standard too, each with its own dedicated bank (see
+ * `physics-simple-forces.tsx` / `physics-simple-energy.tsx`).
  *
  * All Predict/Explain/Challenge content below is grounded in the
  * lab's real controls: Law 1/2 share a cart rig (mass, max push
@@ -327,8 +328,9 @@ export const physicsNewtonsLawsContent: TopicContent = {
     // @/features/quiz-engine/data/physics-newtons-laws-quiz.ts, none
     // duplicated here. This topic now owns a dedicated bank rather
     // than sharing `physics-newtonian-mechanics` with Simple Forces
-    // and Simple Energy (those two still link out via `QuizCta` until
-    // they're upgraded to the full architecture).
+    // and Simple Energy (those two now have their own dedicated
+    // banks too — see `physics-simple-forces-quiz.ts` /
+    // `physics-simple-energy-quiz.ts`).
     quizId: "physics-newtons-laws",
   },
 

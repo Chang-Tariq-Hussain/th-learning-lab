@@ -169,7 +169,13 @@ function NewtonsLawsBody() {
           !presentation && !teacher.formulasOnly && "lg:grid-cols-[1fr_360px]",
         )}
       >
-        <div className="flex flex-col gap-4">
+        {/* min-w-0: CSS Grid items default to min-width: auto, so without
+            this the track can't shrink back below its content's intrinsic
+            width once Presentation/Formulas-only mode (which drops the
+            lg:grid-cols-[1fr_360px] class above) has let it grow to full
+            width — that's what was causing the horizontal-scroll-on-exit
+            bug. See the matching comment in projectile-motion.tsx. */}
+        <div className="flex min-w-0 flex-col gap-4">
           {!teacher.formulasOnly ? (
             law === 3 ? (
               <Law3Canvas
@@ -273,7 +279,7 @@ function NewtonsLawsBody() {
         </div>
 
         {!presentation ? (
-          <div className="flex flex-col gap-4">
+          <div className="flex min-w-0 flex-col gap-4">
             {!teacher.formulasOnly ? (
               law === 1 ? (
                 <Law1Panel

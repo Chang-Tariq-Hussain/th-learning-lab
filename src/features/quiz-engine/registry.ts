@@ -74,11 +74,18 @@ import { physicsAccelerationQuiz } from "./data/physics-acceleration-quiz";
 import { physicsMomentumQuiz } from "./data/physics-momentum-quiz";
 import { physicsCircularMotionQuiz } from "./data/physics-circular-motion-quiz";
 import { physicsGravitationQuiz } from "./data/physics-gravitation-quiz";
+import { physicsCompassExplorerQuiz } from "./data/physics-compass-explorer-quiz";
 import { physicsNewtonianMechanicsQuiz } from "./data/physics-newtonian-mechanics-quiz";
 import { physicsNewtonsLawsQuiz } from "./data/physics-newtons-laws-quiz";
+import { physicsSimpleForcesQuiz } from "./data/physics-simple-forces-quiz";
+import { physicsSimpleEnergyQuiz } from "./data/physics-simple-energy-quiz";
 import { physicsProjectileMotionQuiz } from "./data/physics-projectile-motion-quiz";
 import { physicsWorkEnergyPowerQuiz } from "./data/physics-work-energy-power-quiz";
 import { physicsWaveMotionQuiz } from "./data/physics-wave-motion-quiz";
+import { physicsBasicWaveMotionQuiz } from "./data/physics-basic-wave-motion-quiz";
+import { physicsTransverseLongitudinalWavesQuiz } from "./data/physics-transverse-longitudinal-waves-quiz";
+import { physicsFrequencyPeriodQuiz } from "./data/physics-frequency-period-quiz";
+import { physicsWaveSpeedQuiz } from "./data/physics-wave-speed-quiz";
 
 /**
  * Every registered quiz. Add a new quiz by creating a `QuizMeta` in
@@ -162,12 +169,19 @@ export const quizzes: QuizMeta[] = [
   physicsAccelerationQuiz,
   physicsNewtonianMechanicsQuiz,
   physicsNewtonsLawsQuiz,
+  physicsSimpleForcesQuiz,
+  physicsSimpleEnergyQuiz,
   physicsProjectileMotionQuiz,
   physicsWorkEnergyPowerQuiz,
   physicsMomentumQuiz,
   physicsCircularMotionQuiz,
   physicsGravitationQuiz,
+  physicsCompassExplorerQuiz,
   physicsWaveMotionQuiz,
+  physicsBasicWaveMotionQuiz,
+  physicsTransverseLongitudinalWavesQuiz,
+  physicsFrequencyPeriodQuiz,
+  physicsWaveSpeedQuiz,
 ];
 
 export function getQuizById(id: string): QuizMeta | undefined {

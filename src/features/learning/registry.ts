@@ -23,6 +23,12 @@ import { physicsWorkEnergyPowerContent } from "./data/physics-work-energy-power"
 import { physicsMomentumContent } from "./data/physics-momentum";
 import { physicsCircularMotionContent } from "./data/physics-circular-motion";
 import { physicsGravitationContent } from "./data/physics-gravitation";
+import { physicsMagnetExplorerContent } from "./data/physics-magnet-explorer";
+import { physicsCompassExplorerContent } from "./data/physics-compass-explorer";
+import { physicsBasicWaveMotionContent } from "./data/physics-basic-wave-motion";
+import { physicsTransverseLongitudinalWavesContent } from "./data/physics-transverse-longitudinal-waves";
+import { physicsFrequencyPeriodContent } from "./data/physics-frequency-period";
+import { physicsWaveSpeedContent } from "./data/physics-wave-speed";
 import { mathematicsNumberLineContent } from "./data/mathematics-number-line";
 import { mathematicsEvenOddContent } from "./data/mathematics-even-odd";
 import { mathematicsFactorsMultiplesContent } from "./data/mathematics-factors-multiples";
@@ -89,10 +95,18 @@ import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-we
  * home simulation, each with its own dedicated question bank
  * (`physics-newtons-laws` / `physics-projectile-motion` in
  * `@/features/quiz-engine`) rather than a quiz shared across sibling
- * topics. Simple Forces and Simple Energy remain Learn + Explore only
- * for now — enough to make their progress trackable, which is what
- * the `physics-foundations` learning path (`@/features/learning-path`)
- * is built on. Work, Energy & Power is that same full standard again,
+ * topics. Simple Forces and Simple Energy were previously Learn +
+ * Explore only (enough to make their progress trackable on the
+ * `physics-foundations` learning path in `@/features/learning-path`)
+ * and, per the Physics GLE audit, have since been brought up to that
+ * same full standard (Learn, Predict, Explore, Explain, Practice,
+ * Challenge) — each grounded strictly in its own lab's real controls
+ * (Simple Forces' two 0-10 N sliders; Simple Energy's single 2-10 m
+ * height slider and its fraction-based energy model), with its own
+ * dedicated question bank (`physics-simple-forces` /
+ * `physics-simple-energy` in `@/features/quiz-engine`) rather than
+ * the older shared `physics-newtonian-mechanics` bank. Work, Energy &
+ * Power is that same full standard again,
  * applied to its own dedicated `WorkEnergyPower` lab and its own
  * question bank (`physics-work-energy-power` in `@/features/quiz-engine`).
  * Momentum is that same full standard once more, reusing Newton's
@@ -412,6 +426,72 @@ import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-we
  * `@/features/quiz-engine`) that deliberately mixes concepts across
  * problems rather than duplicating any single-concept question
  * already in the five earlier ratio banks.
+ *
+ * Physics Batch 4 (Electromagnetism) completes both of its planned
+ * topics: Interactive Magnet Explorer and Interactive Compass
+ * Explorer, in that recommended order. Both reuse their existing
+ * simulations (`@/features/subjects/physics/magnet-explorer` and
+ * `@/features/subjects/physics/compass-explorer`) exactly as-is — a
+ * draggable, rotatable pair of bar magnets with live field-line
+ * arcs and four presets for Magnet Explorer; a draggable compass
+ * whose needle continuously realigns with a draggable, rotatable
+ * magnet's field, plus a fading field-strength wedge and four presets
+ * for Compass Explorer — no simulation code changes were needed for
+ * either. Magnet Explorer's `practice.quizId` reuses the pre-existing
+ * `physics-electromagnetism` bank (30 questions, already written to
+ * match both simulations combined, and already linked from the
+ * standalone `/dashboard/physics/electromagnetism-quiz` page from an
+ * earlier batch) rather than duplicating it; Compass Explorer gets
+ * its own newly-authored 30-question bank (`physics-compass-explorer`
+ * in `@/features/quiz-engine`) scoped to what that shared bank doesn't
+ * already cover in depth — investigating field direction with a
+ * compass, and Earth's field including the geographic-vs-magnetic-
+ * north distinction. Both topics also get a new, dedicated
+ * `physics-electromagnetism` Learning Path
+ * (`@/features/learning-path/data/physics-electromagnetism.ts`) — a
+ * second, separate path for the Physics subject alongside the
+ * existing `physics-foundations` path, rather than being inserted
+ * into the Mechanics sequence they have no prerequisite relationship
+ * with.
+ *
+ * Physics Batch 2 (Wave Motion Foundations) brings its first two
+ * topics up to the full standard: Basic Wave Motion and Transverse
+ * vs Longitudinal Waves. Both reuse their existing simulations
+ * (`@/features/subjects/physics/basic-wave-motion` and
+ * `@/features/subjects/physics/transverse-longitudinal-waves`)
+ * exactly as-is — each already labels its key features (crest,
+ * trough, equilibrium, amplitude, wavelength for the first;
+ * propagation/particle-motion direction indicators and a comparison
+ * panel for the second) directly on the simulation, so no simulation
+ * code changes were needed. Each gets its own new, dedicated
+ * 30-question bank (`physics-basic-wave-motion` /
+ * `physics-transverse-longitudinal-waves` in
+ * `@/features/quiz-engine`), distinct from the pre-existing shared
+ * `physics-wave-motion` bank (which still covers all four Wave
+ * Motion simulations together and remains linked from the standalone
+ * `/dashboard/physics/wave-motion-quiz` page). Both topics also get
+ * a new, dedicated `physics-wave-motion` Learning Path
+ * (`@/features/learning-path/data/physics-wave-motion.ts`), a third
+ * separate Physics path alongside `physics-foundations` and
+ * `physics-electromagnetism`, since Wave Motion has no prerequisite
+ * relationship with either. Frequency & Period and Wave Speed — the
+ * other two topics in this simulation group — were intentionally left
+ * for a future batch.
+ *
+ * Physics Batch 2 (Wave Motion Foundations), continued: Frequency &
+ * Period and Wave Speed — v = fλ complete the Wave Motion branch's
+ * four topics. Both reuse their existing simulations
+ * (`@/features/subjects/physics/frequency-period` and
+ * `@/features/subjects/physics/wave-speed`) exactly as-is — each
+ * already has live readouts, a guided built-in experiment, and its
+ * own short concept check, so no simulation code changes were needed.
+ * Each gets its own new, dedicated 30-question bank
+ * (`physics-frequency-period` / `physics-wave-speed` in
+ * `@/features/quiz-engine`), distinct from the pre-existing shared
+ * `physics-wave-motion` bank. Both topics are appended to the same
+ * `physics-wave-motion` Learning Path as Basic Wave Motion and
+ * Transverse vs Longitudinal Waves, completing that path's intended
+ * four-topic sequence.
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -438,6 +518,12 @@ export const topicContentList: TopicContent[] = [
   physicsMomentumContent,
   physicsCircularMotionContent,
   physicsGravitationContent,
+  physicsMagnetExplorerContent,
+  physicsCompassExplorerContent,
+  physicsBasicWaveMotionContent,
+  physicsTransverseLongitudinalWavesContent,
+  physicsFrequencyPeriodContent,
+  physicsWaveSpeedContent,
   mathematicsNumberLineContent,
   mathematicsEvenOddContent,
   mathematicsFactorsMultiplesContent,
