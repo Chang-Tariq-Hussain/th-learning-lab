@@ -111,6 +111,39 @@ export function lungRadii(phase: number): { rx: number; ry: number } {
   return { rx: LUNG_BASE_RX * scale, ry: LUNG_BASE_RY * scale };
 }
 
+// --- Diaphragm & breathing mechanics --------------------------------------------
+//
+// The diaphragm is modeled as a single dome that flattens and drops as it
+// contracts (phase 0 -> 1 = fully exhaled -> fully inhaled), directly beneath
+// the lungs. It shares the same `phase` value that already drives lung size,
+// so the two stay perfectly in sync: nothing here is a second simulation
+// clock, just another readout of the one that exists. `chestVolume` is a
+// deliberately simple, qualitative proxy (not a real gas-law calculation) —
+// enough to show that volume rises as the diaphragm drops, and that pressure
+// is described as moving opposite to volume, without introducing PV = nRT
+// math the brief explicitly says to avoid.
+export const DIAPHRAGM_Y_REST = 270;
+export const DIAPHRAGM_DROP = 22;
+export const DIAPHRAGM_DOME_REST = 26;
+export const DIAPHRAGM_DOME_INHALED = 10;
+
+/** The diaphragm's center-line y position: moves DOWN as phase increases (contracting/inhaling). */
+export function diaphragmBaseline(phase: number): number {
+  return DIAPHRAGM_Y_REST + DIAPHRAGM_DROP * phase;
+}
+
+/** How domed the diaphragm is: high dome at rest (relaxed, arched up into the chest),
+ *  flattening as it contracts during inhalation. */
+export function diaphragmDome(phase: number): number {
+  return lerp(DIAPHRAGM_DOME_REST, DIAPHRAGM_DOME_INHALED, phase);
+}
+
+/** Qualitative 0-1 "how full is the chest cavity" readout, purely for the
+ *  volume/pressure explanation panel — not used to drive any geometry. */
+export function chestVolume(phase: number): number {
+  return clamp01(phase);
+}
+
 // --- Gas exchange (alveoli close-up) ---------------------------------------------
 
 export const GAS_EXCHANGE_DURATION_MS = 1400;

@@ -8,6 +8,8 @@ import {
   VIEW_HEIGHT,
   VIEW_WIDTH,
   airPathPoint,
+  diaphragmBaseline,
+  diaphragmDome,
   lungRadii,
 } from "../respiratory-model";
 import type { AirStageId, BreathDirection } from "../types";
@@ -97,7 +99,7 @@ export function LungScene({ phase, direction, running, activeStage }: LungSceneP
       viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
       className="h-full w-full"
       role="img"
-      aria-label="An animated diagram of the airway and lungs, showing air moving in during inhale and out during exhale"
+      aria-label="An animated diagram of the airway, lungs, and diaphragm, showing air moving in during inhale and out during exhale as the diaphragm contracts and relaxes"
     >
       <defs>
         <radialGradient id="ls-lung" cx="38%" cy="22%" r="90%">
@@ -244,6 +246,39 @@ export function LungScene({ phase, direction, running, activeStage }: LungSceneP
           />
         ) : null
       )}
+
+      {/* Diaphragm — a single dome beneath the lungs that flattens and drops
+          as it contracts (phase 0 -> 1), driven by the same `phase` as the
+          lungs above so the two always stay in sync. */}
+      <g>
+        <path
+          d={(() => {
+            const y = diaphragmBaseline(phase);
+            const dome = diaphragmDome(phase);
+            return `M 40 ${y} Q 150 ${y - dome} 260 ${y}`;
+          })()}
+          fill="none"
+          className="stroke-amber-600 dark:stroke-amber-400 transition-[d] duration-150"
+          strokeWidth={5}
+          strokeLinecap="round"
+        />
+        <text
+          x={264}
+          y={diaphragmBaseline(phase) + 3}
+          textAnchor="start"
+          className="fill-ink/60 dark:fill-bone/60 font-mono text-[9px] uppercase tracking-wide"
+        >
+          Diaphragm
+        </text>
+        <text
+          x={150}
+          y={diaphragmBaseline(phase) + 18}
+          textAnchor="middle"
+          className="fill-ink/50 dark:fill-bone/50 font-mono text-[8px]"
+        >
+          {direction === "in" ? "contracting ↓" : "relaxing ↑"}
+        </text>
+      </g>
     </svg>
   );
 }

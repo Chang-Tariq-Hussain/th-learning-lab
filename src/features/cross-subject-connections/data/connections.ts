@@ -85,4 +85,21 @@ export const crossSubjectConnections: CrossSubjectConnection[] = [
     reason:
       "Shows statistics as a tool scientists actually reach for in the field, not just a classroom topic — and explains why a good sample matters for a trustworthy ecosystem estimate.",
   },
+  {
+    id: "respiration-circulation-oxygen-transport",
+    source: {
+      subject: "biology",
+      label: "Respiratory System",
+      href: "/dashboard/biology/respiratory-system",
+    },
+    destination: {
+      subject: "biology",
+      label: "Blood Circulation",
+      href: "/dashboard/biology/blood-circulation",
+    },
+    explanation:
+      "The respiratory system provides oxygen to the blood and removes carbon dioxide from it at the alveoli; the circulatory system is what actually transports that oxygen and carbon dioxide between the lungs and every other tissue in the body.",
+    reason:
+      "Neither system does much good without the other — gas exchange in the lungs would be pointless if circulation couldn't carry the oxygen anywhere, and circulation would have nothing to deliver without the lungs replenishing it.",
+  },
 ];

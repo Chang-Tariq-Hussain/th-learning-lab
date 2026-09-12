@@ -9,6 +9,7 @@ import { AirPathway } from "./components/air-pathway";
 import { AlveoliView } from "./components/alveoli-view";
 import { GasJourney } from "./components/gas-journey";
 import { InhaleExhaleCompare } from "./components/inhale-exhale-compare";
+import { BreathingMechanics } from "./components/breathing-mechanics";
 import { LearningPanel } from "./components/learning-panel";
 import { MiniChallenge } from "./components/mini-challenge";
 
@@ -150,6 +151,8 @@ export function RespiratorySystem() {
       <GasJourney gas={journeyGas} step={journeyStep} onSelect={handleSelectJourney} onNext={handleJourneyNext} onRestart={handleJourneyRestart} />
 
       <InhaleExhaleCompare />
+
+      <BreathingMechanics direction={breathing.direction} running={breathing.running} />
 
       <LearningPanel />
 

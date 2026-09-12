@@ -12,10 +12,15 @@ import { biologyPhotosynthesisFactorsQuiz } from "./data/biology-photosynthesis-
 import { biologyAtpEnergyReleaseQuiz } from "./data/biology-atp-energy-release-quiz";
 import { biologyPhotosynthesisVsRespirationQuiz } from "./data/biology-photosynthesis-vs-respiration-quiz";
 import { biologyCellExplorerQuiz } from "./data/biology-cell-explorer-quiz";
+import { biologyDnaStructureQuiz } from "./data/biology-dna-structure-quiz";
 import { biologyCellularRespirationQuiz } from "./data/biology-cellular-respiration-quiz";
 import { biologyEcosystemQuiz } from "./data/biology-ecosystem-quiz";
 import { biologyMeiosisQuiz } from "./data/biology-meiosis-quiz";
+import { biologyMitosisQuiz } from "./data/biology-mitosis-quiz";
+import { biologyMeiosisGleQuiz } from "./data/biology-meiosis-gle-quiz";
 import { biologyNervousSystemQuiz } from "./data/biology-nervous-system-quiz";
+import { biologyBloodCirculationQuiz } from "./data/biology-blood-circulation-quiz";
+import { biologyRespiratorySystemQuiz } from "./data/biology-respiratory-system-quiz";
 import { chemistryAcidsBasesQuiz } from "./data/chemistry-acids-bases-quiz";
 import { chemistryArrheniusTheoryQuiz } from "./data/chemistry-arrhenius-theory-quiz";
 import { chemistryBronstedLowryQuiz } from "./data/chemistry-bronsted-lowry-quiz";
@@ -108,10 +113,15 @@ export const quizzes: QuizMeta[] = [
   biologyAtpEnergyReleaseQuiz,
   biologyPhotosynthesisVsRespirationQuiz,
   biologyCellExplorerQuiz,
+  biologyDnaStructureQuiz,
   biologyCellularRespirationQuiz,
   biologyEcosystemQuiz,
   biologyMeiosisQuiz,
+  biologyMitosisQuiz,
+  biologyMeiosisGleQuiz,
   biologyNervousSystemQuiz,
+  biologyBloodCirculationQuiz,
+  biologyRespiratorySystemQuiz,
   chemistryAcidsBasesQuiz,
   chemistryAtomQuiz,
   chemistryChemicalBondingQuiz,

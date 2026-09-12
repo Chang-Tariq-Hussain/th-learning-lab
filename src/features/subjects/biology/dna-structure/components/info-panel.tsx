@@ -8,7 +8,9 @@ export function InfoPanel() {
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-biology">DNA</p>
         <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
           <li>DNA stores genetic information.</li>
-          <li>DNA has two strands.</li>
+          <li>Each nucleotide has a sugar, a phosphate, and a base.</li>
+          <li>The sugar-phosphate backbone runs along each strand (the two curved rails).</li>
+          <li>Hydrogen bonds between paired bases hold the two strands together (the rungs).</li>
           <li>The bases pair in specific ways.</li>
         </ul>
       </div>

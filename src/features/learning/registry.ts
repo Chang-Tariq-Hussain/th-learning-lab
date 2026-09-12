@@ -12,6 +12,12 @@ import { biologyPhotosynthesisFactorsContent } from "./data/biology-photosynthes
 import { biologyCellularRespirationContent } from "./data/biology-cellular-respiration";
 import { biologyAtpEnergyReleaseContent } from "./data/biology-atp-energy-release";
 import { biologyPhotosynthesisVsRespirationContent } from "./data/biology-photosynthesis-vs-respiration";
+import { biologyMitosisContent } from "./data/biology-mitosis";
+import { biologyMeiosisContent } from "./data/biology-meiosis";
+import { biologyDnaStructureContent } from "./data/biology-dna-structure";
+import { biologyCellExplorerContent } from "./data/biology-cell-explorer";
+import { biologyBloodCirculationContent } from "./data/biology-blood-circulation";
+import { biologyRespiratorySystemContent } from "./data/biology-respiratory-system";
 import { physicsSimpleMotionContent } from "./data/physics-simple-motion";
 import { physicsVelocityContent } from "./data/physics-velocity";
 import { physicsAccelerationContent } from "./data/physics-acceleration";
@@ -492,6 +498,49 @@ import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-we
  * `physics-wave-motion` Learning Path as Basic Wave Motion and
  * Transverse vs Longitudinal Waves, completing that path's intended
  * four-topic sequence.
+ *
+ * Biology Batch 3 ("Cell Division") is complete: Mitosis and Meiosis
+ * both reuse their existing simulations
+ * (`@/features/subjects/biology/mitosis` and
+ * `@/features/subjects/biology/meiosis`) exactly as-is — each already
+ * modeled the correct stage sequence (Mitosis: Interphase, then
+ * Prophase through Cytokinesis; Meiosis: DNA Replication, then
+ * Prophase I through Telophase II), with stage controls, a per-stage
+ * explanation panel, and (for Meiosis) a built-in four-row Mitosis-
+ * vs-Meiosis comparison table — so no simulation code changes were
+ * needed. Each gets its own new, dedicated 30-question bank
+ * (`biology-mitosis` / `biology-meiosis-gle` in
+ * `@/features/quiz-engine`) — Meiosis's uses the `-gle` suffix
+ * specifically to avoid colliding with the pre-existing, smaller
+ * `biology-meiosis` bank (5 questions, still linked from the
+ * standalone `/dashboard/biology/meiosis-quiz` page, left
+ * unmodified). Both topics are appended to the existing, single,
+ * ever-growing `biology-cell-foundations` Learning Path
+ * (`@/features/learning-path/data/biology-cell-foundations.ts`) as a
+ * new "Cell Division" batch, rather than a new competing path.
+ *
+ * Biology GLE Batch 4 ("Human Physiology") is complete: Blood
+ * Circulation and Respiratory System are both brought up to the full
+ * standard (Learn, Predict, Explore, Explain, Practice, Challenge).
+ * Blood Circulation reuses its existing simulation
+ * (`@/features/subjects/biology/blood-circulation`) exactly as-is —
+ * it already modeled the correct four-chamber sequence, a pulmonary/
+ * systemic circuit toggle, Trace Blood, Follow-the-Blood, and a valve
+ * explanation — so no simulation code changes were needed; the Learn
+ * content carries the general artery/vein/capillary definitions and
+ * the pulmonary-vessel oxygen-content exceptions. Respiratory System
+ * reuses its existing simulation
+ * (`@/features/subjects/biology/respiratory-system`) with one
+ * additive change: it previously had no diaphragm, chest-volume, or
+ * pressure mechanics at all, so an animated diaphragm and a new
+ * `BreathingMechanics` panel were added, driven by the same `phase`
+ * value already controlling lung size. Each topic gets its own new,
+ * dedicated 30-question bank (`biology-blood-circulation` /
+ * `biology-respiratory-system` in `@/features/quiz-engine`). Both
+ * topics form a new, dedicated `biology-human-physiology` Learning
+ * Path (`@/features/learning-path/data/biology-human-physiology.ts`),
+ * separate from `biology-cell-foundations` since physiology has no
+ * prerequisite relationship with cell biology topics.
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -507,6 +556,12 @@ export const topicContentList: TopicContent[] = [
   biologyCellularRespirationContent,
   biologyAtpEnergyReleaseContent,
   biologyPhotosynthesisVsRespirationContent,
+  biologyMitosisContent,
+  biologyMeiosisContent,
+  biologyDnaStructureContent,
+  biologyCellExplorerContent,
+  biologyBloodCirculationContent,
+  biologyRespiratorySystemContent,
   physicsSimpleMotionContent,
   physicsVelocityContent,
   physicsAccelerationContent,

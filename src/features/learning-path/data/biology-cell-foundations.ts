@@ -58,6 +58,53 @@ import type { LearningPath } from "../types";
  * `topics` array — its order is the path's sequence, mirroring how
  * `physics-foundations.ts` and `mathematics-foundations.ts` grow one
  * topic (or one batch) at a time.
+ *
+ * Batch 3 — Cell Division. Both planned topics are now implemented:
+ *
+ *   1. Mitosis
+ *   2. Meiosis
+ *
+ * Mitosis reuses the existing Mitosis simulation
+ * (`@/features/subjects/biology/mitosis`); Meiosis reuses the
+ * existing Meiosis simulation
+ * (`@/features/subjects/biology/meiosis`), which already includes a
+ * built-in Mitosis-vs-Meiosis comparison — see the doc comments on
+ * each topic's `TopicContent` in `@/features/learning/data/` for
+ * exactly how. Mitosis is placed before Meiosis since understanding
+ * ordinary chromosome/sister-chromatid behavior first makes Meiosis's
+ * extra homologous-pairing and two-division complexity easier to
+ * follow — but, as with every topic in this path, both remain
+ * directly and immediately accessible from Biology's simulation list
+ * regardless of path progress; `prerequisites` here is a suggested
+ * order only, never an access restriction.
+ *
+ * Batch 3's review/mastery challenge is intentionally NOT represented
+ * here yet.
+ *
+ * Batch 4 — DNA & Cell Exploration. Both planned topics are now
+ * implemented:
+ *
+ *   1. DNA Structure & Base Pairing
+ *   2. Interactive Cell Explorer
+ *
+ * DNA Structure reuses the existing DNA Structure & Base Pairing
+ * simulation (`@/features/subjects/biology/dna-structure`); Interactive
+ * Cell Explorer reuses the existing Interactive Cell Explorer
+ * simulation (`@/features/subjects/biology/cell-explorer`) — see the
+ * doc comments on each topic's `TopicContent` in
+ * `@/features/learning/data/` for exactly how. Both get explicit
+ * `prerequisites` rather than the default linear chain: DNA Structure
+ * is foundational genetics content with no real dependency on Cell
+ * Division, and Interactive Cell Explorer is positioned as an
+ * interactive application of Batch 1's cell-biology topics (it
+ * depends on Plant vs Animal Cells, not on Genetics or Cell Division).
+ * As with every topic in this path, both remain directly and
+ * immediately accessible from Biology's simulation list regardless of
+ * path progress — `prerequisites` here is a suggested order only,
+ * never an access restriction.
+ *
+ * Batch 4's review/mastery challenge is intentionally NOT represented
+ * here yet.
  */
 export const biologyCellFoundationsPath: LearningPath = {
   id: "biology-cell-foundations",
@@ -170,6 +217,47 @@ export const biologyCellFoundationsPath: LearningPath = {
       description: "How the two processes compare, and how their inputs and outputs connect.",
       href: "/dashboard/biology/photosynthesis-vs-respiration",
       // Default prerequisite: depends on "ATP & Energy Release" immediately before it.
+    },
+    // --- Batch 3: Cell Division ---
+    {
+      subjectSlug: "biology",
+      topicSlug: "mitosis",
+      title: "Mitosis: How One Cell Becomes Two",
+      description: "How one cell divides into two identical daughter cells for growth and repair.",
+      href: "/dashboard/biology/mitosis",
+      // Default prerequisite: depends on "Photosynthesis vs Cellular Respiration" immediately before it.
+    },
+    {
+      subjectSlug: "biology",
+      topicSlug: "meiosis",
+      title: "Meiosis: How Sex Cells Are Formed",
+      description: "How one diploid cell divides twice into four genetically varied haploid gametes.",
+      href: "/dashboard/biology/meiosis",
+      // Default prerequisite: depends on "Mitosis" immediately before it.
+    },
+    // --- Batch 4: DNA & Cell Exploration ---
+    {
+      subjectSlug: "biology",
+      topicSlug: "dna-structure",
+      title: "DNA Structure & Base Pairing",
+      description: "The double helix, nucleotides, and the complementary base-pairing rule: A with T, and C with G.",
+      href: "/dashboard/biology/dna-structure",
+      // Foundational genetics content — doesn't require Cell Division
+      // knowledge, so it gets an explicit empty prerequisite list
+      // instead of defaulting to depend on Meiosis immediately before it.
+      prerequisites: [],
+    },
+    {
+      subjectSlug: "biology",
+      topicSlug: "cell-explorer",
+      title: "Interactive Cell Explorer",
+      description: "An interactive application of earlier cell-biology topics: explore a real cell layout and see organelles work together.",
+      href: "/dashboard/biology/cell-explorer",
+      // Explicit dependency on Plant vs Animal Cells (Batch 1) rather
+      // than the default chain, since this topic applies Batch 1's
+      // organelle/plant-vs-animal content interactively rather than
+      // following on from Genetics or Cell Division.
+      prerequisites: [{ subjectSlug: "biology", topicSlug: "plant-vs-animal-cells" }],
     },
   ],
 };
