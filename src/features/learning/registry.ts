@@ -18,6 +18,10 @@ import { biologyDnaStructureContent } from "./data/biology-dna-structure";
 import { biologyCellExplorerContent } from "./data/biology-cell-explorer";
 import { biologyBloodCirculationContent } from "./data/biology-blood-circulation";
 import { biologyRespiratorySystemContent } from "./data/biology-respiratory-system";
+import { biologyDigestiveSystemContent } from "./data/biology-digestive-system";
+import { biologyNervousSystemContent } from "./data/biology-nervous-system";
+import { biologyEcosystemExplorerContent } from "./data/biology-ecosystem-explorer";
+import { biologyFoodChainWebContent } from "./data/biology-food-chain-web";
 import { physicsSimpleMotionContent } from "./data/physics-simple-motion";
 import { physicsVelocityContent } from "./data/physics-velocity";
 import { physicsAccelerationContent } from "./data/physics-acceleration";
@@ -541,6 +545,50 @@ import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-we
  * Path (`@/features/learning-path/data/biology-human-physiology.ts`),
  * separate from `biology-cell-foundations` since physiology has no
  * prerequisite relationship with cell biology topics.
+ *
+ * Biology GLE Batch 4 ("Human Physiology", continued) adds Digestive
+ * System and Nervous System, both appended to the existing
+ * `biology-human-physiology` Learning Path after Respiratory System.
+ * Nervous System reuses its existing simulation
+ * (`@/features/subjects/biology/nervous-system`) exactly as-is — it
+ * already modeled accurate neuron anatomy, an ion-driven action
+ * potential, a five-step synapse sequence, and a CNS/PNS organization
+ * tree — so no simulation code changes were needed. Digestive System
+ * reuses its existing simulation
+ * (`@/features/subjects/biology/digestive-system`) with one additive
+ * change: it previously had no accessory-organ content at all, so a
+ * new `AccessoryOrgans` panel (liver, gallbladder, pancreas) was
+ * added, plus a caption update naming the anus as the tract's final
+ * opening. Each topic gets its own dedicated 30-question bank
+ * (`biology-digestive-system` in `@/features/quiz-engine`, new;
+ * `biology-nervous-system-gle`, a new id kept separate from the
+ * pre-existing 5-question `biology-nervous-system` bank still used by
+ * the standalone `/dashboard/biology/nervous-system-quiz` page, to
+ * avoid a duplicate registration — same precedent as Meiosis in
+ * Batch 1).
+ *
+ * Biology GLE Batch 5 ("Ecology & Ecosystems") is complete: Ecosystem
+ * Explorer and Food Chain & Food Web are both brought up to the full
+ * standard (Learn, Predict, Explore, Explain, Practice, Challenge).
+ * Both reuse their existing simulations
+ * (`@/features/subjects/biology/ecosystem-explorer` and
+ * `@/features/subjects/biology/food-chain-web`) exactly as-is —
+ * Ecosystem Explorer already modeled a ten-component biotic/abiotic
+ * scene with role highlighting and a Balance Experiment, and Food
+ * Chain & Food Web already modeled a Food Chain/Food Web toggle, an
+ * Energy Flow ladder, trophic levels, and a Remove Grasshoppers
+ * experiment — so no simulation code changes were needed for either.
+ * Ecosystem Explorer's `practice.quizId` uses the `-gle` suffix
+ * (`biology-ecosystem-gle`, new, 30 questions) to avoid colliding
+ * with the pre-existing 6-question `biology-ecosystem` bank still
+ * used by the standalone `/dashboard/biology/ecosystem-quiz` page —
+ * same precedent as Meiosis and Nervous System. Food Chain & Food Web
+ * gets a brand-new 30-question bank (`biology-food-chain-web`), since
+ * no quiz previously covered it. Both topics form a new, dedicated
+ * `biology-ecology` Learning Path
+ * (`@/features/learning-path/data/biology-ecology.ts`), separate from
+ * `biology-cell-foundations` and `biology-human-physiology` since
+ * ecology has no prerequisite relationship with either.
  */
 export const topicContentList: TopicContent[] = [
   biologyWhatIsACellContent,
@@ -562,6 +610,10 @@ export const topicContentList: TopicContent[] = [
   biologyCellExplorerContent,
   biologyBloodCirculationContent,
   biologyRespiratorySystemContent,
+  biologyDigestiveSystemContent,
+  biologyNervousSystemContent,
+  biologyEcosystemExplorerContent,
+  biologyFoodChainWebContent,
   physicsSimpleMotionContent,
   physicsVelocityContent,
   physicsAccelerationContent,

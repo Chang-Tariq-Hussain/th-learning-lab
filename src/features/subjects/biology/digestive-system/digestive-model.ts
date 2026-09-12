@@ -13,6 +13,7 @@
  */
 
 import type {
+  AccessoryOrganInfo,
   ChallengeQuestion,
   NutrientInfo,
   OrganInfo,
@@ -130,7 +131,7 @@ export const STAGES: Stage[] = [
     id: "rectum",
     label: "Rectum",
     caption:
-      "Undigested material and waste are eventually removed from the body.",
+      "The rectum stores waste until it's eliminated through the anus — the final opening at the end of the digestive tract.",
   },
 ];
 
@@ -207,6 +208,34 @@ export const ORGANS: OrganInfo[] = [
   },
 ];
 
+// --- Accessory organs -------------------------------------------------------------
+// Support digestion with secretions (bile, enzymes) but are NOT part of the
+// digestive tract itself — food never physically passes through them.
+
+export const ACCESSORY_ORGANS: AccessoryOrganInfo[] = [
+  {
+    id: "liver",
+    label: "Liver",
+    function: "Produces bile.",
+    explanation:
+      "The liver makes bile, which helps break large fat droplets into smaller ones so digestive enzymes can work on them more easily. The liver also performs many other metabolic jobs for the body, but food never passes through it.",
+  },
+  {
+    id: "gallbladder",
+    label: "Gallbladder",
+    function: "Stores and releases bile.",
+    explanation:
+      "The gallbladder stores the bile the liver makes and releases it into the small intestine when fatty food arrives, to help digest it. It is a storage sac, not a stop along the food's path.",
+  },
+  {
+    id: "pancreas",
+    label: "Pancreas",
+    function: "Provides digestive enzymes.",
+    explanation:
+      "The pancreas releases digestive enzymes into the small intestine that break down carbohydrates, proteins, and fats. It also produces hormones like insulin, but — like the liver and gallbladder — food never travels through it.",
+  },
+];
+
 // --- Nutrient types --------------------------------------------------------------
 
 export const NUTRIENTS: NutrientInfo[] = [
@@ -256,6 +285,22 @@ export const CHALLENGE_QUESTIONS: ChallengeQuestion[] = [
       { label: "Nutrient absorption", correct: true },
       { label: "Breathing", correct: false },
       { label: "Pumping blood", correct: false },
+    ],
+  },
+  {
+    prompt: "Which organ produces bile?",
+    options: [
+      { label: "Liver", correct: true },
+      { label: "Gallbladder", correct: false },
+      { label: "Pancreas", correct: false },
+    ],
+  },
+  {
+    prompt: "Does food physically pass through the pancreas?",
+    options: [
+      { label: "No — it only releases enzymes into the small intestine", correct: true },
+      { label: "Yes — food travels through it after the stomach", correct: false },
+      { label: "Yes — it's part of the main digestive tract", correct: false },
     ],
   },
 ];

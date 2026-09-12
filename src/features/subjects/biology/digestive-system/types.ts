@@ -34,6 +34,18 @@ export interface NutrientInfo {
   explanation: string;
 }
 
+/** Organs that support digestion but that food does not physically
+ *  travel through — distinct from `OrganId`, which is the main
+ *  digestive tract the food particle actually moves along. */
+export type AccessoryOrganId = "liver" | "gallbladder" | "pancreas";
+
+export interface AccessoryOrganInfo {
+  id: AccessoryOrganId;
+  label: string;
+  function: string;
+  explanation: string;
+}
+
 export interface ChallengeQuestion {
   prompt: string;
   options: { label: string; correct: boolean }[];

@@ -21,6 +21,10 @@ import { biologyMeiosisGleQuiz } from "./data/biology-meiosis-gle-quiz";
 import { biologyNervousSystemQuiz } from "./data/biology-nervous-system-quiz";
 import { biologyBloodCirculationQuiz } from "./data/biology-blood-circulation-quiz";
 import { biologyRespiratorySystemQuiz } from "./data/biology-respiratory-system-quiz";
+import { biologyDigestiveSystemQuiz } from "./data/biology-digestive-system-quiz";
+import { biologyNervousSystemGleQuiz } from "./data/biology-nervous-system-gle-quiz";
+import { biologyEcosystemGleQuiz } from "./data/biology-ecosystem-gle-quiz";
+import { biologyFoodChainWebQuiz } from "./data/biology-food-chain-web-quiz";
 import { chemistryAcidsBasesQuiz } from "./data/chemistry-acids-bases-quiz";
 import { chemistryArrheniusTheoryQuiz } from "./data/chemistry-arrhenius-theory-quiz";
 import { chemistryBronstedLowryQuiz } from "./data/chemistry-bronsted-lowry-quiz";
@@ -122,6 +126,10 @@ export const quizzes: QuizMeta[] = [
   biologyNervousSystemQuiz,
   biologyBloodCirculationQuiz,
   biologyRespiratorySystemQuiz,
+  biologyDigestiveSystemQuiz,
+  biologyNervousSystemGleQuiz,
+  biologyEcosystemGleQuiz,
+  biologyFoodChainWebQuiz,
   chemistryAcidsBasesQuiz,
   chemistryAtomQuiz,
   chemistryChemicalBondingQuiz,

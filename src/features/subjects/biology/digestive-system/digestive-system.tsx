@@ -9,10 +9,11 @@ import {
   journeyComplete,
   stageAt,
 } from "./digestive-model";
-import type { NutrientId, OrganId } from "./types";
+import type { AccessoryOrganId, NutrientId, OrganId } from "./types";
 import { DigestiveScene } from "./components/digestive-scene";
 import { JourneyControls } from "./components/journey-controls";
 import { OrganExplorer } from "./components/organ-explorer";
+import { AccessoryOrgans } from "./components/accessory-organs";
 import { VilliView } from "./components/villi-view";
 import { NutrientTypes } from "./components/nutrient-types";
 import { DigestionAbsorptionCompare } from "./components/digestion-absorption-compare";
@@ -25,6 +26,8 @@ export function DigestiveSystem() {
   const [started, setStarted] = useState(false);
 
   const [activeOrgan, setActiveOrgan] = useState<OrganId | null>(null);
+  const [activeAccessoryOrgan, setActiveAccessoryOrgan] =
+    useState<AccessoryOrganId | null>(null);
 
   const [absorptionExchanging, setAbsorptionExchanging] = useState(false);
   const [absorptionDone, setAbsorptionDone] = useState(false);
@@ -105,6 +108,7 @@ export function DigestiveSystem() {
     setRunning(false);
     setStarted(false);
     setActiveOrgan(null);
+    setActiveAccessoryOrgan(null);
     setAbsorptionExchanging(false);
     setAbsorptionDone(false);
     if (absorptionTimeoutRef.current)
@@ -174,6 +178,11 @@ export function DigestiveSystem() {
       />
 
       <OrganExplorer activeId={activeOrgan} onSelect={handleSelectOrgan} />
+
+      <AccessoryOrgans
+        activeId={activeAccessoryOrgan}
+        onSelect={setActiveAccessoryOrgan}
+      />
 
       <VilliView
         exchanging={absorptionExchanging}
