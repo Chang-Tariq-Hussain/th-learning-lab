@@ -23,7 +23,7 @@ import type { TopicContent } from "../types";
  * This page opens the simulation with `initialMode="active-transport"`
  * so the student lands directly on this topic's tab.
  *
- * `practice.quizId` points at a new, dedicated 15-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-active-transport-quiz.ts`).
  */
 export const biologyActiveTransportContent: TopicContent = {

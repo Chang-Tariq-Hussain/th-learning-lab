@@ -18,7 +18,7 @@ import type { TopicContent } from "../types";
  * for why. No physics-style simulation engine was built for this
  * topic.
  *
- * `practice.quizId` points at a new, dedicated 15-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-photosynthesis-vs-
  * respiration-quiz.ts`).
  */

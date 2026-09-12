@@ -22,7 +22,7 @@ import type { TopicContent } from "../types";
  * only ever ask the student to interact with the movement the
  * simulation actually shows.
  *
- * `practice.quizId` points at a new, dedicated 13-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-cell-membrane-quiz.ts`).
  */
 export const biologyCellMembraneContent: TopicContent = {

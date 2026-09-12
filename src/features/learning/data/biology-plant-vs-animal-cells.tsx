@@ -18,7 +18,7 @@ import type { TopicContent } from "../types";
  * large central vacuole as organelles the Animal Cell view doesn't
  * have at all) rather than an invented list.
  *
- * `practice.quizId` points at a new, dedicated 13-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-plant-vs-animal-cells-quiz.ts`).
  */
 export const biologyPlantVsAnimalCellsContent: TopicContent = {

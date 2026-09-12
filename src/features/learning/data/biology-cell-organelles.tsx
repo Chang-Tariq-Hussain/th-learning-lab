@@ -16,7 +16,7 @@ import type { TopicContent } from "../types";
  * simulation has no lysosome hotspot, and inventing one here would
  * describe a structure the student can never actually find or click.
  *
- * `practice.quizId` points at a new, dedicated 15-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-cell-organelles-quiz.ts`).
  */
 export const biologyCellOrganellesContent: TopicContent = {

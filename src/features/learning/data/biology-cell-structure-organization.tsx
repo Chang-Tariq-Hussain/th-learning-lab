@@ -22,7 +22,7 @@ import type { TopicContent } from "../types";
  * specifically, where those structures actually exist as separate
  * targets.
  *
- * `practice.quizId` points at a new, dedicated 13-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-cell-structure-organization-quiz.ts`).
  */
 export const biologyCellStructureOrganizationContent: TopicContent = {

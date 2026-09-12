@@ -18,7 +18,7 @@ import type { TopicContent } from "../types";
  * 4's full-process lesson instead of repeating it. No new simulation
  * was built for this topic.
  *
- * `practice.quizId` points at a new, dedicated 15-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-atp-energy-release-quiz.ts`),
  * since this topic tests different material (ATP's role and its
  * connections) than Topic 4's full-process quiz.

@@ -13,7 +13,7 @@ import type { TopicContent } from "../types";
  * light encounter ("notice a cell has a boundary and many working
  * parts inside") rather than the organelle-by-organelle study that
  * Topic 3 (Cell Organelles) covers in depth. `practice.quizId` points
- * at a new, dedicated 12-question bank
+ * at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-what-is-a-cell-quiz.ts`).
  */
 export const biologyWhatIsACellContent: TopicContent = {

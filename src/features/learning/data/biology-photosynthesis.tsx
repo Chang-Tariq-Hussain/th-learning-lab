@@ -22,7 +22,7 @@ import type { TopicContent } from "../types";
  * student to manipulate variables rather than just observe a fixed
  * run.
  *
- * `practice.quizId` points at a new, dedicated 15-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-photosynthesis-quiz.ts`).
  */
 export const biologyPhotosynthesisContent: TopicContent = {

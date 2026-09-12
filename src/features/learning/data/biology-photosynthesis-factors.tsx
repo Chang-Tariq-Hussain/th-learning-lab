@@ -24,7 +24,7 @@ import type { TopicContent } from "../types";
  * `photosynthesis/model.ts` for the exact formula this topic's
  * content is written against.
  *
- * `practice.quizId` points at a new, dedicated 15-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-photosynthesis-factors-quiz.ts`).
  */
 export const biologyPhotosynthesisFactorsContent: TopicContent = {

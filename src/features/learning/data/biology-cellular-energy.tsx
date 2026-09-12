@@ -19,7 +19,7 @@ import type { TopicContent } from "../types";
  * lesson reusing this same simulation) is future work, not part of
  * this one.
  *
- * `practice.quizId` points at a new, dedicated 15-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-cellular-energy-quiz.ts`).
  */
 export const biologyCellularEnergyContent: TopicContent = {

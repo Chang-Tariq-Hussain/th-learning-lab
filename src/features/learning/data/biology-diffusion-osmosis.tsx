@@ -18,7 +18,7 @@ import type { TopicContent } from "../types";
  * adjust a concentration or watch a solute cross — the simulation
  * doesn't support either, so this content doesn't pretend it does.
  *
- * `practice.quizId` points at a new, dedicated 15-question bank
+ * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-diffusion-osmosis-quiz.ts`).
  */
 export const biologyDiffusionOsmosisContent: TopicContent = {
