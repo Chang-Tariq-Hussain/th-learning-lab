@@ -833,6 +833,31 @@ export const subjects: Subject[] = [
       },
     ],
   },
+  {
+    slug: "information-technology",
+    code: "IT·01",
+    name: "Information Technology",
+    tagline: "Hardware, systems & how computers actually work",
+    description:
+      "Explore computer hardware and how it works together through hands-on, virtual-lab-style interactive models.",
+    colorToken: "it",
+    notation: "01001000",
+    topics: [
+      {
+        slug: "computer-fundamentals",
+        name: "Computer Fundamentals",
+        visualizations: [
+          {
+            slug: "cpu-ram-storage-data-flow",
+            title: "CPU–RAM–Storage Data Flow",
+            description:
+              "Step through how the CPU, RAM, and storage work together when you open an app, save a file, or run a program.",
+            href: "/dashboard/information-technology/cpu-ram-storage-data-flow",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export function getSubjectBySlug(slug: string): Subject | undefined {

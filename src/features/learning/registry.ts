@@ -86,6 +86,7 @@ import { chemistryBronstedLowryContent } from "./data/chemistry-bronsted-lowry";
 import { chemistryConjugateAcidBasePairsContent } from "./data/chemistry-conjugate-acid-base-pairs";
 import { chemistryLewisAcidBaseContent } from "./data/chemistry-lewis-acid-base";
 import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-weak-acids-bases";
+import { informationTechnologyCpuRamStorageDataFlowContent } from "./data/information-technology-cpu-ram-storage-data-flow";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -678,6 +679,7 @@ export const topicContentList: TopicContent[] = [
   chemistryConjugateAcidBasePairsContent,
   chemistryLewisAcidBaseContent,
   chemistryStrongWeakAcidsBasesContent,
+  informationTechnologyCpuRamStorageDataFlowContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

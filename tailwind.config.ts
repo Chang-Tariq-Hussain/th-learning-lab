@@ -82,6 +82,8 @@ const config: Config = {
           "biology-soft": "#DFF5F2",
           math: "rgb(var(--color-subject-math) / <alpha-value>)",
           "math-soft": "#EFE7FB",
+          it: "#B45309",
+          "it-soft": "#FBEBD6",
         },
       },
       fontFamily: {

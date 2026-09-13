@@ -3,6 +3,7 @@ import {
   BarChart3,
   CircleDot,
   Compass,
+  Cpu,
   Dna,
   Dumbbell,
   FlaskConical,
@@ -53,6 +54,9 @@ const topicIconMap: Record<string, LucideIcon> = {
   genetics: Dna,
   "human-physiology": HeartPulse,
   ecosystems: Leaf,
+
+  // Information Technology
+  "computer-fundamentals": Cpu,
 
   // Mathematics
   "number-sense": Hash,

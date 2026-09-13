@@ -89,6 +89,26 @@ export function MathGlyph(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function InformationTechnologyGlyph(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      {/* a CPU chip with pins, evoking hardware / circuitry */}
+      <rect x="14" y="14" width="20" height="20" rx="2" />
+      <rect x="19" y="19" width="10" height="10" rx="1" />
+      <path d="M20 6v6M28 6v6M20 36v6M28 36v6" />
+      <path d="M6 20h6M6 28h6M36 20h6M36 28h6" />
+    </svg>
+  );
+}
+
 /**
  * Lookup map so components can resolve a subject's glyph from its
  * `slug` alone, keeping `Subject` data plain and serializable.
@@ -101,4 +121,5 @@ export const subjectGlyphs: Record<
   chemistry: ChemistryGlyph,
   biology: BiologyGlyph,
   mathematics: MathGlyph,
+  "information-technology": InformationTechnologyGlyph,
 };

@@ -1,4 +1,4 @@
-export type SubjectSlug = "physics" | "chemistry" | "biology" | "mathematics";
+export type SubjectSlug = "physics" | "chemistry" | "biology" | "mathematics" | "information-technology";
 
 /**
  * One interactive page. This is the only thing that ever needs a new

@@ -1,11 +1,11 @@
 "use client";
 
-import { useDismiss } from "@/hooks/use-dismiss";
-import { searchIndex } from "@/lib/search-index";
-import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Search } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { searchIndex } from "@/lib/search-index";
+import { useDismiss } from "@/hooks/use-dismiss";
 import { SearchResultsList } from "./search-results-list";
 
 /**
@@ -40,8 +40,7 @@ export function HeaderSearch({ className }: { className?: string }) {
       if (matches.length > 0) setActiveIndex((i) => (i + 1) % matches.length);
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
-      if (matches.length > 0)
-        setActiveIndex((i) => (i - 1 + matches.length) % matches.length);
+      if (matches.length > 0) setActiveIndex((i) => (i - 1 + matches.length) % matches.length);
     } else if (e.key === "Enter") {
       e.preventDefault();
       const match = matches[activeIndex];
@@ -57,11 +56,7 @@ export function HeaderSearch({ className }: { className?: string }) {
   return (
     <div ref={containerRef} className={cn("relative w-56", className)}>
       <div className="flex h-9 w-full items-center gap-2 rounded-full border border-ink/10 bg-transparent px-3.5 text-sm text-ink-soft transition-colors focus-within:border-pine-500 dark:border-bone/15 dark:text-bone-soft">
-        <Search
-          className="h-3.5 w-3.5 shrink-0"
-          strokeWidth={1.75}
-          aria-hidden="true"
-        />
+        <Search className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} aria-hidden="true" />
         <input
           type="text"
           value={query}
@@ -76,9 +71,7 @@ export function HeaderSearch({ className }: { className?: string }) {
           role="combobox"
           aria-expanded={open && matches.length > 0}
           aria-controls="header-search-listbox"
-          aria-activedescendant={
-            activeMatch ? `search-option-${activeMatch.id}` : undefined
-          }
+          aria-activedescendant={activeMatch ? `search-option-${activeMatch.id}` : undefined}
           autoComplete="off"
           className="w-full bg-transparent text-ink placeholder:text-ink-soft/60 focus:outline-none dark:text-bone dark:placeholder:text-bone-soft/50"
         />

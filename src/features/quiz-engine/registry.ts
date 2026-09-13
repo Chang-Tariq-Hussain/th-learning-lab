@@ -95,6 +95,7 @@ import { physicsBasicWaveMotionQuiz } from "./data/physics-basic-wave-motion-qui
 import { physicsTransverseLongitudinalWavesQuiz } from "./data/physics-transverse-longitudinal-waves-quiz";
 import { physicsFrequencyPeriodQuiz } from "./data/physics-frequency-period-quiz";
 import { physicsWaveSpeedQuiz } from "./data/physics-wave-speed-quiz";
+import { informationTechnologyCpuRamStorageDataFlowQuiz } from "./data/it-cpu-ram-storage-data-flow-quiz";
 
 /**
  * Every registered quiz. Add a new quiz by creating a `QuizMeta` in
@@ -200,6 +201,7 @@ export const quizzes: QuizMeta[] = [
   physicsTransverseLongitudinalWavesQuiz,
   physicsFrequencyPeriodQuiz,
   physicsWaveSpeedQuiz,
+  informationTechnologyCpuRamStorageDataFlowQuiz,
 ];
 
 export function getQuizById(id: string): QuizMeta | undefined {
