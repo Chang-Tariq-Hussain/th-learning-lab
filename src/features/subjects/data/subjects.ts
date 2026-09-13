@@ -854,6 +854,20 @@ export const subjects: Subject[] = [
               "Step through how the CPU, RAM, and storage work together when you open an app, save a file, or run a program.",
             href: "/dashboard/information-technology/cpu-ram-storage-data-flow",
           },
+          {
+            slug: "binary-data-representation",
+            title: "Binary & Data Representation",
+            description:
+              "Toggle bits in an interactive Binary Data Laboratory to see how computers represent numbers and characters as 0s and 1s.",
+            href: "/dashboard/information-technology/binary-data-representation",
+          },
+          {
+            slug: "computer-boot-process",
+            title: "Computer Boot Process",
+            description:
+              "Step through what happens from pressing the power button to reaching the desktop, stage by stage.",
+            href: "/dashboard/information-technology/computer-boot-process",
+          },
         ],
       },
     ],
