@@ -36,6 +36,12 @@ export const subjectColorMap: Record<string, SubjectColorSet> = {
     border: "group-hover:border-subject-math/40",
     bar: "bg-subject-math",
   },
+  it: {
+    text: "text-subject-it",
+    bg: "bg-subject-it-soft dark:bg-subject-it/10",
+    border: "group-hover:border-subject-it/40",
+    bar: "bg-subject-it",
+  },
 };
 
 export function resolveSubjectColors(colorToken: string): SubjectColorSet {

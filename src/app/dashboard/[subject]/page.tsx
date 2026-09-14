@@ -44,7 +44,25 @@ export default function SubjectHubPage({ params }: SubjectPageProps) {
         className="mb-6"
       />
 
-      <SectionHeading eyebrow={subject.code} title={subject.name} description={subject.description} />
+      {subject.colorToken === "it" ? (
+        <div className="relative overflow-hidden rounded-card border border-subject-it/20 bg-grid-light bg-[length:22px_22px] px-6 py-8 dark:bg-grid-dark sm:px-8 sm:py-10">
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-paper via-paper/70 to-transparent dark:from-chalkboard dark:via-chalkboard/70" />
+          <div className="relative">
+            <div className="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-subject-it">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-subject-it" aria-hidden="true" />
+              {subject.code}
+            </div>
+            <h2 className="text-balance font-display text-3xl font-medium leading-tight text-ink dark:text-bone sm:text-4xl">
+              {subject.name}
+            </h2>
+            <p className="mt-4 max-w-2xl text-balance text-base leading-relaxed text-ink-soft dark:text-bone-soft sm:text-lg">
+              {subject.description}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <SectionHeading eyebrow={subject.code} title={subject.name} description={subject.description} />
+      )}
 
       {learningPaths.length > 0 ? (
         <div className="my-10 flex flex-col gap-6">
