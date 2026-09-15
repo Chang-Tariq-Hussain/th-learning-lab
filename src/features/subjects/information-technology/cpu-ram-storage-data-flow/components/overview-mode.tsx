@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { Box } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ARCHITECTURE_DISCLAIMER, type ComponentId } from "../model";
+import { ARCHITECTURE_DISCLAIMER, type ComponentId, type PhysicalComponentId } from "../model";
 import { SystemDiagram } from "./system-diagram";
 import { InspectPanel } from "./inspect-panel";
 import { System3D } from "./system-3d";
 
 export function OverviewMode() {
-  const [inspected, setInspected] = useState<ComponentId | null>(null);
+  const [inspected, setInspected] = useState<ComponentId | PhysicalComponentId | null>(null);
   const [show3D, setShow3D] = useState(false);
 
   return (
@@ -23,7 +23,7 @@ export function OverviewMode() {
         <SystemDiagram
           activeComponents={[]}
           stepKey="overview-idle"
-          inspectedId={inspected}
+          inspectedId={inspected as ComponentId | null}
           onInspect={setInspected}
         />
       </div>
@@ -38,16 +38,16 @@ export function OverviewMode() {
         )}
       >
         <Box className="h-4 w-4" />
-        {show3D ? "Hide 3D physical layout" : "Show 3D physical layout"}
+        {show3D ? "Hide 3D motherboard lab" : "Show 3D motherboard lab"}
       </button>
 
       {show3D && (
         <div className="flex flex-col gap-2">
-          <System3D />
+          <System3D selected={inspected} onSelect={setInspected} />
           <p className="text-xs text-ink-soft dark:text-bone-soft">
-            A rough physical sense of scale and separateness — storage, RAM, and the CPU package are distinct components
-            data has to travel between. The step-by-step flow itself is taught in 2D in the other modes, where it&apos;s
-            clearer to follow.
+            A physical computer architecture lab — rotate, pan, zoom, or click any part (socket, CPU, RAM slots, SSD,
+            PCIe, chipset, VRM, rear I/O) to see what it does. The step-by-step data flow itself is still taught in 2D
+            in the other modes, where it&apos;s clearer to follow.
           </p>
         </div>
       )}

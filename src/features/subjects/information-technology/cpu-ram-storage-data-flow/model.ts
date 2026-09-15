@@ -150,6 +150,93 @@ export const ARCHITECTURE_DISCLAIMER =
   "This is a simplified educational model. Real CPUs vary in cache layout, don't all use three separate physical buses in exactly this way, and typically overlap fetch/decode/execute across multiple instructions at once (pipelining) instead of finishing one fully before starting the next.";
 
 // ---------------------------------------------------------------------------
+// Physical motherboard components (3D lab only)
+//
+// Kept as a separate id space/registry from `ComponentId`/`COMPONENTS`
+// above rather than merged into it, because `ComponentId` is used as a
+// `Record` key everywhere the 2D diagram/step engine matches the
+// existing architectural parts (registers, buses, cache levels...) —
+// widening that union would force every one of those exhaustive Records
+// to grow keys they have no meaningful diagram position for. "storage"
+// and "ram" already exist above and are reused as-is for the physical
+// M.2/DIMM meshes, so their explanations stay single-sourced; only the
+// parts with no architectural equivalent (socket, chipset, VRM, PCIe,
+// rear I/O, BIOS, the board itself) get new ids here.
+// ---------------------------------------------------------------------------
+
+export type PhysicalComponentId = "motherboard" | "cpuSocket" | "cpu" | "chipset" | "pcie" | "vrm" | "io" | "bios";
+
+export interface PhysicalComponentDef {
+  id: PhysicalComponentId;
+  label: string;
+  group: "Physical";
+  description: string;
+}
+
+export const PHYSICAL_COMPONENTS: Record<PhysicalComponentId, PhysicalComponentDef> = {
+  motherboard: {
+    id: "motherboard",
+    label: "Motherboard",
+    group: "Physical",
+    description:
+      "The printed circuit board that physically connects everything — CPU, memory, storage, expansion cards, and power — via copper traces and connectors, so they can work together as one system.",
+  },
+  cpuSocket: {
+    id: "cpuSocket",
+    label: "CPU Socket",
+    group: "Physical",
+    description:
+      "The socket the CPU package plugs into. It carries every electrical connection between the CPU and the rest of the board, and its retention mechanism holds the CPU (and cooler) firmly in place.",
+  },
+  cpu: {
+    id: "cpu",
+    label: "CPU (Processor Package)",
+    group: "Physical",
+    description:
+      "The physical chip that fetches, decodes, and executes instructions. Inside it are one or more cores, each built from a control unit, ALU, registers, and cache — switch to Instruction Execution mode to watch those internal parts actually work.",
+  },
+  chipset: {
+    id: "chipset",
+    label: "Chipset / Platform Controller",
+    group: "Physical",
+    description:
+      "Helps coordinate communication between the CPU and the rest of the motherboard — storage, expansion slots, and I/O. Exactly which functions live in the chipset versus directly in the CPU varies by platform and generation, so treat this as a general role rather than a fixed spec.",
+  },
+  pcie: {
+    id: "pcie",
+    label: "PCIe Expansion Slots",
+    group: "Physical",
+    description:
+      "General-purpose high-speed expansion slots built into the motherboard. A graphics card is the most common thing plugged in here, but the same interconnect is used for other expansion cards too.",
+  },
+  vrm: {
+    id: "vrm",
+    label: "VRM (Voltage Regulator Module)",
+    group: "Physical",
+    description:
+      "Converts and regulates the power delivered to the CPU, smoothing it into the stable voltage the processor needs to run reliably. Not a data pathway — a power-delivery component.",
+  },
+  io: {
+    id: "io",
+    label: "Rear I/O Panel",
+    group: "Physical",
+    description:
+      "Where external cables connect — USB, network, audio, and display — linking the motherboard to peripherals and monitors outside the case. Mostly informational here rather than individually simulated.",
+  },
+  bios: {
+    id: "bios",
+    label: "BIOS / UEFI Firmware",
+    group: "Physical",
+    description:
+      "Firmware stored on the motherboard itself, separate from the operating system. It runs first when the system powers on, checks and initializes hardware, then hands off control to the OS loaded from storage.",
+  },
+};
+
+export function getAnyComponentDef(id: ComponentId | PhysicalComponentId): ComponentDef | PhysicalComponentDef {
+  return (COMPONENTS as Record<string, ComponentDef>)[id] ?? PHYSICAL_COMPONENTS[id as PhysicalComponentId];
+}
+
+// ---------------------------------------------------------------------------
 // Registers
 // ---------------------------------------------------------------------------
 
