@@ -22,6 +22,7 @@ import {
   Ruler,
   Move,
   Shapes,
+  Cpu,
   type LucideIcon,
 } from "lucide-react";
 
@@ -57,6 +58,7 @@ const TOPIC_ICONS: Record<string, LucideIcon> = {
   statistics: BarChart3,
   measurement: Ruler,
   "coordinate-geometry": Move,
+  "operating-systems": Cpu,
 };
 
 export function resolveTopicIcon(topicSlug: string): LucideIcon {

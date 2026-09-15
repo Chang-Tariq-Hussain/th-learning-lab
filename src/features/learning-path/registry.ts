@@ -8,6 +8,7 @@ import { physicsElectromagnetismPath } from "./data/physics-electromagnetism";
 import { physicsWaveMotionPath } from "./data/physics-wave-motion";
 import { mathematicsFoundationsPath } from "./data/mathematics-foundations";
 import { informationTechnologyComputerFundamentalsPath } from "./data/information-technology-computer-fundamentals";
+import { informationTechnologyOperatingSystemsPath } from "./data/information-technology-operating-systems";
 
 /**
  * Every registered learning path. Add a new path by creating a
@@ -26,6 +27,7 @@ export const learningPathList: LearningPath[] = [
   physicsWaveMotionPath,
   mathematicsFoundationsPath,
   informationTechnologyComputerFundamentalsPath,
+  informationTechnologyOperatingSystemsPath,
 ];
 
 export function getLearningPathById(id: string): LearningPath | undefined {

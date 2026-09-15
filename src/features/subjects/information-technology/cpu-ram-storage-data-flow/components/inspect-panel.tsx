@@ -1,10 +1,10 @@
 "use client";
 
-import { getAnyComponentDef, type ComponentId, type PhysicalComponentId } from "../model";
+import { COMPONENTS, type ComponentId } from "../model";
 
-export function InspectPanel({ id }: { id: ComponentId | PhysicalComponentId | null }) {
+export function InspectPanel({ id }: { id: ComponentId | null }) {
   if (!id) return null;
-  const def = getAnyComponentDef(id);
+  const def = COMPONENTS[id];
   return (
     <div className="rounded-card border border-line p-4 dark:border-line-dark">
       <p className="font-mono text-xs uppercase tracking-wide text-subject-it">

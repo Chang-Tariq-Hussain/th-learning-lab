@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Fieldnote",
   tagline: "A notebook for learning science, by doing it.",
   description:
-    "Fieldnote is a modern learning platform for Physics, Chemistry, Biology, and Mathematics, built around interactive simulations you can explore at your own pace.",
+    "Fieldnote is a modern learning platform for Physics, Chemistry, Biology, Mathematics, and Information Technology, built around interactive simulations you can explore at your own pace.",
   url: "https://fieldnote.example.com",
 };
 
@@ -13,6 +13,7 @@ export const mainNav = [
   { label: "Chemistry", href: "/dashboard/chemistry" },
   { label: "Biology", href: "/dashboard/biology" },
   { label: "Mathematics", href: "/dashboard/mathematics" },
+  { label: "Information Technology", href: "/dashboard/information-technology" },
 ];
 
 export const footerNav = {

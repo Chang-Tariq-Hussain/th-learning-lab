@@ -870,6 +870,26 @@ export const subjects: Subject[] = [
           },
         ],
       },
+      {
+        slug: "operating-systems",
+        name: "Operating Systems",
+        visualizations: [
+          {
+            slug: "cpu-scheduling-simulator",
+            title: "CPU Scheduling Simulator",
+            description:
+              "Experiment with FCFS, SJF, Round Robin, and Priority Scheduling to see how the CPU decides which process runs next.",
+            href: "/dashboard/information-technology/cpu-scheduling-simulator",
+          },
+          {
+            slug: "process-management-simulator",
+            title: "Process Management Simulator",
+            description:
+              "Follow a process through its lifecycle, inspect its Process Control Block, and step through a context switch.",
+            href: "/dashboard/information-technology/process-management-simulator",
+          },
+        ],
+      },
     ],
   },
 ];
