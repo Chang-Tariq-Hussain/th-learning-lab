@@ -100,6 +100,9 @@ import { informationTechnologyCpuSchedulingSimulatorQuiz } from "./data/it-cpu-s
 import { informationTechnologyProcessManagementSimulatorQuiz } from "./data/it-process-management-simulator-quiz";
 import { informationTechnologyMemoryManagementSimulatorQuiz } from "./data/it-memory-management-simulator-quiz";
 import { informationTechnologyFileSystemExplorerQuiz } from "./data/it-file-system-explorer-quiz";
+import { informationTechnologyVirtualMemorySimulatorQuiz } from "./data/it-virtual-memory-simulator-quiz";
+import { informationTechnologyPagingSimulatorQuiz } from "./data/it-paging-simulator-quiz";
+import { informationTechnologyPagingSimulatorPracticeQuiz } from "./data/it-paging-simulator-practice-quiz";
 import { informationTechnologyBinaryDataRepresentationQuiz } from "./data/it-binary-data-representation-quiz";
 import { informationTechnologyComputerBootProcessQuiz } from "./data/it-computer-boot-process-quiz";
 
@@ -214,6 +217,9 @@ export const quizzes: QuizMeta[] = [
   informationTechnologyProcessManagementSimulatorQuiz,
   informationTechnologyMemoryManagementSimulatorQuiz,
   informationTechnologyFileSystemExplorerQuiz,
+  informationTechnologyVirtualMemorySimulatorQuiz,
+  informationTechnologyPagingSimulatorPracticeQuiz,
+  informationTechnologyPagingSimulatorQuiz,
 ];
 
 export function getQuizById(id: string): QuizMeta | undefined {

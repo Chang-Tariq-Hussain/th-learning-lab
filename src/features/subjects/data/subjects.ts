@@ -896,6 +896,20 @@ export const subjects: Subject[] = [
             href: "/dashboard/information-technology/memory-management-simulator",
           },
           {
+            slug: "virtual-memory-simulator",
+            title: "Virtual Memory Simulator",
+            description:
+              "See how a process gets a large virtual address space even when physical RAM is limited — residency, address translation, memory pressure, and process isolation.",
+            href: "/dashboard/information-technology/virtual-memory-simulator",
+          },
+          {
+            slug: "paging-simulator",
+            title: "Paging Simulator",
+            description:
+              "Map virtual pages onto physical frames — page tables, address translation, page faults, demand paging, FIFO/LRU/Optimal replacement, page size trade-offs, and the TLB.",
+            href: "/dashboard/information-technology/paging-simulator",
+          },
+          {
             slug: "file-system-explorer",
             title: "File System Explorer",
             description:

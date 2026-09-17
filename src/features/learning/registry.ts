@@ -93,6 +93,8 @@ import { informationTechnologyCpuSchedulingSimulatorContent } from "./data/infor
 import { informationTechnologyProcessManagementSimulatorContent } from "./data/information-technology-process-management-simulator";
 import { informationTechnologyMemoryManagementSimulatorContent } from "./data/information-technology-memory-management-simulator";
 import { informationTechnologyFileSystemExplorerContent } from "./data/information-technology-file-system-explorer";
+import { informationTechnologyVirtualMemorySimulatorContent } from "./data/information-technology-virtual-memory-simulator";
+import { informationTechnologyPagingSimulatorContent } from "./data/information-technology-paging-simulator";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -692,6 +694,8 @@ export const topicContentList: TopicContent[] = [
   informationTechnologyProcessManagementSimulatorContent,
   informationTechnologyMemoryManagementSimulatorContent,
   informationTechnologyFileSystemExplorerContent,
+  informationTechnologyVirtualMemorySimulatorContent,
+  informationTechnologyPagingSimulatorContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

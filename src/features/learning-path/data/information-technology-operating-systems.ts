@@ -10,10 +10,11 @@ import type { LearningPath } from "../types";
  * they drive the Learning Path UI's recommended order, but never
  * lock or gate direct access to a topic's simulation route.
  *
- * Future topics (Memory Management, Virtual Memory, File Systems,
- * Deadlocks) are named only in this file's comments, matching the
- * brief's "should eventually allow future topics to follow naturally" —
- * they are NOT implemented or linked here.
+ * Paging now follows Virtual Memory: Virtual Memory answers "why does
+ * a process get an address space larger than RAM?", and Paging answers
+ * "how is that actually implemented?". Remaining future topics
+ * (Deadlocks) are named only in this file's comments — they are NOT
+ * implemented or linked here.
  */
 export const informationTechnologyOperatingSystemsPath: LearningPath = {
   id: "information-technology-operating-systems",
@@ -50,14 +51,33 @@ export const informationTechnologyOperatingSystemsPath: LearningPath = {
     },
     {
       subjectSlug: "information-technology",
+      topicSlug: "virtual-memory-simulator",
+      title: "Virtual Memory",
+      description: "How a process gets a large virtual address space even when physical RAM is limited.",
+      href: "/dashboard/information-technology/virtual-memory-simulator",
+      // Omitted: falls back to the default linear chain (depends on
+      // memory-management-simulator, immediately before it).
+    },
+    {
+      subjectSlug: "information-technology",
+      topicSlug: "paging-simulator",
+      title: "Paging",
+      description: "How the OS maps virtual pages onto physical frames using page tables, and what happens on a page fault.",
+      href: "/dashboard/information-technology/paging-simulator",
+      // Omitted: falls back to the default linear chain (depends on
+      // virtual-memory-simulator, immediately before it). Advisory
+      // only — the Paging route stays directly accessible regardless.
+    },
+    {
+      subjectSlug: "information-technology",
       topicSlug: "file-system-explorer",
       title: "File System Explorer",
       description: "How an operating system organizes files and directories on persistent storage.",
       href: "/dashboard/information-technology/file-system-explorer",
       // Omitted: falls back to the default linear chain (depends on
-      // memory-management-simulator, immediately before it).
+      // paging-simulator, immediately before it).
     },
-    // Future (not implemented here): Virtual Memory, Deadlocks would
-    // continue this sequence.
+    // Future (not implemented here): Deadlocks would continue this
+    // sequence.
   ],
 };
