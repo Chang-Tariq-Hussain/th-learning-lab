@@ -1,6 +1,3 @@
 node_modules/
 .next/
-.env*.local
-
-echo "tsconfig.tsbuildinfo" >> .gitignore
-git rm --cached tsconfig.tsbuildinfo
+.env*.localtsconfig.tsbuildinfo

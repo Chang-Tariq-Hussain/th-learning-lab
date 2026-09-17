@@ -98,6 +98,8 @@ import { physicsWaveSpeedQuiz } from "./data/physics-wave-speed-quiz";
 import { informationTechnologyCpuRamStorageDataFlowQuiz } from "./data/it-cpu-ram-storage-data-flow-quiz";
 import { informationTechnologyCpuSchedulingSimulatorQuiz } from "./data/it-cpu-scheduling-simulator-quiz";
 import { informationTechnologyProcessManagementSimulatorQuiz } from "./data/it-process-management-simulator-quiz";
+import { informationTechnologyMemoryManagementSimulatorQuiz } from "./data/it-memory-management-simulator-quiz";
+import { informationTechnologyFileSystemExplorerQuiz } from "./data/it-file-system-explorer-quiz";
 import { informationTechnologyBinaryDataRepresentationQuiz } from "./data/it-binary-data-representation-quiz";
 import { informationTechnologyComputerBootProcessQuiz } from "./data/it-computer-boot-process-quiz";
 
@@ -210,6 +212,8 @@ export const quizzes: QuizMeta[] = [
   informationTechnologyComputerBootProcessQuiz,
   informationTechnologyCpuSchedulingSimulatorQuiz,
   informationTechnologyProcessManagementSimulatorQuiz,
+  informationTechnologyMemoryManagementSimulatorQuiz,
+  informationTechnologyFileSystemExplorerQuiz,
 ];
 
 export function getQuizById(id: string): QuizMeta | undefined {

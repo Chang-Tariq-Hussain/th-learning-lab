@@ -91,6 +91,8 @@ import { informationTechnologyBinaryDataRepresentationContent } from "./data/inf
 import { informationTechnologyComputerBootProcessContent } from "./data/information-technology-computer-boot-process";
 import { informationTechnologyCpuSchedulingSimulatorContent } from "./data/information-technology-cpu-scheduling-simulator";
 import { informationTechnologyProcessManagementSimulatorContent } from "./data/information-technology-process-management-simulator";
+import { informationTechnologyMemoryManagementSimulatorContent } from "./data/information-technology-memory-management-simulator";
+import { informationTechnologyFileSystemExplorerContent } from "./data/information-technology-file-system-explorer";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -688,6 +690,8 @@ export const topicContentList: TopicContent[] = [
   informationTechnologyComputerBootProcessContent,
   informationTechnologyCpuSchedulingSimulatorContent,
   informationTechnologyProcessManagementSimulatorContent,
+  informationTechnologyMemoryManagementSimulatorContent,
+  informationTechnologyFileSystemExplorerContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

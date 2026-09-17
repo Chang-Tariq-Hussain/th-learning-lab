@@ -39,7 +39,25 @@ export const informationTechnologyOperatingSystemsPath: LearningPath = {
       // Omitted: falls back to the default linear chain (depends on
       // the topic immediately before it, cpu-scheduling-simulator).
     },
-    // Future (not implemented here): Memory Management, Virtual
-    // Memory, File Systems, Deadlocks would continue this sequence.
+    {
+      subjectSlug: "information-technology",
+      topicSlug: "memory-management-simulator",
+      title: "Memory Management",
+      description: "How the OS allocates and frees RAM across multiple processes, and what fragmentation is.",
+      href: "/dashboard/information-technology/memory-management-simulator",
+      // Omitted: falls back to the default linear chain (depends on
+      // process-management-simulator, immediately before it).
+    },
+    {
+      subjectSlug: "information-technology",
+      topicSlug: "file-system-explorer",
+      title: "File System Explorer",
+      description: "How an operating system organizes files and directories on persistent storage.",
+      href: "/dashboard/information-technology/file-system-explorer",
+      // Omitted: falls back to the default linear chain (depends on
+      // memory-management-simulator, immediately before it).
+    },
+    // Future (not implemented here): Virtual Memory, Deadlocks would
+    // continue this sequence.
   ],
 };

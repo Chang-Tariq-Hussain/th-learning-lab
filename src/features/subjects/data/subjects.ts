@@ -888,6 +888,20 @@ export const subjects: Subject[] = [
               "Follow a process through its lifecycle, inspect its Process Control Block, and step through a context switch.",
             href: "/dashboard/information-technology/process-management-simulator",
           },
+          {
+            slug: "memory-management-simulator",
+            title: "Memory Management Simulator",
+            description:
+              "Allocate and free RAM for processes, and see fragmentation, partitioning, and allocation strategies in action.",
+            href: "/dashboard/information-technology/memory-management-simulator",
+          },
+          {
+            slug: "file-system-explorer",
+            title: "File System Explorer",
+            description:
+              "Navigate a virtual file system, trace paths, inspect storage blocks, and step through open/save/delete operations.",
+            href: "/dashboard/information-technology/file-system-explorer",
+          },
         ],
       },
     ],
