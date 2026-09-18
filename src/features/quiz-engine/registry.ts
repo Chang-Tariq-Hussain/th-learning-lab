@@ -95,6 +95,8 @@ import { physicsBasicWaveMotionQuiz } from "./data/physics-basic-wave-motion-qui
 import { physicsTransverseLongitudinalWavesQuiz } from "./data/physics-transverse-longitudinal-waves-quiz";
 import { physicsFrequencyPeriodQuiz } from "./data/physics-frequency-period-quiz";
 import { physicsWaveSpeedQuiz } from "./data/physics-wave-speed-quiz";
+import { informationTechnologyCpuArchitectureInstructionCycleQuiz } from "./data/it-cpu-architecture-instruction-cycle-quiz";
+import { informationTechnologyCpuArchitectureInstructionCyclePracticeQuiz } from "./data/it-cpu-architecture-instruction-cycle-practice-quiz";
 import { informationTechnologyCpuRamStorageDataFlowQuiz } from "./data/it-cpu-ram-storage-data-flow-quiz";
 import { informationTechnologyCpuSchedulingSimulatorQuiz } from "./data/it-cpu-scheduling-simulator-quiz";
 import { informationTechnologyProcessManagementSimulatorQuiz } from "./data/it-process-management-simulator-quiz";
@@ -212,6 +214,8 @@ export const quizzes: QuizMeta[] = [
   physicsTransverseLongitudinalWavesQuiz,
   physicsFrequencyPeriodQuiz,
   physicsWaveSpeedQuiz,
+  informationTechnologyCpuArchitectureInstructionCyclePracticeQuiz,
+  informationTechnologyCpuArchitectureInstructionCycleQuiz,
   informationTechnologyCpuRamStorageDataFlowQuiz,
   informationTechnologyBinaryDataRepresentationQuiz,
   informationTechnologyComputerBootProcessQuiz,

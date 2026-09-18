@@ -473,5 +473,13 @@ export const informationTechnologyCpuRamStorageDataFlowContent: TopicContent = {
     ],
   },
 
-  relatedTopics: [],
+  relatedTopics: [
+    {
+      subjectSlug: "information-technology",
+      topicSlug: "cpu-architecture-instruction-cycle",
+      label: "CPU Architecture & Instruction Cycle",
+      href: "/dashboard/information-technology/cpu-architecture-instruction-cycle",
+      reason: "See what happens inside the CPU during Fetch/Decode/Execute/Write Back — the internal execution this topic's buses and cache carry data for.",
+    },
+  ],
 };

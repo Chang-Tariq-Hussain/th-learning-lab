@@ -2,14 +2,16 @@ import type { LearningPath } from "../types";
 
 /**
  * Information Technology learning path. Sequenced Computer
- * Components Explorer -> CPU–RAM–Storage Data Flow -> Binary & Data
- * Representation -> Computer Boot Process ("first understand the
- * physical components, then how they work together, then how data
- * is represented, then how the machine starts"). Computer Components
- * Explorer is now built and sits at the front as the path's only
- * no-prerequisite node. Per the brief, prerequisites here are
- * advisory only (this path/its UI recommends an order) — they never
- * lock or gate direct access to a topic's simulation route.
+ * Components Explorer -> CPU Architecture & Instruction Cycle ->
+ * CPU–RAM–Storage Data Flow -> Binary & Data Representation ->
+ * Computer Boot Process ("first understand the physical components,
+ * then what happens inside the CPU when it executes an instruction,
+ * then how the CPU/RAM/storage work together, then how data is
+ * represented, then how the machine starts"). Computer Components
+ * Explorer sits at the front as the path's only no-prerequisite node.
+ * Per the brief, prerequisites here are advisory only (this path/its
+ * UI recommends an order) — they never lock or gate direct access to
+ * a topic's simulation route.
  */
 export const informationTechnologyComputerFundamentalsPath: LearningPath = {
   id: "information-technology-computer-fundamentals",
@@ -28,12 +30,21 @@ export const informationTechnologyComputerFundamentalsPath: LearningPath = {
     },
     {
       subjectSlug: "information-technology",
+      topicSlug: "cpu-architecture-instruction-cycle",
+      title: "CPU Architecture & Instruction Cycle",
+      description: "What happens inside the CPU when it executes one instruction — Fetch, Decode, Execute, Write Back.",
+      href: "/dashboard/information-technology/cpu-architecture-instruction-cycle",
+      // Omitted: falls back to the default linear chain (depends on
+      // the topic immediately before it, computer-components-explorer).
+    },
+    {
+      subjectSlug: "information-technology",
       topicSlug: "cpu-ram-storage-data-flow",
       title: "CPU–RAM–Storage Data Flow",
       description: "How the CPU, RAM, and storage work together when a computer does something.",
       href: "/dashboard/information-technology/cpu-ram-storage-data-flow",
       // Omitted: falls back to the default linear chain (depends on
-      // the topic immediately before it, computer-components-explorer).
+      // the topic immediately before it, cpu-architecture-instruction-cycle).
     },
     {
       subjectSlug: "information-technology",

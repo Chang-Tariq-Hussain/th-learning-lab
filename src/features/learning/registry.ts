@@ -86,6 +86,7 @@ import { chemistryBronstedLowryContent } from "./data/chemistry-bronsted-lowry";
 import { chemistryConjugateAcidBasePairsContent } from "./data/chemistry-conjugate-acid-base-pairs";
 import { chemistryLewisAcidBaseContent } from "./data/chemistry-lewis-acid-base";
 import { chemistryStrongWeakAcidsBasesContent } from "./data/chemistry-strong-weak-acids-bases";
+import { informationTechnologyCpuArchitectureInstructionCycleContent } from "./data/information-technology-cpu-architecture-instruction-cycle";
 import { informationTechnologyCpuRamStorageDataFlowContent } from "./data/information-technology-cpu-ram-storage-data-flow";
 import { informationTechnologyBinaryDataRepresentationContent } from "./data/information-technology-binary-data-representation";
 import { informationTechnologyComputerBootProcessContent } from "./data/information-technology-computer-boot-process";
@@ -688,6 +689,7 @@ export const topicContentList: TopicContent[] = [
   chemistryConjugateAcidBasePairsContent,
   chemistryLewisAcidBaseContent,
   chemistryStrongWeakAcidsBasesContent,
+  informationTechnologyCpuArchitectureInstructionCycleContent,
   informationTechnologyCpuRamStorageDataFlowContent,
   informationTechnologyBinaryDataRepresentationContent,
   informationTechnologyComputerBootProcessContent,

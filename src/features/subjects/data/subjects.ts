@@ -848,6 +848,13 @@ export const subjects: Subject[] = [
         name: "Computer Fundamentals",
         visualizations: [
           {
+            slug: "cpu-architecture-instruction-cycle",
+            title: "CPU Architecture & Instruction Cycle",
+            description:
+              "Step a small program through Fetch, Decode, Execute, and Write Back inside a Virtual CPU Laboratory and watch registers, the ALU, and flags change.",
+            href: "/dashboard/information-technology/cpu-architecture-instruction-cycle",
+          },
+          {
             slug: "cpu-ram-storage-data-flow",
             title: "CPU–RAM–Storage Data Flow",
             description:
