@@ -916,6 +916,13 @@ export const subjects: Subject[] = [
               "Navigate a virtual file system, trace paths, inspect storage blocks, and step through open/save/delete operations.",
             href: "/dashboard/information-technology/file-system-explorer",
           },
+          {
+            slug: "deadlock-simulator",
+            title: "Deadlock Simulator",
+            description:
+              "See why operating-system deadlocks occur — the four Coffman conditions, a live Resource Allocation Graph, the Banker's Algorithm, and prevention, detection, and recovery labs.",
+            href: "/dashboard/information-technology/deadlock-simulator",
+          },
         ],
       },
     ],

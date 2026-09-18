@@ -1,18 +1,15 @@
 import type { LearningPath } from "../types";
 
 /**
- * Information Technology learning path. Per the batch brief,
- * Computer Fundamentals is meant to sequence Computer Components
- * Explorer -> CPU–RAM–Storage Data Flow -> Binary & Data
+ * Information Technology learning path. Sequenced Computer
+ * Components Explorer -> CPU–RAM–Storage Data Flow -> Binary & Data
  * Representation -> Computer Boot Process ("first understand the
  * physical components, then how they work together, then how data
  * is represented, then how the machine starts"). Computer Components
- * Explorer isn't built yet, so this path starts from Data Flow; add
- * the Components Explorer node ahead of it (as its prerequisite)
- * once that simulation exists, without otherwise restructuring this
- * file. Per the brief, prerequisites here are advisory only (this
- * path/its UI recommends an order) — they never lock or gate direct
- * access to a topic's simulation route.
+ * Explorer is now built and sits at the front as the path's only
+ * no-prerequisite node. Per the brief, prerequisites here are
+ * advisory only (this path/its UI recommends an order) — they never
+ * lock or gate direct access to a topic's simulation route.
  */
 export const informationTechnologyComputerFundamentalsPath: LearningPath = {
   id: "information-technology-computer-fundamentals",
@@ -23,11 +20,20 @@ export const informationTechnologyComputerFundamentalsPath: LearningPath = {
   topics: [
     {
       subjectSlug: "information-technology",
+      topicSlug: "computer-components-explorer",
+      title: "Computer Components & Hardware Explorer",
+      description: "What the major physical components of a computer are, where they sit, and how they connect.",
+      href: "/dashboard/information-technology/computer-components-explorer",
+      prerequisites: [],
+    },
+    {
+      subjectSlug: "information-technology",
       topicSlug: "cpu-ram-storage-data-flow",
       title: "CPU–RAM–Storage Data Flow",
       description: "How the CPU, RAM, and storage work together when a computer does something.",
       href: "/dashboard/information-technology/cpu-ram-storage-data-flow",
-      prerequisites: [],
+      // Omitted: falls back to the default linear chain (depends on
+      // the topic immediately before it, computer-components-explorer).
     },
     {
       subjectSlug: "information-technology",

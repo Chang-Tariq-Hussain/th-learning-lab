@@ -12,9 +12,10 @@ import type { LearningPath } from "../types";
  *
  * Paging now follows Virtual Memory: Virtual Memory answers "why does
  * a process get an address space larger than RAM?", and Paging answers
- * "how is that actually implemented?". Remaining future topics
- * (Deadlocks) are named only in this file's comments — they are NOT
- * implemented or linked here.
+ * "how is that actually implemented?". Deadlocks now closes out the
+ * path, after File System Explorer: how processes can become
+ * permanently blocked waiting on resources held by one another, and
+ * how the OS prevents, avoids, detects, and recovers from that.
  */
 export const informationTechnologyOperatingSystemsPath: LearningPath = {
   id: "information-technology-operating-systems",
@@ -77,7 +78,16 @@ export const informationTechnologyOperatingSystemsPath: LearningPath = {
       // Omitted: falls back to the default linear chain (depends on
       // paging-simulator, immediately before it).
     },
-    // Future (not implemented here): Deadlocks would continue this
-    // sequence.
+    {
+      subjectSlug: "information-technology",
+      topicSlug: "deadlock-simulator",
+      title: "Deadlocks",
+      description: "Why processes can become permanently blocked while waiting on resources held by one another, and what the OS can do about it.",
+      href: "/dashboard/information-technology/deadlock-simulator",
+      // Omitted: falls back to the default linear chain (depends on
+      // file-system-explorer, immediately before it). Advisory only —
+      // the Deadlock Simulator route stays directly accessible
+      // regardless.
+    },
   ],
 };
