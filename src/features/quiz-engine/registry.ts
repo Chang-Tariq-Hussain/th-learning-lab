@@ -104,6 +104,8 @@ import { informationTechnologyMemoryManagementSimulatorQuiz } from "./data/it-me
 import { informationTechnologyFileSystemExplorerQuiz } from "./data/it-file-system-explorer-quiz";
 import { informationTechnologyVirtualMemorySimulatorQuiz } from "./data/it-virtual-memory-simulator-quiz";
 import { informationTechnologyPagingSimulatorQuiz } from "./data/it-paging-simulator-quiz";
+import { informationTechnologyCacheMemoryExplorerQuiz } from "./data/it-cache-memory-explorer-quiz";
+import { informationTechnologyCacheMemoryExplorerPracticeQuiz } from "./data/it-cache-memory-explorer-practice-quiz";
 import { informationTechnologyPagingSimulatorPracticeQuiz } from "./data/it-paging-simulator-practice-quiz";
 import { informationTechnologyDeadlockSimulatorQuiz } from "./data/it-deadlock-simulator-quiz";
 import { informationTechnologyDeadlockSimulatorPracticeQuiz } from "./data/it-deadlock-simulator-practice-quiz";
@@ -216,6 +218,8 @@ export const quizzes: QuizMeta[] = [
   physicsWaveSpeedQuiz,
   informationTechnologyCpuArchitectureInstructionCyclePracticeQuiz,
   informationTechnologyCpuArchitectureInstructionCycleQuiz,
+  informationTechnologyCacheMemoryExplorerPracticeQuiz,
+  informationTechnologyCacheMemoryExplorerQuiz,
   informationTechnologyCpuRamStorageDataFlowQuiz,
   informationTechnologyBinaryDataRepresentationQuiz,
   informationTechnologyComputerBootProcessQuiz,

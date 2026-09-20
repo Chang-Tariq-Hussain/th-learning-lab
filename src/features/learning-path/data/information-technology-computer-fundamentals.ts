@@ -3,10 +3,11 @@ import type { LearningPath } from "../types";
 /**
  * Information Technology learning path. Sequenced Computer
  * Components Explorer -> CPU Architecture & Instruction Cycle ->
- * CPU–RAM–Storage Data Flow -> Binary & Data Representation ->
- * Computer Boot Process ("first understand the physical components,
- * then what happens inside the CPU when it executes an instruction,
- * then how the CPU/RAM/storage work together, then how data is
+ * Cache Memory Explorer -> CPU–RAM–Storage Data Flow -> Binary & Data
+ * Representation -> Computer Boot Process ("first understand the
+ * physical components, then what happens inside the CPU when it
+ * executes an instruction, then how small fast memory keeps the CPU
+ * fed, then how the CPU/RAM/storage work together, then how data is
  * represented, then how the machine starts"). Computer Components
  * Explorer sits at the front as the path's only no-prerequisite node.
  * Per the brief, prerequisites here are advisory only (this path/its
@@ -39,12 +40,28 @@ export const informationTechnologyComputerFundamentalsPath: LearningPath = {
     },
     {
       subjectSlug: "information-technology",
+      topicSlug: "cache-memory-explorer",
+      title: "Cache Memory Explorer",
+      description: "Why CPUs use cache, and how hits, misses, locality, cache lines, and eviction decide how fast memory feels.",
+      href: "/dashboard/information-technology/cache-memory-explorer",
+      // Omitted: falls back to the default linear chain (depends on
+      // the topic immediately before it, cpu-architecture-instruction-cycle).
+    },
+    {
+      subjectSlug: "information-technology",
       topicSlug: "cpu-ram-storage-data-flow",
       title: "CPU–RAM–Storage Data Flow",
       description: "How the CPU, RAM, and storage work together when a computer does something.",
       href: "/dashboard/information-technology/cpu-ram-storage-data-flow",
-      // Omitted: falls back to the default linear chain (depends on
-      // the topic immediately before it, cpu-architecture-instruction-cycle).
+      // Explicit, on purpose. Cache Memory Explorer was inserted
+      // *before* this topic, so leaving this omitted would have
+      // silently re-pointed the default chain at it — and a student who
+      // had already started this topic but never opened Cache would
+      // suddenly see it locked in the path panel. Keeping the original
+      // prerequisite preserves existing progress and keeps Cache a
+      // recommended step rather than a gate; the displayed order (and
+      // the "Next topic" navigation) is still Cache -> Data Flow.
+      prerequisites: [{ subjectSlug: "information-technology", topicSlug: "cpu-architecture-instruction-cycle" }],
     },
     {
       subjectSlug: "information-technology",

@@ -855,6 +855,13 @@ export const subjects: Subject[] = [
             href: "/dashboard/information-technology/cpu-architecture-instruction-cycle",
           },
           {
+            slug: "cache-memory-explorer",
+            title: "Cache Memory Explorer",
+            description:
+              "Explore why CPUs use cache memory: run access patterns and watch cache hits, misses, locality, cache lines, eviction, and average access time in a Cache Memory Laboratory.",
+            href: "/dashboard/information-technology/cache-memory-explorer",
+          },
+          {
             slug: "cpu-ram-storage-data-flow",
             title: "CPU–RAM–Storage Data Flow",
             description:

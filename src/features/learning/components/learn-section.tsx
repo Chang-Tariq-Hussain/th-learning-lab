@@ -31,8 +31,8 @@ export function LearnSection({ subjectSlug, topicSlug, colorToken, content, clas
 
   return (
     <SectionShell icon={<BookOpen className="h-4 w-4" strokeWidth={1.75} />} label="Learn" colorToken={colorToken} className={className}>
-      <div className="grid gap-4 lg:grid-cols-2">
-        <div className="rounded-card border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="min-w-0 rounded-card border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
           <p className="mb-3 flex items-center gap-2 text-sm font-medium text-ink dark:text-bone">
             <Target className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
             Learning objectives
@@ -47,7 +47,7 @@ export function LearnSection({ subjectSlug, topicSlug, colorToken, content, clas
           </ul>
         </div>
 
-        <div className="rounded-card border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
+        <div className="min-w-0 rounded-card border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
           <p className="mb-3 text-sm font-medium text-ink dark:text-bone">Key concepts</p>
           <div className="flex flex-col gap-4">
             {content.concepts.map((concept, index) => (
@@ -68,7 +68,7 @@ export function LearnSection({ subjectSlug, topicSlug, colorToken, content, clas
       {content.keyTerms && content.keyTerms.length > 0 ? (
         <div className="mt-4 rounded-card border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
           <p className="mb-3 text-sm font-medium text-ink dark:text-bone">Key terms</p>
-          <dl className="grid gap-3 sm:grid-cols-2">
+          <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {content.keyTerms.map((entry, index) => (
               <div key={index}>
                 <dt className={cn("font-mono text-[11px] uppercase tracking-wide", colors.text)}>{entry.term}</dt>
@@ -80,7 +80,7 @@ export function LearnSection({ subjectSlug, topicSlug, colorToken, content, clas
       ) : null}
 
       {content.visualAids && content.visualAids.length > 0 ? (
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {content.visualAids.map((aid) => (
             <div
               key={aid.id}
