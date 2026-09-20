@@ -4,11 +4,11 @@ import type { LearningPath } from "../types";
  * Information Technology learning path. Sequenced Computer
  * Components Explorer -> CPU Architecture & Instruction Cycle ->
  * Cache Memory Explorer -> CPU–RAM–Storage Data Flow -> Binary & Data
- * Representation -> Computer Boot Process ("first understand the
+ * Representation -> Computer Boot Process -> I/O & Interrupts ("first understand the
  * physical components, then what happens inside the CPU when it
  * executes an instruction, then how small fast memory keeps the CPU
  * fed, then how the CPU/RAM/storage work together, then how data is
- * represented, then how the machine starts"). Computer Components
+ * represented, then how the machine starts, then how devices get the CPU's attention before Operating Systems"). Computer Components
  * Explorer sits at the front as the path's only no-prerequisite node.
  * Per the brief, prerequisites here are advisory only (this path/its
  * UI recommends an order) — they never lock or gate direct access to
@@ -18,7 +18,7 @@ export const informationTechnologyComputerFundamentalsPath: LearningPath = {
   id: "information-technology-computer-fundamentals",
   subjectSlug: "information-technology",
   title: "Computer Fundamentals",
-  description: "Understand what a computer's core components are, how they work together, how data is represented, and how the machine starts.",
+  description: "Understand what a computer's core components are, how they work together, how data is represented, how the machine starts, and how devices communicate with the CPU.",
   colorToken: "it",
   topics: [
     {
@@ -80,6 +80,15 @@ export const informationTechnologyComputerFundamentalsPath: LearningPath = {
       href: "/dashboard/information-technology/computer-boot-process",
       // Omitted: falls back to the default linear chain (depends on
       // the topic immediately before it, binary-data-representation).
+    },
+    {
+      subjectSlug: "information-technology",
+      topicSlug: "io-interrupts-explorer",
+      title: "I/O & Interrupts",
+      description: "How the CPU and software communicate with devices, and how devices and events get the CPU's attention.",
+      href: "/dashboard/information-technology/io-interrupts-explorer",
+      // Omitted: falls back to the default linear chain (depends on
+      // the topic immediately before it, computer-boot-process).
     },
   ],
 };

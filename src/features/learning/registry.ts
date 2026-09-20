@@ -98,6 +98,7 @@ import { informationTechnologyFileSystemExplorerContent } from "./data/informati
 import { informationTechnologyVirtualMemorySimulatorContent } from "./data/information-technology-virtual-memory-simulator";
 import { informationTechnologyPagingSimulatorContent } from "./data/information-technology-paging-simulator";
 import { informationTechnologyDeadlockSimulatorContent } from "./data/information-technology-deadlock-simulator";
+import { informationTechnologyIoInterruptsExplorerContent } from "./data/information-technology-io-interrupts-explorer";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -702,6 +703,7 @@ export const topicContentList: TopicContent[] = [
   informationTechnologyVirtualMemorySimulatorContent,
   informationTechnologyPagingSimulatorContent,
   informationTechnologyDeadlockSimulatorContent,
+  informationTechnologyIoInterruptsExplorerContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

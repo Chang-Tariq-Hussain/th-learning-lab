@@ -882,6 +882,13 @@ export const subjects: Subject[] = [
               "Step through what happens from pressing the power button to reaching the desktop, stage by stage.",
             href: "/dashboard/information-technology/computer-boot-process",
           },
+          {
+            slug: "io-interrupts-explorer",
+            title: "I/O & Interrupts Explorer",
+            description:
+              "Generate device events and watch the CPU respond — controllers, polling vs interrupts, the ISR, priority, masking, vectors, memory-mapped I/O, and DMA.",
+            href: "/dashboard/information-technology/io-interrupts-explorer",
+          },
         ],
       },
       {
