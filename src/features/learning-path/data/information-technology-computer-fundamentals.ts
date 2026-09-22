@@ -4,11 +4,13 @@ import type { LearningPath } from "../types";
  * Information Technology learning path. Sequenced Computer
  * Components Explorer -> CPU Architecture & Instruction Cycle ->
  * Cache Memory Explorer -> CPU–RAM–Storage Data Flow -> Binary & Data
- * Representation -> Computer Boot Process -> I/O & Interrupts ("first understand the
+ * Representation -> Number Systems & Data Units -> Computer Boot
+ * Process -> I/O & Interrupts ("first understand the
  * physical components, then what happens inside the CPU when it
  * executes an instruction, then how small fast memory keeps the CPU
  * fed, then how the CPU/RAM/storage work together, then how data is
- * represented, then how the machine starts, then how devices get the CPU's attention before Operating Systems"). Computer Components
+ * represented, then number systems and data units built on top of
+ * that representation, then how the machine starts, then how devices get the CPU's attention before Operating Systems"). Computer Components
  * Explorer sits at the front as the path's only no-prerequisite node.
  * Per the brief, prerequisites here are advisory only (this path/its
  * UI recommends an order) — they never lock or gate direct access to
@@ -74,12 +76,24 @@ export const informationTechnologyComputerFundamentalsPath: LearningPath = {
     },
     {
       subjectSlug: "information-technology",
+      topicSlug: "number-systems-data-units",
+      title: "Number Systems & Data Units",
+      description: "Converting between decimal, binary, octal, and hexadecimal, and working with bits, bytes, data units, storage, transfer rates, and memory addresses.",
+      href: "/dashboard/information-technology/number-systems-data-units",
+      // Omitted: falls back to the default linear chain (depends on
+      // the topic immediately before it, binary-data-representation).
+    },
+    {
+      subjectSlug: "information-technology",
       topicSlug: "computer-boot-process",
       title: "Computer Boot Process",
       description: "The conceptual sequence a computer follows from power-on to a usable desktop.",
       href: "/dashboard/information-technology/computer-boot-process",
-      // Omitted: falls back to the default linear chain (depends on
-      // the topic immediately before it, binary-data-representation).
+      // Omitted: falls back to the default linear chain. Number Systems
+      // & Data Units was inserted immediately before this topic, so the
+      // default chain now recommends it as the prerequisite step — the
+      // intended curriculum change (this topic is brand new, so no
+      // existing progress relied on the previous default).
     },
     {
       subjectSlug: "information-technology",

@@ -876,6 +876,13 @@ export const subjects: Subject[] = [
             href: "/dashboard/information-technology/binary-data-representation",
           },
           {
+            slug: "number-systems-data-units",
+            title: "Number Systems & Data Units",
+            description:
+              "Convert between decimal, binary, octal, and hexadecimal; explore place value; and work through bits, bytes, KB/MB/GB/TB vs KiB/MiB/GiB/TiB, storage, network transfer rates, memory addresses, and two's complement in a Number Systems & Data Laboratory.",
+            href: "/dashboard/information-technology/number-systems-data-units",
+          },
+          {
             slug: "computer-boot-process",
             title: "Computer Boot Process",
             description:

@@ -90,6 +90,7 @@ import { informationTechnologyCpuArchitectureInstructionCycleContent } from "./d
 import { informationTechnologyCacheMemoryExplorerContent } from "./data/information-technology-cache-memory-explorer";
 import { informationTechnologyCpuRamStorageDataFlowContent } from "./data/information-technology-cpu-ram-storage-data-flow";
 import { informationTechnologyBinaryDataRepresentationContent } from "./data/information-technology-binary-data-representation";
+import { informationTechnologyNumberSystemsDataUnitsContent } from "./data/information-technology-number-systems-data-units";
 import { informationTechnologyComputerBootProcessContent } from "./data/information-technology-computer-boot-process";
 import { informationTechnologyCpuSchedulingSimulatorContent } from "./data/information-technology-cpu-scheduling-simulator";
 import { informationTechnologyProcessManagementSimulatorContent } from "./data/information-technology-process-management-simulator";
@@ -695,6 +696,7 @@ export const topicContentList: TopicContent[] = [
   informationTechnologyCacheMemoryExplorerContent,
   informationTechnologyCpuRamStorageDataFlowContent,
   informationTechnologyBinaryDataRepresentationContent,
+  informationTechnologyNumberSystemsDataUnitsContent,
   informationTechnologyComputerBootProcessContent,
   informationTechnologyCpuSchedulingSimulatorContent,
   informationTechnologyProcessManagementSimulatorContent,
