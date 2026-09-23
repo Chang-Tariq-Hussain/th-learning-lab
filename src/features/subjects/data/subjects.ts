@@ -953,6 +953,19 @@ export const subjects: Subject[] = [
           },
         ],
       },
+      {
+        slug: "networking-fundamentals",
+        name: "Networking Fundamentals",
+        visualizations: [
+          {
+            slug: "network-fundamentals-topologies",
+            title: "Network Fundamentals & Topologies",
+            description:
+              "Build and explore computer networks, connect devices, compare network topologies, and understand how data travels between devices in a Network Laboratory.",
+            href: "/dashboard/information-technology/network-fundamentals-topologies",
+          },
+        ],
+      },
     ],
   },
 ];

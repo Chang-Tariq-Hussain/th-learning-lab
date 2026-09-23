@@ -14,6 +14,7 @@ import {
   Infinity as InfinityIcon,
   Leaf,
   Link2,
+  Network,
   PieChart,
   Ruler,
   Scale,
@@ -57,6 +58,7 @@ const topicIconMap: Record<string, LucideIcon> = {
 
   // Information Technology
   "computer-fundamentals": Cpu,
+  "networking-fundamentals": Network,
 
   // Mathematics
   "number-sense": Hash,

@@ -100,6 +100,7 @@ import { informationTechnologyVirtualMemorySimulatorContent } from "./data/infor
 import { informationTechnologyPagingSimulatorContent } from "./data/information-technology-paging-simulator";
 import { informationTechnologyDeadlockSimulatorContent } from "./data/information-technology-deadlock-simulator";
 import { informationTechnologyIoInterruptsExplorerContent } from "./data/information-technology-io-interrupts-explorer";
+import { informationTechnologyNetworkFundamentalsTopologiesContent } from "./data/information-technology-network-fundamentals-topologies";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -706,6 +707,7 @@ export const topicContentList: TopicContent[] = [
   informationTechnologyPagingSimulatorContent,
   informationTechnologyDeadlockSimulatorContent,
   informationTechnologyIoInterruptsExplorerContent,
+  informationTechnologyNetworkFundamentalsTopologiesContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

@@ -115,6 +115,8 @@ import { informationTechnologyBinaryDataRepresentationQuiz } from "./data/it-bin
 import { informationTechnologyNumberSystemsDataUnitsPracticeQuiz } from "./data/it-number-systems-data-units-practice-quiz";
 import { informationTechnologyNumberSystemsDataUnitsQuiz } from "./data/it-number-systems-data-units-quiz";
 import { informationTechnologyComputerBootProcessQuiz } from "./data/it-computer-boot-process-quiz";
+import { informationTechnologyNetworkFundamentalsTopologiesQuiz } from "./data/it-network-fundamentals-topologies-quiz";
+import { informationTechnologyNetworkFundamentalsTopologiesPracticeQuiz } from "./data/it-network-fundamentals-topologies-practice-quiz";
 
 /**
  * Every registered quiz. Add a new quiz by creating a `QuizMeta` in
@@ -240,6 +242,8 @@ export const quizzes: QuizMeta[] = [
   informationTechnologyDeadlockSimulatorQuiz,
   informationTechnologyIoInterruptsExplorerPracticeQuiz,
   informationTechnologyIoInterruptsExplorerQuiz,
+  informationTechnologyNetworkFundamentalsTopologiesPracticeQuiz,
+  informationTechnologyNetworkFundamentalsTopologiesQuiz,
 ];
 
 export function getQuizById(id: string): QuizMeta | undefined {
