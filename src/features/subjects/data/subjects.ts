@@ -964,6 +964,13 @@ export const subjects: Subject[] = [
               "Build and explore computer networks, connect devices, compare network topologies, and understand how data travels between devices in a Network Laboratory.",
             href: "/dashboard/information-technology/network-fundamentals-topologies",
           },
+          {
+            slug: "osi-model-explorer",
+            title: "OSI Model Explorer",
+            description:
+              "Click through the seven OSI layers, watch data get encapsulated and decapsulated between two computers, trace a simple packet journey, and practice identifying layers and troubleshooting faults.",
+            href: "/dashboard/information-technology/osi-model-explorer",
+          },
         ],
       },
     ],

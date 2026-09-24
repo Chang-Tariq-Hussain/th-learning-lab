@@ -5,13 +5,14 @@ import type { LearningPath } from "../types";
  * Networking branch within Information Technology, kept separate from
  * `information-technology-computer-fundamentals` and
  * `information-technology-operating-systems` (no prerequisite
- * relationship to either). Only the first topic in the branch exists
- * today; later simulations (OSI Model, TCP/IP Model, Ethernet & MAC
- * Addresses, IP Addressing, Subnetting, ARP, DHCP, DNS, Switch & MAC
- * Address Table, Routing, NAT, TCP vs UDP, Ports & Sockets, ICMP &
- * Ping, Packet Journey) get appended here in order as they're built,
- * per the brief's intended sequence — this path is guidance, not a
- * gate, so direct access to the simulation stays available regardless.
+ * relationship to either). Two topics exist today (Network
+ * Fundamentals & Topologies, then OSI Model Explorer); later
+ * simulations (TCP/IP Model, Ethernet & MAC Addresses, IP Addressing,
+ * Subnetting, ARP, DHCP, DNS, Switch & MAC Address Table, Routing,
+ * NAT, TCP vs UDP, Ports & Sockets, ICMP & Ping, Packet Journey) get
+ * appended here in order as they're built, per the brief's intended
+ * sequence — this path is guidance, not a gate, so direct access to
+ * either simulation stays available regardless of progress.
  */
 export const informationTechnologyNetworkingFundamentalsPath: LearningPath = {
   id: "information-technology-networking-fundamentals",
@@ -27,6 +28,13 @@ export const informationTechnologyNetworkingFundamentalsPath: LearningPath = {
       description: "What a network is, how topologies shape resilience, client-server vs. peer-to-peer, and the basics of bandwidth, latency, and throughput.",
       href: "/dashboard/information-technology/network-fundamentals-topologies",
       prerequisites: [],
+    },
+    {
+      subjectSlug: "information-technology",
+      topicSlug: "osi-model-explorer",
+      title: "OSI Model Explorer",
+      description: "The seven OSI layers, encapsulation and decapsulation, PDUs, devices, protocol examples, and conceptual troubleshooting.",
+      href: "/dashboard/information-technology/osi-model-explorer",
     },
   ],
 };

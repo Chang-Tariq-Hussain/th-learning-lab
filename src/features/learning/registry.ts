@@ -101,6 +101,7 @@ import { informationTechnologyPagingSimulatorContent } from "./data/information-
 import { informationTechnologyDeadlockSimulatorContent } from "./data/information-technology-deadlock-simulator";
 import { informationTechnologyIoInterruptsExplorerContent } from "./data/information-technology-io-interrupts-explorer";
 import { informationTechnologyNetworkFundamentalsTopologiesContent } from "./data/information-technology-network-fundamentals-topologies";
+import { informationTechnologyOsiModelExplorerContent } from "./data/information-technology-osi-model-explorer";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -708,6 +709,7 @@ export const topicContentList: TopicContent[] = [
   informationTechnologyDeadlockSimulatorContent,
   informationTechnologyIoInterruptsExplorerContent,
   informationTechnologyNetworkFundamentalsTopologiesContent,
+  informationTechnologyOsiModelExplorerContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {
