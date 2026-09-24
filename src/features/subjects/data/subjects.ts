@@ -971,6 +971,13 @@ export const subjects: Subject[] = [
               "Click through the seven OSI layers, watch data get encapsulated and decapsulated between two computers, trace a simple packet journey, and practice identifying layers and troubleshooting faults.",
             href: "/dashboard/information-technology/osi-model-explorer",
           },
+          {
+            slug: "tcp-ip-model-explorer",
+            title: "TCP/IP Model Explorer",
+            description:
+              "Explore the four-layer TCP/IP model, see how it maps to OSI, watch data get encapsulated and decapsulated, follow a request and response through the stack, and practice identifying the responsible layer.",
+            href: "/dashboard/information-technology/tcp-ip-model-explorer",
+          },
         ],
       },
     ],

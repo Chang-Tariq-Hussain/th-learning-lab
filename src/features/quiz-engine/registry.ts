@@ -119,6 +119,8 @@ import { informationTechnologyNetworkFundamentalsTopologiesQuiz } from "./data/i
 import { informationTechnologyNetworkFundamentalsTopologiesPracticeQuiz } from "./data/it-network-fundamentals-topologies-practice-quiz";
 import { informationTechnologyOsiModelExplorerQuiz } from "./data/it-osi-model-explorer-quiz";
 import { informationTechnologyOsiModelExplorerPracticeQuiz } from "./data/it-osi-model-explorer-practice-quiz";
+import { informationTechnologyTcpIpModelExplorerQuiz } from "./data/it-tcp-ip-model-explorer-quiz";
+import { informationTechnologyTcpIpModelExplorerPracticeQuiz } from "./data/it-tcp-ip-model-explorer-practice-quiz";
 
 /**
  * Every registered quiz. Add a new quiz by creating a `QuizMeta` in
@@ -248,6 +250,8 @@ export const quizzes: QuizMeta[] = [
   informationTechnologyNetworkFundamentalsTopologiesQuiz,
   informationTechnologyOsiModelExplorerPracticeQuiz,
   informationTechnologyOsiModelExplorerQuiz,
+  informationTechnologyTcpIpModelExplorerPracticeQuiz,
+  informationTechnologyTcpIpModelExplorerQuiz,
 ];
 
 export function getQuizById(id: string): QuizMeta | undefined {
