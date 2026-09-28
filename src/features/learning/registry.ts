@@ -103,6 +103,7 @@ import { informationTechnologyIoInterruptsExplorerContent } from "./data/informa
 import { informationTechnologyNetworkFundamentalsTopologiesContent } from "./data/information-technology-network-fundamentals-topologies";
 import { informationTechnologyOsiModelExplorerContent } from "./data/information-technology-osi-model-explorer";
 import { informationTechnologyTcpIpModelExplorerContent } from "./data/information-technology-tcp-ip-model-explorer";
+import { informationTechnologyEthernetMacSimulatorContent } from "./data/information-technology-ethernet-mac-simulator";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -712,6 +713,7 @@ export const topicContentList: TopicContent[] = [
   informationTechnologyNetworkFundamentalsTopologiesContent,
   informationTechnologyOsiModelExplorerContent,
   informationTechnologyTcpIpModelExplorerContent,
+  informationTechnologyEthernetMacSimulatorContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {

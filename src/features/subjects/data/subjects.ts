@@ -978,6 +978,13 @@ export const subjects: Subject[] = [
               "Explore the four-layer TCP/IP model, see how it maps to OSI, watch data get encapsulated and decapsulated, follow a request and response through the stack, and practice identifying the responsible layer.",
             href: "/dashboard/information-technology/tcp-ip-model-explorer",
           },
+          {
+            slug: "ethernet-mac-simulator",
+            title: "Ethernet & MAC Address Simulator",
+            description:
+              "Explore how devices on a local network are identified by MAC addresses, watch simplified Ethernet frames travel through a switch, compare unicast and broadcast, and see the switch learn MAC addresses.",
+            href: "/dashboard/information-technology/ethernet-mac-simulator",
+          },
         ],
       },
     ],

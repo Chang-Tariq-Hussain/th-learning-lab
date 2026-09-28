@@ -5,9 +5,9 @@ import type { LearningPath } from "../types";
  * Networking branch within Information Technology, kept separate from
  * `information-technology-computer-fundamentals` and
  * `information-technology-operating-systems` (no prerequisite
- * relationship to either). Three topics exist today (Network
- * Fundamentals & Topologies, OSI Model Explorer, then TCP/IP Model
- * Explorer); later simulations (Ethernet & MAC Addresses, IP Addressing,
+ * relationship to either). Four topics exist today (Network
+ * Fundamentals & Topologies, OSI Model Explorer, TCP/IP Model
+ * Explorer, then Ethernet & MAC Address Simulator); later simulations (IP Addressing,
  * Subnetting, ARP, DHCP, DNS, Switch & MAC Address Table, Routing,
  * NAT, TCP vs UDP, Ports & Sockets, ICMP & Ping, Packet Journey) get
  * appended here in order as they're built, per the brief's intended
@@ -42,6 +42,13 @@ export const informationTechnologyNetworkingFundamentalsPath: LearningPath = {
       title: "TCP/IP Model Explorer",
       description: "The four TCP/IP layers, how they map to OSI, encapsulation and data units, a request/response journey, protocol placement, and conceptual troubleshooting.",
       href: "/dashboard/information-technology/tcp-ip-model-explorer",
+    },
+    {
+      subjectSlug: "information-technology",
+      topicSlug: "ethernet-mac-simulator",
+      title: "Ethernet & MAC Address Simulator",
+      description: "MAC addresses, the simplified Ethernet frame, unicast vs. broadcast delivery, and how a switch learns MAC addresses and forwards frames.",
+      href: "/dashboard/information-technology/ethernet-mac-simulator",
     },
   ],
 };
