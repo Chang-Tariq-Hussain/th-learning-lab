@@ -985,6 +985,13 @@ export const subjects: Subject[] = [
               "Explore how devices on a local network are identified by MAC addresses, watch simplified Ethernet frames travel through a switch, compare unicast and broadcast, and see the switch learn MAC addresses.",
             href: "/dashboard/information-technology/ethernet-mac-simulator",
           },
+          {
+            slug: "ip-addressing-simulator",
+            title: "IP Addressing Simulator",
+            description:
+              "Learn how IPv4 addresses identify interfaces, how a subnet mask splits network and host bits, how to find network and broadcast addresses, and how a default gateway reaches other networks.",
+            href: "/dashboard/information-technology/ip-addressing-simulator",
+          },
         ],
       },
     ],

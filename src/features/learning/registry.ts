@@ -104,6 +104,7 @@ import { informationTechnologyNetworkFundamentalsTopologiesContent } from "./dat
 import { informationTechnologyOsiModelExplorerContent } from "./data/information-technology-osi-model-explorer";
 import { informationTechnologyTcpIpModelExplorerContent } from "./data/information-technology-tcp-ip-model-explorer";
 import { informationTechnologyEthernetMacSimulatorContent } from "./data/information-technology-ethernet-mac-simulator";
+import { informationTechnologyIpAddressingSimulatorContent } from "./data/information-technology-ip-addressing-simulator";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -714,6 +715,7 @@ export const topicContentList: TopicContent[] = [
   informationTechnologyOsiModelExplorerContent,
   informationTechnologyTcpIpModelExplorerContent,
   informationTechnologyEthernetMacSimulatorContent,
+  informationTechnologyIpAddressingSimulatorContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {
