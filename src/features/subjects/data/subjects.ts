@@ -992,6 +992,13 @@ export const subjects: Subject[] = [
               "Learn how IPv4 addresses identify interfaces, how a subnet mask splits network and host bits, how to find network and broadcast addresses, and how a default gateway reaches other networks.",
             href: "/dashboard/information-technology/ip-addressing-simulator",
           },
+          {
+            slug: "subnetting-laboratory",
+            title: "Subnetting Laboratory",
+            description:
+              "Divide an IPv4 network into equal-size subnets by borrowing host bits, and work out prefixes, masks, subnet counts, host capacity, network and broadcast addresses, and host ranges.",
+            href: "/dashboard/information-technology/subnetting-laboratory",
+          },
         ],
       },
     ],

@@ -5,9 +5,9 @@ import type { LearningPath } from "../types";
  * Networking branch within Information Technology, kept separate from
  * `information-technology-computer-fundamentals` and
  * `information-technology-operating-systems` (no prerequisite
- * relationship to either). Five topics exist today (Network
+ * relationship to either). Six topics exist today (Network
  * Fundamentals & Topologies, OSI Model Explorer, TCP/IP Model
- * Explorer, Ethernet & MAC Address Simulator, then IP Addressing Simulator); later simulations (Subnetting, ARP, DHCP, DNS, Switch & MAC Address Table, Routing,
+ * Explorer, Ethernet & MAC Address Simulator, IP Addressing Simulator, then Subnetting Laboratory); later simulations (ARP, DHCP, DNS, Switch & MAC Address Table, Routing,
  * NAT, TCP vs UDP, Ports & Sockets, ICMP & Ping, Packet Journey) get
  * appended here in order as they're built, per the brief's intended
  * sequence — this path is guidance, not a gate, so direct access to
@@ -55,6 +55,13 @@ export const informationTechnologyNetworkingFundamentalsPath: LearningPath = {
       title: "IP Addressing Simulator",
       description: "IPv4 addresses, subnet masks and CIDR, network vs. host portions, network and broadcast addresses, local vs. remote destinations, and the default gateway.",
       href: "/dashboard/information-technology/ip-addressing-simulator",
+    },
+    {
+      subjectSlug: "information-technology",
+      topicSlug: "subnetting-laboratory",
+      title: "Subnetting Laboratory",
+      description: "Divide an IPv4 network into equal-size subnets by borrowing host bits: prefixes, masks, subnet counts, host capacity, network and broadcast addresses, and host ranges.",
+      href: "/dashboard/information-technology/subnetting-laboratory",
     },
   ],
 };
