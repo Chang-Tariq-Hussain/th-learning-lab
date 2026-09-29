@@ -127,6 +127,8 @@ import { informationTechnologyIpAddressingSimulatorQuiz } from "./data/it-ip-add
 import { informationTechnologyIpAddressingSimulatorPracticeQuiz } from "./data/it-ip-addressing-simulator-practice-quiz";
 import { informationTechnologySubnettingLaboratoryQuiz } from "./data/it-subnetting-laboratory-quiz";
 import { informationTechnologySubnettingLaboratoryPracticeQuiz } from "./data/it-subnetting-laboratory-practice-quiz";
+import { informationTechnologyArpSimulatorQuiz } from "./data/it-arp-simulator-quiz";
+import { informationTechnologyArpSimulatorPracticeQuiz } from "./data/it-arp-simulator-practice-quiz";
 
 /**
  * Every registered quiz. Add a new quiz by creating a `QuizMeta` in
@@ -264,6 +266,8 @@ export const quizzes: QuizMeta[] = [
   informationTechnologyIpAddressingSimulatorQuiz,
   informationTechnologySubnettingLaboratoryPracticeQuiz,
   informationTechnologySubnettingLaboratoryQuiz,
+  informationTechnologyArpSimulatorPracticeQuiz,
+  informationTechnologyArpSimulatorQuiz,
 ];
 
 export function getQuizById(id: string): QuizMeta | undefined {

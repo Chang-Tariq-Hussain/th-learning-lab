@@ -18,7 +18,7 @@ const KIND_DOT: Record<LogKind, string> = {
 };
 
 /** Ethernet event log — append-only, scrolls inside its own box. */
-export function EventLog({ entries, onClear }: { entries: LogEntry[]; onClear: () => void }) {
+export function EventLog({ entries, onClear, title = "Ethernet event log" }: { entries: LogEntry[]; onClear: () => void; title?: string }) {
   const endRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function EventLog({ entries, onClear }: { entries: LogEntry[]; onClear: (
   }, [entries.length]);
 
   return (
-    <Panel title="Ethernet event log">
+    <Panel title={title}>
       <div className="flex items-center justify-between gap-2">
         <p className="text-xs text-ink-soft dark:text-bone-soft">{entries.length === 0 ? "Nothing has happened yet." : `${entries.length} event${entries.length === 1 ? "" : "s"}`}</p>
         <button

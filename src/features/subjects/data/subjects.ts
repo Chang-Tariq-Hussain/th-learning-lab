@@ -999,6 +999,13 @@ export const subjects: Subject[] = [
               "Divide an IPv4 network into equal-size subnets by borrowing host bits, and work out prefixes, masks, subnet counts, host capacity, network and broadcast addresses, and host ranges.",
             href: "/dashboard/information-technology/subnetting-laboratory",
           },
+          {
+            slug: "arp-simulator",
+            title: "ARP Simulator",
+            description:
+              "See how a device finds the MAC address that goes with an IPv4 address on its local network: ARP requests and replies, broadcast, the ARP cache, cache hits and misses, and the default gateway.",
+            href: "/dashboard/information-technology/arp-simulator",
+          },
         ],
       },
     ],
