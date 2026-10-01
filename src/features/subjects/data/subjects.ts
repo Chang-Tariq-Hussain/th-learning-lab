@@ -1006,6 +1006,13 @@ export const subjects: Subject[] = [
               "See how a device finds the MAC address that goes with an IPv4 address on its local network: ARP requests and replies, broadcast, the ARP cache, cache hits and misses, and the default gateway.",
             href: "/dashboard/information-technology/arp-simulator",
           },
+          {
+            slug: "dhcp-simulator",
+            title: "DHCP Simulator",
+            description:
+              "See how a device gets its network configuration automatically: the DORA process (Discover, Offer, Request, ACK), address pools, leases, renewal and release, pool exhaustion, and static versus DHCP configuration.",
+            href: "/dashboard/information-technology/dhcp-simulator",
+          },
         ],
       },
     ],

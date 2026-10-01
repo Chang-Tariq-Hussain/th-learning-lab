@@ -107,6 +107,7 @@ import { informationTechnologyEthernetMacSimulatorContent } from "./data/informa
 import { informationTechnologyIpAddressingSimulatorContent } from "./data/information-technology-ip-addressing-simulator";
 import { informationTechnologySubnettingLaboratoryContent } from "./data/information-technology-subnetting-laboratory";
 import { informationTechnologyArpSimulatorContent } from "./data/information-technology-arp-simulator";
+import { informationTechnologyDhcpSimulatorContent } from "./data/information-technology-dhcp-simulator";
 
 /**
  * Every registered topic's learning content. Add a new topic by
@@ -720,6 +721,7 @@ export const topicContentList: TopicContent[] = [
   informationTechnologyIpAddressingSimulatorContent,
   informationTechnologySubnettingLaboratoryContent,
   informationTechnologyArpSimulatorContent,
+  informationTechnologyDhcpSimulatorContent,
 ];
 
 export function getTopicContent(subjectSlug: string, topicSlug: string): TopicContent | undefined {
