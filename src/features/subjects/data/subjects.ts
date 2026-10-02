@@ -1020,6 +1020,13 @@ export const subjects: Subject[] = [
               "See how domain names become IP addresses: DNS queries and responses, the root, TLD and authoritative servers, recursive resolution, DNS records, caching and TTL, and what happens when a lookup fails.",
             href: "/dashboard/information-technology/dns-simulator",
           },
+          {
+            slug: "switch-mac-table-simulator",
+            title: "Switch & MAC Address Table Simulator",
+            description:
+              "Look inside an Ethernet switch: watch it learn source MAC addresses, build and age its MAC address table, forward known unicast frames to one port, and flood unknown unicast and broadcast frames.",
+            href: "/dashboard/information-technology/switch-mac-table-simulator",
+          },
         ],
       },
     ],
