@@ -1027,6 +1027,13 @@ export const subjects: Subject[] = [
               "Look inside an Ethernet switch: watch it learn source MAC addresses, build and age its MAC address table, forward known unicast frames to one port, and flood unknown unicast and broadcast frames.",
             href: "/dashboard/information-technology/switch-mac-table-simulator",
           },
+          {
+            slug: "routing-simulator",
+            title: "Routing Simulator",
+            description:
+              "See how a router forwards packets between networks: the default gateway, routing tables, connected and static routes, the default route, the most specific matching route, and what happens when no route exists.",
+            href: "/dashboard/information-technology/routing-simulator",
+          },
         ],
       },
     ],
