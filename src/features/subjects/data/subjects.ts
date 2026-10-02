@@ -1013,6 +1013,13 @@ export const subjects: Subject[] = [
               "See how a device gets its network configuration automatically: the DORA process (Discover, Offer, Request, ACK), address pools, leases, renewal and release, pool exhaustion, and static versus DHCP configuration.",
             href: "/dashboard/information-technology/dhcp-simulator",
           },
+          {
+            slug: "dns-simulator",
+            title: "DNS Simulator",
+            description:
+              "See how domain names become IP addresses: DNS queries and responses, the root, TLD and authoritative servers, recursive resolution, DNS records, caching and TTL, and what happens when a lookup fails.",
+            href: "/dashboard/information-technology/dns-simulator",
+          },
         ],
       },
     ],
