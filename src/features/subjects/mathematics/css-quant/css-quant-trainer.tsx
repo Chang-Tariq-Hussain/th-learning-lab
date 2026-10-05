@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useReducer } from "react";
 import { ArrowRight, Play, Timer } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { generateQuestion, topicsFor } from "./generators";
+import { pastPaperCounts, pickPastPaper } from "./past-papers";
 import { Panel } from "./components/panel";
 import { QuestionCard, SolutionPanel } from "./components/question-card";
 import { ResultsView } from "./components/results-view";
@@ -23,15 +24,16 @@ const DIFF_OPTIONS: Array<{ value: DiffSetting; label: string }> = [
 const BTN = "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border px-5 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40";
 const BTN_PRIMARY = "border-subject-math bg-subject-math text-paper hover:opacity-90";
 
-function Chip({ active, onClick, children, label }: { active: boolean; onClick: () => void; children: React.ReactNode; label?: string }) {
+function Chip({ active, onClick, children, label, disabled }: { active: boolean; onClick: () => void; children: React.ReactNode; label?: string; disabled?: boolean }) {
   return (
     <button
       type="button"
       role="radio"
       aria-checked={active}
       aria-label={label}
+      disabled={disabled}
       onClick={onClick}
-      className={cn("min-h-[40px] rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors", active ? "border-subject-math bg-subject-math text-paper" : "border-line text-ink-soft hover:border-ink/30 dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/30")}
+      className={cn("min-h-[40px] rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40", active ? "border-subject-math bg-subject-math text-paper" : "border-line text-ink-soft hover:border-ink/30 dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/30")}
     >
       {children}
     </button>
@@ -44,7 +46,13 @@ function pickDifficulty(setting: DiffSetting): Difficulty {
   return r < 0.3 ? 1 : r < 0.75 ? 2 : 3;
 }
 
-function make(module: ModuleId, s: Pick<SessionState, "diff" | "topicId">, avoid: string | null): Question {
+function make(module: ModuleId, s: Pick<SessionState, "diff" | "topicId" | "source" | "results">, avoid: string | null): Question {
+  // Verified past-paper questions: always when asked for, otherwise now and then if the bank has a match.
+  if (s.source === "past" || Math.random() < 0.25) {
+    const seen = new Set(s.results.flatMap((r) => (r.q.pastPaper ? [r.q.pastPaper.itemId] : [])));
+    const past = pickPastPaper(module, s.topicId, seen, Math.random);
+    if (past) return past;
+  }
   return generateQuestion(module, pickDifficulty(s.diff), Math.random, { topicId: s.topicId, avoid });
 }
 
@@ -59,6 +67,8 @@ export function CssQuantTrainer({ module }: { module: ModuleId }) {
     return m === "mixed" ? { ...base, mode: "drill" } : sessionReducer(base, { type: "start", mode: "practice", question: make(m, base, null), now: Date.now() });
   });
   const topics = useMemo(() => topicsFor(module), [module]);
+  const pastCounts = useMemo(() => pastPaperCounts(module), [module]);
+  const pastTotal = Object.values(pastCounts).reduce((a, b) => a + b, 0);
   const timed = isTimed(s);
   const lastTopic = s.question?.topic ?? null;
   const answered = s.phase === "answered";
@@ -70,7 +80,7 @@ export function CssQuantTrainer({ module }: { module: ModuleId }) {
     else dispatch({ type: "start", mode, question: make(module, s, null), now: Date.now() });
   };
 
-  const patchAndRefresh = (patch: Partial<Pick<SessionState, "diff" | "topicId">>) => {
+  const patchAndRefresh = (patch: Partial<Pick<SessionState, "diff" | "topicId" | "source">>) => {
     dispatch({ type: "settings", patch });
     if (s.mode === "practice") dispatch({ type: "show", question: make(module, { ...s, ...patch }, null), now: Date.now() });
   };
@@ -143,6 +153,18 @@ export function CssQuantTrainer({ module }: { module: ModuleId }) {
                 ))}
               </div>
             </div>
+            <div className="flex flex-col gap-1.5">
+              <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Questions</span>
+              <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Question source">
+                <Chip active={s.source === "all"} onClick={() => patchAndRefresh({ source: "all" })}>
+                  All
+                </Chip>
+                <Chip active={s.source === "past"} disabled={pastTotal === 0} onClick={() => patchAndRefresh({ source: "past", topicId: s.topicId && !pastCounts[s.topicId] ? null : s.topicId })}>
+                  Past papers{pastTotal ? ` (${pastTotal})` : ""}
+                </Chip>
+              </div>
+              {pastTotal === 0 && <p className="max-w-[16rem] text-[11px] text-ink-soft dark:text-bone-soft">No past-paper questions have been verified and added yet.</p>}
+            </div>
             <label className="flex min-w-[220px] flex-1 flex-col gap-1.5">
               <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Topic</span>
               <select
@@ -155,14 +177,14 @@ export function CssQuantTrainer({ module }: { module: ModuleId }) {
                   ? (["ratio", "geometry", "trigonometry"] as const).map((m) => (
                       <optgroup key={m} label={MODULE_NAME[m]}>
                         {topics.filter((t) => t.module === m).map((t) => (
-                          <option key={t.id} value={t.id}>
+                          <option key={t.id} value={t.id} disabled={s.source === "past" && !pastCounts[t.id]}>
                             {t.label}
                           </option>
                         ))}
                       </optgroup>
                     ))
                   : topics.map((t) => (
-                      <option key={t.id} value={t.id}>
+                      <option key={t.id} value={t.id} disabled={s.source === "past" && !pastCounts[t.id]}>
                         {t.label}
                       </option>
                     ))}
@@ -252,7 +274,7 @@ export function CssQuantTrainer({ module }: { module: ModuleId }) {
       </div>
 
       <p className="text-xs leading-relaxed text-ink-soft dark:text-bone-soft">
-        Every question is generated fresh from templates, so you will not see the same one twice in a row. Where π is needed the question says to use 22/7, the usual convention in CSS-style papers. This is independent practice material, not affiliated with the FPSC: always check the current official syllabus and past papers for what is tested.
+        Practice questions are generated fresh from templates, so you will not see the same one twice in a row. Where π is needed the question says to use 22/7, the usual convention in CSS-style papers. This is independent practice material, not affiliated with the FPSC. Questions carrying a past-paper badge come from real MPT papers, each with a source note; everything else is generated, so always check the current official syllabus and past papers for what is tested.
       </p>
     </div>
   );

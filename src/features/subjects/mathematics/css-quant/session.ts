@@ -2,6 +2,7 @@ import type { Difficulty, Question } from "./types";
 
 export type Mode = "practice" | "drill";
 export type DiffSetting = Difficulty | "mixed";
+export type Source = "all" | "past";
 export type Phase = "setup" | "question" | "answered" | "finished";
 
 export const DRILL_COUNTS = [10, 20, 30] as const;
@@ -19,6 +20,8 @@ export interface SessionState {
   mode: Mode;
   diff: DiffSetting;
   topicId: string | null;
+  /** "past" limits questions to the verified past-paper bank. */
+  source: Source;
   drillCount: number;
   /** Seconds per question in a drill; 0 = untimed. */
   secPerQ: number;
@@ -31,7 +34,7 @@ export interface SessionState {
 }
 
 export type SessionAction =
-  | { type: "settings"; patch: Partial<Pick<SessionState, "diff" | "topicId" | "drillCount" | "secPerQ">> }
+  | { type: "settings"; patch: Partial<Pick<SessionState, "diff" | "topicId" | "source" | "drillCount" | "secPerQ">> }
   | { type: "to-setup"; mode: Mode }
   | { type: "start"; mode: Mode; question: Question; now: number }
   | { type: "show"; question: Question; now: number }
@@ -41,7 +44,7 @@ export type SessionAction =
   | { type: "finish" };
 
 export function initialSession(): SessionState {
-  return { mode: "practice", diff: 2, topicId: null, drillCount: 10, secPerQ: 60, phase: "setup", question: null, picked: null, startedAt: 0, remainingMs: 0, results: [] };
+  return { mode: "practice", diff: 2, topicId: null, source: "all", drillCount: 10, secPerQ: 60, phase: "setup", question: null, picked: null, startedAt: 0, remainingMs: 0, results: [] };
 }
 
 export const isTimed = (s: Pick<SessionState, "mode" | "secPerQ">) => s.mode === "drill" && s.secPerQ > 0;

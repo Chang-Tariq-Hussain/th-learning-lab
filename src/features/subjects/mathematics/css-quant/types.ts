@@ -18,6 +18,33 @@ export interface TopicDef {
   label: string;
 }
 
+/**
+ * Where a question that really appeared in an FPSC paper came from. Only questions built from the curated past-paper
+ * bank carry this; generated questions never do, so the "Verified" badge cannot appear on them.
+ */
+export interface PastPaperRef {
+  /** Id of the bank entry (used to avoid repeats within a session). */
+  itemId: string;
+  year: number;
+  /** e.g. "CSS MPT — General Science & Ability". */
+  exam: string;
+  /** Question number as printed on the paper, when known. */
+  questionNo?: number;
+  /** https link to the official document the question was checked against. */
+  sourceUrl: string;
+  /**
+   * What the question was checked against. "fpsc-website" / "official-paper-copy" are official sources;
+   * "third-party-compilation" means a published prep-site compilation (FPSC does not release MPT booklets), with the
+   * answer independently re-solved. Only the official kinds earn the green "Verified past paper" badge.
+   */
+  evidence: "fpsc-website" | "official-paper-copy" | "third-party-compilation";
+  /** Required for third-party compilations: who published the paper we took the question from. */
+  sourceName?: string;
+  /** ISO date (YYYY-MM-DD) of the check, and who made it. */
+  verifiedOn: string;
+  verifiedBy: string;
+}
+
 /** A fully built multiple-choice question. `options` are already shuffled; `correct` indexes into them. */
 export interface Question {
   id: number;
@@ -35,6 +62,8 @@ export interface Question {
   trick: string;
   /** What the tempting wrong option comes from. */
   trap?: string;
+  /** Present only on verified past-paper questions. */
+  pastPaper?: PastPaperRef;
 }
 
 /** What a generator returns before options are built and shuffled. */

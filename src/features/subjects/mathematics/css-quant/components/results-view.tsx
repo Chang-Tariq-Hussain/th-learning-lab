@@ -3,7 +3,7 @@
 import { RotateCcw, Settings2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { accuracyPct, avgSeconds, bestStreak, type Result } from "../session";
-import { SolutionPanel } from "./question-card";
+import { SolutionPanel, pastPaperBadgeText } from "./question-card";
 import { Panel } from "./panel";
 import { TopicBars } from "./stats-panel";
 
@@ -71,6 +71,7 @@ export function ResultsView({ results, secPerQ, onRetry, onSetup }: { results: R
                 <details className="group rounded-xl border border-line px-3 py-2 dark:border-line-dark">
                   <summary className="cursor-pointer list-none text-sm text-ink dark:text-bone [&::-webkit-details-marker]:hidden">
                     <span className="mr-2 rounded-full bg-subject-math-soft px-2 py-0.5 font-mono text-[10px] font-semibold uppercase text-subject-math dark:bg-subject-math/20">{r.q.topicLabel}</span>
+                    {r.q.pastPaper && <span className="mr-2 rounded-full border border-line px-2 py-0.5 font-mono text-[10px] font-semibold uppercase text-ink-soft dark:border-line-dark dark:text-bone-soft">{pastPaperBadgeText(r.q.pastPaper)}</span>}
                     {r.q.prompt}
                   </summary>
                   <div className="mt-3 flex flex-col gap-3">
