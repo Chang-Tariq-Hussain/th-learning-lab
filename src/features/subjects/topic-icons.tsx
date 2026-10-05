@@ -21,6 +21,7 @@ import {
   Shapes,
   Sigma,
   Sparkles,
+  Target,
   Table2,
   TestTube,
   Waves,
@@ -71,6 +72,7 @@ const topicIconMap: Record<string, LucideIcon> = {
   statistics: BarChart3,
   measurement: Ruler,
   "coordinate-geometry": Compass,
+  "css-quantitative-ability": Target,
 };
 
 const FALLBACK_ICON: LucideIcon = Sparkles;

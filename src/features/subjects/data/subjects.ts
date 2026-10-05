@@ -831,6 +831,40 @@ export const subjects: Subject[] = [
           },
         ],
       },
+      {
+        slug: "css-quantitative-ability",
+        name: "CSS Quantitative Ability",
+        visualizations: [
+          {
+            slug: "css-ratio-proportion",
+            title: "Ratio, Proportion & Percentage Solver",
+            description:
+              "Exam-style MCQs on sharing, mixtures, percentages, profit and loss, ages, time and work and speed, with worked solutions and the fast method.",
+            href: "/dashboard/mathematics/css-ratio-proportion",
+          },
+          {
+            slug: "css-geometry-mensuration",
+            title: "Geometry & Mensuration Solver",
+            description:
+              "Angles, Pythagoras, circles, polygons, similar figures, solids and areas as competitive-level MCQs with diagrams and step-by-step solutions.",
+            href: "/dashboard/mathematics/css-geometry-mensuration",
+          },
+          {
+            slug: "css-trigonometry",
+            title: "Trigonometry Solver",
+            description:
+              "Exact values, special triangles, identities, heights and distances, radians and arcs, with an interactive trig explorer and trap warnings.",
+            href: "/dashboard/mathematics/css-trigonometry",
+          },
+          {
+            slug: "css-mixed-drill",
+            title: "Mixed Timed Drill",
+            description:
+              "A timed mixed set across ratio, geometry and trigonometry with per-topic accuracy and a full review of every question you miss.",
+            href: "/dashboard/mathematics/css-mixed-drill",
+          },
+        ],
+      },
     ],
   },
   {
