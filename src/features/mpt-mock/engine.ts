@@ -1,14 +1,36 @@
-import { MPT_MOCK_1, MPT_QUESTION_BANK } from "./data/mpt-mock-data";
+import { MPT_MOCK_1, MPT_MOCK_2, MPT_QUESTION_BANK } from "./data/mpt-mock-data";
 import type { MptMockDefinition, MptQuestion } from "./data/mpt-mock-data";
+import { asFullTest, buildSectionTest, isSectionCode } from "./test-defs";
+import type { MptTest } from "./test-defs";
 
-export type Letter = "A" | "B" | "C" | "D";
-export type AnswerMap = Record<string, Letter>;
+export type { Letter, AnswerMap } from "./engine-types";
+import type { AnswerMap } from "./engine-types";
 
-/** Registry of full mocks. Add Mock 2, 3... here once their question ids exist. */
-export const MPT_MOCKS: MptMockDefinition[] = [MPT_MOCK_1];
+/** Registry of full mocks. Add a new mock here once its question ids exist in the data file. */
+export const MPT_MOCKS: MptMockDefinition[] = [MPT_MOCK_1, MPT_MOCK_2];
+
+export function getMockById(id: string): MptMockDefinition | null {
+  return MPT_MOCKS.find((m) => m.id === id) ?? null;
+}
+
+/** Resolves "mock2" (full test) or "mock2-IS" (section test) to a test definition, or null if unknown. */
+export function getTestById(testId: string): MptTest | null {
+  const full = getMockById(testId);
+  if (full) return asFullTest(full);
+  const m = /^(mock\d+)-([A-Z]{2})$/.exec(testId);
+  if (!m || !m[1] || !m[2] || !isSectionCode(m[2])) return null;
+  const mock = getMockById(m[1]);
+  return mock ? buildSectionTest(mock, m[2]) : null;
+}
+
+let bankIndex: Map<string, MptQuestion> | null = null;
+function bankById(): Map<string, MptQuestion> {
+  if (!bankIndex) bankIndex = new Map(MPT_QUESTION_BANK.map((q) => [q.id, q] as const));
+  return bankIndex;
+}
 
 export function getMockQuestions(mock: MptMockDefinition): MptQuestion[] {
-  const byId = new Map(MPT_QUESTION_BANK.map((q) => [q.id, q] as const));
+  const byId = bankById();
   const out: MptQuestion[] = [];
   for (const id of mock.questionIds) {
     const q = byId.get(id);

@@ -62,12 +62,14 @@ export function ReviewScreen({ mock, questions, session, result, onBack }: Props
           </button>
         ))}
       </div>
+      {mock.sections.length > 1 ? (
       <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Filter by section">
         <button type="button" onClick={() => setSection("all")} aria-pressed={section === "all"} className={cn("rounded-full border px-3 py-1 text-xs", section === "all" ? "border-ink bg-ink text-paper dark:border-bone dark:bg-bone dark:text-chalkboard" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft")}>All sections</button>
         {mock.sections.map((s) => (
           <button key={s.code} type="button" onClick={() => setSection(s.code)} aria-pressed={section === s.code} className={cn("rounded-full border px-3 py-1 text-xs", section === s.code ? "border-ink bg-ink text-paper dark:border-bone dark:bg-bone dark:text-chalkboard" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft")}>{s.subject.split(" / ")[0]}</button>
         ))}
       </div>
+      ) : null}
       <p className="mt-3 text-xs text-ink-soft dark:text-bone-soft">{rows.length} question{rows.length === 1 ? "" : "s"} shown</p>
 
       <div className="mt-4 space-y-6">

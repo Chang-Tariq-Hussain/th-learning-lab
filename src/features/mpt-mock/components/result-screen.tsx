@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import type { MptMockDefinition } from "../data/mpt-mock-data";
 import { formatClock } from "../engine";
 import type { MockResult } from "../engine";
+import type { AttemptRecord } from "../storage";
 
 interface Props {
   mock: MptMockDefinition;
@@ -13,13 +14,17 @@ interface Props {
   autoSubmitted: boolean;
   onReview: () => void;
   onRestart: () => void;
+  backHref?: string;
+  backLabel?: string;
+  best?: AttemptRecord | null;
+  attempts?: number;
 }
 
-export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onReview, onRestart }: Props) {
+export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onReview, onRestart, backHref, backLabel, best, attempts }: Props) {
   return (
     <div className="mx-auto max-w-4xl">
       <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">{mock.title}</p>
-      <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone">CSS MPT MOCK RESULT</h1>
+      <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone">Result</h1>
       {autoSubmitted ? (
         <p className="mt-3 rounded-lg border border-amber-500/50 bg-amber-500/10 px-4 py-2 text-sm text-ink dark:text-bone">
           Time expired - the test was submitted automatically.
@@ -52,17 +57,23 @@ export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onR
         Correct: <strong>{result.correct}</strong> · Incorrect: <strong>{result.incorrect}</strong> · Unanswered: <strong>{result.unanswered}</strong>
       </p>
 
-      <h2 className="mt-8 font-display text-xl text-ink dark:text-bone">Performance by section</h2>
+      {best && attempts && attempts > 0 ? (
+        <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">
+          Best score on this test: <strong className="text-ink dark:text-bone">{best.score} / {best.total}</strong> · {attempts} attempt{attempts === 1 ? "" : "s"} saved on this device
+        </p>
+      ) : null}
+
+      <h2 className="mt-8 font-display text-xl text-ink dark:text-bone">{result.sections.length > 1 ? "Performance by section" : "Performance"}</h2>
       <div className="mt-3 overflow-x-auto">
         <table className="w-full min-w-[520px] text-left text-sm">
           <thead>
             <tr className="border-b border-line text-ink-soft dark:border-line-dark dark:text-bone-soft">
-              <th className="py-2 font-medium">Section</th>
-              <th className="py-2 text-right font-medium">Score</th>
-              <th className="py-2 text-right font-medium">Accuracy</th>
-              <th className="py-2 text-right font-medium">Correct</th>
-              <th className="py-2 text-right font-medium">Incorrect</th>
-              <th className="py-2 text-right font-medium">Unanswered</th>
+              <th scope="col" className="py-2 font-medium">Section</th>
+              <th scope="col" className="py-2 text-right font-medium">Score</th>
+              <th scope="col" className="py-2 text-right font-medium">Accuracy</th>
+              <th scope="col" className="py-2 text-right font-medium">Correct</th>
+              <th scope="col" className="py-2 text-right font-medium">Incorrect</th>
+              <th scope="col" className="py-2 text-right font-medium">Unanswered</th>
             </tr>
           </thead>
           <tbody className="text-ink dark:text-bone">
@@ -99,6 +110,7 @@ export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onR
       <div className="mt-8 flex flex-wrap gap-3">
         <Button onClick={onReview}>Review all questions</Button>
         <Button variant="secondary" onClick={onRestart}>Start a new attempt</Button>
+        {backHref ? <Button variant="ghost" href={backHref}>{backLabel ?? "Back to tests"}</Button> : null}
       </div>
     </div>
   );

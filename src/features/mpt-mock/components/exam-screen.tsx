@@ -74,7 +74,7 @@ export function ExamScreen({ mock, questions, session, remainingSeconds, onAnswe
       <div className="sticky top-0 z-20 -mx-5 border-b border-line bg-paper/95 px-5 py-3 backdrop-blur dark:border-line-dark dark:bg-chalkboard/95 sm:-mx-8 sm:px-8">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">CSS MPT Mock Test</p>
+            <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">{mock.title}</p>
             <p className="text-sm text-ink dark:text-bone">
               Question <strong>{index + 1}</strong> of {questions.length} · Answered {answeredCount} / {questions.length}
             </p>
@@ -116,7 +116,7 @@ export function ExamScreen({ mock, questions, session, remainingSeconds, onAnswe
 
         <aside aria-label="Question palette" className="lg:sticky lg:top-28 lg:self-start">
           <div className="mb-3 flex flex-wrap gap-1.5">
-            {sectionStarts.map((s) => (
+            {sectionStarts.length > 1 && sectionStarts.map((s) => (
               <button
                 key={s.code}
                 type="button"
@@ -135,7 +135,7 @@ export function ExamScreen({ mock, questions, session, remainingSeconds, onAnswe
               value={jump}
               onChange={(e) => setJump(e.target.value.replace(/\D/g, "").slice(0, 3))}
               onKeyDown={(e) => { if (e.key === "Enter") submitJump(); }}
-              placeholder="1-200"
+              placeholder={`1-${questions.length}`}
               className="h-8 w-20 rounded border border-line bg-transparent px-2 text-sm text-ink dark:border-line-dark dark:text-bone"
             />
             <Button size="sm" variant="ghost" onClick={submitJump}>Go</Button>

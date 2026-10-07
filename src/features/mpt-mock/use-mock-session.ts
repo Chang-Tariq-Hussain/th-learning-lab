@@ -4,11 +4,16 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { MptMockDefinition } from "./data/mpt-mock-data";
 import { getMockQuestions, gradeMock } from "./engine";
 import type { Letter } from "./engine";
-import { clearSession, loadSession, saveSession } from "./storage";
+import { attemptFromResult } from "./attempts";
+import { clearSession, loadSession, recordAttempt, saveSession } from "./storage";
 import type { StoredSession } from "./storage";
 
 export type Phase = "loading" | "idle" | "running" | "submitted";
 
+/**
+ * One session per test (full mock or section test). The countdown is derived from a fixed `endsAt`
+ * stored with the session, so navigating away, refreshing or re-opening never resets it.
+ */
 export function useMockSession(mock: MptMockDefinition) {
   const questions = useMemo(() => getMockQuestions(mock), [mock]);
   const [session, setSession] = useState<StoredSession | null>(null);
@@ -17,24 +22,38 @@ export function useMockSession(mock: MptMockDefinition) {
   const sessionRef = useRef<StoredSession | null>(null);
   sessionRef.current = session;
 
-  const commit = useCallback((next: StoredSession | null) => {
-    setSession(next);
-    if (next) saveSession(next);
-    else clearSession();
-  }, []);
+  const commit = useCallback(
+    (next: StoredSession | null) => {
+      setSession(next);
+      if (next) saveSession(next);
+      else clearSession(mock.id);
+    },
+    [mock.id]
+  );
+
+  /** Writes the finished attempt into the per-test history (deduplicated by start time). */
+  const recordFinished = useCallback(
+    (finished: StoredSession) => {
+      const result = gradeMock(mock, questions, finished.answers);
+      recordAttempt(mock.id, attemptFromResult(result, finished));
+    },
+    [mock, questions]
+  );
 
   const submit = useCallback(
     (auto: boolean) => {
       const s = sessionRef.current;
       if (!s || s.submittedAt !== null) return;
       const finishedAt = auto ? Math.min(Date.now(), s.endsAt) : Date.now();
-      commit({ ...s, submittedAt: finishedAt, autoSubmitted: auto });
+      const done: StoredSession = { ...s, submittedAt: finishedAt, autoSubmitted: auto };
+      commit(done);
+      recordFinished(done);
       setPhase("submitted");
     },
-    [commit]
+    [commit, recordFinished]
   );
 
-  // restore an earlier attempt after a refresh
+  // restore an earlier attempt after a refresh (also migrates the old Mock 1 key)
   useEffect(() => {
     const stored = loadSession(mock.id);
     if (!stored) {
@@ -43,15 +62,18 @@ export function useMockSession(mock: MptMockDefinition) {
     }
     setSession(stored);
     if (stored.submittedAt !== null) {
+      recordFinished(stored);
       setPhase("submitted");
     } else if (Date.now() >= stored.endsAt) {
-      const done = { ...stored, submittedAt: stored.endsAt, autoSubmitted: true };
+      const done: StoredSession = { ...stored, submittedAt: stored.endsAt, autoSubmitted: true };
       setSession(done);
       saveSession(done);
+      recordFinished(done);
       setPhase("submitted");
     } else {
       setPhase("running");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mock.id]);
 
   // the countdown is derived from a fixed end time, so navigating never resets it
@@ -119,8 +141,7 @@ export function useMockSession(mock: MptMockDefinition) {
     [mutate]
   );
   const goTo = useCallback(
-    (index: number) =>
-      mutate((s) => ({ ...s, current: Math.min(Math.max(index, 0), questions.length - 1) })),
+    (index: number) => mutate((s) => ({ ...s, current: Math.min(Math.max(index, 0), questions.length - 1) })),
     [mutate, questions.length]
   );
   const reset = useCallback(() => {

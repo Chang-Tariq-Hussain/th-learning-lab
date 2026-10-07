@@ -3,17 +3,21 @@
 import { Button } from "@/components/ui/button";
 import type { MptMockDefinition, MptQuestion } from "../data/mpt-mock-data";
 import { formatClock } from "../engine";
+import type { MptTest } from "../test-defs";
 
-export function StartScreen({ mock, questions, onStart }: { mock: MptMockDefinition; questions: MptQuestion[]; onStart: () => void }) {
+export function StartScreen({ mock, questions, onStart, test }: { mock: MptMockDefinition; questions: MptQuestion[]; onStart: () => void; test?: MptTest }) {
+  const isSection = test?.kind === "section";
   const past = questions.filter((q) => q.sourceType === "Verified Past Paper").length;
   const bank = questions.filter((q) => q.sourceType === "Existing Question Bank").length;
   const gen = questions.filter((q) => q.sourceType === "Generated Practice").length;
   return (
     <div className="mx-auto max-w-3xl">
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">CSS · MCQ-Based Preliminary Test</p>
+      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">CSS · MCQ-Based Preliminary Test{isSection ? " · Section test" : ""}</p>
       <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">{mock.title}</h1>
       <p className="mt-2 text-base text-ink-soft dark:text-bone-soft">
-        A full-length mock in the real paper order: Islamic Studies, Urdu, English, General Abilities, then General Knowledge, Current Affairs and Pakistan Affairs.
+        {isSection
+          ? `One section of ${test?.mockTitle ?? "the mock"} on its own, with one minute per question.`
+          : "A full-length mock in the real paper order: Islamic Studies, Urdu, English, General Abilities, then General Knowledge, Current Affairs and Pakistan Affairs."}
       </p>
       <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
@@ -31,8 +35,8 @@ export function StartScreen({ mock, questions, onStart }: { mock: MptMockDefinit
       <table className="mt-6 w-full text-left text-sm">
         <thead>
           <tr className="border-b border-line text-ink-soft dark:border-line-dark dark:text-bone-soft">
-            <th className="py-2 font-medium">Section</th>
-            <th className="py-2 text-right font-medium">Questions</th>
+            <th scope="col" className="py-2 font-medium">Section</th>
+            <th scope="col" className="py-2 text-right font-medium">Questions</th>
           </tr>
         </thead>
         <tbody className="text-ink dark:text-bone">
@@ -49,15 +53,15 @@ export function StartScreen({ mock, questions, onStart }: { mock: MptMockDefinit
         </tbody>
       </table>
       <ul className="mt-6 list-disc space-y-1.5 pl-5 text-sm text-ink-soft dark:text-bone-soft">
-        <li>The timer starts when you press Start and keeps running when you move between questions or refresh the page.</li>
+        <li>The timer starts when you press Start and keeps running when you move between questions, leave the page or refresh it.</li>
         <li>When it reaches 00:00:00 the test is submitted automatically and answering stops.</li>
         <li>Shortcuts: A–D choose an option, ← → move between questions, M marks for review.</li>
         <li>
-          Sources in this mock: {past} from past-paper reproductions, {bank} from the existing bank, {gen} generated practice. Source labels are shown in review.
+          Sources in this {isSection ? "test" : "mock"}: {past} from past-paper reproductions, {bank} from the existing bank, {gen} generated practice. Source labels are shown in review.
         </li>
       </ul>
       <div className="mt-8">
-        <Button size="lg" onClick={onStart}>Start mock test</Button>
+        <Button size="lg" onClick={onStart}>{isSection ? "Start section test" : "Start mock test"}</Button>
       </div>
     </div>
   );
