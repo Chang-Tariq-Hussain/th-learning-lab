@@ -1,12 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import type { MptQuestion } from "../data/mpt-mock-data";
+import type { RunnerQuestion } from "../engine-types";
 import { isUrdu } from "../engine";
 import type { Letter } from "../engine";
 
 interface Props {
-  q: MptQuestion;
+  q: RunnerQuestion;
   selected: Letter | undefined;
   /** exam mode: pass onSelect. review mode: pass reveal. */
   onSelect?: (letter: Letter) => void;

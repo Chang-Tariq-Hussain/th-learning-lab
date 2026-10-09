@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { MptMockDefinition } from "./data/mpt-mock-data";
+import type { RunnerQuestion } from "./engine-types";
 import { getMockQuestions, gradeMock } from "./engine";
 import type { Letter } from "./engine";
 import { attemptFromResult } from "./attempts";
@@ -14,8 +15,8 @@ export type Phase = "loading" | "idle" | "running" | "submitted";
  * One session per test (full mock or section test). The countdown is derived from a fixed `endsAt`
  * stored with the session, so navigating away, refreshing or re-opening never resets it.
  */
-export function useMockSession(mock: MptMockDefinition) {
-  const questions = useMemo(() => getMockQuestions(mock), [mock]);
+export function useMockSession(mock: MptMockDefinition, provided?: RunnerQuestion[]) {
+  const questions: RunnerQuestion[] = useMemo(() => provided ?? getMockQuestions(mock), [mock, provided]);
   const [session, setSession] = useState<StoredSession | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
   const [now, setNow] = useState<number>(() => Date.now());

@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import type { MptMockDefinition, MptQuestion } from "../data/mpt-mock-data";
+import type { MptMockDefinition } from "../data/mpt-mock-data";
+import type { RunnerQuestion } from "../engine-types";
 import { formatClock } from "../engine";
 import type { Letter } from "../engine";
 import type { StoredSession } from "../storage";
@@ -12,7 +13,7 @@ import { QuestionPalette } from "./question-palette";
 
 interface Props {
   mock: MptMockDefinition;
-  questions: MptQuestion[];
+  questions: RunnerQuestion[];
   session: StoredSession;
   remainingSeconds: number;
   onAnswer: (id: string, letter: Letter) => void;

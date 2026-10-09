@@ -25,6 +25,16 @@ export const MOCK_TEST_CATEGORIES: MockTestCategory[] = [
     facts: ["2 full mocks", "200 questions · 200 minutes", "Passing 66 / 200", "10 section tests"],
     available: true,
   },
+  {
+    slug: "sindh-teacher",
+    title: "Sindh Teacher Tests",
+    eyebrow: "PST · JEST · JST (Junior Science Teacher)",
+    description:
+      "Practice mocks, subject / topic / difficulty practice and a question-bank audit for Sindh teacher recruitment tests. The bank is generated practice material; the official pattern is not confirmed.",
+    href: "/dashboard/mock-tests/sindh-teacher",
+    facts: ["3 exams", "5 mocks each", "Practice modes", "Not past papers"],
+    available: true,
+  },
 ];
 
 export function getCategory(slug: string): MockTestCategory | null {

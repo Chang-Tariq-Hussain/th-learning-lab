@@ -1,0 +1,82 @@
+from math import gcd, lcm, sqrt, pi
+from fractions import Fraction as F
+from helpers import q, qf
+M = "Mathematics"
+def f(x): return str(F(x))
+rows = [
+# ---- Basic arithmetic / number systems
+q("PJ",M,"Basic Arithmetic","e","What is 456 + 289?","745",["735","755","645"],"456 + 289 = 745.",chk=456+289),
+q("PJ",M,"Basic Arithmetic","e","What is 1000 - 357?","643",["653","743","633"],"1000 - 357 = 643.",chk=1000-357),
+q("P",M,"Basic Arithmetic","e","What is 12 x 15?","180",["170","160","190"],"12 x 15 = 180.",chk=12*15),
+q("PJ",M,"Basic Arithmetic","m","Evaluate 8 + 6 x 3 - 4.","22",["38","34","18"],"Multiply first: 6 x 3 = 18, then 8 + 18 - 4 = 22.",chk=8+6*3-4),
+q("PJ",M,"Basic Arithmetic","m","A shopkeeper sold 3 dozen eggs and 7 eggs were broken. How many good eggs remain?","29",["36","33","27"],"3 dozen = 36 eggs; 36 - 7 = 29.",chk=3*12-7),
+q("PJ",M,"Basic Arithmetic","m","What is the value of 15 x 15 - 14 x 14?","29",["1","15","30"],"225 - 196 = 29 (also (15+14)(15-14) = 29).",chk=15*15-14*14),
+q("PJ",M,"Number Systems","e","Which of the following is a prime number?","29",["27","33","39"],"29 has no divisors other than 1 and itself; 27, 33 and 39 are divisible by 3.",chk=29),
+q("PJ",M,"Number Systems","e","What is the place value of 7 in 4735?","700",["70","7","7000"],"In 4735 the digit 7 is in the hundreds place, so its place value is 700."),
+q("P",M,"Number Systems","e","How many even prime numbers are there?","1",["0","2","3"],"Only 2 is both even and prime.",chk=1),
+q("PJ",M,"Number Systems","m","How many prime numbers lie between 20 and 40?","4",["3","5","6"],"The primes are 23, 29, 31 and 37.",chk=len([n for n in range(21,40) if all(n%k for k in range(2,n))])),
+q("J",M,"Number Systems","m","What is the smallest 4-digit number divisible by 9?","1008",["1000","1009","1017"],"1000 gives remainder 1 on division by 9, so add 8 to reach 1008 = 9 x 112.",chk=next(n for n in range(1000,2000) if n%9==0)),
+q("JS",M,"Number Systems","d","What is the sum of the first 20 odd natural numbers?","400",["210","380","420"],"The sum of the first n odd numbers is n squared: 20 squared = 400.",chk=sum(range(1,40,2))),
+q("JS",M,"Number Systems","d","What is the unit digit of 7 raised to the power 123?","3",["1","7","9"],"Units digits of powers of 7 repeat 7, 9, 3, 1; 123 leaves remainder 3 on division by 4, so the digit is 3.",chk=pow(7,123,10)),
+# ---- Factors & multiples
+q("PJ",M,"Factors and Multiples","e","What is the HCF of 12 and 18?","6",["3","9","36"],"The common factors of 12 and 18 are 1, 2, 3 and 6; the highest is 6.",chk=gcd(12,18)),
+q("PJ",M,"Factors and Multiples","e","What is the LCM of 4 and 6?","12",["24","10","2"],"The smallest number that both 4 and 6 divide is 12.",chk=lcm(4,6)),
+q("PJ",M,"Factors and Multiples","m","The HCF of two numbers is 8 and their LCM is 48. If one number is 16, the other is:","24",["12","32","48"],"HCF x LCM = product of the numbers: 8 x 48 = 384, and 384 / 16 = 24.",chk=8*48//16),
+q("PJ",M,"Factors and Multiples","m","What is the smallest number that is divisible by 6, 8 and 12?","24",["48","36","12"],"LCM(6, 8, 12) = 24.",chk=lcm(6,8,12)),
+q("J",M,"Factors and Multiples","m","Three bells ring every 6, 8 and 10 minutes. If they ring together at 9:00, they next ring together after:","120 minutes",["60 minutes","80 minutes","240 minutes"],"The bells coincide after LCM(6, 8, 10) = 120 minutes, i.e. at 11:00.",chk=f"{lcm(6,8,10)} minutes"),
+q("JS",M,"Factors and Multiples","d","The greatest number that divides 61 and 97 leaving remainder 1 in each case is:","12",["6","4","9"],"The number divides 61 - 1 = 60 and 97 - 1 = 96 exactly, so it is HCF(60, 96) = 12, which is also greater than the remainder 1.",chk=gcd(60,96)),
+q("JS",M,"Factors and Multiples","d","How many factors does 72 have?","12",["9","10","8"],"72 = 2^3 x 3^2, so the number of factors is (3 + 1)(2 + 1) = 12.",chk=len([n for n in range(1,73) if 72%n==0])),
+# ---- Fractions / decimals
+q("PJ",M,"Fractions","e","What is 1/2 + 1/4?","3/4",["2/6","1/6","2/4"],"1/2 = 2/4, so 2/4 + 1/4 = 3/4.",chk=f(F(1,2)+F(1,4))),
+q("PJ",M,"Fractions","e","Which fraction is the greatest?","3/4",["2/3","1/2","3/5"],"As decimals: 0.75, 0.667, 0.5 and 0.6; the greatest is 3/4.",chk="3/4"),
+q("P",M,"Fractions","e","What is 3/5 of 50?","30",["25","20","35"],"50 / 5 = 10 and 10 x 3 = 30.",chk=50*3//5),
+q("PJ",M,"Fractions","m","What is 2 1/2 x 1 1/5?","3",["2 1/10","3 1/5","2 3/5"],"5/2 x 6/5 = 30/10 = 3.",chk=f(F(5,2)*F(6,5))),
+q("PJ",M,"Fractions","m","What is 3/4 divided by 3/8?","2",["1/2","9/32","3"],"3/4 x 8/3 = 24/12 = 2.",chk=f(F(3,4)/F(3,8))),
+q("J",M,"Fractions","m","A tank is 2/5 full. After adding 18 litres it is 7/10 full. What is its capacity?","60 litres",["45 litres","72 litres","90 litres"],"18 litres is 7/10 - 2/5 = 3/10 of the tank, so capacity = 18 x 10/3 = 60 litres.",chk=f"{int(18/(F(7,10)-F(2,5)))} litres"),
+q("JS",M,"Fractions","d","Which is the correct order from smallest to largest: 5/8, 3/5, 7/12, 2/3?","7/12, 3/5, 5/8, 2/3",["3/5, 7/12, 5/8, 2/3","7/12, 5/8, 3/5, 2/3","2/3, 5/8, 3/5, 7/12"],"Decimals: 7/12 = 0.583, 3/5 = 0.6, 5/8 = 0.625, 2/3 = 0.667.",chk=", ".join(sorted(["5/8","3/5","7/12","2/3"],key=lambda s: F(s)))),
+q("PJ",M,"Decimals","e","What is 0.5 + 0.25?","0.75",["0.55","0.30","0.8"],"0.50 + 0.25 = 0.75.",chk=0.5+0.25),
+q("PJ",M,"Decimals","e","What is 3.6 x 10?","36",["3.60","0.36","360"],"Multiplying by 10 moves the decimal point one place to the right.",chk=int(3.6*10)),
+q("PJ",M,"Decimals","m","What is 0.6 x 0.7?","0.42",["4.2","0.042","1.3"],"6 x 7 = 42 and there are two decimal places in total: 0.42.",chk=round(0.6*0.7,2)),
+q("J",M,"Decimals","m","What is 12.5 divided by 0.25?","50",["5","500","0.5"],"12.5 / 0.25 = 1250 / 25 = 50.",chk=int(12.5/0.25)),
+q("JS",M,"Decimals","d","Express 0.125 as a fraction in its lowest terms.","1/8",["1/12","1/5","125/10"],"0.125 = 125/1000 = 1/8.",chk=f(F("0.125"))),
+# ---- Percentages
+q("PJ",M,"Percentages","e","What is 10% of 250?","25",["2.5","20","50"],"10% = 1/10 and 250 / 10 = 25.",chk=250//10),
+q("PJ",M,"Percentages","e","Express 3/4 as a percentage.","75%",["34%","65%","80%"],"3/4 = 0.75 = 75%.",chk="75%"),
+q("P",M,"Percentages","e","What is 50% of 90?","45",["40","55","35"],"Half of 90 is 45.",chk=45),
+q("PJ",M,"Percentages","m","In a class of 40 students, 60% are girls. How many boys are there?","16",["24","14","20"],"Boys are 40% of 40 = 16.",chk=40*40//100),
+q("PJ",M,"Percentages","m","A price rises from Rs 200 to Rs 250. What is the percentage increase?","25%",["20%","50%","15%"],"Increase = 50 on 200, and 50/200 = 25%.",chk="25%"),
+q("J",M,"Percentages","m","If 15% of a number is 45, the number is:","300",["225","675","150"],"Number = 45 x 100 / 15 = 300.",chk=45*100//15),
+q("JS",M,"Percentages","d","A number is first increased by 20% and then decreased by 20%. The net change is:","a 4% decrease",["no change","a 4% increase","a 2% decrease"],"1.2 x 0.8 = 0.96 of the original, a 4% decrease.",chk="a 4% decrease"),
+q("JS",M,"Percentages","d","In an election two candidates received 60% and 40% of the valid votes. The winner won by 1,200 votes. How many valid votes were cast?","6,000",["4,800","3,000","7,200"],"The margin is 20% of the votes: 1200 / 0.2 = 6000.",chk="{:,}".format(int(1200/0.2))),
+# ---- Ratio & proportion
+q("PJ",M,"Ratio and Proportion","e","Divide Rs 100 in the ratio 1 : 4. The larger share is:","Rs 80",["Rs 20","Rs 75","Rs 60"],"There are 5 parts of Rs 20 each, and the larger share is 4 parts = Rs 80.",chk="Rs 80"),
+q("PJ",M,"Ratio and Proportion","e","The ratio 15 : 25 in its simplest form is:","3 : 5",["5 : 3","1 : 2","15 : 5"],"Divide both by 5 to get 3 : 5.",chk="3 : 5"),
+q("PJ",M,"Ratio and Proportion","m","If 6 pens cost Rs 90, what is the cost of 10 pens?","Rs 150",["Rs 120","Rs 140","Rs 180"],"One pen costs Rs 15, so 10 pens cost Rs 150.",chk="Rs 150"),
+q("PJ",M,"Ratio and Proportion","m","The ages of two sisters are in the ratio 3 : 5 and the sum of their ages is 40. The age of the younger sister is:","15",["12","24","25"],"One part is 40/8 = 5 years, so the younger is 3 x 5 = 15.",chk=15),
+q("J",M,"Ratio and Proportion","m","If a : b = 2 : 3 and b : c = 4 : 5, then a : c is:","8 : 15",["2 : 5","6 : 5","4 : 15"],"Make b the same: a : b = 8 : 12 and b : c = 12 : 15, so a : c = 8 : 15.",chk="8 : 15"),
+q("JS",M,"Ratio and Proportion","d","A mixture contains milk and water in the ratio 5 : 3. How much water must be added to 40 litres of the mixture to make the ratio 5 : 4?","5 litres",["3 litres","8 litres","10 litres"],"Milk = 25 litres and water = 15 litres. For 5 : 4 water must be 20 litres, so add 5 litres.",chk="5 litres"),
+# ---- Average
+q("PJ",M,"Average","e","What is the average of 4, 6, 8, 10 and 12?","8",["7","9","10"],"Sum = 40 and 40 / 5 = 8.",chk=40//5),
+q("PJ",M,"Average","m","The average of five numbers is 20. If one number is removed, the average of the remaining four is 18. The removed number is:","28",["22","38","20"],"Total = 100 and the remaining total = 72, so the removed number is 28.",chk=100-72),
+q("J",M,"Average","m","The average mark of 30 students is 62. If the teacher's marks are included, the average becomes 63. Marks of the teacher are:","93",["63","83","73"],"New total = 31 x 63 = 1953 and old total = 1860, so the extra mark is 93.",chk=31*63-30*62),
+q("JS",M,"Average","d","A cricketer's average after 10 innings is 40. How many runs must he score in the 11th innings to raise his average to 42?","62",["52","60","44"],"Needed total = 11 x 42 = 462; current total = 400; so he needs 62.",chk=11*42-10*40),
+# ---- Profit & loss, interest
+q("PJ",M,"Profit and Loss","e","An article bought for Rs 80 is sold for Rs 100. The profit is:","Rs 20",["Rs 10","Rs 25","Rs 180"],"Profit = selling price - cost price = 100 - 80 = Rs 20.",chk="Rs 20"),
+q("PJ",M,"Profit and Loss","m","A shirt bought for Rs 500 is sold at a 10% loss. The selling price is:","Rs 450",["Rs 400","Rs 550","Rs 490"],"10% of 500 = 50, so SP = 500 - 50 = Rs 450.",chk="Rs 450"),
+q("PJ",M,"Profit and Loss","m","A dealer sells an item for Rs 1,260 at a 12.5% profit. What was the cost price?","Rs 1,120",["Rs 1,100","Rs 1,134","Rs 1,152"],"CP = 1260 / 1.125 = Rs 1,120.",chk="Rs {:,}".format(int(1260/1.125))),
+q("J",M,"Profit and Loss","d","A trader marks goods 25% above cost and gives a 10% discount. His profit percentage is:","12.5%",["15%","10%","17.5%"],"Selling price = 1.25 x 0.9 = 1.125 of cost, a 12.5% profit.",chk="12.5%"),
+q("JS",M,"Profit and Loss","d","By selling an item for Rs 540 a man loses 10%. At what price should he sell it to gain 10%?","Rs 660",["Rs 600","Rs 594","Rs 720"],"CP = 540/0.9 = 600; for a 10% gain, SP = 660.",chk="Rs 660"),
+q("PJ",M,"Simple Interest","e","What is the simple interest on Rs 1,000 at 5% per year for 2 years?","Rs 100",["Rs 50","Rs 105","Rs 10"],"SI = 1000 x 5 x 2 / 100 = Rs 100.",chk="Rs 100"),
+q("PJ",M,"Simple Interest","m","At what rate per cent per year will Rs 2,000 earn Rs 360 as simple interest in 3 years?","6%",["5%","8%","12%"],"Rate = 360 x 100 / (2000 x 3) = 6%.",chk="6%"),
+q("J",M,"Interest","m","Rs 4,000 amounts to Rs 4,960 in 4 years at simple interest. The rate per year is:","6%",["5%","7.5%","24%"],"Interest = 960; rate = 960 x 100 / (4000 x 4) = 6%.",chk="6%"),
+q("JS",M,"Interest","d","What is the compound interest on Rs 10,000 at 10% per year for 2 years?","Rs 2,100",["Rs 2,000","Rs 2,200","Rs 1,100"],"Amount = 10000 x 1.1 x 1.1 = 12,100; interest = Rs 2,100.",chk="Rs {:,}".format(int(round(10000*1.1*1.1-10000)))),
+# ---- Time and work / speed
+q("PJ",M,"Time and Work","m","A can finish a job in 10 days and B in 15 days. Working together, they finish it in:","6 days",["5 days","12.5 days","25 days"],"Combined rate = 1/10 + 1/15 = 1/6 of the job per day.",chk="6 days"),
+q("J",M,"Time and Work","m","12 workers build a wall in 15 days. How many days will 9 workers take?","20 days",["18 days","16 days","25 days"],"Work = 12 x 15 = 180 worker-days; 180 / 9 = 20 days.",chk="20 days"),
+q("JS",M,"Time and Work","d","A can do a piece of work in 12 days and B in 18 days. They work together for 4 days, then A leaves. How many more days does B need to finish the work?","8 days",["6 days","7 days","9 days"],"In 4 days they complete 4 x (1/12 + 1/18) = 4 x 5/36 = 5/9. The remaining 4/9 at B's rate of 1/18 per day takes 8 days.",chk=f"{int((1-4*(F(1,12)+F(1,18)))/F(1,18))} days"),
+q("PJ",M,"Time, Speed and Distance","e","A car travels at 60 km/h. How far does it go in 3 hours?","180 km",["120 km","63 km","20 km"],"Distance = speed x time = 60 x 3 = 180 km.",chk="180 km"),
+q("PJ",M,"Time, Speed and Distance","m","A train covers 240 km in 4 hours. Its average speed is:","60 km/h",["80 km/h","240 km/h","56 km/h"],"Speed = distance / time = 240 / 4 = 60 km/h.",chk="60 km/h"),
+q("J",M,"Time, Speed and Distance","m","Convert 72 km/h into metres per second.","20 m/s",["15 m/s","25 m/s","72 m/s"],"Multiply by 5/18: 72 x 5/18 = 20 m/s.",chk="20 m/s"),
+q("JS",M,"Time, Speed and Distance","d","A train 150 m long passes a pole in 10 seconds. How long will it take to cross a platform 250 m long at the same speed?","26 2/3 seconds",["20 seconds","25 seconds","40 seconds"],"Speed = 15 m/s. Distance to cross the platform = 150 + 250 = 400 m, so time = 400/15 = 26 2/3 s.",chk="26 2/3 seconds"),
+q("JS",M,"Time, Speed and Distance","d","A man walks to a place at 4 km/h and returns at 6 km/h. His average speed for the whole journey is:","4.8 km/h",["5 km/h","4.5 km/h","5.2 km/h"],"Average speed = 2ab/(a + b) = 2 x 4 x 6 / 10 = 4.8 km/h.",chk="4.8 km/h"),
+]

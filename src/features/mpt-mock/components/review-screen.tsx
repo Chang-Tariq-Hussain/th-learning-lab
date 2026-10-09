@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import type { MptMockDefinition, MptQuestion } from "../data/mpt-mock-data";
+import type { MptMockDefinition } from "../data/mpt-mock-data";
+import type { RunnerQuestion } from "../engine-types";
 import { sourceLabel } from "../engine";
 import type { MockResult } from "../engine";
 import type { StoredSession } from "../storage";
@@ -20,7 +21,7 @@ const FILTERS: { id: Filter; label: string }[] = [
 
 interface Props {
   mock: MptMockDefinition;
-  questions: MptQuestion[];
+  questions: RunnerQuestion[];
   session: StoredSession;
   result: MockResult;
   onBack: () => void;

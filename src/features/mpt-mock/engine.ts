@@ -3,8 +3,8 @@ import type { MptMockDefinition, MptQuestion } from "./data/mpt-mock-data";
 import { asFullTest, buildSectionTest, isSectionCode } from "./test-defs";
 import type { MptTest } from "./test-defs";
 
-export type { Letter, AnswerMap } from "./engine-types";
-import type { AnswerMap } from "./engine-types";
+export type { Letter, AnswerMap, RunnerQuestion } from "./engine-types";
+import type { AnswerMap, RunnerQuestion } from "./engine-types";
 
 /** Registry of full mocks. Add a new mock here once its question ids exist in the data file. */
 export const MPT_MOCKS: MptMockDefinition[] = [MPT_MOCK_1, MPT_MOCK_2];
@@ -80,7 +80,7 @@ export interface MockResult extends BucketResult {
 
 export function gradeMock(
   mock: MptMockDefinition,
-  questions: MptQuestion[],
+  questions: RunnerQuestion[],
   answers: AnswerMap
 ): MockResult {
   const status: MockResult["status"] = {};
@@ -150,8 +150,8 @@ export function gradeMock(
   };
 }
 
-export function sourceLabel(q: MptQuestion): string {
+export function sourceLabel(q: RunnerQuestion): string {
   return q.sourceYear ? `${q.sourceType} · ${q.sourceYear}` : q.sourceType;
 }
 
-export const isUrdu = (q: MptQuestion): boolean => q.subjectCode === "UR";
+export const isUrdu = (q: RunnerQuestion): boolean => q.rtl ?? q.subjectCode === "UR";

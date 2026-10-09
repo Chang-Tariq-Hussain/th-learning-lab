@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import type { MptMockDefinition } from "../data/mpt-mock-data";
@@ -18,9 +19,11 @@ interface Props {
   backLabel?: string;
   best?: AttemptRecord | null;
   attempts?: number;
+  /** extra analysis panels (used by exams that show topic / difficulty / source breakdowns) */
+  extra?: ReactNode;
 }
 
-export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onReview, onRestart, backHref, backLabel, best, attempts }: Props) {
+export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onReview, onRestart, backHref, backLabel, best, attempts, extra }: Props) {
   return (
     <div className="mx-auto max-w-4xl">
       <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">{mock.title}</p>
@@ -39,12 +42,21 @@ export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onR
         </div>
         <div className="rounded-xl border border-line p-5 dark:border-line-dark">
           <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Status</p>
-          <p className={cn("mt-1 font-display text-4xl", result.passed ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400")}>
-            {result.passed ? "PASS" : "FAIL"}
-          </p>
-          <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">
-            Passing Marks: {result.passMarks}{result.passed ? "" : ` · ${result.passMarks - result.score} short`}
-          </p>
+          {result.passMarks > 0 ? (
+            <>
+              <p className={cn("mt-1 font-display text-4xl", result.passed ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400")}>
+                {result.passed ? "PASS" : "FAIL"}
+              </p>
+              <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">
+                Passing Marks: {result.passMarks}{result.passed ? "" : ` · ${result.passMarks - result.score} short`}
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="mt-1 font-display text-3xl text-ink dark:text-bone">No pass mark set</p>
+              <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">No official threshold is configured for this test.</p>
+            </>
+          )}
         </div>
         <div className="rounded-xl border border-line p-5 dark:border-line-dark">
           <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Time Used</p>
@@ -106,6 +118,8 @@ export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onR
         </ul>
       )}
       <p className="mt-1 text-xs text-ink-soft dark:text-bone-soft">Topics with at least 2 questions under 60%, counting unanswered as missed.</p>
+
+      {extra}
 
       <div className="mt-8 flex flex-wrap gap-3">
         <Button onClick={onReview}>Review all questions</Button>

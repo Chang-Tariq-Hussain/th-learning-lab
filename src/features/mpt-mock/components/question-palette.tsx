@@ -1,12 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import type { MptMockDefinition, MptQuestion } from "../data/mpt-mock-data";
+import type { MptMockDefinition } from "../data/mpt-mock-data";
+import type { RunnerQuestion } from "../engine-types";
 import type { AnswerMap } from "../engine";
 
 interface Props {
   mock: MptMockDefinition;
-  questions: MptQuestion[];
+  questions: RunnerQuestion[];
   answers: AnswerMap;
   marked: Record<string, true>;
   current: number;
