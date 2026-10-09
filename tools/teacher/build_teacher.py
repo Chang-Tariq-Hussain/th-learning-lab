@@ -9,7 +9,7 @@ sys.path.insert(0, HERE)
 from helpers import DEFAULT_CLASS, map_topic  # noqa: E402
 SYL = json.load(open(os.path.join(ROOT, "src", "features", "teacher-tests", "syllabus.json")))
 
-SUBJ_CODE = {"English": "eng", "Mathematics": "mat", "Science": "sci", "Computer": "cmp", "Islamiat": "isl", "Social Studies": "soc", "Urdu": "urd", "Sindhi": "snd"}
+SUBJ_CODE = {"English": "eng", "Mathematics": "mat", "Science": "sci", "Computer": "cmp", "Islamiat": "isl", "Social Studies": "soc", "Urdu": "urd", "Sindhi": "snd", "Pedagogy": "ped"}
 EXAM_ORDER = ["pst", "jest", "jst"]
 UNSAFE = re.compile(r"\b(all|none|both|neither|any)\s+of\b|\babove\b|\bboth\b|\b[abcd]\s*(and|&)\s*[abcd]\b", re.I)
 
@@ -24,11 +24,17 @@ def load_rows():
 
 def main():
     rows = load_rows()
+    # Mother-tongue and Islamiat questions belong to the PST pattern only: the official JEST sample paper and the official
+    # JST specification have no Urdu, Sindhi or Islamiat section.
+    for r in rows:
+        if r["subject"] in ("Urdu", "Sindhi", "Islamiat"):
+            r["exams"] = [e for e in r["exams"] if e == "pst"]
+    rows = [r for r in rows if r["exams"]]
     # JST (Junior Science Teacher) draws its non-science sections from the JEST-level pool: science-graduate candidates
     # sit the same kind of school-level English, maths, Urdu, Islamiat, social studies and computer questions.
     # Science itself is separate (JST has its own physics / chemistry / biology questions).
     for r in rows:
-        if "jest" in r["exams"] and "jst" not in r["exams"] and r["subject"] != "Science":
+        if "jest" in r["exams"] and "jst" not in r["exams"] and r["subject"] not in ("Science", "Urdu", "Sindhi", "Islamiat"):
             r["exams"] = r["exams"] + ["jst"]
     counters = {}
     questions = []

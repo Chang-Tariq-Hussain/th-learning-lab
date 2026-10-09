@@ -13,10 +13,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The brain of the computer is the:",
   "passage": null,
   "options": [
-   "printer",
-   "CPU",
    "keyboard",
-   "monitor"
+   "CPU",
+   "monitor",
+   "printer"
   ],
   "correctAnswer": 1,
   "explanation": "The central processing unit executes instructions.",
@@ -46,8 +46,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "printer",
-   "speaker",
    "monitor",
+   "speaker",
    "keyboard"
   ],
   "correctAnswer": 3,
@@ -110,9 +110,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "binary",
+   "roman",
    "octal only",
-   "decimal",
-   "roman"
+   "decimal"
   ],
   "correctAnswer": 0,
   "explanation": "Computers store and process data as 0s and 1s.",
@@ -171,10 +171,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is the largest unit of data?",
   "passage": null,
   "options": [
-   "gigabyte",
-   "terabyte",
    "megabyte",
-   "kilobyte"
+   "terabyte",
+   "kilobyte",
+   "gigabyte"
   ],
   "correctAnswer": 1,
   "explanation": "1 TB = 1024 GB.",
@@ -235,8 +235,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which part of the computer is also called its 'main memory'?",
   "passage": null,
   "options": [
-   "CPU cache only",
    "hard disk",
+   "CPU cache only",
    "ROM only",
    "RAM"
   ],
@@ -268,9 +268,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "the main circuit board of the computer",
-   "a storage disk",
+   "a type of monitor",
    "a type of software",
-   "a type of monitor"
+   "a storage disk"
   ],
   "correctAnswer": 0,
   "explanation": "All major components connect to it.",
@@ -330,10 +330,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Microsoft Word is an example of:",
   "passage": null,
   "options": [
-   "hardware",
+   "system software",
    "application software",
    "firmware",
-   "system software"
+   "hardware"
   ],
   "correctAnswer": 1,
   "explanation": "Word is an application program for writing documents.",
@@ -363,9 +363,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "operating system",
+   "Adobe Photoshop",
    "a web browser",
-   "Microsoft Excel",
-   "Adobe Photoshop"
+   "Microsoft Excel"
   ],
   "correctAnswer": 0,
   "explanation": "System software manages the hardware and runs other programs.",
@@ -394,10 +394,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is an operating system?",
   "passage": null,
   "options": [
-   "Word",
    "Chrome",
+   "Excel",
    "Windows",
-   "Excel"
+   "Word"
   ],
   "correctAnswer": 2,
   "explanation": "Windows is an operating system.",
@@ -521,9 +521,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which device is used to convert a paper document into a digital image?",
   "passage": null,
   "options": [
+   "joystick",
    "projector",
    "plotter",
-   "joystick",
    "scanner"
   ],
   "correctAnswer": 3,
@@ -587,8 +587,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "hard disk",
    "DVD",
-   "CD",
-   "floppy disk"
+   "floppy disk",
+   "CD"
   ],
   "correctAnswer": 0,
   "explanation": "Modern hard disks store hundreds of gigabytes to terabytes.",
@@ -617,8 +617,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "WWW stands for:",
   "passage": null,
   "options": [
-   "Web World Wide",
    "World Web Window",
+   "Web World Wide",
    "Wide World Web",
    "World Wide Web"
   ],
@@ -682,8 +682,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "@",
-   "#",
    "%",
+   "#",
    "&"
   ],
   "correctAnswer": 0,
@@ -712,10 +712,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The protocol used for transferring web pages is:",
   "passage": null,
   "options": [
-   "FTP",
-   "HTTP",
    "SMTP",
-   "POP3"
+   "HTTP",
+   "POP3",
+   "FTP"
   ],
   "correctAnswer": 1,
   "explanation": "HTTP carries web pages; SMTP and POP3 are for e-mail.",
@@ -744,9 +744,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A network that covers a small area such as a school is a:",
   "passage": null,
   "options": [
-   "PAN only",
-   "MAN",
    "WAN",
+   "MAN",
+   "PAN only",
    "LAN"
   ],
   "correctAnswer": 3,
@@ -839,9 +839,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "PowerPoint",
-   "Paint",
+   "Word",
    "Excel",
-   "Word"
+   "Paint"
   ],
   "correctAnswer": 2,
   "explanation": "Excel is a spreadsheet program.",
@@ -870,9 +870,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which program is used to make presentations?",
   "passage": null,
   "options": [
-   "Notepad",
-   "PowerPoint",
    "Excel",
+   "PowerPoint",
+   "Notepad",
    "Access"
   ],
   "correctAnswer": 1,
@@ -934,8 +934,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In Excel, a cell address is given by:",
   "passage": null,
   "options": [
-   "a file name",
    "a row number only",
+   "a file name",
    "a sheet name only",
    "a column letter and a row number"
   ],
@@ -965,10 +965,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In Excel, the formula =SUM(A1:A5) will:",
   "passage": null,
   "options": [
-   "find the largest value",
+   "count the cells",
    "multiply the values",
    "add the values in cells A1 to A5",
-   "count the cells"
+   "find the largest value"
   ],
   "correctAnswer": 2,
   "explanation": "SUM adds the values in the range.",
@@ -1029,10 +1029,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is the best password?",
   "passage": null,
   "options": [
-   "your date of birth",
-   "a mix of letters, numbers and symbols",
    "your name",
-   "12345"
+   "a mix of letters, numbers and symbols",
+   "12345",
+   "your date of birth"
   ],
   "correctAnswer": 1,
   "explanation": "A long mixed password is harder to guess.",
@@ -1092,9 +1092,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Pretending to be a trusted organisation in an e-mail to steal passwords is called:",
   "passage": null,
   "options": [
-   "spamming only",
-   "booting",
    "debugging",
+   "booting",
+   "spamming only",
    "phishing"
   ],
   "correctAnswer": 3,
@@ -1154,9 +1154,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In a database table, a row is also called a:",
   "passage": null,
   "options": [
+   "key only",
    "query",
    "field",
-   "key only",
    "record"
   ],
   "correctAnswer": 3,
@@ -1185,10 +1185,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "IT stands for:",
   "passage": null,
   "options": [
-   "Integrated Tool",
-   "Information Technology",
    "Internet Telephone",
-   "Internal Task"
+   "Information Technology",
+   "Internal Task",
+   "Integrated Tool"
   ],
   "correctAnswer": 1,
   "explanation": "IT is Information Technology.",
@@ -1217,9 +1217,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "on remote servers accessed over the internet",
+   "only on a CD",
    "only on the hard disk",
-   "only in RAM",
-   "only on a CD"
+   "only in RAM"
   ],
   "correctAnswer": 0,
   "explanation": "Examples are Google Drive and OneDrive.",
@@ -1249,8 +1249,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "old",
-   "fragile",
    "empty",
+   "fragile",
    "modern"
   ],
   "correctAnswer": 0,
@@ -1280,9 +1280,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the synonym of 'brave'.",
   "passage": null,
   "options": [
+   "careless",
    "gentle",
    "timid",
-   "careless",
    "courageous"
   ],
   "correctAnswer": 3,
@@ -1312,10 +1312,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which word means the same as 'huge'?",
   "passage": null,
   "options": [
-   "distant",
+   "narrow",
    "enormous",
-   "ordinary",
-   "narrow"
+   "distant",
+   "ordinary"
   ],
   "correctAnswer": 1,
   "explanation": "Huge and enormous both mean extremely large.",
@@ -1345,8 +1345,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "wealthy",
-   "talkative",
    "forgetful",
+   "talkative",
    "hardworking"
   ],
   "correctAnswer": 3,
@@ -1441,8 +1441,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "cancel",
    "defer",
-   "advance",
-   "conduct"
+   "conduct",
+   "advance"
   ],
   "correctAnswer": 1,
   "explanation": "To postpone is to put off until a later time; defer means the same. Cancel ends it altogether.",
@@ -1472,9 +1472,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "plentiful",
-   "limited",
+   "ancient",
    "useless",
-   "ancient"
+   "limited"
   ],
   "correctAnswer": 0,
   "explanation": "Abundant means existing in large quantities, i.e. plentiful.",
@@ -1502,8 +1502,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the word closest in meaning to 'candid'.",
   "passage": null,
   "options": [
-   "polite",
    "secretive",
+   "polite",
    "frank",
    "hesitant"
   ],
@@ -1533,10 +1533,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the synonym of 'meticulous'.",
   "passage": null,
   "options": [
-   "easily annoyed",
+   "quickly finished",
    "often mistaken",
    "careful about every detail",
-   "quickly finished"
+   "easily annoyed"
   ],
   "correctAnswer": 2,
   "explanation": "Meticulous describes extreme attention to detail.",
@@ -1565,8 +1565,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "thrifty",
-   "generous",
    "reckless",
+   "generous",
    "lazy"
   ],
   "correctAnswer": 0,
@@ -1597,8 +1597,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "shiny",
    "short-lived",
-   "dangerous",
-   "everlasting"
+   "everlasting",
+   "dangerous"
   ],
   "correctAnswer": 1,
   "explanation": "Ephemeral things last only a very short time.",
@@ -1659,9 +1659,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "defeat",
-   "win",
+   "success",
    "triumph",
-   "success"
+   "win"
   ],
   "correctAnswer": 0,
   "explanation": "Victory is winning; its opposite is defeat.",
@@ -1690,10 +1690,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The opposite of 'expand' is:",
   "passage": null,
   "options": [
-   "spread",
-   "shrink",
    "grow",
-   "stretch"
+   "shrink",
+   "stretch",
+   "spread"
   ],
   "correctAnswer": 1,
   "explanation": "To expand is to become larger; to shrink is to become smaller.",
@@ -1723,9 +1723,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "opaque",
-   "thin",
    "clear",
-   "bright"
+   "bright",
+   "thin"
   ],
   "correctAnswer": 0,
   "explanation": "A transparent material lets light through; an opaque one does not.",
@@ -1754,9 +1754,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the antonym of 'temporary'.",
   "passage": null,
   "options": [
-   "sudden",
-   "partial",
    "brief",
+   "partial",
+   "sudden",
    "permanent"
   ],
   "correctAnswer": 3,
@@ -1785,10 +1785,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the antonym of 'optimistic'.",
   "passage": null,
   "options": [
+   "hopeful",
    "confident",
-   "cheerful",
    "pessimistic",
-   "hopeful"
+   "cheerful"
   ],
   "correctAnswer": 2,
   "explanation": "An optimist expects good outcomes; a pessimist expects bad ones.",
@@ -1847,9 +1847,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the antonym of 'benevolent'.",
   "passage": null,
   "options": [
-   "cautious",
-   "humble",
    "charitable",
+   "humble",
+   "cautious",
    "malevolent"
   ],
   "correctAnswer": 3,
@@ -1880,8 +1880,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "professional",
    "learner",
-   "beginner",
-   "novice"
+   "novice",
+   "beginner"
   ],
   "correctAnswer": 0,
   "explanation": "An amateur does something for pleasure; a professional does it as an occupation.",
@@ -1910,10 +1910,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A person who writes books is called a(n):",
   "passage": null,
   "options": [
+   "reader",
    "publisher",
-   "editor",
    "author",
-   "reader"
+   "editor"
   ],
   "correctAnswer": 2,
   "explanation": "An author is the writer of a book.",
@@ -1942,10 +1942,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which word is spelled correctly?",
   "passage": null,
   "options": [
-   "neccesary",
+   "neccessary",
    "necessary",
-   "necesary",
-   "neccessary"
+   "neccesary",
+   "necesary"
   ],
   "correctAnswer": 1,
   "explanation": "Necessary has one c and two s's.",
@@ -1974,10 +1974,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which word is spelled correctly?",
   "passage": null,
   "options": [
+   "seprate",
    "separete",
-   "seperate",
    "separate",
-   "seprate"
+   "seperate"
   ],
   "correctAnswer": 2,
   "explanation": "The correct spelling is s-e-p-a-r-a-t-e; the middle is 'para', not 'per'.",
@@ -2006,9 +2006,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "accommodation",
-   "acommodasion",
    "acommodation",
-   "accomodation"
+   "accomodation",
+   "acommodasion"
   ],
   "correctAnswer": 0,
   "explanation": "Accommodation has double c and double m.",
@@ -2098,8 +2098,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In the sentence 'The principal's decision was irrevocable', 'irrevocable' means:",
   "passage": null,
   "options": [
-   "kept secret",
    "open to debate",
+   "kept secret",
    "impossible to change",
    "made in a hurry"
   ],
@@ -2130,10 +2130,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "One who studies the stars:",
   "passage": null,
   "options": [
-   "astrologer",
-   "astronomer",
    "botanist",
-   "geologist"
+   "astronomer",
+   "geologist",
+   "astrologer"
   ],
   "correctAnswer": 1,
   "explanation": "An astronomer studies stars and planets scientifically.",
@@ -2163,9 +2163,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "illiterate",
-   "ignorant",
    "innocent",
-   "invalid"
+   "invalid",
+   "ignorant"
   ],
   "correctAnswer": 0,
   "explanation": "Illiterate means unable to read or write.",
@@ -2194,10 +2194,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A person who lives for a long time in a foreign land is a(n):",
   "passage": null,
   "options": [
-   "traveller",
-   "expatriate",
    "emigrant's child",
-   "tourist"
+   "expatriate",
+   "tourist",
+   "traveller"
   ],
   "correctAnswer": 1,
   "explanation": "An expatriate lives outside their home country.",
@@ -2226,9 +2226,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A speech made without preparation:",
   "passage": null,
   "options": [
-   "sermon",
-   "monologue",
    "lecture",
+   "monologue",
+   "sermon",
    "extempore"
   ],
   "correctAnswer": 3,
@@ -2258,9 +2258,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "democracy",
-   "monarchy",
    "autocracy",
-   "aristocracy"
+   "aristocracy",
+   "monarchy"
   ],
   "correctAnswer": 0,
   "explanation": "Democracy means rule by the people, usually through elected representatives.",
@@ -2288,9 +2288,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A person who is present everywhere:",
   "passage": null,
   "options": [
-   "omniscient",
    "omnipotent",
    "ominous",
+   "omniscient",
    "omnipresent"
   ],
   "correctAnswer": 3,
@@ -2351,10 +2351,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'A piece of cake' means:",
   "passage": null,
   "options": [
-   "something expensive",
-   "something very easy",
    "a lucky gift",
-   "a small dessert"
+   "something very easy",
+   "a small dessert",
+   "something expensive"
   ],
   "correctAnswer": 1,
   "explanation": "The idiom describes a task that is very easy.",
@@ -2384,9 +2384,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "to start a conversation in a friendly way",
+   "to feel very cold",
    "to damage something",
-   "to end a friendship",
-   "to feel very cold"
+   "to end a friendship"
   ],
   "correctAnswer": 0,
   "explanation": "Breaking the ice means easing initial awkwardness between people.",
@@ -2415,9 +2415,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'To let the cat out of the bag' means:",
   "passage": null,
   "options": [
+   "to make a big mistake in a shop",
    "to lose one's temper",
    "to free an animal",
-   "to make a big mistake in a shop",
    "to reveal a secret by mistake"
   ],
   "correctAnswer": 3,
@@ -2447,10 +2447,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'To beat around the bush' means:",
   "passage": null,
   "options": [
-   "to hit a plant",
-   "to avoid coming to the point",
    "to hurry up",
-   "to search carefully"
+   "to avoid coming to the point",
+   "to search carefully",
+   "to hit a plant"
   ],
   "correctAnswer": 1,
   "explanation": "The idiom means speaking indirectly instead of getting to the main issue.",
@@ -2479,8 +2479,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "you are playing badly",
-   "you have won the game",
    "the matter is over",
+   "you have won the game",
    "it is your turn to take action"
   ],
   "correctAnswer": 3,
@@ -2511,8 +2511,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "to cause a fire",
    "to study or work late into the night",
-   "to wake up early",
-   "to waste fuel"
+   "to waste fuel",
+   "to wake up early"
   ],
   "correctAnswer": 1,
   "explanation": "The idiom refers to working late, originally by lamp light.",
@@ -2540,10 +2540,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'A blessing in disguise' means:",
   "passage": null,
   "options": [
-   "a hidden enemy",
    "a false promise",
+   "a religious gift",
    "something good that seemed bad at first",
-   "a religious gift"
+   "a hidden enemy"
   ],
   "correctAnswer": 2,
   "explanation": "It is an apparent misfortune that turns out to be beneficial.",
@@ -2572,9 +2572,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "to regret something that cannot be undone",
+   "to waste food",
    "to behave like a child",
-   "to make a loud complaint",
-   "to waste food"
+   "to make a loud complaint"
   ],
   "correctAnswer": 0,
   "explanation": "The proverb advises against grieving over a past loss that cannot be changed.",
@@ -2603,10 +2603,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "She ___ to school every day.",
   "passage": null,
   "options": [
-   "go",
+   "going",
    "goes",
    "gone",
-   "going"
+   "go"
   ],
   "correctAnswer": 1,
   "explanation": "A singular third-person subject takes -s in the simple present: she goes.",
@@ -2635,9 +2635,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "They ___ football when it started to rain.",
   "passage": null,
   "options": [
-   "have played",
-   "play",
    "are playing",
+   "play",
+   "have played",
    "were playing"
   ],
   "correctAnswer": 3,
@@ -2668,9 +2668,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "had left",
+   "has left",
    "was leaving",
-   "leaves",
-   "has left"
+   "leaves"
   ],
   "correctAnswer": 0,
   "explanation": "The train left before we arrived, so the earlier past action takes the past perfect.",
@@ -2699,8 +2699,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "He ___ in this city since 2015.",
   "passage": null,
   "options": [
-   "lives",
    "is living",
+   "lives",
    "has lived",
    "lived"
   ],
@@ -2731,8 +2731,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "will be lying",
-   "will lie",
    "are lying",
+   "will lie",
    "have lain"
   ],
   "correctAnswer": 0,
@@ -2761,9 +2761,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "By next June, she ___ here for ten years.",
   "passage": null,
   "options": [
-   "would work",
    "will work",
    "has worked",
+   "would work",
    "will have worked"
   ],
   "correctAnswer": 3,
@@ -2794,8 +2794,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "know",
    "knew",
-   "will know",
-   "had known"
+   "had known",
+   "will know"
   ],
   "correctAnswer": 1,
   "explanation": "A second-conditional sentence (unreal present) uses the simple past in the if-clause.",
@@ -2825,8 +2825,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "no article",
-   "a",
    "the",
+   "a",
    "an"
   ],
   "correctAnswer": 3,
@@ -2856,9 +2856,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "He bought ___ umbrella.",
   "passage": null,
   "options": [
-   "no article",
-   "an",
    "a",
+   "an",
+   "no article",
    "the"
   ],
   "correctAnswer": 1,
@@ -2889,9 +2889,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "a",
-   "an",
+   "no article",
    "the",
-   "no article"
+   "an"
   ],
   "correctAnswer": 0,
   "explanation": "'European' begins with a /j/ sound, so 'a' is used.",
@@ -2950,10 +2950,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "He is one of ___ most respected teachers in ___ town.",
   "passage": null,
   "options": [
+   "a ... the",
    "the ... a",
-   "an ... a",
    "the ... the",
-   "a ... the"
+   "an ... a"
   ],
   "correctAnswer": 2,
   "explanation": "A superlative takes 'the', and 'the town' refers to a particular town known to both speakers.",
@@ -2983,9 +2983,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "on",
+   "by",
    "at",
-   "in",
-   "by"
+   "in"
   ],
   "correctAnswer": 0,
   "explanation": "A book resting on a surface is 'on' the table.",
@@ -3046,8 +3046,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "He has been waiting ___ two hours.",
   "passage": null,
   "options": [
-   "since",
    "during",
+   "since",
    "for",
    "from"
   ],
@@ -3080,8 +3080,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "from",
    "by",
-   "to",
-   "with"
+   "with",
+   "to"
   ],
   "correctAnswer": 1,
   "explanation": "The agent of a passive action is introduced by 'by'.",
@@ -3110,9 +3110,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "at",
+   "for",
    "in",
-   "on",
-   "for"
+   "on"
   ],
   "correctAnswer": 0,
   "explanation": "We say 'good at' a subject or skill.",
@@ -3140,8 +3140,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The teacher insisted ___ punctuality.",
   "passage": null,
   "options": [
-   "at",
    "for",
+   "at",
    "on",
    "with"
   ],
@@ -3172,10 +3172,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Ali and ___ went to the market.",
   "passage": null,
   "options": [
-   "my",
+   "mine",
    "I",
    "me",
-   "mine"
+   "my"
   ],
   "correctAnswer": 1,
   "explanation": "'Ali and I' is the subject of the sentence, so the subject pronoun is used.",
@@ -3205,8 +3205,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "her",
-   "herself",
    "hers",
+   "herself",
    "she"
   ],
   "correctAnswer": 0,
@@ -3235,10 +3235,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The dog wagged ___ tail happily.",
   "passage": null,
   "options": [
-   "his",
+   "it's",
    "its",
    "their",
-   "it's"
+   "his"
   ],
   "correctAnswer": 1,
   "explanation": "'Its' (no apostrophe) is the possessive of 'it'; 'it's' means 'it is'.",
@@ -3267,8 +3267,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "himself",
-   "him",
    "his",
+   "him",
    "he"
   ],
   "correctAnswer": 0,
@@ -3299,8 +3299,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "heaviest",
-   "heavy",
    "more heavy",
+   "heavy",
    "heavier"
   ],
   "correctAnswer": 3,
@@ -3331,9 +3331,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "She is the taller girl in the class.",
-   "She is tallest girl of the class.",
+   "She is most tall girl in the class.",
    "She is the tallest girl in the class.",
-   "She is most tall girl in the class."
+   "She is tallest girl of the class."
   ],
   "correctAnswer": 2,
   "explanation": "A superlative needs 'the' and the -est form: the tallest.",
@@ -3393,10 +3393,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "He runs very ___.",
   "passage": null,
   "options": [
-   "more fastly",
+   "faster than",
    "fast",
    "fastly",
-   "faster than"
+   "more fastly"
   ],
   "correctAnswer": 1,
   "explanation": "'Fast' is both an adjective and an adverb; 'fastly' is not a word.",
@@ -3425,9 +3425,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "She sings ___.",
   "passage": null,
   "options": [
-   "beautify",
-   "beautiful",
    "beauty",
+   "beautiful",
+   "beautify",
    "beautifully"
   ],
   "correctAnswer": 3,
@@ -3457,9 +3457,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "He hardly eats never sweets.",
-   "He eats hardly never sweets.",
+   "He hardly never eats sweets.",
    "He hardly ever eats sweets.",
-   "He hardly never eats sweets."
+   "He eats hardly never sweets."
   ],
   "correctAnswer": 2,
   "explanation": "'Hardly' already has a negative sense, so it cannot be combined with 'never'.",
@@ -3488,9 +3488,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The boys ___ playing in the garden.",
   "passage": null,
   "options": [
-   "has",
    "was",
    "is",
+   "has",
    "are"
   ],
   "correctAnswer": 3,
@@ -3522,8 +3522,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "were",
    "is",
-   "has been",
-   "was"
+   "was",
+   "has been"
   ],
   "correctAnswer": 0,
   "explanation": "With 'neither ... nor' the verb agrees with the nearer subject (friends, plural).",
@@ -3614,8 +3614,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The number of students ___ increasing every year.",
   "passage": null,
   "options": [
-   "have been",
    "were",
+   "have been",
    "is",
    "are"
   ],
@@ -3678,9 +3678,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "She doesn't like tea.",
-   "She doesn't likes tea.",
    "She don't like tea.",
-   "She not like tea."
+   "She not like tea.",
+   "She doesn't likes tea."
   ],
   "correctAnswer": 0,
   "explanation": "With a singular subject the auxiliary is 'doesn't', followed by the base verb.",
@@ -3711,8 +3711,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "He has went to the market.",
    "He has gone to the market.",
-   "He have gone to the market.",
-   "He is gone to the market yesterday."
+   "He is gone to the market yesterday.",
+   "He have gone to the market."
   ],
   "correctAnswer": 1,
   "explanation": "The present perfect is 'has' plus the past participle 'gone'.",
@@ -3740,10 +3740,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct sentence.",
   "passage": null,
   "options": [
-   "Each of the students have finished the test.",
    "Each of students has finish the test.",
+   "Each of the students are finishing the test.",
    "Each of the students has finished the test.",
-   "Each of the students are finishing the test."
+   "Each of the students have finished the test."
   ],
   "correctAnswer": 2,
   "explanation": "'Each' is singular and needs 'has' plus a past participle.",
@@ -3771,10 +3771,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the sentence that is grammatically correct.",
   "passage": null,
   "options": [
-   "Having finish his work, he went home.",
-   "Having finished his work, he went home.",
    "Finished his work, he went home.",
-   "Having finished his work, the bell rang."
+   "Having finished his work, he went home.",
+   "Having finished his work, the bell rang.",
+   "Having finish his work, he went home."
   ],
   "correctAnswer": 1,
   "explanation": "The participle phrase must describe the subject of the main clause ('he'); in the first option the bell did not finish the work.",
@@ -3865,9 +3865,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Change to passive: 'Ali wrote a letter.'",
   "passage": null,
   "options": [
+   "A letter wrote by Ali.",
    "A letter is written by Ali.",
    "A letter has written by Ali.",
-   "A letter wrote by Ali.",
    "A letter was written by Ali."
   ],
   "correctAnswer": 3,
@@ -3898,9 +3898,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "A bridge is being built by them.",
-   "A bridge is built by them.",
+   "A bridge has been built by them.",
    "A bridge was being built by them.",
-   "A bridge has been built by them."
+   "A bridge is built by them."
   ],
   "correctAnswer": 0,
   "explanation": "Present continuous active becomes 'is/are being + past participle'.",
@@ -3928,9 +3928,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Change to active: 'The window was broken by the boy.'",
   "passage": null,
   "options": [
-   "The boy was breaking the window.",
    "The boy has broken the window.",
    "The boy breaks the window.",
+   "The boy was breaking the window.",
    "The boy broke the window."
   ],
   "correctAnswer": 3,
@@ -3961,9 +3961,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "He said that he was happy.",
-   "He says that he was happy.",
+   "He said that I was happy.",
    "He said that he is happy.",
-   "He said that I was happy."
+   "He says that he was happy."
   ],
   "correctAnswer": 0,
   "explanation": "In reported speech the present tense moves back to the past and the pronoun changes to match.",
@@ -3992,10 +3992,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Change to indirect speech: She said, \"I will come tomorrow.\"",
   "passage": null,
   "options": [
-   "She said that she will come tomorrow.",
+   "She said that she would come tomorrow.",
    "She said that I would come the next day.",
    "She said that she would come the next day.",
-   "She said that she would come tomorrow."
+   "She said that she will come tomorrow."
   ],
   "correctAnswer": 2,
   "explanation": "'Will' becomes 'would' and 'tomorrow' becomes 'the next day' in reported speech.",
@@ -4023,10 +4023,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Change to indirect speech: He said to me, \"Where do you live?\"",
   "passage": null,
   "options": [
-   "He told me where do I live.",
-   "He asked me where I lived.",
    "He asked me where did I live.",
-   "He asked me that where I lived."
+   "He asked me where I lived.",
+   "He asked me that where I lived.",
+   "He told me where do I live."
   ],
   "correctAnswer": 1,
   "explanation": "A reported question uses 'asked', normal word order and a back-shifted tense, with no question mark.",
@@ -4055,8 +4055,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In the sentence 'The quick fox jumps', the word 'quick' is a(n):",
   "passage": null,
   "options": [
-   "noun",
    "adverb",
+   "noun",
    "adjective",
    "verb"
   ],
@@ -4087,10 +4087,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which word is a conjunction?",
   "passage": null,
   "options": [
-   "table",
+   "slowly",
    "but",
-   "under",
-   "slowly"
+   "table",
+   "under"
   ],
   "correctAnswer": 1,
   "explanation": "'But' joins words or clauses.",
@@ -4120,9 +4120,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "adverb",
+   "noun",
    "adjective",
-   "preposition",
-   "noun"
+   "preposition"
   ],
   "correctAnswer": 0,
   "explanation": "It describes how she sings, so it is an adverb of manner.",
@@ -4150,10 +4150,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In the sentence 'Wow! That was a great match', 'Wow' is a(n):",
   "passage": null,
   "options": [
-   "conjunction",
-   "interjection",
    "adverb",
-   "pronoun"
+   "interjection",
+   "pronoun",
+   "conjunction"
   ],
   "correctAnswer": 1,
   "explanation": "An interjection expresses sudden emotion.",
@@ -4184,8 +4184,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "because of",
    "because",
-   "so that",
-   "although"
+   "although",
+   "so that"
   ],
   "correctAnswer": 0,
   "explanation": "'Because of' is followed by a noun phrase (the heavy traffic).",
@@ -4245,8 +4245,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "You will fail ___ you work harder.",
   "passage": null,
   "options": [
-   "if",
    "although",
+   "if",
    "because",
    "unless"
   ],
@@ -4276,10 +4276,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The speaker was so ___ that the audience understood every word.",
   "passage": null,
   "options": [
-   "evasive",
+   "inaudible",
    "articulate",
-   "hesitant",
-   "inaudible"
+   "evasive",
+   "hesitant"
   ],
   "correctAnswer": 1,
   "explanation": "Articulate means expressing ideas clearly, which suits the result described.",
@@ -4298,131 +4298,6 @@ export const JEST_BANK: TeacherQuestion[] = [
   "needsReview": false
  },
  {
-  "id": "jest-isl-0001",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The Ghazwa of Hunain was fought against ______ tribe.",
-  "passage": null,
-  "options": [
-   "Khazraj",
-   "Kinana",
-   "Hawazin",
-   "Aws"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Hunain (8 AH), fought soon after the conquest of Makkah, was against the Hawazin (with Thaqif).",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-008 (Verified Past Paper 2025)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0002",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The Treaty of Al-Hudaibiyah was scribed by:",
-  "passage": null,
-  "options": [
-   "Hazrat Ali Al-Murtaza (RA)",
-   "Hazrat Umar (RA)",
-   "Hazrat Abu Bakr (RA)",
-   "Hazrat Usman (RA)"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Ali ibn Abi Talib wrote the treaty at the Prophet's dictation (6 AH).",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-014 (Verified Past Paper 2023)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0003",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "In what year did 'Bait-e-Rizwan' take place?",
-  "passage": null,
-  "options": [
-   "7 AH",
-   "5 AH",
-   "8 AH",
-   "6 AH"
-  ],
-  "correctAnswer": 3,
-  "explanation": "The pledge under the tree at Hudaibiyah took place in 6 AH (Quran 48:18).",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-017 (Verified Past Paper 2023)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0001",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Which Surah of the Quran mentions the event of Miraj (the Ascension)?",
-  "passage": null,
-  "options": [
-   "Surah Al-Isra",
-   "Surah Al-Baqarah",
-   "Surah Al-Mulk",
-   "Surah Al-Ahzab"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Surah Al-Isra (17:1) opens with the night journey of the Prophet from Masjid al-Haram to Masjid al-Aqsa.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-020 (Verified Past Paper 2025)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
   "id": "jest-eng-0045",
   "examType": "jest",
   "examTypes": [
@@ -4432,12 +4307,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Catacomb:",
   "passage": null,
   "options": [
-   "Shrine",
-   "Haven",
+   "Crypt",
    "Oasis",
-   "Crypt"
+   "Haven",
+   "Shrine"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "A catacomb is an underground burial chamber; 'crypt' (an underground burial vault) is closest.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -4465,10 +4340,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "Laudatory",
    "Approbatory",
-   "Depreciatory",
-   "Complementary"
+   "Complementary",
+   "Depreciatory"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Pejorative means expressing contempt or disapproval; 'depreciatory' (belittling) matches. The others are praising words.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -4495,12 +4370,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "She showed a blatant disregard for the rules. (Synonym of the underlined word 'blatant')",
   "passage": null,
   "options": [
-   "Last-minute",
    "Obvious",
+   "Last-minute",
    "Rebellious",
    "Hidden"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Blatant means done openly and unashamedly, i.e. obvious.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -4527,11 +4402,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Gorgeous",
+   "Perilous",
    "Delirious",
-   "Luxurious",
-   "Perilous"
+   "Luxurious"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Sumptuous means splendid and costly, hence luxurious. 'Gorgeous' refers to beauty, not expense.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -4557,12 +4432,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'Argus-eyed' means:",
   "passage": null,
   "options": [
-   "Clumsy",
-   "Watchful",
+   "Lethargic",
    "Devoted",
-   "Lethargic"
+   "Watchful",
+   "Clumsy"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Argus, the hundred-eyed giant of Greek myth, never slept; 'argus-eyed' means vigilant.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -4588,12 +4463,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Dearth means:",
   "passage": null,
   "options": [
-   "Scarcity",
    "To punish or criticize severely",
+   "Scarcity",
    "Habitually fond of associating in a company or herd",
    "To cause, produce, or stir up"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Dearth is a scarcity or lack of something.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -4620,12 +4495,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A person who can speak two languages fluently is called:",
   "passage": null,
   "options": [
-   "interpreter",
-   "polyglot",
    "linguist",
-   "bilingual"
+   "polyglot",
+   "bilingual",
+   "interpreter"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Bilingual = speaking two languages; a polyglot knows many; a linguist studies language.",
   "subject": "English",
   "topic": "One-Word Substitution",
@@ -4651,10 +4526,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Antonym of Melange:",
   "passage": null,
   "options": [
-   "Anomalous",
+   "Harmonious",
    "Homogeneous",
-   "Amorphous",
-   "Harmonious"
+   "Anomalous",
+   "Amorphous"
   ],
   "correctAnswer": 1,
   "explanation": "A melange is a varied mixture; homogeneous means uniform throughout.",
@@ -4684,8 +4559,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Permanent",
-   "Transitory",
    "Momentary",
+   "Transitory",
    "Fleeting"
   ],
   "correctAnswer": 0,
@@ -4714,9 +4589,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Antonym of Quixotic:",
   "passage": null,
   "options": [
-   "Dreamy",
    "Prosthetic",
    "Impulsive",
+   "Dreamy",
    "Practical"
   ],
   "correctAnswer": 3,
@@ -4745,12 +4620,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "OBTUSE (antonym)",
   "passage": null,
   "options": [
-   "Thick",
-   "Opaque",
+   "Slim",
    "Acute",
-   "Slim"
+   "Thick",
+   "Opaque"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Obtuse (in the sense of slow to understand) is opposed to acute, meaning sharp-minded.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -4777,12 +4652,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The settlers found an ideal location with plenty of ___ land for farming and a mountain stream for fresh water and irrigation.",
   "passage": null,
   "options": [
+   "Arable",
    "Quaint",
-   "Arid",
    "Saline",
-   "Arable"
+   "Arid"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Arable land is fit for growing crops.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -4808,12 +4683,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The defendant claimed that he was innocent and that his confession was:",
   "passage": null,
   "options": [
-   "Coerced",
    "Verity",
    "Benign",
-   "Flagrant"
+   "Flagrant",
+   "Coerced"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Coerced means obtained by force or threats - consistent with claiming innocence.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -4839,12 +4714,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The rebel spies were charged with ___ and put on trial.",
   "passage": null,
   "options": [
+   "Atrocity",
    "Restoring",
    "Sedition",
-   "Atrocity",
    "Perilous"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Sedition is conduct inciting rebellion against authority.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -4870,12 +4745,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Zachary was doomed to a miserable life, for no matter how much he had, he always ___ the possessions of others.",
   "passage": null,
   "options": [
+   "Feasted",
    "Filibustered",
    "Exalted",
-   "Coveted",
-   "Feasted"
+   "Coveted"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "To covet is to desire what belongs to another.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -4902,12 +4777,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "His moral decadence was marked by his ______ from the ways of integrity and honesty.",
   "passage": null,
   "options": [
-   "Opprobrium",
-   "Declivity",
    "Departure",
-   "Obsession"
+   "Obsession",
+   "Opprobrium",
+   "Declivity"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "'Departure from' the ways of integrity fits the sense and the preposition.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -4933,9 +4808,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the sentence that is grammatically correct.",
   "passage": null,
   "options": [
-   "Walking down the street, the trees seemed to sway in the wind.",
-   "Walking down the street, I noticed the trees swaying in the wind.",
    "Walking down the street, the wind caused the trees to sway.",
+   "Walking down the street, I noticed the trees swaying in the wind.",
+   "Walking down the street, the trees seemed to sway in the wind.",
    "Walking down the street, the swaying trees were noticed."
   ],
   "correctAnswer": 1,
@@ -4965,11 +4840,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Having studied English for five years, I find the grammar rules easy.",
-   "The report, whose findings were groundbreaking, was published in a prestigious journal.",
    "By the time the manager arrived, the employees had been working on the project for three hours.",
-   "The new employee, along with the rest of the team, were responsible for the project's failure."
+   "The new employee, along with the rest of the team, were responsible for the project's failure.",
+   "The report, whose findings were groundbreaking, was published in a prestigious journal."
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The subject is the singular 'employee' ('along with...' does not make it plural), so the verb should be 'was'.",
   "subject": "English",
   "topic": "Sentence Correction",
@@ -4996,12 +4871,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Identify the sentence with a semantic error.",
   "passage": null,
   "options": [
-   "The dog chased its tail with a spoon.",
-   "The author is writing the book.",
    "The rain is falling downwards.",
+   "The author is writing the book.",
+   "The dog chased its tail with a spoon.",
    "The sun is shining in the sky."
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "A dog chasing its tail 'with a spoon' is illogical; the other sentences are meaningful.",
   "subject": "English",
   "topic": "Sentence Correction",
@@ -5028,12 +4903,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of the following sentences is grammatically correct?",
   "passage": null,
   "options": [
-   "Me and my friends went to the movie.",
-   "I and my friends went to the movie.",
    "My friends and me went to the movie.",
-   "My friends and I went to the movie."
+   "My friends and I went to the movie.",
+   "Me and my friends went to the movie.",
+   "I and my friends went to the movie."
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'My friends and I' is the correct subject form, with the speaker named last.",
   "subject": "English",
   "topic": "Grammar",
@@ -5060,12 +4935,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is an example of a subordinate clause?",
   "passage": null,
   "options": [
-   "Because I like pizza",
-   "I like pizza",
    "I ate pizza for dinner",
-   "Pizza is my favorite food"
+   "I like pizza",
+   "Pizza is my favorite food",
+   "Because I like pizza"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "A subordinate clause cannot stand alone; 'Because I like pizza' needs a main clause.",
   "subject": "English",
   "topic": "Grammar",
@@ -5092,12 +4967,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which sentence uses the correct adjective form?",
   "passage": null,
   "options": [
-   "The movie was scary than I expected",
-   "The movie was scare than I expected",
    "The movie was scarier than I expected",
-   "The movie was more scarier than I expected"
+   "The movie was scary than I expected",
+   "The movie was more scarier than I expected",
+   "The movie was scare than I expected"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The comparative of 'scary' is 'scarier'; 'more scarier' is a double comparative.",
   "subject": "English",
   "topic": "Grammar",
@@ -5124,12 +4999,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct sentence:",
   "passage": null,
   "options": [
+   "All which glitters is not gold",
    "All that is glittering is not gold",
-   "All that glitters is not gold",
    "All that is glitters is not gold",
-   "All which glitters is not gold"
+   "All that glitters is not gold"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The proverb is 'All that glitters is not gold'.",
   "subject": "English",
   "topic": "Grammar",
@@ -5156,12 +5031,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "He writes ______ red ink.",
   "passage": null,
   "options": [
-   "By",
-   "Of",
    "In",
-   "With"
+   "Of",
+   "With",
+   "By"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "'In red ink' is the idiomatic phrase for the medium or colour used.",
   "subject": "English",
   "topic": "Prepositions",
@@ -5187,12 +5062,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "He accepted the car in lieu ___ his claim.",
   "passage": null,
   "options": [
-   "With",
-   "Of",
    "For",
-   "Of, for"
+   "Of, for",
+   "Of",
+   "With"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "'In lieu of' means 'instead of'.",
   "subject": "English",
   "topic": "Prepositions",
@@ -5218,12 +5093,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "He is so dull that he is insensible ______ the beauties of nature.",
   "passage": null,
   "options": [
+   "For",
    "To",
    "With",
-   "For",
    "Of"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "'Insensible to' means unaware of or unmoved by.",
   "subject": "English",
   "topic": "Prepositions",
@@ -5250,12 +5125,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Forty winks means:",
   "passage": null,
   "options": [
-   "A dream or vision",
-   "A long, deep sleep",
    "A period of wakefulness",
-   "A short nap or brief period of sleep"
+   "A dream or vision",
+   "A short nap or brief period of sleep",
+   "A long, deep sleep"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "'Forty winks' is a short nap.",
   "subject": "English",
   "topic": "Idioms",
@@ -5282,12 +5157,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the sentence with a Proper Adjective.",
   "passage": null,
   "options": [
-   "He showed much patience",
-   "I ate some rice",
    "He has lost all his strength",
-   "French wines are not available here"
+   "French wines are not available here",
+   "He showed much patience",
+   "I ate some rice"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'French' is derived from the proper noun France, so it is a proper adjective.",
   "subject": "English",
   "topic": "Grammar",
@@ -5313,12 +5188,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A shirt marked at Rs 2,000 is sold after a discount of 15% followed by a further discount of 10%. The selling price is:",
   "passage": null,
   "options": [
-   "Rs 1,500",
-   "Rs 1,600",
    "Rs 1,530",
-   "Rs 1,700"
+   "Rs 1,700",
+   "Rs 1,600",
+   "Rs 1,500"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "2000 × 0.85 = 1700; 1700 × 0.90 = 1530.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -5345,11 +5220,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "6 days",
-   "7.2 days",
+   "8 days",
    "7.5 days",
-   "8 days"
+   "7.2 days"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Combined rate = 1/12 + 1/18 = 5/36 per day → 36/5 = 7.2 days.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -5375,12 +5250,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The average of five numbers is 27. If one number is removed, the average of the remaining four is 25. The number removed is:",
   "passage": null,
   "options": [
-   "35",
-   "37",
    "32",
-   "30"
+   "37",
+   "30",
+   "35"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Total of five = 135; total of four = 100; removed number = 35.",
   "subject": "Mathematics",
   "topic": "Averages",
@@ -5407,12 +5282,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Where is Hingol National Park located?",
   "passage": null,
   "options": [
-   "Punjab",
    "Sindh",
-   "Khyber Pakhtunkhwa",
-   "Balochistan"
+   "Punjab",
+   "Balochistan",
+   "Khyber Pakhtunkhwa"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Hingol National Park, Pakistan's largest, lies along the Makran coast in Balochistan.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -5438,12 +5313,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Muslim League observed \"Direct Action Day\" on August 16, 1946, which led to communal violence in:",
   "passage": null,
   "options": [
-   "Delhi",
-   "Mumbai",
+   "Lahore",
    "Kolkata",
-   "Lahore"
+   "Mumbai",
+   "Delhi"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Direct Action Day triggered the Great Calcutta Killings in Kolkata.",
   "subject": "Social Studies",
   "topic": "Pakistan History",
@@ -5452,352 +5327,6 @@ export const JEST_BANK: TeacherQuestion[] = [
   "sourceType": "existing_question",
   "sourceYear": null,
   "sourceReference": "CSS MPT question bank GK-042 (Verified Past Paper 2026)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0002",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Holy Prophet Muhammad (SAW) belonged to which tribe?",
-  "passage": null,
-  "options": [
-   "Banu Umayyah",
-   "Quraysh",
-   "Makkan tribe of Banu Makki",
-   "Khazraj"
-  ],
-  "correctAnswer": 1,
-  "explanation": "The Prophet (SAW) belonged to the Banu Hashim clan of the Quraysh of Makkah. Banu Umayyah was a different clan of Quraysh; 'Makki' only means 'of Makkah'.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-021 (Verified Past Paper 2023)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0004",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Who advised Hazrat Abu Bakr (RA) to compile the Holy Quran in one book?",
-  "passage": null,
-  "options": [
-   "Hazrat Umar (RA)",
-   "Hazrat Ali (RA)",
-   "Hazrat Usman (RA)",
-   "Hazrat Zaid bin Thabit (RA)"
-  ],
-  "correctAnswer": 0,
-  "explanation": "After many huffaz were martyred at Yamama (12 AH), Hazrat Umar (RA) urged Abu Bakr (RA) to compile the Quran; Zaid bin Thabit (RA) was then appointed to do the work (Sahih Bukhari). Zaid is the compiler, not the adviser.",
-  "subject": "Islamiat",
-  "topic": "Khulafa",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-023 (Verified Past Paper 2023)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0003",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Which night does the Holy Quran describe as better than a thousand months?",
-  "passage": null,
-  "options": [
-   "Laylat-ul-Qadr",
-   "Night of Bara'at",
-   "Night of Eid-ul-Fitr",
-   "Night of Miraj"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Surah Al-Qadr (97:3): 'The Night of Qadr is better than a thousand months.'",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-024 (Verified Past Paper 2023)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0005",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "On arrival in Madinah, the Prophet (SAW) stayed at the house of Hazrat Abu Ayyub Ansari (RA) for about ______ months.",
-  "passage": null,
-  "options": [
-   "12",
-   "7",
-   "9",
-   "8"
-  ],
-  "correctAnswer": 1,
-  "explanation": "He stayed about seven months, until Masjid-e-Nabawi and his rooms were built.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-025 (Verified Past Paper 2023)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0004",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Jewish tribe Banu Nadir lived in:",
-  "passage": null,
-  "options": [
-   "Yemen",
-   "Makkah",
-   "Madinah",
-   "Ta'if"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Banu Nadir lived on the outskirts of Madinah and were expelled after breaking their agreement with the Prophet (SAW) in 4 AH.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-027 (Verified Past Paper 2025)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0005",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Which Surah is recited in every rak'at of the daily prayer (salah)?",
-  "passage": null,
-  "options": [
-   "Surah Yaseen",
-   "Surah Al-Baqarah",
-   "Surah Al-Ikhlas",
-   "Surah Al-Fatiha"
-  ],
-  "correctAnswer": 3,
-  "explanation": "The Prophet (SAW) said there is no prayer without Surah Al-Fatiha; it is recited in every rak'at.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-029 (Generated Practice)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0006",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Which Surah of the Quran does NOT begin with 'Bismillah-ir-Rahman-ir-Rahim'?",
-  "passage": null,
-  "options": [
-   "Surah Al-Mulk",
-   "Surah Al-Anfal",
-   "Surah An-Naml",
-   "Surah At-Tawbah"
-  ],
-  "correctAnswer": 3,
-  "explanation": "Surah At-Tawbah (Bara'at, Surah 9) is the only Surah that does not open with the Bismillah.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-030 (Generated Practice)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0007",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The Battle of Uhud was fought in which year of Hijrah?",
-  "passage": null,
-  "options": [
-   "2 AH",
-   "3 AH",
-   "4 AH",
-   "5 AH"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Uhud was fought in Shawwal 3 AH. Badr was 2 AH, Khandaq 5 AH.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-032 (Generated Practice)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0008",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Who suggested digging a trench around Madinah in the Battle of Khandaq (Ahzab)?",
-  "passage": null,
-  "options": [
-   "Hazrat Abu Dharr Ghifari (RA)",
-   "Hazrat Bilal (RA)",
-   "Hazrat Salman Farsi (RA)",
-   "Hazrat Khalid bin Walid (RA)"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Hazrat Salman Farsi (RA) suggested the Persian practice of defending a city with a trench; the Prophet (SAW) and the Companions dug it in 5 AH.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-033 (Generated Practice)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0006",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Hijri calendar was introduced during the caliphate of:",
-  "passage": null,
-  "options": [
-   "Hazrat Umar (RA)",
-   "Hazrat Abu Bakr (RA)",
-   "Hazrat Usman (RA)",
-   "Hazrat Ali (RA)"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Hazrat Umar (RA) fixed the Hijrah as the start of the Islamic calendar in about 17 AH, with Muharram as the first month.",
-  "subject": "Islamiat",
-  "topic": "Khulafa",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-034 (Generated Practice)",
-  "verified": false,
-  "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0009",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'Aam-ul-Huzn' (the Year of Sorrow) refers to the year in which the Prophet (SAW) lost:",
-  "passage": null,
-  "options": [
-   "Hazrat Khadijah (RA) and Abu Talib",
-   "Hazrat Hamza (RA) and Abu Talib",
-   "Hazrat Ibrahim (RA) and Hazrat Fatimah (RA)",
-   "Hazrat Abu Bakr (RA) and Hazrat Khadijah (RA)"
-  ],
-  "correctAnswer": 0,
-  "explanation": "In the 10th year of prophethood the Prophet (SAW) lost his wife Hazrat Khadijah (RA) and his uncle and protector Abu Talib, a few weeks apart.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "existing_question",
-  "sourceYear": null,
-  "sourceReference": "CSS MPT question bank IS-040 (Generated Practice)",
   "verified": false,
   "verificationNote": "Taken from a question bank already present in this project; its original source is in sourceReference. Not verified as a teacher-test past paper.",
   "syllabusClass": "Classes VI-X (estimated level)",
@@ -5815,12 +5344,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "We have been able to obtain no information ______ his whereabouts.",
   "passage": null,
   "options": [
-   "In which",
-   "That of",
+   "As to",
    "According to",
-   "As to"
+   "In which",
+   "That of"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "'As to' means 'concerning'; 'information as to his whereabouts' is correct.",
   "subject": "English",
   "topic": "Prepositions",
@@ -5847,11 +5376,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "We're adopting a two year old parakeet",
-   "We're reading Sanskrit dialect",
    "She submitted a 190-page document supporting her position",
+   "We're reading Sanskrit dialect",
    "He's a decent-judge of character"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "A number-plus-noun compound before a noun takes a hyphen ('190-page document'). The sentence about the parakeet should read 'two-year-old parakeet'.",
   "subject": "English",
   "topic": "Grammar",
@@ -5878,12 +5407,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The children were ______ by the seemingly nonsensical clues until Kinan pointed out that the messages were in code.",
   "passage": null,
   "options": [
-   "Feigned",
-   "Perplexed",
    "Pondered",
-   "Censured"
+   "Censured",
+   "Perplexed",
+   "Feigned"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "'Perplexed' means confused, which fits clues that seemed nonsensical.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -5911,11 +5440,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Exorbitant",
-   "Nominal",
    "Bountiful",
-   "Substantive"
+   "Substantive",
+   "Nominal"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "A 'nominal' fee is a very small one; the other words suggest a large fee.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -5941,12 +5470,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'Fastidious' means:",
   "passage": null,
   "options": [
-   "A person hard to please",
-   "A person hard to convince",
    "A person who hurries",
-   "A person hard to anger"
+   "A person hard to convince",
+   "A person hard to anger",
+   "A person hard to please"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Fastidious means very attentive to detail and hard to please. Option D is a distractor added to replace the garbled source option.",
   "subject": "English",
   "topic": "Vocabulary",
@@ -5973,12 +5502,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "I know both of them are short ______ money because of their extravagant nature.",
   "passage": null,
   "options": [
-   "In",
-   "On",
    "With",
-   "Of"
+   "Of",
+   "In",
+   "On"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "The idiom is 'short of money'.",
   "subject": "English",
   "topic": "Prepositions",
@@ -6005,10 +5534,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the meaning of the word 'Morbid'?",
   "passage": null,
   "options": [
+   "Full of energy and vitality",
    "Cheerful and lively",
-   "Pure and innocent",
    "Related to death or disease",
-   "Full of energy and vitality"
+   "Pure and innocent"
   ],
   "correctAnswer": 2,
   "explanation": "Morbid means related to disease or death, or having an unhealthy interest in them.",
@@ -6037,9 +5566,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Crazy or foolish",
-   "Strong and powerful",
+   "Intelligent",
    "Peaceful and calm",
-   "Intelligent"
+   "Strong and powerful"
   ],
   "correctAnswer": 0,
   "explanation": "Zany means amusingly unconventional or foolish.",
@@ -6068,12 +5597,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the sentence with an adverb of time.",
   "passage": null,
   "options": [
-   "The boy works hard",
    "He has spoken to him already",
    "The horse is running away",
+   "The boy works hard",
    "He is a good boy"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "'Already' tells when the action happened, so it is an adverb of time. 'Away' is an adverb of place and 'hard' an adverb of manner.",
   "subject": "English",
   "topic": "Grammar",
@@ -6099,12 +5628,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In the sentence 'Ambition urges me forward', the word 'forward' is:",
   "passage": null,
   "options": [
-   "An adjective of place",
    "An adjective of time",
-   "An adverb of place",
-   "An adverb of time"
+   "An adjective of place",
+   "An adverb of time",
+   "An adverb of place"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "'Forward' modifies the verb 'urges' and tells where/in which direction, so it is an adverb of place.",
   "subject": "English",
   "topic": "Grammar",
@@ -6132,10 +5661,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "Sanctuary",
    "Pious",
-   "Secret",
-   "Sacred"
+   "Sacred",
+   "Secret"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Sacrosanct means too sacred or important to be interfered with; 'sacred' is the nearest.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -6161,12 +5690,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Identify the sentence with incorrect use of a hyphen.",
   "passage": null,
   "options": [
-   "The self-portrait was painted by a famous-artist.",
    "The company's well-known CEO spoke at the conference.",
-   "The co-pilot navigated the plane through turbulent weather.",
-   "The full-time employee received benefits."
+   "The self-portrait was painted by a famous-artist.",
+   "The full-time employee received benefits.",
+   "The co-pilot navigated the plane through turbulent weather."
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "'Famous artist' is an adjective plus a noun and takes no hyphen; the others are correct.",
   "subject": "English",
   "topic": "Grammar",
@@ -6192,12 +5721,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Identify the sentence with a grammatical error.",
   "passage": null,
   "options": [
-   "Their commitment to excellence is evident in all that they do.",
    "Despite the challenging conditions, he persevered in his quest.",
+   "The physicist, along with her team, are conducting groundbreaking research.",
    "The book, which has been read by millions, remains a classic.",
-   "The physicist, along with her team, are conducting groundbreaking research."
+   "Their commitment to excellence is evident in all that they do."
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "With 'along with', the verb agrees with the main subject 'the physicist' (singular): 'is conducting'. The other sentences are correct.",
   "subject": "English",
   "topic": "Grammar",
@@ -6223,12 +5752,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Ubiquitous:",
   "passage": null,
   "options": [
-   "Scarce",
-   "Transient",
    "Omnipresent",
-   "Obscure"
+   "Obscure",
+   "Scarce",
+   "Transient"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Ubiquitous means found everywhere, i.e. omnipresent.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -6254,12 +5783,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Pernicious:",
   "passage": null,
   "options": [
-   "Fussy",
-   "Harmful",
+   "Beneficial",
    "Ancient",
-   "Beneficial"
+   "Fussy",
+   "Harmful"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Pernicious means having a harmful effect, often gradually.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -6286,8 +5815,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Antonym of 'Benevolent':",
   "passage": null,
   "options": [
-   "Kind",
    "Generous",
+   "Kind",
    "Malevolent",
    "Charitable"
   ],
@@ -6317,12 +5846,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Despite the minister's ______ promises, nothing changed in the district.",
   "passage": null,
   "options": [
-   "Sincere",
-   "Reluctant",
+   "Hollow",
    "Practical",
-   "Hollow"
+   "Reluctant",
+   "Sincere"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "'Despite ... nothing changed' signals empty promises; 'hollow' fits.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -6349,10 +5878,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Her ______ remarks during the meeting offended several colleagues.",
   "passage": null,
   "options": [
-   "Tactful",
+   "Prudent",
    "Tactless",
-   "Gracious",
-   "Prudent"
+   "Tactful",
+   "Gracious"
   ],
   "correctAnswer": 1,
   "explanation": "Remarks that offend are tactless.",
@@ -6381,12 +5910,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The committee's decision was ______; no member voted against it.",
   "passage": null,
   "options": [
-   "Unanimous",
    "Ambiguous",
    "Contentious",
+   "Unanimous",
    "Tentative"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Unanimous means agreed by all.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -6412,12 +5941,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'To bite the bullet' means:",
   "passage": null,
   "options": [
-   "To eat very quickly",
    "To lose a bet",
-   "To face something unpleasant with courage",
-   "To speak harshly"
+   "To speak harshly",
+   "To eat very quickly",
+   "To face something unpleasant with courage"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "The idiom means to endure a painful or difficult situation bravely.",
   "subject": "English",
   "topic": "Idioms",
@@ -6444,12 +5973,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'A blessing in disguise' means:",
   "passage": null,
   "options": [
+   "A misfortune that turns out to be beneficial",
    "A hidden curse",
-   "A prayer said in secret",
    "A costume party",
-   "A misfortune that turns out to be beneficial"
+   "A prayer said in secret"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "It describes something that seems bad at first but proves good.",
   "subject": "English",
   "topic": "Idioms",
@@ -6476,12 +6005,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'Once in a blue moon' means:",
   "passage": null,
   "options": [
-   "Very frequently",
-   "Very rarely",
    "Only at night",
-   "Every month"
+   "Very frequently",
+   "Every month",
+   "Very rarely"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The idiom means something that happens very rarely.",
   "subject": "English",
   "topic": "Idioms",
@@ -6508,12 +6037,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "She has been absent ______ school for three days.",
   "passage": null,
   "options": [
-   "from",
-   "at",
+   "of",
    "to",
-   "of"
+   "from",
+   "at"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "'Absent from' is the correct collocation.",
   "subject": "English",
   "topic": "Prepositions",
@@ -6539,12 +6068,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The minister insisted ______ an immediate inquiry.",
   "passage": null,
   "options": [
+   "at",
    "on",
-   "to",
    "for",
-   "at"
+   "to"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "'Insist on' is the correct collocation.",
   "subject": "English",
   "topic": "Prepositions",
@@ -6570,8 +6099,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "He is senior ______ me by two years.",
   "passage": null,
   "options": [
-   "than",
    "over",
+   "than",
    "to",
    "from"
   ],
@@ -6602,11 +6131,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "A philanthropist",
-   "A misanthrope",
+   "A pessimist",
    "A misogynist",
-   "A pessimist"
+   "A misanthrope"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Misanthrope = hater of mankind; misogynist = hater of women; philanthropist = lover of mankind.",
   "subject": "English",
   "topic": "One-Word Substitution",
@@ -6632,12 +6161,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Government by a small group of powerful people is called:",
   "passage": null,
   "options": [
-   "Theocracy",
-   "Democracy",
    "Autocracy",
-   "Oligarchy"
+   "Oligarchy",
+   "Democracy",
+   "Theocracy"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Oligarchy = rule by a few. Autocracy = rule by one; theocracy = rule by religious authority.",
   "subject": "English",
   "topic": "One-Word Substitution",
@@ -6664,12 +6193,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A person who knows everything is called:",
   "passage": null,
   "options": [
-   "Omnipotent",
    "Omniscient",
+   "Omnivorous",
    "Omnipresent",
-   "Omnivorous"
+   "Omnipotent"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Omniscient = all-knowing; omnipotent = all-powerful; omnipresent = present everywhere.",
   "subject": "English",
   "topic": "One-Word Substitution",
@@ -6695,12 +6224,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the grammatically correct sentence.",
   "passage": null,
   "options": [
-   "Each of the students has submitted his or her assignment.",
-   "Each of the student has submitted his assignment.",
    "Each of the students are submitting his assignment.",
-   "Each of the students have submitted their assignment."
+   "Each of the students have submitted their assignment.",
+   "Each of the students has submitted his or her assignment.",
+   "Each of the student has submitted his assignment."
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "'Each' takes a singular verb and pronoun: 'has submitted his or her assignment'.",
   "subject": "English",
   "topic": "Grammar",
@@ -6728,10 +6257,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "15%",
    "20%",
-   "16 2/3%",
-   "25%"
+   "25%",
+   "16 2/3%"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Consumption must become 1/1.2 = 5/6 of the old; reduction = 1/6 = 16 2/3%.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -6757,12 +6286,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In an election between two candidates the winner got 58% of the 7,500 valid votes. The winning margin is:",
   "passage": null,
   "options": [
-   "900",
-   "1,350",
    "1,125",
-   "1,200"
+   "1,200",
+   "900",
+   "1,350"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Loser has 42%. Margin = 16% of 7,500 = 1,200.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -6788,12 +6317,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If A's salary is 25% more than B's, then B's salary is less than A's by:",
   "passage": null,
   "options": [
-   "25%",
    "20%",
-   "16%",
-   "15%"
+   "25%",
+   "15%",
+   "16%"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "B = 100, A = 125. Difference 25 is 25/125 = 20% of A.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -6819,12 +6348,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Rs 1,260 is divided among A, B and C in the ratio 2 : 3 : 4. B's share is:",
   "passage": null,
   "options": [
+   "Rs 420",
    "Rs 360",
    "Rs 560",
-   "Rs 315",
-   "Rs 420"
+   "Rs 315"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "One part = 1,260/9 = 140; B gets 3 × 140 = 420.",
   "subject": "Mathematics",
   "topic": "Ratios",
@@ -6850,12 +6379,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If a : b = 3 : 4 and b : c = 6 : 7, then a : b : c is:",
   "passage": null,
   "options": [
-   "9 : 12 : 14",
-   "3 : 8 : 7",
+   "6 : 8 : 7",
    "3 : 4 : 7",
-   "6 : 8 : 7"
+   "9 : 12 : 14",
+   "3 : 8 : 7"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Make b equal: a : b = 9 : 12 and b : c = 12 : 14, so a : b : c = 9 : 12 : 14.",
   "subject": "Mathematics",
   "topic": "Ratios",
@@ -6881,12 +6410,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The sum of two numbers is 84 and their ratio is 5 : 7. The smaller number is:",
   "passage": null,
   "options": [
-   "30",
-   "49",
+   "42",
    "35",
-   "42"
+   "30",
+   "49"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "One part = 84/12 = 7; smaller = 5 × 7 = 35.",
   "subject": "Mathematics",
   "topic": "Ratios",
@@ -6912,12 +6441,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A can do a piece of work in 15 days and B in 10 days. They work together for 4 days. The fraction of the work still left is:",
   "passage": null,
   "options": [
+   "1/6",
    "1/4",
-   "1/3",
    "2/5",
-   "1/6"
+   "1/3"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Together they do 1/15 + 1/10 = 1/6 of the work per day; in 4 days 2/3 is done, so 1/3 is left.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -6943,12 +6472,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "An article sold for Rs 1,540 gives a profit of 12%. Its cost price is:",
   "passage": null,
   "options": [
-   "Rs 1,355",
    "Rs 1,452",
-   "Rs 1,400",
-   "Rs 1,375"
+   "Rs 1,375",
+   "Rs 1,355",
+   "Rs 1,400"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "CP = 1,540/1.12 = 1,375.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -6974,12 +6503,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The average of 11 numbers is 60. The average of the first six is 58 and of the last six is 63. The sixth number is:",
   "passage": null,
   "options": [
-   "60",
-   "62",
    "66",
-   "68"
+   "60",
+   "68",
+   "62"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The two groups together count the sixth number twice: 6 × 58 + 6 × 63 = 726. The total of all 11 is 660, so the sixth number = 726 − 660 = 66.",
   "subject": "Mathematics",
   "topic": "Averages",
@@ -7005,12 +6534,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The average age of 30 students in a class is 14 years. When the teacher's age is included, the average rises by 1 year. The teacher's age is:",
   "passage": null,
   "options": [
-   "45 years",
-   "40 years",
    "46 years",
-   "44 years"
+   "44 years",
+   "45 years",
+   "40 years"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Total with teacher = 31 × 15 = 465; students = 420; teacher = 45.",
   "subject": "Mathematics",
   "topic": "Averages",
@@ -7036,12 +6565,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If the radius of a circle is increased by 10%, its area increases by:",
   "passage": null,
   "options": [
-   "21%",
-   "11%",
    "10%",
-   "20%"
+   "11%",
+   "20%",
+   "21%"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Area scales by 1.1² = 1.21, an increase of 21%.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -7067,12 +6596,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The diagonal of a square is 10√2 cm. Its area is:",
   "passage": null,
   "options": [
-   "200 cm²",
    "400 cm²",
    "100 cm²",
-   "50 cm²"
+   "50 cm²",
+   "200 cm²"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Side = diagonal/√2 = 10 cm; area = 100 cm².",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -7098,9 +6627,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A card is drawn at random from a standard pack of 52. The probability that it is a king or a heart is:",
   "passage": null,
   "options": [
-   "1/4",
-   "3/13",
    "17/52",
+   "3/13",
+   "1/4",
    "4/13"
   ],
   "correctAnswer": 3,
@@ -7129,12 +6658,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Two fair dice are rolled. The probability that the sum is 8 is:",
   "passage": null,
   "options": [
-   "1/6",
    "5/36",
+   "7/36",
    "1/9",
-   "7/36"
+   "1/6"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Favourable: (2,6), (3,5), (4,4), (5,3), (6,2) = 5 of 36.",
   "subject": "Mathematics",
   "topic": "Probability",
@@ -7160,10 +6689,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Why is the mitochondrion called the 'powerhouse' of the cell?",
   "passage": null,
   "options": [
-   "It helps in cell division",
+   "It synthesizes proteins",
    "It stores genetic material",
    "It generates energy in the form of ATP",
-   "It synthesizes proteins"
+   "It helps in cell division"
   ],
   "correctAnswer": 2,
   "explanation": "Mitochondria carry out aerobic respiration and release most of the cell's ATP.",
@@ -7190,10 +6719,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which blood group is called the universal donor for red blood cells?",
   "passage": null,
   "options": [
-   "AB positive",
-   "O negative",
    "A positive",
-   "B negative"
+   "O negative",
+   "B negative",
+   "AB positive"
   ],
   "correctAnswer": 1,
   "explanation": "O negative red cells have no A, B or Rh antigens, so almost any patient can receive them.",
@@ -7221,12 +6750,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which vitamin is synthesised in the skin on exposure to sunlight?",
   "passage": null,
   "options": [
-   "Vitamin D",
    "Vitamin K",
    "Vitamin A",
-   "Vitamin C"
+   "Vitamin C",
+   "Vitamin D"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Ultraviolet B converts 7-dehydrocholesterol in the skin into vitamin D3.",
   "subject": "Science",
   "topic": "Biology",
@@ -7252,12 +6781,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Pakistan Naval War College is situated in:",
   "passage": null,
   "options": [
-   "Karachi",
-   "Islamabad",
    "Quetta",
-   "Lahore"
+   "Karachi",
+   "Lahore",
+   "Islamabad"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The Pakistan Navy War College is in Lahore.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -7284,12 +6813,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The 'Princess of Hope' rock formation is located in:",
   "passage": null,
   "options": [
-   "Khyber Pakhtunkhwa",
+   "Balochistan",
    "Punjab",
    "Sindh",
-   "Balochistan"
+   "Khyber Pakhtunkhwa"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "It lies in the Hingol National Park area on the Makran Coastal Highway in Balochistan.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -7315,12 +6844,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Who joined the All India Muslim League in 1913?",
   "passage": null,
   "options": [
-   "Allama Iqbal",
-   "Liaquat Ali Khan",
    "Muhammad Ali Jinnah",
-   "Khawaja Nazimuddin"
+   "Khawaja Nazimuddin",
+   "Allama Iqbal",
+   "Liaquat Ali Khan"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Jinnah joined the Muslim League in 1913 at Maulana Muhammad Ali Jauhar's urging.",
   "subject": "Social Studies",
   "topic": "Pakistan History",
@@ -7346,12 +6875,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which is the largest gas field of Pakistan?",
   "passage": null,
   "options": [
-   "Sui",
-   "Qadirpur",
    "Kunnar",
-   "Makori"
+   "Makori",
+   "Sui",
+   "Qadirpur"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Sui (Balochistan), discovered in 1952, is Pakistan's largest gas field though its output has fallen.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -7368,1777 +6897,6 @@ export const JEST_BANK: TeacherQuestion[] = [
   "needsReview": false
  },
  {
-  "id": "pst-isl-0007",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "How many Surahs (chapters) are there in the Holy Quran?",
-  "passage": null,
-  "options": [
-   "99",
-   "114",
-   "120",
-   "110"
-  ],
-  "correctAnswer": 1,
-  "explanation": "The Quran has 114 Surahs.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0008",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Which is the longest Surah of the Quran?",
-  "passage": null,
-  "options": [
-   "Al-Kahf",
-   "Al-Baqarah",
-   "An-Nisa",
-   "Al-Imran"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Surah Al-Baqarah has 286 verses and is the longest.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0010",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The shortest Surah of the Quran is:",
-  "passage": null,
-  "options": [
-   "An-Nasr",
-   "Al-Ikhlas",
-   "Al-Asr",
-   "Al-Kawthar"
-  ],
-  "correctAnswer": 3,
-  "explanation": "Al-Kawthar has only three verses.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0011",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The first revelation to the Holy Prophet (PBUH) was the opening verses of Surah:",
-  "passage": null,
-  "options": [
-   "Al-Muzzammil",
-   "Al-Muddaththir",
-   "Al-Alaq",
-   "Al-Fatiha"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Iqra (Read) in Surah Al-Alaq was revealed first in the Cave of Hira.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0012",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Ayat-ul-Kursi is a verse of Surah:",
-  "passage": null,
-  "options": [
-   "Al-Baqarah",
-   "Yasin",
-   "An-Nur",
-   "Al-Imran"
-  ],
-  "correctAnswer": 0,
-  "explanation": "It is verse 255 of Surah Al-Baqarah.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0010",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The Quran was revealed over a period of about:",
-  "passage": null,
-  "options": [
-   "40 years",
-   "13 years only",
-   "23 years",
-   "10 years"
-  ],
-  "correctAnswer": 2,
-  "explanation": "The revelation lasted about 23 years, from the Makkan to the Madinan period.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0011",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Which Surah has no 'Bismillah' at its beginning?",
-  "passage": null,
-  "options": [
-   "Al-Anfal",
-   "At-Tawbah",
-   "An-Naml",
-   "Al-Fatiha"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Surah At-Tawbah (Bara'ah) begins without Bismillah; Surah An-Naml has it also within the verses.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0013",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Quran was first compiled in book form during the caliphate of:",
-  "passage": null,
-  "options": [
-   "Hazrat Umar (RA)",
-   "Hazrat Ali (RA)",
-   "Hazrat Uthman (RA)",
-   "Hazrat Abu Bakr (RA)"
-  ],
-  "correctAnswer": 3,
-  "explanation": "After the Battle of Yamama, Abu Bakr had the Quran collected into one volume; Uthman later standardised copies.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0012",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Standard copies (the Uthmani Mushaf) of the Quran were prepared and sent to major cities during the caliphate of:",
-  "passage": null,
-  "options": [
-   "Hazrat Ali (RA)",
-   "Hazrat Umar (RA)",
-   "Hazrat Abu Bakr (RA)",
-   "Hazrat Uthman (RA)"
-  ],
-  "correctAnswer": 3,
-  "explanation": "Uthman standardised the text and dispatched copies to the main cities.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0014",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The sayings of the Holy Prophet (PBUH) are called:",
-  "passage": null,
-  "options": [
-   "Seerah",
-   "Tafsir",
-   "Hadith",
-   "Fiqh"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Hadith are the recorded sayings, actions and approvals of the Prophet.",
-  "subject": "Islamiat",
-  "topic": "Hadith",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0015",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Which compiler of Hadith wrote 'Sahih al-Bukhari'?",
-  "passage": null,
-  "options": [
-   "Imam Abu Dawud",
-   "Imam Bukhari",
-   "Imam Muslim",
-   "Imam Tirmidhi"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Imam Muhammad bin Ismail al-Bukhari compiled it.",
-  "subject": "Islamiat",
-  "topic": "Hadith",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0013",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The collections of Hadith by Bukhari, Muslim, Tirmidhi, Abu Dawud, Nasai and Ibn Majah are called:",
-  "passage": null,
-  "options": [
-   "Sihah Sittah",
-   "Kutub-e-Arba",
-   "Sab'a Mu'allaqat",
-   "Masanid"
-  ],
-  "correctAnswer": 0,
-  "explanation": "The 'six sound books' are known as Sihah Sittah.",
-  "subject": "Islamiat",
-  "topic": "Hadith",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0014",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'Actions are judged by intentions' is the opening Hadith of:",
-  "passage": null,
-  "options": [
-   "Sahih al-Bukhari",
-   "Musnad Ahmad",
-   "Sunan Ibn Majah",
-   "Muwatta Imam Malik"
-  ],
-  "correctAnswer": 0,
-  "explanation": "This Hadith on intentions is the first Hadith in Sahih al-Bukhari.",
-  "subject": "Islamiat",
-  "topic": "Hadith",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0016",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "According to a Hadith, 'cleanliness is':",
-  "passage": null,
-  "options": [
-   "an optional virtue",
-   "the first duty",
-   "half of faith",
-   "a part of Hajj"
-  ],
-  "correctAnswer": 2,
-  "explanation": "The Prophet (PBUH) said cleanliness is half of faith.",
-  "subject": "Islamiat",
-  "topic": "Hadith",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0017",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Holy Prophet (PBUH) was born in the city of:",
-  "passage": null,
-  "options": [
-   "Madinah",
-   "Makkah",
-   "Jerusalem",
-   "Taif"
-  ],
-  "correctAnswer": 1,
-  "explanation": "The Prophet was born in Makkah in the Year of the Elephant.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0018",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The mother of the Holy Prophet (PBUH) was:",
-  "passage": null,
-  "options": [
-   "Hazrat Aisha",
-   "Hazrat Halima",
-   "Hazrat Khadija",
-   "Hazrat Amina"
-  ],
-  "correctAnswer": 3,
-  "explanation": "His mother was Amina bint Wahb.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0020",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Prophet (PBUH) was given the titles Sadiq and Amin for his:",
-  "passage": null,
-  "options": [
-   "bravery in battle",
-   "truthfulness and trustworthiness",
-   "wealth and trade",
-   "poetry"
-  ],
-  "correctAnswer": 1,
-  "explanation": "The Quraysh called him the Truthful and the Trustworthy before prophethood.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0021",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Holy Prophet (PBUH) received the first revelation at the age of:",
-  "passage": null,
-  "options": [
-   "40",
-   "63",
-   "25",
-   "30"
-  ],
-  "correctAnswer": 0,
-  "explanation": "The first revelation came when he was 40 years old.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0015",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The first wife of the Holy Prophet (PBUH) was:",
-  "passage": null,
-  "options": [
-   "Hazrat Hafsa (RA)",
-   "Hazrat Zainab (RA)",
-   "Hazrat Khadija (RA)",
-   "Hazrat Aisha (RA)"
-  ],
-  "correctAnswer": 2,
-  "explanation": "He married Khadija bint Khuwaylid before prophethood.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0016",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The Treaty of Hudaybiyyah was signed in:",
-  "passage": null,
-  "options": [
-   "10 AH",
-   "6 AH",
-   "8 AH",
-   "2 AH"
-  ],
-  "correctAnswer": 1,
-  "explanation": "The treaty was agreed with the Quraysh in the sixth year after Hijra.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0017",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Makkah was conquered peacefully in:",
-  "passage": null,
-  "options": [
-   "6 AH",
-   "10 AH",
-   "5 AH",
-   "8 AH"
-  ],
-  "correctAnswer": 3,
-  "explanation": "The conquest of Makkah took place in the eighth year of Hijra.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0022",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Who was the first Prophet of Islam?",
-  "passage": null,
-  "options": [
-   "Hazrat Adam (AS)",
-   "Hazrat Nuh (AS)",
-   "Hazrat Musa (AS)",
-   "Hazrat Ibrahim (AS)"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Adam (AS) is the first Prophet.",
-  "subject": "Islamiat",
-  "topic": "Islamic Personalities",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0023",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The last Prophet of Allah is:",
-  "passage": null,
-  "options": [
-   "Hazrat Musa (AS)",
-   "Hazrat Isa (AS)",
-   "Hazrat Muhammad (PBUH)",
-   "Hazrat Ibrahim (AS)"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Muhammad (PBUH) is the Seal of the Prophets.",
-  "subject": "Islamiat",
-  "topic": "Islamic Personalities",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0024",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Holy Book revealed to Hazrat Musa (AS) was the:",
-  "passage": null,
-  "options": [
-   "Injeel",
-   "Sahifas",
-   "Torah (Taurat)",
-   "Zabur"
-  ],
-  "correctAnswer": 2,
-  "explanation": "The Torah was revealed to Musa; Zabur to Dawud; Injeel to Isa.",
-  "subject": "Islamiat",
-  "topic": "Islamic Personalities",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0025",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Which Prophet is known as 'Khalilullah' (friend of Allah)?",
-  "passage": null,
-  "options": [
-   "Hazrat Nuh (AS)",
-   "Hazrat Ibrahim (AS)",
-   "Hazrat Yusuf (AS)",
-   "Hazrat Musa (AS)"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Ibrahim (AS) is called Khalilullah.",
-  "subject": "Islamiat",
-  "topic": "Islamic Personalities",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0018",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Which Prophet built the Kaaba together with his son Ismail (AS)?",
-  "passage": null,
-  "options": [
-   "Hazrat Dawud (AS)",
-   "Hazrat Adam (AS)",
-   "Hazrat Sulaiman (AS)",
-   "Hazrat Ibrahim (AS)"
-  ],
-  "correctAnswer": 3,
-  "explanation": "The Quran tells that Ibrahim and Ismail raised the foundations of the Kaaba.",
-  "subject": "Islamiat",
-  "topic": "Islamic Personalities",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0019",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Which Prophet was swallowed by a large fish?",
-  "passage": null,
-  "options": [
-   "Hazrat Yunus (AS)",
-   "Hazrat Ilyas (AS)",
-   "Hazrat Yaqub (AS)",
-   "Hazrat Ayyub (AS)"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Yunus (AS) is the Prophet who was in the belly of the fish.",
-  "subject": "Islamiat",
-  "topic": "Islamic Personalities",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0026",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "How many pillars of Islam are there?",
-  "passage": null,
-  "options": [
-   "7",
-   "4",
-   "6",
-   "5"
-  ],
-  "correctAnswer": 3,
-  "explanation": "The five are Shahada, Salah, Zakat, Sawm and Hajj.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0027",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Fasting in the month of Ramadan is called:",
-  "passage": null,
-  "options": [
-   "Salah",
-   "Hajj",
-   "Sawm",
-   "Zakat"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Sawm is the fast from dawn to sunset.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0029",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The number of Fard rakats in the Zuhr prayer is:",
-  "passage": null,
-  "options": [
-   "2",
-   "4",
-   "3",
-   "6"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Zuhr has four Fard rakats.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0030",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Zakat is generally due at the rate of:",
-  "passage": null,
-  "options": [
-   "10% of income",
-   "2.5% of eligible savings",
-   "20% of savings",
-   "1% of income"
-  ],
-  "correctAnswer": 1,
-  "explanation": "The standard rate on eligible wealth held for a year is one-fortieth, i.e. 2.5%.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0031",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Hajj is performed in the month of:",
-  "passage": null,
-  "options": [
-   "Muharram",
-   "Ramadan",
-   "Rajab",
-   "Dhul Hijjah"
-  ],
-  "correctAnswer": 3,
-  "explanation": "Hajj takes place from the 8th to 13th of Dhul Hijjah.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0020",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The night better than a thousand months, found in Ramadan, is:",
-  "passage": null,
-  "options": [
-   "Laylat al-Qadr",
-   "Shab-e-Barat",
-   "Laylat al-Isra",
-   "Laylat al-Mi'raj"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Surah Al-Qadr describes it as better than a thousand months.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0032",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The belief in the Oneness of Allah is called:",
-  "passage": null,
-  "options": [
-   "Qadr",
-   "Akhirah",
-   "Tawheed",
-   "Risalat"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Tawheed is the central belief of Islam.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0033",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The angel who brought revelation to the Prophets is:",
-  "passage": null,
-  "options": [
-   "Hazrat Azrael (AS)",
-   "Hazrat Israfil (AS)",
-   "Hazrat Jibreel (AS)",
-   "Hazrat Mikail (AS)"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Jibreel carried the revelation.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0034",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The angel who will blow the Trumpet on the Day of Judgement is:",
-  "passage": null,
-  "options": [
-   "Hazrat Jibreel (AS)",
-   "Hazrat Mikail (AS)",
-   "Hazrat Azrael (AS)",
-   "Hazrat Israfil (AS)"
-  ],
-  "correctAnswer": 3,
-  "explanation": "Israfil is the angel entrusted with the Trumpet.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0035",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Belief in life after death is called:",
-  "passage": null,
-  "options": [
-   "Risalat",
-   "Akhirah",
-   "Qiyas",
-   "Tawheed"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Akhirah is the belief in the Hereafter.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0036",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Islamic term for the call to prayer is:",
-  "passage": null,
-  "options": [
-   "Adhan",
-   "Takbir",
-   "Khutbah",
-   "Iqamah"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Adhan is the call announced before each prayer.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0037",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Islamic term for a person who has memorised the whole Quran is:",
-  "passage": null,
-  "options": [
-   "Qari",
-   "Imam",
-   "Mufti",
-   "Hafiz"
-  ],
-  "correctAnswer": 3,
-  "explanation": "A Hafiz knows the whole Quran by heart.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0021",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The four main sources of Islamic law (in order) are the Quran, Sunnah, Ijma and:",
-  "passage": null,
-  "options": [
-   "Qiyas",
-   "Istishab only",
-   "Urf only",
-   "Ijtihad only"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Qiyas is analogical reasoning, the fourth source in the classical order.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0022",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'Ijma' means:",
-  "passage": null,
-  "options": [
-   "analogy",
-   "custom",
-   "consensus of the scholars",
-   "personal opinion"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Ijma is agreement of qualified scholars on a ruling.",
-  "subject": "Islamiat",
-  "topic": "Jurisprudence Basics",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0023",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The founder of the Hanafi school of fiqh is:",
-  "passage": null,
-  "options": [
-   "Imam Ahmad bin Hanbal",
-   "Imam Abu Hanifa",
-   "Imam Shafi'i",
-   "Imam Malik"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Imam Abu Hanifa (Nu'man bin Thabit) founded the Hanafi school.",
-  "subject": "Islamiat",
-  "topic": "Jurisprudence Basics",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0038",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Who was the first Caliph of Islam?",
-  "passage": null,
-  "options": [
-   "Hazrat Abu Bakr Siddiq (RA)",
-   "Hazrat Uthman (RA)",
-   "Hazrat Ali (RA)",
-   "Hazrat Umar (RA)"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Abu Bakr was the first of the Rightly Guided Caliphs.",
-  "subject": "Islamiat",
-  "topic": "Khulafa",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0039",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Who was the second Caliph of Islam, known as 'Al-Farooq'?",
-  "passage": null,
-  "options": [
-   "Hazrat Uthman (RA)",
-   "Hazrat Ali (RA)",
-   "Hazrat Abu Bakr (RA)",
-   "Hazrat Umar (RA)"
-  ],
-  "correctAnswer": 3,
-  "explanation": "Umar ibn al-Khattab was called Al-Farooq, the one who distinguishes truth from falsehood.",
-  "subject": "Islamiat",
-  "topic": "Khulafa",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0040",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Which Caliph is known as 'Ghani' and 'Dhun-Nurayn'?",
-  "passage": null,
-  "options": [
-   "Hazrat Abu Bakr (RA)",
-   "Hazrat Uthman (RA)",
-   "Hazrat Ali (RA)",
-   "Hazrat Umar (RA)"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Uthman married two daughters of the Prophet (PBUH), hence Dhun-Nurayn.",
-  "subject": "Islamiat",
-  "topic": "Khulafa",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0024",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The fourth Caliph of Islam was:",
-  "passage": null,
-  "options": [
-   "Hazrat Hasan (RA)",
-   "Hazrat Muawiya (RA)",
-   "Hazrat Ali (RA)",
-   "Hazrat Uthman (RA)"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Ali ibn Abi Talib was the fourth Rightly Guided Caliph.",
-  "subject": "Islamiat",
-  "topic": "Khulafa",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0041",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The first battle of Islam, fought in 2 AH, was the Battle of:",
-  "passage": null,
-  "options": [
-   "Khandaq",
-   "Badr",
-   "Uhud",
-   "Hunain"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Badr was fought on 17 Ramadan, 2 AH.",
-  "subject": "Islamiat",
-  "topic": "Battles and Events",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0025",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The Battle of Uhud took place in:",
-  "passage": null,
-  "options": [
-   "3 AH",
-   "5 AH",
-   "2 AH",
-   "7 AH"
-  ],
-  "correctAnswer": 0,
-  "explanation": "It was fought in Shawwal, 3 AH, near Madinah.",
-  "subject": "Islamiat",
-  "topic": "Battles and Events",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0026",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The Battle of the Trench (Khandaq) was fought in:",
-  "passage": null,
-  "options": [
-   "8 AH",
-   "6 AH",
-   "3 AH",
-   "5 AH"
-  ],
-  "correctAnswer": 3,
-  "explanation": "The defensive trench was dug around Madinah in 5 AH.",
-  "subject": "Islamiat",
-  "topic": "Battles and Events",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0042",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Sindh was conquered by Muhammad bin Qasim in:",
-  "passage": null,
-  "options": [
-   "1526 CE",
-   "1186 CE",
-   "712 CE",
-   "622 CE"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Muhammad bin Qasim defeated Raja Dahir in 712 CE; Sindh is called Bab-ul-Islam.",
-  "subject": "Islamiat",
-  "topic": "Islamic History",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0027",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Who wrote 'Al-Qanun fi al-Tibb' (The Canon of Medicine)?",
-  "passage": null,
-  "options": [
-   "Ibn Sina",
-   "Ibn Rushd",
-   "Al-Razi",
-   "Al-Biruni"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Ibn Sina (Avicenna) wrote the Canon, used for centuries as a medical text.",
-  "subject": "Islamiat",
-  "topic": "Islamic Civilization",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0028",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The Muslim mathematician whose book gave algebra its name was:",
-  "passage": null,
-  "options": [
-   "Omar Khayyam",
-   "Al-Kindi",
-   "Al-Khwarizmi",
-   "Ibn al-Haytham"
-  ],
-  "correctAnswer": 2,
-  "explanation": "Al-Khwarizmi's 'Al-Jabr' gave the word algebra.",
-  "subject": "Islamiat",
-  "topic": "Islamic Civilization",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0029",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "The capital of the Abbasid caliphate was:",
-  "passage": null,
-  "options": [
-   "Damascus",
-   "Cordoba",
-   "Cairo",
-   "Baghdad"
-  ],
-  "correctAnswer": 3,
-  "explanation": "Al-Mansur founded Baghdad in 762 CE as the Abbasid capital; the Umayyads ruled from Damascus.",
-  "subject": "Islamiat",
-  "topic": "Islamic Civilization",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0043",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Which of the following is a quality of a true Muslim according to Islam?",
-  "passage": null,
-  "options": [
-   "lying",
-   "honesty",
-   "cheating",
-   "backbiting"
-  ],
-  "correctAnswer": 1,
-  "explanation": "Truthfulness is a basic Islamic virtue.",
-  "subject": "Islamiat",
-  "topic": "Ethics and Social Principles",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0044",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Islam teaches that neighbours have:",
-  "passage": null,
-  "options": [
-   "rights only if they are relatives",
-   "rights over us",
-   "no rights",
-   "rights only if they are Muslim"
-  ],
-  "correctAnswer": 1,
-  "explanation": "The Prophet (PBUH) stressed good treatment of neighbours regardless of faith.",
-  "subject": "Islamiat",
-  "topic": "Ethics and Social Principles",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "jest-isl-0030",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "Which of the following is NOT permitted in Islamic business ethics?",
-  "passage": null,
-  "options": [
-   "charging interest (riba)",
-   "keeping contracts",
-   "honest trade",
-   "fair weighing"
-  ],
-  "correctAnswer": 0,
-  "explanation": "Riba is prohibited in the Quran.",
-  "subject": "Islamiat",
-  "topic": "Ethics and Social Principles",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
   "id": "pst-mat-0001",
   "examType": "jest",
   "examTypes": [
@@ -9149,12 +6907,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 456 + 289?",
   "passage": null,
   "options": [
-   "645",
    "735",
-   "745",
-   "755"
+   "755",
+   "645",
+   "745"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "456 + 289 = 745.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9181,12 +6939,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 1000 - 357?",
   "passage": null,
   "options": [
-   "633",
-   "653",
    "743",
-   "643"
+   "643",
+   "633",
+   "653"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "1000 - 357 = 643.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9213,9 +6971,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Evaluate 8 + 6 x 3 - 4.",
   "passage": null,
   "options": [
+   "38",
    "18",
    "34",
-   "38",
    "22"
   ],
   "correctAnswer": 3,
@@ -9245,12 +7003,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A shopkeeper sold 3 dozen eggs and 7 eggs were broken. How many good eggs remain?",
   "passage": null,
   "options": [
-   "29",
-   "36",
+   "33",
    "27",
-   "33"
+   "29",
+   "36"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "3 dozen = 36 eggs; 36 - 7 = 29.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9278,11 +7036,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "30",
-   "1",
    "29",
-   "15"
+   "15",
+   "1"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "225 - 196 = 29 (also (15+14)(15-14) = 29).",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9309,12 +7067,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is a prime number?",
   "passage": null,
   "options": [
-   "27",
-   "39",
+   "29",
    "33",
-   "29"
+   "27",
+   "39"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "29 has no divisors other than 1 and itself; 27, 33 and 39 are divisible by 3.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9373,12 +7131,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "How many prime numbers lie between 20 and 40?",
   "passage": null,
   "options": [
-   "3",
    "6",
-   "4",
-   "5"
+   "3",
+   "5",
+   "4"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "The primes are 23, 29, 31 and 37.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9404,12 +7162,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the smallest 4-digit number divisible by 9?",
   "passage": null,
   "options": [
+   "1017",
    "1000",
    "1008",
-   "1009",
-   "1017"
+   "1009"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "1000 gives remainder 1 on division by 9, so add 8 to reach 1008 = 9 x 112.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9436,11 +7194,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "380",
+   "210",
    "420",
-   "400",
-   "210"
+   "400"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "The sum of the first n odd numbers is n squared: 20 squared = 400.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9466,12 +7224,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the unit digit of 7 raised to the power 123?",
   "passage": null,
   "options": [
-   "3",
    "7",
+   "3",
    "9",
    "1"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Units digits of powers of 7 repeat 7, 9, 3, 1; 123 leaves remainder 3 on division by 4, so the digit is 3.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9500,10 +7258,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "3",
    "9",
-   "36",
-   "6"
+   "6",
+   "36"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The common factors of 12 and 18 are 1, 2, 3 and 6; the highest is 6.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9530,12 +7288,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the LCM of 4 and 6?",
   "passage": null,
   "options": [
-   "10",
+   "12",
    "2",
    "24",
-   "12"
+   "10"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "The smallest number that both 4 and 6 divide is 12.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9562,12 +7320,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The HCF of two numbers is 8 and their LCM is 48. If one number is 16, the other is:",
   "passage": null,
   "options": [
-   "32",
    "24",
    "48",
-   "12"
+   "12",
+   "32"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "HCF x LCM = product of the numbers: 8 x 48 = 384, and 384 / 16 = 24.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9594,12 +7352,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the smallest number that is divisible by 6, 8 and 12?",
   "passage": null,
   "options": [
-   "36",
-   "12",
+   "48",
    "24",
-   "48"
+   "36",
+   "12"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "LCM(6, 8, 12) = 24.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9625,12 +7383,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Three bells ring every 6, 8 and 10 minutes. If they ring together at 9:00, they next ring together after:",
   "passage": null,
   "options": [
-   "120 minutes",
-   "60 minutes",
    "240 minutes",
-   "80 minutes"
+   "80 minutes",
+   "120 minutes",
+   "60 minutes"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "The bells coincide after LCM(6, 8, 10) = 120 minutes, i.e. at 11:00.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9656,12 +7414,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The greatest number that divides 61 and 97 leaving remainder 1 in each case is:",
   "passage": null,
   "options": [
-   "4",
-   "12",
    "9",
-   "6"
+   "4",
+   "6",
+   "12"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The number divides 61 - 1 = 60 and 97 - 1 = 96 exactly, so it is HCF(60, 96) = 12, which is also greater than the remainder 1.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9689,10 +7447,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "9",
    "10",
-   "12",
-   "8"
+   "8",
+   "12"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "72 = 2^3 x 3^2, so the number of factors is (3 + 1)(2 + 1) = 12.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9719,12 +7477,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 1/2 + 1/4?",
   "passage": null,
   "options": [
-   "3/4",
    "2/6",
-   "2/4",
-   "1/6"
+   "1/6",
+   "3/4",
+   "2/4"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "1/2 = 2/4, so 2/4 + 1/4 = 3/4.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9752,11 +7510,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "3/5",
+   "3/4",
    "2/3",
-   "1/2",
-   "3/4"
+   "1/2"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "As decimals: 0.75, 0.667, 0.5 and 0.6; the greatest is 3/4.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9784,11 +7542,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "2 3/5",
+   "3 1/5",
    "2 1/10",
-   "3",
-   "3 1/5"
+   "3"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "5/2 x 6/5 = 30/10 = 3.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9815,12 +7573,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 3/4 divided by 3/8?",
   "passage": null,
   "options": [
-   "3",
    "9/32",
-   "1/2",
-   "2"
+   "2",
+   "3",
+   "1/2"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "3/4 x 8/3 = 24/12 = 2.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9877,12 +7635,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which is the correct order from smallest to largest: 5/8, 3/5, 7/12, 2/3?",
   "passage": null,
   "options": [
+   "2/3, 5/8, 3/5, 7/12",
    "3/5, 7/12, 5/8, 2/3",
    "7/12, 3/5, 5/8, 2/3",
-   "2/3, 5/8, 3/5, 7/12",
    "7/12, 5/8, 3/5, 2/3"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Decimals: 7/12 = 0.583, 3/5 = 0.6, 5/8 = 0.625, 2/3 = 0.667.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9909,12 +7667,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 0.5 + 0.25?",
   "passage": null,
   "options": [
-   "0.55",
    "0.30",
+   "0.75",
    "0.8",
-   "0.75"
+   "0.55"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "0.50 + 0.25 = 0.75.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9941,12 +7699,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 3.6 x 10?",
   "passage": null,
   "options": [
-   "360",
-   "0.36",
    "36",
+   "0.36",
+   "360",
    "3.60"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Multiplying by 10 moves the decimal point one place to the right.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -9973,12 +7731,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 0.6 x 0.7?",
   "passage": null,
   "options": [
-   "0.42",
    "1.3",
-   "4.2",
-   "0.042"
+   "0.042",
+   "0.42",
+   "4.2"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "6 x 7 = 42 and there are two decimal places in total: 0.42.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -10004,8 +7762,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 12.5 divided by 0.25?",
   "passage": null,
   "options": [
-   "0.5",
    "500",
+   "0.5",
    "5",
    "50"
   ],
@@ -10035,12 +7793,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Express 0.125 as a fraction in its lowest terms.",
   "passage": null,
   "options": [
-   "1/8",
+   "1/5",
    "125/10",
    "1/12",
-   "1/5"
+   "1/8"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "0.125 = 125/1000 = 1/8.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -10067,12 +7825,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 10% of 250?",
   "passage": null,
   "options": [
-   "2.5",
-   "20",
    "25",
-   "50"
+   "50",
+   "2.5",
+   "20"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "10% = 1/10 and 250 / 10 = 25.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -10099,12 +7857,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Express 3/4 as a percentage.",
   "passage": null,
   "options": [
-   "34%",
-   "75%",
    "80%",
-   "65%"
+   "65%",
+   "75%",
+   "34%"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "3/4 = 0.75 = 75%.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -10163,12 +7921,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A price rises from Rs 200 to Rs 250. What is the percentage increase?",
   "passage": null,
   "options": [
-   "25%",
    "15%",
+   "25%",
    "20%",
    "50%"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Increase = 50 on 200, and 50/200 = 25%.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -10194,12 +7952,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If 15% of a number is 45, the number is:",
   "passage": null,
   "options": [
-   "675",
-   "150",
    "300",
-   "225"
+   "225",
+   "675",
+   "150"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Number = 45 x 100 / 15 = 300.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -10227,10 +7985,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "a 2% decrease",
    "a 4% increase",
-   "no change",
-   "a 4% decrease"
+   "a 4% decrease",
+   "no change"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "1.2 x 0.8 = 0.96 of the original, a 4% decrease.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -10256,12 +8014,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In an election two candidates received 60% and 40% of the valid votes. The winner won by 1,200 votes. How many valid votes were cast?",
   "passage": null,
   "options": [
-   "6,000",
-   "3,000",
    "7,200",
-   "4,800"
+   "4,800",
+   "3,000",
+   "6,000"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "The margin is 20% of the votes: 1200 / 0.2 = 6000.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -10288,10 +8046,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Divide Rs 100 in the ratio 1 : 4. The larger share is:",
   "passage": null,
   "options": [
-   "Rs 60",
+   "Rs 75",
    "Rs 20",
    "Rs 80",
-   "Rs 75"
+   "Rs 60"
   ],
   "correctAnswer": 2,
   "explanation": "There are 5 parts of Rs 20 each, and the larger share is 4 parts = Rs 80.",
@@ -10320,12 +8078,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The ratio 15 : 25 in its simplest form is:",
   "passage": null,
   "options": [
-   "5 : 3",
    "3 : 5",
    "1 : 2",
-   "15 : 5"
+   "15 : 5",
+   "5 : 3"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Divide both by 5 to get 3 : 5.",
   "subject": "Mathematics",
   "topic": "Ratios",
@@ -10352,10 +8110,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If 6 pens cost Rs 90, what is the cost of 10 pens?",
   "passage": null,
   "options": [
-   "Rs 140",
+   "Rs 120",
    "Rs 150",
-   "Rs 180",
-   "Rs 120"
+   "Rs 140",
+   "Rs 180"
   ],
   "correctAnswer": 1,
   "explanation": "One pen costs Rs 15, so 10 pens cost Rs 150.",
@@ -10384,10 +8142,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The ages of two sisters are in the ratio 3 : 5 and the sum of their ages is 40. The age of the younger sister is:",
   "passage": null,
   "options": [
-   "12",
    "25",
+   "24",
    "15",
-   "24"
+   "12"
   ],
   "correctAnswer": 2,
   "explanation": "One part is 40/8 = 5 years, so the younger is 3 x 5 = 15.",
@@ -10415,12 +8173,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If a : b = 2 : 3 and b : c = 4 : 5, then a : c is:",
   "passage": null,
   "options": [
-   "4 : 15",
-   "2 : 5",
    "6 : 5",
-   "8 : 15"
+   "8 : 15",
+   "4 : 15",
+   "2 : 5"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Make b the same: a : b = 8 : 12 and b : c = 12 : 15, so a : c = 8 : 15.",
   "subject": "Mathematics",
   "topic": "Ratios",
@@ -10446,12 +8204,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A mixture contains milk and water in the ratio 5 : 3. How much water must be added to 40 litres of the mixture to make the ratio 5 : 4?",
   "passage": null,
   "options": [
-   "5 litres",
-   "8 litres",
    "10 litres",
-   "3 litres"
+   "3 litres",
+   "8 litres",
+   "5 litres"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Milk = 25 litres and water = 15 litres. For 5 : 4 water must be 20 litres, so add 5 litres.",
   "subject": "Mathematics",
   "topic": "Ratios",
@@ -10478,12 +8236,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the average of 4, 6, 8, 10 and 12?",
   "passage": null,
   "options": [
-   "7",
-   "10",
    "8",
-   "9"
+   "9",
+   "7",
+   "10"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Sum = 40 and 40 / 5 = 8.",
   "subject": "Mathematics",
   "topic": "Averages",
@@ -10510,12 +8268,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The average of five numbers is 20. If one number is removed, the average of the remaining four is 18. The removed number is:",
   "passage": null,
   "options": [
-   "20",
    "28",
    "22",
-   "38"
+   "38",
+   "20"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Total = 100 and the remaining total = 72, so the removed number is 28.",
   "subject": "Mathematics",
   "topic": "Averages",
@@ -10541,9 +8299,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The average mark of 30 students is 62. If the teacher's marks are included, the average becomes 63. Marks of the teacher are:",
   "passage": null,
   "options": [
-   "63",
    "73",
    "83",
+   "63",
    "93"
   ],
   "correctAnswer": 3,
@@ -10572,12 +8330,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A cricketer's average after 10 innings is 40. How many runs must he score in the 11th innings to raise his average to 42?",
   "passage": null,
   "options": [
-   "62",
    "52",
+   "62",
    "44",
    "60"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Needed total = 11 x 42 = 462; current total = 400; so he needs 62.",
   "subject": "Mathematics",
   "topic": "Averages",
@@ -10604,12 +8362,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "An article bought for Rs 80 is sold for Rs 100. The profit is:",
   "passage": null,
   "options": [
-   "Rs 25",
-   "Rs 20",
    "Rs 10",
-   "Rs 180"
+   "Rs 180",
+   "Rs 20",
+   "Rs 25"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Profit = selling price - cost price = 100 - 80 = Rs 20.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -10637,11 +8395,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Rs 490",
-   "Rs 400",
+   "Rs 450",
    "Rs 550",
-   "Rs 450"
+   "Rs 400"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "10% of 500 = 50, so SP = 500 - 50 = Rs 450.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -10668,12 +8426,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A dealer sells an item for Rs 1,260 at a 12.5% profit. What was the cost price?",
   "passage": null,
   "options": [
-   "Rs 1,152",
+   "Rs 1,134",
    "Rs 1,100",
-   "Rs 1,120",
-   "Rs 1,134"
+   "Rs 1,152",
+   "Rs 1,120"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "CP = 1260 / 1.125 = Rs 1,120.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -10730,12 +8488,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "By selling an item for Rs 540 a man loses 10%. At what price should he sell it to gain 10%?",
   "passage": null,
   "options": [
+   "Rs 600",
    "Rs 720",
    "Rs 660",
-   "Rs 594",
-   "Rs 600"
+   "Rs 594"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "CP = 540/0.9 = 600; for a 10% gain, SP = 660.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -10762,12 +8520,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the simple interest on Rs 1,000 at 5% per year for 2 years?",
   "passage": null,
   "options": [
+   "Rs 100",
    "Rs 50",
-   "Rs 105",
    "Rs 10",
-   "Rs 100"
+   "Rs 105"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "SI = 1000 x 5 x 2 / 100 = Rs 100.",
   "subject": "Mathematics",
   "topic": "Interest",
@@ -10794,10 +8552,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "At what rate per cent per year will Rs 2,000 earn Rs 360 as simple interest in 3 years?",
   "passage": null,
   "options": [
-   "5%",
+   "8%",
    "12%",
    "6%",
-   "8%"
+   "5%"
   ],
   "correctAnswer": 2,
   "explanation": "Rate = 360 x 100 / (2000 x 3) = 6%.",
@@ -10825,12 +8583,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Rs 4,000 amounts to Rs 4,960 in 4 years at simple interest. The rate per year is:",
   "passage": null,
   "options": [
-   "6%",
-   "24%",
+   "7.5%",
    "5%",
-   "7.5%"
+   "24%",
+   "6%"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Interest = 960; rate = 960 x 100 / (4000 x 4) = 6%.",
   "subject": "Mathematics",
   "topic": "Interest",
@@ -10856,12 +8614,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the compound interest on Rs 10,000 at 10% per year for 2 years?",
   "passage": null,
   "options": [
-   "Rs 2,000",
    "Rs 2,200",
    "Rs 2,100",
-   "Rs 1,100"
+   "Rs 1,100",
+   "Rs 2,000"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Amount = 10000 x 1.1 x 1.1 = 12,100; interest = Rs 2,100.",
   "subject": "Mathematics",
   "topic": "Interest",
@@ -10888,12 +8646,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A can finish a job in 10 days and B in 15 days. Working together, they finish it in:",
   "passage": null,
   "options": [
-   "6 days",
    "5 days",
-   "12.5 days",
-   "25 days"
+   "6 days",
+   "25 days",
+   "12.5 days"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Combined rate = 1/10 + 1/15 = 1/6 of the job per day.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -10919,12 +8677,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "12 workers build a wall in 15 days. How many days will 9 workers take?",
   "passage": null,
   "options": [
-   "25 days",
-   "20 days",
    "16 days",
-   "18 days"
+   "18 days",
+   "25 days",
+   "20 days"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Work = 12 x 15 = 180 worker-days; 180 / 9 = 20 days.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -10950,12 +8708,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A can do a piece of work in 12 days and B in 18 days. They work together for 4 days, then A leaves. How many more days does B need to finish the work?",
   "passage": null,
   "options": [
-   "6 days",
-   "7 days",
+   "8 days",
    "9 days",
-   "8 days"
+   "6 days",
+   "7 days"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "In 4 days they complete 4 x (1/12 + 1/18) = 4 x 5/36 = 5/9. The remaining 4/9 at B's rate of 1/18 per day takes 8 days.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -11015,11 +8773,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "80 km/h",
-   "60 km/h",
    "56 km/h",
+   "60 km/h",
    "240 km/h"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Speed = distance / time = 240 / 4 = 60 km/h.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -11046,9 +8804,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "20 m/s",
-   "15 m/s",
    "25 m/s",
-   "72 m/s"
+   "72 m/s",
+   "15 m/s"
   ],
   "correctAnswer": 0,
   "explanation": "Multiply by 5/18: 72 x 5/18 = 20 m/s.",
@@ -11076,12 +8834,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A train 150 m long passes a pole in 10 seconds. How long will it take to cross a platform 250 m long at the same speed?",
   "passage": null,
   "options": [
-   "25 seconds",
    "20 seconds",
+   "26 2/3 seconds",
    "40 seconds",
-   "26 2/3 seconds"
+   "25 seconds"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Speed = 15 m/s. Distance to cross the platform = 150 + 250 = 400 m, so time = 400/15 = 26 2/3 s.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -11107,12 +8865,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A man walks to a place at 4 km/h and returns at 6 km/h. His average speed for the whole journey is:",
   "passage": null,
   "options": [
-   "5.2 km/h",
-   "4.8 km/h",
    "5 km/h",
-   "4.5 km/h"
+   "5.2 km/h",
+   "4.5 km/h",
+   "4.8 km/h"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Average speed = 2ab/(a + b) = 2 x 4 x 6 / 10 = 4.8 km/h.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -11139,12 +8897,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If x + 7 = 15, then x = ?",
   "passage": null,
   "options": [
-   "7",
-   "22",
    "8",
-   "9"
+   "9",
+   "7",
+   "22"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Subtract 7 from both sides: x = 8.",
   "subject": "Mathematics",
   "topic": "Algebra",
@@ -11171,12 +8929,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Simplify: 3x + 5x",
   "passage": null,
   "options": [
-   "8x",
-   "15x",
    "8x squared",
-   "35x"
+   "15x",
+   "35x",
+   "8x"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Like terms add: 3x + 5x = 8x.",
   "subject": "Mathematics",
   "topic": "Algebra",
@@ -11203,12 +8961,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Solve: 3x - 5 = 16",
   "passage": null,
   "options": [
-   "x = 7",
+   "x = 21/3.5",
    "x = 5",
-   "x = 11",
-   "x = 21/3.5"
+   "x = 7",
+   "x = 11"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "3x = 21, so x = 7.",
   "subject": "Mathematics",
   "topic": "Algebra",
@@ -11235,12 +8993,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Expand: (x + 3)(x + 2)",
   "passage": null,
   "options": [
-   "x squared + 5x + 5",
    "x squared + 6x + 5",
    "x squared + 5x + 6",
-   "x squared + x + 6"
+   "x squared + x + 6",
+   "x squared + 5x + 5"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "x*x + 2x + 3x + 6 = x squared + 5x + 6.",
   "subject": "Mathematics",
   "topic": "Algebra",
@@ -11267,11 +9025,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "(x - 9)(x + 1)",
+   "(x + 9)(x - 1)",
    "(x - 3)(x + 3)",
-   "(x - 3)(x - 3)",
-   "(x + 9)(x - 1)"
+   "(x - 3)(x - 3)"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "A difference of squares: a squared - b squared = (a - b)(a + b).",
   "subject": "Mathematics",
   "topic": "Algebra",
@@ -11297,9 +9055,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If x + 1/x = 5, then x squared + 1/x squared is:",
   "passage": null,
   "options": [
-   "25",
    "10",
    "27",
+   "25",
    "23"
   ],
   "correctAnswer": 3,
@@ -11330,8 +9088,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "3 and 4",
    "2 and 6",
-   "-3 and -4",
-   "1 and 12"
+   "1 and 12",
+   "-3 and -4"
   ],
   "correctAnswer": 0,
   "explanation": "x squared - 7x + 12 = (x - 3)(x - 4).",
@@ -11360,11 +9118,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "49",
+   "19",
    "13",
-   "29",
-   "19"
+   "29"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "a squared + b squared = (a - b) squared + 2ab = 9 + 20 = 29.",
   "subject": "Mathematics",
   "topic": "Algebra",
@@ -11390,12 +9148,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Two numbers have a sum of 25 and a difference of 7. The larger number is:",
   "passage": null,
   "options": [
+   "9",
    "18",
    "16",
-   "9",
    "14"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The larger = (25 + 7)/2 = 16 and the smaller = 9.",
   "subject": "Mathematics",
   "topic": "Linear Equations",
@@ -11421,12 +9179,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Solve for x: 2(x - 3) + 4 = 3x - 5",
   "passage": null,
   "options": [
+   "x = 3",
    "x = 5",
    "x = -3",
-   "x = 1",
-   "x = 3"
+   "x = 1"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "2x - 6 + 4 = 3x - 5 gives -2 + 5 = x, so x = 3.",
   "subject": "Mathematics",
   "topic": "Linear Equations",
@@ -11452,9 +9210,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The sum of the ages of a father and his son is 56. Four years ago the father was 7 times as old as the son. The son's present age is:",
   "passage": null,
   "options": [
-   "9",
-   "10",
    "8",
+   "10",
+   "9",
    "12"
   ],
   "correctAnswer": 1,
@@ -11484,12 +9242,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "How many degrees are there in the angles of a triangle altogether?",
   "passage": null,
   "options": [
-   "360",
-   "270",
    "180",
+   "270",
+   "360",
    "90"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The angles of any triangle add up to 180 degrees.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -11516,12 +9274,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "An angle of 90 degrees is called a:",
   "passage": null,
   "options": [
-   "straight angle",
    "obtuse angle",
-   "acute angle",
-   "right angle"
+   "right angle",
+   "straight angle",
+   "acute angle"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "A 90-degree angle is a right angle.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -11549,8 +9307,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "60 degrees",
-   "80 degrees",
    "110 degrees",
+   "80 degrees",
    "70 degrees"
   ],
   "correctAnswer": 3,
@@ -11581,11 +9339,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "270 degrees",
-   "360 degrees",
    "540 degrees",
+   "360 degrees",
    "180 degrees"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "A quadrilateral splits into two triangles: 2 x 180 = 360.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -11611,12 +9369,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The sides of a right triangle are 6 cm and 8 cm. The hypotenuse is:",
   "passage": null,
   "options": [
-   "10 cm",
    "14 cm",
+   "10 cm",
    "9 cm",
    "12 cm"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "6 squared + 8 squared = 100, so the hypotenuse is 10 cm.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -11642,12 +9400,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Each interior angle of a regular hexagon measures:",
   "passage": null,
   "options": [
-   "144 degrees",
-   "108 degrees",
    "120 degrees",
-   "135 degrees"
+   "108 degrees",
+   "135 degrees",
+   "144 degrees"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The interior angle sum is (6 - 2) x 180 = 720, and 720/6 = 120.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -11674,11 +9432,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "160 degrees",
+   "80 degrees",
    "20 degrees",
-   "40 degrees",
-   "80 degrees"
+   "40 degrees"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "The angle at the centre is twice the angle at the circumference.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -11704,12 +9462,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Each exterior angle of a regular polygon is 30 degrees. The number of sides is:",
   "passage": null,
   "options": [
-   "8",
-   "15",
+   "12",
    "10",
-   "12"
+   "15",
+   "8"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "The exterior angles add up to 360, so n = 360/30 = 12.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -11735,12 +9493,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In a right triangle the two shorter sides are 5 cm and 12 cm. The length of the altitude drawn to the hypotenuse is:",
   "passage": null,
   "options": [
-   "60/13 cm",
-   "6 cm",
    "30/13 cm",
-   "13/2 cm"
+   "13/2 cm",
+   "6 cm",
+   "60/13 cm"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "The hypotenuse is 13. Area = 1/2 x 5 x 12 = 30 = 1/2 x 13 x h, so h = 60/13 cm.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -11768,11 +9526,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "13 square cm",
-   "40 square cm",
    "80 square cm",
+   "40 square cm",
    "26 square cm"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Area = length x width = 40.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -11799,12 +9557,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the perimeter of a square of side 9 cm?",
   "passage": null,
   "options": [
-   "36 cm",
    "18 cm",
-   "27 cm",
-   "81 cm"
+   "36 cm",
+   "81 cm",
+   "27 cm"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Perimeter = 4 x side = 36 cm.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -11831,12 +9589,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the volume of a cube of side 4 cm?",
   "passage": null,
   "options": [
-   "48 cubic cm",
    "12 cubic cm",
+   "64 cubic cm",
    "16 cubic cm",
-   "64 cubic cm"
+   "48 cubic cm"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Volume = side cubed = 64.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -11863,12 +9621,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A rectangular field is 120 m long and 80 m wide. The cost of fencing it at Rs 50 per metre is:",
   "passage": null,
   "options": [
-   "Rs 480,000",
+   "Rs 40,000",
    "Rs 10,000",
-   "Rs 20,000",
-   "Rs 40,000"
+   "Rs 480,000",
+   "Rs 20,000"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Perimeter = 2(120 + 80) = 400 m, so cost = 400 x 50 = Rs 20,000.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -11894,12 +9652,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The circumference of a circle is 44 cm. Taking pi = 22/7, its radius is:",
   "passage": null,
   "options": [
+   "14 cm",
    "22 cm",
    "7 cm",
-   "14 cm",
    "3.5 cm"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "2 x (22/7) x r = 44, so r = 7 cm.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -11925,12 +9683,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The area of a circle of radius 14 cm, taking pi = 22/7, is:",
   "passage": null,
   "options": [
-   "616 square cm",
    "308 square cm",
    "154 square cm",
-   "88 square cm"
+   "88 square cm",
+   "616 square cm"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Area = (22/7) x 14 x 14 = 616.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -11956,12 +9714,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A cylinder has radius 7 cm and height 10 cm. Taking pi = 22/7, its volume is:",
   "passage": null,
   "options": [
-   "3,080 cubic cm",
-   "440 cubic cm",
    "1,540 cubic cm",
-   "770 cubic cm"
+   "440 cubic cm",
+   "770 cubic cm",
+   "3,080 cubic cm"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Volume = pi r squared h = (22/7) x 49 x 10 = 1,540.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -11987,12 +9745,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The volume of a rectangular tank is 1,200 cubic m. If its length is 20 m and width 10 m, its height is:",
   "passage": null,
   "options": [
-   "12 m",
    "8 m",
    "5 m",
-   "6 m"
+   "6 m",
+   "12 m"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Height = volume / (length x width) = 1200/200 = 6 m.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -12018,10 +9776,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The diagonal of a square is 8 cm. Its area is:",
   "passage": null,
   "options": [
-   "48 square cm",
+   "16 square cm",
    "32 square cm",
-   "64 square cm",
-   "16 square cm"
+   "48 square cm",
+   "64 square cm"
   ],
   "correctAnswer": 1,
   "explanation": "Area = diagonal squared / 2 = 64/2 = 32.",
@@ -12050,12 +9808,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In the data 3, 5, 5, 7, 9, the mode is:",
   "passage": null,
   "options": [
+   "7",
    "5",
    "3",
-   "7",
    "9"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The mode is the most frequent value, which is 5.",
   "subject": "Mathematics",
   "topic": "Statistics",
@@ -12082,10 +9840,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the median of 4, 9, 1, 7, 5?",
   "passage": null,
   "options": [
-   "4",
+   "7",
    "9",
    "5",
-   "7"
+   "4"
   ],
   "correctAnswer": 2,
   "explanation": "Sorted: 1, 4, 5, 7, 9; the middle value is 5.",
@@ -12114,9 +9872,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The marks of 5 students are 12, 15, 18, 20 and 10. Their mean is:",
   "passage": null,
   "options": [
+   "14",
    "16",
    "12",
-   "14",
    "15"
   ],
   "correctAnswer": 3,
@@ -12178,10 +9936,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "30",
    "36",
-   "18",
-   "33"
+   "33",
+   "18"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "New mean = 2 x 15 + 3 = 33.",
   "subject": "Mathematics",
   "topic": "Statistics",
@@ -12238,12 +9996,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Two fair coins are tossed. The probability of getting at least one head is:",
   "passage": null,
   "options": [
-   "1/2",
+   "2/3",
    "1/4",
-   "3/4",
-   "2/3"
+   "1/2",
+   "3/4"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Outcomes HH, HT, TH, TT; only TT has no head, so 3/4.",
   "subject": "Mathematics",
   "topic": "Probability",
@@ -12269,12 +10027,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A bag has 4 red and 6 blue balls. Two balls are drawn without replacement. The probability that both are red is:",
   "passage": null,
   "options": [
-   "4/25",
-   "1/5",
    "2/15",
-   "2/5"
+   "2/5",
+   "4/25",
+   "1/5"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "(4/10) x (3/9) = 12/90 = 2/15.",
   "subject": "Mathematics",
   "topic": "Probability",
@@ -12300,9 +10058,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If A = {1, 2, 3, 4} and B = {3, 4, 5}, then A union B is:",
   "passage": null,
   "options": [
-   "{1, 2, 5}",
    "{3, 4}",
    "{1, 2, 3, 4, 3, 4, 5}",
+   "{1, 2, 5}",
    "{1, 2, 3, 4, 5}"
   ],
   "correctAnswer": 3,
@@ -12331,12 +10089,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "If n(A) = 12, n(B) = 9 and n(A intersect B) = 4, then n(A union B) is:",
   "passage": null,
   "options": [
-   "17",
    "13",
    "25",
+   "17",
    "21"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "n(A union B) = 12 + 9 - 4 = 17.",
   "subject": "Mathematics",
   "topic": "Sets and Relations",
@@ -12362,10 +10120,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In a class of 40 students, 25 like cricket and 20 like football; every student likes at least one. How many like both?",
   "passage": null,
   "options": [
-   "10",
+   "20",
    "5",
-   "15",
-   "20"
+   "10",
+   "15"
   ],
   "correctAnswer": 1,
   "explanation": "25 + 20 - both = 40, so both = 5.",
@@ -12395,9 +10153,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Rs 235",
-   "Rs 335",
    "Rs 325",
-   "Rs 265"
+   "Rs 265",
+   "Rs 335"
   ],
   "correctAnswer": 0,
   "explanation": "500 - 175 - 90 = 235.",
@@ -12427,11 +10185,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "6 km",
-   "7 km",
    "5 km",
-   "4.5 km"
+   "4.5 km",
+   "7 km"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "The two legs are perpendicular, so the distance is sqrt(9 + 16) = 5 km.",
   "subject": "Mathematics",
   "topic": "Word Problems",
@@ -12458,12 +10216,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A bus has 48 seats. 5 buses are needed for a trip. If every seat is taken and 12 more students come, how many buses are now needed?",
   "passage": null,
   "options": [
-   "8",
    "6",
+   "8",
    "5",
    "7"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Students = 5 x 48 = 240; with 12 more there are 252, and 252/48 = 5.25, so 6 buses are needed.",
   "subject": "Mathematics",
   "topic": "Word Problems",
@@ -12520,8 +10278,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A shopkeeper mixes rice costing Rs 40 per kg with rice costing Rs 60 per kg in the ratio 3 : 2. The cost of the mixture per kg is:",
   "passage": null,
   "options": [
-   "Rs 46",
    "Rs 52",
+   "Rs 46",
    "Rs 48",
    "Rs 50"
   ],
@@ -12552,12 +10310,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What comes next: 2, 4, 6, 8, ...?",
   "passage": null,
   "options": [
-   "11",
    "10",
-   "9",
-   "12"
+   "12",
+   "11",
+   "9"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "The numbers rise by 2 each time.",
   "subject": "Mathematics",
   "topic": "Mathematical Reasoning",
@@ -12584,12 +10342,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What comes next: 3, 6, 12, 24, ...?",
   "passage": null,
   "options": [
+   "42",
    "48",
    "36",
-   "30",
-   "42"
+   "30"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Each term is double the previous one.",
   "subject": "Mathematics",
   "topic": "Mathematical Reasoning",
@@ -12616,8 +10374,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "49",
-   "30",
    "32",
+   "30",
    "36"
   ],
   "correctAnswer": 3,
@@ -12646,12 +10404,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What comes next: 2, 3, 5, 8, 12, ...?",
   "passage": null,
   "options": [
-   "18",
    "16",
-   "15",
-   "17"
+   "18",
+   "17",
+   "15"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The differences are 1, 2, 3, 4, so the next difference is 5: 12 + 5 = 17.",
   "subject": "Mathematics",
   "topic": "Mathematical Reasoning",
@@ -12677,12 +10435,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The next term in 1, 2, 6, 24, 120, ... is:",
   "passage": null,
   "options": [
-   "840",
    "240",
-   "720",
-   "600"
+   "840",
+   "600",
+   "720"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "These are factorials 1!, 2!, 3!, 4!, 5!, so the next is 6! = 720.",
   "subject": "Mathematics",
   "topic": "Mathematical Reasoning",
@@ -12699,6 +10457,3106 @@ export const JEST_BANK: TeacherQuestion[] = [
   "needsReview": false
  },
  {
+  "id": "jest-ped-0001",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "In the VARK model, the letters stand for:",
+  "passage": null,
+  "options": [
+   "Visual, Aural, Read/Write, Kinesthetic",
+   "Vocal, Aural, Recall, Kinesthetic",
+   "Visual, Active, Reflective, Kinesthetic",
+   "Verbal, Auditory, Reading, Knowledge"
+  ],
+  "correctAnswer": 0,
+  "explanation": "VARK describes four preferred ways of taking in information: visual, aural, read/write and kinesthetic.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0002",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A student who understands best from diagrams, charts and maps is mainly a:",
+  "passage": null,
+  "options": [
+   "kinesthetic learner",
+   "read/write learner",
+   "visual learner",
+   "aural learner"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Visual learners prefer information shown as pictures, diagrams and graphs.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0003",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A student who learns best by listening to explanations and joining discussions is mainly an:",
+  "passage": null,
+  "options": [
+   "kinesthetic learner",
+   "aural learner",
+   "visual learner",
+   "read/write learner"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Aural learners prefer to hear information and talk it through.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0004",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A student who learns best by performing experiments and handling real objects is mainly a:",
+  "passage": null,
+  "options": [
+   "visual learner",
+   "kinesthetic learner",
+   "aural learner",
+   "read/write learner"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Kinesthetic learners learn through movement, practice and hands-on experience.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0005",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A student who prefers taking notes, reading textbooks and writing lists is mainly a:",
+  "passage": null,
+  "options": [
+   "read/write learner",
+   "visual learner",
+   "aural learner",
+   "kinesthetic learner"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Read/write learners prefer information in the form of printed words.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0006",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "The VARK questionnaire was developed by:",
+  "passage": null,
+  "options": [
+   "Howard Gardner",
+   "Jean Piaget",
+   "Neil Fleming",
+   "Lev Vygotsky"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Neil Fleming created the VARK model of learning preferences.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0007",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Which classroom activity best suits kinesthetic learners studying the water cycle?",
+  "passage": null,
+  "options": [
+   "copying notes from the board",
+   "listening to a recorded lecture",
+   "reading a chapter silently",
+   "building and demonstrating a working model"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Making and operating a model lets kinesthetic learners learn by doing.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0008",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A teacher who presents a topic through speech, a diagram, a short text and an activity is:",
+  "passage": null,
+  "options": [
+   "wasting lesson time",
+   "confusing the learners",
+   "catering to several learning preferences",
+   "favouring only visual learners"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Using several modes reaches learners with different preferences and strengthens understanding for everyone.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0009",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Students who like more than one VARK mode are called:",
+  "passage": null,
+  "options": [
+   "slow learners",
+   "multimodal learners",
+   "unimodal learners",
+   "passive learners"
+  ],
+  "correctAnswer": 1,
+  "explanation": "A multimodal learner has two or more strong preferences.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0010",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Which is the most defensible use of learning-style information by a teacher?",
+  "passage": null,
+  "options": [
+   "offering varied activities without labelling students permanently",
+   "ignoring it because every student learns identically",
+   "teaching each student only in the preferred style",
+   "grouping students by one fixed style for the whole year"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Preferences are useful for varying instruction, but they are not fixed labels and should not limit what a student is taught.",
+  "subject": "Pedagogy",
+  "topic": "Learning Styles (VARK)",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0011",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Individual differences among learners mean that:",
+  "passage": null,
+  "options": [
+   "only gifted students differ",
+   "differences disappear after primary school",
+   "all students learn at the same pace",
+   "students differ in ability, pace and interest"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Learners vary in ability, speed, background and interests, so teaching must allow for this.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0012",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "According to Piaget, children aged about 7 to 11 are in the:",
+  "passage": null,
+  "options": [
+   "concrete operational stage",
+   "preoperational stage",
+   "formal operational stage",
+   "sensorimotor stage"
+  ],
+  "correctAnswer": 0,
+  "explanation": "In the concrete operational stage children reason logically about real objects and events.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0013",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Piaget's stage in which abstract and hypothetical thinking develops (about 12 years onward) is the:",
+  "passage": null,
+  "options": [
+   "concrete operational stage",
+   "formal operational stage",
+   "sensorimotor stage",
+   "preoperational stage"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Formal operational thinkers can reason about abstract ideas and hypotheses.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0014",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Vygotsky's 'zone of proximal development' is the gap between:",
+  "passage": null,
+  "options": [
+   "home learning and school learning",
+   "a learner's age and grade",
+   "easy and difficult subjects",
+   "what a learner can do alone and what he or she can do with help"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Guided support within this zone moves the learner to the next level.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0015",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A teacher notices a student who sees the board poorly. The best first step is to:",
+  "passage": null,
+  "options": [
+   "move the student to the last bench",
+   "ignore it because it is a medical matter",
+   "seat the student near the front and inform the parents",
+   "punish the student for inattention"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Physical differences such as poor eyesight need practical adjustment and parental involvement.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0016",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Providing extra challenge and enrichment tasks suits:",
+  "passage": null,
+  "options": [
+   "gifted learners",
+   "absent students",
+   "new admissions only",
+   "slow learners"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Enrichment keeps high-ability learners engaged and growing.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0017",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Howard Gardner's theory states that people have:",
+  "passage": null,
+  "options": [
+   "intelligence only in language",
+   "no differences in ability",
+   "multiple intelligences",
+   "a single fixed intelligence"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Gardner proposed several relatively independent intelligences such as linguistic, logical and musical.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0018",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Erikson's stage for school-age children (about 6 to 12 years) is:",
+  "passage": null,
+  "options": [
+   "trust versus mistrust",
+   "initiative versus guilt",
+   "identity versus role confusion",
+   "industry versus inferiority"
+  ],
+  "correctAnswer": 3,
+  "explanation": "At this age children build a sense of competence through schoolwork and achievement.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0019",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Mixed-ability groups in cooperative learning mainly help to:",
+  "passage": null,
+  "options": [
+   "make marking easier",
+   "let learners support one another socially and academically",
+   "separate strong students from weak ones",
+   "reduce the need for planning"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Peer interaction supports learning and builds social skills across ability levels.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0020",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Kohlberg's theory of moral development has:",
+  "passage": null,
+  "options": [
+   "two levels: right and wrong",
+   "three levels: pre-conventional, conventional and post-conventional",
+   "no levels",
+   "five levels based on age only"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Kohlberg described moral reasoning at three levels, each with two stages.",
+  "subject": "Pedagogy",
+  "topic": "Cognitive, Physical and Social Differences",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0021",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "SLO stands for:",
+  "passage": null,
+  "options": [
+   "Subject Level Objective",
+   "Student Lesson Option",
+   "Student Learning Outcome",
+   "School Learning Order"
+  ],
+  "correctAnswer": 2,
+  "explanation": "An SLO states what a student should know or be able to do after the lesson.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0022",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Which is a well-written student learning outcome?",
+  "passage": null,
+  "options": [
+   "To cover the chapter on matter.",
+   "Students will know about matter.",
+   "The teacher will explain the states of matter.",
+   "Students will be able to list the three states of matter."
+  ],
+  "correctAnswer": 3,
+  "explanation": "A good SLO is student-centred and uses an observable action verb.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0023",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Which verb is best for a measurable learning outcome?",
+  "passage": null,
+  "options": [
+   "identify",
+   "understand",
+   "know",
+   "appreciate"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Identify can be observed and assessed; the other verbs are vague.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0024",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "The usual parts of a lesson plan are:",
+  "passage": null,
+  "options": [
+   "title, date and signature only",
+   "objectives, materials, procedure and assessment",
+   "textbook and homework only",
+   "marks and attendance"
+  ],
+  "correctAnswer": 1,
+  "explanation": "A complete plan covers what to teach, with what, how, and how learning is checked.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0025",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "The opening step that grabs students' attention at the start of a lesson is the:",
+  "passage": null,
+  "options": [
+   "evaluation",
+   "conclusion",
+   "homework",
+   "introduction or hook"
+  ],
+  "correctAnswer": 3,
+  "explanation": "A short hook links to prior knowledge and motivates the lesson.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0026",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "In the revised Bloom's taxonomy, the lowest level of thinking is:",
+  "passage": null,
+  "options": [
+   "remembering",
+   "creating",
+   "applying",
+   "analysing"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Remembering means recalling facts; creating is at the top.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0027",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "In the revised Bloom's taxonomy, the highest level is:",
+  "passage": null,
+  "options": [
+   "remembering",
+   "understanding",
+   "creating",
+   "evaluating"
+  ],
+  "correctAnswer": 2,
+  "explanation": "The revised taxonomy places creating above evaluating.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0028",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Lesson objectives or SLOs should be taken from the:",
+  "passage": null,
+  "options": [
+   "students' seating plan",
+   "previous year's paper",
+   "curriculum",
+   "teacher's personal interest"
+  ],
+  "correctAnswer": 2,
+  "explanation": "SLOs are derived from the approved curriculum standards.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0029",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "The 5E lesson model consists of:",
+  "passage": null,
+  "options": [
+   "Engage, Explore, Explain, Elaborate, Evaluate",
+   "Explain, Examine, Exercise, Exit, Evaluate",
+   "Explore, Edit, Explain, Enrich, Exam",
+   "Engage, Enter, Explain, Extend, End"
+  ],
+  "correctAnswer": 0,
+  "explanation": "The 5E model is an inquiry-based sequence widely used in science teaching.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0030",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A good lesson plan should be:",
+  "passage": null,
+  "options": [
+   "copied unchanged from last year",
+   "flexible enough to change when students need it",
+   "written only after teaching",
+   "rigid and never altered"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Plans guide teaching but must adapt to learners' responses.",
+  "subject": "Pedagogy",
+  "topic": "Lesson Planning and SLOs",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0031",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Using a clear voice, eye contact and simple language is part of:",
+  "passage": null,
+  "options": [
+   "office skills",
+   "budgeting skills",
+   "marking skills",
+   "communication skills"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Clear communication helps students follow the lesson.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0032",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Praising a student for a correct answer is an example of:",
+  "passage": null,
+  "options": [
+   "positive reinforcement",
+   "negative marking",
+   "ignoring",
+   "punishment"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Reinforcement increases the chance that desirable behaviour is repeated.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0033",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Waiting a few seconds after asking a question before choosing a student is called:",
+  "passage": null,
+  "options": [
+   "rest time",
+   "break time",
+   "dead time",
+   "wait time"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Wait time gives learners time to think and improves answer quality.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0034",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A question that asks a student to explain, justify or give reasons is a:",
+  "passage": null,
+  "options": [
+   "recall question",
+   "higher-order question",
+   "rhetorical question",
+   "closed question"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Higher-order questions require thinking beyond memory.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0035",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Changing voice, gestures and activities to hold attention is called:",
+  "passage": null,
+  "options": [
+   "lesson repetition",
+   "dictation",
+   "stimulus variation",
+   "closure"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Varying the stimulus prevents boredom and keeps attention.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0036",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Micro-teaching is mainly used to:",
+  "passage": null,
+  "options": [
+   "conduct examinations",
+   "practise a teaching skill in a short lesson with a small group",
+   "teach very small children only",
+   "replace lesson planning"
+  ],
+  "correctAnswer": 1,
+  "explanation": "It lets trainee teachers practise one skill at a time and receive feedback.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0037",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Summarising the main points at the end of a lesson is the skill of:",
+  "passage": null,
+  "options": [
+   "reinforcement",
+   "set induction",
+   "introduction",
+   "closure"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Closure consolidates learning and checks understanding.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0038",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A follow-up question such as 'Why do you think so?' is called:",
+  "passage": null,
+  "options": [
+   "a leading question",
+   "a rhetorical question",
+   "a probing question",
+   "a closed question"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Probing questions push students to clarify and deepen their answers.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0039",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Effective classroom communication is best described as:",
+  "passage": null,
+  "options": [
+   "two-way, with the teacher listening as well as speaking",
+   "limited to the textbook",
+   "one-way from teacher to students",
+   "written only"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Two-way exchange allows the teacher to check understanding and respond.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0040",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "When writing on the board, a good teacher should:",
+  "passage": null,
+  "options": [
+   "write quickly and cover it up",
+   "fill every inch with text",
+   "talk only to the board",
+   "write legibly, in an organised layout, while facing the class often"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Neat, organised board work supports learning and keeps the teacher aware of the class.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Skills",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0041",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Showing students how to perform a process step by step is the:",
+  "passage": null,
+  "options": [
+   "lecture method",
+   "demonstration method",
+   "case study method",
+   "brainstorming"
+  ],
+  "correctAnswer": 1,
+  "explanation": "In a demonstration the teacher performs while students observe.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0042",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A main weakness of the pure lecture method is that students:",
+  "passage": null,
+  "options": [
+   "remain passive listeners",
+   "cannot hear the teacher",
+   "learn too quickly",
+   "become too active"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Lecturing is teacher-centred and gives learners little participation.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0043",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Generating many ideas quickly without criticising them is called:",
+  "passage": null,
+  "options": [
+   "dictation",
+   "demonstration",
+   "brainstorming",
+   "case study"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Brainstorming encourages creative thinking and participation.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0044",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Teaching by two or more teachers who plan and deliver a lesson together is:",
+  "passage": null,
+  "options": [
+   "home tutoring",
+   "team teaching",
+   "self-study",
+   "peer teaching"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Team teaching combines the strengths of several teachers.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0045",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Analysing a real-life situation to draw conclusions is the:",
+  "passage": null,
+  "options": [
+   "rote method",
+   "lecture method",
+   "drill method",
+   "case study method"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Case studies connect theory to realistic problems.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0046",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Which method is most suitable for young children to build interest and memory?",
+  "passage": null,
+  "options": [
+   "storytelling",
+   "long lectures",
+   "silent reading only",
+   "formal debates"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Stories engage imagination and make ideas easier to remember.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0047",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Which method gives students the most active role?",
+  "passage": null,
+  "options": [
+   "copying notes",
+   "lecture method",
+   "discussion method",
+   "dictation"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Discussion lets learners share ideas and think aloud.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0048",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "For teaching how to use a microscope, the best method is:",
+  "passage": null,
+  "options": [
+   "dictation",
+   "demonstration followed by practical work",
+   "storytelling alone",
+   "silent reading"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Learners need to see the correct procedure and then practise it.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0049",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A learner-centred method is one in which:",
+  "passage": null,
+  "options": [
+   "students take an active part in constructing knowledge",
+   "the teacher speaks for the whole period",
+   "students only copy notes",
+   "textbooks are not used"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Learner-centred methods emphasise student activity and thinking.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0050",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Which teaching approach starts by posing a problem and lets students discover the answer?",
+  "passage": null,
+  "options": [
+   "dictation method",
+   "lecture method",
+   "inquiry (discovery) method",
+   "drill method"
+  ],
+  "correctAnswer": 2,
+  "explanation": "In inquiry learning students investigate and find answers themselves.",
+  "subject": "Pedagogy",
+  "topic": "Teaching Methodology",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0051",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "ICT stands for:",
+  "passage": null,
+  "options": [
+   "Information and Computing Test",
+   "International Computer Training",
+   "Internet and Computer Tools",
+   "Information and Communication Technology"
+  ],
+  "correctAnswer": 3,
+  "explanation": "ICT covers technologies used to store, process and share information.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0052",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Showing an animation of the heart on a projector is an example of using:",
+  "passage": null,
+  "options": [
+   "corporal punishment",
+   "paper-based testing",
+   "multimedia in teaching",
+   "rote learning"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Multimedia combines text, images, sound and animation to explain a topic.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0053",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Which tool lets a teacher share assignments and materials online with a class?",
+  "passage": null,
+  "options": [
+   "a chalkboard",
+   "a learning management system such as Google Classroom",
+   "a wall chart",
+   "a printing press"
+  ],
+  "correctAnswer": 1,
+  "explanation": "A learning management system organises course content and tasks online.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0054",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "The main purpose of integrating ICT into teaching is to:",
+  "passage": null,
+  "options": [
+   "reduce student participation",
+   "replace the teacher completely",
+   "make lessons shorter",
+   "support the learning objectives and improve understanding"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Technology should serve the lesson's goals rather than be used for its own sake.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0055",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A science simulation lets students:",
+  "passage": null,
+  "options": [
+   "safely experiment with variables that are hard to change in real life",
+   "skip the textbook entirely",
+   "memorise answers only",
+   "avoid learning the concepts"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Simulations make abstract or dangerous experiments safe and repeatable.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0056",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "An interactive whiteboard allows the teacher to:",
+  "passage": null,
+  "options": [
+   "write, display and interact with digital content on the board",
+   "store data permanently like a hard disk",
+   "scan paper",
+   "print documents"
+  ],
+  "correctAnswer": 0,
+  "explanation": "It combines a display with touch or pen input.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0057",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "The 'digital divide' in schools refers to:",
+  "passage": null,
+  "options": [
+   "a type of file format",
+   "dividing a file into parts",
+   "unequal access to technology and the internet",
+   "a computer's broken screen"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Not all students have the same access to devices and connectivity.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0058",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "TPACK is a framework that combines:",
+  "passage": null,
+  "options": [
+   "testing, planning and curriculum knowledge",
+   "technology, pedagogy and content knowledge",
+   "teaching, practice and classroom knowledge",
+   "technology, politics and culture"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Effective ICT teaching needs all three kinds of knowledge together.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0059",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Teaching students not to share passwords and to respect others online is part of:",
+  "passage": null,
+  "options": [
+   "network design",
+   "data compression",
+   "hardware repair",
+   "digital citizenship"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Digital citizenship covers safe, responsible and ethical use of technology.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0060",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Online quiz tools used during a lesson mainly help with:",
+  "passage": null,
+  "options": [
+   "final examination marking only",
+   "quick formative assessment",
+   "attendance only",
+   "timetable design"
+  ],
+  "correctAnswer": 1,
+  "explanation": "They give immediate evidence of understanding so the teacher can adjust teaching.",
+  "subject": "Pedagogy",
+  "topic": "Use of ICT in the Classroom",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0061",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Assessment carried out during teaching to improve learning is:",
+  "passage": null,
+  "options": [
+   "placement assessment",
+   "summative assessment",
+   "annual assessment",
+   "formative assessment"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Formative assessment gives feedback while learning is still in progress.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0062",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "An end-of-term examination is an example of:",
+  "passage": null,
+  "options": [
+   "summative assessment",
+   "peer assessment",
+   "diagnostic assessment",
+   "formative assessment"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Summative assessment judges learning at the end of a unit or course.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0063",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A test given before teaching to find students' weaknesses is:",
+  "passage": null,
+  "options": [
+   "summative assessment",
+   "final assessment",
+   "diagnostic assessment",
+   "annual assessment"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Diagnostic assessment identifies prior knowledge and gaps.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0064",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A scoring guide listing criteria and performance levels is a:",
+  "passage": null,
+  "options": [
+   "timetable",
+   "syllabus",
+   "register",
+   "rubric"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Rubrics make marking of projects and essays consistent and transparent.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0065",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A test is valid when it:",
+  "passage": null,
+  "options": [
+   "gives the same score every time",
+   "is easy to mark",
+   "measures what it is intended to measure",
+   "is very short"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Validity concerns whether the test measures the intended learning.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0066",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A test is reliable when it:",
+  "passage": null,
+  "options": [
+   "is given on a Monday",
+   "gives consistent results",
+   "has many questions",
+   "is printed neatly"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Reliability means results are consistent over repeated use or different markers.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0067",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A collection of a student's work over time used to show progress is a:",
+  "passage": null,
+  "options": [
+   "portfolio",
+   "register",
+   "blueprint",
+   "rubric"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Portfolios document growth and achievement across a period.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0068",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Comparing a student's performance with fixed learning standards is:",
+  "passage": null,
+  "options": [
+   "random assessment",
+   "peer comparison",
+   "criterion-referenced assessment",
+   "norm-referenced assessment"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Criterion-referenced assessment judges against set criteria, not against other students.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0069",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Ranking students against one another is typical of:",
+  "passage": null,
+  "options": [
+   "formative feedback",
+   "norm-referenced assessment",
+   "diagnostic assessment",
+   "criterion-referenced assessment"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Norm-referenced scores show position relative to a group.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0070",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A table of specifications (test blueprint) is used to:",
+  "passage": null,
+  "options": [
+   "balance test questions across topics and cognitive levels",
+   "print the question paper",
+   "assign seats",
+   "record attendance"
+  ],
+  "correctAnswer": 0,
+  "explanation": "It ensures the test samples the syllabus fairly.",
+  "subject": "Pedagogy",
+  "topic": "Assessment and Evaluation",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0071",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Reflective teaching means:",
+  "passage": null,
+  "options": [
+   "teaching without planning",
+   "avoiding feedback",
+   "copying another teacher",
+   "thinking critically about one's own teaching to improve it"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Reflection turns experience into learning for the teacher.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0072",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Good feedback to a student should be:",
+  "passage": null,
+  "options": [
+   "vague and delayed",
+   "given only at year end",
+   "only negative",
+   "specific, timely and constructive"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Specific and prompt feedback tells learners what to do next.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0073",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Keeping a written record of teaching experiences and thoughts is a:",
+  "passage": null,
+  "options": [
+   "reflective journal",
+   "mark sheet",
+   "lesson register",
+   "attendance sheet"
+  ],
+  "correctAnswer": 0,
+  "explanation": "A reflective journal helps teachers analyse what worked and what did not.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0074",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Donald Schon distinguished reflection-in-action from:",
+  "passage": null,
+  "options": [
+   "reflection-by-rote",
+   "reflection-on-action",
+   "reflection-for-exams",
+   "reflection-in-silence"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Reflection-in-action happens during teaching; reflection-on-action happens afterwards.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0075",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Inviting a colleague to observe a lesson and comment is:",
+  "passage": null,
+  "options": [
+   "an inspection penalty",
+   "a parent meeting",
+   "peer observation",
+   "a final examination"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Peer observation provides a second view for professional growth.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0076",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Gathering students' opinions about a lesson helps the teacher to:",
+  "passage": null,
+  "options": [
+   "improve future teaching",
+   "punish students",
+   "reduce workload",
+   "avoid planning"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Student feedback shows what helps learning and what does not.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0077",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A small investigation by a teacher into a classroom problem, followed by action, is called:",
+  "passage": null,
+  "options": [
+   "board examination",
+   "lesson dictation",
+   "annual inspection",
+   "action research"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Action research solves practical classroom problems systematically.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0078",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Gibbs' reflective cycle begins with:",
+  "passage": null,
+  "options": [
+   "an evaluation",
+   "an action plan",
+   "description of what happened",
+   "a conclusion"
+  ],
+  "correctAnswer": 2,
+  "explanation": "The cycle runs from description through feelings, evaluation, analysis and conclusion to an action plan.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0079",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "The ultimate purpose of reflective practice is:",
+  "passage": null,
+  "options": [
+   "impressing the inspector",
+   "continuous professional improvement",
+   "finding someone to blame",
+   "writing longer reports"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Reflection should lead to better teaching and learning.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0080",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Feedback is most useful to a learner when it is given:",
+  "passage": null,
+  "options": [
+   "without comments",
+   "only as a grade",
+   "soon after the task, with advice on how to improve",
+   "months later"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Prompt, informative feedback allows the learner to correct and improve.",
+  "subject": "Pedagogy",
+  "topic": "Reflective Practice and Feedback",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0081",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Classroom rules are most effective when they are:",
+  "passage": null,
+  "options": [
+   "applied only to some students",
+   "secret",
+   "changed daily",
+   "clear, few and made known at the start"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Clear rules set expectations and reduce misbehaviour.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0082",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Good classroom management mainly aims to:",
+  "passage": null,
+  "options": [
+   "avoid teaching",
+   "create an orderly environment for learning",
+   "control students by fear",
+   "finish the syllabus without interaction"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Management exists to support learning, not to dominate students.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0083",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Preventing problems through planning, routines and engaging lessons is called:",
+  "passage": null,
+  "options": [
+   "proactive management",
+   "passive management",
+   "punitive management",
+   "reactive management"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Good planning prevents most disruptions before they begin.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0084",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A student is disturbing the class. The best first response is usually to:",
+  "passage": null,
+  "options": [
+   "use a calm non-verbal cue or quiet private word",
+   "ignore every behaviour",
+   "shout at the student publicly",
+   "send the student out immediately"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Low-key responses correct behaviour while keeping the lesson flowing.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0085",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Handing out materials and moving between activities smoothly is the management of:",
+  "passage": null,
+  "options": [
+   "promotions",
+   "admissions",
+   "transitions",
+   "examinations"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Smooth transitions save time and reduce disruption.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0086",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Involving students in making classroom rules usually:",
+  "passage": null,
+  "options": [
+   "wastes the lesson",
+   "increases their ownership and cooperation",
+   "has no effect",
+   "causes more disorder"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Learners follow rules they helped to create.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0087",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Jacob Kounin's idea of 'withitness' means the teacher:",
+  "passage": null,
+  "options": [
+   "ignores minor events",
+   "talks only to the best students",
+   "stays seated at the desk",
+   "is aware of everything happening in the classroom"
+  ],
+  "correctAnswer": 3,
+  "explanation": "A teacher who is 'with it' notices and stops problems early.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0088",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A seating arrangement in a semi-circle or groups is useful because it:",
+  "passage": null,
+  "options": [
+   "prevents all talking",
+   "reduces visibility of the board",
+   "hides weak students",
+   "encourages interaction and lets the teacher move around"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Flexible seating supports discussion and teacher monitoring.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0089",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "An authoritative teaching style is best described as:",
+  "passage": null,
+  "options": [
+   "permissive with no rules",
+   "firm and fair, with warmth and clear expectations",
+   "uninvolved",
+   "strict with no explanation"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Authoritative management combines high expectations with support.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0090",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Minor misbehaviour that does not disturb learning is often best handled by:",
+  "passage": null,
+  "options": [
+   "briefly ignoring it or using a gentle cue",
+   "calling parents at once",
+   "writing a report each time",
+   "stopping the lesson to punish"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Overreacting to small matters wastes time and can escalate problems.",
+  "subject": "Pedagogy",
+  "topic": "Classroom Management",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0091",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "STEAM stands for:",
+  "passage": null,
+  "options": [
+   "Science, Teaching, English, Arts, Mathematics",
+   "Skills, Technology, Engineering, Arts, Memory",
+   "Science, Technology, Engineering, Arts, Mathematics",
+   "Science, Technology, Education, Art, Medicine"
+  ],
+  "correctAnswer": 2,
+  "explanation": "STEAM adds the Arts to STEM.",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0092",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "STREAM adds which subject area to STEAM?",
+  "passage": null,
+  "options": [
+   "Revision",
+   "Recreation",
+   "Reading (and writing)",
+   "Religion"
+  ],
+  "correctAnswer": 2,
+  "explanation": "STREAM integrates reading and writing with STEAM subjects.",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0093",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "In project-based learning, students:",
+  "passage": null,
+  "options": [
+   "only listen to lectures",
+   "work on a real-world problem over an extended period",
+   "memorise a chapter overnight",
+   "take a single test"
+  ],
+  "correctAnswer": 1,
+  "explanation": "PBL is built around investigation and producing a final product.",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "easy",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0094",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "In project-based learning the teacher acts mainly as a:",
+  "passage": null,
+  "options": [
+   "facilitator",
+   "judge only",
+   "bystander",
+   "dictator"
+  ],
+  "correctAnswer": 0,
+  "explanation": "The teacher guides, supports and monitors while students drive the work.",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0095",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A 'driving question' in a project:",
+  "passage": null,
+  "options": [
+   "is only asked in the final test",
+   "replaces all lessons",
+   "is answered by the teacher alone",
+   "gives the project a purpose and focuses the inquiry"
+  ],
+  "correctAnswer": 3,
+  "explanation": "An open, engaging question keeps the project focused.",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0096",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "The 4Cs of 21st-century skills are:",
+  "passage": null,
+  "options": [
+   "copying, counting, cramming and checking",
+   "critical thinking, creativity, collaboration and communication",
+   "calculation, computing, coding and chemistry",
+   "culture, care, calm and control"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Project work builds these four skills.",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0097",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Which is an example of a STEAM project?",
+  "passage": null,
+  "options": [
+   "designing and decorating a low-cost water filter",
+   "copying the definition of filtration",
+   "reciting a poem about rain",
+   "listening to a lecture on water"
+  ],
+  "correctAnswer": 0,
+  "explanation": "It combines science, engineering, technology and design (arts).",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "moderate",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0098",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "A project is best assessed using:",
+  "passage": null,
+  "options": [
+   "the final product only",
+   "attendance only",
+   "a single multiple-choice test",
+   "a rubric covering both the product and the process"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Process skills such as teamwork matter as much as the final result.",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": true,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0099",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "What does the 'A' in STEAM add to STEM?",
+  "passage": null,
+  "options": [
+   "more memorisation",
+   "less mathematics",
+   "creativity and design thinking through the arts",
+   "extra examinations"
+  ],
+  "correctAnswer": 2,
+  "explanation": "The arts bring creative expression and design into problem solving.",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
+  "id": "jest-ped-0100",
+  "examType": "jest",
+  "examTypes": [
+   "jest",
+   "jst"
+  ],
+  "question": "Interdisciplinary learning in STEAM means:",
+  "passage": null,
+  "options": [
+   "teaching each subject separately",
+   "using only textbooks",
+   "avoiding mathematics",
+   "connecting ideas from several subjects to solve one problem"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Real problems cut across subjects, so STEAM combines them.",
+  "subject": "Pedagogy",
+  "topic": "STEAM/STREAM and Project-Based Learning",
+  "subtopic": null,
+  "difficulty": "difficult",
+  "sourceType": "generated_syllabus",
+  "sourceYear": null,
+  "sourceReference": null,
+  "verified": false,
+  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
+  "syllabusClass": "Teacher professional knowledge",
+  "language": "en",
+  "fixedOrder": false,
+  "needsReview": false
+ },
+ {
   "id": "pst-eng-0092",
   "examType": "jest",
   "examTypes": [
@@ -12710,8 +13568,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": "Honey bees live together in a hive. Each hive has one queen, hundreds of male drones and thousands of female workers. The workers collect nectar from flowers and carry it back to the hive, where it is turned into honey. While moving from flower to flower, bees also carry pollen, which helps plants to produce fruits and seeds. Without bees, many of the crops we eat every day would become scarce.",
   "options": [
    "in a hive",
-   "in a field",
    "under a tree",
+   "in a field",
    "in a river"
   ],
   "correctAnswer": 0,
@@ -12741,12 +13599,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which bees collect nectar from flowers?",
   "passage": "Honey bees live together in a hive. Each hive has one queen, hundreds of male drones and thousands of female workers. The workers collect nectar from flowers and carry it back to the hive, where it is turned into honey. While moving from flower to flower, bees also carry pollen, which helps plants to produce fruits and seeds. Without bees, many of the crops we eat every day would become scarce.",
   "options": [
+   "all male bees",
    "the queen",
    "the workers",
-   "the drones",
-   "all male bees"
+   "the drones"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The passage says the workers collect nectar.",
   "subject": "English",
   "topic": "Comprehension",
@@ -12773,10 +13631,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "How do bees help plants?",
   "passage": "Honey bees live together in a hive. Each hive has one queen, hundreds of male drones and thousands of female workers. The workers collect nectar from flowers and carry it back to the hive, where it is turned into honey. While moving from flower to flower, bees also carry pollen, which helps plants to produce fruits and seeds. Without bees, many of the crops we eat every day would become scarce.",
   "options": [
-   "by watering them",
+   "by cutting dead leaves",
    "by carrying pollen between flowers",
-   "by eating insects",
-   "by cutting dead leaves"
+   "by watering them",
+   "by eating insects"
   ],
   "correctAnswer": 1,
   "explanation": "Moving pollen from flower to flower helps plants make fruits and seeds.",
@@ -12807,10 +13665,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "flowers would grow faster",
    "hives would be larger",
-   "some crops would become hard to find",
-   "honey would be cheaper"
+   "honey would be cheaper",
+   "some crops would become hard to find"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "The last sentence says many crops would become scarce.",
   "subject": "English",
   "topic": "Comprehension",
@@ -12837,12 +13695,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "How far did Farida walk to school?",
   "passage": "Farida lived in a small village near the river Indus. Every morning she walked two kilometres to school with her younger brother. One day the road was flooded, so they could not cross. Instead of going back home, they climbed a nearby hill and read their books under a tree. When the water went down, their teacher praised them for their love of learning.",
   "options": [
-   "two kilometres",
    "one kilometre",
-   "ten kilometres",
-   "two hundred metres"
+   "two kilometres",
+   "two hundred metres",
+   "ten kilometres"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The passage says she walked two kilometres each morning.",
   "subject": "English",
   "topic": "Comprehension",
@@ -12869,12 +13727,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Why could the children not reach school one day?",
   "passage": "Farida lived in a small village near the river Indus. Every morning she walked two kilometres to school with her younger brother. One day the road was flooded, so they could not cross. Instead of going back home, they climbed a nearby hill and read their books under a tree. When the water went down, their teacher praised them for their love of learning.",
   "options": [
+   "the road was flooded",
    "they were ill",
    "they lost their books",
-   "the school was closed",
-   "the road was flooded"
+   "the school was closed"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "The passage says the road was flooded so they could not cross.",
   "subject": "English",
   "topic": "Comprehension",
@@ -12902,11 +13760,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": "Farida lived in a small village near the river Indus. Every morning she walked two kilometres to school with her younger brother. One day the road was flooded, so they could not cross. Instead of going back home, they climbed a nearby hill and read their books under a tree. When the water went down, their teacher praised them for their love of learning.",
   "options": [
    "careless",
-   "determined",
+   "fearful",
    "lazy",
-   "fearful"
+   "determined"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "They chose to read on the hill instead of going home, showing determination.",
   "subject": "English",
   "topic": "Comprehension",
@@ -12933,12 +13791,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In the passage, the word 'scarce' (about crops) means:",
   "passage": "Honey bees live together in a hive. Each hive has one queen, hundreds of male drones and thousands of female workers. The workers collect nectar from flowers and carry it back to the hive, where it is turned into honey. While moving from flower to flower, bees also carry pollen, which helps plants to produce fruits and seeds. Without bees, many of the crops we eat every day would become scarce.",
   "options": [
-   "very large",
    "tasty",
-   "very cheap",
-   "hard to find"
+   "very large",
+   "hard to find",
+   "very cheap"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Scarce means in short supply.",
   "subject": "English",
   "topic": "Comprehension",
@@ -12966,9 +13824,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "their",
-   "thier",
+   "they're",
    "there",
-   "they're"
+   "thier"
   ],
   "correctAnswer": 0,
   "explanation": "'Their' is the possessive of 'they'; 'there' is a place and 'they're' means 'they are'.",
@@ -13029,12 +13887,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'The sun ___ in the east' (a general truth). Choose the correct verb.",
   "passage": null,
   "options": [
-   "rose",
    "will rise",
-   "rises",
-   "has risen"
+   "has risen",
+   "rose",
+   "rises"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "A permanent fact uses the simple present.",
   "subject": "English",
   "topic": "Grammar",
@@ -13061,12 +13919,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In 'She ran quickly because she was late', the word 'because' is a:",
   "passage": null,
   "options": [
-   "adverb",
    "preposition",
+   "conjunction",
    "pronoun",
-   "conjunction"
+   "adverb"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'Because' joins two clauses, so it is a conjunction.",
   "subject": "English",
   "topic": "Grammar",
@@ -13093,12 +13951,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which sentence contains an adverb?",
   "passage": null,
   "options": [
-   "The slow tortoise won.",
    "The tortoise walked slowly.",
-   "A tortoise is an animal.",
-   "The tortoise is slow."
+   "The slow tortoise won.",
+   "The tortoise is slow.",
+   "A tortoise is an animal."
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "'Slowly' tells how the tortoise walked, so it is an adverb; 'slow' is an adjective.",
   "subject": "English",
   "topic": "Grammar",
@@ -13125,12 +13983,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct preposition: 'The teacher divided the sweets ___ the four children.'",
   "passage": null,
   "options": [
-   "among",
-   "over",
+   "between",
    "into",
-   "between"
+   "over",
+   "among"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "'Among' is used for more than two; 'between' is used for two.",
   "subject": "English",
   "topic": "Prepositions",
@@ -13157,12 +14015,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct preposition: 'The cat jumped ___ the wall.'",
   "passage": null,
   "options": [
-   "at",
    "by",
+   "over",
    "for",
-   "over"
+   "at"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'Over' shows movement from one side to the other.",
   "subject": "English",
   "topic": "Prepositions",
@@ -13190,9 +14048,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "which",
-   "whose",
+   "whom",
    "who",
-   "whom"
+   "whose"
   ],
   "correctAnswer": 2,
   "explanation": "'Who' refers to a person and is the subject of 'won'.",
@@ -13221,10 +14079,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct sentence.",
   "passage": null,
   "options": [
-   "I have wait for an hour.",
-   "I have been waiting for an hour.",
    "I waited since an hour.",
-   "I am waiting for an hour."
+   "I have been waiting for an hour.",
+   "I am waiting for an hour.",
+   "I have wait for an hour."
   ],
   "correctAnswer": 1,
   "explanation": "An action that began in the past and continues now uses the present perfect continuous.",
@@ -13253,12 +14111,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Change to passive: 'The farmer sells vegetables.'",
   "passage": null,
   "options": [
-   "Vegetables are sold by the farmer.",
-   "Vegetables is sold by the farmer.",
+   "Vegetables are selling by the farmer.",
    "Vegetables were sold by the farmer.",
-   "Vegetables are selling by the farmer."
+   "Vegetables are sold by the farmer.",
+   "Vegetables is sold by the farmer."
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Simple present passive: 'are' + past participle, matching the plural 'vegetables'.",
   "subject": "English",
   "topic": "Voice",
@@ -13287,8 +14145,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "He said that he was reading a book.",
    "He said that he is reading a book.",
-   "He said that he reads a book.",
-   "He said that I was reading a book."
+   "He said that I was reading a book.",
+   "He said that he reads a book."
   ],
   "correctAnswer": 0,
   "explanation": "The present continuous becomes the past continuous in reported speech.",
@@ -13349,12 +14207,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct verb: 'The teacher, along with her students, ___ going on a trip.'",
   "passage": null,
   "options": [
-   "have been",
-   "is",
    "were",
-   "are"
+   "have been",
+   "are",
+   "is"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The subject is the singular 'teacher'; 'along with her students' does not make it plural.",
   "subject": "English",
   "topic": "Subject-Verb Agreement",
@@ -13381,12 +14239,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "'To pull someone's leg' means:",
   "passage": null,
   "options": [
-   "to run away",
-   "to help someone walk",
    "to injure someone",
-   "to tease someone playfully"
+   "to help someone walk",
+   "to tease someone playfully",
+   "to run away"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "It means to joke with or tease someone.",
   "subject": "English",
   "topic": "Idioms",
@@ -13413,12 +14271,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the word closest in meaning to 'enormous'.",
   "passage": null,
   "options": [
-   "gentle",
-   "clever",
    "gigantic",
-   "tiny"
+   "gentle",
+   "tiny",
+   "clever"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Enormous means very large, like gigantic.",
   "subject": "English",
   "topic": "Synonyms and Antonyms",
@@ -13445,9 +14303,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Choose the antonym of 'fragile'.",
   "passage": null,
   "options": [
-   "weak",
    "thin",
    "delicate",
+   "weak",
    "sturdy"
   ],
   "correctAnswer": 3,
@@ -13477,10 +14335,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A person who has no money or home:",
   "passage": null,
   "options": [
-   "diligent",
+   "generous",
    "destitute",
    "literate",
-   "generous"
+   "diligent"
   ],
   "correctAnswer": 1,
   "explanation": "Destitute means extremely poor.",
@@ -13509,12 +14367,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 25 x 16 divided by 8?",
   "passage": null,
   "options": [
-   "40",
-   "32",
    "50",
-   "80"
+   "40",
+   "80",
+   "32"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "25 x 16 = 400 and 400 / 8 = 50.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -13541,12 +14399,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The sum of three consecutive whole numbers is 87. The smallest of them is:",
   "passage": null,
   "options": [
-   "29",
-   "27",
    "30",
-   "28"
+   "27",
+   "28",
+   "29"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The numbers are 28, 29 and 30; their sum is 87.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -13574,8 +14432,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "31",
-   "41",
    "121",
+   "41",
    "61"
   ],
   "correctAnswer": 3,
@@ -13605,12 +14463,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the HCF of 36, 48 and 60?",
   "passage": null,
   "options": [
-   "6",
    "4",
    "12",
+   "6",
    "24"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "36 = 2^2 x 3^2, 48 = 2^4 x 3 and 60 = 2^2 x 3 x 5; the HCF is 2^2 x 3 = 12.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -13637,12 +14495,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is 3/4 + 2/3 - 1/6?",
   "passage": null,
   "options": [
-   "7/12",
-   "5/4",
    "1",
-   "4/3"
+   "4/3",
+   "5/4",
+   "7/12"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Common denominator 12: 9/12 + 8/12 - 2/12 = 15/12 = 5/4.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -13670,9 +14528,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "5/12",
-   "2/7",
    "1/2",
-   "7/12"
+   "7/12",
+   "2/7"
   ],
   "correctAnswer": 0,
   "explanation": "Read = 1/4 + 1/3 = 7/12, so 5/12 is left.",
@@ -13702,8 +14560,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "0.75",
-   "3",
    "0.03",
+   "3",
    "0.3"
   ],
   "correctAnswer": 3,
@@ -13733,10 +14591,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A student scored 36 out of 60. What is his percentage?",
   "passage": null,
   "options": [
-   "36%",
+   "40%",
    "60%",
    "66%",
-   "40%"
+   "36%"
   ],
   "correctAnswer": 1,
   "explanation": "36/60 x 100 = 60%.",
@@ -13765,12 +14623,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The price of a book is reduced from Rs 400 to Rs 340. The percentage decrease is:",
   "passage": null,
   "options": [
+   "60%",
    "15%",
-   "12%",
    "20%",
-   "60%"
+   "12%"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The decrease is 60 on 400, which is 15%.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -13797,12 +14655,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A rope 72 m long is cut into two pieces in the ratio 5 : 3. The longer piece is:",
   "passage": null,
   "options": [
+   "45 m",
    "40 m",
    "48 m",
-   "45 m",
    "27 m"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "One part = 72/8 = 9 m, so the longer piece is 5 x 9 = 45 m.",
   "subject": "Mathematics",
   "topic": "Ratios",
@@ -13830,11 +14688,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "41 kg",
-   "42 kg",
+   "45 kg",
    "44 kg",
-   "45 kg"
+   "42 kg"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "New total = 160 + 50 = 210, and 210/5 = 42 kg.",
   "subject": "Mathematics",
   "topic": "Averages",
@@ -13861,12 +14719,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A fruit seller buys 20 mangoes for Rs 400 and sells them at Rs 24 each. His profit is:",
   "passage": null,
   "options": [
-   "Rs 80",
-   "Rs 120",
+   "Rs 40",
    "Rs 20",
-   "Rs 40"
+   "Rs 80",
+   "Rs 120"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Sale = 20 x 24 = 480; profit = 480 - 400 = Rs 80.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -13893,12 +14751,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Rs 5,000 is invested at 8% simple interest per year. The amount after 3 years is:",
   "passage": null,
   "options": [
-   "Rs 1,200",
-   "Rs 5,400",
+   "Rs 6,500",
    "Rs 6,200",
-   "Rs 6,500"
+   "Rs 5,400",
+   "Rs 1,200"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Interest = 5000 x 8 x 3/100 = 1,200; amount = 6,200.",
   "subject": "Mathematics",
   "topic": "Interest",
@@ -13927,10 +14785,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "5 days",
    "9 days",
-   "3 days",
-   "4 days"
+   "4 days",
+   "3 days"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "8 x 6 = 48 man-days; 48/12 = 4 days.",
   "subject": "Mathematics",
   "topic": "Arithmetic",
@@ -13957,9 +14815,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A bus travels 150 km at 50 km/h and then 120 km at 60 km/h. The total time taken is:",
   "passage": null,
   "options": [
+   "6 hours",
    "4 hours",
    "4.5 hours",
-   "6 hours",
    "5 hours"
   ],
   "correctAnswer": 3,
@@ -13990,9 +14848,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "5",
-   "10",
+   "-5",
    "2",
-   "-5"
+   "10"
   ],
   "correctAnswer": 0,
   "explanation": "3 + 7 = 4x - 2x, so 10 = 2x and x = 5.",
@@ -14021,12 +14879,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Simplify: 3(x + 4) - 2(x - 1)",
   "passage": null,
   "options": [
+   "5x + 14",
    "x + 2",
    "x + 10",
-   "x + 14",
-   "5x + 14"
+   "x + 14"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "3x + 12 - 2x + 2 = x + 14.",
   "subject": "Mathematics",
   "topic": "Algebra",
@@ -14053,12 +14911,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The angles of a triangle are in the ratio 2 : 3 : 4. The largest angle is:",
   "passage": null,
   "options": [
+   "90 degrees",
    "40 degrees",
    "80 degrees",
-   "60 degrees",
-   "90 degrees"
+   "60 degrees"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "One part = 180/9 = 20 degrees; the largest = 4 x 20 = 80.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -14085,12 +14943,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A room is 6 m long, 5 m wide and 3 m high. The area of its four walls is:",
   "passage": null,
   "options": [
-   "90 square m",
    "33 square m",
+   "66 square m",
    "96 square m",
-   "66 square m"
+   "90 square m"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Walls = 2(l + b) x h = 2 x 11 x 3 = 66.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -14117,12 +14975,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "How many square tiles of side 50 cm are needed to cover a floor 10 m by 5 m?",
   "passage": null,
   "options": [
-   "250",
    "200",
    "100",
-   "400"
+   "400",
+   "250"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Floor = 50 square m; each tile = 0.25 square m; 50/0.25 = 200.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -14151,8 +15009,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "12",
    "8",
-   "14",
-   "10"
+   "10",
+   "14"
   ],
   "correctAnswer": 0,
   "explanation": "Total = 60 and 8 + 10 + 14 + 16 = 48, so the fifth is 12.",
@@ -14181,10 +15039,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A tank holds 240 litres. It is 3/8 full. How many more litres are needed to fill it?",
   "passage": null,
   "options": [
-   "120 litres",
    "90 litres",
+   "100 litres",
    "150 litres",
-   "100 litres"
+   "120 litres"
   ],
   "correctAnswer": 2,
   "explanation": "Present amount = 90 litres, so 150 litres more are needed.",
@@ -14213,9 +15071,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Sara has twice as many marbles as Ayesha. Together they have 54. How many does Sara have?",
   "passage": null,
   "options": [
+   "18",
    "27",
    "24",
-   "18",
    "36"
   ],
   "correctAnswer": 3,
@@ -14245,12 +15103,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What comes next: 5, 10, 20, 40, ...?",
   "passage": null,
   "options": [
-   "60",
-   "70",
+   "100",
    "80",
-   "100"
+   "60",
+   "70"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Each number is double the previous one.",
   "subject": "Mathematics",
   "topic": "Mathematical Reasoning",
@@ -14278,9 +15136,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "42",
-   "40",
    "44",
-   "36"
+   "36",
+   "40"
   ],
   "correctAnswer": 0,
   "explanation": "The differences are 4, 6, 8, 10, so next is +12: 30 + 12 = 42.",
@@ -14309,11 +15167,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "a pencil",
-   "a mango tree",
    "a stone",
-   "a table"
+   "a table",
+   "a mango tree"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Living things grow, breathe, reproduce and respond to their surroundings.",
   "subject": "Science",
   "topic": "Biology",
@@ -14339,12 +15197,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The study of living things is called:",
   "passage": null,
   "options": [
-   "chemistry",
-   "geology",
+   "astronomy",
    "biology",
-   "astronomy"
+   "geology",
+   "chemistry"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Biology is the science of life.",
   "subject": "Science",
   "topic": "Biology",
@@ -14370,12 +15228,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of the following characteristics is shown ONLY by living things?",
   "passage": null,
   "options": [
+   "having mass",
    "being made of matter",
    "reproduction",
-   "taking up space",
-   "having mass"
+   "taking up space"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "All matter has mass and occupies space, but only living things reproduce.",
   "subject": "Science",
   "topic": "Biology",
@@ -14401,12 +15259,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Seeds are dispersed by wind in the case of:",
   "passage": null,
   "options": [
-   "mango",
-   "coconut",
    "pea",
-   "dandelion"
+   "coconut",
+   "dandelion",
+   "mango"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Dandelion seeds have light, fluffy parts that the wind carries.",
   "subject": "Science",
   "topic": "Plants",
@@ -14432,12 +15290,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A plant kept in a dark room for several days turns pale because it cannot make:",
   "passage": null,
   "options": [
+   "seeds",
    "chlorophyll",
-   "roots",
    "pollen",
-   "seeds"
+   "roots"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Chlorophyll formation needs light.",
   "subject": "Science",
   "topic": "Plants",
@@ -14464,9 +15322,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "the root",
+   "the flower",
    "the leaf",
-   "the stem",
-   "the flower"
+   "the stem"
   ],
   "correctAnswer": 0,
   "explanation": "A carrot is a swollen taproot that stores food.",
@@ -14494,9 +15352,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which animal breathes through gills?",
   "passage": null,
   "options": [
+   "dolphin",
    "crocodile",
    "whale",
-   "dolphin",
    "fish"
   ],
   "correctAnswer": 3,
@@ -14525,10 +15383,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is a pair of animals that both lay eggs?",
   "passage": null,
   "options": [
-   "cat and dog",
+   "bat and whale",
    "hen and crocodile",
    "cow and goat",
-   "bat and whale"
+   "cat and dog"
   ],
   "correctAnswer": 1,
   "explanation": "Birds and reptiles lay eggs; the other animals are mammals that give birth to live young.",
@@ -14556,12 +15414,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which animal hibernates (sleeps through the winter)?",
   "passage": null,
   "options": [
-   "horse",
-   "sheep",
    "bear",
-   "camel"
+   "camel",
+   "horse",
+   "sheep"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Many bears sleep deeply through winter months.",
   "subject": "Science",
   "topic": "Biology",
@@ -14587,12 +15445,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which part of the eye controls the amount of light entering it?",
   "passage": null,
   "options": [
-   "cornea only",
-   "pupil (through the iris)",
    "eyelash",
-   "retina only"
+   "retina only",
+   "cornea only",
+   "pupil (through the iris)"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The iris changes the size of the pupil to control light.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -14618,12 +15476,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which type of teeth are used for tearing food?",
   "passage": null,
   "options": [
-   "wisdom teeth",
    "incisors",
-   "molars",
-   "canines"
+   "wisdom teeth",
+   "canines",
+   "molars"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Canines are pointed teeth that tear food; incisors cut and molars grind.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -14650,9 +15508,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "kidney",
-   "liver",
+   "stomach",
    "pancreas",
-   "stomach"
+   "liver"
   ],
   "correctAnswer": 0,
   "explanation": "The kidneys filter blood and form urine.",
@@ -14680,12 +15538,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "How many chambers does the human heart have?",
   "passage": null,
   "options": [
-   "5",
    "2",
    "4",
+   "5",
    "3"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Two atria and two ventricles.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -14711,12 +15569,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Planting trees on a large scale helps to:",
   "passage": null,
   "options": [
-   "reduce carbon dioxide in the air",
-   "melt glaciers",
    "increase floods",
-   "create smog"
+   "create smog",
+   "reduce carbon dioxide in the air",
+   "melt glaciers"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Trees absorb carbon dioxide during photosynthesis.",
   "subject": "Science",
   "topic": "Ecology",
@@ -14743,11 +15601,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "wind",
+   "sunlight",
    "water power",
-   "coal",
-   "sunlight"
+   "coal"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Coal takes millions of years to form.",
   "subject": "Science",
   "topic": "Ecology",
@@ -14775,10 +15633,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "sunlight",
    "clouds",
-   "wind",
-   "pollution from burning fuels"
+   "pollution from burning fuels",
+   "wind"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Sulphur and nitrogen oxides from burning fuels form acids in rain.",
   "subject": "Science",
   "topic": "Ecology",
@@ -14804,12 +15662,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a physical change?",
   "passage": null,
   "options": [
-   "burning of paper",
-   "melting of wax",
    "cooking of an egg",
-   "rusting of iron"
+   "rusting of iron",
+   "burning of paper",
+   "melting of wax"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Melting changes state but forms no new substance.",
   "subject": "Science",
   "topic": "Matter",
@@ -14835,12 +15693,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which gas do plants take in for photosynthesis?",
   "passage": null,
   "options": [
-   "hydrogen",
    "carbon dioxide",
-   "oxygen",
-   "nitrogen"
+   "hydrogen",
+   "nitrogen",
+   "oxygen"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Plants take in carbon dioxide and release oxygen.",
   "subject": "Science",
   "topic": "Matter",
@@ -14866,12 +15724,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the state of matter that has a fixed shape and a fixed volume?",
   "passage": null,
   "options": [
-   "liquid",
-   "plasma",
    "gas",
-   "solid"
+   "solid",
+   "liquid",
+   "plasma"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "A solid keeps its own shape.",
   "subject": "Science",
   "topic": "Matter",
@@ -14897,12 +15755,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "When salt is dissolved in water, the water is the:",
   "passage": null,
   "options": [
-   "solvent",
-   "solution",
    "solute",
-   "precipitate"
+   "precipitate",
+   "solvent",
+   "solution"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "The solvent is the substance that dissolves the solute.",
   "subject": "Science",
   "topic": "Matter",
@@ -14929,11 +15787,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "buoyancy",
+   "magnetism",
    "gravity",
-   "friction",
-   "magnetism"
+   "friction"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Friction acts against relative motion.",
   "subject": "Science",
   "topic": "Force",
@@ -14959,12 +15817,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A ball thrown upward comes back down because of:",
   "passage": null,
   "options": [
+   "gravity",
    "magnetism",
    "wind",
-   "gravity",
    "friction"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Gravity pulls it back.",
   "subject": "Science",
   "topic": "Force",
@@ -14990,12 +15848,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A boat floats on water because of:",
   "passage": null,
   "options": [
-   "upthrust (buoyant force)",
    "friction",
-   "electric force",
-   "magnetic force"
+   "upthrust (buoyant force)",
+   "magnetic force",
+   "electric force"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Water pushes up with a force equal to the weight of the displaced water.",
   "subject": "Science",
   "topic": "Force",
@@ -15021,12 +15879,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which energy conversion happens in a solar cell?",
   "passage": null,
   "options": [
+   "mechanical to heat",
    "heat to sound",
    "light to electrical energy",
-   "mechanical to heat",
    "chemical to light"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "A solar cell turns sunlight into electricity.",
   "subject": "Science",
   "topic": "Energy",
@@ -15052,12 +15910,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Food gives us:",
   "passage": null,
   "options": [
-   "nuclear energy",
-   "sound energy",
    "magnetic energy",
-   "chemical energy"
+   "chemical energy",
+   "nuclear energy",
+   "sound energy"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Food stores chemical energy.",
   "subject": "Science",
   "topic": "Energy",
@@ -15084,9 +15942,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "conductor of heat",
-   "reflector",
    "absorber of light",
-   "insulator"
+   "insulator",
+   "reflector"
   ],
   "correctAnswer": 0,
   "explanation": "Metals conduct heat quickly, so heat flows into the hand faster.",
@@ -15114,8 +15972,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Water in a pot heats up mainly by:",
   "passage": null,
   "options": [
-   "evaporation",
    "radiation only",
+   "evaporation",
    "conduction only",
    "convection"
   ],
@@ -15145,10 +16003,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which instrument measures body temperature?",
   "passage": null,
   "options": [
-   "compass",
+   "voltmeter",
    "clinical thermometer",
    "barometer",
-   "voltmeter"
+   "compass"
   ],
   "correctAnswer": 1,
   "explanation": "A clinical thermometer is used for body temperature.",
@@ -15207,12 +16065,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Moon shines because it:",
   "passage": null,
   "options": [
-   "glows in the dark",
    "reflects sunlight",
    "produces its own light",
-   "burns gas"
+   "burns gas",
+   "glows in the dark"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "The Moon is not luminous; it reflects the Sun's light.",
   "subject": "Science",
   "topic": "Light",
@@ -15238,12 +16096,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Sound travels fastest in:",
   "passage": null,
   "options": [
+   "water",
    "vacuum",
    "air",
-   "steel",
-   "water"
+   "steel"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Sound travels faster in solids than in liquids and gases.",
   "subject": "Science",
   "topic": "Sound",
@@ -15269,12 +16127,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The loudness of a sound depends on its:",
   "passage": null,
   "options": [
-   "colour",
    "speed in vacuum",
-   "temperature only",
-   "amplitude"
+   "amplitude",
+   "colour",
+   "temperature only"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "A larger amplitude gives a louder sound.",
   "subject": "Science",
   "topic": "Sound",
@@ -15300,12 +16158,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these materials is an insulator?",
   "passage": null,
   "options": [
-   "rubber",
-   "iron",
+   "copper",
    "aluminium",
-   "copper"
+   "iron",
+   "rubber"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Rubber does not allow current to pass.",
   "subject": "Science",
   "topic": "Electricity",
@@ -15333,10 +16191,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "battery",
    "wire",
-   "bulb",
-   "switch"
+   "switch",
+   "bulb"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "A switch opens or closes the circuit.",
   "subject": "Science",
   "topic": "Electricity",
@@ -15362,12 +16220,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which layer of the Earth do we live on?",
   "passage": null,
   "options": [
-   "outer core",
-   "mantle",
    "crust",
-   "inner core"
+   "mantle",
+   "inner core",
+   "outer core"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The crust is the thin outer layer.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -15393,12 +16251,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Day and night are caused by the Earth's:",
   "passage": null,
   "options": [
-   "rotation on its axis",
    "tilt only",
-   "distance from the Moon",
-   "revolution around the Sun"
+   "rotation on its axis",
+   "revolution around the Sun",
+   "distance from the Moon"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "As the Earth spins, different parts face the Sun.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -15425,11 +16283,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Mars",
-   "Mercury",
+   "Venus",
    "Earth",
-   "Venus"
+   "Mercury"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Mercury is the innermost planet.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -15456,9 +16314,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "to prevent rusting",
-   "to make it heavier",
    "to make it float",
-   "to make it conduct heat"
+   "to make it conduct heat",
+   "to make it heavier"
   ],
   "correctAnswer": 0,
   "explanation": "Paint keeps out air and moisture.",
@@ -15487,11 +16345,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "wind",
+   "light",
    "bacteria",
-   "salt",
-   "light"
+   "salt"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Bacteria feed on milk sugar and produce lactic acid.",
   "subject": "Science",
   "topic": "Everyday Science",
@@ -15517,10 +16375,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A magnet attracts:",
   "passage": null,
   "options": [
-   "glass",
+   "wood",
    "plastic",
    "iron",
-   "wood"
+   "glass"
   ],
   "correctAnswer": 2,
   "explanation": "Iron is a magnetic material.",
@@ -15548,12 +16406,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a mixture that can be separated by filtration?",
   "passage": null,
   "options": [
-   "alcohol and water",
-   "sugar and water",
+   "sand and water",
    "salt and water",
-   "sand and water"
+   "alcohol and water",
+   "sugar and water"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Sand does not dissolve, so filtration removes it.",
   "subject": "Science",
   "topic": "General Science",
@@ -15579,12 +16437,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The process of separating salt from sea water by heating is:",
   "passage": null,
   "options": [
-   "filtration",
+   "condensation only",
    "sublimation",
-   "evaporation",
-   "condensation only"
+   "filtration",
+   "evaporation"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Water evaporates and leaves the salt behind.",
   "subject": "Science",
   "topic": "General Science",
@@ -15613,8 +16471,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "process, output, input",
    "input, process, output",
-   "input, output, process",
-   "output, input, process"
+   "output, input, process",
+   "input, output, process"
   ],
   "correctAnswer": 1,
   "explanation": "Data is entered, processed and then shown as output.",
@@ -15675,12 +16533,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is the smallest unit of data?",
   "passage": null,
   "options": [
-   "byte",
-   "megabyte",
    "kilobyte",
-   "bit"
+   "byte",
+   "bit",
+   "megabyte"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "A bit is a single binary digit, the smallest unit.",
   "subject": "Computer",
   "topic": "Computer Fundamentals",
@@ -15707,12 +16565,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The device that supplies power to the computer's components is the:",
   "passage": null,
   "options": [
-   "power supply unit",
-   "mouse",
    "scanner",
-   "monitor"
+   "mouse",
+   "monitor",
+   "power supply unit"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "The PSU converts mains power into the voltages the parts need.",
   "subject": "Computer",
   "topic": "Hardware and Software",
@@ -15740,11 +16598,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "speaker",
+   "touch screen",
    "printer",
-   "keyboard",
-   "touch screen"
+   "keyboard"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "A touch screen takes input and shows output.",
   "subject": "Computer",
   "topic": "Hardware and Software",
@@ -15771,12 +16629,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A program that helps to protect a computer from viruses is called:",
   "passage": null,
   "options": [
-   "a word processor",
-   "a web browser",
    "antivirus software",
-   "a compiler"
+   "a word processor",
+   "a compiler",
+   "a web browser"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Antivirus programs find and remove malware.",
   "subject": "Computer",
   "topic": "Hardware and Software",
@@ -15804,11 +16662,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Excel",
+   "Photoshop",
    "iOS",
-   "Chrome",
-   "Photoshop"
+   "Chrome"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "iOS runs on iPhones; Android is another.",
   "subject": "Computer",
   "topic": "Operating Systems",
@@ -15835,12 +16693,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which storage device has no moving parts?",
   "passage": null,
   "options": [
+   "hard disk drive",
    "solid-state drive (SSD)",
    "CD-ROM",
-   "hard disk drive",
    "floppy disk"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "An SSD stores data in flash memory chips.",
   "subject": "Computer",
   "topic": "Computer Fundamentals",
@@ -15868,11 +16726,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "is stored in RAM",
-   "can only be read",
+   "can be changed freely",
    "is erased when power is off",
-   "can be changed freely"
+   "can only be read"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "ROM stands for read-only memory.",
   "subject": "Computer",
   "topic": "Computer Fundamentals",
@@ -15899,12 +16757,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What does the 'www' in a website address stand for?",
   "passage": null,
   "options": [
-   "Web Wide World",
-   "World Window Web",
    "Wide Web World",
-   "World Wide Web"
+   "World Wide Web",
+   "Web Wide World",
+   "World Window Web"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "It names the system of linked web pages.",
   "subject": "Computer",
   "topic": "Internet",
@@ -15931,8 +16789,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "An email attachment is:",
   "passage": null,
   "options": [
-   "a type of virus",
    "the subject of an email",
+   "a type of virus",
    "a file sent along with an email",
    "an address"
   ],
@@ -15963,12 +16821,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Wi-Fi is used to connect devices:",
   "passage": null,
   "options": [
-   "only with fibre",
+   "without cables",
    "only with a printer cable",
    "only with a telephone line",
-   "without cables"
+   "only with fibre"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Wi-Fi is a wireless networking technology.",
   "subject": "Computer",
   "topic": "Networking",
@@ -15995,12 +16853,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which button is used in MS Word to make selected text darker (bold)?",
   "passage": null,
   "options": [
-   "B",
    "I",
+   "A",
    "U",
-   "A"
+   "B"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "B = bold, I = italic, U = underline.",
   "subject": "Computer",
   "topic": "MS Office",
@@ -16027,12 +16885,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which shortcut key saves a document?",
   "passage": null,
   "options": [
-   "Ctrl + A",
-   "Ctrl + P",
    "Ctrl + S",
-   "Ctrl + N"
+   "Ctrl + A",
+   "Ctrl + N",
+   "Ctrl + P"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Ctrl+S saves; Ctrl+P prints.",
   "subject": "Computer",
   "topic": "MS Office",
@@ -16059,10 +16917,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is a safe online habit?",
   "passage": null,
   "options": [
-   "using one password everywhere",
+   "clicking unknown links",
    "not sharing your password",
-   "accepting every friend request",
-   "clicking unknown links"
+   "using one password everywhere",
+   "accepting every friend request"
   ],
   "correctAnswer": 1,
   "explanation": "A password should be kept private.",
@@ -16091,12 +16949,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Two-factor authentication means:",
   "passage": null,
   "options": [
-   "using two computers",
-   "using two different proofs of identity to log in",
    "using two passwords for different sites",
-   "logging in twice"
+   "using two computers",
+   "logging in twice",
+   "using two different proofs of identity to log in"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "For example a password plus a code sent to a phone.",
   "subject": "Computer",
   "topic": "Cybersecurity Basics",
@@ -16155,12 +17013,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Mughal emperor who built the Badshahi Mosque in Lahore was:",
   "passage": null,
   "options": [
-   "Babur",
    "Shah Jahan",
+   "Aurangzeb Alamgir",
    "Akbar",
-   "Aurangzeb Alamgir"
+   "Babur"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Aurangzeb built the mosque, completed in 1673.",
   "subject": "Social Studies",
   "topic": "Pakistan History",
@@ -16187,12 +17045,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The 1965 war between Pakistan and India began in the month of:",
   "passage": null,
   "options": [
-   "September",
-   "March",
    "December",
-   "January"
+   "January",
+   "September",
+   "March"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "The war began in September 1965; Defence Day is on 6 September.",
   "subject": "Social Studies",
   "topic": "Pakistan History",
@@ -16220,11 +17078,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Tariq bin Ziyad",
+   "Salahuddin Ayyubi",
    "Mahmud of Ghazni",
-   "Muhammad bin Qasim",
-   "Salahuddin Ayyubi"
+   "Muhammad bin Qasim"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Muhammad bin Qasim entered Sindh in 711-712 CE.",
   "subject": "Social Studies",
   "topic": "Pakistan History",
@@ -16251,12 +17109,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which province of Pakistan borders both Iran and Afghanistan?",
   "passage": null,
   "options": [
-   "Khyber Pakhtunkhwa",
    "Balochistan",
+   "Khyber Pakhtunkhwa",
    "Sindh",
    "Punjab"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Balochistan has borders with both Iran and Afghanistan.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -16283,12 +17141,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which province of Pakistan borders India as well as the Arabian Sea?",
   "passage": null,
   "options": [
-   "Balochistan",
+   "Sindh",
    "Khyber Pakhtunkhwa",
    "Punjab",
-   "Sindh"
+   "Balochistan"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Sindh has a coast on the Arabian Sea and an eastern border with India.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -16315,12 +17173,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Cholistan Desert is located mainly in:",
   "passage": null,
   "options": [
-   "Punjab",
    "Gilgit-Baltistan",
-   "Balochistan",
-   "Sindh"
+   "Sindh",
+   "Punjab",
+   "Balochistan"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Cholistan lies in southern Punjab near Bahawalpur.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -16347,9 +17205,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which is the highest peak of Pakistan?",
   "passage": null,
   "options": [
-   "Tirich Mir",
    "Rakaposhi",
    "Nanga Parbat",
+   "Tirich Mir",
    "K2"
   ],
   "correctAnswer": 3,
@@ -16379,12 +17237,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which river forms the main water supply of Sindh?",
   "passage": null,
   "options": [
-   "Ravi",
-   "Sutlej",
+   "Jhelum",
    "Indus",
-   "Jhelum"
+   "Ravi",
+   "Sutlej"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Sindh depends on the Indus and its barrages and canals.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -16411,12 +17269,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The national tree of Pakistan is:",
   "passage": null,
   "options": [
+   "banyan",
    "mango",
-   "deodar",
    "neem",
-   "banyan"
+   "deodar"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The deodar cedar is the national tree.",
   "subject": "Social Studies",
   "topic": "Culture",
@@ -16443,12 +17301,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The national bird of Pakistan is the:",
   "passage": null,
   "options": [
-   "chukar",
    "peacock",
+   "chukar",
    "crow",
    "sparrow"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The chukar partridge is the national bird.",
   "subject": "Social Studies",
   "topic": "Culture",
@@ -16475,12 +17333,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Who elects the Prime Minister of Pakistan?",
   "passage": null,
   "options": [
+   "the Senate",
    "the Supreme Court",
    "the National Assembly",
-   "the Chief Minister",
-   "the Senate"
+   "the Chief Minister"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The Prime Minister is elected by the members of the National Assembly.",
   "subject": "Social Studies",
   "topic": "Constitution",
@@ -16508,9 +17366,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Bansuri",
-   "Tabla",
    "Dhol",
-   "Sarangi"
+   "Sarangi",
+   "Tabla"
   ],
   "correctAnswer": 0,
   "explanation": "The bansuri is a bamboo flute used in Sindhi folk music.",
@@ -16529,614 +17387,6 @@ export const JEST_BANK: TeacherQuestion[] = [
   "needsReview": false
  },
  {
-  "id": "pst-isl-0045",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Surah in which the story of Hazrat Yusuf (AS) is told is Surah:",
-  "passage": null,
-  "options": [
-   "Maryam",
-   "An-Naml",
-   "Al-Kahf",
-   "Yusuf"
-  ],
-  "correctAnswer": 3,
-  "explanation": "Surah Yusuf (12) tells his story in full.",
-  "subject": "Islamiat",
-  "topic": "Quran",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0046",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Prophet (PBUH) was raised after the death of his grandfather by his uncle:",
-  "passage": null,
-  "options": [
-   "Hamza",
-   "Abbas",
-   "Abu Talib",
-   "Abu Lahab"
-  ],
-  "correctAnswer": 2,
-  "explanation": "After Abdul Muttalib died, Abu Talib cared for him.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0047",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "In which cave did the Prophet (PBUH) and Hazrat Abu Bakr (RA) hide during the Hijra?",
-  "passage": null,
-  "options": [
-   "Cave Thawr",
-   "Cave Badr",
-   "Cave Hira",
-   "Cave Uhud"
-  ],
-  "correctAnswer": 0,
-  "explanation": "They hid in Cave Thawr for three days.",
-  "subject": "Islamiat",
-  "topic": "Seerah",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0048",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Prophet who could speak with birds and ruled a great kingdom was:",
-  "passage": null,
-  "options": [
-   "Hazrat Idris (AS)",
-   "Hazrat Sulaiman (AS)",
-   "Hazrat Yaqub (AS)",
-   "Hazrat Ayyub (AS)"
-  ],
-  "correctAnswer": 1,
-  "explanation": "The Quran mentions Sulaiman (AS) and the speech of birds.",
-  "subject": "Islamiat",
-  "topic": "Islamic Personalities",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0049",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Kalima 'Shahada' is the declaration of:",
-  "passage": null,
-  "options": [
-   "charity",
-   "the pilgrimage",
-   "fasting",
-   "faith in Allah and His Messenger"
-  ],
-  "correctAnswer": 3,
-  "explanation": "It declares that there is no god but Allah and Muhammad is His Messenger.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0050",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "How many Heavenly Books are named in the Quran as revealed to different Prophets (Torah, Zabur, Injeel and the Quran)?",
-  "passage": null,
-  "options": [
-   "6",
-   "5",
-   "4",
-   "3"
-  ],
-  "correctAnswer": 2,
-  "explanation": "The four named books are Torah, Zabur, Injeel and the Quran.",
-  "subject": "Islamiat",
-  "topic": "Islamic Concepts",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. The numeric answer was recomputed independently in code.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0051",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "The Caliph who sent the army to Syria and Iraq and organised the first public administration was:",
-  "passage": null,
-  "options": [
-   "Hazrat Uthman (RA)",
-   "Hazrat Abu Bakr (RA)",
-   "Hazrat Ali (RA)",
-   "Hazrat Umar (RA)"
-  ],
-  "correctAnswer": 3,
-  "explanation": "Umar expanded the state and set up administrative departments.",
-  "subject": "Islamiat",
-  "topic": "Khulafa",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-isl-0052",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "Which of the following is a duty towards parents in Islam?",
-  "passage": null,
-  "options": [
-   "to obey and respect them in all that is good",
-   "to ignore their advice",
-   "to avoid them",
-   "to be rude when they are old"
-  ],
-  "correctAnswer": 0,
-  "explanation": "The Quran commands kindness and respect to parents.",
-  "subject": "Islamiat",
-  "topic": "Ethics and Social Principles",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "en",
-  "fixedOrder": false,
-  "needsReview": false
- },
- {
-  "id": "pst-urd-0001",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'سر پر سوار ہونا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "خوش ہونا",
-   "سر درد ہونا",
-   "پیچھے پڑ جانا",
-   "گھوڑے پر چڑھنا"
-  ],
-  "correctAnswer": 2,
-  "explanation": "اس محاورے کا مطلب ہے کسی کے پیچھے پڑ جانا۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0002",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'پاپڑ بیلنا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "سیر کو جانا",
-   "بہت مشقت کرنا",
-   "کھانا پکانا",
-   "آسانی سے کام ہونا"
-  ],
-  "correctAnswer": 1,
-  "explanation": "اس محاورے کا مطلب ہے بہت مشکل اٹھانا۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0003",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'مفلس' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "سخی",
-   "نادار",
-   "دولت مند",
-   "امیر"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'مفلس' اور 'نادار' دونوں کا مطلب غریب ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0004",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'تیز' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "سریع",
-   "دھیما",
-   "نرم",
-   "سست"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'سریع' کا مطلب تیز ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0005",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'اتحاد' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "یکجہتی",
-   "میل",
-   "انتشار",
-   "بھائی چارہ"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'اتحاد' کا الٹ 'انتشار' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0006",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'ظلم' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "نا انصافی",
-   "ستم",
-   "جبر",
-   "انصاف"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'ظلم' کا الٹ 'انصاف' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0007",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'حاکم' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "حاکمات",
-   "حاکمے",
-   "حکام",
-   "حاکمیں"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'حاکم' کی جمع 'حکام' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0008",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'تاجر' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "تاجرے",
-   "تجار",
-   "تاجریں",
-   "تاجرات"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'تاجر' کی جمع 'تجار' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0009",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'ایثار' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "دوسروں کے لیے اپنا فائدہ چھوڑ دینا",
-   "غصہ",
-   "لالچ",
-   "ڈر"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'ایثار' کا مطلب ہے دوسروں کو اپنے اوپر ترجیح دینا۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0010",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'خلوص' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "دکھاوا",
-   "ناراضی",
-   "تجارت",
-   "سچے دل سے محبت"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'خلوص' کا مطلب ہے بناوٹ کے بغیر سچائی اور پاکیزگی۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0011",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'کتاب میز پر رکھی ہے' میں 'پر' کیا ہے؟",
-  "passage": null,
-  "options": [
-   "حرفِ جار",
-   "صفت",
-   "اسم",
-   "حرفِ عطف"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'پر' اسم 'میز' کا تعلق فعل سے ظاہر کرتا ہے، اس لیے حرفِ جار ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
   "id": "pst-sci-0045",
   "examType": "jest",
   "examTypes": [
@@ -17146,12 +17396,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which organ pumps blood around the human body?",
   "passage": null,
   "options": [
-   "lungs",
    "heart",
+   "lungs",
    "kidney",
    "liver"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "The heart is a muscular pump that circulates blood.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -17177,12 +17427,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "How many bones does an adult human body have?",
   "passage": null,
   "options": [
-   "106",
    "260",
-   "306",
-   "206"
+   "206",
+   "106",
+   "306"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "An adult human skeleton has 206 bones.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -17208,12 +17458,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which blood cells carry oxygen?",
   "passage": null,
   "options": [
-   "red blood cells",
-   "platelets",
    "white blood cells",
-   "plasma"
+   "plasma",
+   "red blood cells",
+   "platelets"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Haemoglobin in red blood cells binds oxygen.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -17239,12 +17489,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Where does most digestion of food and absorption of nutrients take place?",
   "passage": null,
   "options": [
-   "oesophagus",
-   "stomach",
    "small intestine",
+   "stomach",
+   "oesophagus",
    "large intestine"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The small intestine is long and lined with villi, where digestion is completed and nutrients are absorbed.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -17270,12 +17520,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which vitamin is made in the skin when it is exposed to sunlight?",
   "passage": null,
   "options": [
-   "vitamin A",
-   "vitamin K",
+   "vitamin D",
    "vitamin C",
-   "vitamin D"
+   "vitamin A",
+   "vitamin K"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Sunlight lets the skin produce vitamin D.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -17301,11 +17551,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "cerebrum",
+   "medulla oblongata",
    "cerebellum",
-   "hypothalamus",
-   "medulla oblongata"
+   "hypothalamus"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The cerebellum coordinates movement and balance.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -17330,10 +17580,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The functional unit of the kidney is the:",
   "passage": null,
   "options": [
-   "alveolus",
+   "neuron",
    "nephron",
-   "villus",
-   "neuron"
+   "alveolus",
+   "villus"
   ],
   "correctAnswer": 1,
   "explanation": "Each kidney contains about a million nephrons which filter the blood.",
@@ -17361,12 +17611,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which gas do we breathe out in larger amounts than we breathe in?",
   "passage": null,
   "options": [
-   "nitrogen",
    "oxygen",
-   "carbon dioxide",
-   "hydrogen"
+   "hydrogen",
+   "nitrogen",
+   "carbon dioxide"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Respiration releases carbon dioxide, so exhaled air has more of it than inhaled air.",
   "subject": "Science",
   "topic": "Human Biology",
@@ -17393,9 +17643,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "scurvy",
-   "rickets",
    "beriberi",
-   "night blindness"
+   "night blindness",
+   "rickets"
   ],
   "correctAnswer": 0,
   "explanation": "Lack of vitamin C causes scurvy; rickets is a lack of D, night blindness of A, and beriberi of B1.",
@@ -17423,9 +17673,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The normal human body temperature is about:",
   "passage": null,
   "options": [
-   "42 degrees Celsius",
-   "37 degrees Celsius",
    "25 degrees Celsius",
+   "37 degrees Celsius",
+   "42 degrees Celsius",
    "30 degrees Celsius"
   ],
   "correctAnswer": 1,
@@ -17485,12 +17735,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which part of a plant absorbs water from the soil?",
   "passage": null,
   "options": [
-   "roots",
-   "stem",
+   "leaves",
    "flowers",
-   "leaves"
+   "roots",
+   "stem"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Roots absorb water and minerals.",
   "subject": "Science",
   "topic": "Plants",
@@ -17516,12 +17766,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which green pigment in leaves traps sunlight?",
   "passage": null,
   "options": [
+   "chlorophyll",
    "xanthophyll",
    "melanin",
-   "chlorophyll",
    "carotene"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Chlorophyll absorbs light energy for photosynthesis.",
   "subject": "Science",
   "topic": "Plants",
@@ -17547,12 +17797,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Loss of water vapour from the leaves of a plant is called:",
   "passage": null,
   "options": [
+   "pollination",
    "transpiration",
    "germination",
-   "fertilisation",
-   "pollination"
+   "fertilisation"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Transpiration is evaporation of water mainly through stomata.",
   "subject": "Science",
   "topic": "Plants",
@@ -17577,10 +17827,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which tissue carries water and minerals upward from the roots?",
   "passage": null,
   "options": [
-   "phloem",
+   "cortex",
    "xylem",
    "epidermis",
-   "cortex"
+   "phloem"
   ],
   "correctAnswer": 1,
   "explanation": "Xylem carries water up; phloem carries food made in the leaves.",
@@ -17608,12 +17858,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The transfer of pollen from an anther to a stigma is called:",
   "passage": null,
   "options": [
+   "pollination",
    "transpiration",
    "fertilisation",
-   "germination",
-   "pollination"
+   "germination"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Pollination is the movement of pollen to a stigma; fertilisation comes later.",
   "subject": "Science",
   "topic": "Plants",
@@ -17638,12 +17888,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which gas is released as a by-product of photosynthesis?",
   "passage": null,
   "options": [
-   "oxygen",
+   "methane",
    "nitrogen",
-   "carbon dioxide",
-   "methane"
+   "oxygen",
+   "carbon dioxide"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Water is split during photosynthesis and oxygen is released.",
   "subject": "Science",
   "topic": "Plants",
@@ -17669,9 +17919,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which animal is a mammal?",
   "passage": null,
   "options": [
+   "eagle",
    "frog",
    "snake",
-   "eagle",
    "bat"
   ],
   "correctAnswer": 3,
@@ -17700,8 +17950,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The life cycle of a butterfly is: egg, ___, pupa, adult.",
   "passage": null,
   "options": [
-   "nymph",
    "seed",
+   "nymph",
    "larva",
    "embryo"
   ],
@@ -17731,9 +17981,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Animals that eat both plants and animals are called:",
   "passage": null,
   "options": [
-   "herbivores",
-   "omnivores",
    "decomposers",
+   "omnivores",
+   "herbivores",
    "carnivores"
   ],
   "correctAnswer": 1,
@@ -17761,12 +18011,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these animals is a cold-blooded vertebrate?",
   "passage": null,
   "options": [
-   "whale",
-   "rabbit",
    "lizard",
+   "rabbit",
+   "whale",
    "sparrow"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Reptiles such as lizards are cold-blooded vertebrates; whales and rabbits are mammals and sparrows are birds.",
   "subject": "Science",
   "topic": "Biology",
@@ -17791,12 +18041,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which part of the cell contains the genetic material?",
   "passage": null,
   "options": [
-   "nucleus",
-   "cell membrane",
    "cytoplasm",
-   "vacuole"
+   "vacuole",
+   "nucleus",
+   "cell membrane"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "The nucleus holds the DNA of an animal or plant cell.",
   "subject": "Science",
   "topic": "Cells",
@@ -17821,12 +18071,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The 'powerhouse of the cell' is the:",
   "passage": null,
   "options": [
-   "nucleus",
    "ribosome",
+   "mitochondrion",
    "chloroplast",
-   "mitochondrion"
+   "nucleus"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Mitochondria release energy from food during respiration.",
   "subject": "Science",
   "topic": "Cells",
@@ -17851,12 +18101,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which structure is found in plant cells but NOT in animal cells?",
   "passage": null,
   "options": [
-   "cell membrane",
-   "cell wall",
+   "mitochondria",
    "nucleus",
-   "mitochondria"
+   "cell membrane",
+   "cell wall"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Plant cells have a cellulose cell wall; animal cells do not.",
   "subject": "Science",
   "topic": "Cells",
@@ -17881,12 +18131,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which organelle is the site of protein synthesis?",
   "passage": null,
   "options": [
-   "ribosome",
+   "vacuole",
    "lysosome",
-   "Golgi body",
-   "vacuole"
+   "ribosome",
+   "Golgi body"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Ribosomes assemble amino acids into proteins.",
   "subject": "Science",
   "topic": "Cells",
@@ -17911,12 +18161,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The scientist who first observed cells in a thin slice of cork was:",
   "passage": null,
   "options": [
-   "Gregor Mendel",
-   "Charles Darwin",
    "Robert Hooke",
-   "Louis Pasteur"
+   "Gregor Mendel",
+   "Louis Pasteur",
+   "Charles Darwin"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Robert Hooke described cells in cork in 1665.",
   "subject": "Science",
   "topic": "Biology",
@@ -17944,8 +18194,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "petroleum",
    "sunlight",
-   "natural gas",
-   "coal"
+   "coal",
+   "natural gas"
   ],
   "correctAnswer": 1,
   "explanation": "Sunlight is continuously replenished; fossil fuels are not.",
@@ -17973,12 +18223,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The layer of the atmosphere that protects us from harmful ultraviolet rays is the:",
   "passage": null,
   "options": [
-   "ozone layer",
-   "ionosphere",
    "exosphere",
-   "troposphere"
+   "troposphere",
+   "ozone layer",
+   "ionosphere"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Ozone absorbs most of the Sun's harmful ultraviolet radiation.",
   "subject": "Science",
   "topic": "Ecology",
@@ -18004,12 +18254,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a decomposer?",
   "passage": null,
   "options": [
-   "grasshopper",
-   "frog",
    "fungi",
-   "grass"
+   "grasshopper",
+   "grass",
+   "frog"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Fungi break down dead organisms and recycle nutrients.",
   "subject": "Science",
   "topic": "Ecology",
@@ -18035,11 +18285,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "primary consumer",
-   "secondary consumer",
    "decomposer",
-   "producer"
+   "producer",
+   "secondary consumer"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The grasshopper is the primary consumer, so the frog that eats it is the secondary consumer.",
   "subject": "Science",
   "topic": "Ecology",
@@ -18064,12 +18314,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The removal of forests on a large scale is called:",
   "passage": null,
   "options": [
+   "reforestation",
    "deforestation",
    "afforestation",
-   "reforestation",
    "desertification"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Deforestation is the clearing of forests; afforestation is planting them.",
   "subject": "Science",
   "topic": "Ecology",
@@ -18094,12 +18344,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these best describes a food web?",
   "passage": null,
   "options": [
-   "a list of producers",
-   "a single food chain",
    "interconnected food chains",
-   "a pyramid of energy only"
+   "a pyramid of energy only",
+   "a list of producers",
+   "a single food chain"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "A food web shows how many food chains in an ecosystem overlap.",
   "subject": "Science",
   "topic": "Ecology",
@@ -18127,10 +18377,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "50 degrees Celsius",
    "212 degrees Celsius",
-   "0 degrees Celsius",
-   "100 degrees Celsius"
+   "100 degrees Celsius",
+   "0 degrees Celsius"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Water boils at 100 degrees Celsius at sea level (212 is the same temperature in Fahrenheit).",
   "subject": "Science",
   "topic": "Matter",
@@ -18156,12 +18406,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The process of a gas changing directly into a liquid is called:",
   "passage": null,
   "options": [
-   "sublimation",
-   "condensation",
+   "evaporation",
    "melting",
-   "evaporation"
+   "sublimation",
+   "condensation"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Water vapour condenses into droplets when cooled.",
   "subject": "Science",
   "topic": "Matter",
@@ -18187,9 +18437,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a mixture?",
   "passage": null,
   "options": [
-   "water",
-   "oxygen",
    "gold",
+   "oxygen",
+   "water",
    "air"
   ],
   "correctAnswer": 3,
@@ -18217,12 +18467,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "What is the chemical symbol for sodium?",
   "passage": null,
   "options": [
-   "Na",
+   "S",
    "N",
-   "So",
-   "S"
+   "Na",
+   "So"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Sodium's symbol is Na, from its Latin name natrium.",
   "subject": "Science",
   "topic": "Matter",
@@ -18248,9 +18498,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "NaCl",
-   "HCl",
    "KCl",
-   "NaOH"
+   "NaOH",
+   "HCl"
   ],
   "correctAnswer": 0,
   "explanation": "Table salt is sodium chloride, NaCl.",
@@ -18277,12 +18527,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The pH of a neutral solution at room temperature is:",
   "passage": null,
   "options": [
-   "10",
-   "0",
+   "14",
    "7",
-   "14"
+   "10",
+   "0"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "pH 7 is neutral; below 7 is acidic and above 7 is basic.",
   "subject": "Science",
   "topic": "Chemistry",
@@ -18307,10 +18557,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which gas is produced when zinc reacts with dilute hydrochloric acid?",
   "passage": null,
   "options": [
-   "oxygen",
+   "carbon dioxide",
    "hydrogen",
-   "chlorine",
-   "carbon dioxide"
+   "oxygen",
+   "chlorine"
   ],
   "correctAnswer": 1,
   "explanation": "Metal + acid gives a salt and hydrogen: zinc chloride and hydrogen.",
@@ -18338,11 +18588,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "reduction only",
-   "evaporation",
    "sublimation",
-   "oxidation"
+   "oxidation",
+   "evaporation"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Iron combines with oxygen and water to form hydrated iron oxide (rust).",
   "subject": "Science",
   "topic": "Chemical Reactions",
@@ -18368,11 +18618,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "melting of ice",
-   "burning of wood",
+   "breaking glass",
    "dissolving sugar in water",
-   "breaking glass"
+   "burning of wood"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Burning produces new substances, so it is a chemical change.",
   "subject": "Science",
   "topic": "Chemical Reactions",
@@ -18397,12 +18647,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The most abundant gas in the Earth's atmosphere is:",
   "passage": null,
   "options": [
-   "oxygen",
-   "carbon dioxide",
+   "nitrogen",
    "argon",
-   "nitrogen"
+   "carbon dioxide",
+   "oxygen"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Nitrogen makes up about 78% of dry air; oxygen about 21%.",
   "subject": "Science",
   "topic": "Chemistry",
@@ -18430,8 +18680,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "gravity",
    "magnetism",
-   "tension",
-   "friction"
+   "friction",
+   "tension"
   ],
   "correctAnswer": 0,
   "explanation": "Gravity attracts objects toward the Earth.",
@@ -18489,12 +18739,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these reduces friction?",
   "passage": null,
   "options": [
-   "sand",
-   "a rubber sole",
    "a rough surface",
-   "lubricating oil"
+   "lubricating oil",
+   "a rubber sole",
+   "sand"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Oil forms a thin film between surfaces and reduces friction.",
   "subject": "Science",
   "topic": "Force",
@@ -18519,12 +18769,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A car moves 100 m in 5 s at constant speed. Its speed is:",
   "passage": null,
   "options": [
-   "500 m/s",
    "0.05 m/s",
-   "20 m/s",
-   "95 m/s"
+   "500 m/s",
+   "95 m/s",
+   "20 m/s"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Speed = distance / time = 100/5 = 20 m/s.",
   "subject": "Science",
   "topic": "Motion",
@@ -18550,11 +18800,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "it has no mass",
-   "an unbalanced force acts on it",
    "it is very heavy",
+   "an unbalanced force acts on it",
    "gravity is absent"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Newton's first law (inertia): the state of motion changes only when a net force acts.",
   "subject": "Science",
   "topic": "Force",
@@ -18579,12 +18829,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The slope of a distance-time graph gives:",
   "passage": null,
   "options": [
-   "speed",
-   "acceleration",
    "force",
-   "mass"
+   "mass",
+   "acceleration",
+   "speed"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Change in distance divided by change in time is speed.",
   "subject": "Science",
   "topic": "Motion",
@@ -18610,12 +18860,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The energy stored in a stretched rubber band is:",
   "passage": null,
   "options": [
+   "potential energy",
    "sound energy",
    "nuclear energy",
-   "potential energy",
    "kinetic energy"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Stretching stores elastic potential energy.",
   "subject": "Science",
   "topic": "Energy",
@@ -18641,10 +18891,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In a falling object, potential energy is converted mainly into:",
   "passage": null,
   "options": [
-   "light energy",
+   "chemical energy",
    "kinetic energy",
-   "sound only",
-   "chemical energy"
+   "light energy",
+   "sound only"
   ],
   "correctAnswer": 1,
   "explanation": "As height decreases, gravitational potential energy becomes kinetic energy.",
@@ -18672,9 +18922,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "joule",
-   "volt",
    "watt",
-   "newton"
+   "newton",
+   "volt"
   ],
   "correctAnswer": 0,
   "explanation": "Energy and work are measured in joules; the watt is the unit of power.",
@@ -18703,11 +18953,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "convection",
-   "evaporation",
    "radiation",
-   "conduction"
+   "conduction",
+   "evaporation"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Conduction is heat transfer through a solid by particle vibrations.",
   "subject": "Science",
   "topic": "Physics",
@@ -18732,12 +18982,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Sun's heat reaches the Earth mainly by:",
   "passage": null,
   "options": [
-   "evaporation",
-   "convection",
    "conduction",
-   "radiation"
+   "radiation",
+   "convection",
+   "evaporation"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Heat from the Sun travels through empty space as radiation.",
   "subject": "Science",
   "topic": "Physics",
@@ -18763,12 +19013,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Light travels in:",
   "passage": null,
   "options": [
-   "straight lines",
+   "curved lines only",
    "zigzag lines",
    "circles",
-   "curved lines only"
+   "straight lines"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "In a uniform medium light travels in straight lines.",
   "subject": "Science",
   "topic": "Light",
@@ -18824,10 +19074,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A rainbow is formed by the ___ of sunlight in water droplets.",
   "passage": null,
   "options": [
-   "absorption",
    "polarisation",
+   "diffraction only",
    "dispersion",
-   "diffraction only"
+   "absorption"
   ],
   "correctAnswer": 2,
   "explanation": "Raindrops refract, reflect and disperse sunlight into its colours.",
@@ -18854,12 +19104,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A concave lens is used to correct:",
   "passage": null,
   "options": [
-   "short-sightedness",
-   "cataract",
+   "colour blindness",
    "long-sightedness",
-   "colour blindness"
+   "cataract",
+   "short-sightedness"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Short sight (myopia) is corrected with a diverging (concave) lens.",
   "subject": "Science",
   "topic": "Light",
@@ -18885,12 +19135,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Sound cannot travel through:",
   "passage": null,
   "options": [
+   "a vacuum",
    "steel",
-   "air",
    "water",
-   "a vacuum"
+   "air"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Sound needs a material medium.",
   "subject": "Science",
   "topic": "Sound",
@@ -18915,12 +19165,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The unit of frequency is the:",
   "passage": null,
   "options": [
-   "newton",
-   "metre",
    "hertz",
-   "decibel"
+   "newton",
+   "decibel",
+   "metre"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Frequency is measured in hertz (cycles per second); decibel measures loudness.",
   "subject": "Science",
   "topic": "Sound",
@@ -18948,8 +19198,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "refraction",
    "reflection",
-   "dispersion",
-   "absorption"
+   "absorption",
+   "dispersion"
   ],
   "correctAnswer": 1,
   "explanation": "An echo is sound reflected back from a hard surface.",
@@ -18977,12 +19227,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a good conductor of electricity?",
   "passage": null,
   "options": [
-   "plastic",
    "rubber",
-   "copper",
-   "wood"
+   "plastic",
+   "wood",
+   "copper"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Metals such as copper conduct electricity well.",
   "subject": "Science",
   "topic": "Electricity",
@@ -19009,11 +19259,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "watt",
-   "ohm",
    "volt",
-   "ampere"
+   "ampere",
+   "ohm"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Current is measured in amperes.",
   "subject": "Science",
   "topic": "Electricity",
@@ -19038,10 +19288,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "In a series circuit with two identical bulbs, if one bulb fuses then the other:",
   "passage": null,
   "options": [
-   "stays unchanged",
-   "goes out",
    "glows dimmer",
-   "glows brighter"
+   "goes out",
+   "glows brighter",
+   "stays unchanged"
   ],
   "correctAnswer": 1,
   "explanation": "A series circuit has a single path, so breaking it anywhere stops the current.",
@@ -19069,9 +19319,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "the potential difference across it",
-   "its mass",
    "the time of day",
-   "its colour"
+   "its colour",
+   "its mass"
   ],
   "correctAnswer": 0,
   "explanation": "V = IR: for a fixed resistance, current is proportional to the voltage.",
@@ -19098,12 +19348,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A 2 ohm resistor carries a current of 3 A. The potential difference across it is:",
   "passage": null,
   "options": [
-   "6 V",
-   "9 V",
+   "1.5 V",
    "5 V",
-   "1.5 V"
+   "6 V",
+   "9 V"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "V = IR = 3 x 2 = 6 V.",
   "subject": "Science",
   "topic": "Electricity",
@@ -19131,10 +19381,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "Mercury",
    "Jupiter",
-   "Mars",
-   "Venus"
+   "Venus",
+   "Mars"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Iron oxide on its surface gives Mars a red colour.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -19160,12 +19410,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Earth takes about ___ to complete one revolution around the Sun.",
   "passage": null,
   "options": [
-   "12 months and 6 days",
    "365 days",
+   "12 months and 6 days",
    "24 hours",
    "30 days"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "One revolution is a year, about 365 and a quarter days.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -19191,9 +19441,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "A solar eclipse occurs when the:",
   "passage": null,
   "options": [
-   "Sun comes between the Earth and the Moon",
-   "Earth comes between the Sun and the Moon",
    "Moon is far from the Earth",
+   "Earth comes between the Sun and the Moon",
+   "Sun comes between the Earth and the Moon",
    "Moon comes between the Sun and the Earth"
   ],
   "correctAnswer": 3,
@@ -19221,12 +19471,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The largest planet of the solar system is:",
   "passage": null,
   "options": [
-   "Saturn",
    "Neptune",
-   "Earth",
-   "Jupiter"
+   "Saturn",
+   "Jupiter",
+   "Earth"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Jupiter is the largest planet.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -19251,9 +19501,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Seasons on Earth are caused mainly by:",
   "passage": null,
   "options": [
-   "the Earth's distance from the Sun",
-   "the tilt of the Earth's axis",
    "the Moon's gravity",
+   "the tilt of the Earth's axis",
+   "the Earth's distance from the Sun",
    "the speed of the Earth's rotation"
   ],
   "correctAnswer": 1,
@@ -19282,10 +19532,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which instrument measures temperature?",
   "passage": null,
   "options": [
-   "barometer",
    "ammeter",
+   "speedometer",
    "thermometer",
-   "speedometer"
+   "barometer"
   ],
   "correctAnswer": 2,
   "explanation": "A thermometer measures temperature.",
@@ -19313,12 +19563,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is used to measure atmospheric pressure?",
   "passage": null,
   "options": [
-   "anemometer",
    "hygrometer",
-   "barometer",
-   "seismograph"
+   "anemometer",
+   "seismograph",
+   "barometer"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "A barometer measures air pressure.",
   "subject": "Science",
   "topic": "Everyday Science",
@@ -19344,12 +19594,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The gas used in fire extinguishers is mainly:",
   "passage": null,
   "options": [
-   "methane",
    "carbon dioxide",
    "hydrogen",
-   "oxygen"
+   "oxygen",
+   "methane"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Carbon dioxide displaces oxygen and smothers the flame.",
   "subject": "Science",
   "topic": "Everyday Science",
@@ -19374,12 +19624,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Vinegar contains which acid?",
   "passage": null,
   "options": [
+   "citric acid",
    "acetic acid",
-   "sulphuric acid",
    "lactic acid",
-   "citric acid"
+   "sulphuric acid"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Vinegar is a dilute solution of acetic (ethanoic) acid.",
   "subject": "Science",
   "topic": "Everyday Science",
@@ -19405,12 +19655,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a natural satellite?",
   "passage": null,
   "options": [
-   "Hubble telescope",
+   "Moon",
    "Sun",
    "Sputnik",
-   "Moon"
+   "Hubble telescope"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "The Moon is natural; Sputnik and Hubble were man-made.",
   "subject": "Science",
   "topic": "General Science",
@@ -19436,11 +19686,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "motor",
-   "generator",
+   "battery",
    "transformer",
-   "battery"
+   "generator"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "A generator turns mechanical energy into electrical energy; a motor does the reverse.",
   "subject": "Science",
   "topic": "General Science",
@@ -19465,12 +19715,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a vector quantity?",
   "passage": null,
   "options": [
-   "velocity",
    "time",
-   "speed",
-   "mass"
+   "mass",
+   "velocity",
+   "speed"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Velocity has both magnitude and direction.",
   "subject": "Science",
   "topic": "General Science",
@@ -19496,12 +19746,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which scientist is known for the law of universal gravitation?",
   "passage": null,
   "options": [
-   "Michael Faraday",
    "Albert Einstein",
    "Isaac Newton",
+   "Michael Faraday",
    "Galileo Galilei"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Newton formulated the law of universal gravitation.",
   "subject": "Science",
   "topic": "General Science",
@@ -19594,10 +19844,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "Nanga Parbat",
    "Tirich Mir",
-   "K2",
-   "Broad Peak"
+   "Broad Peak",
+   "K2"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "K2 (8,611 m) is the second highest mountain in the world.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -19624,12 +19874,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which pass connects Pakistan with Afghanistan near Peshawar?",
   "passage": null,
   "options": [
+   "Khunjerab Pass",
    "Bolan Pass",
    "Khyber Pass",
-   "Khunjerab Pass",
    "Lowari Pass"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The Khyber Pass links Peshawar with Kabul's side; Khunjerab leads to China.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -19656,9 +19906,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Khunjerab Pass connects Pakistan with:",
   "passage": null,
   "options": [
-   "Afghanistan",
    "Iran",
    "India",
+   "Afghanistan",
    "China"
   ],
   "correctAnswer": 3,
@@ -19687,12 +19937,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Thar Desert lies mainly in which province of Pakistan?",
   "passage": null,
   "options": [
-   "Khyber Pakhtunkhwa",
-   "Balochistan",
    "Sindh",
-   "Punjab"
+   "Khyber Pakhtunkhwa",
+   "Punjab",
+   "Balochistan"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The Pakistani part of the Thar is in the Tharparkar district of Sindh.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -19718,12 +19968,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which dam on the River Indus is the largest earth-filled dam in Pakistan?",
   "passage": null,
   "options": [
-   "Tarbela Dam",
    "Diamer-Bhasha Dam",
+   "Tarbela Dam",
    "Warsak Dam",
    "Mangla Dam"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Tarbela Dam, in Khyber Pakhtunkhwa, is the largest earth-filled dam in the country; Mangla is on the Jhelum.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -19749,10 +19999,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Karakoram Highway links Pakistan with:",
   "passage": null,
   "options": [
-   "Turkey",
+   "Afghanistan",
    "China",
    "Iran",
-   "Afghanistan"
+   "Turkey"
   ],
   "correctAnswer": 1,
   "explanation": "The highway runs from Hasan Abdal to the Khunjerab Pass and onward to Kashgar.",
@@ -19781,12 +20031,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which is the largest province of Pakistan by area?",
   "passage": null,
   "options": [
-   "Punjab",
+   "Balochistan",
    "Khyber Pakhtunkhwa",
    "Sindh",
-   "Balochistan"
+   "Punjab"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Balochistan covers nearly 44% of the country.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -19813,12 +20063,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which province has the largest population?",
   "passage": null,
   "options": [
+   "Sindh",
    "Khyber Pakhtunkhwa",
    "Balochistan",
-   "Punjab",
-   "Sindh"
+   "Punjab"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Punjab is the most populous province.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -19845,12 +20095,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Peshawar is the provincial capital of:",
   "passage": null,
   "options": [
-   "Khyber Pakhtunkhwa",
    "Balochistan",
+   "Sindh",
    "Punjab",
-   "Sindh"
+   "Khyber Pakhtunkhwa"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Peshawar is the capital of Khyber Pakhtunkhwa.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -19877,12 +20127,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Badshahi Mosque is located in:",
   "passage": null,
   "options": [
-   "Islamabad",
-   "Lahore",
    "Karachi",
-   "Multan"
+   "Multan",
+   "Lahore",
+   "Islamabad"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The Mughal emperor Aurangzeb built it in Lahore in 1673.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -19909,9 +20159,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Faisal Mosque is located in:",
   "passage": null,
   "options": [
-   "Rawalpindi",
-   "Islamabad",
    "Lahore",
+   "Islamabad",
+   "Rawalpindi",
    "Karachi"
   ],
   "correctAnswer": 1,
@@ -19943,8 +20193,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "Karachi",
    "Hyderabad",
-   "Lahore",
-   "Islamabad"
+   "Islamabad",
+   "Lahore"
   ],
   "correctAnswer": 0,
   "explanation": "The Mazar-e-Quaid stands in Karachi.",
@@ -19973,12 +20223,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The port of Gwadar is in the province of:",
   "passage": null,
   "options": [
+   "Balochistan",
    "Sindh",
    "Khyber Pakhtunkhwa",
-   "Balochistan",
    "Punjab"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Gwadar is a deep-sea port on the Balochistan coast.",
   "subject": "Social Studies",
   "topic": "Geography",
@@ -20006,11 +20256,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Larkana",
-   "Hyderabad",
    "Sukkur",
-   "Karachi"
+   "Karachi",
+   "Hyderabad"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Karachi is the provincial capital and largest city.",
   "subject": "Social Studies",
   "topic": "Sindh History and Geography",
@@ -20069,12 +20319,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which river flows through Sindh to the Arabian Sea?",
   "passage": null,
   "options": [
-   "Jhelum",
-   "Kabul",
+   "Chenab",
    "Indus",
-   "Chenab"
+   "Kabul",
+   "Jhelum"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "The Indus flows through the length of Sindh and reaches the sea near Thatta.",
   "subject": "Social Studies",
   "topic": "Sindh History and Geography",
@@ -20102,11 +20352,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Tharparkar",
-   "Jamshoro",
    "Ghotki",
+   "Jamshoro",
    "Thatta"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Manchar Lake lies near Sehwan in the Jamshoro district (formerly Dadu).",
   "subject": "Social Studies",
   "topic": "Sindh History and Geography",
@@ -20132,12 +20382,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Sukkur Barrage on the River Indus was completed in:",
   "passage": null,
   "options": [
-   "1932",
-   "1955",
+   "1923",
    "1947",
-   "1923"
+   "1955",
+   "1932"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "The Lloyd (Sukkur) Barrage began operating in 1932.",
   "subject": "Social Studies",
   "topic": "Sindh History and Geography",
@@ -20163,12 +20413,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Sindh was separated from the Bombay Presidency as a separate province in:",
   "passage": null,
   "options": [
+   "1947",
    "1936",
-   "1926",
    "1940",
-   "1947"
+   "1926"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Sindh became a province on 1 April 1936.",
   "subject": "Social Studies",
   "topic": "Sindh History and Geography",
@@ -20194,12 +20444,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Sindh Assembly passed a resolution in favour of Pakistan in March 1943. Who moved it?",
   "passage": null,
   "options": [
-   "Pir Ilahi Bakhsh",
-   "Allah Bux Soomro",
    "G. M. Syed",
+   "Allah Bux Soomro",
+   "Pir Ilahi Bakhsh",
    "Sir Abdullah Haroon"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "G. M. Syed moved the resolution in the Sindh Assembly on 3 March 1943.",
   "subject": "Social Studies",
   "topic": "Sindh History and Geography",
@@ -20225,12 +20475,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Battle of Miani (1843), in which the British defeated the Talpur rulers, was led on the British side by:",
   "passage": null,
   "options": [
-   "Lord Clive",
    "Sir Charles Napier",
+   "Lord Clive",
    "Lord Dalhousie",
    "Robert Warren Hastings"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Napier defeated the Talpurs at Miani and annexed Sindh in 1843.",
   "subject": "Social Studies",
   "topic": "Sindh History and Geography",
@@ -20257,12 +20507,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Keenjhar Lake, the main source of Karachi's drinking water, lies in:",
   "passage": null,
   "options": [
-   "Dadu district",
-   "Sukkur district",
    "Tharparkar district",
-   "Thatta district"
+   "Thatta district",
+   "Dadu district",
+   "Sukkur district"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Keenjhar (Kalri) Lake is in Thatta district.",
   "subject": "Social Studies",
   "topic": "Sindh History and Geography",
@@ -20321,12 +20571,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The national flower of Pakistan is:",
   "passage": null,
   "options": [
-   "jasmine",
+   "rose",
    "sunflower",
    "tulip",
-   "rose"
+   "jasmine"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Jasmine (chambeli) is the national flower.",
   "subject": "Social Studies",
   "topic": "Culture",
@@ -20353,12 +20603,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The national animal of Pakistan is the:",
   "passage": null,
   "options": [
-   "lion",
-   "markhor",
+   "Indus dolphin",
    "snow leopard",
-   "Indus dolphin"
+   "lion",
+   "markhor"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The markhor, a wild mountain goat, is the national animal.",
   "subject": "Social Studies",
   "topic": "Culture",
@@ -20385,12 +20635,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The national anthem of Pakistan was written by:",
   "passage": null,
   "options": [
-   "Faiz Ahmed Faiz",
-   "Ahmed Faraz",
    "Hafeez Jalandhari",
+   "Ahmed Faraz",
+   "Faiz Ahmed Faiz",
    "Allama Iqbal"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Hafeez Jalandhari wrote the words; Ahmed G. Chagla composed the music.",
   "subject": "Social Studies",
   "topic": "Culture",
@@ -20417,12 +20667,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The white portion of the Pakistani flag represents:",
   "passage": null,
   "options": [
-   "minorities",
    "peace in the world",
-   "progress",
-   "Muslims"
+   "minorities",
+   "Muslims",
+   "progress"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The white strip stands for religious minorities and the green field for the Muslim majority.",
   "subject": "Social Studies",
   "topic": "Culture",
@@ -20449,12 +20699,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Pakistan came into being on:",
   "passage": null,
   "options": [
-   "14 August 1948",
    "23 March 1940",
+   "14 August 1947",
    "6 September 1965",
-   "14 August 1947"
+   "14 August 1948"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Pakistan became independent on 14 August 1947.",
   "subject": "Social Studies",
   "topic": "Pakistan History",
@@ -20481,12 +20731,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Pakistan Resolution was passed at:",
   "passage": null,
   "options": [
+   "Karachi",
    "Dhaka",
-   "Lahore",
    "Delhi",
-   "Karachi"
+   "Lahore"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "It was adopted at Lahore on 23 March 1940.",
   "subject": "Social Studies",
   "topic": "Pakistan History",
@@ -20514,8 +20764,8 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "1906 at Dhaka",
-   "1930 at Allahabad",
    "1885 at Bombay",
+   "1930 at Allahabad",
    "1916 at Lucknow"
   ],
   "correctAnswer": 0,
@@ -20545,10 +20795,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Allahabad Address of 1930, which presented the idea of a separate homeland, was delivered by:",
   "passage": null,
   "options": [
-   "Sir Syed Ahmad Khan",
    "Chaudhry Rahmat Ali",
+   "Quaid-e-Azam Jinnah",
    "Allama Muhammad Iqbal",
-   "Quaid-e-Azam Jinnah"
+   "Sir Syed Ahmad Khan"
   ],
   "correctAnswer": 2,
   "explanation": "Iqbal presided over the Muslim League session at Allahabad in 1930.",
@@ -20576,10 +20826,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The name 'Pakistan' was first coined by:",
   "passage": null,
   "options": [
-   "Sir Syed Ahmad Khan",
+   "Allama Iqbal",
    "Chaudhry Rahmat Ali",
    "Liaquat Ali Khan",
-   "Allama Iqbal"
+   "Sir Syed Ahmad Khan"
   ],
   "correctAnswer": 1,
   "explanation": "Chaudhry Rahmat Ali used the name in the 1933 pamphlet 'Now or Never'.",
@@ -20607,12 +20857,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Objectives Resolution, which became a preamble to the constitutions, was passed in:",
   "passage": null,
   "options": [
-   "1956",
+   "1949",
    "1973",
-   "1947",
-   "1949"
+   "1956",
+   "1947"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "The Constituent Assembly passed it in March 1949.",
   "subject": "Social Studies",
   "topic": "Pakistan History",
@@ -20638,9 +20888,9 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Pakistan became an Islamic Republic with its first constitution in:",
   "passage": null,
   "options": [
-   "1962",
    "1947",
    "1973",
+   "1962",
    "1956"
   ],
   "correctAnswer": 3,
@@ -20669,10 +20919,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The Lucknow Pact (1916) was an agreement between the:",
   "passage": null,
   "options": [
+   "Congress and the British government",
    "Muslim League and the British government",
-   "Khilafat Committee and Congress only",
    "Muslim League and the Indian National Congress",
-   "Congress and the British government"
+   "Khilafat Committee and Congress only"
   ],
   "correctAnswer": 2,
   "explanation": "Jinnah helped to secure the pact giving Muslims separate electorates.",
@@ -20701,12 +20951,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Who is known as the founder of Pakistan?",
   "passage": null,
   "options": [
-   "Quaid-e-Azam Muhammad Ali Jinnah",
    "Sir Syed Ahmad Khan",
    "Liaquat Ali Khan",
+   "Quaid-e-Azam Muhammad Ali Jinnah",
    "Allama Iqbal"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Jinnah led the Pakistan Movement and became the first Governor-General.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -20733,12 +20983,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The first Prime Minister of Pakistan was:",
   "passage": null,
   "options": [
-   "Muhammad Ali Bogra",
-   "Liaquat Ali Khan",
    "H. S. Suhrawardy",
-   "Khawaja Nazimuddin"
+   "Muhammad Ali Bogra",
+   "Khawaja Nazimuddin",
+   "Liaquat Ali Khan"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Liaquat Ali Khan served from 1947 until his assassination in 1951.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -20765,12 +21015,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The national poet of Pakistan is:",
   "passage": null,
   "options": [
-   "Mirza Ghalib",
    "Allama Muhammad Iqbal",
-   "Altaf Hussain Hali",
-   "Hafeez Jalandhari"
+   "Hafeez Jalandhari",
+   "Mirza Ghalib",
+   "Altaf Hussain Hali"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Iqbal is called the poet of the East and the national poet.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -20798,11 +21048,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Kulliyat-e-Bedil",
-   "Bang-e-Dara",
    "Shah Jo Risalo",
-   "Diwan-e-Ghalib"
+   "Diwan-e-Ghalib",
+   "Bang-e-Dara"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "The Risalo is the masterpiece of the Sindhi Sufi poet.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -20829,12 +21079,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Who founded the Aligarh movement and the MAO College?",
   "passage": null,
   "options": [
-   "Maulana Muhammad Ali Jauhar",
-   "Hakim Ajmal Khan",
    "Nawab Salimullah",
-   "Sir Syed Ahmad Khan"
+   "Maulana Muhammad Ali Jauhar",
+   "Sir Syed Ahmad Khan",
+   "Hakim Ajmal Khan"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Sir Syed founded the Muhammadan Anglo-Oriental College at Aligarh in 1875.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -20860,12 +21110,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Who was the first Governor-General of Pakistan?",
   "passage": null,
   "options": [
+   "Khawaja Nazimuddin",
    "Quaid-e-Azam Muhammad Ali Jinnah",
    "Iskander Mirza",
-   "Ghulam Muhammad",
-   "Khawaja Nazimuddin"
+   "Ghulam Muhammad"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Jinnah took the oath on 15 August 1947.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -20891,12 +21141,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The founder of the Sindhi poetry style of the 'Sur' and a Sufi saint buried at Bhit Shah is:",
   "passage": null,
   "options": [
-   "Shah Abdul Latif Bhittai",
    "Shah Inayat",
+   "Sachal Sarmast",
    "Sami",
-   "Sachal Sarmast"
+   "Shah Abdul Latif Bhittai"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Shah Latif's shrine is at Bhit Shah in Matiari district.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -20923,12 +21173,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The head of state of Pakistan is the:",
   "passage": null,
   "options": [
-   "Chief Justice",
-   "Prime Minister",
    "President",
-   "Army Chief"
+   "Prime Minister",
+   "Army Chief",
+   "Chief Justice"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The President is head of state; the Prime Minister heads the government.",
   "subject": "Social Studies",
   "topic": "Constitution",
@@ -21018,12 +21268,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The highest court of Pakistan's judicial system (apart from specialised federal bodies) is the:",
   "passage": null,
   "options": [
-   "District Court",
-   "Sessions Court",
    "Supreme Court",
-   "High Court"
+   "District Court",
+   "High Court",
+   "Sessions Court"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The Supreme Court is the apex court in the ordinary judicial hierarchy.",
   "subject": "Social Studies",
   "topic": "Civics",
@@ -21051,10 +21301,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "options": [
    "the National Assembly only",
    "the provincial assemblies",
-   "the Senate only",
-   "the National Assembly and the Senate"
+   "the National Assembly and the Senate",
+   "the Senate only"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The Constitution defines Parliament as the President, the National Assembly and the Senate.",
   "subject": "Social Studies",
   "topic": "Constitution",
@@ -21081,12 +21331,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which cloth with block-printed patterns is associated with the culture of Sindh?",
   "passage": null,
   "options": [
-   "Ajrak",
-   "Denim",
    "Khaddar",
+   "Denim",
+   "Ajrak",
    "Chiffon"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Ajrak is a traditional block-printed shawl of Sindh.",
   "subject": "Social Studies",
   "topic": "Culture",
@@ -21113,10 +21363,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Sindhi Cultural Day is celebrated on:",
   "passage": null,
   "options": [
-   "the first Sunday of March",
+   "1 January",
    "the first Sunday of December",
-   "14 August",
-   "1 January"
+   "the first Sunday of March",
+   "14 August"
   ],
   "correctAnswer": 1,
   "explanation": "Sindhi Culture Day is observed on the first Sunday of December.",
@@ -21144,12 +21394,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The famous folk romance 'Sassui Punhun' belongs to the literature of:",
   "passage": null,
   "options": [
-   "Sindh",
+   "Balochistan",
    "Kashmir",
    "Punjab",
-   "Balochistan"
+   "Sindh"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Sassui Punhun is one of the seven tragic romances in Shah Latif's Risalo.",
   "subject": "Social Studies",
   "topic": "Culture",
@@ -21175,12 +21425,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The central bank of Pakistan is the:",
   "passage": null,
   "options": [
-   "Pakistan Stock Exchange",
-   "National Bank of Pakistan",
    "State Bank of Pakistan",
-   "Habib Bank"
+   "Pakistan Stock Exchange",
+   "Habib Bank",
+   "National Bank of Pakistan"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The State Bank of Pakistan began operations in July 1948.",
   "subject": "Social Studies",
   "topic": "Economy Basics",
@@ -21206,10 +21456,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Which is Pakistan's most important cash crop and a base of its textile industry?",
   "passage": null,
   "options": [
-   "sugarcane",
+   "maize",
    "cotton",
-   "tobacco",
-   "maize"
+   "sugarcane",
+   "tobacco"
   ],
   "correctAnswer": 1,
   "explanation": "Cotton feeds Pakistan's large textile and clothing sector.",
@@ -21237,12 +21487,12 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "The fiscal (financial) year of Pakistan runs from:",
   "passage": null,
   "options": [
+   "1 July to 30 June",
    "1 April to 31 March",
-   "1 October to 30 September",
    "1 January to 31 December",
-   "1 July to 30 June"
+   "1 October to 30 September"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "The federal budget covers July to June.",
   "subject": "Social Studies",
   "topic": "Economy Basics",
@@ -21269,11 +21519,11 @@ export const JEST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "6 September",
-   "23 March",
    "25 December",
-   "14 August"
+   "14 August",
+   "23 March"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Pakistan Day marks the 1940 Lahore Resolution (and the 1956 constitution).",
   "subject": "Social Studies",
   "topic": "National Events",
@@ -21299,10 +21549,10 @@ export const JEST_BANK: TeacherQuestion[] = [
   "question": "Youm-e-Takbeer (28 May) commemorates:",
   "passage": null,
   "options": [
+   "the first constitution",
    "the 1965 war",
-   "the Lahore Resolution",
    "Pakistan's nuclear tests of 1998",
-   "the first constitution"
+   "the Lahore Resolution"
   ],
   "correctAnswer": 2,
   "explanation": "On 28 May 1998 Pakistan conducted nuclear tests in the Chagai hills.",
@@ -21319,3058 +21569,5 @@ export const JEST_BANK: TeacherQuestion[] = [
   "language": "en",
   "fixedOrder": false,
   "needsReview": false
- },
- {
-  "id": "pst-urd-0012",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'دولت' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "سفر",
-   "غربت",
-   "محنت",
-   "مال"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'دولت' کا ہم معنی لفظ 'مال' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0013",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'آسمان' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "فلک",
-   "زمین",
-   "پہاڑ",
-   "سمندر"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'آسمان' کا ہم معنی لفظ 'فلک' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0014",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'بہادر' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "دلیر",
-   "کمزور",
-   "سست",
-   "بزدل"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'بہادر' کا ہم معنی لفظ 'دلیر' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0015",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'سورج' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بادل",
-   "آفتاب",
-   "ستارہ",
-   "ماہتاب"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'سورج' کا ہم معنی لفظ 'آفتاب' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0016",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'چاند' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "آفتاب",
-   "مہر",
-   "شفق",
-   "ماہ"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'چاند' کا ہم معنی لفظ 'ماہ' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0017",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'پانی' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "ہوا",
-   "خاک",
-   "آب",
-   "آتش"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'پانی' کا ہم معنی لفظ 'آب' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0018",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'آگ' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "آب",
-   "آتش",
-   "خاک",
-   "باد"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'آگ' کا ہم معنی لفظ 'آتش' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0019",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'دوست' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "یار",
-   "اجنبی",
-   "دشمن",
-   "مخالف"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'دوست' کا ہم معنی لفظ 'یار' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0020",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'راستہ' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "مسافر",
-   "منزل",
-   "راہ",
-   "قافلہ"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'راستہ' کا ہم معنی لفظ 'راہ' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0021",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'خوش' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "تھکا ہوا",
-   "ناراض",
-   "غمگین",
-   "مسرور"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'خوش' کا ہم معنی لفظ 'مسرور' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0022",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'حیرت' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "تعجب",
-   "خوشی",
-   "ڈر",
-   "غصہ"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'حیرت' کا ہم معنی لفظ 'تعجب' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0023",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'زمین' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "فلک",
-   "سما",
-   "آسمان",
-   "ارض"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'زمین' کا ہم معنی لفظ 'ارض' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0024",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'عزت' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "ذلت",
-   "حسد",
-   "احترام",
-   "غرور"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'عزت' کا ہم معنی لفظ 'احترام' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0025",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'روشنی' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "تاریکی",
-   "نور",
-   "سایہ",
-   "دھواں"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'روشنی' کا ہم معنی لفظ 'نور' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0026",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'جنگل' کا مترادف کیا ہے؟",
-  "passage": null,
-  "options": [
-   "باغ",
-   "بن",
-   "شہر",
-   "نہر"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'جنگل' کا ہم معنی لفظ 'بن' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0027",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'امیر' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بادشاہ",
-   "دولت مند",
-   "غریب",
-   "سخی"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'امیر' کا الٹ (متضاد) 'غریب' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0028",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'دن' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "دوپہر",
-   "شام",
-   "صبح",
-   "رات"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'دن' کا الٹ (متضاد) 'رات' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0029",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'سچ' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "جھوٹ",
-   "حق",
-   "وعدہ",
-   "صدق"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'سچ' کا الٹ (متضاد) 'جھوٹ' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0030",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'اندھیرا' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "سایہ",
-   "اجالا",
-   "دھند",
-   "رات"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'اندھیرا' کا الٹ (متضاد) 'اجالا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0031",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'بڑا' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "چھوٹا",
-   "وسیع",
-   "موٹا",
-   "لمبا"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'بڑا' کا الٹ (متضاد) 'چھوٹا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0032",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'میٹھا' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "نمکین",
-   "نرم",
-   "ٹھنڈا",
-   "کڑوا"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'میٹھا' کا الٹ (متضاد) 'کڑوا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0033",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'آسان' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "جلدی",
-   "سادہ",
-   "مشکل",
-   "ہلکا"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'آسان' کا الٹ (متضاد) 'مشکل' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0034",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'قریب' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "پاس",
-   "دور",
-   "نزدیک",
-   "سامنے"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'قریب' کا الٹ (متضاد) 'دور' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0035",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'خوشی' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "ہنسی",
-   "شادی",
-   "غم",
-   "مسرت"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'خوشی' کا الٹ (متضاد) 'غم' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0036",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'بہار' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "گرمی",
-   "برسات",
-   "سردی",
-   "خزاں"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'بہار' کا الٹ (متضاد) 'خزاں' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0037",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'عزت' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "ذلت",
-   "شہرت",
-   "احترام",
-   "وقار"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'عزت' کا الٹ (متضاد) 'ذلت' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0038",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'ابتدا' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "آغاز",
-   "انتہا",
-   "شروع",
-   "پہلے"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'ابتدا' کا الٹ (متضاد) 'انتہا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0039",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'جیت' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "فتح",
-   "کامیابی",
-   "ہار",
-   "مقابلہ"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'جیت' کا الٹ (متضاد) 'ہار' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0040",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'نیا' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "پرانا",
-   "تازہ",
-   "صاف",
-   "جدید"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'نیا' کا الٹ (متضاد) 'پرانا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0041",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'سخت' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بھاری",
-   "کڑا",
-   "مضبوط",
-   "نرم"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'سخت' کا الٹ (متضاد) 'نرم' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0042",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'محنت' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "مزدوری",
-   "لگن",
-   "کوشش",
-   "سستی"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'محنت' کا الٹ (متضاد) 'سستی' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0043",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'زندگی' کا متضاد کیا ہے؟",
-  "passage": null,
-  "options": [
-   "حیات",
-   "سانس",
-   "موت",
-   "جان"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'زندگی' کا الٹ (متضاد) 'موت' ہے۔",
-  "subject": "Urdu",
-  "topic": "Synonyms and Antonyms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0044",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'کتاب' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "کتابیں",
-   "کتابوں",
-   "کتابے",
-   "کتابات"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'کتاب' کی درست جمع 'کتابیں' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0045",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'لڑکا' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "لڑکیں",
-   "لڑکے",
-   "لڑکاں",
-   "لڑکیاں"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'لڑکا' کی درست جمع 'لڑکے' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0046",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'دکان' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "دکانیں",
-   "دکانے",
-   "دکانوں",
-   "دکانات"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'دکان' کی درست جمع 'دکانیں' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0047",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'استاد' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "استادے",
-   "اساتیذ",
-   "اساتذہ",
-   "استادیں"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'استاد' کی درست جمع 'اساتذہ' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0048",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'خط' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "خطات",
-   "خطوط",
-   "خطیں",
-   "خطے"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'خط' کی درست جمع 'خطوط' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0049",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'طالب علم' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "طالب علمات",
-   "طلباں",
-   "طالبیں",
-   "طلبہ"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'طالب علم' کی درست جمع 'طلبہ' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0050",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'شاعر' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "شاعرات",
-   "شعراء",
-   "شاعروں",
-   "شاعریں"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'شاعر' کی درست جمع 'شعراء' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0001",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'قلم' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "قلمے",
-   "قلمات",
-   "اقلام",
-   "قلمیں"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'قلم' کی درست جمع 'اقلام' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0051",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'مکان' کی جمع کیا ہے؟",
-  "passage": null,
-  "options": [
-   "مکانات",
-   "مکاناں",
-   "مکانیں",
-   "مکانے"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'مکان' کی درست جمع 'مکانات' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0052",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'شیر' کی تانیث (مؤنث) کیا ہے؟",
-  "passage": null,
-  "options": [
-   "شیرہ",
-   "شیران",
-   "شیری",
-   "شیرنی"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'شیر' کا مؤنث 'شیرنی' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0053",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'لڑکا' کی تانیث (مؤنث) کیا ہے؟",
-  "passage": null,
-  "options": [
-   "لڑکانی",
-   "لڑکنی",
-   "لڑکی",
-   "لڑکن"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'لڑکا' کا مؤنث 'لڑکی' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0054",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'بھائی' کی تانیث (مؤنث) کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بہنی",
-   "بھائن",
-   "بھائیانی",
-   "بہن"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'بھائی' کا مؤنث 'بہن' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0055",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'استاد' کی تانیث (مؤنث) کیا ہے؟",
-  "passage": null,
-  "options": [
-   "استانی",
-   "استادن",
-   "استادی",
-   "استادہ"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'استاد' کا مؤنث 'استانی' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0056",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'گھوڑا' کی تانیث (مؤنث) کیا ہے؟",
-  "passage": null,
-  "options": [
-   "گھوڑیا",
-   "گھوڑی",
-   "گھوڑنی",
-   "گھوڑن"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'گھوڑا' کا مؤنث 'گھوڑی' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0057",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'مرغا' کی تانیث (مؤنث) کیا ہے؟",
-  "passage": null,
-  "options": [
-   "مرغی",
-   "مرغن",
-   "مرغیا",
-   "مرغانی"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'مرغا' کا مؤنث 'مرغی' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0058",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'بیٹا' کی تانیث (مؤنث) کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بیٹن",
-   "بیٹیا",
-   "بیٹانی",
-   "بیٹی"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'بیٹا' کا مؤنث 'بیٹی' ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "easy",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0059",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "درج ذیل میں سے کون سا لفظ مؤنث ہے؟",
-  "passage": null,
-  "options": [
-   "دہی",
-   "ہوا",
-   "چاند",
-   "پانی"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'ہوا' مؤنث ہے، جبکہ پانی، چاند اور دہی مذکر ہیں۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0060",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "درج ذیل میں سے کون سا لفظ مذکر ہے؟",
-  "passage": null,
-  "options": [
-   "روٹی",
-   "آگ",
-   "پہاڑ",
-   "رات"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'پہاڑ' مذکر ہے، جبکہ آگ، رات اور روٹی مؤنث ہیں۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0061",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'آنکھوں کا تارا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "نابینا",
-   "بہت دور",
-   "بہت امیر",
-   "بہت پیارا"
-  ],
-  "correctAnswer": 3,
-  "explanation": "اس محاورے کا مطلب 'بہت پیارا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0062",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'دانت کھٹے کرنا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "کھانا کھانا",
-   "دانت صاف کرنا",
-   "ہرا دینا",
-   "ڈرانا"
-  ],
-  "correctAnswer": 2,
-  "explanation": "اس محاورے کا مطلب 'ہرا دینا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0063",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'ہاتھ پاؤں پھولنا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "تھک جانا",
-   "گھبرا جانا",
-   "موٹا ہونا",
-   "بیمار ہونا"
-  ],
-  "correctAnswer": 1,
-  "explanation": "اس محاورے کا مطلب 'گھبرا جانا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0064",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'نو دو گیارہ ہونا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بھاگ جانا",
-   "گننا",
-   "حساب لگانا",
-   "جمع کرنا"
-  ],
-  "correctAnswer": 0,
-  "explanation": "اس محاورے کا مطلب 'بھاگ جانا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0065",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'آسمان سے باتیں کرنا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بہت بلند ہونا",
-   "خواب دیکھنا",
-   "جھوٹ بولنا",
-   "دعا مانگنا"
-  ],
-  "correctAnswer": 0,
-  "explanation": "اس محاورے کا مطلب 'بہت بلند ہونا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0002",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'اینٹ سے اینٹ بجانا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "موسیقی بجانا",
-   "مزدوری کرنا",
-   "مکان بنانا",
-   "تباہ و برباد کرنا"
-  ],
-  "correctAnswer": 3,
-  "explanation": "اس محاورے کا مطلب 'تباہ و برباد کرنا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0066",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'آگ بگولا ہونا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بخار چڑھنا",
-   "سخت غصے میں آنا",
-   "بہت خوش ہونا",
-   "تیز دوڑنا"
-  ],
-  "correctAnswer": 1,
-  "explanation": "اس محاورے کا مطلب 'سخت غصے میں آنا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0003",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'کان پر جوں نہ رینگنا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بالوں کا جھڑنا",
-   "جوں کا مارنا",
-   "بالکل اثر نہ ہونا",
-   "بہرا ہونا"
-  ],
-  "correctAnswer": 2,
-  "explanation": "اس محاورے کا مطلب 'بالکل اثر نہ ہونا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0067",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'ٹیڑھی کھیر' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "آسان کام",
-   "پرانی بات",
-   "میٹھا کھانا",
-   "بہت مشکل کام"
-  ],
-  "correctAnswer": 3,
-  "explanation": "اس محاورے کا مطلب 'بہت مشکل کام' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0004",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "محاورہ 'چراغ تلے اندھیرا' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "رات کا ہونا",
-   "اپنے قریبی لوگوں کی خرابی نظر نہ آنا",
-   "روشنی کی کمی",
-   "دیے کا بجھ جانا"
-  ],
-  "correctAnswer": 1,
-  "explanation": "اس محاورے کا مطلب 'اپنے قریبی لوگوں کی خرابی نظر نہ آنا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Idioms",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0068",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'عزم' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "سستی",
-   "شکایت",
-   "پختہ ارادہ",
-   "خوف"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'عزم' کا مطلب 'پختہ ارادہ' ہے۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0069",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'شفقت' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "مہربانی",
-   "لالچ",
-   "جلدی",
-   "غصہ"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'شفقت' کا مطلب 'مہربانی' ہے۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0070",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'جرأت' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "ہمت",
-   "کمزوری",
-   "خاموشی",
-   "شرارت"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'جرأت' کا مطلب 'ہمت' ہے۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0071",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'حسد' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "محبت",
-   "خوشی",
-   "دعا",
-   "جلن"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'حسد' کا مطلب 'جلن' ہے۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0005",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'قناعت' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "چوری کرنا",
-   "جو مل جائے اس پر راضی رہنا",
-   "غصہ کرنا",
-   "زیادہ کی خواہش"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'قناعت' کا مطلب 'جو مل جائے اس پر راضی رہنا' ہے۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0072",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'صبر' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "شور",
-   "جلد بازی",
-   "برداشت",
-   "غرور"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'صبر' کا مطلب 'برداشت' ہے۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0073",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'دیانت' کا مطلب کیا ہے؟",
-  "passage": null,
-  "options": [
-   "بے ایمانی",
-   "تجارت",
-   "دوستی",
-   "ایمانداری"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'دیانت' کا مطلب 'ایمانداری' ہے۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0074",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "درست املا کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "صحیح",
-   "صیح",
-   "صحی",
-   "سحیح"
-  ],
-  "correctAnswer": 0,
-  "explanation": "درست املا 'صحیح' ہے، یعنی ص، ح، ی، ح۔",
-  "subject": "Urdu",
-  "topic": "Correct Usage",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0075",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "درست املا کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "ظرور",
-   "ضرورر",
-   "ضرور",
-   "زرور"
-  ],
-  "correctAnswer": 2,
-  "explanation": "درست املا 'ضرور' ہے۔",
-  "subject": "Urdu",
-  "topic": "Correct Usage",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0076",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "درست املا کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "کیمت",
-   "قیمت",
-   "قیمط",
-   "قیمات"
-  ],
-  "correctAnswer": 1,
-  "explanation": "درست املا 'قیمت' ہے۔",
-  "subject": "Urdu",
-  "topic": "Correct Usage",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0077",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "درست املا کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "اجاظت",
-   "اجازت",
-   "اجازط",
-   "عجازت"
-  ],
-  "correctAnswer": 1,
-  "explanation": "درست املا 'اجازت' ہے۔",
-  "subject": "Urdu",
-  "topic": "Correct Usage",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0006",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "درست املا کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "غلطی",
-   "غلتی",
-   "غلطہ",
-   "گلطی"
-  ],
-  "correctAnswer": 0,
-  "explanation": "درست املا 'غلطی' ہے۔",
-  "subject": "Urdu",
-  "topic": "Correct Usage",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0080",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'خوبصورت پھول' میں لفظ 'خوبصورت' کیا ہے؟",
-  "passage": null,
-  "options": [
-   "فعل",
-   "ضمیر",
-   "اسم",
-   "صفت"
-  ],
-  "correctAnswer": 3,
-  "explanation": "جو لفظ اسم کی خوبی بیان کرے وہ صفت ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0081",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "درج ذیل میں سے ضمیر کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "دوڑنا",
-   "اچھا",
-   "ہم",
-   "کتاب"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'ہم' اسم کی جگہ آتا ہے، لہٰذا ضمیر ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0082",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "جملہ 'میں اسکول جا رہا ہوں' کون سا زمانہ ہے؟",
-  "passage": null,
-  "options": [
-   "ماضی مطلق",
-   "حال جاری",
-   "حال مطلق",
-   "مستقبل"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'رہا ہوں' کام کے جاری ہونے کو ظاہر کرتا ہے، اس لیے حال جاری ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0083",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "جملہ 'وہ کل آئے گا' کون سا زمانہ ہے؟",
-  "passage": null,
-  "options": [
-   "مستقبل",
-   "ماضی",
-   "حال",
-   "ماضی بعید"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'کل' اور 'آئے گا' آنے والے وقت کو ظاہر کرتے ہیں۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0084",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'ہم نے کھانا کھایا' میں 'نے' کیا ہے؟",
-  "passage": null,
-  "options": [
-   "علامتِ مفعول",
-   "علامتِ جمع",
-   "علامتِ فاعل",
-   "علامتِ نفی"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'نے' فاعل کے بعد آتا ہے اور علامتِ فاعل ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0007",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'کو' عموماً کس کی علامت ہے؟",
-  "passage": null,
-  "options": [
-   "فاعل",
-   "فعل",
-   "صفت",
-   "مفعول"
-  ],
-  "correctAnswer": 3,
-  "explanation": "'کو' عام طور پر مفعول (یا مفعولِ بہ) کی علامت ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0008",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "درج ذیل میں سے لازم فعل کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "سونا",
-   "پڑھنا",
-   "کھانا",
-   "لکھنا"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'سونا' کو مفعول کی ضرورت نہیں، اس لیے لازم ہے؛ باقی افعال متعدی ہیں۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0085",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "درست جملہ کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "لڑکی کتاب پڑھ رہی ہوں",
-   "لڑکی کتاب پڑھ رہی ہے",
-   "لڑکی کتاب پڑھ رہا ہے",
-   "لڑکی کتاب پڑھ رہے ہے"
-  ],
-  "correctAnswer": 1,
-  "explanation": "فاعل مؤنث اور واحد ہے، لہٰذا فعل 'رہی ہے' درست ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0086",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "درست جملہ کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "بچے باغ میں کھیل رہے ہو",
-   "بچے باغ میں کھیل رہا ہے",
-   "بچے باغ میں کھیل رہی ہیں",
-   "بچے باغ میں کھیل رہے ہیں"
-  ],
-  "correctAnswer": 3,
-  "explanation": "جمع مذکر فاعل کے ساتھ 'رہے ہیں' آتا ہے۔",
-  "subject": "Urdu",
-  "topic": "Grammar",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0009",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "درست جملہ کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "میں اسے کتاب دی تھا",
-   "میں نے اسے کتاب دیا",
-   "میں نے اسے کتاب دی",
-   "میں نے اسے کتاب دے"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'کتاب' مؤنث ہے اور ماضی میں فعل اسی کے مطابق 'دی' آتا ہے۔",
-  "subject": "Urdu",
-  "topic": "Sentence Correction",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0087",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "علامہ اقبال کہاں پیدا ہوئے؟",
-  "passage": "علامہ اقبال 1877ء میں سیالکوٹ میں پیدا ہوئے۔ انہوں نے اپنی شاعری کے ذریعے مسلمانوں کو بیدار کیا اور انہیں آزادی کا خواب دکھایا۔ ان کا کلام آج بھی شوق سے پڑھا جاتا ہے۔",
-  "options": [
-   "سیالکوٹ",
-   "کراچی",
-   "لاہور",
-   "دہلی"
-  ],
-  "correctAnswer": 0,
-  "explanation": "عبارت کے مطابق وہ سیالکوٹ میں پیدا ہوئے۔",
-  "subject": "Urdu",
-  "topic": "Comprehension",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0088",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "عبارت کے مطابق علامہ اقبال کس سن میں پیدا ہوئے؟",
-  "passage": "علامہ اقبال 1877ء میں سیالکوٹ میں پیدا ہوئے۔ انہوں نے اپنی شاعری کے ذریعے مسلمانوں کو بیدار کیا اور انہیں آزادی کا خواب دکھایا۔ ان کا کلام آج بھی شوق سے پڑھا جاتا ہے۔",
-  "options": [
-   "1947ء",
-   "1877ء",
-   "1857ء",
-   "1930ء"
-  ],
-  "correctAnswer": 1,
-  "explanation": "عبارت میں ان کی پیدائش کا سن 1877ء بتایا گیا ہے۔",
-  "subject": "Urdu",
-  "topic": "Comprehension",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0089",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "علامہ اقبال نے مسلمانوں کو کس ذریعے سے بیدار کیا؟",
-  "passage": "علامہ اقبال 1877ء میں سیالکوٹ میں پیدا ہوئے۔ انہوں نے اپنی شاعری کے ذریعے مسلمانوں کو بیدار کیا اور انہیں آزادی کا خواب دکھایا۔ ان کا کلام آج بھی شوق سے پڑھا جاتا ہے۔",
-  "options": [
-   "کھیل",
-   "تجارت",
-   "تعمیرات",
-   "شاعری"
-  ],
-  "correctAnswer": 3,
-  "explanation": "عبارت میں آیا ہے کہ انہوں نے اپنی شاعری کے ذریعے مسلمانوں کو بیدار کیا۔",
-  "subject": "Urdu",
-  "topic": "Comprehension",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "pst-urd-0090",
-  "examType": "jest",
-  "examTypes": [
-   "pst",
-   "jest",
-   "jst"
-  ],
-  "question": "'بانگِ درا' کے مصنف کون ہیں؟",
-  "passage": null,
-  "options": [
-   "مرزا غالب",
-   "علامہ اقبال",
-   "فیض احمد فیض",
-   "میر تقی میر"
-  ],
-  "correctAnswer": 1,
-  "explanation": "'بانگِ درا' علامہ اقبال کا اردو شعری مجموعہ ہے۔",
-  "subject": "Urdu",
-  "topic": "Vocabulary",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes I-VIII (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0010",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'دیوانِ غالب' کس شاعر کا مجموعۂ کلام ہے؟",
-  "passage": null,
-  "options": [
-   "مرزا غالب",
-   "علامہ اقبال",
-   "میر انیس",
-   "الطاف حسین حالی"
-  ],
-  "correctAnswer": 0,
-  "explanation": "یہ مرزا اسد اللہ خاں غالب کا دیوان ہے۔",
-  "subject": "Urdu",
-  "topic": "Literature",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0011",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'خدائے سخن' کس شاعر کو کہا جاتا ہے؟",
-  "passage": null,
-  "options": [
-   "میر انیس",
-   "مرزا غالب",
-   "میر تقی میر",
-   "داغ دہلوی"
-  ],
-  "correctAnswer": 2,
-  "explanation": "میر تقی میر کو 'خدائے سخن' کہا جاتا ہے۔",
-  "subject": "Urdu",
-  "topic": "Literature",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0012",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'بابائے اردو' کس کو کہا جاتا ہے؟",
-  "passage": null,
-  "options": [
-   "ڈپٹی نذیر احمد",
-   "محمد حسین آزاد",
-   "سر سید احمد خان",
-   "مولوی عبد الحق"
-  ],
-  "correctAnswer": 3,
-  "explanation": "مولوی عبد الحق کو اردو کی خدمات کی وجہ سے 'بابائے اردو' کہا جاتا ہے۔",
-  "subject": "Urdu",
-  "topic": "Literature",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0013",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "اردو کا مشہور ناول 'مراۃ العروس' کس کی تصنیف ہے؟",
-  "passage": null,
-  "options": [
-   "رتن ناتھ سرشار",
-   "مرزا ہادی رسوا",
-   "ڈپٹی نذیر احمد",
-   "پریم چند"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'مراۃ العروس' ڈپٹی نذیر احمد کی تصنیف ہے۔",
-  "subject": "Urdu",
-  "topic": "Literature",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0014",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'مسدسِ حالی' (مدّ و جزرِ اسلام) کے شاعر کون ہیں؟",
-  "passage": null,
-  "options": [
-   "حفیظ جالندھری",
-   "الطاف حسین حالی",
-   "شبلی نعمانی",
-   "اکبر الہ آبادی"
-  ],
-  "correctAnswer": 1,
-  "explanation": "یہ نظم الطاف حسین حالی کی ہے۔",
-  "subject": "Urdu",
-  "topic": "Literature",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0015",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'آبِ حیات' کے مصنف کون ہیں؟",
-  "passage": null,
-  "options": [
-   "محمد حسین آزاد",
-   "شبلی نعمانی",
-   "الطاف حسین حالی",
-   "سر سید احمد خان"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'آبِ حیات' اردو شعراء کے تذکرے پر محمد حسین آزاد کی کتاب ہے۔",
-  "subject": "Urdu",
-  "topic": "Literature",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0016",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'He is a student' کا درست اردو ترجمہ کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "وہ طالب علم نہیں ہے",
-   "وہ طالب علم تھا",
-   "وہ طالب علم ہے",
-   "وہ طالب علم ہوگا"
-  ],
-  "correctAnswer": 2,
-  "explanation": "'is' حال کے لیے ہے، اس لیے 'ہے' آئے گا۔",
-  "subject": "Urdu",
-  "topic": "Translation",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0017",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'I go to school' کا درست اردو ترجمہ کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "میں اسکول جاؤں گا",
-   "میں اسکول جاتا ہوں",
-   "میں اسکول گیا",
-   "میں اسکول جا رہا تھا"
-  ],
-  "correctAnswer": 1,
-  "explanation": "سادہ حال کا ترجمہ 'جاتا ہوں' ہے۔",
-  "subject": "Urdu",
-  "topic": "Translation",
-  "subtopic": null,
-  "difficulty": "moderate",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0018",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "'The sun rises in the east' کا درست ترجمہ کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "سورج مشرق میں ڈوبتا ہے",
-   "سورج مغرب سے نکلتا ہے",
-   "سورج مشرق سے نکلا",
-   "سورج مشرق سے نکلتا ہے"
-  ],
-  "correctAnswer": 3,
-  "explanation": "سورج مشرق سے نکلتا ہے؛ یہ ایک عام حقیقت ہے، اس لیے سادہ حال استعمال ہوتا ہے۔",
-  "subject": "Urdu",
-  "topic": "Translation",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
- },
- {
-  "id": "jest-urd-0019",
-  "examType": "jest",
-  "examTypes": [
-   "jest",
-   "jst"
-  ],
-  "question": "درست جملہ کون سا ہے؟",
-  "passage": null,
-  "options": [
-   "سب طلبہ حاضر ہیں",
-   "سب طلبہ حاضر تھا",
-   "سب طلبہ حاضر ہے",
-   "سب طلبہ حاضرہ ہیں"
-  ],
-  "correctAnswer": 0,
-  "explanation": "'طلبہ' جمع ہے، اس لیے فعل 'ہیں' درست ہے۔",
-  "subject": "Urdu",
-  "topic": "Correct Usage",
-  "subtopic": null,
-  "difficulty": "difficult",
-  "sourceType": "generated_syllabus",
-  "sourceYear": null,
-  "sourceReference": null,
-  "verified": false,
-  "verificationNote": "Written from the syllabus topic list; not taken from any past paper. Answer checked by the author, not by an official source. Needs a native-speaker check.",
-  "syllabusClass": "Classes VI-X (estimated level)",
-  "language": "ur",
-  "fixedOrder": false,
-  "needsReview": true
  }
 ] as TeacherQuestion[];

@@ -36,6 +36,7 @@ export const SUBJECT_CODES: Record<TeacherSubject, string> = {
   "Social Studies": "SOC",
   Sindhi: "SND",
   Urdu: "URD",
+  Pedagogy: "PED",
 };
 
 export const SOURCE_LABELS: Record<TeacherSourceType, string> = {

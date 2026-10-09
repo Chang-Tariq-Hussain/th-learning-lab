@@ -13,7 +13,7 @@ qf() is the same but the options are given in display order with `ans` the index
 EXAMS = {"P": "pst", "J": "jest", "S": "jst"}
 DIFF = {"e": "easy", "m": "moderate", "d": "difficult"}
 SRC = {"S": "generated_syllabus", "X": "existing_question", "L": "generated_similar", "V": "verified_past_paper"}
-LANG = {"English": "en", "Mathematics": "en", "Science": "en", "Computer": "en", "Islamiat": "en", "Social Studies": "en", "Urdu": "ur", "Sindhi": "sd"}
+LANG = {"English": "en", "Mathematics": "en", "Science": "en", "Computer": "en", "Islamiat": "en", "Social Studies": "en", "Urdu": "ur", "Sindhi": "sd", "Pedagogy": "en"}
 DEFAULT_CLASS = {"pst": "Classes I-VIII (estimated level)", "jest": "Classes VI-X (estimated level)", "jst": None}
 
 
@@ -76,6 +76,15 @@ ALIAS = {
     "Science": {
         "Biology Basics": "Biology", "Human Body": "Human Biology", "Force and Motion": "Force", "Heat": "Physics", "Animals": "Biology",
         "Environment": "Ecology", "Human Biology": "Biology: Human Physiology", "Plants": "Plants",
+        # earlier JST topic names -> official JST topic names
+        "Physics: Heat and Thermodynamics": "Physics: Thermal Physics", "Physics: Light and Optics": "Physics: Atomic Physics and Optics",
+        "Physics: Sound and Waves": "Physics: Waves", "Physics: Electricity and Magnetism": "Physics: Electromagnetism",
+        "Physics: Modern Physics": "Physics: Nuclear Physics",
+        "Chemistry: Chemical Bonding": "Chemistry: Bonding", "Chemistry: Reactions and Stoichiometry": "Chemistry: Chemical Reactions",
+        "Chemistry: Acids, Bases and Salts": "Chemistry: Acids and Bases", "Chemistry: Organic Basics": "Chemistry: Industrial Chemistry",
+        "Biology: Cell Biology": "Biology: Cell Structure", "Biology: Human Physiology": "Biology: Tissues, Organs and Systems",
+        "Biology: Plant Biology": "Biology: Tissues, Organs and Systems", "Biology: Genetics and Evolution": "Biology: Evolution",
+        "Biology: Ecology and Environment": "Biology: Ecosystem", "Biology: Microorganisms and Health": "Biology: Types of Living Organisms",
     },
     "Computer": {
         "Hardware": "Hardware and Software", "Software": "Hardware and Software", "Input and Output Devices": "Computer Fundamentals",
@@ -106,6 +115,48 @@ ALIAS = {
 ALIAS["Sindhi"] = ALIAS["Urdu"]
 
 
+# Used only when the alias chain cannot reach a name in an exam's syllabus list. It places older, broader topic names
+# under the official JST topic names (approximate: an older topic may cover more or less than the official one).
+FALLBACK = {
+    "English": {
+        "Grammar": "Parts of Speech", "Synonyms": "Vocabulary", "Antonyms": "Vocabulary", "One-Word Substitution": "Vocabulary",
+        "Idioms": "Vocabulary", "Sentence Completion": "Vocabulary", "Prepositions": "Parts of Speech", "Articles": "Parts of Speech",
+        "Pronouns": "Parts of Speech", "Adjectives": "Parts of Speech", "Adverbs": "Parts of Speech", "Subject-Verb Agreement": "Parts of Speech",
+        "Sentence Correction": "Parts of Speech", "Error Detection": "Parts of Speech", "Narration": "Direct and Indirect Speech",
+        "Voice": "Active and Passive Voice", "Comprehension": "Reading Comprehension", "Synonyms and Antonyms": "Vocabulary",
+    },
+    "Mathematics": {
+        "Profit and Loss": "Financial Arithmetic and Consumer Math", "Time and Work": "Time", "Average": "Central Tendency", "Averages": "Central Tendency",
+        "Percentages": "Ratio, Rate and Percentage", "Ratio and Proportion": "Ratio, Rate and Percentage", "Ratios": "Ratio, Rate and Percentage",
+        "Mensuration": "Surface Area and Volume", "Basic Arithmetic": "Multiples and Factors", "Arithmetic": "Multiples and Factors",
+        "Number Systems": "Prime and Composite", "Factors and Multiples": "Multiples and Factors", "Fractions": "Ratio, Rate and Percentage",
+        "Decimals": "Ratio, Rate and Percentage", "Simple Interest": "Simple and Compound Interest", "Interest": "Simple and Compound Interest",
+        "Time, Speed and Distance": "Time", "Basic Algebra": "Expressions", "Algebra": "Expressions", "Linear Equations": "Equations and Inequalities",
+        "Geometry": "Surface Area and Volume", "Data Handling": "Central Tendency", "Statistics": "Central Tendency",
+        "Statistics and Probability": "Central Tendency", "Sets and Relations": "Equations and Inequalities",
+        "Word Problems": "Equations and Inequalities", "Mathematical Reasoning": "Patterns",
+    },
+    "Computer": {
+        "Computer Fundamentals": "Introduction to Computers and Types", "Hardware": "Introduction to Computers and Types",
+        "Software": "Introduction to Computers and Types", "Hardware and Software": "Introduction to Computers and Types",
+        "Input and Output Devices": "Introduction to Computers and Types", "Storage": "Introduction to Computers and Types",
+        "Information Technology": "Introduction to Computers and Types", "Digital Literacy": "Introduction to Computers and Types",
+        "Operating Systems": "Operating System", "Internet": "Computer Networking", "Networking": "Computer Networking",
+        "Networking Basics": "Computer Networking", "MS Office": "Office Automation",
+        "Cybersecurity Awareness": "Cyber-Attacks and Ethical Hacking", "Cybersecurity Basics": "Cyber-Attacks and Ethical Hacking",
+        "Database Basics": "Database Management System",
+    },
+    "Social Studies": {
+        "Pakistan Geography": "Social Studies", "Geography": "Social Studies", "Provinces": "Social Studies", "Important Places": "Social Studies",
+        "Geography of Sindh": "Social Studies", "Sindh History and Geography": "Social Studies", "Culture": "Social Studies",
+        "Economy Basics": "Social Studies", "Civics": "Social Studies", "Constitution and Civics": "Social Studies",
+        "History": "Pakistan Studies", "Pakistan History": "Pakistan Studies", "Independence Movement": "Pakistan Studies",
+        "National Symbols": "Pakistan Studies", "Important Personalities": "Pakistan Studies", "Constitution": "Pakistan Studies",
+        "National Events": "Pakistan Studies", "Basic Current Affairs": "Pakistan Studies",
+    },
+}
+
+
 def map_topic(topic, subject, valid):
     """Topic name as it appears in an exam whose syllabus list is `valid`; None if it cannot be mapped."""
     if topic in valid:
@@ -115,4 +166,7 @@ def map_topic(topic, subject, valid):
     while t is not None and t not in valid and t not in seen:
         seen.add(t)
         t = ALIAS.get(subject, {}).get(t)
-    return t if t in valid else None
+    if t in valid:
+        return t
+    f = FALLBACK.get(subject, {}).get(topic)
+    return f if f in valid else None

@@ -11,9 +11,10 @@ export type TeacherSubject =
   | "Islamiat"
   | "Social Studies"
   | "Sindhi"
-  | "Urdu";
+  | "Urdu"
+  | "Pedagogy";
 
-export const TEACHER_SUBJECTS: TeacherSubject[] = ["English", "Mathematics", "Science", "Computer", "Islamiat", "Social Studies", "Sindhi", "Urdu"];
+export const TEACHER_SUBJECTS: TeacherSubject[] = ["English", "Mathematics", "Science", "Computer", "Islamiat", "Social Studies", "Sindhi", "Urdu", "Pedagogy"];
 
 export type TeacherDifficulty = "easy" | "moderate" | "difficult";
 export const DIFFICULTIES: TeacherDifficulty[] = ["easy", "moderate", "difficult"];
@@ -110,6 +111,6 @@ export interface ExamConfig {
   pattern: {
     status: "unverified" | "partially-verified" | "verified";
     note: string;
-    sources: { title: string; url: string }[];
+    sources: { title: string; url?: string }[];
   };
 }

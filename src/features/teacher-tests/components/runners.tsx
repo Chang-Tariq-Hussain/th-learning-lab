@@ -28,7 +28,7 @@ function copyFor(exam: ExamType, test: TeacherTest, questions: RunnerQuestion[])
     eyebrow: `Sindh Teacher Test · ${cfg.label}${practice ? " · Practice" : ""}`,
     intro: practice
       ? `A practice set of ${test.totalQuestions} questions with one minute per question. The timer keeps running if you leave the page, and the set is submitted automatically at 00:00:00.`
-      : `${cfg.fullName}: ${cfg.mock.questions} questions in ${cfg.mock.durationMinutes} minutes, in the order mother tongue, social studies, Islamiat, English, mathematics, science and computer. ${cfg.pattern.status === "verified" ? "" : "The pattern is not officially confirmed; see the note on the exam page."}`,
+      : `${cfg.fullName}: ${cfg.mock.questions} questions in ${cfg.mock.durationMinutes} minutes, in this order: ${cfg.mock.sections.map((s) => s.title).join(", ")}. ${cfg.pattern.status === "verified" ? "" : "The pattern is not officially confirmed; see the note on the exam page."}`,
     passText: "No official pass mark set",
     sourceSummary: `Question sources in this ${practice ? "set" : "mock"}: ${parts.join(", ") || "none"}. Each question's source is shown again in review. Generated questions are never presented as past papers.`,
     startLabel: practice ? "Start practice" : "Start mock test",

@@ -92,7 +92,7 @@ export function ExamLanding({ exam }: { exam: ExamType }) {
           <p className="mt-1 text-ink-soft dark:text-bone-soft">{cfg.pattern.note}</p>
           <ul className="mt-2 list-disc pl-5 text-xs text-ink-soft dark:text-bone-soft">
             {cfg.pattern.sources.map((s) => (
-              <li key={s.url}><a className="underline" href={s.url} target="_blank" rel="noreferrer">{s.title}</a></li>
+              <li key={s.title}>{s.url ? <a className="underline" href={s.url} target="_blank" rel="noreferrer">{s.title}</a> : s.title}</li>
             ))}
           </ul>
         </div>

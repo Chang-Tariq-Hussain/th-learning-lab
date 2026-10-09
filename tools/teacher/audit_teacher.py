@@ -6,9 +6,9 @@ bank = json.load(open(os.path.join(HERE, "teacher_bank.json")))
 sys.path.insert(0, HERE)
 from helpers import map_topic
 syl = json.load(open(os.path.join(ROOT, "src/features/teacher-tests/syllabus.json")))
-SEC = {"pst": {"Urdu": 20, "Social Studies": 5, "Islamiat": 5, "English": 20, "Mathematics": 20, "Science": 20, "Computer": 10},
-       "jest": {"Urdu": 20, "Social Studies": 5, "Islamiat": 5, "English": 20, "Mathematics": 20, "Science": 20, "Computer": 10},
-       "jst": {"Urdu": 5, "Social Studies": 5, "Islamiat": 5, "English": 15, "Mathematics": 20, "Science": 45, "Computer": 5}}
+SEC = {"pst": {"Urdu": 15, "Islamiat": 5, "Computer": 5, "Social Studies": 5, "English": 20, "Mathematics": 25, "Science": 25},
+       "jest": {"English": 20, "Mathematics": 20, "Science": 20, "Computer": 10, "Social Studies": 10, "Pedagogy": 20},
+       "jst": {"English": 10, "Social Studies": 10, "Pedagogy": 20, "Science": 36, "Mathematics": 12, "Computer": 12}}
 TARGET = {"pst": (.30, .50, .20), "jest": (.22, .50, .28), "jst": (.20, .50, .30)}
 for ex in ("pst", "jest", "jst"):
     qs = [q for q in bank if ex in q["examTypes"]]

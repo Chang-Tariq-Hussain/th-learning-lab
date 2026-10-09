@@ -134,27 +134,26 @@ export const BANK_STATS: { pst: ExamStats; jest: ExamStats; jst: ExamStats; uniq
     "Vocabulary": 1
    }
   },
-  "shared": 500
+  "shared": 363
  },
  "jest": {
-  "total": 774,
+  "total": 688,
   "bySource": {
-   "generated_syllabus": 676,
-   "existing_question": 98
+   "generated_syllabus": 605,
+   "existing_question": 83
   },
   "byDifficulty": {
-   "easy": 183,
-   "moderate": 442,
-   "difficult": 149
+   "easy": 157,
+   "moderate": 386,
+   "difficult": 145
   },
   "bySubject": {
    "Computer": 55,
    "English": 179,
-   "Islamiat": 79,
    "Mathematics": 155,
    "Social Studies": 76,
    "Science": 123,
-   "Urdu": 107
+   "Pedagogy": 100
   },
   "topics": {
    "Computer": {
@@ -184,19 +183,6 @@ export const BANK_STATS: { pst: ExamStats; jest: ExamStats; jst: ExamStats; uniq
     "Narration": 4,
     "Sentence Completion": 14,
     "Comprehension": 8
-   },
-   "Islamiat": {
-    "Seerah": 18,
-    "Quran": 14,
-    "Khulafa": 7,
-    "Hadith": 5,
-    "Islamic Personalities": 7,
-    "Islamic Concepts": 15,
-    "Jurisprudence Basics": 2,
-    "Battles and Events": 3,
-    "Islamic History": 1,
-    "Islamic Civilization": 3,
-    "Ethics and Social Principles": 4
    },
    "Mathematics": {
     "Profit and Loss": 8,
@@ -246,127 +232,127 @@ export const BANK_STATS: { pst: ExamStats; jest: ExamStats; jst: ExamStats; uniq
     "Chemical Reactions": 2,
     "Motion": 2
    },
-   "Urdu": {
-    "Idioms": 12,
-    "Synonyms and Antonyms": 36,
-    "Grammar": 30,
-    "Vocabulary": 10,
-    "Correct Usage": 6,
-    "Sentence Correction": 1,
-    "Comprehension": 3,
-    "Literature": 6,
-    "Translation": 3
+   "Pedagogy": {
+    "Learning Styles (VARK)": 10,
+    "Cognitive, Physical and Social Differences": 10,
+    "Lesson Planning and SLOs": 10,
+    "Teaching Skills": 10,
+    "Teaching Methodology": 10,
+    "Use of ICT in the Classroom": 10,
+    "Assessment and Evaluation": 10,
+    "Reflective Practice and Feedback": 10,
+    "Classroom Management": 10,
+    "STEAM/STREAM and Project-Based Learning": 10
    }
   },
-  "shared": 736
+  "shared": 650
  },
  "jst": {
-  "total": 804,
+  "total": 879,
   "bySource": {
-   "generated_syllabus": 709,
-   "existing_question": 95
+   "generated_syllabus": 799,
+   "existing_question": 80
   },
   "byDifficulty": {
-   "easy": 192,
-   "moderate": 430,
-   "difficult": 182
+   "easy": 206,
+   "moderate": 445,
+   "difficult": 228
   },
   "bySubject": {
-   "Computer": 60,
-   "English": 179,
-   "Islamiat": 79,
-   "Mathematics": 155,
+   "Computer": 92,
+   "English": 185,
+   "Mathematics": 200,
    "Social Studies": 76,
-   "Urdu": 107,
-   "Science": 148
+   "Science": 226,
+   "Pedagogy": 100
   },
   "topics": {
    "Computer": {
-    "Computer Fundamentals": 16,
-    "Hardware and Software": 10,
-    "Operating Systems": 5,
-    "Internet": 7,
-    "Networking": 5,
-    "MS Office": 7,
-    "Information Technology": 4,
-    "Cybersecurity Basics": 4,
-    "Database Basics": 2
+    "Introduction to Computers and Types": 33,
+    "Operating System": 7,
+    "Computer Networking": 16,
+    "Office Automation": 10,
+    "Cyber-Attacks and Ethical Hacking": 10,
+    "Database Management System": 7,
+    "Generations of Computers": 4,
+    "Web Development": 5
    },
    "English": {
-    "Synonyms and Antonyms": 37,
-    "Vocabulary": 36,
-    "Idioms": 13,
-    "Grammar": 75,
-    "Sentence Correction": 10,
-    "Comprehension": 8
-   },
-   "Islamiat": {
-    "Seerah": 18,
-    "Quran": 14,
-    "Khulafa": 7,
-    "Hadith": 5,
-    "Islamic Personalities": 7,
-    "Islamic Concepts": 15,
-    "Jurisprudence Basics": 2,
-    "Battles and Events": 3,
-    "Islamic History": 1,
-    "Islamic Civilization": 3,
-    "Ethics and Social Principles": 4
+    "Vocabulary": 86,
+    "Tenses": 8,
+    "Parts of Speech": 69,
+    "Active and Passive Voice": 4,
+    "Direct and Indirect Speech": 4,
+    "Punctuation": 6,
+    "Reading Comprehension": 8
    },
    "Mathematics": {
-    "Arithmetic": 91,
-    "Mensuration": 13,
-    "Statistics and Probability": 11,
-    "Algebra": 16,
-    "Geometry": 10,
-    "Word Problems": 7,
-    "Mathematical Reasoning": 7
+    "Financial Arithmetic and Consumer Math": 10,
+    "Time": 14,
+    "Central Tendency": 18,
+    "Ratio, Rate and Percentage": 40,
+    "Surface Area and Volume": 27,
+    "Probability": 7,
+    "Multiples and Factors": 19,
+    "Prime and Composite": 9,
+    "Simple and Compound Interest": 8,
+    "Expressions": 13,
+    "Equations and Inequalities": 16,
+    "Coordinate Geometry": 5,
+    "Patterns": 10,
+    "Ratio Conversion": 2,
+    "Percentage Expansion": 2
    },
    "Social Studies": {
-    "Geography": 24,
-    "Pakistan History": 14,
-    "Culture": 10,
-    "Constitution": 5,
-    "Sindh History and Geography": 10,
-    "Important Personalities": 7,
-    "Civics": 1,
-    "Economy Basics": 3,
-    "National Events": 2
-   },
-   "Urdu": {
-    "Idioms": 12,
-    "Synonyms and Antonyms": 36,
-    "Grammar": 30,
-    "Vocabulary": 10,
-    "Correct Usage": 6,
-    "Sentence Correction": 1,
-    "Comprehension": 3,
-    "Literature": 6,
-    "Translation": 3
+    "Social Studies": 46,
+    "Pakistan Studies": 30
    },
    "Science": {
-    "Physics: Mechanics": 16,
-    "Physics: Heat and Thermodynamics": 8,
-    "Physics: Light and Optics": 7,
-    "Physics: Sound and Waves": 5,
-    "Physics: Electricity and Magnetism": 9,
-    "Physics: Modern Physics": 5,
+    "Biology: Cell Structure": 12,
+    "Biology: Cell Division": 3,
+    "Biology: Respiration": 4,
+    "Biology: Enzymes": 4,
+    "Biology: Types of Living Organisms": 11,
+    "Biology: Tissues, Organs and Systems": 23,
+    "Biology: Evolution": 9,
+    "Biology: Ecosystem": 8,
+    "Chemistry: Elements, Compounds and Mixtures": 3,
+    "Chemistry: Thermochemistry": 3,
+    "Chemistry: Environmental Chemistry": 3,
+    "Chemistry: Mole and Molarity": 3,
+    "Chemistry: Acids and Bases": 10,
+    "Chemistry: Equilibrium": 3,
+    "Chemistry: Chemical Reactions": 10,
+    "Chemistry: Industrial Chemistry": 9,
+    "Chemistry: Electrochemistry": 3,
+    "Chemistry: Kinetics": 3,
+    "Chemistry: Solutions and Suspensions": 3,
+    "Physics: Mechanics": 20,
+    "Physics: Thermal Physics": 11,
+    "Physics: Waves": 7,
+    "Physics: Electromagnetism": 13,
+    "Physics: Atomic Physics and Optics": 11,
+    "Physics: Nuclear Physics": 7,
+    "Physics: Electronics": 6,
     "Chemistry: Atomic Structure": 8,
     "Chemistry: Periodic Table": 6,
-    "Chemistry: Chemical Bonding": 5,
-    "Chemistry: Reactions and Stoichiometry": 9,
-    "Chemistry: Acids, Bases and Salts": 8,
-    "Chemistry: Organic Basics": 6,
-    "Chemistry: States of Matter": 5,
-    "Biology: Cell Biology": 9,
-    "Biology: Human Physiology": 12,
-    "Biology: Plant Biology": 8,
-    "Biology: Genetics and Evolution": 7,
-    "Biology: Ecology and Environment": 7,
-    "Biology: Microorganisms and Health": 8
+    "Chemistry: Bonding": 5,
+    "Chemistry: States of Matter": 5
+   },
+   "Pedagogy": {
+    "Learning Styles (VARK)": 10,
+    "Cognitive, Physical and Social Differences": 10,
+    "Lesson Planning and SLOs": 10,
+    "Teaching Skills": 10,
+    "Teaching Methodology": 10,
+    "Use of ICT in the Classroom": 10,
+    "Assessment and Evaluation": 10,
+    "Reflective Practice and Feedback": 10,
+    "Classroom Management": 10,
+    "STEAM/STREAM and Project-Based Learning": 10
    }
   },
-  "shared": 651
+  "shared": 565
  },
- "unique": 968
+ "unique": 1180
 };

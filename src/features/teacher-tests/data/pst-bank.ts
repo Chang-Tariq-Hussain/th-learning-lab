@@ -13,10 +13,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The brain of the computer is the:",
   "passage": null,
   "options": [
-   "printer",
-   "CPU",
    "keyboard",
-   "monitor"
+   "CPU",
+   "monitor",
+   "printer"
   ],
   "correctAnswer": 1,
   "explanation": "The central processing unit executes instructions.",
@@ -46,8 +46,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "printer",
-   "speaker",
    "monitor",
+   "speaker",
    "keyboard"
   ],
   "correctAnswer": 3,
@@ -140,9 +140,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "binary",
+   "roman",
    "octal only",
-   "decimal",
-   "roman"
+   "decimal"
   ],
   "correctAnswer": 0,
   "explanation": "Computers store and process data as 0s and 1s.",
@@ -203,8 +203,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which part of the computer is also called its 'main memory'?",
   "passage": null,
   "options": [
-   "CPU cache only",
    "hard disk",
+   "CPU cache only",
    "ROM only",
    "RAM"
   ],
@@ -236,9 +236,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "the main circuit board of the computer",
-   "a storage disk",
+   "a type of monitor",
    "a type of software",
-   "a type of monitor"
+   "a storage disk"
   ],
   "correctAnswer": 0,
   "explanation": "All major components connect to it.",
@@ -267,10 +267,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Microsoft Word is an example of:",
   "passage": null,
   "options": [
-   "hardware",
+   "system software",
    "application software",
    "firmware",
-   "system software"
+   "hardware"
   ],
   "correctAnswer": 1,
   "explanation": "Word is an application program for writing documents.",
@@ -300,9 +300,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "operating system",
+   "Adobe Photoshop",
    "a web browser",
-   "Microsoft Excel",
-   "Adobe Photoshop"
+   "Microsoft Excel"
   ],
   "correctAnswer": 0,
   "explanation": "System software manages the hardware and runs other programs.",
@@ -331,10 +331,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is an operating system?",
   "passage": null,
   "options": [
-   "Word",
    "Chrome",
+   "Excel",
    "Windows",
-   "Excel"
+   "Word"
   ],
   "correctAnswer": 2,
   "explanation": "Windows is an operating system.",
@@ -427,9 +427,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which device is used to convert a paper document into a digital image?",
   "passage": null,
   "options": [
+   "joystick",
    "projector",
    "plotter",
-   "joystick",
    "scanner"
   ],
   "correctAnswer": 3,
@@ -493,8 +493,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "hard disk",
    "DVD",
-   "CD",
-   "floppy disk"
+   "floppy disk",
+   "CD"
   ],
   "correctAnswer": 0,
   "explanation": "Modern hard disks store hundreds of gigabytes to terabytes.",
@@ -523,8 +523,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "WWW stands for:",
   "passage": null,
   "options": [
-   "Web World Wide",
    "World Web Window",
+   "Web World Wide",
    "Wide World Web",
    "World Wide Web"
   ],
@@ -588,8 +588,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "@",
-   "#",
    "%",
+   "#",
    "&"
   ],
   "correctAnswer": 0,
@@ -619,9 +619,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A network that covers a small area such as a school is a:",
   "passage": null,
   "options": [
-   "PAN only",
-   "MAN",
    "WAN",
+   "MAN",
+   "PAN only",
    "LAN"
   ],
   "correctAnswer": 3,
@@ -652,9 +652,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "PowerPoint",
-   "Paint",
+   "Word",
    "Excel",
-   "Word"
+   "Paint"
   ],
   "correctAnswer": 2,
   "explanation": "Excel is a spreadsheet program.",
@@ -683,9 +683,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which program is used to make presentations?",
   "passage": null,
   "options": [
-   "Notepad",
-   "PowerPoint",
    "Excel",
+   "PowerPoint",
+   "Notepad",
    "Access"
   ],
   "correctAnswer": 1,
@@ -747,8 +747,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "In Excel, a cell address is given by:",
   "passage": null,
   "options": [
-   "a file name",
    "a row number only",
+   "a file name",
    "a sheet name only",
    "a column letter and a row number"
   ],
@@ -811,10 +811,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is the best password?",
   "passage": null,
   "options": [
-   "your date of birth",
-   "a mix of letters, numbers and symbols",
    "your name",
-   "12345"
+   "a mix of letters, numbers and symbols",
+   "12345",
+   "your date of birth"
   ],
   "correctAnswer": 1,
   "explanation": "A long mixed password is harder to guess.",
@@ -876,8 +876,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "old",
-   "fragile",
    "empty",
+   "fragile",
    "modern"
   ],
   "correctAnswer": 0,
@@ -907,9 +907,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the synonym of 'brave'.",
   "passage": null,
   "options": [
+   "careless",
    "gentle",
    "timid",
-   "careless",
    "courageous"
   ],
   "correctAnswer": 3,
@@ -939,10 +939,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which word means the same as 'huge'?",
   "passage": null,
   "options": [
-   "distant",
+   "narrow",
    "enormous",
-   "ordinary",
-   "narrow"
+   "distant",
+   "ordinary"
   ],
   "correctAnswer": 1,
   "explanation": "Huge and enormous both mean extremely large.",
@@ -969,10 +969,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The synonym of 'begin' is:",
   "passage": null,
   "options": [
-   "avoid",
+   "delay",
    "conclude",
    "commence",
-   "delay"
+   "avoid"
   ],
   "correctAnswer": 2,
   "explanation": "To commence is to begin.",
@@ -1032,8 +1032,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "wealthy",
-   "talkative",
    "forgetful",
+   "talkative",
    "hardworking"
   ],
   "correctAnswer": 3,
@@ -1128,9 +1128,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "plentiful",
-   "limited",
+   "ancient",
    "useless",
-   "ancient"
+   "limited"
   ],
   "correctAnswer": 0,
   "explanation": "Abundant means existing in large quantities, i.e. plentiful.",
@@ -1160,9 +1160,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "defeat",
-   "win",
+   "success",
    "triumph",
-   "success"
+   "win"
   ],
   "correctAnswer": 0,
   "explanation": "Victory is winning; its opposite is defeat.",
@@ -1191,10 +1191,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The opposite of 'expand' is:",
   "passage": null,
   "options": [
-   "spread",
-   "shrink",
    "grow",
-   "stretch"
+   "shrink",
+   "stretch",
+   "spread"
   ],
   "correctAnswer": 1,
   "explanation": "To expand is to become larger; to shrink is to become smaller.",
@@ -1252,9 +1252,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "historic",
-   "old",
+   "dusty",
    "modern",
-   "dusty"
+   "old"
   ],
   "correctAnswer": 2,
   "explanation": "Ancient means very old; modern means of the present time.",
@@ -1284,9 +1284,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "opaque",
-   "thin",
    "clear",
-   "bright"
+   "bright",
+   "thin"
   ],
   "correctAnswer": 0,
   "explanation": "A transparent material lets light through; an opaque one does not.",
@@ -1315,9 +1315,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the antonym of 'temporary'.",
   "passage": null,
   "options": [
-   "sudden",
-   "partial",
    "brief",
+   "partial",
+   "sudden",
    "permanent"
   ],
   "correctAnswer": 3,
@@ -1347,10 +1347,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A person who writes books is called a(n):",
   "passage": null,
   "options": [
+   "reader",
    "publisher",
-   "editor",
    "author",
-   "reader"
+   "editor"
   ],
   "correctAnswer": 2,
   "explanation": "An author is the writer of a book.",
@@ -1377,9 +1377,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A place where books are kept for borrowing is a:",
   "passage": null,
   "options": [
-   "stationery shop",
-   "library",
    "museum",
+   "library",
+   "stationery shop",
    "laboratory"
   ],
   "correctAnswer": 1,
@@ -1407,9 +1407,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the plural of 'child'?",
   "passage": null,
   "options": [
-   "childrens",
    "childes",
    "childs",
+   "childrens",
    "children"
   ],
   "correctAnswer": 3,
@@ -1439,10 +1439,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which word is spelled correctly?",
   "passage": null,
   "options": [
-   "neccesary",
+   "neccessary",
    "necessary",
-   "necesary",
-   "neccessary"
+   "neccesary",
+   "necesary"
   ],
   "correctAnswer": 1,
   "explanation": "Necessary has one c and two s's.",
@@ -1471,10 +1471,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which word is spelled correctly?",
   "passage": null,
   "options": [
+   "seprate",
    "separete",
-   "seperate",
    "separate",
-   "seprate"
+   "seperate"
   ],
   "correctAnswer": 2,
   "explanation": "The correct spelling is s-e-p-a-r-a-t-e; the middle is 'para', not 'per'.",
@@ -1503,10 +1503,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "One who studies the stars:",
   "passage": null,
   "options": [
-   "astrologer",
-   "astronomer",
    "botanist",
-   "geologist"
+   "astronomer",
+   "geologist",
+   "astrologer"
   ],
   "correctAnswer": 1,
   "explanation": "An astronomer studies stars and planets scientifically.",
@@ -1536,9 +1536,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "illiterate",
-   "ignorant",
    "innocent",
-   "invalid"
+   "invalid",
+   "ignorant"
   ],
   "correctAnswer": 0,
   "explanation": "Illiterate means unable to read or write.",
@@ -1565,10 +1565,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A doctor who treats children:",
   "passage": null,
   "options": [
-   "dentist",
+   "physician",
    "surgeon",
    "paediatrician",
-   "physician"
+   "dentist"
   ],
   "correctAnswer": 2,
   "explanation": "A paediatrician is a children's doctor.",
@@ -1597,10 +1597,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A person who lives for a long time in a foreign land is a(n):",
   "passage": null,
   "options": [
-   "traveller",
-   "expatriate",
    "emigrant's child",
-   "tourist"
+   "expatriate",
+   "tourist",
+   "traveller"
   ],
   "correctAnswer": 1,
   "explanation": "An expatriate lives outside their home country.",
@@ -1629,9 +1629,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A speech made without preparation:",
   "passage": null,
   "options": [
-   "sermon",
-   "monologue",
    "lecture",
+   "monologue",
+   "sermon",
    "extempore"
   ],
   "correctAnswer": 3,
@@ -1661,10 +1661,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "'A piece of cake' means:",
   "passage": null,
   "options": [
-   "something expensive",
-   "something very easy",
    "a lucky gift",
-   "a small dessert"
+   "something very easy",
+   "a small dessert",
+   "something expensive"
   ],
   "correctAnswer": 1,
   "explanation": "The idiom describes a task that is very easy.",
@@ -1694,9 +1694,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "to start a conversation in a friendly way",
+   "to feel very cold",
    "to damage something",
-   "to end a friendship",
-   "to feel very cold"
+   "to end a friendship"
   ],
   "correctAnswer": 0,
   "explanation": "Breaking the ice means easing initial awkwardness between people.",
@@ -1724,9 +1724,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "at midnight",
-   "very often",
+   "every night",
    "very rarely",
-   "every night"
+   "very often"
   ],
   "correctAnswer": 2,
   "explanation": "The phrase means something that happens only rarely.",
@@ -1755,9 +1755,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "'To let the cat out of the bag' means:",
   "passage": null,
   "options": [
+   "to make a big mistake in a shop",
    "to lose one's temper",
    "to free an animal",
-   "to make a big mistake in a shop",
    "to reveal a secret by mistake"
   ],
   "correctAnswer": 3,
@@ -1787,10 +1787,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "'To beat around the bush' means:",
   "passage": null,
   "options": [
-   "to hit a plant",
-   "to avoid coming to the point",
    "to hurry up",
-   "to search carefully"
+   "to avoid coming to the point",
+   "to search carefully",
+   "to hit a plant"
   ],
   "correctAnswer": 1,
   "explanation": "The idiom means speaking indirectly instead of getting to the main issue.",
@@ -1819,10 +1819,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "She ___ to school every day.",
   "passage": null,
   "options": [
-   "go",
+   "going",
    "goes",
    "gone",
-   "going"
+   "go"
   ],
   "correctAnswer": 1,
   "explanation": "A singular third-person subject takes -s in the simple present: she goes.",
@@ -1851,9 +1851,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "They ___ football when it started to rain.",
   "passage": null,
   "options": [
-   "have played",
-   "play",
    "are playing",
+   "play",
+   "have played",
    "were playing"
   ],
   "correctAnswer": 3,
@@ -1882,9 +1882,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "finish",
-   "will finish",
+   "am finishing",
    "finished",
-   "am finishing"
+   "will finish"
   ],
   "correctAnswer": 2,
   "explanation": "'Yesterday' signals the simple past: finished.",
@@ -1914,9 +1914,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "had left",
+   "has left",
    "was leaving",
-   "leaves",
-   "has left"
+   "leaves"
   ],
   "correctAnswer": 0,
   "explanation": "The train left before we arrived, so the earlier past action takes the past perfect.",
@@ -1945,8 +1945,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "He ___ in this city since 2015.",
   "passage": null,
   "options": [
-   "lives",
    "is living",
+   "lives",
    "has lived",
    "lived"
   ],
@@ -1978,8 +1978,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "no article",
-   "a",
    "the",
+   "a",
    "an"
   ],
   "correctAnswer": 3,
@@ -2009,9 +2009,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "He bought ___ umbrella.",
   "passage": null,
   "options": [
-   "no article",
-   "an",
    "a",
+   "an",
+   "no article",
    "the"
   ],
   "correctAnswer": 1,
@@ -2039,10 +2039,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "___ sun rises in the east.",
   "passage": null,
   "options": [
-   "A",
    "No article",
+   "An",
    "The",
-   "An"
+   "A"
   ],
   "correctAnswer": 2,
   "explanation": "There is only one sun, so we use 'the'.",
@@ -2072,9 +2072,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "a",
-   "an",
+   "no article",
    "the",
-   "no article"
+   "an"
   ],
   "correctAnswer": 0,
   "explanation": "'European' begins with a /j/ sound, so 'a' is used.",
@@ -2104,9 +2104,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "on",
+   "by",
    "at",
-   "in",
-   "by"
+   "in"
   ],
   "correctAnswer": 0,
   "explanation": "A book resting on a surface is 'on' the table.",
@@ -2165,9 +2165,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "We will meet ___ Monday.",
   "passage": null,
   "options": [
-   "at",
    "in",
    "by",
+   "at",
    "on"
   ],
   "correctAnswer": 3,
@@ -2197,8 +2197,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "He has been waiting ___ two hours.",
   "passage": null,
   "options": [
-   "since",
    "during",
+   "since",
    "for",
    "from"
   ],
@@ -2231,8 +2231,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "from",
    "by",
-   "to",
-   "with"
+   "with",
+   "to"
   ],
   "correctAnswer": 1,
   "explanation": "The agent of a passive action is introduced by 'by'.",
@@ -2261,10 +2261,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Ali and ___ went to the market.",
   "passage": null,
   "options": [
-   "my",
+   "mine",
    "I",
    "me",
-   "mine"
+   "my"
   ],
   "correctAnswer": 1,
   "explanation": "'Ali and I' is the subject of the sentence, so the subject pronoun is used.",
@@ -2291,9 +2291,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "This pen belongs to me. It is ___ .",
   "passage": null,
   "options": [
-   "me",
-   "I",
    "my",
+   "I",
+   "me",
    "mine"
   ],
   "correctAnswer": 3,
@@ -2324,8 +2324,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "her",
-   "herself",
    "hers",
+   "herself",
    "she"
   ],
   "correctAnswer": 0,
@@ -2356,8 +2356,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "heaviest",
-   "heavy",
    "more heavy",
+   "heavy",
    "heavier"
   ],
   "correctAnswer": 3,
@@ -2388,9 +2388,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "She is the taller girl in the class.",
-   "She is tallest girl of the class.",
+   "She is most tall girl in the class.",
    "She is the tallest girl in the class.",
-   "She is most tall girl in the class."
+   "She is tallest girl of the class."
   ],
   "correctAnswer": 2,
   "explanation": "A superlative needs 'the' and the -est form: the tallest.",
@@ -2419,10 +2419,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "He runs very ___.",
   "passage": null,
   "options": [
-   "more fastly",
+   "faster than",
    "fast",
    "fastly",
-   "faster than"
+   "more fastly"
   ],
   "correctAnswer": 1,
   "explanation": "'Fast' is both an adjective and an adverb; 'fastly' is not a word.",
@@ -2451,9 +2451,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "She sings ___.",
   "passage": null,
   "options": [
-   "beautify",
-   "beautiful",
    "beauty",
+   "beautiful",
+   "beautify",
    "beautifully"
   ],
   "correctAnswer": 3,
@@ -2483,9 +2483,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The boys ___ playing in the garden.",
   "passage": null,
   "options": [
-   "has",
    "was",
    "is",
+   "has",
    "are"
   ],
   "correctAnswer": 3,
@@ -2517,8 +2517,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "were",
    "is",
-   "has been",
-   "was"
+   "was",
+   "has been"
   ],
   "correctAnswer": 0,
   "explanation": "With 'neither ... nor' the verb agrees with the nearer subject (friends, plural).",
@@ -2580,9 +2580,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "She doesn't like tea.",
-   "She doesn't likes tea.",
    "She don't like tea.",
-   "She not like tea."
+   "She not like tea.",
+   "She doesn't likes tea."
   ],
   "correctAnswer": 0,
   "explanation": "With a singular subject the auxiliary is 'doesn't', followed by the base verb.",
@@ -2613,8 +2613,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "He has went to the market.",
    "He has gone to the market.",
-   "He have gone to the market.",
-   "He is gone to the market yesterday."
+   "He is gone to the market yesterday.",
+   "He have gone to the market."
   ],
   "correctAnswer": 1,
   "explanation": "The present perfect is 'has' plus the past participle 'gone'.",
@@ -2643,9 +2643,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Change to passive: 'Ali wrote a letter.'",
   "passage": null,
   "options": [
+   "A letter wrote by Ali.",
    "A letter is written by Ali.",
    "A letter has written by Ali.",
-   "A letter wrote by Ali.",
    "A letter was written by Ali."
   ],
   "correctAnswer": 3,
@@ -2676,9 +2676,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "A bridge is being built by them.",
-   "A bridge is built by them.",
+   "A bridge has been built by them.",
    "A bridge was being built by them.",
-   "A bridge has been built by them."
+   "A bridge is built by them."
   ],
   "correctAnswer": 0,
   "explanation": "Present continuous active becomes 'is/are being + past participle'.",
@@ -2708,9 +2708,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "He said that he was happy.",
-   "He says that he was happy.",
+   "He said that I was happy.",
    "He said that he is happy.",
-   "He said that I was happy."
+   "He says that he was happy."
   ],
   "correctAnswer": 0,
   "explanation": "In reported speech the present tense moves back to the past and the pronoun changes to match.",
@@ -2739,10 +2739,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Change to indirect speech: She said, \"I will come tomorrow.\"",
   "passage": null,
   "options": [
-   "She said that she will come tomorrow.",
+   "She said that she would come tomorrow.",
    "She said that I would come the next day.",
    "She said that she would come the next day.",
-   "She said that she would come tomorrow."
+   "She said that she will come tomorrow."
   ],
   "correctAnswer": 2,
   "explanation": "'Will' becomes 'would' and 'tomorrow' becomes 'the next day' in reported speech.",
@@ -2771,8 +2771,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "In the sentence 'The quick fox jumps', the word 'quick' is a(n):",
   "passage": null,
   "options": [
-   "noun",
    "adverb",
+   "noun",
    "adjective",
    "verb"
   ],
@@ -2803,10 +2803,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which word is a conjunction?",
   "passage": null,
   "options": [
-   "table",
+   "slowly",
    "but",
-   "under",
-   "slowly"
+   "table",
+   "under"
   ],
   "correctAnswer": 1,
   "explanation": "'But' joins words or clauses.",
@@ -2833,9 +2833,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which word is a noun?",
   "passage": null,
   "options": [
-   "happily",
-   "happier",
    "happy",
+   "happier",
+   "happily",
    "happiness"
   ],
   "correctAnswer": 3,
@@ -2866,9 +2866,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "adverb",
+   "noun",
    "adjective",
-   "preposition",
-   "noun"
+   "preposition"
   ],
   "correctAnswer": 0,
   "explanation": "It describes how she sings, so it is an adverb of manner.",
@@ -2899,8 +2899,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "because of",
    "because",
-   "so that",
-   "although"
+   "although",
+   "so that"
   ],
   "correctAnswer": 0,
   "explanation": "'Because of' is followed by a noun phrase (the heavy traffic).",
@@ -2954,19 +2954,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0001",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Which Surah of the Quran mentions the event of Miraj (the Ascension)?",
   "passage": null,
   "options": [
-   "Surah Al-Isra",
    "Surah Al-Baqarah",
-   "Surah Al-Mulk",
-   "Surah Al-Ahzab"
+   "Surah Al-Ahzab",
+   "Surah Al-Isra",
+   "Surah Al-Mulk"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Surah Al-Isra (17:1) opens with the night journey of the Prophet from Masjid al-Haram to Masjid al-Aqsa.",
   "subject": "Islamiat",
   "topic": "Quran",
@@ -2993,12 +2991,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "She showed a blatant disregard for the rules. (Synonym of the underlined word 'blatant')",
   "passage": null,
   "options": [
-   "Last-minute",
    "Obvious",
+   "Last-minute",
    "Rebellious",
    "Hidden"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Blatant means done openly and unashamedly, i.e. obvious.",
   "subject": "English",
   "topic": "Synonyms",
@@ -3025,12 +3023,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A person who can speak two languages fluently is called:",
   "passage": null,
   "options": [
-   "interpreter",
-   "polyglot",
    "linguist",
-   "bilingual"
+   "polyglot",
+   "bilingual",
+   "interpreter"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Bilingual = speaking two languages; a polyglot knows many; a linguist studies language.",
   "subject": "English",
   "topic": "One-Word Substitution",
@@ -3058,8 +3056,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Permanent",
-   "Transitory",
    "Momentary",
+   "Transitory",
    "Fleeting"
   ],
   "correctAnswer": 0,
@@ -3089,12 +3087,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The settlers found an ideal location with plenty of ___ land for farming and a mountain stream for fresh water and irrigation.",
   "passage": null,
   "options": [
+   "Arable",
    "Quaint",
-   "Arid",
    "Saline",
-   "Arable"
+   "Arid"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Arable land is fit for growing crops.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -3121,12 +3119,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "His moral decadence was marked by his ______ from the ways of integrity and honesty.",
   "passage": null,
   "options": [
-   "Opprobrium",
-   "Declivity",
    "Departure",
-   "Obsession"
+   "Obsession",
+   "Opprobrium",
+   "Declivity"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "'Departure from' the ways of integrity fits the sense and the preposition.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -3153,12 +3151,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Identify the sentence with a semantic error.",
   "passage": null,
   "options": [
-   "The dog chased its tail with a spoon.",
-   "The author is writing the book.",
    "The rain is falling downwards.",
+   "The author is writing the book.",
+   "The dog chased its tail with a spoon.",
    "The sun is shining in the sky."
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "A dog chasing its tail 'with a spoon' is illogical; the other sentences are meaningful.",
   "subject": "English",
   "topic": "Sentence Correction",
@@ -3185,12 +3183,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of the following sentences is grammatically correct?",
   "passage": null,
   "options": [
-   "Me and my friends went to the movie.",
-   "I and my friends went to the movie.",
    "My friends and me went to the movie.",
-   "My friends and I went to the movie."
+   "My friends and I went to the movie.",
+   "Me and my friends went to the movie.",
+   "I and my friends went to the movie."
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'My friends and I' is the correct subject form, with the speaker named last.",
   "subject": "English",
   "topic": "Grammar",
@@ -3217,12 +3215,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is an example of a subordinate clause?",
   "passage": null,
   "options": [
-   "Because I like pizza",
-   "I like pizza",
    "I ate pizza for dinner",
-   "Pizza is my favorite food"
+   "I like pizza",
+   "Pizza is my favorite food",
+   "Because I like pizza"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "A subordinate clause cannot stand alone; 'Because I like pizza' needs a main clause.",
   "subject": "English",
   "topic": "Grammar",
@@ -3249,12 +3247,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which sentence uses the correct adjective form?",
   "passage": null,
   "options": [
-   "The movie was scary than I expected",
-   "The movie was scare than I expected",
    "The movie was scarier than I expected",
-   "The movie was more scarier than I expected"
+   "The movie was scary than I expected",
+   "The movie was more scarier than I expected",
+   "The movie was scare than I expected"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The comparative of 'scary' is 'scarier'; 'more scarier' is a double comparative.",
   "subject": "English",
   "topic": "Grammar",
@@ -3281,12 +3279,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct sentence:",
   "passage": null,
   "options": [
+   "All which glitters is not gold",
    "All that is glittering is not gold",
-   "All that glitters is not gold",
    "All that is glitters is not gold",
-   "All which glitters is not gold"
+   "All that glitters is not gold"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The proverb is 'All that glitters is not gold'.",
   "subject": "English",
   "topic": "Grammar",
@@ -3313,12 +3311,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "He writes ______ red ink.",
   "passage": null,
   "options": [
-   "By",
-   "Of",
    "In",
-   "With"
+   "Of",
+   "With",
+   "By"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "'In red ink' is the idiomatic phrase for the medium or colour used.",
   "subject": "English",
   "topic": "Prepositions",
@@ -3345,12 +3343,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Forty winks means:",
   "passage": null,
   "options": [
-   "A dream or vision",
-   "A long, deep sleep",
    "A period of wakefulness",
-   "A short nap or brief period of sleep"
+   "A dream or vision",
+   "A short nap or brief period of sleep",
+   "A long, deep sleep"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "'Forty winks' is a short nap.",
   "subject": "English",
   "topic": "Idioms",
@@ -3377,12 +3375,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the sentence with a Proper Adjective.",
   "passage": null,
   "options": [
-   "He showed much patience",
-   "I ate some rice",
    "He has lost all his strength",
-   "French wines are not available here"
+   "French wines are not available here",
+   "He showed much patience",
+   "I ate some rice"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'French' is derived from the proper noun France, so it is a proper adjective.",
   "subject": "English",
   "topic": "Parts of Speech",
@@ -3409,12 +3407,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Where is Hingol National Park located?",
   "passage": null,
   "options": [
-   "Punjab",
    "Sindh",
-   "Khyber Pakhtunkhwa",
-   "Balochistan"
+   "Punjab",
+   "Balochistan",
+   "Khyber Pakhtunkhwa"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Hingol National Park, Pakistan's largest, lies along the Makran coast in Balochistan.",
   "subject": "Social Studies",
   "topic": "Pakistan Geography",
@@ -3434,19 +3432,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0002",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Holy Prophet Muhammad (SAW) belonged to which tribe?",
   "passage": null,
   "options": [
-   "Banu Umayyah",
    "Quraysh",
-   "Makkan tribe of Banu Makki",
-   "Khazraj"
+   "Banu Umayyah",
+   "Khazraj",
+   "Makkan tribe of Banu Makki"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "The Prophet (SAW) belonged to the Banu Hashim clan of the Quraysh of Makkah. Banu Umayyah was a different clan of Quraysh; 'Makki' only means 'of Makkah'.",
   "subject": "Islamiat",
   "topic": "Seerah",
@@ -3466,19 +3462,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0003",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Which night does the Holy Quran describe as better than a thousand months?",
   "passage": null,
   "options": [
-   "Laylat-ul-Qadr",
-   "Night of Bara'at",
    "Night of Eid-ul-Fitr",
-   "Night of Miraj"
+   "Night of Miraj",
+   "Night of Bara'at",
+   "Laylat-ul-Qadr"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Surah Al-Qadr (97:3): 'The Night of Qadr is better than a thousand months.'",
   "subject": "Islamiat",
   "topic": "Quran",
@@ -3498,17 +3492,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0004",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Jewish tribe Banu Nadir lived in:",
   "passage": null,
   "options": [
-   "Yemen",
    "Makkah",
+   "Ta'if",
    "Madinah",
-   "Ta'if"
+   "Yemen"
   ],
   "correctAnswer": 2,
   "explanation": "Banu Nadir lived on the outskirts of Madinah and were expelled after breaking their agreement with the Prophet (SAW) in 4 AH.",
@@ -3530,19 +3522,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0005",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Which Surah is recited in every rak'at of the daily prayer (salah)?",
   "passage": null,
   "options": [
-   "Surah Yaseen",
-   "Surah Al-Baqarah",
    "Surah Al-Ikhlas",
-   "Surah Al-Fatiha"
+   "Surah Al-Fatiha",
+   "Surah Al-Baqarah",
+   "Surah Yaseen"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "The Prophet (SAW) said there is no prayer without Surah Al-Fatiha; it is recited in every rak'at.",
   "subject": "Islamiat",
   "topic": "Quran",
@@ -3562,17 +3552,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0006",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Hijri calendar was introduced during the caliphate of:",
   "passage": null,
   "options": [
    "Hazrat Umar (RA)",
    "Hazrat Abu Bakr (RA)",
-   "Hazrat Usman (RA)",
-   "Hazrat Ali (RA)"
+   "Hazrat Ali (RA)",
+   "Hazrat Usman (RA)"
   ],
   "correctAnswer": 0,
   "explanation": "Hazrat Umar (RA) fixed the Hijrah as the start of the Islamic calendar in about 17 AH, with Muharram as the first month.",
@@ -3601,12 +3589,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The children were ______ by the seemingly nonsensical clues until Kinan pointed out that the messages were in code.",
   "passage": null,
   "options": [
-   "Feigned",
-   "Perplexed",
    "Pondered",
-   "Censured"
+   "Censured",
+   "Perplexed",
+   "Feigned"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "'Perplexed' means confused, which fits clues that seemed nonsensical.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -3634,11 +3622,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Exorbitant",
-   "Nominal",
    "Bountiful",
-   "Substantive"
+   "Substantive",
+   "Nominal"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "A 'nominal' fee is a very small one; the other words suggest a large fee.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -3665,12 +3653,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "I know both of them are short ______ money because of their extravagant nature.",
   "passage": null,
   "options": [
-   "In",
-   "On",
    "With",
-   "Of"
+   "Of",
+   "In",
+   "On"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "The idiom is 'short of money'.",
   "subject": "English",
   "topic": "Prepositions",
@@ -3697,10 +3685,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the meaning of the word 'Morbid'?",
   "passage": null,
   "options": [
+   "Full of energy and vitality",
    "Cheerful and lively",
-   "Pure and innocent",
    "Related to death or disease",
-   "Full of energy and vitality"
+   "Pure and innocent"
   ],
   "correctAnswer": 2,
   "explanation": "Morbid means related to disease or death, or having an unhealthy interest in them.",
@@ -3729,12 +3717,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the sentence with an adverb of time.",
   "passage": null,
   "options": [
-   "The boy works hard",
    "He has spoken to him already",
    "The horse is running away",
+   "The boy works hard",
    "He is a good boy"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "'Already' tells when the action happened, so it is an adverb of time. 'Away' is an adverb of place and 'hard' an adverb of manner.",
   "subject": "English",
   "topic": "Parts of Speech",
@@ -3761,8 +3749,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Antonym of 'Benevolent':",
   "passage": null,
   "options": [
-   "Kind",
    "Generous",
+   "Kind",
    "Malevolent",
    "Charitable"
   ],
@@ -3793,10 +3781,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Her ______ remarks during the meeting offended several colleagues.",
   "passage": null,
   "options": [
-   "Tactful",
+   "Prudent",
    "Tactless",
-   "Gracious",
-   "Prudent"
+   "Tactful",
+   "Gracious"
   ],
   "correctAnswer": 1,
   "explanation": "Remarks that offend are tactless.",
@@ -3825,12 +3813,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The committee's decision was ______; no member voted against it.",
   "passage": null,
   "options": [
-   "Unanimous",
    "Ambiguous",
    "Contentious",
+   "Unanimous",
    "Tentative"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Unanimous means agreed by all.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -3857,12 +3845,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "'A blessing in disguise' means:",
   "passage": null,
   "options": [
+   "A misfortune that turns out to be beneficial",
    "A hidden curse",
-   "A prayer said in secret",
    "A costume party",
-   "A misfortune that turns out to be beneficial"
+   "A prayer said in secret"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "It describes something that seems bad at first but proves good.",
   "subject": "English",
   "topic": "Idioms",
@@ -3889,12 +3877,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "'Once in a blue moon' means:",
   "passage": null,
   "options": [
-   "Very frequently",
-   "Very rarely",
    "Only at night",
-   "Every month"
+   "Very frequently",
+   "Every month",
+   "Very rarely"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The idiom means something that happens very rarely.",
   "subject": "English",
   "topic": "Idioms",
@@ -3921,12 +3909,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "She has been absent ______ school for three days.",
   "passage": null,
   "options": [
-   "from",
-   "at",
+   "of",
    "to",
-   "of"
+   "from",
+   "at"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "'Absent from' is the correct collocation.",
   "subject": "English",
   "topic": "Prepositions",
@@ -3953,12 +3941,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A person who knows everything is called:",
   "passage": null,
   "options": [
-   "Omnipotent",
    "Omniscient",
+   "Omnivorous",
    "Omnipresent",
-   "Omnivorous"
+   "Omnipotent"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Omniscient = all-knowing; omnipotent = all-powerful; omnipresent = present everywhere.",
   "subject": "English",
   "topic": "One-Word Substitution",
@@ -3984,10 +3972,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Why is the mitochondrion called the 'powerhouse' of the cell?",
   "passage": null,
   "options": [
-   "It helps in cell division",
+   "It synthesizes proteins",
    "It stores genetic material",
    "It generates energy in the form of ATP",
-   "It synthesizes proteins"
+   "It helps in cell division"
   ],
   "correctAnswer": 2,
   "explanation": "Mitochondria carry out aerobic respiration and release most of the cell's ATP.",
@@ -4015,12 +4003,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which vitamin is synthesised in the skin on exposure to sunlight?",
   "passage": null,
   "options": [
-   "Vitamin D",
    "Vitamin K",
    "Vitamin A",
-   "Vitamin C"
+   "Vitamin C",
+   "Vitamin D"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Ultraviolet B converts 7-dehydrocholesterol in the skin into vitamin D3.",
   "subject": "Science",
   "topic": "Biology Basics",
@@ -4047,12 +4035,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The 'Princess of Hope' rock formation is located in:",
   "passage": null,
   "options": [
-   "Khyber Pakhtunkhwa",
+   "Balochistan",
    "Punjab",
    "Sindh",
-   "Balochistan"
+   "Khyber Pakhtunkhwa"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "It lies in the Hingol National Park area on the Makran Coastal Highway in Balochistan.",
   "subject": "Social Studies",
   "topic": "Pakistan Geography",
@@ -4072,19 +4060,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0007",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "How many Surahs (chapters) are there in the Holy Quran?",
   "passage": null,
   "options": [
-   "99",
-   "114",
    "120",
-   "110"
+   "99",
+   "110",
+   "114"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The Quran has 114 Surahs.",
   "subject": "Islamiat",
   "topic": "Quran",
@@ -4104,16 +4090,14 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0008",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Which is the longest Surah of the Quran?",
   "passage": null,
   "options": [
-   "Al-Kahf",
-   "Al-Baqarah",
    "An-Nisa",
+   "Al-Baqarah",
+   "Al-Kahf",
    "Al-Imran"
   ],
   "correctAnswer": 1,
@@ -4141,12 +4125,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The first Surah of the Quran is:",
   "passage": null,
   "options": [
-   "Al-Fatiha",
+   "Al-Baqarah",
    "An-Nas",
-   "Al-Ikhlas",
-   "Al-Baqarah"
+   "Al-Fatiha",
+   "Al-Ikhlas"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Al-Fatiha, the Opening, begins the Quran.",
   "subject": "Islamiat",
   "topic": "Quran",
@@ -4166,19 +4150,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0010",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The shortest Surah of the Quran is:",
   "passage": null,
   "options": [
-   "An-Nasr",
-   "Al-Ikhlas",
    "Al-Asr",
-   "Al-Kawthar"
+   "Al-Kawthar",
+   "An-Nasr",
+   "Al-Ikhlas"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Al-Kawthar has only three verses.",
   "subject": "Islamiat",
   "topic": "Quran",
@@ -4198,19 +4180,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0011",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The first revelation to the Holy Prophet (PBUH) was the opening verses of Surah:",
   "passage": null,
   "options": [
-   "Al-Muzzammil",
-   "Al-Muddaththir",
    "Al-Alaq",
-   "Al-Fatiha"
+   "Al-Muddaththir",
+   "Al-Fatiha",
+   "Al-Muzzammil"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Iqra (Read) in Surah Al-Alaq was revealed first in the Cave of Hira.",
   "subject": "Islamiat",
   "topic": "Quran",
@@ -4230,19 +4210,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0012",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Ayat-ul-Kursi is a verse of Surah:",
   "passage": null,
   "options": [
-   "Al-Baqarah",
+   "Al-Imran",
    "Yasin",
    "An-Nur",
-   "Al-Imran"
+   "Al-Baqarah"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "It is verse 255 of Surah Al-Baqarah.",
   "subject": "Islamiat",
   "topic": "Quran",
@@ -4262,16 +4240,14 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0013",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Quran was first compiled in book form during the caliphate of:",
   "passage": null,
   "options": [
+   "Hazrat Uthman (RA)",
    "Hazrat Umar (RA)",
    "Hazrat Ali (RA)",
-   "Hazrat Uthman (RA)",
    "Hazrat Abu Bakr (RA)"
   ],
   "correctAnswer": 3,
@@ -4294,17 +4270,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0014",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The sayings of the Holy Prophet (PBUH) are called:",
   "passage": null,
   "options": [
-   "Seerah",
+   "Fiqh",
    "Tafsir",
    "Hadith",
-   "Fiqh"
+   "Seerah"
   ],
   "correctAnswer": 2,
   "explanation": "Hadith are the recorded sayings, actions and approvals of the Prophet.",
@@ -4326,19 +4300,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0015",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Which compiler of Hadith wrote 'Sahih al-Bukhari'?",
   "passage": null,
   "options": [
-   "Imam Abu Dawud",
    "Imam Bukhari",
+   "Imam Abu Dawud",
    "Imam Muslim",
    "Imam Tirmidhi"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Imam Muhammad bin Ismail al-Bukhari compiled it.",
   "subject": "Islamiat",
   "topic": "Hadith",
@@ -4358,19 +4330,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0016",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "According to a Hadith, 'cleanliness is':",
   "passage": null,
   "options": [
    "an optional virtue",
-   "the first duty",
    "half of faith",
+   "the first duty",
    "a part of Hajj"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "The Prophet (PBUH) said cleanliness is half of faith.",
   "subject": "Islamiat",
   "topic": "Hadith",
@@ -4390,17 +4360,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0017",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Holy Prophet (PBUH) was born in the city of:",
   "passage": null,
   "options": [
-   "Madinah",
+   "Taif",
    "Makkah",
    "Jerusalem",
-   "Taif"
+   "Madinah"
   ],
   "correctAnswer": 1,
   "explanation": "The Prophet was born in Makkah in the Year of the Elephant.",
@@ -4422,19 +4390,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0018",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The mother of the Holy Prophet (PBUH) was:",
   "passage": null,
   "options": [
-   "Hazrat Aisha",
-   "Hazrat Halima",
+   "Hazrat Amina",
    "Hazrat Khadija",
-   "Hazrat Amina"
+   "Hazrat Halima",
+   "Hazrat Aisha"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "His mother was Amina bint Wahb.",
   "subject": "Islamiat",
   "topic": "Seerah",
@@ -4459,9 +4425,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The Holy Prophet (PBUH) migrated from Makkah to:",
   "passage": null,
   "options": [
-   "Damascus",
    "Taif",
    "Jeddah",
+   "Damascus",
    "Madinah"
   ],
   "correctAnswer": 3,
@@ -4484,19 +4450,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0020",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Prophet (PBUH) was given the titles Sadiq and Amin for his:",
   "passage": null,
   "options": [
-   "bravery in battle",
-   "truthfulness and trustworthiness",
+   "poetry",
    "wealth and trade",
-   "poetry"
+   "truthfulness and trustworthiness",
+   "bravery in battle"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The Quraysh called him the Truthful and the Trustworthy before prophethood.",
   "subject": "Islamiat",
   "topic": "Seerah",
@@ -4516,9 +4480,7 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0021",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Holy Prophet (PBUH) received the first revelation at the age of:",
   "passage": null,
@@ -4548,19 +4510,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0022",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Who was the first Prophet of Islam?",
   "passage": null,
   "options": [
-   "Hazrat Adam (AS)",
-   "Hazrat Nuh (AS)",
    "Hazrat Musa (AS)",
+   "Hazrat Nuh (AS)",
+   "Hazrat Adam (AS)",
    "Hazrat Ibrahim (AS)"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Adam (AS) is the first Prophet.",
   "subject": "Islamiat",
   "topic": "Prophets",
@@ -4580,19 +4540,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0023",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The last Prophet of Allah is:",
   "passage": null,
   "options": [
-   "Hazrat Musa (AS)",
-   "Hazrat Isa (AS)",
+   "Hazrat Ibrahim (AS)",
    "Hazrat Muhammad (PBUH)",
-   "Hazrat Ibrahim (AS)"
+   "Hazrat Isa (AS)",
+   "Hazrat Musa (AS)"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Muhammad (PBUH) is the Seal of the Prophets.",
   "subject": "Islamiat",
   "topic": "Prophets",
@@ -4612,19 +4570,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0024",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Holy Book revealed to Hazrat Musa (AS) was the:",
   "passage": null,
   "options": [
+   "Zabur",
    "Injeel",
    "Sahifas",
-   "Torah (Taurat)",
-   "Zabur"
+   "Torah (Taurat)"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "The Torah was revealed to Musa; Zabur to Dawud; Injeel to Isa.",
   "subject": "Islamiat",
   "topic": "Prophets",
@@ -4644,19 +4600,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0025",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Which Prophet is known as 'Khalilullah' (friend of Allah)?",
   "passage": null,
   "options": [
+   "Hazrat Musa (AS)",
    "Hazrat Nuh (AS)",
-   "Hazrat Ibrahim (AS)",
    "Hazrat Yusuf (AS)",
-   "Hazrat Musa (AS)"
+   "Hazrat Ibrahim (AS)"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Ibrahim (AS) is called Khalilullah.",
   "subject": "Islamiat",
   "topic": "Prophets",
@@ -4676,19 +4630,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0026",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "How many pillars of Islam are there?",
   "passage": null,
   "options": [
-   "7",
    "4",
    "6",
-   "5"
+   "5",
+   "7"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The five are Shahada, Salah, Zakat, Sawm and Hajj.",
   "subject": "Islamiat",
   "topic": "Pillars of Islam",
@@ -4708,19 +4660,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0027",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Fasting in the month of Ramadan is called:",
   "passage": null,
   "options": [
    "Salah",
-   "Hajj",
    "Sawm",
+   "Hajj",
    "Zakat"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Sawm is the fast from dawn to sunset.",
   "subject": "Islamiat",
   "topic": "Pillars of Islam",
@@ -4770,19 +4720,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0029",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The number of Fard rakats in the Zuhr prayer is:",
   "passage": null,
   "options": [
-   "2",
    "4",
    "3",
-   "6"
+   "6",
+   "2"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Zuhr has four Fard rakats.",
   "subject": "Islamiat",
   "topic": "Pillars of Islam",
@@ -4802,19 +4750,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0030",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Zakat is generally due at the rate of:",
   "passage": null,
   "options": [
-   "10% of income",
-   "2.5% of eligible savings",
+   "1% of income",
    "20% of savings",
-   "1% of income"
+   "2.5% of eligible savings",
+   "10% of income"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The standard rate on eligible wealth held for a year is one-fortieth, i.e. 2.5%.",
   "subject": "Islamiat",
   "topic": "Pillars of Islam",
@@ -4834,19 +4780,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0031",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Hajj is performed in the month of:",
   "passage": null,
   "options": [
    "Muharram",
-   "Ramadan",
+   "Dhul Hijjah",
    "Rajab",
-   "Dhul Hijjah"
+   "Ramadan"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Hajj takes place from the 8th to 13th of Dhul Hijjah.",
   "subject": "Islamiat",
   "topic": "Pillars of Islam",
@@ -4866,19 +4810,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0032",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The belief in the Oneness of Allah is called:",
   "passage": null,
   "options": [
    "Qadr",
+   "Risalat",
    "Akhirah",
-   "Tawheed",
-   "Risalat"
+   "Tawheed"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Tawheed is the central belief of Islam.",
   "subject": "Islamiat",
   "topic": "Basic Beliefs",
@@ -4898,19 +4840,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0033",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The angel who brought revelation to the Prophets is:",
   "passage": null,
   "options": [
-   "Hazrat Azrael (AS)",
+   "Hazrat Mikail (AS)",
    "Hazrat Israfil (AS)",
-   "Hazrat Jibreel (AS)",
-   "Hazrat Mikail (AS)"
+   "Hazrat Azrael (AS)",
+   "Hazrat Jibreel (AS)"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Jibreel carried the revelation.",
   "subject": "Islamiat",
   "topic": "Basic Beliefs",
@@ -4930,19 +4870,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0034",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The angel who will blow the Trumpet on the Day of Judgement is:",
   "passage": null,
   "options": [
-   "Hazrat Jibreel (AS)",
    "Hazrat Mikail (AS)",
+   "Hazrat Israfil (AS)",
    "Hazrat Azrael (AS)",
-   "Hazrat Israfil (AS)"
+   "Hazrat Jibreel (AS)"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Israfil is the angel entrusted with the Trumpet.",
   "subject": "Islamiat",
   "topic": "Basic Beliefs",
@@ -4962,19 +4900,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0035",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Belief in life after death is called:",
   "passage": null,
   "options": [
-   "Risalat",
    "Akhirah",
+   "Risalat",
    "Qiyas",
    "Tawheed"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Akhirah is the belief in the Hereafter.",
   "subject": "Islamiat",
   "topic": "Basic Beliefs",
@@ -4994,19 +4930,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0036",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Islamic term for the call to prayer is:",
   "passage": null,
   "options": [
-   "Adhan",
    "Takbir",
-   "Khutbah",
-   "Iqamah"
+   "Iqamah",
+   "Adhan",
+   "Khutbah"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Adhan is the call announced before each prayer.",
   "subject": "Islamiat",
   "topic": "Islamic Terminology",
@@ -5026,19 +4960,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0037",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Islamic term for a person who has memorised the whole Quran is:",
   "passage": null,
   "options": [
-   "Qari",
-   "Imam",
    "Mufti",
-   "Hafiz"
+   "Hafiz",
+   "Imam",
+   "Qari"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "A Hafiz knows the whole Quran by heart.",
   "subject": "Islamiat",
   "topic": "Islamic Terminology",
@@ -5058,19 +4990,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0038",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Who was the first Caliph of Islam?",
   "passage": null,
   "options": [
-   "Hazrat Abu Bakr Siddiq (RA)",
-   "Hazrat Uthman (RA)",
+   "Hazrat Umar (RA)",
    "Hazrat Ali (RA)",
-   "Hazrat Umar (RA)"
+   "Hazrat Uthman (RA)",
+   "Hazrat Abu Bakr Siddiq (RA)"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Abu Bakr was the first of the Rightly Guided Caliphs.",
   "subject": "Islamiat",
   "topic": "Khulafa-e-Rashideen",
@@ -5090,19 +5020,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0039",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Who was the second Caliph of Islam, known as 'Al-Farooq'?",
   "passage": null,
   "options": [
+   "Hazrat Umar (RA)",
    "Hazrat Uthman (RA)",
-   "Hazrat Ali (RA)",
    "Hazrat Abu Bakr (RA)",
-   "Hazrat Umar (RA)"
+   "Hazrat Ali (RA)"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Umar ibn al-Khattab was called Al-Farooq, the one who distinguishes truth from falsehood.",
   "subject": "Islamiat",
   "topic": "Khulafa-e-Rashideen",
@@ -5122,19 +5050,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0040",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Which Caliph is known as 'Ghani' and 'Dhun-Nurayn'?",
   "passage": null,
   "options": [
+   "Hazrat Ali (RA)",
    "Hazrat Abu Bakr (RA)",
    "Hazrat Uthman (RA)",
-   "Hazrat Ali (RA)",
    "Hazrat Umar (RA)"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Uthman married two daughters of the Prophet (PBUH), hence Dhun-Nurayn.",
   "subject": "Islamiat",
   "topic": "Khulafa-e-Rashideen",
@@ -5154,19 +5080,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0041",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The first battle of Islam, fought in 2 AH, was the Battle of:",
   "passage": null,
   "options": [
-   "Khandaq",
-   "Badr",
    "Uhud",
-   "Hunain"
+   "Hunain",
+   "Badr",
+   "Khandaq"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Badr was fought on 17 Ramadan, 2 AH.",
   "subject": "Islamiat",
   "topic": "Important Islamic Events",
@@ -5186,19 +5110,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0042",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Sindh was conquered by Muhammad bin Qasim in:",
   "passage": null,
   "options": [
-   "1526 CE",
    "1186 CE",
    "712 CE",
-   "622 CE"
+   "622 CE",
+   "1526 CE"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Muhammad bin Qasim defeated Raja Dahir in 712 CE; Sindh is called Bab-ul-Islam.",
   "subject": "Islamiat",
   "topic": "Islamic History",
@@ -5218,19 +5140,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0043",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Which of the following is a quality of a true Muslim according to Islam?",
   "passage": null,
   "options": [
+   "backbiting",
    "lying",
-   "honesty",
    "cheating",
-   "backbiting"
+   "honesty"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Truthfulness is a basic Islamic virtue.",
   "subject": "Islamiat",
   "topic": "Islamic Ethics",
@@ -5250,19 +5170,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0044",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Islam teaches that neighbours have:",
   "passage": null,
   "options": [
-   "rights only if they are relatives",
    "rights over us",
+   "rights only if they are relatives",
    "no rights",
    "rights only if they are Muslim"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "The Prophet (PBUH) stressed good treatment of neighbours regardless of faith.",
   "subject": "Islamiat",
   "topic": "Islamic Ethics",
@@ -5289,12 +5207,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 456 + 289?",
   "passage": null,
   "options": [
-   "645",
    "735",
-   "745",
-   "755"
+   "755",
+   "645",
+   "745"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "456 + 289 = 745.",
   "subject": "Mathematics",
   "topic": "Basic Arithmetic",
@@ -5321,12 +5239,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 1000 - 357?",
   "passage": null,
   "options": [
-   "633",
-   "653",
    "743",
-   "643"
+   "643",
+   "633",
+   "653"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "1000 - 357 = 643.",
   "subject": "Mathematics",
   "topic": "Basic Arithmetic",
@@ -5351,12 +5269,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 12 x 15?",
   "passage": null,
   "options": [
-   "170",
    "180",
-   "190",
-   "160"
+   "160",
+   "170",
+   "190"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "12 x 15 = 180.",
   "subject": "Mathematics",
   "topic": "Basic Arithmetic",
@@ -5383,9 +5301,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Evaluate 8 + 6 x 3 - 4.",
   "passage": null,
   "options": [
+   "38",
    "18",
    "34",
-   "38",
    "22"
   ],
   "correctAnswer": 3,
@@ -5415,12 +5333,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A shopkeeper sold 3 dozen eggs and 7 eggs were broken. How many good eggs remain?",
   "passage": null,
   "options": [
-   "29",
-   "36",
+   "33",
    "27",
-   "33"
+   "29",
+   "36"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "3 dozen = 36 eggs; 36 - 7 = 29.",
   "subject": "Mathematics",
   "topic": "Basic Arithmetic",
@@ -5448,11 +5366,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "30",
-   "1",
    "29",
-   "15"
+   "15",
+   "1"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "225 - 196 = 29 (also (15+14)(15-14) = 29).",
   "subject": "Mathematics",
   "topic": "Basic Arithmetic",
@@ -5479,12 +5397,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is a prime number?",
   "passage": null,
   "options": [
-   "27",
-   "39",
+   "29",
    "33",
-   "29"
+   "27",
+   "39"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "29 has no divisors other than 1 and itself; 27, 33 and 39 are divisible by 3.",
   "subject": "Mathematics",
   "topic": "Number Systems",
@@ -5541,9 +5459,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How many even prime numbers are there?",
   "passage": null,
   "options": [
-   "0",
-   "1",
    "3",
+   "1",
+   "0",
    "2"
   ],
   "correctAnswer": 1,
@@ -5573,12 +5491,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How many prime numbers lie between 20 and 40?",
   "passage": null,
   "options": [
-   "3",
    "6",
-   "4",
-   "5"
+   "3",
+   "5",
+   "4"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "The primes are 23, 29, 31 and 37.",
   "subject": "Mathematics",
   "topic": "Number Systems",
@@ -5607,10 +5525,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "3",
    "9",
-   "36",
-   "6"
+   "6",
+   "36"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The common factors of 12 and 18 are 1, 2, 3 and 6; the highest is 6.",
   "subject": "Mathematics",
   "topic": "Factors and Multiples",
@@ -5637,12 +5555,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the LCM of 4 and 6?",
   "passage": null,
   "options": [
-   "10",
+   "12",
    "2",
    "24",
-   "12"
+   "10"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "The smallest number that both 4 and 6 divide is 12.",
   "subject": "Mathematics",
   "topic": "Factors and Multiples",
@@ -5669,12 +5587,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The HCF of two numbers is 8 and their LCM is 48. If one number is 16, the other is:",
   "passage": null,
   "options": [
-   "32",
    "24",
    "48",
-   "12"
+   "12",
+   "32"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "HCF x LCM = product of the numbers: 8 x 48 = 384, and 384 / 16 = 24.",
   "subject": "Mathematics",
   "topic": "Factors and Multiples",
@@ -5701,12 +5619,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the smallest number that is divisible by 6, 8 and 12?",
   "passage": null,
   "options": [
-   "36",
-   "12",
+   "48",
    "24",
-   "48"
+   "36",
+   "12"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "LCM(6, 8, 12) = 24.",
   "subject": "Mathematics",
   "topic": "Factors and Multiples",
@@ -5733,12 +5651,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 1/2 + 1/4?",
   "passage": null,
   "options": [
-   "3/4",
    "2/6",
-   "2/4",
-   "1/6"
+   "1/6",
+   "3/4",
+   "2/4"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "1/2 = 2/4, so 2/4 + 1/4 = 3/4.",
   "subject": "Mathematics",
   "topic": "Fractions",
@@ -5766,11 +5684,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "3/5",
+   "3/4",
    "2/3",
-   "1/2",
-   "3/4"
+   "1/2"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "As decimals: 0.75, 0.667, 0.5 and 0.6; the greatest is 3/4.",
   "subject": "Mathematics",
   "topic": "Fractions",
@@ -5795,12 +5713,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 3/5 of 50?",
   "passage": null,
   "options": [
-   "25",
    "30",
    "20",
-   "35"
+   "35",
+   "25"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "50 / 5 = 10 and 10 x 3 = 30.",
   "subject": "Mathematics",
   "topic": "Fractions",
@@ -5828,11 +5746,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "2 3/5",
+   "3 1/5",
    "2 1/10",
-   "3",
-   "3 1/5"
+   "3"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "5/2 x 6/5 = 30/10 = 3.",
   "subject": "Mathematics",
   "topic": "Fractions",
@@ -5859,12 +5777,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 3/4 divided by 3/8?",
   "passage": null,
   "options": [
-   "3",
    "9/32",
-   "1/2",
-   "2"
+   "2",
+   "3",
+   "1/2"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "3/4 x 8/3 = 24/12 = 2.",
   "subject": "Mathematics",
   "topic": "Fractions",
@@ -5891,12 +5809,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 0.5 + 0.25?",
   "passage": null,
   "options": [
-   "0.55",
    "0.30",
+   "0.75",
    "0.8",
-   "0.75"
+   "0.55"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "0.50 + 0.25 = 0.75.",
   "subject": "Mathematics",
   "topic": "Decimals",
@@ -5923,12 +5841,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 3.6 x 10?",
   "passage": null,
   "options": [
-   "360",
-   "0.36",
    "36",
+   "0.36",
+   "360",
    "3.60"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Multiplying by 10 moves the decimal point one place to the right.",
   "subject": "Mathematics",
   "topic": "Decimals",
@@ -5955,12 +5873,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 0.6 x 0.7?",
   "passage": null,
   "options": [
-   "0.42",
    "1.3",
-   "4.2",
-   "0.042"
+   "0.042",
+   "0.42",
+   "4.2"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "6 x 7 = 42 and there are two decimal places in total: 0.42.",
   "subject": "Mathematics",
   "topic": "Decimals",
@@ -5987,12 +5905,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 10% of 250?",
   "passage": null,
   "options": [
-   "2.5",
-   "20",
    "25",
-   "50"
+   "50",
+   "2.5",
+   "20"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "10% = 1/10 and 250 / 10 = 25.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -6019,12 +5937,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Express 3/4 as a percentage.",
   "passage": null,
   "options": [
-   "34%",
-   "75%",
    "80%",
-   "65%"
+   "65%",
+   "75%",
+   "34%"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "3/4 = 0.75 = 75%.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -6049,10 +5967,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 50% of 90?",
   "passage": null,
   "options": [
-   "40",
-   "45",
    "55",
-   "35"
+   "45",
+   "35",
+   "40"
   ],
   "correctAnswer": 1,
   "explanation": "Half of 90 is 45.",
@@ -6113,12 +6031,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A price rises from Rs 200 to Rs 250. What is the percentage increase?",
   "passage": null,
   "options": [
-   "25%",
    "15%",
+   "25%",
    "20%",
    "50%"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Increase = 50 on 200, and 50/200 = 25%.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -6145,10 +6063,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Divide Rs 100 in the ratio 1 : 4. The larger share is:",
   "passage": null,
   "options": [
-   "Rs 60",
+   "Rs 75",
    "Rs 20",
    "Rs 80",
-   "Rs 75"
+   "Rs 60"
   ],
   "correctAnswer": 2,
   "explanation": "There are 5 parts of Rs 20 each, and the larger share is 4 parts = Rs 80.",
@@ -6177,12 +6095,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The ratio 15 : 25 in its simplest form is:",
   "passage": null,
   "options": [
-   "5 : 3",
    "3 : 5",
    "1 : 2",
-   "15 : 5"
+   "15 : 5",
+   "5 : 3"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Divide both by 5 to get 3 : 5.",
   "subject": "Mathematics",
   "topic": "Ratio and Proportion",
@@ -6209,10 +6127,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "If 6 pens cost Rs 90, what is the cost of 10 pens?",
   "passage": null,
   "options": [
-   "Rs 140",
+   "Rs 120",
    "Rs 150",
-   "Rs 180",
-   "Rs 120"
+   "Rs 140",
+   "Rs 180"
   ],
   "correctAnswer": 1,
   "explanation": "One pen costs Rs 15, so 10 pens cost Rs 150.",
@@ -6241,10 +6159,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The ages of two sisters are in the ratio 3 : 5 and the sum of their ages is 40. The age of the younger sister is:",
   "passage": null,
   "options": [
-   "12",
    "25",
+   "24",
    "15",
-   "24"
+   "12"
   ],
   "correctAnswer": 2,
   "explanation": "One part is 40/8 = 5 years, so the younger is 3 x 5 = 15.",
@@ -6273,12 +6191,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the average of 4, 6, 8, 10 and 12?",
   "passage": null,
   "options": [
-   "7",
-   "10",
    "8",
-   "9"
+   "9",
+   "7",
+   "10"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Sum = 40 and 40 / 5 = 8.",
   "subject": "Mathematics",
   "topic": "Average",
@@ -6305,12 +6223,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The average of five numbers is 20. If one number is removed, the average of the remaining four is 18. The removed number is:",
   "passage": null,
   "options": [
-   "20",
    "28",
    "22",
-   "38"
+   "38",
+   "20"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Total = 100 and the remaining total = 72, so the removed number is 28.",
   "subject": "Mathematics",
   "topic": "Average",
@@ -6337,12 +6255,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "An article bought for Rs 80 is sold for Rs 100. The profit is:",
   "passage": null,
   "options": [
-   "Rs 25",
-   "Rs 20",
    "Rs 10",
-   "Rs 180"
+   "Rs 180",
+   "Rs 20",
+   "Rs 25"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Profit = selling price - cost price = 100 - 80 = Rs 20.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -6370,11 +6288,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Rs 490",
-   "Rs 400",
+   "Rs 450",
    "Rs 550",
-   "Rs 450"
+   "Rs 400"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "10% of 500 = 50, so SP = 500 - 50 = Rs 450.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -6401,12 +6319,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A dealer sells an item for Rs 1,260 at a 12.5% profit. What was the cost price?",
   "passage": null,
   "options": [
-   "Rs 1,152",
+   "Rs 1,134",
    "Rs 1,100",
-   "Rs 1,120",
-   "Rs 1,134"
+   "Rs 1,152",
+   "Rs 1,120"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "CP = 1260 / 1.125 = Rs 1,120.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -6433,12 +6351,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the simple interest on Rs 1,000 at 5% per year for 2 years?",
   "passage": null,
   "options": [
+   "Rs 100",
    "Rs 50",
-   "Rs 105",
    "Rs 10",
-   "Rs 100"
+   "Rs 105"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "SI = 1000 x 5 x 2 / 100 = Rs 100.",
   "subject": "Mathematics",
   "topic": "Simple Interest",
@@ -6465,10 +6383,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "At what rate per cent per year will Rs 2,000 earn Rs 360 as simple interest in 3 years?",
   "passage": null,
   "options": [
-   "5%",
+   "8%",
    "12%",
    "6%",
-   "8%"
+   "5%"
   ],
   "correctAnswer": 2,
   "explanation": "Rate = 360 x 100 / (2000 x 3) = 6%.",
@@ -6497,12 +6415,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A can finish a job in 10 days and B in 15 days. Working together, they finish it in:",
   "passage": null,
   "options": [
-   "6 days",
    "5 days",
-   "12.5 days",
-   "25 days"
+   "6 days",
+   "25 days",
+   "12.5 days"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Combined rate = 1/10 + 1/15 = 1/6 of the job per day.",
   "subject": "Mathematics",
   "topic": "Time and Work",
@@ -6562,11 +6480,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "80 km/h",
-   "60 km/h",
    "56 km/h",
+   "60 km/h",
    "240 km/h"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Speed = distance / time = 240 / 4 = 60 km/h.",
   "subject": "Mathematics",
   "topic": "Time, Speed and Distance",
@@ -6593,12 +6511,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "If x + 7 = 15, then x = ?",
   "passage": null,
   "options": [
-   "7",
-   "22",
    "8",
-   "9"
+   "9",
+   "7",
+   "22"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Subtract 7 from both sides: x = 8.",
   "subject": "Mathematics",
   "topic": "Basic Algebra",
@@ -6625,12 +6543,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Simplify: 3x + 5x",
   "passage": null,
   "options": [
-   "8x",
-   "15x",
    "8x squared",
-   "35x"
+   "15x",
+   "35x",
+   "8x"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Like terms add: 3x + 5x = 8x.",
   "subject": "Mathematics",
   "topic": "Basic Algebra",
@@ -6655,12 +6573,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the value of 2a + 3 when a = 4?",
   "passage": null,
   "options": [
-   "24",
    "9",
+   "11",
    "14",
-   "11"
+   "24"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "2 x 4 + 3 = 11.",
   "subject": "Mathematics",
   "topic": "Basic Algebra",
@@ -6687,12 +6605,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Solve: 3x - 5 = 16",
   "passage": null,
   "options": [
-   "x = 7",
+   "x = 21/3.5",
    "x = 5",
-   "x = 11",
-   "x = 21/3.5"
+   "x = 7",
+   "x = 11"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "3x = 21, so x = 7.",
   "subject": "Mathematics",
   "topic": "Basic Algebra",
@@ -6719,12 +6637,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Expand: (x + 3)(x + 2)",
   "passage": null,
   "options": [
-   "x squared + 5x + 5",
    "x squared + 6x + 5",
    "x squared + 5x + 6",
-   "x squared + x + 6"
+   "x squared + x + 6",
+   "x squared + 5x + 5"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "x*x + 2x + 3x + 6 = x squared + 5x + 6.",
   "subject": "Mathematics",
   "topic": "Basic Algebra",
@@ -6751,12 +6669,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How many degrees are there in the angles of a triangle altogether?",
   "passage": null,
   "options": [
-   "360",
-   "270",
    "180",
+   "270",
+   "360",
    "90"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The angles of any triangle add up to 180 degrees.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -6783,12 +6701,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "An angle of 90 degrees is called a:",
   "passage": null,
   "options": [
-   "straight angle",
    "obtuse angle",
-   "acute angle",
-   "right angle"
+   "right angle",
+   "straight angle",
+   "acute angle"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "A 90-degree angle is a right angle.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -6813,12 +6731,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How many sides does a hexagon have?",
   "passage": null,
   "options": [
-   "6",
-   "8",
+   "5",
    "7",
-   "5"
+   "6",
+   "8"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Hexa- means six.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -6846,8 +6764,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "60 degrees",
-   "80 degrees",
    "110 degrees",
+   "80 degrees",
    "70 degrees"
   ],
   "correctAnswer": 3,
@@ -6878,11 +6796,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "270 degrees",
-   "360 degrees",
    "540 degrees",
+   "360 degrees",
    "180 degrees"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "A quadrilateral splits into two triangles: 2 x 180 = 360.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -6910,11 +6828,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "13 square cm",
-   "40 square cm",
    "80 square cm",
+   "40 square cm",
    "26 square cm"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Area = length x width = 40.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -6941,12 +6859,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the perimeter of a square of side 9 cm?",
   "passage": null,
   "options": [
-   "36 cm",
    "18 cm",
-   "27 cm",
-   "81 cm"
+   "36 cm",
+   "81 cm",
+   "27 cm"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Perimeter = 4 x side = 36 cm.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -6971,12 +6889,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the area of a triangle with base 10 cm and height 6 cm?",
   "passage": null,
   "options": [
-   "60 square cm",
    "30 square cm",
    "15 square cm",
-   "16 square cm"
+   "16 square cm",
+   "60 square cm"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Area = 1/2 x base x height = 30.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -7003,12 +6921,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the volume of a cube of side 4 cm?",
   "passage": null,
   "options": [
-   "48 cubic cm",
    "12 cubic cm",
+   "64 cubic cm",
    "16 cubic cm",
-   "64 cubic cm"
+   "48 cubic cm"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Volume = side cubed = 64.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -7035,12 +6953,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A rectangular field is 120 m long and 80 m wide. The cost of fencing it at Rs 50 per metre is:",
   "passage": null,
   "options": [
-   "Rs 480,000",
+   "Rs 40,000",
    "Rs 10,000",
-   "Rs 20,000",
-   "Rs 40,000"
+   "Rs 480,000",
+   "Rs 20,000"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Perimeter = 2(120 + 80) = 400 m, so cost = 400 x 50 = Rs 20,000.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -7067,12 +6985,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "In the data 3, 5, 5, 7, 9, the mode is:",
   "passage": null,
   "options": [
+   "7",
    "5",
    "3",
-   "7",
    "9"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The mode is the most frequent value, which is 5.",
   "subject": "Mathematics",
   "topic": "Data Handling",
@@ -7099,10 +7017,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the median of 4, 9, 1, 7, 5?",
   "passage": null,
   "options": [
-   "4",
+   "7",
    "9",
    "5",
-   "7"
+   "4"
   ],
   "correctAnswer": 2,
   "explanation": "Sorted: 1, 4, 5, 7, 9; the middle value is 5.",
@@ -7131,9 +7049,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The marks of 5 students are 12, 15, 18, 20 and 10. Their mean is:",
   "passage": null,
   "options": [
+   "14",
    "16",
    "12",
-   "14",
    "15"
   ],
   "correctAnswer": 3,
@@ -7164,9 +7082,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Rs 235",
-   "Rs 335",
    "Rs 325",
-   "Rs 265"
+   "Rs 265",
+   "Rs 335"
   ],
   "correctAnswer": 0,
   "explanation": "500 - 175 - 90 = 235.",
@@ -7196,11 +7114,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "6 km",
-   "7 km",
    "5 km",
-   "4.5 km"
+   "4.5 km",
+   "7 km"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "The two legs are perpendicular, so the distance is sqrt(9 + 16) = 5 km.",
   "subject": "Mathematics",
   "topic": "Word Problems",
@@ -7227,12 +7145,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A bus has 48 seats. 5 buses are needed for a trip. If every seat is taken and 12 more students come, how many buses are now needed?",
   "passage": null,
   "options": [
-   "8",
    "6",
+   "8",
    "5",
    "7"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Students = 5 x 48 = 240; with 12 more there are 252, and 252/48 = 5.25, so 6 buses are needed.",
   "subject": "Mathematics",
   "topic": "Word Problems",
@@ -7259,12 +7177,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What comes next: 2, 4, 6, 8, ...?",
   "passage": null,
   "options": [
-   "11",
    "10",
-   "9",
-   "12"
+   "12",
+   "11",
+   "9"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "The numbers rise by 2 each time.",
   "subject": "Mathematics",
   "topic": "Mathematical Reasoning",
@@ -7291,12 +7209,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What comes next: 3, 6, 12, 24, ...?",
   "passage": null,
   "options": [
+   "42",
    "48",
    "36",
-   "30",
-   "42"
+   "30"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Each term is double the previous one.",
   "subject": "Mathematics",
   "topic": "Mathematical Reasoning",
@@ -7324,8 +7242,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": "Honey bees live together in a hive. Each hive has one queen, hundreds of male drones and thousands of female workers. The workers collect nectar from flowers and carry it back to the hive, where it is turned into honey. While moving from flower to flower, bees also carry pollen, which helps plants to produce fruits and seeds. Without bees, many of the crops we eat every day would become scarce.",
   "options": [
    "in a hive",
-   "in a field",
    "under a tree",
+   "in a field",
    "in a river"
   ],
   "correctAnswer": 0,
@@ -7355,12 +7273,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which bees collect nectar from flowers?",
   "passage": "Honey bees live together in a hive. Each hive has one queen, hundreds of male drones and thousands of female workers. The workers collect nectar from flowers and carry it back to the hive, where it is turned into honey. While moving from flower to flower, bees also carry pollen, which helps plants to produce fruits and seeds. Without bees, many of the crops we eat every day would become scarce.",
   "options": [
+   "all male bees",
    "the queen",
    "the workers",
-   "the drones",
-   "all male bees"
+   "the drones"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The passage says the workers collect nectar.",
   "subject": "English",
   "topic": "Reading Comprehension",
@@ -7387,10 +7305,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How do bees help plants?",
   "passage": "Honey bees live together in a hive. Each hive has one queen, hundreds of male drones and thousands of female workers. The workers collect nectar from flowers and carry it back to the hive, where it is turned into honey. While moving from flower to flower, bees also carry pollen, which helps plants to produce fruits and seeds. Without bees, many of the crops we eat every day would become scarce.",
   "options": [
-   "by watering them",
+   "by cutting dead leaves",
    "by carrying pollen between flowers",
-   "by eating insects",
-   "by cutting dead leaves"
+   "by watering them",
+   "by eating insects"
   ],
   "correctAnswer": 1,
   "explanation": "Moving pollen from flower to flower helps plants make fruits and seeds.",
@@ -7421,10 +7339,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "flowers would grow faster",
    "hives would be larger",
-   "some crops would become hard to find",
-   "honey would be cheaper"
+   "honey would be cheaper",
+   "some crops would become hard to find"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "The last sentence says many crops would become scarce.",
   "subject": "English",
   "topic": "Reading Comprehension",
@@ -7451,12 +7369,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How far did Farida walk to school?",
   "passage": "Farida lived in a small village near the river Indus. Every morning she walked two kilometres to school with her younger brother. One day the road was flooded, so they could not cross. Instead of going back home, they climbed a nearby hill and read their books under a tree. When the water went down, their teacher praised them for their love of learning.",
   "options": [
-   "two kilometres",
    "one kilometre",
-   "ten kilometres",
-   "two hundred metres"
+   "two kilometres",
+   "two hundred metres",
+   "ten kilometres"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The passage says she walked two kilometres each morning.",
   "subject": "English",
   "topic": "Reading Comprehension",
@@ -7483,12 +7401,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Why could the children not reach school one day?",
   "passage": "Farida lived in a small village near the river Indus. Every morning she walked two kilometres to school with her younger brother. One day the road was flooded, so they could not cross. Instead of going back home, they climbed a nearby hill and read their books under a tree. When the water went down, their teacher praised them for their love of learning.",
   "options": [
+   "the road was flooded",
    "they were ill",
    "they lost their books",
-   "the school was closed",
-   "the road was flooded"
+   "the school was closed"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "The passage says the road was flooded so they could not cross.",
   "subject": "English",
   "topic": "Reading Comprehension",
@@ -7516,11 +7434,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": "Farida lived in a small village near the river Indus. Every morning she walked two kilometres to school with her younger brother. One day the road was flooded, so they could not cross. Instead of going back home, they climbed a nearby hill and read their books under a tree. When the water went down, their teacher praised them for their love of learning.",
   "options": [
    "careless",
-   "determined",
+   "fearful",
    "lazy",
-   "fearful"
+   "determined"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "They chose to read on the hill instead of going home, showing determination.",
   "subject": "English",
   "topic": "Reading Comprehension",
@@ -7547,12 +7465,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "In the passage, the word 'scarce' (about crops) means:",
   "passage": "Honey bees live together in a hive. Each hive has one queen, hundreds of male drones and thousands of female workers. The workers collect nectar from flowers and carry it back to the hive, where it is turned into honey. While moving from flower to flower, bees also carry pollen, which helps plants to produce fruits and seeds. Without bees, many of the crops we eat every day would become scarce.",
   "options": [
-   "very large",
    "tasty",
-   "very cheap",
-   "hard to find"
+   "very large",
+   "hard to find",
+   "very cheap"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Scarce means in short supply.",
   "subject": "English",
   "topic": "Reading Comprehension",
@@ -7580,9 +7498,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "their",
-   "thier",
+   "they're",
    "there",
-   "they're"
+   "thier"
   ],
   "correctAnswer": 0,
   "explanation": "'Their' is the possessive of 'they'; 'there' is a place and 'they're' means 'they are'.",
@@ -7643,12 +7561,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "'The sun ___ in the east' (a general truth). Choose the correct verb.",
   "passage": null,
   "options": [
-   "rose",
    "will rise",
-   "rises",
-   "has risen"
+   "has risen",
+   "rose",
+   "rises"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "A permanent fact uses the simple present.",
   "subject": "English",
   "topic": "Grammar",
@@ -7675,12 +7593,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "In 'She ran quickly because she was late', the word 'because' is a:",
   "passage": null,
   "options": [
-   "adverb",
    "preposition",
+   "conjunction",
    "pronoun",
-   "conjunction"
+   "adverb"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'Because' joins two clauses, so it is a conjunction.",
   "subject": "English",
   "topic": "Parts of Speech",
@@ -7707,12 +7625,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which sentence contains an adverb?",
   "passage": null,
   "options": [
-   "The slow tortoise won.",
    "The tortoise walked slowly.",
-   "A tortoise is an animal.",
-   "The tortoise is slow."
+   "The slow tortoise won.",
+   "The tortoise is slow.",
+   "A tortoise is an animal."
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "'Slowly' tells how the tortoise walked, so it is an adverb; 'slow' is an adjective.",
   "subject": "English",
   "topic": "Parts of Speech",
@@ -7739,12 +7657,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct preposition: 'The teacher divided the sweets ___ the four children.'",
   "passage": null,
   "options": [
-   "among",
-   "over",
+   "between",
    "into",
-   "between"
+   "over",
+   "among"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "'Among' is used for more than two; 'between' is used for two.",
   "subject": "English",
   "topic": "Prepositions",
@@ -7771,12 +7689,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct preposition: 'The cat jumped ___ the wall.'",
   "passage": null,
   "options": [
-   "at",
    "by",
+   "over",
    "for",
-   "over"
+   "at"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'Over' shows movement from one side to the other.",
   "subject": "English",
   "topic": "Prepositions",
@@ -7804,9 +7722,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "which",
-   "whose",
+   "whom",
    "who",
-   "whom"
+   "whose"
   ],
   "correctAnswer": 2,
   "explanation": "'Who' refers to a person and is the subject of 'won'.",
@@ -7835,10 +7753,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct sentence.",
   "passage": null,
   "options": [
-   "I have wait for an hour.",
-   "I have been waiting for an hour.",
    "I waited since an hour.",
-   "I am waiting for an hour."
+   "I have been waiting for an hour.",
+   "I am waiting for an hour.",
+   "I have wait for an hour."
   ],
   "correctAnswer": 1,
   "explanation": "An action that began in the past and continues now uses the present perfect continuous.",
@@ -7867,12 +7785,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Change to passive: 'The farmer sells vegetables.'",
   "passage": null,
   "options": [
-   "Vegetables are sold by the farmer.",
-   "Vegetables is sold by the farmer.",
+   "Vegetables are selling by the farmer.",
    "Vegetables were sold by the farmer.",
-   "Vegetables are selling by the farmer."
+   "Vegetables are sold by the farmer.",
+   "Vegetables is sold by the farmer."
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Simple present passive: 'are' + past participle, matching the plural 'vegetables'.",
   "subject": "English",
   "topic": "Active and Passive Voice",
@@ -7901,8 +7819,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "He said that he was reading a book.",
    "He said that he is reading a book.",
-   "He said that he reads a book.",
-   "He said that I was reading a book."
+   "He said that I was reading a book.",
+   "He said that he reads a book."
   ],
   "correctAnswer": 0,
   "explanation": "The present continuous becomes the past continuous in reported speech.",
@@ -7963,12 +7881,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the correct verb: 'The teacher, along with her students, ___ going on a trip.'",
   "passage": null,
   "options": [
-   "have been",
-   "is",
    "were",
-   "are"
+   "have been",
+   "are",
+   "is"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The subject is the singular 'teacher'; 'along with her students' does not make it plural.",
   "subject": "English",
   "topic": "Subject-Verb Agreement",
@@ -7995,12 +7913,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "'To pull someone's leg' means:",
   "passage": null,
   "options": [
-   "to run away",
-   "to help someone walk",
    "to injure someone",
-   "to tease someone playfully"
+   "to help someone walk",
+   "to tease someone playfully",
+   "to run away"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "It means to joke with or tease someone.",
   "subject": "English",
   "topic": "Idioms",
@@ -8027,12 +7945,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the word closest in meaning to 'enormous'.",
   "passage": null,
   "options": [
-   "gentle",
-   "clever",
    "gigantic",
-   "tiny"
+   "gentle",
+   "tiny",
+   "clever"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Enormous means very large, like gigantic.",
   "subject": "English",
   "topic": "Synonyms",
@@ -8059,9 +7977,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Choose the antonym of 'fragile'.",
   "passage": null,
   "options": [
-   "weak",
    "thin",
    "delicate",
+   "weak",
    "sturdy"
   ],
   "correctAnswer": 3,
@@ -8091,10 +8009,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A person who has no money or home:",
   "passage": null,
   "options": [
-   "diligent",
+   "generous",
    "destitute",
    "literate",
-   "generous"
+   "diligent"
   ],
   "correctAnswer": 1,
   "explanation": "Destitute means extremely poor.",
@@ -8122,11 +8040,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Mark Twain",
-   "Charles Dickens",
    "William Shakespeare",
+   "Charles Dickens",
    "Jane Austen"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Shakespeare wrote Romeo and Juliet.",
   "subject": "English",
   "topic": "Literature Basics",
@@ -8151,12 +8069,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The novel 'Robinson Crusoe' was written by:",
   "passage": null,
   "options": [
-   "Daniel Defoe",
-   "Lewis Carroll",
    "Jonathan Swift",
-   "Charles Dickens"
+   "Lewis Carroll",
+   "Charles Dickens",
+   "Daniel Defoe"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Daniel Defoe published it in 1719.",
   "subject": "English",
   "topic": "Literature Basics",
@@ -8211,12 +8129,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "He worked hard ___ he could pass the examination.",
   "passage": null,
   "options": [
-   "because of",
-   "so that",
+   "unless",
    "although",
-   "unless"
+   "so that",
+   "because of"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "'So that' expresses purpose.",
   "subject": "English",
   "topic": "Sentence Completion",
@@ -8243,12 +8161,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 25 x 16 divided by 8?",
   "passage": null,
   "options": [
-   "40",
-   "32",
    "50",
-   "80"
+   "40",
+   "80",
+   "32"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "25 x 16 = 400 and 400 / 8 = 50.",
   "subject": "Mathematics",
   "topic": "Basic Arithmetic",
@@ -8275,12 +8193,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The sum of three consecutive whole numbers is 87. The smallest of them is:",
   "passage": null,
   "options": [
-   "29",
-   "27",
    "30",
-   "28"
+   "27",
+   "28",
+   "29"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The numbers are 28, 29 and 30; their sum is 87.",
   "subject": "Mathematics",
   "topic": "Basic Arithmetic",
@@ -8308,8 +8226,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "31",
-   "41",
    "121",
+   "41",
    "61"
   ],
   "correctAnswer": 3,
@@ -8339,12 +8257,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the HCF of 36, 48 and 60?",
   "passage": null,
   "options": [
-   "6",
    "4",
    "12",
+   "6",
    "24"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "36 = 2^2 x 3^2, 48 = 2^4 x 3 and 60 = 2^2 x 3 x 5; the HCF is 2^2 x 3 = 12.",
   "subject": "Mathematics",
   "topic": "Factors and Multiples",
@@ -8371,12 +8289,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is 3/4 + 2/3 - 1/6?",
   "passage": null,
   "options": [
-   "7/12",
-   "5/4",
    "1",
-   "4/3"
+   "4/3",
+   "5/4",
+   "7/12"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Common denominator 12: 9/12 + 8/12 - 2/12 = 15/12 = 5/4.",
   "subject": "Mathematics",
   "topic": "Fractions",
@@ -8404,9 +8322,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "5/12",
-   "2/7",
    "1/2",
-   "7/12"
+   "7/12",
+   "2/7"
   ],
   "correctAnswer": 0,
   "explanation": "Read = 1/4 + 1/3 = 7/12, so 5/12 is left.",
@@ -8436,8 +8354,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "0.75",
-   "3",
    "0.03",
+   "3",
    "0.3"
   ],
   "correctAnswer": 3,
@@ -8467,10 +8385,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A student scored 36 out of 60. What is his percentage?",
   "passage": null,
   "options": [
-   "36%",
+   "40%",
    "60%",
    "66%",
-   "40%"
+   "36%"
   ],
   "correctAnswer": 1,
   "explanation": "36/60 x 100 = 60%.",
@@ -8499,12 +8417,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The price of a book is reduced from Rs 400 to Rs 340. The percentage decrease is:",
   "passage": null,
   "options": [
+   "60%",
    "15%",
-   "12%",
    "20%",
-   "60%"
+   "12%"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The decrease is 60 on 400, which is 15%.",
   "subject": "Mathematics",
   "topic": "Percentages",
@@ -8531,12 +8449,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A rope 72 m long is cut into two pieces in the ratio 5 : 3. The longer piece is:",
   "passage": null,
   "options": [
+   "45 m",
    "40 m",
    "48 m",
-   "45 m",
    "27 m"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "One part = 72/8 = 9 m, so the longer piece is 5 x 9 = 45 m.",
   "subject": "Mathematics",
   "topic": "Ratio and Proportion",
@@ -8564,11 +8482,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "41 kg",
-   "42 kg",
+   "45 kg",
    "44 kg",
-   "45 kg"
+   "42 kg"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "New total = 160 + 50 = 210, and 210/5 = 42 kg.",
   "subject": "Mathematics",
   "topic": "Average",
@@ -8595,12 +8513,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A fruit seller buys 20 mangoes for Rs 400 and sells them at Rs 24 each. His profit is:",
   "passage": null,
   "options": [
-   "Rs 80",
-   "Rs 120",
+   "Rs 40",
    "Rs 20",
-   "Rs 40"
+   "Rs 80",
+   "Rs 120"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Sale = 20 x 24 = 480; profit = 480 - 400 = Rs 80.",
   "subject": "Mathematics",
   "topic": "Profit and Loss",
@@ -8627,12 +8545,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Rs 5,000 is invested at 8% simple interest per year. The amount after 3 years is:",
   "passage": null,
   "options": [
-   "Rs 1,200",
-   "Rs 5,400",
+   "Rs 6,500",
    "Rs 6,200",
-   "Rs 6,500"
+   "Rs 5,400",
+   "Rs 1,200"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Interest = 5000 x 8 x 3/100 = 1,200; amount = 6,200.",
   "subject": "Mathematics",
   "topic": "Simple Interest",
@@ -8661,10 +8579,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "5 days",
    "9 days",
-   "3 days",
-   "4 days"
+   "4 days",
+   "3 days"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "8 x 6 = 48 man-days; 48/12 = 4 days.",
   "subject": "Mathematics",
   "topic": "Time and Work",
@@ -8691,9 +8609,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A bus travels 150 km at 50 km/h and then 120 km at 60 km/h. The total time taken is:",
   "passage": null,
   "options": [
+   "6 hours",
    "4 hours",
    "4.5 hours",
-   "6 hours",
    "5 hours"
   ],
   "correctAnswer": 3,
@@ -8724,9 +8642,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "5",
-   "10",
+   "-5",
    "2",
-   "-5"
+   "10"
   ],
   "correctAnswer": 0,
   "explanation": "3 + 7 = 4x - 2x, so 10 = 2x and x = 5.",
@@ -8755,12 +8673,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Simplify: 3(x + 4) - 2(x - 1)",
   "passage": null,
   "options": [
+   "5x + 14",
    "x + 2",
    "x + 10",
-   "x + 14",
-   "5x + 14"
+   "x + 14"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "3x + 12 - 2x + 2 = x + 14.",
   "subject": "Mathematics",
   "topic": "Basic Algebra",
@@ -8787,12 +8705,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The angles of a triangle are in the ratio 2 : 3 : 4. The largest angle is:",
   "passage": null,
   "options": [
+   "90 degrees",
    "40 degrees",
    "80 degrees",
-   "60 degrees",
-   "90 degrees"
+   "60 degrees"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "One part = 180/9 = 20 degrees; the largest = 4 x 20 = 80.",
   "subject": "Mathematics",
   "topic": "Geometry",
@@ -8819,12 +8737,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A room is 6 m long, 5 m wide and 3 m high. The area of its four walls is:",
   "passage": null,
   "options": [
-   "90 square m",
    "33 square m",
+   "66 square m",
    "96 square m",
-   "66 square m"
+   "90 square m"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Walls = 2(l + b) x h = 2 x 11 x 3 = 66.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -8851,12 +8769,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How many square tiles of side 50 cm are needed to cover a floor 10 m by 5 m?",
   "passage": null,
   "options": [
-   "250",
    "200",
    "100",
-   "400"
+   "400",
+   "250"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Floor = 50 square m; each tile = 0.25 square m; 50/0.25 = 200.",
   "subject": "Mathematics",
   "topic": "Mensuration",
@@ -8885,8 +8803,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "12",
    "8",
-   "14",
-   "10"
+   "10",
+   "14"
   ],
   "correctAnswer": 0,
   "explanation": "Total = 60 and 8 + 10 + 14 + 16 = 48, so the fifth is 12.",
@@ -8915,10 +8833,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A tank holds 240 litres. It is 3/8 full. How many more litres are needed to fill it?",
   "passage": null,
   "options": [
-   "120 litres",
    "90 litres",
+   "100 litres",
    "150 litres",
-   "100 litres"
+   "120 litres"
   ],
   "correctAnswer": 2,
   "explanation": "Present amount = 90 litres, so 150 litres more are needed.",
@@ -8947,9 +8865,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Sara has twice as many marbles as Ayesha. Together they have 54. How many does Sara have?",
   "passage": null,
   "options": [
+   "18",
    "27",
    "24",
-   "18",
    "36"
   ],
   "correctAnswer": 3,
@@ -8979,12 +8897,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What comes next: 5, 10, 20, 40, ...?",
   "passage": null,
   "options": [
-   "60",
-   "70",
+   "100",
    "80",
-   "100"
+   "60",
+   "70"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Each number is double the previous one.",
   "subject": "Mathematics",
   "topic": "Mathematical Reasoning",
@@ -9012,9 +8930,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "42",
-   "40",
    "44",
-   "36"
+   "36",
+   "40"
   ],
   "correctAnswer": 0,
   "explanation": "The differences are 4, 6, 8, 10, so next is +12: 30 + 12 = 42.",
@@ -9043,11 +8961,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "a pencil",
-   "a mango tree",
    "a stone",
-   "a table"
+   "a table",
+   "a mango tree"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Living things grow, breathe, reproduce and respond to their surroundings.",
   "subject": "Science",
   "topic": "Biology Basics",
@@ -9073,12 +8991,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The study of living things is called:",
   "passage": null,
   "options": [
-   "chemistry",
-   "geology",
+   "astronomy",
    "biology",
-   "astronomy"
+   "geology",
+   "chemistry"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Biology is the science of life.",
   "subject": "Science",
   "topic": "Biology Basics",
@@ -9104,12 +9022,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of the following characteristics is shown ONLY by living things?",
   "passage": null,
   "options": [
+   "having mass",
    "being made of matter",
    "reproduction",
-   "taking up space",
-   "having mass"
+   "taking up space"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "All matter has mass and occupies space, but only living things reproduce.",
   "subject": "Science",
   "topic": "Biology Basics",
@@ -9135,12 +9053,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Seeds are dispersed by wind in the case of:",
   "passage": null,
   "options": [
-   "mango",
-   "coconut",
    "pea",
-   "dandelion"
+   "coconut",
+   "dandelion",
+   "mango"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Dandelion seeds have light, fluffy parts that the wind carries.",
   "subject": "Science",
   "topic": "Plants",
@@ -9166,12 +9084,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A plant kept in a dark room for several days turns pale because it cannot make:",
   "passage": null,
   "options": [
+   "seeds",
    "chlorophyll",
-   "roots",
    "pollen",
-   "seeds"
+   "roots"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Chlorophyll formation needs light.",
   "subject": "Science",
   "topic": "Plants",
@@ -9198,9 +9116,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "the root",
+   "the flower",
    "the leaf",
-   "the stem",
-   "the flower"
+   "the stem"
   ],
   "correctAnswer": 0,
   "explanation": "A carrot is a swollen taproot that stores food.",
@@ -9228,9 +9146,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which animal breathes through gills?",
   "passage": null,
   "options": [
+   "dolphin",
    "crocodile",
    "whale",
-   "dolphin",
    "fish"
   ],
   "correctAnswer": 3,
@@ -9259,10 +9177,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is a pair of animals that both lay eggs?",
   "passage": null,
   "options": [
-   "cat and dog",
+   "bat and whale",
    "hen and crocodile",
    "cow and goat",
-   "bat and whale"
+   "cat and dog"
   ],
   "correctAnswer": 1,
   "explanation": "Birds and reptiles lay eggs; the other animals are mammals that give birth to live young.",
@@ -9290,12 +9208,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which animal hibernates (sleeps through the winter)?",
   "passage": null,
   "options": [
-   "horse",
-   "sheep",
    "bear",
-   "camel"
+   "camel",
+   "horse",
+   "sheep"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Many bears sleep deeply through winter months.",
   "subject": "Science",
   "topic": "Animals",
@@ -9321,12 +9239,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which part of the eye controls the amount of light entering it?",
   "passage": null,
   "options": [
-   "cornea only",
-   "pupil (through the iris)",
    "eyelash",
-   "retina only"
+   "retina only",
+   "cornea only",
+   "pupil (through the iris)"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The iris changes the size of the pupil to control light.",
   "subject": "Science",
   "topic": "Human Body",
@@ -9352,12 +9270,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which type of teeth are used for tearing food?",
   "passage": null,
   "options": [
-   "wisdom teeth",
    "incisors",
-   "molars",
-   "canines"
+   "wisdom teeth",
+   "canines",
+   "molars"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Canines are pointed teeth that tear food; incisors cut and molars grind.",
   "subject": "Science",
   "topic": "Human Body",
@@ -9384,9 +9302,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "kidney",
-   "liver",
+   "stomach",
    "pancreas",
-   "stomach"
+   "liver"
   ],
   "correctAnswer": 0,
   "explanation": "The kidneys filter blood and form urine.",
@@ -9414,12 +9332,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How many chambers does the human heart have?",
   "passage": null,
   "options": [
-   "5",
    "2",
    "4",
+   "5",
    "3"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Two atria and two ventricles.",
   "subject": "Science",
   "topic": "Human Body",
@@ -9445,12 +9363,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Planting trees on a large scale helps to:",
   "passage": null,
   "options": [
-   "reduce carbon dioxide in the air",
-   "melt glaciers",
    "increase floods",
-   "create smog"
+   "create smog",
+   "reduce carbon dioxide in the air",
+   "melt glaciers"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Trees absorb carbon dioxide during photosynthesis.",
   "subject": "Science",
   "topic": "Environment",
@@ -9477,11 +9395,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "wind",
+   "sunlight",
    "water power",
-   "coal",
-   "sunlight"
+   "coal"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Coal takes millions of years to form.",
   "subject": "Science",
   "topic": "Environment",
@@ -9509,10 +9427,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "sunlight",
    "clouds",
-   "wind",
-   "pollution from burning fuels"
+   "pollution from burning fuels",
+   "wind"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Sulphur and nitrogen oxides from burning fuels form acids in rain.",
   "subject": "Science",
   "topic": "Environment",
@@ -9538,12 +9456,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a physical change?",
   "passage": null,
   "options": [
-   "burning of paper",
-   "melting of wax",
    "cooking of an egg",
-   "rusting of iron"
+   "rusting of iron",
+   "burning of paper",
+   "melting of wax"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Melting changes state but forms no new substance.",
   "subject": "Science",
   "topic": "Matter",
@@ -9569,12 +9487,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which gas do plants take in for photosynthesis?",
   "passage": null,
   "options": [
-   "hydrogen",
    "carbon dioxide",
-   "oxygen",
-   "nitrogen"
+   "hydrogen",
+   "nitrogen",
+   "oxygen"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Plants take in carbon dioxide and release oxygen.",
   "subject": "Science",
   "topic": "Matter",
@@ -9600,12 +9518,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What is the state of matter that has a fixed shape and a fixed volume?",
   "passage": null,
   "options": [
-   "liquid",
-   "plasma",
    "gas",
-   "solid"
+   "solid",
+   "liquid",
+   "plasma"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "A solid keeps its own shape.",
   "subject": "Science",
   "topic": "Matter",
@@ -9631,12 +9549,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "When salt is dissolved in water, the water is the:",
   "passage": null,
   "options": [
-   "solvent",
-   "solution",
    "solute",
-   "precipitate"
+   "precipitate",
+   "solvent",
+   "solution"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "The solvent is the substance that dissolves the solute.",
   "subject": "Science",
   "topic": "Matter",
@@ -9663,11 +9581,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "buoyancy",
+   "magnetism",
    "gravity",
-   "friction",
-   "magnetism"
+   "friction"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Friction acts against relative motion.",
   "subject": "Science",
   "topic": "Force and Motion",
@@ -9693,12 +9611,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A ball thrown upward comes back down because of:",
   "passage": null,
   "options": [
+   "gravity",
    "magnetism",
    "wind",
-   "gravity",
    "friction"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Gravity pulls it back.",
   "subject": "Science",
   "topic": "Force and Motion",
@@ -9724,12 +9642,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A boat floats on water because of:",
   "passage": null,
   "options": [
-   "upthrust (buoyant force)",
    "friction",
-   "electric force",
-   "magnetic force"
+   "upthrust (buoyant force)",
+   "magnetic force",
+   "electric force"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Water pushes up with a force equal to the weight of the displaced water.",
   "subject": "Science",
   "topic": "Force and Motion",
@@ -9755,12 +9673,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which energy conversion happens in a solar cell?",
   "passage": null,
   "options": [
+   "mechanical to heat",
    "heat to sound",
    "light to electrical energy",
-   "mechanical to heat",
    "chemical to light"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "A solar cell turns sunlight into electricity.",
   "subject": "Science",
   "topic": "Energy",
@@ -9786,12 +9704,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Food gives us:",
   "passage": null,
   "options": [
-   "nuclear energy",
-   "sound energy",
    "magnetic energy",
-   "chemical energy"
+   "chemical energy",
+   "nuclear energy",
+   "sound energy"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Food stores chemical energy.",
   "subject": "Science",
   "topic": "Energy",
@@ -9818,9 +9736,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "conductor of heat",
-   "reflector",
    "absorber of light",
-   "insulator"
+   "insulator",
+   "reflector"
   ],
   "correctAnswer": 0,
   "explanation": "Metals conduct heat quickly, so heat flows into the hand faster.",
@@ -9848,8 +9766,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Water in a pot heats up mainly by:",
   "passage": null,
   "options": [
-   "evaporation",
    "radiation only",
+   "evaporation",
    "conduction only",
    "convection"
   ],
@@ -9879,10 +9797,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which instrument measures body temperature?",
   "passage": null,
   "options": [
-   "compass",
+   "voltmeter",
    "clinical thermometer",
    "barometer",
-   "voltmeter"
+   "compass"
   ],
   "correctAnswer": 1,
   "explanation": "A clinical thermometer is used for body temperature.",
@@ -9941,12 +9859,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The Moon shines because it:",
   "passage": null,
   "options": [
-   "glows in the dark",
    "reflects sunlight",
    "produces its own light",
-   "burns gas"
+   "burns gas",
+   "glows in the dark"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "The Moon is not luminous; it reflects the Sun's light.",
   "subject": "Science",
   "topic": "Light",
@@ -9972,12 +9890,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Sound travels fastest in:",
   "passage": null,
   "options": [
+   "water",
    "vacuum",
    "air",
-   "steel",
-   "water"
+   "steel"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Sound travels faster in solids than in liquids and gases.",
   "subject": "Science",
   "topic": "Sound",
@@ -10003,12 +9921,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The loudness of a sound depends on its:",
   "passage": null,
   "options": [
-   "colour",
    "speed in vacuum",
-   "temperature only",
-   "amplitude"
+   "amplitude",
+   "colour",
+   "temperature only"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "A larger amplitude gives a louder sound.",
   "subject": "Science",
   "topic": "Sound",
@@ -10034,12 +9952,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these materials is an insulator?",
   "passage": null,
   "options": [
-   "rubber",
-   "iron",
+   "copper",
    "aluminium",
-   "copper"
+   "iron",
+   "rubber"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Rubber does not allow current to pass.",
   "subject": "Science",
   "topic": "Electricity",
@@ -10067,10 +9985,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "battery",
    "wire",
-   "bulb",
-   "switch"
+   "switch",
+   "bulb"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "A switch opens or closes the circuit.",
   "subject": "Science",
   "topic": "Electricity",
@@ -10096,12 +10014,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which layer of the Earth do we live on?",
   "passage": null,
   "options": [
-   "outer core",
-   "mantle",
    "crust",
-   "inner core"
+   "mantle",
+   "inner core",
+   "outer core"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The crust is the thin outer layer.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -10127,12 +10045,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Day and night are caused by the Earth's:",
   "passage": null,
   "options": [
-   "rotation on its axis",
    "tilt only",
-   "distance from the Moon",
-   "revolution around the Sun"
+   "rotation on its axis",
+   "revolution around the Sun",
+   "distance from the Moon"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "As the Earth spins, different parts face the Sun.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -10159,11 +10077,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Mars",
-   "Mercury",
+   "Venus",
    "Earth",
-   "Venus"
+   "Mercury"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Mercury is the innermost planet.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -10190,9 +10108,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "to prevent rusting",
-   "to make it heavier",
    "to make it float",
-   "to make it conduct heat"
+   "to make it conduct heat",
+   "to make it heavier"
   ],
   "correctAnswer": 0,
   "explanation": "Paint keeps out air and moisture.",
@@ -10221,11 +10139,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "wind",
+   "light",
    "bacteria",
-   "salt",
-   "light"
+   "salt"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Bacteria feed on milk sugar and produce lactic acid.",
   "subject": "Science",
   "topic": "Everyday Science",
@@ -10251,10 +10169,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A magnet attracts:",
   "passage": null,
   "options": [
-   "glass",
+   "wood",
    "plastic",
    "iron",
-   "wood"
+   "glass"
   ],
   "correctAnswer": 2,
   "explanation": "Iron is a magnetic material.",
@@ -10282,12 +10200,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a mixture that can be separated by filtration?",
   "passage": null,
   "options": [
-   "alcohol and water",
-   "sugar and water",
+   "sand and water",
    "salt and water",
-   "sand and water"
+   "alcohol and water",
+   "sugar and water"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Sand does not dissolve, so filtration removes it.",
   "subject": "Science",
   "topic": "General Science",
@@ -10313,12 +10231,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The process of separating salt from sea water by heating is:",
   "passage": null,
   "options": [
-   "filtration",
+   "condensation only",
    "sublimation",
-   "evaporation",
-   "condensation only"
+   "filtration",
+   "evaporation"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Water evaporates and leaves the salt behind.",
   "subject": "Science",
   "topic": "General Science",
@@ -10347,8 +10265,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "process, output, input",
    "input, process, output",
-   "input, output, process",
-   "output, input, process"
+   "output, input, process",
+   "input, output, process"
   ],
   "correctAnswer": 1,
   "explanation": "Data is entered, processed and then shown as output.",
@@ -10409,12 +10327,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is the smallest unit of data?",
   "passage": null,
   "options": [
-   "byte",
-   "megabyte",
    "kilobyte",
-   "bit"
+   "byte",
+   "bit",
+   "megabyte"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "A bit is a single binary digit, the smallest unit.",
   "subject": "Computer",
   "topic": "Computer Fundamentals",
@@ -10441,12 +10359,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The device that supplies power to the computer's components is the:",
   "passage": null,
   "options": [
-   "power supply unit",
-   "mouse",
    "scanner",
-   "monitor"
+   "mouse",
+   "monitor",
+   "power supply unit"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "The PSU converts mains power into the voltages the parts need.",
   "subject": "Computer",
   "topic": "Hardware",
@@ -10474,11 +10392,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "speaker",
+   "touch screen",
    "printer",
-   "keyboard",
-   "touch screen"
+   "keyboard"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "A touch screen takes input and shows output.",
   "subject": "Computer",
   "topic": "Hardware",
@@ -10505,12 +10423,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A program that helps to protect a computer from viruses is called:",
   "passage": null,
   "options": [
-   "a word processor",
-   "a web browser",
    "antivirus software",
-   "a compiler"
+   "a word processor",
+   "a compiler",
+   "a web browser"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Antivirus programs find and remove malware.",
   "subject": "Computer",
   "topic": "Software",
@@ -10538,11 +10456,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Excel",
+   "Photoshop",
    "iOS",
-   "Chrome",
-   "Photoshop"
+   "Chrome"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "iOS runs on iPhones; Android is another.",
   "subject": "Computer",
   "topic": "Operating Systems",
@@ -10569,12 +10487,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which storage device has no moving parts?",
   "passage": null,
   "options": [
+   "hard disk drive",
    "solid-state drive (SSD)",
    "CD-ROM",
-   "hard disk drive",
    "floppy disk"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "An SSD stores data in flash memory chips.",
   "subject": "Computer",
   "topic": "Storage",
@@ -10602,11 +10520,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "is stored in RAM",
-   "can only be read",
+   "can be changed freely",
    "is erased when power is off",
-   "can be changed freely"
+   "can only be read"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "ROM stands for read-only memory.",
   "subject": "Computer",
   "topic": "Storage",
@@ -10633,12 +10551,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "What does the 'www' in a website address stand for?",
   "passage": null,
   "options": [
-   "Web Wide World",
-   "World Window Web",
    "Wide Web World",
-   "World Wide Web"
+   "World Wide Web",
+   "Web Wide World",
+   "World Window Web"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "It names the system of linked web pages.",
   "subject": "Computer",
   "topic": "Internet",
@@ -10665,8 +10583,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "An email attachment is:",
   "passage": null,
   "options": [
-   "a type of virus",
    "the subject of an email",
+   "a type of virus",
    "a file sent along with an email",
    "an address"
   ],
@@ -10697,12 +10615,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Wi-Fi is used to connect devices:",
   "passage": null,
   "options": [
-   "only with fibre",
+   "without cables",
    "only with a printer cable",
    "only with a telephone line",
-   "without cables"
+   "only with fibre"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Wi-Fi is a wireless networking technology.",
   "subject": "Computer",
   "topic": "Networking Basics",
@@ -10729,12 +10647,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which button is used in MS Word to make selected text darker (bold)?",
   "passage": null,
   "options": [
-   "B",
    "I",
+   "A",
    "U",
-   "A"
+   "B"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "B = bold, I = italic, U = underline.",
   "subject": "Computer",
   "topic": "MS Office",
@@ -10761,12 +10679,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which shortcut key saves a document?",
   "passage": null,
   "options": [
-   "Ctrl + A",
-   "Ctrl + P",
    "Ctrl + S",
-   "Ctrl + N"
+   "Ctrl + A",
+   "Ctrl + N",
+   "Ctrl + P"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Ctrl+S saves; Ctrl+P prints.",
   "subject": "Computer",
   "topic": "MS Office",
@@ -10793,10 +10711,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of the following is a safe online habit?",
   "passage": null,
   "options": [
-   "using one password everywhere",
+   "clicking unknown links",
    "not sharing your password",
-   "accepting every friend request",
-   "clicking unknown links"
+   "using one password everywhere",
+   "accepting every friend request"
   ],
   "correctAnswer": 1,
   "explanation": "A password should be kept private.",
@@ -10825,12 +10743,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Two-factor authentication means:",
   "passage": null,
   "options": [
-   "using two computers",
-   "using two different proofs of identity to log in",
    "using two passwords for different sites",
-   "logging in twice"
+   "using two computers",
+   "logging in twice",
+   "using two different proofs of identity to log in"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "For example a password plus a code sent to a phone.",
   "subject": "Computer",
   "topic": "Cybersecurity Awareness",
@@ -10889,12 +10807,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The Mughal emperor who built the Badshahi Mosque in Lahore was:",
   "passage": null,
   "options": [
-   "Babur",
    "Shah Jahan",
+   "Aurangzeb Alamgir",
    "Akbar",
-   "Aurangzeb Alamgir"
+   "Babur"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Aurangzeb built the mosque, completed in 1673.",
   "subject": "Social Studies",
   "topic": "History",
@@ -10921,12 +10839,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The 1965 war between Pakistan and India began in the month of:",
   "passage": null,
   "options": [
-   "September",
-   "March",
    "December",
-   "January"
+   "January",
+   "September",
+   "March"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "The war began in September 1965; Defence Day is on 6 September.",
   "subject": "Social Studies",
   "topic": "History",
@@ -10954,11 +10872,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Tariq bin Ziyad",
+   "Salahuddin Ayyubi",
    "Mahmud of Ghazni",
-   "Muhammad bin Qasim",
-   "Salahuddin Ayyubi"
+   "Muhammad bin Qasim"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Muhammad bin Qasim entered Sindh in 711-712 CE.",
   "subject": "Social Studies",
   "topic": "History",
@@ -10985,12 +10903,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which province of Pakistan borders both Iran and Afghanistan?",
   "passage": null,
   "options": [
-   "Khyber Pakhtunkhwa",
    "Balochistan",
+   "Khyber Pakhtunkhwa",
    "Sindh",
    "Punjab"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Balochistan has borders with both Iran and Afghanistan.",
   "subject": "Social Studies",
   "topic": "Provinces",
@@ -11017,12 +10935,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which province of Pakistan borders India as well as the Arabian Sea?",
   "passage": null,
   "options": [
-   "Balochistan",
+   "Sindh",
    "Khyber Pakhtunkhwa",
    "Punjab",
-   "Sindh"
+   "Balochistan"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Sindh has a coast on the Arabian Sea and an eastern border with India.",
   "subject": "Social Studies",
   "topic": "Provinces",
@@ -11049,12 +10967,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The Cholistan Desert is located mainly in:",
   "passage": null,
   "options": [
-   "Punjab",
    "Gilgit-Baltistan",
-   "Balochistan",
-   "Sindh"
+   "Sindh",
+   "Punjab",
+   "Balochistan"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Cholistan lies in southern Punjab near Bahawalpur.",
   "subject": "Social Studies",
   "topic": "Pakistan Geography",
@@ -11081,9 +10999,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which is the highest peak of Pakistan?",
   "passage": null,
   "options": [
-   "Tirich Mir",
    "Rakaposhi",
    "Nanga Parbat",
+   "Tirich Mir",
    "K2"
   ],
   "correctAnswer": 3,
@@ -11113,12 +11031,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which river forms the main water supply of Sindh?",
   "passage": null,
   "options": [
-   "Ravi",
-   "Sutlej",
+   "Jhelum",
    "Indus",
-   "Jhelum"
+   "Ravi",
+   "Sutlej"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Sindh depends on the Indus and its barrages and canals.",
   "subject": "Social Studies",
   "topic": "Pakistan Geography",
@@ -11145,12 +11063,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The national tree of Pakistan is:",
   "passage": null,
   "options": [
+   "banyan",
    "mango",
-   "deodar",
    "neem",
-   "banyan"
+   "deodar"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The deodar cedar is the national tree.",
   "subject": "Social Studies",
   "topic": "National Symbols",
@@ -11177,12 +11095,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The national bird of Pakistan is the:",
   "passage": null,
   "options": [
-   "chukar",
    "peacock",
+   "chukar",
    "crow",
    "sparrow"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The chukar partridge is the national bird.",
   "subject": "Social Studies",
   "topic": "National Symbols",
@@ -11209,12 +11127,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Who elects the Prime Minister of Pakistan?",
   "passage": null,
   "options": [
+   "the Senate",
    "the Supreme Court",
    "the National Assembly",
-   "the Chief Minister",
-   "the Senate"
+   "the Chief Minister"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The Prime Minister is elected by the members of the National Assembly.",
   "subject": "Social Studies",
   "topic": "Constitution and Civics",
@@ -11242,9 +11160,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Bansuri",
-   "Tabla",
    "Dhol",
-   "Sarangi"
+   "Sarangi",
+   "Tabla"
   ],
   "correctAnswer": 0,
   "explanation": "The bansuri is a bamboo flute used in Sindhi folk music.",
@@ -11266,19 +11184,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0045",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Surah in which the story of Hazrat Yusuf (AS) is told is Surah:",
   "passage": null,
   "options": [
-   "Maryam",
-   "An-Naml",
    "Al-Kahf",
-   "Yusuf"
+   "Yusuf",
+   "An-Naml",
+   "Maryam"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Surah Yusuf (12) tells his story in full.",
   "subject": "Islamiat",
   "topic": "Quran",
@@ -11298,19 +11214,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0046",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Prophet (PBUH) was raised after the death of his grandfather by his uncle:",
   "passage": null,
   "options": [
    "Hamza",
    "Abbas",
-   "Abu Talib",
-   "Abu Lahab"
+   "Abu Lahab",
+   "Abu Talib"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "After Abdul Muttalib died, Abu Talib cared for him.",
   "subject": "Islamiat",
   "topic": "Seerah",
@@ -11330,19 +11244,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0047",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "In which cave did the Prophet (PBUH) and Hazrat Abu Bakr (RA) hide during the Hijra?",
   "passage": null,
   "options": [
-   "Cave Thawr",
    "Cave Badr",
-   "Cave Hira",
-   "Cave Uhud"
+   "Cave Uhud",
+   "Cave Thawr",
+   "Cave Hira"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "They hid in Cave Thawr for three days.",
   "subject": "Islamiat",
   "topic": "Seerah",
@@ -11362,19 +11274,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0048",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Prophet who could speak with birds and ruled a great kingdom was:",
   "passage": null,
   "options": [
-   "Hazrat Idris (AS)",
    "Hazrat Sulaiman (AS)",
    "Hazrat Yaqub (AS)",
-   "Hazrat Ayyub (AS)"
+   "Hazrat Ayyub (AS)",
+   "Hazrat Idris (AS)"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "The Quran mentions Sulaiman (AS) and the speech of birds.",
   "subject": "Islamiat",
   "topic": "Prophets",
@@ -11394,15 +11304,13 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0049",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Kalima 'Shahada' is the declaration of:",
   "passage": null,
   "options": [
-   "charity",
    "the pilgrimage",
+   "charity",
    "fasting",
    "faith in Allah and His Messenger"
   ],
@@ -11426,19 +11334,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0050",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "How many Heavenly Books are named in the Quran as revealed to different Prophets (Torah, Zabur, Injeel and the Quran)?",
   "passage": null,
   "options": [
-   "6",
-   "5",
+   "3",
    "4",
-   "3"
+   "6",
+   "5"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "The four named books are Torah, Zabur, Injeel and the Quran.",
   "subject": "Islamiat",
   "topic": "Basic Beliefs",
@@ -11458,19 +11364,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0051",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "The Caliph who sent the army to Syria and Iraq and organised the first public administration was:",
   "passage": null,
   "options": [
-   "Hazrat Uthman (RA)",
-   "Hazrat Abu Bakr (RA)",
+   "Hazrat Umar (RA)",
    "Hazrat Ali (RA)",
-   "Hazrat Umar (RA)"
+   "Hazrat Abu Bakr (RA)",
+   "Hazrat Uthman (RA)"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Umar expanded the state and set up administrative departments.",
   "subject": "Islamiat",
   "topic": "Khulafa-e-Rashideen",
@@ -11490,19 +11394,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-isl-0052",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "Which of the following is a duty towards parents in Islam?",
   "passage": null,
   "options": [
-   "to obey and respect them in all that is good",
-   "to ignore their advice",
    "to avoid them",
+   "to ignore their advice",
+   "to obey and respect them in all that is good",
    "to be rude when they are old"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "The Quran commands kindness and respect to parents.",
   "subject": "Islamiat",
   "topic": "Islamic Ethics",
@@ -11522,9 +11424,7 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0001",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "محاورہ 'سر پر سوار ہونا' کا مطلب کیا ہے؟",
   "passage": null,
@@ -11554,19 +11454,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0002",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "محاورہ 'پاپڑ بیلنا' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "سیر کو جانا",
-   "بہت مشقت کرنا",
    "کھانا پکانا",
-   "آسانی سے کام ہونا"
+   "سیر کو جانا",
+   "آسانی سے کام ہونا",
+   "بہت مشقت کرنا"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "اس محاورے کا مطلب ہے بہت مشکل اٹھانا۔",
   "subject": "Urdu",
   "topic": "Idioms",
@@ -11586,9 +11484,7 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0003",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'مفلس' کا مترادف کیا ہے؟",
   "passage": null,
@@ -11618,17 +11514,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0004",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'تیز' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
    "سریع",
-   "دھیما",
+   "سست",
    "نرم",
-   "سست"
+   "دھیما"
   ],
   "correctAnswer": 0,
   "explanation": "'سریع' کا مطلب تیز ہے۔",
@@ -11650,19 +11544,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0005",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'اتحاد' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
    "یکجہتی",
-   "میل",
    "انتشار",
+   "میل",
    "بھائی چارہ"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "'اتحاد' کا الٹ 'انتشار' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -11682,19 +11574,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0006",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'ظلم' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "نا انصافی",
-   "ستم",
    "جبر",
-   "انصاف"
+   "نا انصافی",
+   "انصاف",
+   "ستم"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "'ظلم' کا الٹ 'انصاف' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -11714,19 +11604,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0007",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'حاکم' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
-   "حاکمات",
    "حاکمے",
-   "حکام",
-   "حاکمیں"
+   "حاکمیں",
+   "حاکمات",
+   "حکام"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "'حاکم' کی جمع 'حکام' ہے۔",
   "subject": "Urdu",
   "topic": "Singular and Plural",
@@ -11746,19 +11634,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0008",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'تاجر' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
-   "تاجرے",
    "تجار",
-   "تاجریں",
-   "تاجرات"
+   "تاجرات",
+   "تاجرے",
+   "تاجریں"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "'تاجر' کی جمع 'تجار' ہے۔",
   "subject": "Urdu",
   "topic": "Singular and Plural",
@@ -11778,19 +11664,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0009",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'ایثار' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "دوسروں کے لیے اپنا فائدہ چھوڑ دینا",
-   "غصہ",
    "لالچ",
-   "ڈر"
+   "ڈر",
+   "غصہ",
+   "دوسروں کے لیے اپنا فائدہ چھوڑ دینا"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "'ایثار' کا مطلب ہے دوسروں کو اپنے اوپر ترجیح دینا۔",
   "subject": "Urdu",
   "topic": "Meaning",
@@ -11810,19 +11694,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0010",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'خلوص' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
    "دکھاوا",
-   "ناراضی",
    "تجارت",
-   "سچے دل سے محبت"
+   "سچے دل سے محبت",
+   "ناراضی"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "'خلوص' کا مطلب ہے بناوٹ کے بغیر سچائی اور پاکیزگی۔",
   "subject": "Urdu",
   "topic": "Meaning",
@@ -11842,19 +11724,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0011",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'کتاب میز پر رکھی ہے' میں 'پر' کیا ہے؟",
   "passage": null,
   "options": [
-   "حرفِ جار",
    "صفت",
+   "حرفِ جار",
    "اسم",
    "حرفِ عطف"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "'پر' اسم 'میز' کا تعلق فعل سے ظاہر کرتا ہے، اس لیے حرفِ جار ہے۔",
   "subject": "Urdu",
   "topic": "Grammar",
@@ -11880,12 +11760,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which organ pumps blood around the human body?",
   "passage": null,
   "options": [
-   "lungs",
    "heart",
+   "lungs",
    "kidney",
    "liver"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "The heart is a muscular pump that circulates blood.",
   "subject": "Science",
   "topic": "Human Body",
@@ -11911,12 +11791,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How many bones does an adult human body have?",
   "passage": null,
   "options": [
-   "106",
    "260",
-   "306",
-   "206"
+   "206",
+   "106",
+   "306"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "An adult human skeleton has 206 bones.",
   "subject": "Science",
   "topic": "Human Body",
@@ -11941,12 +11821,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which sense organ is responsible for the sense of smell?",
   "passage": null,
   "options": [
-   "skin",
+   "tongue",
    "ear",
-   "nose",
-   "tongue"
+   "skin",
+   "nose"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Smell receptors are located in the nose.",
   "subject": "Science",
   "topic": "Human Body",
@@ -11972,12 +11852,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which blood cells carry oxygen?",
   "passage": null,
   "options": [
-   "red blood cells",
-   "platelets",
    "white blood cells",
-   "plasma"
+   "plasma",
+   "red blood cells",
+   "platelets"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Haemoglobin in red blood cells binds oxygen.",
   "subject": "Science",
   "topic": "Human Body",
@@ -12003,12 +11883,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Where does most digestion of food and absorption of nutrients take place?",
   "passage": null,
   "options": [
-   "oesophagus",
-   "stomach",
    "small intestine",
+   "stomach",
+   "oesophagus",
    "large intestine"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The small intestine is long and lined with villi, where digestion is completed and nutrients are absorbed.",
   "subject": "Science",
   "topic": "Human Body",
@@ -12034,12 +11914,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which vitamin is made in the skin when it is exposed to sunlight?",
   "passage": null,
   "options": [
-   "vitamin A",
-   "vitamin K",
+   "vitamin D",
    "vitamin C",
-   "vitamin D"
+   "vitamin A",
+   "vitamin K"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Sunlight lets the skin produce vitamin D.",
   "subject": "Science",
   "topic": "Human Body",
@@ -12065,12 +11945,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which gas do we breathe out in larger amounts than we breathe in?",
   "passage": null,
   "options": [
-   "nitrogen",
    "oxygen",
-   "carbon dioxide",
-   "hydrogen"
+   "hydrogen",
+   "nitrogen",
+   "carbon dioxide"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Respiration releases carbon dioxide, so exhaled air has more of it than inhaled air.",
   "subject": "Science",
   "topic": "Human Body",
@@ -12095,12 +11975,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is the largest organ of the human body?",
   "passage": null,
   "options": [
-   "brain",
    "heart",
    "liver",
-   "skin"
+   "skin",
+   "brain"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "The skin covers the whole body and is the largest organ.",
   "subject": "Science",
   "topic": "Human Body",
@@ -12127,9 +12007,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "scurvy",
-   "rickets",
    "beriberi",
-   "night blindness"
+   "night blindness",
+   "rickets"
   ],
   "correctAnswer": 0,
   "explanation": "Lack of vitamin C causes scurvy; rickets is a lack of D, night blindness of A, and beriberi of B1.",
@@ -12157,9 +12037,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The normal human body temperature is about:",
   "passage": null,
   "options": [
-   "42 degrees Celsius",
-   "37 degrees Celsius",
    "25 degrees Celsius",
+   "37 degrees Celsius",
+   "42 degrees Celsius",
    "30 degrees Celsius"
   ],
   "correctAnswer": 1,
@@ -12219,12 +12099,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which part of a plant absorbs water from the soil?",
   "passage": null,
   "options": [
-   "roots",
-   "stem",
+   "leaves",
    "flowers",
-   "leaves"
+   "roots",
+   "stem"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Roots absorb water and minerals.",
   "subject": "Science",
   "topic": "Plants",
@@ -12249,12 +12129,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which part of a flower develops into the fruit?",
   "passage": null,
   "options": [
-   "petal",
+   "sepal",
    "anther",
-   "ovary",
-   "sepal"
+   "petal",
+   "ovary"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "After fertilisation the ovary becomes the fruit.",
   "subject": "Science",
   "topic": "Plants",
@@ -12280,12 +12160,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which green pigment in leaves traps sunlight?",
   "passage": null,
   "options": [
+   "chlorophyll",
    "xanthophyll",
    "melanin",
-   "chlorophyll",
    "carotene"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Chlorophyll absorbs light energy for photosynthesis.",
   "subject": "Science",
   "topic": "Plants",
@@ -12311,12 +12191,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Loss of water vapour from the leaves of a plant is called:",
   "passage": null,
   "options": [
+   "pollination",
    "transpiration",
    "germination",
-   "fertilisation",
-   "pollination"
+   "fertilisation"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "Transpiration is evaporation of water mainly through stomata.",
   "subject": "Science",
   "topic": "Plants",
@@ -12342,12 +12222,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The transfer of pollen from an anther to a stigma is called:",
   "passage": null,
   "options": [
+   "pollination",
    "transpiration",
    "fertilisation",
-   "germination",
-   "pollination"
+   "germination"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Pollination is the movement of pollen to a stigma; fertilisation comes later.",
   "subject": "Science",
   "topic": "Plants",
@@ -12373,9 +12253,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which animal is a mammal?",
   "passage": null,
   "options": [
+   "eagle",
    "frog",
    "snake",
-   "eagle",
    "bat"
   ],
   "correctAnswer": 3,
@@ -12403,12 +12283,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these animals lays eggs?",
   "passage": null,
   "options": [
+   "goat",
    "cat",
-   "hen",
    "cow",
-   "goat"
+   "hen"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "A hen is a bird and lays eggs; the others give birth to live young.",
   "subject": "Science",
   "topic": "Animals",
@@ -12434,8 +12314,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The life cycle of a butterfly is: egg, ___, pupa, adult.",
   "passage": null,
   "options": [
-   "nymph",
    "seed",
+   "nymph",
    "larva",
    "embryo"
   ],
@@ -12465,9 +12345,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Animals that eat both plants and animals are called:",
   "passage": null,
   "options": [
-   "herbivores",
-   "omnivores",
    "decomposers",
+   "omnivores",
+   "herbivores",
    "carnivores"
   ],
   "correctAnswer": 1,
@@ -12495,12 +12375,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "How many legs does an insect have?",
   "passage": null,
   "options": [
-   "10",
-   "8",
+   "6",
    "4",
-   "6"
+   "8",
+   "10"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "All adult insects have six legs.",
   "subject": "Science",
   "topic": "Animals",
@@ -12528,8 +12408,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "petroleum",
    "sunlight",
-   "natural gas",
-   "coal"
+   "coal",
+   "natural gas"
   ],
   "correctAnswer": 1,
   "explanation": "Sunlight is continuously replenished; fossil fuels are not.",
@@ -12556,9 +12436,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which gas is mainly responsible for global warming?",
   "passage": null,
   "options": [
-   "oxygen",
-   "helium",
    "argon",
+   "helium",
+   "oxygen",
    "carbon dioxide"
   ],
   "correctAnswer": 3,
@@ -12587,12 +12467,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The layer of the atmosphere that protects us from harmful ultraviolet rays is the:",
   "passage": null,
   "options": [
-   "ozone layer",
-   "ionosphere",
    "exosphere",
-   "troposphere"
+   "troposphere",
+   "ozone layer",
+   "ionosphere"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Ozone absorbs most of the Sun's harmful ultraviolet radiation.",
   "subject": "Science",
   "topic": "Environment",
@@ -12618,12 +12498,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a decomposer?",
   "passage": null,
   "options": [
-   "grasshopper",
-   "frog",
    "fungi",
-   "grass"
+   "grasshopper",
+   "grass",
+   "frog"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Fungi break down dead organisms and recycle nutrients.",
   "subject": "Science",
   "topic": "Environment",
@@ -12651,10 +12531,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "50 degrees Celsius",
    "212 degrees Celsius",
-   "0 degrees Celsius",
-   "100 degrees Celsius"
+   "100 degrees Celsius",
+   "0 degrees Celsius"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Water boils at 100 degrees Celsius at sea level (212 is the same temperature in Fahrenheit).",
   "subject": "Science",
   "topic": "Matter",
@@ -12679,12 +12559,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a solid at room temperature?",
   "passage": null,
   "options": [
-   "water",
-   "mercury",
+   "oxygen",
    "iron",
-   "oxygen"
+   "water",
+   "mercury"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Iron is a solid; mercury is a liquid; oxygen is a gas.",
   "subject": "Science",
   "topic": "Matter",
@@ -12710,12 +12590,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The process of a gas changing directly into a liquid is called:",
   "passage": null,
   "options": [
-   "sublimation",
-   "condensation",
+   "evaporation",
    "melting",
-   "evaporation"
+   "sublimation",
+   "condensation"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Water vapour condenses into droplets when cooled.",
   "subject": "Science",
   "topic": "Matter",
@@ -12741,9 +12621,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a mixture?",
   "passage": null,
   "options": [
-   "water",
-   "oxygen",
    "gold",
+   "oxygen",
+   "water",
    "air"
   ],
   "correctAnswer": 3,
@@ -12774,8 +12654,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "gravity",
    "magnetism",
-   "tension",
-   "friction"
+   "friction",
+   "tension"
   ],
   "correctAnswer": 0,
   "explanation": "Gravity attracts objects toward the Earth.",
@@ -12834,12 +12714,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The energy stored in a stretched rubber band is:",
   "passage": null,
   "options": [
+   "potential energy",
    "sound energy",
    "nuclear energy",
-   "potential energy",
    "kinetic energy"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Stretching stores elastic potential energy.",
   "subject": "Science",
   "topic": "Energy",
@@ -12865,10 +12745,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "In a falling object, potential energy is converted mainly into:",
   "passage": null,
   "options": [
-   "light energy",
+   "chemical energy",
    "kinetic energy",
-   "sound only",
-   "chemical energy"
+   "light energy",
+   "sound only"
   ],
   "correctAnswer": 1,
   "explanation": "As height decreases, gravitational potential energy becomes kinetic energy.",
@@ -12897,11 +12777,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "convection",
-   "evaporation",
    "radiation",
-   "conduction"
+   "conduction",
+   "evaporation"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Conduction is heat transfer through a solid by particle vibrations.",
   "subject": "Science",
   "topic": "Heat",
@@ -12927,12 +12807,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Light travels in:",
   "passage": null,
   "options": [
-   "straight lines",
+   "curved lines only",
    "zigzag lines",
    "circles",
-   "curved lines only"
+   "straight lines"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "In a uniform medium light travels in straight lines.",
   "subject": "Science",
   "topic": "Light",
@@ -12989,12 +12869,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Sound cannot travel through:",
   "passage": null,
   "options": [
+   "a vacuum",
    "steel",
-   "air",
    "water",
-   "a vacuum"
+   "air"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Sound needs a material medium.",
   "subject": "Science",
   "topic": "Sound",
@@ -13022,8 +12902,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "refraction",
    "reflection",
-   "dispersion",
-   "absorption"
+   "absorption",
+   "dispersion"
   ],
   "correctAnswer": 1,
   "explanation": "An echo is sound reflected back from a hard surface.",
@@ -13051,12 +12931,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a good conductor of electricity?",
   "passage": null,
   "options": [
-   "plastic",
    "rubber",
-   "copper",
-   "wood"
+   "plastic",
+   "wood",
+   "copper"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Metals such as copper conduct electricity well.",
   "subject": "Science",
   "topic": "Electricity",
@@ -13083,11 +12963,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "watt",
-   "ohm",
    "volt",
-   "ampere"
+   "ampere",
+   "ohm"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Current is measured in amperes.",
   "subject": "Science",
   "topic": "Electricity",
@@ -13115,10 +12995,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "Mercury",
    "Jupiter",
-   "Mars",
-   "Venus"
+   "Venus",
+   "Mars"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Iron oxide on its surface gives Mars a red colour.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -13144,12 +13024,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The Earth takes about ___ to complete one revolution around the Sun.",
   "passage": null,
   "options": [
-   "12 months and 6 days",
    "365 days",
+   "12 months and 6 days",
    "24 hours",
    "30 days"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "One revolution is a year, about 365 and a quarter days.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -13175,9 +13055,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "A solar eclipse occurs when the:",
   "passage": null,
   "options": [
-   "Sun comes between the Earth and the Moon",
-   "Earth comes between the Sun and the Moon",
    "Moon is far from the Earth",
+   "Earth comes between the Sun and the Moon",
+   "Sun comes between the Earth and the Moon",
    "Moon comes between the Sun and the Earth"
   ],
   "correctAnswer": 3,
@@ -13205,12 +13085,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which natural satellite orbits the Earth?",
   "passage": null,
   "options": [
-   "Moon",
    "Titan",
+   "Moon",
    "Phobos",
    "Europa"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The Moon is the Earth's only natural satellite.",
   "subject": "Science",
   "topic": "Earth and Space",
@@ -13236,10 +13116,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which instrument measures temperature?",
   "passage": null,
   "options": [
-   "barometer",
    "ammeter",
+   "speedometer",
    "thermometer",
-   "speedometer"
+   "barometer"
   ],
   "correctAnswer": 2,
   "explanation": "A thermometer measures temperature.",
@@ -13267,12 +13147,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is used to measure atmospheric pressure?",
   "passage": null,
   "options": [
-   "anemometer",
    "hygrometer",
-   "barometer",
-   "seismograph"
+   "anemometer",
+   "seismograph",
+   "barometer"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "A barometer measures air pressure.",
   "subject": "Science",
   "topic": "Everyday Science",
@@ -13298,12 +13178,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The gas used in fire extinguishers is mainly:",
   "passage": null,
   "options": [
-   "methane",
    "carbon dioxide",
    "hydrogen",
-   "oxygen"
+   "oxygen",
+   "methane"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Carbon dioxide displaces oxygen and smothers the flame.",
   "subject": "Science",
   "topic": "Everyday Science",
@@ -13329,12 +13209,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which of these is a natural satellite?",
   "passage": null,
   "options": [
-   "Hubble telescope",
+   "Moon",
    "Sun",
    "Sputnik",
-   "Moon"
+   "Hubble telescope"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "The Moon is natural; Sputnik and Hubble were man-made.",
   "subject": "Science",
   "topic": "General Science",
@@ -13360,12 +13240,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which scientist is known for the law of universal gravitation?",
   "passage": null,
   "options": [
-   "Michael Faraday",
    "Albert Einstein",
    "Isaac Newton",
+   "Michael Faraday",
    "Galileo Galilei"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "Newton formulated the law of universal gravitation.",
   "subject": "Science",
   "topic": "General Science",
@@ -13454,12 +13334,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Pakistan's southern coast lies along the:",
   "passage": null,
   "options": [
+   "Bay of Bengal",
    "Arabian Sea",
    "Red Sea",
-   "Caspian Sea",
-   "Bay of Bengal"
+   "Caspian Sea"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The Pakistani coast is on the Arabian Sea.",
   "subject": "Social Studies",
   "topic": "Pakistan Geography",
@@ -13488,10 +13368,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "Nanga Parbat",
    "Tirich Mir",
-   "K2",
-   "Broad Peak"
+   "Broad Peak",
+   "K2"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "K2 (8,611 m) is the second highest mountain in the world.",
   "subject": "Social Studies",
   "topic": "Pakistan Geography",
@@ -13518,12 +13398,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which pass connects Pakistan with Afghanistan near Peshawar?",
   "passage": null,
   "options": [
+   "Khunjerab Pass",
    "Bolan Pass",
    "Khyber Pass",
-   "Khunjerab Pass",
    "Lowari Pass"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The Khyber Pass links Peshawar with Kabul's side; Khunjerab leads to China.",
   "subject": "Social Studies",
   "topic": "Pakistan Geography",
@@ -13550,9 +13430,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The Khunjerab Pass connects Pakistan with:",
   "passage": null,
   "options": [
-   "Afghanistan",
    "Iran",
    "India",
+   "Afghanistan",
    "China"
   ],
   "correctAnswer": 3,
@@ -13582,12 +13462,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which is the largest province of Pakistan by area?",
   "passage": null,
   "options": [
-   "Punjab",
+   "Balochistan",
    "Khyber Pakhtunkhwa",
    "Sindh",
-   "Balochistan"
+   "Punjab"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "Balochistan covers nearly 44% of the country.",
   "subject": "Social Studies",
   "topic": "Provinces",
@@ -13614,12 +13494,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which province has the largest population?",
   "passage": null,
   "options": [
+   "Sindh",
    "Khyber Pakhtunkhwa",
    "Balochistan",
-   "Punjab",
-   "Sindh"
+   "Punjab"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "Punjab is the most populous province.",
   "subject": "Social Studies",
   "topic": "Provinces",
@@ -13644,12 +13524,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Quetta is the capital of:",
   "passage": null,
   "options": [
-   "Sindh",
    "Khyber Pakhtunkhwa",
-   "Punjab",
-   "Balochistan"
+   "Sindh",
+   "Balochistan",
+   "Punjab"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Quetta is the capital of Balochistan.",
   "subject": "Social Studies",
   "topic": "Provinces",
@@ -13676,12 +13556,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Peshawar is the provincial capital of:",
   "passage": null,
   "options": [
-   "Khyber Pakhtunkhwa",
    "Balochistan",
+   "Sindh",
    "Punjab",
-   "Sindh"
+   "Khyber Pakhtunkhwa"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Peshawar is the capital of Khyber Pakhtunkhwa.",
   "subject": "Social Studies",
   "topic": "Provinces",
@@ -13708,12 +13588,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The Badshahi Mosque is located in:",
   "passage": null,
   "options": [
-   "Islamabad",
-   "Lahore",
    "Karachi",
-   "Multan"
+   "Multan",
+   "Lahore",
+   "Islamabad"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "The Mughal emperor Aurangzeb built it in Lahore in 1673.",
   "subject": "Social Studies",
   "topic": "Important Places",
@@ -13740,9 +13620,9 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Faisal Mosque is located in:",
   "passage": null,
   "options": [
-   "Rawalpindi",
-   "Islamabad",
    "Lahore",
+   "Islamabad",
+   "Rawalpindi",
    "Karachi"
   ],
   "correctAnswer": 1,
@@ -13774,8 +13654,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "options": [
    "Karachi",
    "Hyderabad",
-   "Lahore",
-   "Islamabad"
+   "Islamabad",
+   "Lahore"
   ],
   "correctAnswer": 0,
   "explanation": "The Mazar-e-Quaid stands in Karachi.",
@@ -13804,12 +13684,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The port of Gwadar is in the province of:",
   "passage": null,
   "options": [
+   "Balochistan",
    "Sindh",
    "Khyber Pakhtunkhwa",
-   "Balochistan",
    "Punjab"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Gwadar is a deep-sea port on the Balochistan coast.",
   "subject": "Social Studies",
   "topic": "Important Places",
@@ -13837,11 +13717,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Larkana",
-   "Hyderabad",
    "Sukkur",
-   "Karachi"
+   "Karachi",
+   "Hyderabad"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Karachi is the provincial capital and largest city.",
   "subject": "Social Studies",
   "topic": "Geography of Sindh",
@@ -13900,12 +13780,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which river flows through Sindh to the Arabian Sea?",
   "passage": null,
   "options": [
-   "Jhelum",
-   "Kabul",
+   "Chenab",
    "Indus",
-   "Chenab"
+   "Kabul",
+   "Jhelum"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "The Indus flows through the length of Sindh and reaches the sea near Thatta.",
   "subject": "Social Studies",
   "topic": "Geography of Sindh",
@@ -13933,11 +13813,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Tharparkar",
-   "Jamshoro",
    "Ghotki",
+   "Jamshoro",
    "Thatta"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "Manchar Lake lies near Sehwan in the Jamshoro district (formerly Dadu).",
   "subject": "Social Studies",
   "topic": "Geography of Sindh",
@@ -13964,12 +13844,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Keenjhar Lake, the main source of Karachi's drinking water, lies in:",
   "passage": null,
   "options": [
-   "Dadu district",
-   "Sukkur district",
    "Tharparkar district",
-   "Thatta district"
+   "Thatta district",
+   "Dadu district",
+   "Sukkur district"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Keenjhar (Kalri) Lake is in Thatta district.",
   "subject": "Social Studies",
   "topic": "Geography of Sindh",
@@ -14028,12 +13908,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The national flower of Pakistan is:",
   "passage": null,
   "options": [
-   "jasmine",
+   "rose",
    "sunflower",
    "tulip",
-   "rose"
+   "jasmine"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "Jasmine (chambeli) is the national flower.",
   "subject": "Social Studies",
   "topic": "National Symbols",
@@ -14060,12 +13940,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The national animal of Pakistan is the:",
   "passage": null,
   "options": [
-   "lion",
-   "markhor",
+   "Indus dolphin",
    "snow leopard",
-   "Indus dolphin"
+   "lion",
+   "markhor"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "The markhor, a wild mountain goat, is the national animal.",
   "subject": "Social Studies",
   "topic": "National Symbols",
@@ -14091,11 +13971,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Sindhi",
-   "Punjabi",
    "Pashto",
-   "Urdu"
+   "Urdu",
+   "Punjabi"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Urdu is the national language.",
   "subject": "Social Studies",
   "topic": "National Symbols",
@@ -14122,12 +14002,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The national anthem of Pakistan was written by:",
   "passage": null,
   "options": [
-   "Faiz Ahmed Faiz",
-   "Ahmed Faraz",
    "Hafeez Jalandhari",
+   "Ahmed Faraz",
+   "Faiz Ahmed Faiz",
    "Allama Iqbal"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "Hafeez Jalandhari wrote the words; Ahmed G. Chagla composed the music.",
   "subject": "Social Studies",
   "topic": "National Symbols",
@@ -14154,12 +14034,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The white portion of the Pakistani flag represents:",
   "passage": null,
   "options": [
-   "minorities",
    "peace in the world",
-   "progress",
-   "Muslims"
+   "minorities",
+   "Muslims",
+   "progress"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "The white strip stands for religious minorities and the green field for the Muslim majority.",
   "subject": "Social Studies",
   "topic": "National Symbols",
@@ -14186,12 +14066,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Pakistan came into being on:",
   "passage": null,
   "options": [
-   "14 August 1948",
    "23 March 1940",
+   "14 August 1947",
    "6 September 1965",
-   "14 August 1947"
+   "14 August 1948"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "Pakistan became independent on 14 August 1947.",
   "subject": "Social Studies",
   "topic": "Independence Movement",
@@ -14218,12 +14098,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The Pakistan Resolution was passed at:",
   "passage": null,
   "options": [
+   "Karachi",
    "Dhaka",
-   "Lahore",
    "Delhi",
-   "Karachi"
+   "Lahore"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "It was adopted at Lahore on 23 March 1940.",
   "subject": "Social Studies",
   "topic": "Independence Movement",
@@ -14251,8 +14131,8 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "1906 at Dhaka",
-   "1930 at Allahabad",
    "1885 at Bombay",
+   "1930 at Allahabad",
    "1916 at Lucknow"
   ],
   "correctAnswer": 0,
@@ -14282,10 +14162,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The Allahabad Address of 1930, which presented the idea of a separate homeland, was delivered by:",
   "passage": null,
   "options": [
-   "Sir Syed Ahmad Khan",
    "Chaudhry Rahmat Ali",
+   "Quaid-e-Azam Jinnah",
    "Allama Muhammad Iqbal",
-   "Quaid-e-Azam Jinnah"
+   "Sir Syed Ahmad Khan"
   ],
   "correctAnswer": 2,
   "explanation": "Iqbal presided over the Muslim League session at Allahabad in 1930.",
@@ -14314,12 +14194,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Who is known as the founder of Pakistan?",
   "passage": null,
   "options": [
-   "Quaid-e-Azam Muhammad Ali Jinnah",
    "Sir Syed Ahmad Khan",
    "Liaquat Ali Khan",
+   "Quaid-e-Azam Muhammad Ali Jinnah",
    "Allama Iqbal"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Jinnah led the Pakistan Movement and became the first Governor-General.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -14346,12 +14226,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The first Prime Minister of Pakistan was:",
   "passage": null,
   "options": [
-   "Muhammad Ali Bogra",
-   "Liaquat Ali Khan",
    "H. S. Suhrawardy",
-   "Khawaja Nazimuddin"
+   "Muhammad Ali Bogra",
+   "Khawaja Nazimuddin",
+   "Liaquat Ali Khan"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "Liaquat Ali Khan served from 1947 until his assassination in 1951.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -14378,12 +14258,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The national poet of Pakistan is:",
   "passage": null,
   "options": [
-   "Mirza Ghalib",
    "Allama Muhammad Iqbal",
-   "Altaf Hussain Hali",
-   "Hafeez Jalandhari"
+   "Hafeez Jalandhari",
+   "Mirza Ghalib",
+   "Altaf Hussain Hali"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "Iqbal is called the poet of the East and the national poet.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -14411,11 +14291,11 @@ export const PST_BANK: TeacherQuestion[] = [
   "passage": null,
   "options": [
    "Kulliyat-e-Bedil",
-   "Bang-e-Dara",
    "Shah Jo Risalo",
-   "Diwan-e-Ghalib"
+   "Diwan-e-Ghalib",
+   "Bang-e-Dara"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "The Risalo is the masterpiece of the Sindhi Sufi poet.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -14442,12 +14322,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Who founded the Aligarh movement and the MAO College?",
   "passage": null,
   "options": [
-   "Maulana Muhammad Ali Jauhar",
-   "Hakim Ajmal Khan",
    "Nawab Salimullah",
-   "Sir Syed Ahmad Khan"
+   "Maulana Muhammad Ali Jauhar",
+   "Sir Syed Ahmad Khan",
+   "Hakim Ajmal Khan"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "Sir Syed founded the Muhammadan Anglo-Oriental College at Aligarh in 1875.",
   "subject": "Social Studies",
   "topic": "Important Personalities",
@@ -14474,12 +14354,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "The head of state of Pakistan is the:",
   "passage": null,
   "options": [
-   "Chief Justice",
-   "Prime Minister",
    "President",
-   "Army Chief"
+   "Prime Minister",
+   "Army Chief",
+   "Chief Justice"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "The President is head of state; the Prime Minister heads the government.",
   "subject": "Social Studies",
   "topic": "Constitution and Civics",
@@ -14570,12 +14450,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Which cloth with block-printed patterns is associated with the culture of Sindh?",
   "passage": null,
   "options": [
-   "Ajrak",
-   "Denim",
    "Khaddar",
+   "Denim",
+   "Ajrak",
    "Chiffon"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "Ajrak is a traditional block-printed shawl of Sindh.",
   "subject": "Social Studies",
   "topic": "Culture",
@@ -14602,10 +14482,10 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "Sindhi Cultural Day is celebrated on:",
   "passage": null,
   "options": [
-   "the first Sunday of March",
+   "1 January",
    "the first Sunday of December",
-   "14 August",
-   "1 January"
+   "the first Sunday of March",
+   "14 August"
   ],
   "correctAnswer": 1,
   "explanation": "Sindhi Culture Day is observed on the first Sunday of December.",
@@ -14627,19 +14507,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0012",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'دولت' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
-   "سفر",
-   "غربت",
    "محنت",
-   "مال"
+   "مال",
+   "سفر",
+   "غربت"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'دولت' کا ہم معنی لفظ 'مال' ہے۔",
   "subject": "Urdu",
   "topic": "Synonyms",
@@ -14659,17 +14537,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0013",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'آسمان' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
    "فلک",
-   "زمین",
+   "سمندر",
    "پہاڑ",
-   "سمندر"
+   "زمین"
   ],
   "correctAnswer": 0,
   "explanation": "'آسمان' کا ہم معنی لفظ 'فلک' ہے۔",
@@ -14691,19 +14567,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0014",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'بہادر' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
-   "دلیر",
    "کمزور",
    "سست",
+   "دلیر",
    "بزدل"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "'بہادر' کا ہم معنی لفظ 'دلیر' ہے۔",
   "subject": "Urdu",
   "topic": "Synonyms",
@@ -14723,19 +14597,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0015",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'سورج' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
+   "ماہتاب",
    "بادل",
-   "آفتاب",
    "ستارہ",
-   "ماہتاب"
+   "آفتاب"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "'سورج' کا ہم معنی لفظ 'آفتاب' ہے۔",
   "subject": "Urdu",
   "topic": "Synonyms",
@@ -14755,19 +14627,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0016",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'چاند' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
-   "آفتاب",
+   "ماہ",
    "مہر",
    "شفق",
-   "ماہ"
+   "آفتاب"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "'چاند' کا ہم معنی لفظ 'ماہ' ہے۔",
   "subject": "Urdu",
   "topic": "Synonyms",
@@ -14787,19 +14657,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0017",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'پانی' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
    "ہوا",
-   "خاک",
    "آب",
+   "خاک",
    "آتش"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "'پانی' کا ہم معنی لفظ 'آب' ہے۔",
   "subject": "Urdu",
   "topic": "Synonyms",
@@ -14819,19 +14687,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0018",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'آگ' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
+   "باد",
    "آب",
-   "آتش",
    "خاک",
-   "باد"
+   "آتش"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "'آگ' کا ہم معنی لفظ 'آتش' ہے۔",
   "subject": "Urdu",
   "topic": "Synonyms",
@@ -14851,19 +14717,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0019",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'دوست' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
-   "یار",
    "اجنبی",
-   "دشمن",
-   "مخالف"
+   "مخالف",
+   "یار",
+   "دشمن"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "'دوست' کا ہم معنی لفظ 'یار' ہے۔",
   "subject": "Urdu",
   "topic": "Synonyms",
@@ -14883,17 +14747,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0020",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'راستہ' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
-   "مسافر",
    "منزل",
+   "قافلہ",
    "راہ",
-   "قافلہ"
+   "مسافر"
   ],
   "correctAnswer": 2,
   "explanation": "'راستہ' کا ہم معنی لفظ 'راہ' ہے۔",
@@ -14915,16 +14777,14 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0021",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'خوش' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
    "تھکا ہوا",
-   "ناراض",
    "غمگین",
+   "ناراض",
    "مسرور"
   ],
   "correctAnswer": 3,
@@ -14947,9 +14807,7 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0022",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'حیرت' کا مترادف کیا ہے؟",
   "passage": null,
@@ -14979,19 +14837,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0023",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'زمین' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
    "فلک",
+   "ارض",
    "سما",
-   "آسمان",
-   "ارض"
+   "آسمان"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'زمین' کا ہم معنی لفظ 'ارض' ہے۔",
   "subject": "Urdu",
   "topic": "Synonyms",
@@ -15011,17 +14867,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0024",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'عزت' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
-   "ذلت",
+   "غرور",
    "حسد",
    "احترام",
-   "غرور"
+   "ذلت"
   ],
   "correctAnswer": 2,
   "explanation": "'عزت' کا ہم معنی لفظ 'احترام' ہے۔",
@@ -15043,19 +14897,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0025",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'روشنی' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
-   "تاریکی",
    "نور",
    "سایہ",
-   "دھواں"
+   "دھواں",
+   "تاریکی"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "'روشنی' کا ہم معنی لفظ 'نور' ہے۔",
   "subject": "Urdu",
   "topic": "Synonyms",
@@ -15075,17 +14927,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0026",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'جنگل' کا مترادف کیا ہے؟",
   "passage": null,
   "options": [
-   "باغ",
-   "بن",
    "شہر",
-   "نہر"
+   "بن",
+   "نہر",
+   "باغ"
   ],
   "correctAnswer": 1,
   "explanation": "'جنگل' کا ہم معنی لفظ 'بن' ہے۔",
@@ -15107,19 +14957,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0027",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'امیر' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "بادشاہ",
    "دولت مند",
-   "غریب",
-   "سخی"
+   "بادشاہ",
+   "سخی",
+   "غریب"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "'امیر' کا الٹ (متضاد) 'غریب' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15139,19 +14987,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0028",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'دن' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "دوپہر",
-   "شام",
+   "رات",
    "صبح",
-   "رات"
+   "دوپہر",
+   "شام"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "'دن' کا الٹ (متضاد) 'رات' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15171,19 +15017,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0029",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'سچ' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "جھوٹ",
-   "حق",
    "وعدہ",
-   "صدق"
+   "جھوٹ",
+   "صدق",
+   "حق"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "'سچ' کا الٹ (متضاد) 'جھوٹ' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15203,19 +15047,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0030",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'اندھیرا' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
    "سایہ",
-   "اجالا",
    "دھند",
-   "رات"
+   "رات",
+   "اجالا"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "'اندھیرا' کا الٹ (متضاد) 'اجالا' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15235,19 +15077,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0031",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'بڑا' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "چھوٹا",
+   "لمبا",
    "وسیع",
-   "موٹا",
-   "لمبا"
+   "چھوٹا",
+   "موٹا"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "'بڑا' کا الٹ (متضاد) 'چھوٹا' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15267,19 +15107,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0032",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'میٹھا' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "نمکین",
-   "نرم",
+   "کڑوا",
    "ٹھنڈا",
-   "کڑوا"
+   "نمکین",
+   "نرم"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "'میٹھا' کا الٹ (متضاد) 'کڑوا' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15299,19 +15137,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0033",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'آسان' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "جلدی",
+   "ہلکا",
    "سادہ",
-   "مشکل",
-   "ہلکا"
+   "جلدی",
+   "مشکل"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "'آسان' کا الٹ (متضاد) 'مشکل' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15331,19 +15167,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0034",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'قریب' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
+   "نزدیک",
    "پاس",
    "دور",
-   "نزدیک",
    "سامنے"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "'قریب' کا الٹ (متضاد) 'دور' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15363,19 +15197,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0035",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'خوشی' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "ہنسی",
    "شادی",
    "غم",
-   "مسرت"
+   "مسرت",
+   "ہنسی"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "'خوشی' کا الٹ (متضاد) 'غم' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15395,19 +15227,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0036",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'بہار' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "گرمی",
    "برسات",
+   "خزاں",
    "سردی",
-   "خزاں"
+   "گرمی"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'بہار' کا الٹ (متضاد) 'خزاں' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15427,19 +15257,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0037",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'عزت' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "ذلت",
+   "وقار",
    "شہرت",
-   "احترام",
-   "وقار"
+   "ذلت",
+   "احترام"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "'عزت' کا الٹ (متضاد) 'ذلت' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15459,19 +15287,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0038",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'ابتدا' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "آغاز",
-   "انتہا",
+   "پہلے",
    "شروع",
-   "پہلے"
+   "آغاز",
+   "انتہا"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "'ابتدا' کا الٹ (متضاد) 'انتہا' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15491,19 +15317,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0039",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'جیت' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "فتح",
-   "کامیابی",
    "ہار",
-   "مقابلہ"
+   "فتح",
+   "مقابلہ",
+   "کامیابی"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "'جیت' کا الٹ (متضاد) 'ہار' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15523,19 +15347,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0040",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'نیا' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "پرانا",
-   "تازہ",
    "صاف",
-   "جدید"
+   "تازہ",
+   "جدید",
+   "پرانا"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "'نیا' کا الٹ (متضاد) 'پرانا' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15555,19 +15377,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0041",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'سخت' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "بھاری",
+   "نرم",
    "کڑا",
    "مضبوط",
-   "نرم"
+   "بھاری"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "'سخت' کا الٹ (متضاد) 'نرم' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15587,19 +15407,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0042",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'محنت' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "مزدوری",
    "لگن",
-   "کوشش",
-   "سستی"
+   "مزدوری",
+   "سستی",
+   "کوشش"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "'محنت' کا الٹ (متضاد) 'سستی' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15619,19 +15437,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0043",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'زندگی' کا متضاد کیا ہے؟",
   "passage": null,
   "options": [
-   "حیات",
    "سانس",
    "موت",
-   "جان"
+   "جان",
+   "حیات"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "'زندگی' کا الٹ (متضاد) 'موت' ہے۔",
   "subject": "Urdu",
   "topic": "Antonyms",
@@ -15651,19 +15467,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0044",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'کتاب' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
-   "کتابیں",
+   "کتابات",
    "کتابوں",
    "کتابے",
-   "کتابات"
+   "کتابیں"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "'کتاب' کی درست جمع 'کتابیں' ہے۔",
   "subject": "Urdu",
   "topic": "Singular and Plural",
@@ -15683,19 +15497,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0045",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'لڑکا' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
    "لڑکیں",
+   "لڑکیاں",
    "لڑکے",
-   "لڑکاں",
-   "لڑکیاں"
+   "لڑکاں"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "'لڑکا' کی درست جمع 'لڑکے' ہے۔",
   "subject": "Urdu",
   "topic": "Singular and Plural",
@@ -15715,17 +15527,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0046",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'دکان' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
    "دکانیں",
-   "دکانے",
+   "دکانات",
    "دکانوں",
-   "دکانات"
+   "دکانے"
   ],
   "correctAnswer": 0,
   "explanation": "'دکان' کی درست جمع 'دکانیں' ہے۔",
@@ -15747,19 +15557,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0047",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'استاد' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
-   "استادے",
    "اساتیذ",
    "اساتذہ",
-   "استادیں"
+   "استادیں",
+   "استادے"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "'استاد' کی درست جمع 'اساتذہ' ہے۔",
   "subject": "Urdu",
   "topic": "Singular and Plural",
@@ -15779,19 +15587,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0048",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'خط' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
-   "خطات",
    "خطوط",
+   "خطے",
    "خطیں",
-   "خطے"
+   "خطات"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "'خط' کی درست جمع 'خطوط' ہے۔",
   "subject": "Urdu",
   "topic": "Singular and Plural",
@@ -15811,19 +15617,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0049",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'طالب علم' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
    "طالب علمات",
+   "طلبہ",
    "طلباں",
-   "طالبیں",
-   "طلبہ"
+   "طالبیں"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 1,
   "explanation": "'طالب علم' کی درست جمع 'طلبہ' ہے۔",
   "subject": "Urdu",
   "topic": "Singular and Plural",
@@ -15843,19 +15647,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0050",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'شاعر' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
    "شاعرات",
+   "شاعریں",
    "شعراء",
-   "شاعروں",
-   "شاعریں"
+   "شاعروں"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "'شاعر' کی درست جمع 'شعراء' ہے۔",
   "subject": "Urdu",
   "topic": "Singular and Plural",
@@ -15875,19 +15677,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0051",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'مکان' کی جمع کیا ہے؟",
   "passage": null,
   "options": [
-   "مکانات",
+   "مکانے",
    "مکاناں",
    "مکانیں",
-   "مکانے"
+   "مکانات"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "'مکان' کی درست جمع 'مکانات' ہے۔",
   "subject": "Urdu",
   "topic": "Singular and Plural",
@@ -15907,19 +15707,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0052",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'شیر' کی تانیث (مؤنث) کیا ہے؟",
   "passage": null,
   "options": [
+   "شیرنی",
    "شیرہ",
-   "شیران",
    "شیری",
-   "شیرنی"
+   "شیران"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "'شیر' کا مؤنث 'شیرنی' ہے۔",
   "subject": "Urdu",
   "topic": "Masculine and Feminine",
@@ -15939,17 +15737,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0053",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'لڑکا' کی تانیث (مؤنث) کیا ہے؟",
   "passage": null,
   "options": [
    "لڑکانی",
-   "لڑکنی",
+   "لڑکن",
    "لڑکی",
-   "لڑکن"
+   "لڑکنی"
   ],
   "correctAnswer": 2,
   "explanation": "'لڑکا' کا مؤنث 'لڑکی' ہے۔",
@@ -15971,15 +15767,13 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0054",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'بھائی' کی تانیث (مؤنث) کیا ہے؟",
   "passage": null,
   "options": [
-   "بہنی",
    "بھائن",
+   "بہنی",
    "بھائیانی",
    "بہن"
   ],
@@ -16003,19 +15797,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0055",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'استاد' کی تانیث (مؤنث) کیا ہے؟",
   "passage": null,
   "options": [
-   "استانی",
-   "استادن",
    "استادی",
-   "استادہ"
+   "استانی",
+   "استادہ",
+   "استادن"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "'استاد' کا مؤنث 'استانی' ہے۔",
   "subject": "Urdu",
   "topic": "Masculine and Feminine",
@@ -16035,17 +15827,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0056",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'گھوڑا' کی تانیث (مؤنث) کیا ہے؟",
   "passage": null,
   "options": [
-   "گھوڑیا",
+   "گھوڑن",
    "گھوڑی",
-   "گھوڑنی",
-   "گھوڑن"
+   "گھوڑیا",
+   "گھوڑنی"
   ],
   "correctAnswer": 1,
   "explanation": "'گھوڑا' کا مؤنث 'گھوڑی' ہے۔",
@@ -16067,19 +15857,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0057",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'مرغا' کی تانیث (مؤنث) کیا ہے؟",
   "passage": null,
   "options": [
-   "مرغی",
-   "مرغن",
+   "مرغانی",
    "مرغیا",
-   "مرغانی"
+   "مرغن",
+   "مرغی"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "'مرغا' کا مؤنث 'مرغی' ہے۔",
   "subject": "Urdu",
   "topic": "Masculine and Feminine",
@@ -16099,19 +15887,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0058",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'بیٹا' کی تانیث (مؤنث) کیا ہے؟",
   "passage": null,
   "options": [
-   "بیٹن",
    "بیٹیا",
    "بیٹانی",
-   "بیٹی"
+   "بیٹی",
+   "بیٹن"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "'بیٹا' کا مؤنث 'بیٹی' ہے۔",
   "subject": "Urdu",
   "topic": "Masculine and Feminine",
@@ -16131,19 +15917,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0059",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "درج ذیل میں سے کون سا لفظ مؤنث ہے؟",
   "passage": null,
   "options": [
-   "دہی",
    "ہوا",
    "چاند",
-   "پانی"
+   "پانی",
+   "دہی"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "'ہوا' مؤنث ہے، جبکہ پانی، چاند اور دہی مذکر ہیں۔",
   "subject": "Urdu",
   "topic": "Masculine and Feminine",
@@ -16163,19 +15947,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0060",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "درج ذیل میں سے کون سا لفظ مذکر ہے؟",
   "passage": null,
   "options": [
-   "روٹی",
    "آگ",
    "پہاڑ",
+   "روٹی",
    "رات"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "'پہاڑ' مذکر ہے، جبکہ آگ، رات اور روٹی مؤنث ہیں۔",
   "subject": "Urdu",
   "topic": "Masculine and Feminine",
@@ -16195,19 +15977,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0061",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "محاورہ 'آنکھوں کا تارا' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
    "نابینا",
    "بہت دور",
-   "بہت امیر",
-   "بہت پیارا"
+   "بہت پیارا",
+   "بہت امیر"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "اس محاورے کا مطلب 'بہت پیارا' ہے۔",
   "subject": "Urdu",
   "topic": "Idioms",
@@ -16227,19 +16007,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0062",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "محاورہ 'دانت کھٹے کرنا' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "کھانا کھانا",
+   "ڈرانا",
    "دانت صاف کرنا",
-   "ہرا دینا",
-   "ڈرانا"
+   "کھانا کھانا",
+   "ہرا دینا"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "اس محاورے کا مطلب 'ہرا دینا' ہے۔",
   "subject": "Urdu",
   "topic": "Idioms",
@@ -16259,19 +16037,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0063",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "محاورہ 'ہاتھ پاؤں پھولنا' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "تھک جانا",
    "گھبرا جانا",
-   "موٹا ہونا",
-   "بیمار ہونا"
+   "تھک جانا",
+   "بیمار ہونا",
+   "موٹا ہونا"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "اس محاورے کا مطلب 'گھبرا جانا' ہے۔",
   "subject": "Urdu",
   "topic": "Idioms",
@@ -16291,19 +16067,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0064",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "محاورہ 'نو دو گیارہ ہونا' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "بھاگ جانا",
-   "گننا",
    "حساب لگانا",
+   "گننا",
+   "بھاگ جانا",
    "جمع کرنا"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 2,
   "explanation": "اس محاورے کا مطلب 'بھاگ جانا' ہے۔",
   "subject": "Urdu",
   "topic": "Idioms",
@@ -16323,19 +16097,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0065",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "محاورہ 'آسمان سے باتیں کرنا' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
+   "دعا مانگنا",
    "بہت بلند ہونا",
    "خواب دیکھنا",
-   "جھوٹ بولنا",
-   "دعا مانگنا"
+   "جھوٹ بولنا"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "اس محاورے کا مطلب 'بہت بلند ہونا' ہے۔",
   "subject": "Urdu",
   "topic": "Idioms",
@@ -16355,19 +16127,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0066",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "محاورہ 'آگ بگولا ہونا' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "بخار چڑھنا",
    "سخت غصے میں آنا",
    "بہت خوش ہونا",
-   "تیز دوڑنا"
+   "تیز دوڑنا",
+   "بخار چڑھنا"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "اس محاورے کا مطلب 'سخت غصے میں آنا' ہے۔",
   "subject": "Urdu",
   "topic": "Idioms",
@@ -16387,9 +16157,7 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0067",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "محاورہ 'ٹیڑھی کھیر' کا مطلب کیا ہے؟",
   "passage": null,
@@ -16419,17 +16187,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0068",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'عزم' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "سستی",
+   "خوف",
    "شکایت",
    "پختہ ارادہ",
-   "خوف"
+   "سستی"
   ],
   "correctAnswer": 2,
   "explanation": "'عزم' کا مطلب 'پختہ ارادہ' ہے۔",
@@ -16451,19 +16217,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0069",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'شفقت' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "مہربانی",
    "لالچ",
+   "مہربانی",
    "جلدی",
    "غصہ"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "'شفقت' کا مطلب 'مہربانی' ہے۔",
   "subject": "Urdu",
   "topic": "Meaning",
@@ -16483,17 +16247,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0070",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'جرأت' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
    "ہمت",
+   "شرارت",
    "کمزوری",
-   "خاموشی",
-   "شرارت"
+   "خاموشی"
   ],
   "correctAnswer": 0,
   "explanation": "'جرأت' کا مطلب 'ہمت' ہے۔",
@@ -16515,15 +16277,13 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0071",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'حسد' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "محبت",
    "خوشی",
+   "محبت",
    "دعا",
    "جلن"
   ],
@@ -16547,19 +16307,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0072",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'صبر' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "شور",
-   "جلد بازی",
    "برداشت",
-   "غرور"
+   "جلد بازی",
+   "غرور",
+   "شور"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 0,
   "explanation": "'صبر' کا مطلب 'برداشت' ہے۔",
   "subject": "Urdu",
   "topic": "Meaning",
@@ -16579,19 +16337,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0073",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'دیانت' کا مطلب کیا ہے؟",
   "passage": null,
   "options": [
-   "بے ایمانی",
-   "تجارت",
    "دوستی",
-   "ایمانداری"
+   "بے ایمانی",
+   "ایمانداری",
+   "تجارت"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "'دیانت' کا مطلب 'ایمانداری' ہے۔",
   "subject": "Urdu",
   "topic": "Meaning",
@@ -16611,19 +16367,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0074",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "درست املا کون سا ہے؟",
   "passage": null,
   "options": [
-   "صحیح",
-   "صیح",
+   "سحیح",
    "صحی",
-   "سحیح"
+   "صیح",
+   "صحیح"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "درست املا 'صحیح' ہے، یعنی ص، ح، ی، ح۔",
   "subject": "Urdu",
   "topic": "Spelling",
@@ -16643,19 +16397,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0075",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "درست املا کون سا ہے؟",
   "passage": null,
   "options": [
    "ظرور",
-   "ضرورر",
    "ضرور",
+   "ضرورر",
    "زرور"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "درست املا 'ضرور' ہے۔",
   "subject": "Urdu",
   "topic": "Spelling",
@@ -16675,19 +16427,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0076",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "درست املا کون سا ہے؟",
   "passage": null,
   "options": [
-   "کیمت",
-   "قیمت",
    "قیمط",
-   "قیمات"
+   "قیمات",
+   "کیمت",
+   "قیمت"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "درست املا 'قیمت' ہے۔",
   "subject": "Urdu",
   "topic": "Spelling",
@@ -16707,19 +16457,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0077",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "درست املا کون سا ہے؟",
   "passage": null,
   "options": [
-   "اجاظت",
-   "اجازت",
+   "عجازت",
    "اجازط",
-   "عجازت"
+   "اجازت",
+   "اجاظت"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "درست املا 'اجازت' ہے۔",
   "subject": "Urdu",
   "topic": "Spelling",
@@ -16744,12 +16492,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "'علی نے خط لکھا' میں لفظ 'علی' کیا ہے؟",
   "passage": null,
   "options": [
-   "صفت",
-   "فعل",
+   "حرف",
    "اسم",
-   "حرف"
+   "فعل",
+   "صفت"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "'علی' ایک شخص کا نام ہے، لہٰذا اسم ہے۔",
   "subject": "Urdu",
   "topic": "Grammar",
@@ -16774,12 +16522,12 @@ export const PST_BANK: TeacherQuestion[] = [
   "question": "'علی نے خط لکھا' میں لفظ 'لکھا' کیا ہے؟",
   "passage": null,
   "options": [
-   "صفت",
+   "فعل",
    "اسم",
    "ضمیر",
-   "فعل"
+   "صفت"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "'لکھا' کام کے ہونے کو ظاہر کرتا ہے، لہٰذا فعل ہے۔",
   "subject": "Urdu",
   "topic": "Grammar",
@@ -16799,19 +16547,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0080",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'خوبصورت پھول' میں لفظ 'خوبصورت' کیا ہے؟",
   "passage": null,
   "options": [
-   "فعل",
+   "صفت",
    "ضمیر",
-   "اسم",
-   "صفت"
+   "فعل",
+   "اسم"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "جو لفظ اسم کی خوبی بیان کرے وہ صفت ہے۔",
   "subject": "Urdu",
   "topic": "Grammar",
@@ -16831,19 +16577,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0081",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "درج ذیل میں سے ضمیر کون سا ہے؟",
   "passage": null,
   "options": [
-   "دوڑنا",
    "اچھا",
-   "ہم",
-   "کتاب"
+   "دوڑنا",
+   "کتاب",
+   "ہم"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 3,
   "explanation": "'ہم' اسم کی جگہ آتا ہے، لہٰذا ضمیر ہے۔",
   "subject": "Urdu",
   "topic": "Grammar",
@@ -16863,19 +16607,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0082",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "جملہ 'میں اسکول جا رہا ہوں' کون سا زمانہ ہے؟",
   "passage": null,
   "options": [
-   "ماضی مطلق",
-   "حال جاری",
    "حال مطلق",
-   "مستقبل"
+   "مستقبل",
+   "حال جاری",
+   "ماضی مطلق"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 2,
   "explanation": "'رہا ہوں' کام کے جاری ہونے کو ظاہر کرتا ہے، اس لیے حال جاری ہے۔",
   "subject": "Urdu",
   "topic": "Grammar",
@@ -16895,19 +16637,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0083",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "جملہ 'وہ کل آئے گا' کون سا زمانہ ہے؟",
   "passage": null,
   "options": [
+   "ماضی بعید",
    "مستقبل",
-   "ماضی",
    "حال",
-   "ماضی بعید"
+   "ماضی"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 1,
   "explanation": "'کل' اور 'آئے گا' آنے والے وقت کو ظاہر کرتے ہیں۔",
   "subject": "Urdu",
   "topic": "Grammar",
@@ -16927,19 +16667,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0084",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'ہم نے کھانا کھایا' میں 'نے' کیا ہے؟",
   "passage": null,
   "options": [
    "علامتِ مفعول",
-   "علامتِ جمع",
    "علامتِ فاعل",
+   "علامتِ جمع",
    "علامتِ نفی"
   ],
-  "correctAnswer": 2,
+  "correctAnswer": 1,
   "explanation": "'نے' فاعل کے بعد آتا ہے اور علامتِ فاعل ہے۔",
   "subject": "Urdu",
   "topic": "Grammar",
@@ -16959,19 +16697,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0085",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "درست جملہ کون سا ہے؟",
   "passage": null,
   "options": [
-   "لڑکی کتاب پڑھ رہی ہوں",
    "لڑکی کتاب پڑھ رہی ہے",
    "لڑکی کتاب پڑھ رہا ہے",
+   "لڑکی کتاب پڑھ رہی ہوں",
    "لڑکی کتاب پڑھ رہے ہے"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 0,
   "explanation": "فاعل مؤنث اور واحد ہے، لہٰذا فعل 'رہی ہے' درست ہے۔",
   "subject": "Urdu",
   "topic": "Sentence Structure",
@@ -16991,19 +16727,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0086",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "درست جملہ کون سا ہے؟",
   "passage": null,
   "options": [
-   "بچے باغ میں کھیل رہے ہو",
    "بچے باغ میں کھیل رہا ہے",
-   "بچے باغ میں کھیل رہی ہیں",
-   "بچے باغ میں کھیل رہے ہیں"
+   "بچے باغ میں کھیل رہے ہو",
+   "بچے باغ میں کھیل رہے ہیں",
+   "بچے باغ میں کھیل رہی ہیں"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 2,
   "explanation": "جمع مذکر فاعل کے ساتھ 'رہے ہیں' آتا ہے۔",
   "subject": "Urdu",
   "topic": "Sentence Structure",
@@ -17023,19 +16757,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0087",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "علامہ اقبال کہاں پیدا ہوئے؟",
   "passage": "علامہ اقبال 1877ء میں سیالکوٹ میں پیدا ہوئے۔ انہوں نے اپنی شاعری کے ذریعے مسلمانوں کو بیدار کیا اور انہیں آزادی کا خواب دکھایا۔ ان کا کلام آج بھی شوق سے پڑھا جاتا ہے۔",
   "options": [
-   "سیالکوٹ",
    "کراچی",
+   "دہلی",
    "لاہور",
-   "دہلی"
+   "سیالکوٹ"
   ],
-  "correctAnswer": 0,
+  "correctAnswer": 3,
   "explanation": "عبارت کے مطابق وہ سیالکوٹ میں پیدا ہوئے۔",
   "subject": "Urdu",
   "topic": "Comprehension",
@@ -17055,17 +16787,15 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0088",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "عبارت کے مطابق علامہ اقبال کس سن میں پیدا ہوئے؟",
   "passage": "علامہ اقبال 1877ء میں سیالکوٹ میں پیدا ہوئے۔ انہوں نے اپنی شاعری کے ذریعے مسلمانوں کو بیدار کیا اور انہیں آزادی کا خواب دکھایا۔ ان کا کلام آج بھی شوق سے پڑھا جاتا ہے۔",
   "options": [
-   "1947ء",
+   "1930ء",
    "1877ء",
-   "1857ء",
-   "1930ء"
+   "1947ء",
+   "1857ء"
   ],
   "correctAnswer": 1,
   "explanation": "عبارت میں ان کی پیدائش کا سن 1877ء بتایا گیا ہے۔",
@@ -17087,19 +16817,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0089",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "علامہ اقبال نے مسلمانوں کو کس ذریعے سے بیدار کیا؟",
   "passage": "علامہ اقبال 1877ء میں سیالکوٹ میں پیدا ہوئے۔ انہوں نے اپنی شاعری کے ذریعے مسلمانوں کو بیدار کیا اور انہیں آزادی کا خواب دکھایا۔ ان کا کلام آج بھی شوق سے پڑھا جاتا ہے۔",
   "options": [
-   "کھیل",
-   "تجارت",
+   "شاعری",
    "تعمیرات",
-   "شاعری"
+   "کھیل",
+   "تجارت"
   ],
-  "correctAnswer": 3,
+  "correctAnswer": 0,
   "explanation": "عبارت میں آیا ہے کہ انہوں نے اپنی شاعری کے ذریعے مسلمانوں کو بیدار کیا۔",
   "subject": "Urdu",
   "topic": "Comprehension",
@@ -17119,19 +16847,17 @@ export const PST_BANK: TeacherQuestion[] = [
   "id": "pst-urd-0090",
   "examType": "pst",
   "examTypes": [
-   "pst",
-   "jest",
-   "jst"
+   "pst"
   ],
   "question": "'بانگِ درا' کے مصنف کون ہیں؟",
   "passage": null,
   "options": [
-   "مرزا غالب",
-   "علامہ اقبال",
    "فیض احمد فیض",
-   "میر تقی میر"
+   "مرزا غالب",
+   "میر تقی میر",
+   "علامہ اقبال"
   ],
-  "correctAnswer": 1,
+  "correctAnswer": 3,
   "explanation": "'بانگِ درا' علامہ اقبال کا اردو شعری مجموعہ ہے۔",
   "subject": "Urdu",
   "topic": "Vocabulary",

@@ -32,11 +32,17 @@ for (const ex of ['pst', 'jest', 'jst']) {
   const sec = test.sections.reduce((a, s) => a + s.count, 0); ok(ex + ' sections sum to total', sec === test.totalQuestions);
   ok(ex + ' no pass mark when unknown', test.passMarks === 0);
   ok(ex + ' fixedOrder respected', bank.filter(q => q.fixedOrder).every(q => { const a = T.arrangeOptions(q, 'x', true); return a.order.join() === '0,1,2,3'; }));
-  const specs = [{ mode: 'mixed', count: 20 }, { mode: 'subject', subject: 'English', count: 15 }, { mode: 'difficulty', difficulty: 'difficult', count: 10 }, { mode: 'past-paper', count: 10 }, { mode: 'topic', subject: 'Mathematics', topic: ex === 'pst' ? 'Fractions' : 'Arithmetic', count: 5 }];
+  const specs = [{ mode: 'mixed', count: 20 }, { mode: 'subject', subject: 'English', count: 15 }, { mode: 'difficulty', difficulty: 'difficult', count: 10 }, { mode: 'past-paper', count: 10 }, { mode: 'topic', subject: 'Mathematics', topic: ex === 'pst' ? 'Fractions' : ex === 'jst' ? 'Multiples and Factors' : 'Arithmetic', count: 5 }];
   for (const s of specs) { const sel = P.selectPractice(cfg, bank, s, {}, 'seed1'); ok(`${ex} practice ${s.mode}`, s.mode === 'past-paper' ? sel.length === 0 : (sel.length > 0 && sel.length <= s.count && new Set(sel.map(q => q.id)).size === sel.length), 'n=' + sel.length); }
 }
 ok('apportion sums', R.apportion(20, [0.3, 0.5, 0.2]).reduce((a, b) => a + b) === 20 && R.apportion(45, [1, 1, 1]).join() === '15,15,15');
 const jst = C.teacherExamConfig.jst; const jm = G.planMocks(jst, banks.jst, 1)[0]; const jb = new Map(banks.jst.map(q => [q.id, q]));
 const br = {}; jm.sections.find(s => s.code === 'SCI').ids.forEach(id => { const b = jb.get(id).topic.split(':')[0]; br[b] = (br[b] || 0) + 1; });
-ok('JST science 15/15/15 by branch', br.Physics === 15 && br.Chemistry === 15 && br.Biology === 15, JSON.stringify(br));
+ok('JST science 12/12/12 by branch', br.Physics === 12 && br.Chemistry === 12 && br.Biology === 12, JSON.stringify(br));
+const jsec = Object.fromEntries(jst.mock.sections.map(s => [s.code, s.count]));
+ok('JST sections match the official specification (English 10, GK 10, Pedagogy 20, Science 36, Math 12, Computer 12)', jsec.ENG === 10 && jsec.SOC === 10 && jsec.PED === 20 && jsec.SCI === 36 && jsec.MAT === 12 && jsec.CMP === 12);
+const jestc = Object.fromEntries(C.teacherExamConfig.jest.mock.sections.map(s => [s.code, s.count]));
+ok('JEST parts match the STS sample paper (Part I 70, Part II 10, Part III 20)', jestc.ENG + jestc.MAT + jestc.SCI + jestc.CMP === 70 && jestc.SOC === 10 && jestc.PED === 20);
+const pstc = Object.fromEntries(C.teacherExamConfig.pst.mock.sections.map(s => [s.code, s.count]));
+ok('PST parts match the STS sample paper (15 / 15 / 20 / 25 / 25)', pstc.MTL === 15 && pstc.ISL + pstc.CMP + pstc.SOC === 15 && pstc.ENG === 20 && pstc.MAT === 25 && pstc.SCI === 25);
 process.exit(fail ? 1 : 0);
