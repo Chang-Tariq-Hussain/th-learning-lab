@@ -49,8 +49,9 @@ new = []
 for n, i in enumerate(allq, 1):
     c = code[i["subject"]]; ctr[c] += 1
     i["id"] = f"{c}-{ctr[c]:03d}"; i["subjectCode"] = c
-    i["mockNumber"] = {"mock2": n}; i["usedInMocks"] = ["mock2"]; i["verified"] = True
+    i["mockNumber"] = {"mock2": n}; i["usedInMocks"] = ["mock2"]; i["verified"] = False  # set below: only a genuine past paper is "verified"
     if i["sourceType"] == "Verified Past Paper":
+        i["verified"] = True
         i["verifiedNote"] = "Appears in an uploaded third-party reproduction of the FPSC paper; answer independently re-derived. FPSC does not release booklets, so this is not an official copy."
     elif i["sourceType"] == "Existing Question Bank":
         i["verifiedNote"] = i["verifiedNote"] or "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended."

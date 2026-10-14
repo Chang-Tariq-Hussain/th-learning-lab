@@ -836,7 +836,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -866,7 +866,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked. Stem reworded by me (original said 'first seven revealed').",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -896,7 +896,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -926,7 +926,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -956,7 +956,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -986,7 +986,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -1016,7 +1016,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -1046,7 +1046,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -1076,7 +1076,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -1106,7 +1106,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -1136,7 +1136,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -1166,7 +1166,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Item in the 2026 file prepared by cssaspirants.pk on the FPSC pattern (not an original FPSC item); origin unconfirmed; answer independently checked.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -1196,7 +1196,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; Urdu wording should be read once by a native speaker.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me; native-speaker review recommended.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -1226,7 +1226,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; Urdu wording should be read once by a native speaker.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me; native-speaker review recommended.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -1560,7 +1560,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -2138,7 +2138,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
    2026
   ],
   "sourceNote": "Adapted from the 2025/2026 pattern; option (B) was rewritten because the original version contained a second error, so this is not counted as a past-paper item.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Adapted from the 2025/2026 pattern; option (B) was rewritten because the original version contained a second error, so this is not counted as a past-paper item.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -2624,7 +2624,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -2654,7 +2654,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -3764,7 +3764,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; answer re-computed.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -3794,7 +3794,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; answer re-computed.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -3824,7 +3824,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; answer re-computed.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -3854,7 +3854,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; answer re-computed.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -3884,7 +3884,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; answer re-computed.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -3914,7 +3914,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; answer re-computed.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -4154,7 +4154,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; answer re-computed.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -4214,7 +4214,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; answer re-computed.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -4244,7 +4244,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; answer re-computed.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -4274,7 +4274,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math.py.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -5294,7 +5294,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -5324,7 +5324,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -5354,7 +5354,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -5384,7 +5384,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -5414,7 +5414,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -5444,7 +5444,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -5474,7 +5474,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock. Current-affairs fact checked by web search on 5 Oct 2026.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -5534,7 +5534,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 5 Oct 2026 (COP30 held in Belém, Brazil, 10-21 Nov 2025).",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock. Fact checked by web search on 5 Oct 2026 (COP30 held in Belém, Brazil, 10-21 Nov 2025).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -5564,7 +5564,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 5 Oct 2026 (elected June 2024, term 1 Jan 2025 - 31 Dec 2026).",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated for this mock. Fact checked by web search on 5 Oct 2026 (elected June 2024, term 1 Jan 2025 - 31 Dec 2026).",
   "optionsReordered": false,
   "usedInMocks": [
@@ -6322,7 +6322,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6353,7 +6353,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6384,7 +6384,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6415,7 +6415,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -6446,7 +6446,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6477,7 +6477,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6508,7 +6508,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6539,7 +6539,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -6570,7 +6570,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6601,7 +6601,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6632,7 +6632,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6663,7 +6663,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6911,7 +6911,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Prepared by cssaspirants.pk for the 2026 file (not an original FPSC item); answer checked by me.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -6942,7 +6942,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Prepared by cssaspirants.pk for the 2026 file (not an original FPSC item); answer checked by me.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -6973,7 +6973,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Prepared by cssaspirants.pk for the 2026 file (not an original FPSC item); answer checked by me.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -7004,7 +7004,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Prepared by cssaspirants.pk for the 2026 file (not an original FPSC item); answer checked by me.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -7035,7 +7035,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Prepared by cssaspirants.pk for the 2026 file (not an original FPSC item); answer checked by me.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -7066,7 +7066,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": 2026,
   "alsoIn": [],
   "sourceNote": "Prepared by cssaspirants.pk for the 2026 file (not an original FPSC item); answer checked by me.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -7097,7 +7097,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7128,7 +7128,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7159,7 +7159,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7190,7 +7190,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7221,7 +7221,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7252,7 +7252,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7283,7 +7283,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Urdu item: checked by me only; please have a native speaker skim it before the exam.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7810,7 +7810,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7841,7 +7841,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7872,7 +7872,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7903,7 +7903,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7934,7 +7934,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7965,7 +7965,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -7996,7 +7996,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8027,7 +8027,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8058,7 +8058,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8089,7 +8089,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8120,7 +8120,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8151,7 +8151,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8182,7 +8182,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8213,7 +8213,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8244,7 +8244,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8275,7 +8275,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8306,7 +8306,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8337,7 +8337,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8368,7 +8368,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -8399,7 +8399,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8430,7 +8430,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8461,7 +8461,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8492,7 +8492,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8523,7 +8523,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8554,7 +8554,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8585,7 +8585,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8616,7 +8616,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8647,7 +8647,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8678,7 +8678,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8709,7 +8709,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock (original passage and questions); no past-paper claim.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -8740,7 +8740,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock (original passage and questions); no past-paper claim.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8771,7 +8771,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock (original passage and questions); no past-paper claim.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8802,7 +8802,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock (original passage and questions); no past-paper claim.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8833,7 +8833,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock (original passage and questions); no past-paper claim.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -8864,7 +8864,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -8895,7 +8895,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -8926,7 +8926,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -8957,7 +8957,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -8988,7 +8988,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9019,7 +9019,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9050,7 +9050,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9081,7 +9081,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9112,7 +9112,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9143,7 +9143,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9174,7 +9174,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9205,7 +9205,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9236,7 +9236,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9267,7 +9267,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9298,7 +9298,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9329,7 +9329,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9360,7 +9360,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9391,7 +9391,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9422,7 +9422,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9453,7 +9453,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9484,7 +9484,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9515,7 +9515,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9546,7 +9546,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9577,7 +9577,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9608,7 +9608,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9639,7 +9639,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9670,7 +9670,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9701,7 +9701,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9732,7 +9732,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9763,7 +9763,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9794,7 +9794,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9825,7 +9825,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9856,7 +9856,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9887,7 +9887,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9918,7 +9918,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9949,7 +9949,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -9980,7 +9980,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10011,7 +10011,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10042,7 +10042,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10073,7 +10073,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10104,7 +10104,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10135,7 +10135,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10166,7 +10166,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10197,7 +10197,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10228,7 +10228,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10259,7 +10259,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10290,7 +10290,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10321,7 +10321,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10383,7 +10383,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10414,7 +10414,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -10445,7 +10445,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -10476,7 +10476,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10507,7 +10507,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10538,7 +10538,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10569,7 +10569,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10600,7 +10600,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10631,7 +10631,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10662,7 +10662,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10693,7 +10693,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock; fresh numbers.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer re-computed in verify_math2.py.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -10974,7 +10974,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11005,7 +11005,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11036,7 +11036,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -11067,7 +11067,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -11098,7 +11098,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11129,7 +11129,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11160,7 +11160,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11191,7 +11191,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11315,7 +11315,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11346,7 +11346,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11377,7 +11377,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11408,7 +11408,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11439,7 +11439,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11470,7 +11470,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 against a laureate list (Nobel Prize 2025 summary pages).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11501,7 +11501,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 against a laureate list.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11532,7 +11532,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 against a laureate list.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11563,7 +11563,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (Booker Prize announcement coverage).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11594,7 +11594,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (final report, Gulf News / Aaj).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11625,7 +11625,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (final report).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11656,7 +11656,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (match report).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11687,7 +11687,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (launch and splashdown reports).",
   "optionsReordered": false,
   "usedInMocks": [
@@ -11718,7 +11718,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (conference pages).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11749,7 +11749,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (candidate list on IISD SDG Knowledge Hub). Selection is still open, so the question names no winner.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11780,7 +11780,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (summit reports).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11811,7 +11811,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 against several reports (Tribune India, ETV Bharat, GKToday).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11842,7 +11842,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (Premiership of Sanae Takaichi).",
   "optionsReordered": true,
   "usedInMocks": [
@@ -11873,7 +11873,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026.",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search (NPR/ABC reports). Office holders can change; re-check just before the exam.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -12121,7 +12121,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -12152,7 +12152,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": false,
   "usedInMocks": [
@@ -12183,7 +12183,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Generated; answer checked by me, not against a primary source.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -12214,7 +12214,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026 (The Week, Aug 2026).",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026 by web search; the dispute is ongoing, so the stem names no outcome beyond the rulings.",
   "optionsReordered": true,
   "usedInMocks": [
@@ -12245,7 +12245,7 @@ export const MPT_QUESTION_BANK: MptQuestion[] = [
   "sourceYear": null,
   "alsoIn": [],
   "sourceNote": "Generated for this mock. Fact checked by web search on 6 Oct 2026 (Aaj News, Arab News).",
-  "verified": true,
+  "verified": false,
   "verifiedNote": "Checked 6 Oct 2026; figure is the budget target, not an outcome.",
   "optionsReordered": false,
   "usedInMocks": [

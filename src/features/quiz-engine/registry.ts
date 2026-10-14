@@ -112,6 +112,8 @@ import { informationTechnologyDeadlockSimulatorPracticeQuiz } from "./data/it-de
 import { informationTechnologyIoInterruptsExplorerQuiz } from "./data/it-io-interrupts-explorer-quiz";
 import { informationTechnologyIoInterruptsExplorerPracticeQuiz } from "./data/it-io-interrupts-explorer-practice-quiz";
 import { informationTechnologyBinaryDataRepresentationQuiz } from "./data/it-binary-data-representation-quiz";
+import { informationTechnologyComputerComponentsExplorerQuiz } from "./data/it-computer-components-explorer-quiz";
+import { informationTechnologyComputerComponentsExplorerPracticeQuiz } from "./data/it-computer-components-explorer-practice-quiz";
 import { informationTechnologyNumberSystemsDataUnitsPracticeQuiz } from "./data/it-number-systems-data-units-practice-quiz";
 import { informationTechnologyNumberSystemsDataUnitsQuiz } from "./data/it-number-systems-data-units-quiz";
 import { informationTechnologyComputerBootProcessQuiz } from "./data/it-computer-boot-process-quiz";
@@ -240,6 +242,8 @@ export const quizzes: QuizMeta[] = [
   informationTechnologyCpuArchitectureInstructionCycleQuiz,
   informationTechnologyCacheMemoryExplorerPracticeQuiz,
   informationTechnologyCacheMemoryExplorerQuiz,
+  informationTechnologyComputerComponentsExplorerPracticeQuiz,
+  informationTechnologyComputerComponentsExplorerQuiz,
   informationTechnologyCpuRamStorageDataFlowQuiz,
   informationTechnologyBinaryDataRepresentationQuiz,
   informationTechnologyNumberSystemsDataUnitsPracticeQuiz,

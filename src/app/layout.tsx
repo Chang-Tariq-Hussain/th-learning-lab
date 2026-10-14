@@ -2,13 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { themeIds } from "@/config/themes";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
-import { SkipLink } from "@/components/layout/skip-link";
-import { UserProfileProvider } from "@/hooks/use-user-profile";
-import { LearningProgressProvider } from "@/hooks/use-learning-progress";
-import { PracticePerformanceProvider } from "@/hooks/use-practice-performance";
-import { UsernameSetup } from "@/components/onboarding/username-setup";
+import { LearnerShell } from "@/components/layout/learner-shell";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -61,21 +55,7 @@ export default function RootLayout({
           disableTransitionOnChange
           themes={themeIds}
         >
-          <UserProfileProvider>
-            <LearningProgressProvider>
-              <PracticePerformanceProvider>
-                <SkipLink />
-                <div className="flex min-h-screen flex-col">
-                  <Navbar />
-                  <main id="main-content" className="flex-1">
-                    {children}
-                  </main>
-                  <Footer />
-                </div>
-                <UsernameSetup />
-              </PracticePerformanceProvider>
-            </LearningProgressProvider>
-          </UserProfileProvider>
+          <LearnerShell>{children}</LearnerShell>
         </ThemeProvider>
       </body>
     </html>

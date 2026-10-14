@@ -90,6 +90,7 @@ import { informationTechnologyCpuArchitectureInstructionCycleContent } from "./d
 import { informationTechnologyCacheMemoryExplorerContent } from "./data/information-technology-cache-memory-explorer";
 import { informationTechnologyCpuRamStorageDataFlowContent } from "./data/information-technology-cpu-ram-storage-data-flow";
 import { informationTechnologyBinaryDataRepresentationContent } from "./data/information-technology-binary-data-representation";
+import { informationTechnologyComputerComponentsExplorerContent } from "./data/information-technology-computer-components-explorer";
 import { informationTechnologyNumberSystemsDataUnitsContent } from "./data/information-technology-number-systems-data-units";
 import { informationTechnologyComputerBootProcessContent } from "./data/information-technology-computer-boot-process";
 import { informationTechnologyCpuSchedulingSimulatorContent } from "./data/information-technology-cpu-scheduling-simulator";
@@ -702,6 +703,7 @@ export const topicContentList: TopicContent[] = [
   chemistryStrongWeakAcidsBasesContent,
   informationTechnologyCpuArchitectureInstructionCycleContent,
   informationTechnologyCacheMemoryExplorerContent,
+  informationTechnologyComputerComponentsExplorerContent,
   informationTechnologyCpuRamStorageDataFlowContent,
   informationTechnologyBinaryDataRepresentationContent,
   informationTechnologyNumberSystemsDataUnitsContent,

@@ -882,6 +882,13 @@ export const subjects: Subject[] = [
         name: "Computer Fundamentals",
         visualizations: [
           {
+            slug: "computer-components-explorer",
+            title: "Computer Components & Hardware Explorer",
+            description:
+              "Explore an interactive virtual computer — rotate, click, and inspect the CPU, RAM, GPU, storage, motherboard, and power system to learn what each part does.",
+            href: "/dashboard/information-technology/computer-components-explorer",
+          },
+          {
             slug: "cpu-architecture-instruction-cycle",
             title: "CPU Architecture & Instruction Cycle",
             description:

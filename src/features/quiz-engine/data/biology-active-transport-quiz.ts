@@ -392,7 +392,7 @@ const questions: QuizQuestion[] = [
       "Water moving into a dehydrated cell placed in fresh water",
       "Perfume spreading through still air in a room",
     ],
-    correctAnswer: "Nerve cells pumping sodium and potassium ions against their gradients to reset for the next signal",
+    correctAnswer: "Nerve cells pumping sodium and potassium ions across their membrane against their gradients to reset for the next signal",
     explanation: "Pumping ions against their gradients to reset a nerve cell for its next signal is a textbook case of active transport — the other options are all passive diffusion or osmosis.",
     difficulty: "medium",
     subject: "biology",

@@ -40,7 +40,7 @@ code={s:c for s,c,_ in SECTIONS}; ctr={}
 for n,i in enumerate(allq,1):
     c=code[i['subject']]; ctr[c]=ctr.get(c,0)+1
     i['id']=f"{c}-{ctr[c]:03d}"; i['subjectCode']=c; i['mockNumber']={'mock1':n}
-    i['usedInMocks']=["mock1"]; i['verified']=True
+    i['usedInMocks']=["mock1"]; i['verified']=(i['sourceType']=="Verified Past Paper")  # only a genuine past paper is verified
     if i['sourceType']=="Verified Past Paper": i['verifiedNote']="Appears in an uploaded third-party reproduction of the FPSC paper; answer independently re-checked. FPSC does not release booklets, so this is not an official copy."
     elif i['sourceType']=="Existing Question Bank": i['verifiedNote']="From the 2026 file but prepared by cssaspirants.pk (not an original FPSC item); answer checked by me; native-speaker review recommended."
     elif i['subjectCode']=="GA": i['verifiedNote']="Generated; answer re-computed in verify_math.py."
