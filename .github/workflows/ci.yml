@@ -16,5 +16,7 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
+      # Real-Postgres proof of migrations, row-level security, audit log, import and parity.
+      - run: npm run db:verify
       # Fails the build on any Critical content-health finding (broken answers, bad mocks, provenance violations).
       - run: npm run health -- --fail-on=critical

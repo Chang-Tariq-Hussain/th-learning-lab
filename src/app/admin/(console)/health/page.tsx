@@ -4,7 +4,7 @@ import { DataTable, type Column } from "@/components/admin/data-table";
 import { FilterBar } from "@/components/admin/filter-bar";
 import { Pagination, buildQuery } from "@/components/admin/pagination";
 import { SeverityBadge } from "@/components/admin/severity-badge";
-import { requireAdmin } from "@/lib/admin/auth";
+import { requirePermission } from "@/lib/admin/auth";
 import { getHealthSnapshot } from "@/lib/admin/health-data";
 import { AREA_LABEL, SEVERITIES, SEVERITY_LABEL, type Area, type Finding } from "@/lib/content-health";
 
@@ -14,7 +14,7 @@ const PAGE_SIZE = 25;
 type Params = { severity?: string; area?: string; check?: string; subject?: string; q?: string; page?: string };
 
 export default async function ContentHealthPage({ searchParams }: { searchParams: Params }) {
-  await requireAdmin();
+  await requirePermission("health.view");
   const { report } = await getHealthSnapshot();
 
   const severity = SEVERITIES.find((s) => s === searchParams.severity) ?? "";

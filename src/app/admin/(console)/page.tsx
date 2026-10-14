@@ -1,6 +1,6 @@
 import { DataTable, type Column } from "@/components/admin/data-table";
 import { StatCard } from "@/components/admin/stat-card";
-import { requireAdmin } from "@/lib/admin/auth";
+import { requirePermission } from "@/lib/admin/auth";
 import { getHealthSnapshot } from "@/lib/admin/health-data";
 import { SEVERITY_LABEL, SEVERITIES } from "@/lib/content-health";
 import type { Inventory } from "@/lib/content-health";
@@ -17,7 +17,7 @@ const SOURCE_LABEL: Record<string, string> = {
 };
 
 export default async function AdminOverviewPage() {
-  await requireAdmin();
+  await requirePermission("overview.view");
   const { report, inventory: inv } = await getHealthSnapshot();
   const t = inv.totals;
 

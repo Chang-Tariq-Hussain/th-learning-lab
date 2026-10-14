@@ -7,6 +7,6 @@ export const metadata: Metadata = { title: { default: "Admin", template: "%s · 
 export const dynamic = "force-dynamic";
 
 export default async function AdminConsoleLayout({ children }: { children: ReactNode }) {
-  await requireAdmin();
-  return <AdminShell>{children}</AdminShell>;
+  const session = await requireAdmin();
+  return <AdminShell session={session}>{children}</AdminShell>;
 }
