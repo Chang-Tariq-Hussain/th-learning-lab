@@ -20,13 +20,13 @@ export const ROLE_SUMMARY: Record<AdminRole, string> = {
   analyst: "Read-only access.",
 };
 
-export type Permission = "overview.view" | "health.view" | "audit.view" | "admins.manage";
+export type Permission = "overview.view" | "health.view" | "audit.view" | "admins.manage" | "questions.view" | "questions.edit";
 
 const MATRIX: Record<AdminRole, readonly Permission[]> = {
-  super_admin: ["overview.view", "health.view", "audit.view", "admins.manage"],
-  content_manager: ["overview.view", "health.view"],
-  question_manager: ["overview.view", "health.view"],
-  analyst: ["overview.view", "health.view"],
+  super_admin: ["overview.view", "health.view", "audit.view", "admins.manage", "questions.view", "questions.edit"],
+  content_manager: ["overview.view", "health.view", "questions.view"],
+  question_manager: ["overview.view", "health.view", "questions.view", "questions.edit"],
+  analyst: ["overview.view", "health.view", "questions.view"],
 };
 
 export function can(role: AdminRole, permission: Permission): boolean {
@@ -44,6 +44,8 @@ export function isAdminRole(x: unknown): x is AdminRole {
 export const PATH_PERMISSIONS: readonly { prefix: string; permission: Permission }[] = [
   { prefix: "/admin/audit", permission: "audit.view" },
   { prefix: "/admin/admins", permission: "admins.manage" },
+  { prefix: "/admin/questions/new", permission: "questions.edit" },
+  { prefix: "/admin/questions/import", permission: "questions.edit" },
 ];
 
 export function permissionForPath(pathname: string): Permission | null {

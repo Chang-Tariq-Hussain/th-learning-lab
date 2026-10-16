@@ -18,7 +18,8 @@ export const SUPABASE_STUBS = `
   create schema auth;
   create table auth.users (id uuid primary key default gen_random_uuid(), email text unique);
   create function auth.uid() returns uuid language sql stable as
-    $$ select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid $$;
+    $$ select coalesce(nullif(current_setting('request.jwt.claim.sub', true), ''),
+                       (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'sub'))::uuid $$;
   grant usage on schema auth to authenticated, anon;
   create schema storage;
   create table storage.buckets (id text primary key, name text not null, public boolean not null default false);
