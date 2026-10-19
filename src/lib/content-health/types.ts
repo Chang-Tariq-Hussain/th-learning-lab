@@ -23,9 +23,10 @@ export const SEVERITY_LABEL: Record<Severity, string> = {
 /** Lower number = more severe. */
 export const SEVERITY_RANK: Record<Severity, number> = { critical: 0, high: 1, medium: 2, low: 3, info: 4 };
 
-export type Area = "registry" | "routes" | "gle" | "quiz" | "paths" | "connections" | "mpt" | "teacher";
+export type Area = "overlay" | "registry" | "routes" | "gle" | "quiz" | "paths" | "connections" | "mpt" | "teacher";
 
 export const AREA_LABEL: Record<Area, string> = {
+  overlay: "Published content",
   registry: "Subject registry",
   routes: "Routes",
   gle: "Learning experiences (GLE)",
@@ -74,6 +75,7 @@ export interface RouteIndex {
 
 export interface HealthContext {
   routes: RouteIndex | null;
+  overlay: { generatedAt: string | null; empty: boolean; ignored: { scope: string; id: string; why: string }[] };
   subjects: typeof import("@/features/subjects/data/subjects").subjects;
   gle: typeof import("@/features/learning/registry").topicContentList;
   quizzes: typeof import("@/features/quiz-engine/registry").quizzes;

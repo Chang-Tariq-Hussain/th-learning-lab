@@ -35,6 +35,33 @@ def count_rpc(name): return len([l for l in rpc_log() if l.startswith(f"RPC {nam
 def msg(loc, kind): m = re.search(rf"[?&]{kind}=([^&]*)", loc or ""); return m.group(1) if m else ""
 def nav(html): return sorted(set(re.findall(r'href="(/admin[a-z/]*)"', html)) & {"/admin", "/admin/health", "/admin/questions", "/admin/audit", "/admin/admins"})
 
+
+import html as _html
+def collect_form(f):
+    """Current values of every field in an HTML form (what a browser would submit), as a dict."""
+    d = {}
+    for m in re.finditer(r"<input([^>]*)>", f):
+        a = m.group(1); name = re.search(r'name="([^"]+)"', a)
+        if not name or name.group(1).startswith("$"): continue
+        typ = (re.search(r'type="([^"]+)"', a) or [None, "text"])[1]; val = re.search(r'value="([^"]*)"', a)
+        if typ in ("checkbox", "radio"):
+            if "checked" in a: d[name.group(1)] = _html.unescape(val.group(1)) if val else "on"
+        elif typ != "submit": d[name.group(1)] = _html.unescape(val.group(1)) if val else ""
+    for m in re.finditer(r"<textarea[^>]*name=\"([^\"]+)\"[^>]*>(.*?)</textarea>", f, re.S): d[m.group(1)] = _html.unescape(m.group(2)).strip()
+    for m in re.finditer(r"<select[^>]*name=\"([^\"]+)\"[^>]*>(.*?)</select>", f, re.S):
+        sel = re.search(r'<option value="([^"]*)"[^>]*selected', m.group(2)); d[m.group(1)] = _html.unescape(sel.group(1)) if sel else ""
+    return d
+def edit(jar, qid, **over):
+    body, _ = get(jar, f"/admin/questions/{qid}"); f = form_with(body, 'name="expected_hash"' )
+    f = [x for x in forms(body) if 'name="expected_hash"' in x and 'name="stem"' in x][0]
+    d = collect_form(f); d.update(over)
+    return post(jar, f"/admin/questions/{qid}", aid(f), list(d.items()))
+def cli(*args, content=None):
+    env = {**os.environ, "DATABASE_URL": "postgresql://postgres:pw@localhost:5432/thlab3", "PATH": os.getcwd() + "/node_modules/.bin:" + os.environ["PATH"]}
+    if content: env["CONTENT_DIR"] = content
+    r = subprocess.run(["tsx", "--tsconfig", "scripts/tsconfig.health.json", "scripts/db/content-publish.ts", *args], capture_output=True, text=True, env=env)
+    return r.returncode, r.stdout + r.stderr
+
 S, Q, A, C, L = "/tmp/jS", "/tmp/jQ", "/tmp/jA", "/tmp/jC", "/tmp/jL"
 print("== sign-in and navigation")
 st, loc = login(S, "super@x.com", "pw1"); check("super admin signs in", loc == "/admin", f"{st} {loc}")
@@ -155,6 +182,64 @@ js = json.loads(subprocess.run(["curl", "-s", "-b", Q, f"{B}/admin/questions/exp
 check("JSON export parses and matches the database count", len(js) == dbi("select count(*) from public.questions where source_system='teacher' and status='published'"))
 check("exports are audited with format and row count", dbi("select count(*) from public.audit_log where action='question.exported' and (meta->>'rows')::int > 0") >= 3)
 check("export requires sign-in", sh("curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", f"{B}/admin/questions/export?format=csv") in ("307", "401"))
+
+
+print("== publishing: bank membership, guards, and the publish step")
+OUT = "/tmp/content-out"; sh("rm", "-rf", OUT); sh("cp", "-r", "src/content", OUT)
+check("Publishing page: before any publish it says learners see the code as written", "Nothing has been published yet" in text(get(Q, "/admin/publishing")[0]))
+BANK = "biology-cell-explorer"
+first, second = db(f"select q.id from public.question_bank_items bi join public.questions q on q.id=bi.question_id join public.question_banks b on b.id=bi.bank_id where b.slug='{BANK}' order by bi.position limit 2").split("\n")
+first_legacy = db(f"select legacy_id from public.questions where id='{first}'"); second_legacy = db(f"select legacy_id from public.questions where id='{second}'")
+st, loc = edit(Q, first, stem="PHASE4-EDITED: The nucleus of a cell is best described as:"); check("edit the first question of a bank", msg(loc, "ok") == "Saved.", loc)
+body, _ = get(Q, f"/admin/questions/{first}"); check("detail page says the change has not reached learners yet (publish state)", "Quiz banks" in body)
+html2, _ = get(Q, f"/admin/questions/{second}"); stat_f = [f for f in forms(html2) if 'name="status" value="archived"' in f][0]
+st, loc = post(Q, f"/admin/questions/{second}", aid(stat_f), [("id", second), ("status", "archived"), ("reason", "Phase 4 test: withdrawn question")]); check("archive the second question of the bank", db(f"select status from public.questions where id='{second}'") == "archived", loc)
+nf = form_with(get(Q, "/admin/questions/new")[0], 'name="source_system"'); new_act = aid(nf)
+quiz_new = [("source_system", "quiz"), ("subject_slug", "biology"), ("bank_slug", BANK), ("stem", "PHASE4-NEW: which organelle makes ATP?"), ("option_0", "Mitochondrion"), ("option_1", "Ribosome"), ("option_2", "Golgi body"), ("correct", "0"), ("explanation", "Mitochondria make most of the cell's ATP."), ("source_type", "platform_authored"), ("difficulty", "easy"), ("topic", "cell-structure")]
+st, loc = post(Q, "/admin/questions/new", new_act, quiz_new); newq = (re.search(r"/admin/questions/([0-9a-f-]{36})", loc or "") or [None, None])[1]
+check("create a quiz question straight into a bank", bool(newq) and dbi(f"select count(*) from public.question_bank_items bi join public.question_banks b on b.id=bi.bank_id where bi.question_id='{newq}' and b.slug='{BANK}'") == 1, loc)
+nh, _ = get(Q, f"/admin/questions/{newq}"); pub_f = [f for f in forms(nh) if 'name="status" value="published"' in f][0]
+post(Q, f"/admin/questions/{newq}", aid(pub_f), [("id", newq), ("status", "published")]); check("publish it", db(f"select status from public.questions where id='{newq}'") == "published")
+check("its page lists the bank and offers other banks of the same subject only", BANK in text(get(Q, f"/admin/questions/{newq}")[0]) or "Cell Explorer" in text(get(Q, f"/admin/questions/{newq}")[0]))
+phys_bank = db("select b.slug from public.question_banks b join public.subjects s on s.id=b.subject_id where s.slug='chemistry' order by b.slug limit 1")
+add_f = [f for f in forms(get(Q, f"/admin/questions/{newq}")[0]) if re.search(r'<select[^>]*name="bank"', f)][0]; add_act = aid(add_f)
+st, loc = post(Q, f"/admin/questions/{newq}", add_act, [("id", newq), ("bank", phys_bank)]); check("adding to another subject's bank is refused by the database", "different subject" in unquote(msg(loc, "error")) or "does not exist" in unquote(msg(loc, "error")), loc)
+html3, _ = get(Q, f"/admin/questions/{newq}"); rem_f = [f for f in forms(html3) if 'name="bank"' in f and 'name="reason"' in f][0]
+st, loc = post(Q, f"/admin/questions/{newq}", aid(rem_f), [("id", newq), ("bank", BANK), ("reason", "")]); check("removing from a bank needs a reason", "reason" in unquote(msg(loc, "error")).lower(), loc)
+# exam questions
+t3 = [("source_system", "teacher"), ("exam_subject", "Mathematics"), ("exam_slug", "pst"), ("stem", "Three options only?"), ("option_0", "a"), ("option_1", "b"), ("option_2", "c"), ("correct", "0"), ("explanation", "x"), ("source_type", "generated")]
+st, loc = post(Q, "/admin/questions/new", new_act, t3); check("an exam question with 3 options is refused", "exactly 4" in unquote(msg(loc, "error")), loc)
+m_nosec = [("source_system", "mpt"), ("exam_subject", "General Knowledge"), ("stem", "MPT no section?"), ("option_0", "a"), ("option_1", "b"), ("option_2", "c"), ("option_3", "d"), ("correct", "0"), ("explanation", "x"), ("source_type", "generated")]
+st, loc = post(Q, "/admin/questions/new", new_act, m_nosec); check("an MPT question without a section is refused", "section" in unquote(msg(loc, "error")).lower(), loc)
+t4 = [("source_system", "teacher"), ("exam_subject", "Mathematics"), ("exam_slug", "pst"), ("exam_topic", "Number sense"), ("exam_difficulty", "easy"), ("stem", "PHASE4-PST: what is 6 x 7?"), ("option_0", "42"), ("option_1", "36"), ("option_2", "48"), ("option_3", "13"), ("correct", "0"), ("explanation", "6 x 7 = 42."), ("source_type", "generated")]
+st, loc = post(Q, "/admin/questions/new", new_act, t4); pstq = (re.search(r"/admin/questions/([0-9a-f-]{36})", loc or "") or [None, None])[1]
+ph, _ = get(Q, f"/admin/questions/{pstq}"); pf = [f for f in forms(ph) if 'name="status" value="published"' in f][0]
+post(Q, f"/admin/questions/{pstq}", aid(pf), [("id", pstq), ("status", "published")]); check("create and publish a PST question", dbi(f"select count(*) from public.question_exams qe join public.exam_types et on et.id=qe.exam_type_id where qe.question_id='{pstq}' and et.slug='pst'") == 1 and db(f"select status from public.questions where id='{pstq}'") == "published")
+mpt_id = db("select q.id from public.questions q join public.exam_questions eq on eq.question_id=q.id where q.source_system='mpt' order by q.legacy_id limit 1"); mpt_legacy = db(f"select legacy_id from public.questions where id='{mpt_id}'")
+st, loc = edit(Q, mpt_id, explanation="PHASE4-EDITED explanation for a question inside a stored mock."); check("edit an MPT question that is part of a stored mock", msg(loc, "ok") == "Saved.", loc)
+lb, _ = get(Q, "/admin/questions"); bulk_act2 = aid(form_with(lb, 'name="confirm"'))
+st, loc = post(Q, "/admin/questions", bulk_act2, [("back", "/admin/questions"), ("status", "archived"), ("reason", "Trying to archive a mock question"), ("confirm", "on"), ("ids", mpt_id)])
+check("archiving a question that a live mock uses is refused, naming the mock", "live mock" in unquote(msg(loc, "error")) and db(f"select status from public.questions where id='{mpt_id}'") == "published", loc)
+
+rc, out = cli("--dry-run", content=OUT); before_files = (open(f"{OUT}/overlay.json").read(), open(f"{OUT}/manifest.json").read())
+check("content:publish --dry-run reports the changes and writes nothing", rc == 0 and "DRY RUN" in out and "added" in out and before_files == (open("src/content/overlay.json").read(), open("src/content/manifest.json").read()), out[-300:])
+rc, out = cli(content=OUT); ov = json.load(open(f"{OUT}/overlay.json")); mf = json.load(open(f"{OUT}/manifest.json"))
+check("content:publish writes the overlay and manifest", rc == 0 and "Published" in out and ov["generatedAt"] and mf["generatedAt"], out[-300:])
+qb = ov["quiz"].get(BANK, {})
+check("overlay: the edited question is a replacement carrying the new text", qb.get("replace", {}).get(first_legacy, {}).get("question", "").startswith("PHASE4-EDITED"))
+check("overlay: the archived question is removed from its bank", second_legacy in qb.get("remove", []))
+check("overlay: the new question is appended to the bank", [a["question"] for a in qb.get("add", [])] == ["PHASE4-NEW: which organelle makes ATP?"])
+check("overlay: the edited MPT question is replaced", ov["mpt"].get("replace", {}).get(mpt_legacy, {}).get("explanation", "").startswith("PHASE4-EDITED"))
+check("overlay: the new teacher question reaches PST only", [a["question"] for a in ov["teacher"].get("pst", {}).get("add", [])] == ["PHASE4-PST: what is 6 x 7?"] and not ov["teacher"].get("jest", {}).get("add") and not ov["teacher"].get("jst", {}).get("add"))
+check("overlay stays small (it is the diff)", len(json.dumps(ov)) < 20000, str(len(json.dumps(ov))))
+check("manifest records every question; the publish is audited", len(mf["questions"]) == dbi("select count(*) from public.questions") and dbi("select count(*) from public.audit_log where action='content.published'") == 1)
+rc, out = cli("--check", content=OUT); check("--check passes right after a publish", rc == 0 and "Nothing to publish" in out, out[-200:])
+edit(Q, first, stem="PHASE4-EDITED AGAIN: The nucleus of a cell is best described as:")
+rc, out = cli("--check", content=OUT); check("--check fails once the database has moved on (unpublished changes)", rc == 1 and "UNPUBLISHED CHANGES" in out, out[-200:])
+db(f"update public.questions set status='archived' where id='{mpt_id}'")
+rc, out = cli(content=OUT); db(f"update public.questions set status='published' where id='{mpt_id}'")
+check("publish REFUSES, and writes nothing, if a stored mock would lose a question", rc == 1 and "stored mock" in out and open(f"{OUT}/overlay.json").read() == json.dumps(ov, indent=2) + "\n", out[-250:])
+rc, out = cli(content=OUT); check("publish works again once the problem is fixed", rc == 0, out[-200:])
 
 print("== read-only roles")
 for who, jar in (("analyst", A), ("content manager", C)):

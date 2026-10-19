@@ -12,7 +12,8 @@
     "db:verify": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/verify.ts",
     "db:import": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/import.ts",
     "db:parity": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/parity.ts",
-    "db:create-admin": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/create-super-admin.ts"
+    "db:create-admin": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/create-super-admin.ts",
+    "content:publish": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/content-publish.ts"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.3",

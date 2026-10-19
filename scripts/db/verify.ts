@@ -8,6 +8,10 @@
  */
 import { loadHealthContext } from "../../src/lib/content-health";
 import { applyBundle, buildSeedBundle, bundleCounts, computeParity } from "../../src/lib/db-seed";
+import { applyMptOverlay, applyQuizOverlay, applyTeacherOverlay, overlayIsEmpty } from "../../src/lib/content-overlay/apply";
+import { buildOverlay, canonicalManifest, canonicalOverlay } from "../../src/lib/content-overlay/publish";
+import type { ContentOverlay } from "../../src/lib/content-overlay/types";
+import { loadBaseline } from "./baseline";
 import type { SeedBundle } from "../../src/lib/db-seed";
 import { ADMIN_ROLES, can, isAdminRole } from "../../src/lib/admin/permissions";
 import { createSessionToken, safeNextPath, verifySessionToken } from "../../src/lib/admin/session";
@@ -38,7 +42,7 @@ async function main(): Promise<void> {
   const n = async (sql: string): Promise<number> => Number(((await db.query(sql)).rows[0] as { n: number }).n);
 
   section("1. Build the seed bundle from the real registries");
-  const ctx = await loadHealthContext(null);
+  const ctx = await loadHealthContext(null, { raw: true });
   const bundle = buildSeedBundle(ctx);
   const expected = bundleCounts(bundle);
   console.log("   ", JSON.stringify(expected));
@@ -70,15 +74,15 @@ async function main(): Promise<void> {
   check("no generated question is checked as a past paper", !mix.some((r) => r.source_type === "generated" && r.answer_check === "independently_checked"));
   check("every verified past paper has a source year", (await n("select count(*)::int n from public.questions where source_type = 'verified_past_paper' and source_year is null")) === 0);
   const baseQ = `insert into public.questions (source_system, legacy_id, exam_subject, stem, options, correct_index, explanation, source_type, answer_check, source_year, content_hash)`;
-  await expectFail("generated + independently_checked", () => db.query(`${baseQ} values ('mpt','X1','S','q','["a","b"]',0,'e','generated','independently_checked',null,'h')`), /questions_generated_never_verified/);
+  await expectFail("generated + independently_checked", () => db.query(`${baseQ} values ('mpt','X1','S','q','["a","b","c","d"]',0,'e','generated','independently_checked',null,'h')`), /questions_generated_never_verified/);
   check("DB refuses a generated question marked independently checked", true);
-  await expectFail("past paper without year", () => db.query(`${baseQ} values ('mpt','X2','S','q','["a","b"]',0,'e','verified_past_paper','unchecked',null,'h')`), /questions_past_paper_has_year/);
+  await expectFail("past paper without year", () => db.query(`${baseQ} values ('mpt','X2','S','q','["a","b","c","d"]',0,'e','verified_past_paper','unchecked',null,'h')`), /questions_past_paper_has_year/);
   check("DB refuses a past paper with no source year", true);
-  await expectFail("answer index out of range", () => db.query(`${baseQ} values ('mpt','X3','S','q','["a","b"]',5,'e','existing_bank','unchecked',null,'h')`), /questions_correct_in_range/);
+  await expectFail("answer index out of range", () => db.query(`${baseQ} values ('mpt','X3','S','q','["a","b","c","d"]',5,'e','existing_bank','unchecked',null,'h')`), /questions_correct_in_range/);
   check("DB refuses a correct-answer index outside the options", true);
-  await expectFail("published without explanation", () => db.query(`${baseQ} values ('mpt','X4','S','q','["a","b"]',0,'','existing_bank','unchecked',null,'h')`), /questions_published_complete/);
+  await expectFail("published without explanation", () => db.query(`${baseQ} values ('mpt','X4','S','q','["a","b","c","d"]',0,'','existing_bank','unchecked',null,'h')`), /questions_published_complete/);
   check("DB refuses a published question with no explanation", true);
-  await expectFail("no subject at all", () => db.query(`${baseQ} values ('mpt','X5',null,'q','["a","b"]',0,'e','existing_bank','unchecked',null,'h')`), /questions_one_subject_kind/);
+  await expectFail("no subject at all", () => db.query(`${baseQ} values ('mpt','X5',null,'q','["a","b","c","d"]',0,'e','existing_bank','unchecked',null,'h')`), /questions_one_subject_kind/);
   check("DB refuses a question with neither subject kind", true);
 
   section("5. Re-import is idempotent");
@@ -250,7 +254,7 @@ async function main(): Promise<void> {
   check("creation refuses: past paper without evidence, pre-checked answers, unknown subject/field, a self-published status, bad answer index", true);
   const pastNew = (await fn(QM, "select public.question_create($1::jsonb) id", [JSON.stringify({ ...newQuiz, source_type: "verified_past_paper", source_year: 2019, source_reference: "FPSC MPT 2019, Q12", stem: "Past paper stem" })])).id;
   check("a past-paper question with year + reference is accepted (still a draft, still unchecked)", !!pastNew);
-  const examQ = (await fn(QM, "select public.question_create($1::jsonb) id", [JSON.stringify({ source_system: "teacher", exam_subject: "Mathematics", stem: "2+2?", options: ["3", "4"], correct_index: 1, explanation: "Arithmetic.", source_type: "generated", exams: [{ exam_slug: "pst", topic: "Number sense", difficulty: "easy" }] })])).id;
+  const examQ = (await fn(QM, "select public.question_create($1::jsonb) id", [JSON.stringify({ source_system: "teacher", exam_subject: "Mathematics", stem: "2+2?", options: ["3", "4", "5", "6"], correct_index: 1, explanation: "Arithmetic.", source_type: "generated", exams: [{ exam_slug: "pst", topic: "Number sense", difficulty: "easy" }] })])).id;
   check("an exam question is filed under its exam type", (await n(`select count(*)::int n from public.question_exams qe join public.exam_types et on et.id = qe.exam_type_id where qe.question_id = '${examQ}' and et.slug = 'pst'`)) === 1);
 
   // status & bulk
@@ -315,7 +319,7 @@ async function main(): Promise<void> {
   check("new question: quiz needs a valid subject; exam questions need a subject and exam",
     parseNewQuestion(form({ ...okForm, source_system: "quiz", subject_slug: "astrology" })).errors.length === 1
     && parseNewQuestion(form({ ...okForm, source_system: "quiz", subject_slug: "physics" })).errors.length === 0
-    && parseNewQuestion(form({ ...okForm, source_system: "teacher" })).errors.length === 2
+    && parseNewQuestion(form({ ...okForm, source_system: "teacher" })).errors.length === 3
     && JSON.stringify((parseNewQuestion(form({ ...okForm, source_system: "teacher", exam_subject: "Maths", exam_slug: "pst", exam_topic: "Algebra" })).fields["exams"] as unknown[])[0]) === '{"exam_slug":"pst","topic":"Algebra","difficulty":"","section_code":""}');
   check("new question: a past paper is refused client-side without year + reference (the database also refuses)",
     parseNewQuestion(form({ ...okForm, source_system: "quiz", subject_slug: "physics", source_type: "verified_past_paper" })).errors.some((e) => /past paper/.test(e))
@@ -330,6 +334,119 @@ async function main(): Promise<void> {
     && toCsv(["a", "b"], [[1, "x,y"]]) === 'a,b\r\n1,"x,y"\r\n');
   check("permissions: everyone may view the bank; only super_admin and question_manager may edit",
     ADMIN_ROLES.every((r) => can(r, "questions.view")) && ADMIN_ROLES.every((r) => can(r, "questions.edit") === (r === "super_admin" || r === "question_manager")));
+
+  section("13. Publishing: database → learners (content overlay)");
+  const baseline = await loadBaseline();
+  const mk4 = (o: Record<string, unknown> = {}): string => JSON.stringify({ source_system: "teacher", exam_subject: "Mathematics", stem: "Teacher Q", options: ["1", "2", "3", "4"], correct_index: 0, explanation: "e", source_type: "generated", exams: [{ exam_slug: "pst", topic: "T", difficulty: "easy" }], ...o });
+  // migration 4 rules
+  await expectFail("exam q, 3 options", () => fn(QM, "select public.question_create($1::jsonb)", [mk4({ options: ["1", "2", "3"] })]), /exactly 4 options/);
+  await expectFail("exam q, no exam", () => fn(QM, "select public.question_create($1::jsonb)", [mk4({ exams: [] })]), /at least one exam/);
+  await expectFail("mpt q, no section", () => fn(QM, "select public.question_create($1::jsonb)", [mk4({ source_system: "mpt", exams: [{ exam_slug: "css-mpt" }] })]), /section code/);
+  await expectFail("mpt q in pst", () => fn(QM, "select public.question_create($1::jsonb)", [mk4({ source_system: "mpt", exams: [{ exam_slug: "pst", section_code: "EN" }] })]), /css-mpt exam/);
+  await expectFail("teacher q in css-mpt", () => fn(QM, "select public.question_create($1::jsonb)", [mk4({ exams: [{ exam_slug: "css-mpt" }] })]), /pst, jest or jst/);
+  check("exam questions need exactly 4 options, at least one exam, and a valid exam/section for their system", true);
+  const physBank = (await one("select b.slug from public.question_banks b join public.subjects s on s.id = b.subject_id where s.slug = 'physics' order by b.slug limit 1"))["slug"] as string;
+  const chemBank = (await one("select b.slug from public.question_banks b join public.subjects s on s.id = b.subject_id where s.slug = 'chemistry' order by b.slug limit 1"))["slug"] as string;
+  await expectFail("quiz q into another subject's bank", () => fn(QM, "select public.question_create($1::jsonb)", [JSON.stringify({ ...newQuiz, bank_slug: chemBank })]), /does not exist for subject/);
+  await expectFail("direct write to bank items", () => asUser(db, QM, () => db.query("delete from public.question_bank_items")), /permission denied/);
+  check("a quiz question can only join a bank of its own subject, and bank items can't be written directly", true);
+
+  // a question used by a stored mock can't be taken out of use; nor can a bank be emptied
+  const inMock = await one("select eq.question_id as id from public.exam_questions eq join public.questions q on q.id = eq.question_id where q.status = 'published' limit 1");
+  const guard = await st([inMock["id"] as string], "archived", "Trying to archive a mock question");
+  check("archiving a question used by a live mock is skipped, with the reason", guard.changed === 0 && /live mock/.test(guard.skipped[0].why));
+  await db.exec("begin");
+  const lonely = await one(`select b.slug, (select qq.id from public.question_bank_items bi join public.questions qq on qq.id = bi.question_id where bi.bank_id = b.id and qq.status = 'published' order by bi.position limit 1) as keep
+    from public.question_banks b where b.slug = '${physBank}'`);
+  await db.exec(`update public.questions set status = 'archived' where id in (select question_id from public.question_bank_items bi join public.question_banks b on b.id = bi.bank_id where b.slug = '${physBank}') and id <> '${lonely["keep"]}'`);
+  const last = await st([lonely["keep"] as string], "archived", "Archiving the last question");
+  await expectFail("remove last from bank", () => fn(QM, "select public.question_bank_remove($1, $2, 'removing the last one')", [lonely["keep"], physBank]), /last published question/);
+  await db.exec("rollback");
+  check("a bank cannot be emptied: its last published question can be neither archived nor removed", last.changed === 0 && /last published question in the bank/.test(last.skipped[0].why));
+
+  // bank membership
+  const bankQ = (await fn(QM, "select public.question_create($1::jsonb) id", [JSON.stringify({ ...newQuiz, stem: "Bank member question?", bank_slug: physBank })])).id as string;
+  check("creating a quiz question can place it at the end of a bank, audited", (await n(`select count(*)::int n from public.question_bank_items bi join public.question_banks b on b.id = bi.bank_id where bi.question_id = '${bankQ}' and b.slug = '${physBank}'`)) === 1
+    && (await n(`select count(*)::int n from public.audit_log where action = 'question.created' and entity_id = '${bankQ}' and meta->>'bank' = '${physBank}'`)) === 1);
+  const addAgain = (await fn(QM, "select public.question_bank_add($1, $2) r", [bankQ, physBank])).r;
+  check("adding to a bank it is already in is a harmless no-op", addAgain.changed === false);
+  await expectFail("bank remove w/o reason", () => fn(QM, "select public.question_bank_remove($1, $2, '')", [bankQ, physBank]), /give a reason/);
+
+  // ---- the overlay, from the database as it stands after all the edits above
+  const r0 = await buildOverlay(db, baseline);
+  check("publish: no problems with the database as edited so far", r0.problems.length === 0, r0.problems.join(" | "));
+  const quizBankOfQ = (await one(`select b.slug from public.question_bank_items bi join public.question_banks b on b.id = bi.bank_id where bi.question_id = '${quizQ.id}' limit 1`))["slug"] as string;
+  const quizLegacy = (await one(`select legacy_id from public.questions where id = '${quizQ.id}'`))["legacy_id"] as string;
+  check("an edited quiz question appears as a replacement in its bank", r0.overlay.quiz[quizBankOfQ]?.replace?.[quizLegacy]?.explanation === "Edited by the question manager.");
+  const pastLegacy = (await one(`select legacy_id from public.questions where id = '${pastQ.id}'`))["legacy_id"] as string;
+  const mptRepl = r0.overlay.mpt.replace?.[pastLegacy];
+  check("an edited MPT question is replaced, and its reset check shows as not verified", !!mptRepl && /reworded/.test(mptRepl.question) && mptRepl.verified === false && mptRepl.sourceType === "Verified Past Paper");
+  const reviewLegacy = (await one(`select legacy_id from public.questions where id = '${reviewQ.id}'`))["legacy_id"] as string;
+  check("an unpublished teacher question is removed from every exam bank it was in", (["pst", "jest", "jst"] as const).filter((e) => baseline.teacher[e].some((x) => x.id === reviewLegacy)).every((e) => r0.overlay.teacher[e]?.remove?.includes(reviewLegacy)));
+
+  // more scenarios: publish new content, remove from bank, archive, and edit a question shared by several exams
+  await st([bankQ], "published", null);
+  const bankIdsRes = (await db.query(`select q2.id from public.question_bank_items bi join public.questions q2 on q2.id = bi.question_id join public.question_banks b on b.id = bi.bank_id where b.slug = '${physBank}' and q2.status = 'published' and q2.id <> '${bankQ}' order by bi.position limit 2`)).rows as { id: string }[];
+  const [toRemove, toArchive] = [bankIdsRes[0]!.id, bankIdsRes[1]!.id];
+  await fn(QM, "select public.question_bank_remove($1, $2, 'Moving it to another bank later')", [toRemove, physBank]);
+  await st([toArchive], "archived", "Wrong answer key, withdrawn");
+  const teacherNew = (await fn(QM, "select public.question_create($1::jsonb) id", [mk4({ stem: "Brand new PST question?", explanation: "Because." })])).id as string;
+  await st([teacherNew], "published", null);
+  const shared = await one(`select qe.question_id as id, q.content_hash as h from public.question_exams qe join public.questions q on q.id = qe.question_id where q.source_system = 'teacher' and q.status = 'published' and q.legacy_id not like 'adm-%' group by qe.question_id, q.content_hash having count(*) > 1 order by qe.question_id limit 1`);
+  await fn(QM, "select public.question_save($1, $2, $3::jsonb)", [shared["id"], shared["h"], JSON.stringify({ explanation: "Explanation corrected for every exam" })]);
+  const r1 = await buildOverlay(db, baseline);
+  check("publish: still no problems after publishing, removing, archiving and editing more", r1.problems.length === 0, r1.problems.join(" | "));
+  const quizNewLegacy = (await one(`select legacy_id from public.questions where id = '${bankQ}'`))["legacy_id"] as string;
+  const physO = r1.overlay.quiz[physBank]!;
+  const removedLegacy = [toRemove, toArchive].map((id) => id);
+  const legacyOf = async (id: string): Promise<string> => (await one(`select legacy_id from public.questions where id = '${id}'`))["legacy_id"] as string;
+  check("new quiz question is appended to its bank; removed-from-bank and archived questions are removed", physO.add?.[physO.add.length - 1]?.id === quizNewLegacy && physO.remove?.includes(await legacyOf(removedLegacy[0]!)) === true && physO.remove?.includes(await legacyOf(removedLegacy[1]!)) === true);
+  check("a new teacher question reaches its exam bank only", r1.overlay.teacher.pst?.add?.some((x) => x.question === "Brand new PST question?") === true && !r1.overlay.teacher.jest?.add?.length && !r1.overlay.teacher.jst?.add?.length);
+  const sharedLegacy = await legacyOf(shared["id"] as string);
+  const sharedIn = (["pst", "jest", "jst"] as const).filter((e) => r1.overlay.teacher[e]?.replace?.[sharedLegacy]);
+  check("editing a question shared by several exams replaces it in each, keeping each exam's own examType and filing",
+    sharedIn.length >= 2 && sharedIn.every((e) => { const x = r1.overlay.teacher[e]!.replace![sharedLegacy]!; return x.examType === e && x.explanation === "Explanation corrected for every exam" && x.examTypes.length >= 2; }));
+  const physApplied = applyQuizOverlay(baseline.quiz, r1.overlay.quiz).find((b) => b.id === physBank)!.questions;
+  const codeBank = baseline.quiz.find((b) => b.id === physBank)!.questions;
+  check("applying the overlay to the code gives exactly the database's bank (count, order, content)", physApplied.length === codeBank.length - 2 + 1 && physApplied[physApplied.length - 1]!.id === quizNewLegacy && !physApplied.some((x) => x.id === (r1.overlay.quiz[physBank]!.remove ?? [])[0]));
+  const rebuilt = await buildOverlay(db, baseline, "2030-01-01T00:00:00.000Z");
+  check("publishing twice yields the identical overlay and manifest (idempotent, only the timestamp differs)", canonicalOverlay(rebuilt.overlay) === canonicalOverlay(r1.overlay) && canonicalManifest(rebuilt.manifest) === canonicalManifest(r1.manifest));
+  check("the manifest comparison ignores the human-readable report (so --check passes right after a publish)", canonicalManifest({ ...r1.manifest, report: { anything: 1 } }) === canonicalManifest(r1.manifest));
+  check("the overlay stays tiny (it is the diff, not a second copy of 5,000 questions)", JSON.stringify(r1.overlay).length < 80_000, `${JSON.stringify(r1.overlay).length} bytes`);
+  check("the manifest records every question's status and hash", Object.keys(r1.manifest.questions).length === await n("select count(*)::int n from public.questions") && /^archived\|/.test(r1.manifest.questions[`quiz:${await legacyOf(removedLegacy[1]!)}`] ?? ""));
+
+  // refusals: publish must not harm learners
+  await db.exec("begin");
+  const vic = await one("select q.id, q.legacy_id from public.questions q join public.question_bank_items bi on bi.question_id = q.id where q.source_system = 'quiz' and q.legacy_id not like 'adm-%' order by q.legacy_id limit 1");
+  await db.exec(`delete from public.question_bank_items where question_id = '${vic["id"]}'; delete from public.questions where id = '${vic["id"]}'`);
+  const miss = await buildOverlay(db, baseline);
+  await db.exec("rollback");
+  check("publish refuses when a code question is missing from the database (never silently drops it)", miss.problems.some((p) => /missing from the database/.test(p) && p.includes(String(vic["legacy_id"]))));
+  await db.exec("begin");
+  await db.exec(`update public.questions set status = 'archived' where id = '${inMock["id"]}'`);
+  const mockBreak = await buildOverlay(db, baseline);
+  await db.exec("rollback");
+  check("publish refuses when a stored mock would lose a question", mockBreak.problems.some((p) => /used by a stored mock/.test(p)));
+  await db.exec("begin");
+  await db.exec(`update public.questions set status = 'archived' where id in (select question_id from public.question_bank_items bi join public.question_banks b on b.id = bi.bank_id where b.slug = '${chemBank}')`);
+  const emptyBank = await buildOverlay(db, baseline);
+  await db.exec("rollback");
+  check("publish refuses when a quiz bank would be left empty", emptyBank.problems.some((p) => p.includes(chemBank) && /no published questions/.test(p)));
+
+  // the learner-side apply functions are defensive: bad overlay items are ignored, never served
+  const q0 = baseline.quiz[0]!; const qa = q0.questions[0]!; const qb = q0.questions[1]!;
+  const badOverlay: ContentOverlay = { version: 1, generatedAt: null, mpt: { replace: { [baseline.mpt[0]!.id]: { ...baseline.mpt[0]!, correctAnswer: "Z" as never }, "NOPE-1": baseline.mpt[1]! } },
+    quiz: { [q0.id]: { replace: { [qa.id]: { ...qa, correctAnswer: "not an option" }, "ghost": qb }, add: [{ ...qb, id: "added-bad", options: ["only one"], correctAnswer: "only one" }, { ...qb, id: qa.id }], remove: [] } },
+    teacher: { pst: { replace: { [baseline.teacher.pst[0]!.id]: { ...baseline.teacher.pst[0]!, options: ["a", "b"] as never } }, add: [{ ...baseline.teacher.pst[1]!, id: "wrong-exam", examType: "jst" }] } } };
+  const sk: { scope: string; id: string; why: string }[] = [];
+  const qOut = applyQuizOverlay(baseline.quiz, badOverlay.quiz, sk); const mOut = applyMptOverlay(baseline.mpt, badOverlay.mpt, sk); const tOut = applyTeacherOverlay("pst", baseline.teacher.pst, badOverlay.teacher, sk);
+  check("learner side: invalid replacements, additions and unknown ids are all ignored, and each is reported",
+    qOut[0]!.questions.length === q0.questions.length && qOut[0]!.questions[0]!.correctAnswer === qa.correctAnswer && mOut[0]!.correctAnswer === baseline.mpt[0]!.correctAnswer && tOut[0]!.options.length === 4 && tOut.length === baseline.teacher.pst.length && sk.length >= 7, String(sk.length));
+  const wipe = applyQuizOverlay(baseline.quiz, { [q0.id]: { remove: q0.questions.map((x) => x.id) } }, sk);
+  check("learner side: an overlay can never leave a bank empty (the code questions are kept)", wipe[0]!.questions.length === q0.questions.length);
+  const reorder = applyQuizOverlay(baseline.quiz, { [q0.id]: { order: [...q0.questions.map((x) => x.id)].reverse() } });
+  check("learner side: explicit order is honoured; banks without overlay are the same objects (zero overhead)", reorder[0]!.questions[0]!.id === q0.questions[q0.questions.length - 1]!.id && reorder[1] === baseline.quiz[1]);
+  check("an empty overlay is detected as empty", overlayIsEmpty({ version: 1, generatedAt: null, quiz: {}, mpt: {}, teacher: {} }) && !overlayIsEmpty(r1.overlay));
 
   section("10. App-side rules agree with the database");
   check("UI permission matrix: only super_admin sees audit log and admin users",

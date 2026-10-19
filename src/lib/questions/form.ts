@@ -10,7 +10,7 @@ const flag = (fd: FormData, k: string): boolean => fd.get(k) === "on" || fd.get(
  * re-validates everything, but errors caught here are shown next to the form, in plain words.
  * Options come from option_0…option_5 (blanks are dropped); `correct` is the SLOT of the right answer.
  */
-export function parseQuestionContent(fd: FormData): Parsed {
+export function parseQuestionContent(fd: FormData, opts: { exactOptions?: number } = {}): Parsed {
   const errors: string[] = [];
   const stem = str(fd, "stem");
   if (!stem) errors.push("The question text is required.");
@@ -21,6 +21,7 @@ export function parseQuestionContent(fd: FormData): Parsed {
     if (text) slots.push({ slot: i, text });
   }
   if (slots.length < 2) errors.push("Give at least two answer options.");
+  else if (opts.exactOptions && slots.length !== opts.exactOptions) errors.push(`Exam questions need exactly ${opts.exactOptions} answer options.`);
   const lowered = slots.map((o) => o.text.toLowerCase());
   if (new Set(lowered).size !== lowered.length) errors.push("Two options are identical — each option must be different.");
 
@@ -57,9 +58,9 @@ export function parseQuestionContent(fd: FormData): Parsed {
 
 /** A brand-new question: content + where it belongs + where it came from. New questions are always drafts. */
 export function parseNewQuestion(fd: FormData): Parsed {
-  const content = parseQuestionContent(fd);
-  const errors = [...content.errors];
   const system = str(fd, "source_system");
+  const content = parseQuestionContent(fd, { exactOptions: system === "mpt" || system === "teacher" ? 4 : undefined });
+  const errors = [...content.errors];
   if (!isOneOf(SYSTEMS, system)) errors.push("Choose where this question is used.");
   const fields: Record<string, unknown> = { ...content.fields, source_system: system };
 
@@ -67,13 +68,19 @@ export function parseNewQuestion(fd: FormData): Parsed {
     const subject = str(fd, "subject_slug");
     if (!isOneOf(SUBJECT_SLUGS, subject)) errors.push("Choose a subject.");
     fields["subject_slug"] = subject;
+    const bank = str(fd, "bank_slug");
+    if (bank && !/^[a-z0-9-]+$/.test(bank)) errors.push("Choose a bank from the list.");
+    if (bank) fields["bank_slug"] = bank;
   } else if (system === "mpt" || system === "teacher") {
     const examSubject = str(fd, "exam_subject");
     if (!examSubject) errors.push("Enter the exam subject (e.g. Mathematics).");
     fields["exam_subject"] = examSubject;
-    const exam = str(fd, "exam_slug");
-    if (!isOneOf(EXAM_SLUGS, exam)) errors.push("Choose the exam this question belongs to.");
-    else fields["exams"] = [{ exam_slug: exam, topic: str(fd, "exam_topic"), difficulty: str(fd, "exam_difficulty"), section_code: str(fd, "section_code") }];
+    const exam = system === "mpt" ? "css-mpt" : str(fd, "exam_slug");
+    const allowed = system === "mpt" ? ["css-mpt"] : ["pst", "jest", "jst"];
+    if (!allowed.includes(exam)) errors.push("Choose the exam this question belongs to (PST, JEST or JST).");
+    const section = str(fd, "section_code").toUpperCase();
+    if (system === "mpt" && !["IS", "UR", "EN", "GA", "GK"].includes(section)) errors.push("A CSS MPT question needs a section: IS, UR, EN, GA or GK.");
+    if (allowed.includes(exam)) fields["exams"] = [{ exam_slug: exam, topic: str(fd, "exam_topic"), difficulty: str(fd, "exam_difficulty"), section_code: system === "mpt" ? section : "" }];
   }
 
   const source = str(fd, "source_type") || "platform_authored";

@@ -1,3 +1,4 @@
+import { checkOverlay, overlayChecks } from "./checks/overlay";
 import { checkConnections, connectionChecks } from "./checks/connections";
 import { checkGle, gleChecks } from "./checks/gle";
 import { checkMpt, mptChecks } from "./checks/mpt";
@@ -11,6 +12,7 @@ import {
 } from "./types";
 
 const CHECKS: { fn: CheckFn; defs: CheckDefinition[] }[] = [
+  { fn: checkOverlay, defs: overlayChecks },
   { fn: checkRegistry, defs: registryChecks },
   { fn: checkGle, defs: gleChecks },
   { fn: checkQuiz, defs: quizChecks },

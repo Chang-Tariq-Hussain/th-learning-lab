@@ -3,7 +3,7 @@
 What this adds: a Postgres schema mirroring the code registries; individual admin accounts with roles
 (Supabase Auth + row-level security); an append-only audit log; an importer that loads the registries
 into the database and a parity check proving the two agree. **The learner app is unchanged and still reads
-its content from the code registries** — nothing reads the database until Phase 4.
+its content from the code registries** — database edits reach learners only through the Phase 4 publish step.
 
 ## Set up (once)
 1. Create a Supabase project. **Authentication → Providers → Email: turn OFF "Allow new users to sign up"**

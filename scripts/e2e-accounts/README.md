@@ -20,3 +20,11 @@ Prereqs (Linux): PostgreSQL 16 running locally, the PostgREST binary, `node_modu
 Covers sign-in/roles/nav, admin-user management, question list + every filter + sort + paging, edit with
 concurrency control, provenance rules, status + bulk actions, create, import (validate/all-or-nothing/upload),
 CSV/JSON export (incl. formula-injection), and read-only roles replaying editor forms.
+
+## Phase 4 extras (production build with a published overlay)
+`learner-proof.py` and `publishing-page.py` need a **production build** made after publishing (they check what learners
+actually receive). Recipe: run `run.py` (it publishes into `/tmp/content-out`), copy the project, copy
+`/tmp/content-out/{overlay,manifest}.json` into the copy's `src/content/`, `next build` it (with the `NEXT_PUBLIC_SUPABASE_*`
+variables for the admin pages), `next start -p 3124`, then run from the copy:
+`python3 scripts/e2e-accounts/learner-proof.py` and `MANIFEST=src/content/manifest.json python3 scripts/e2e-accounts/publishing-page.py`.
+Build on a machine with >4 GB free, or stop other servers first (a 4 GB box killed a build that ran beside `next dev`).

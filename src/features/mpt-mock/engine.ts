@@ -1,3 +1,5 @@
+import { applyMptOverlay } from "@/lib/content-overlay/apply";
+import { overlay } from "@/lib/content-overlay/current";
 import { MPT_MOCK_1, MPT_MOCK_2, MPT_QUESTION_BANK } from "./data/mpt-mock-data";
 import type { MptMockDefinition, MptQuestion } from "./data/mpt-mock-data";
 import { asFullTest, buildSectionTest, isSectionCode } from "./test-defs";
@@ -25,7 +27,7 @@ export function getTestById(testId: string): MptTest | null {
 
 let bankIndex: Map<string, MptQuestion> | null = null;
 function bankById(): Map<string, MptQuestion> {
-  if (!bankIndex) bankIndex = new Map(MPT_QUESTION_BANK.map((q) => [q.id, q] as const));
+  if (!bankIndex) bankIndex = new Map(applyMptOverlay(MPT_QUESTION_BANK, overlay.mpt).map((q) => [q.id, q] as const));
   return bankIndex;
 }
 

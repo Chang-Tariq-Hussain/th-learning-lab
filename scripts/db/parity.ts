@@ -4,7 +4,7 @@ import { buildSeedBundle, computeParity } from "../../src/lib/db-seed";
 import { connect } from "./env";
 
 async function main(): Promise<void> {
-  const bundle = buildSeedBundle(await loadHealthContext(null));
+  const bundle = buildSeedBundle(await loadHealthContext(null, { raw: true }));
   const client = await connect();
   try {
     const p = await computeParity(client, bundle);

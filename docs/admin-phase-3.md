@@ -34,10 +34,9 @@ through a database function (`question_save`, `question_set_provenance`, `questi
   unknown fields are rejected.
 
 ## Edited-in-admin vs. the code registries
-The learner app still reads its questions from the code registries (switching it over is a later step).
-When you edit a question here it is marked *edited in admin*; re-running `npm run db:import` never overwrites
-it. **Consequence: edits made here do not reach learners yet.** They live in the database until the learner
-app reads from it.
+When you edit a question here it is marked *edited in admin*; re-running `npm run db:import` never overwrites it.
+Edits reach learners only when you **publish** (see `docs/admin-phase-4.md`): until then they live in the database
+and the question shows *not yet published to learners*.
 
 ## Export
 Current filter, up to 10,000 rows, CSV (UTF-8 with BOM, opens in Excel) or JSON. Every export is audited.

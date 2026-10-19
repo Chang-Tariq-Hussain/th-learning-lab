@@ -44,7 +44,9 @@ export async function asUser<T>(db: PGlite, userId: string | null, fn: () => Pro
   try {
     return await fn();
   } finally {
-    await db.exec(`reset role; select set_config('request.jwt.claim.sub', '', false);`);
+    // Inside an aborted transaction this can't run (and would mask the real error); the role is
+    // transactional, so the caller's ROLLBACK restores it.
+    try { await db.exec(`reset role; select set_config('request.jwt.claim.sub', '', false);`); } catch { /* aborted transaction */ }
   }
 }
 

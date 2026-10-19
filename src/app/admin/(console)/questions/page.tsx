@@ -6,6 +6,7 @@ import { DataTable, type Column } from "@/components/admin/data-table";
 import { Pagination, buildQuery } from "@/components/admin/pagination";
 import { CheckText, SourceBadge, StatusPill } from "@/components/admin/question-badges";
 import { requirePermission } from "@/lib/admin/auth";
+import { publishState } from "@/lib/admin/publishing";
 import { can } from "@/lib/admin/permissions";
 import { PAGE_SIZE, applyFilters, filterParams, listSelect, parseFilters } from "@/lib/questions/query";
 import {
@@ -55,6 +56,7 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
             {SYSTEM_LABEL[r.source_system]} · {r.subjects?.slug ?? r.exam_subject ?? "—"}
             {r.content_hash !== r.source_hash ? (r.source_hash ? " · edited in admin" : " · created in admin") : ""}
             {r.needs_review ? " · needs review" : ""}
+            {publishState(r.source_system, r.legacy_id, r.status, r.content_hash) === "pending" ? " · not yet published to learners" : ""}
           </p>
         </div>
       ),

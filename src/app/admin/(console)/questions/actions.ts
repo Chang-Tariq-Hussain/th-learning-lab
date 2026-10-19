@@ -117,3 +117,26 @@ export async function importQuestionsAction(fd: FormData): Promise<void> {
   revalidatePath("/admin/questions");
   to(here, "ok", validateOnly ? `All ${r.results.length} rows are valid. Nothing was saved — untick "Validate only" to import them as drafts.` : `Imported ${r.created} question(s) as drafts.`);
 }
+
+export async function bankAddAction(fd: FormData): Promise<void> {
+  const supabase = await editor();
+  const id = text(fd, "id");
+  const bank = text(fd, "bank");
+  if (!UUID.test(id)) redirect("/admin/questions");
+  if (!/^[a-z0-9-]+$/.test(bank)) to(`/admin/questions/${id}`, "error", "Choose a bank.");
+  const { data, error } = await supabase.rpc("question_bank_add", { p_question: id, p_bank: bank });
+  if (error) to(`/admin/questions/${id}`, "error", error.message);
+  revalidatePath(`/admin/questions/${id}`);
+  to(`/admin/questions/${id}`, "ok", (data as { changed?: boolean } | null)?.changed ? `Added to ${bank}. It reaches learners once it is published and the content is published.` : "Already in that bank.");
+}
+
+export async function bankRemoveAction(fd: FormData): Promise<void> {
+  const supabase = await editor();
+  const id = text(fd, "id");
+  const bank = text(fd, "bank");
+  if (!UUID.test(id)) redirect("/admin/questions");
+  const { error } = await supabase.rpc("question_bank_remove", { p_question: id, p_bank: bank, p_reason: text(fd, "reason") });
+  if (error) to(`/admin/questions/${id}`, "error", error.message);
+  revalidatePath(`/admin/questions/${id}`);
+  to(`/admin/questions/${id}`, "ok", `Removed from ${bank}.`);
+}

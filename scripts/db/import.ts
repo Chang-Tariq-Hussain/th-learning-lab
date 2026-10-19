@@ -13,7 +13,7 @@ import { connect } from "./env";
 
 async function main(): Promise<void> {
   const apply = process.argv.includes("--apply");
-  const bundle = buildSeedBundle(await loadHealthContext(null));
+  const bundle = buildSeedBundle(await loadHealthContext(null, { raw: true }));
   const client = await connect();
   try {
     const r = await applyBundle(client, bundle, { apply, actor: process.env.USER ?? "cli" });

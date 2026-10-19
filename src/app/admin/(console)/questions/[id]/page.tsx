@@ -8,12 +8,13 @@ import { requirePermission } from "@/lib/admin/auth";
 import { can } from "@/lib/admin/permissions";
 import { ANSWER_CHECKS, CHECK_LABEL, SOURCE_LABEL, SOURCE_TYPES, SYSTEM_LABEL, EXAM_LABEL, type AnswerCheck, type QuestionStatus, type SourceType } from "@/lib/questions/types";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { provenanceAction, saveQuestionAction, statusAction } from "../actions";
+import { publishState } from "@/lib/admin/publishing";
+import { bankAddAction, bankRemoveAction, provenanceAction, saveQuestionAction, statusAction } from "../actions";
 
 export const metadata: Metadata = { title: "Question" };
 
 interface Detail {
-  id: string; legacy_id: string; source_system: keyof typeof SYSTEM_LABEL; exam_subject: string | null; topic: string | null; concept: string | null; difficulty: string | null;
+  id: string; subject_id: string | null; legacy_id: string; source_system: keyof typeof SYSTEM_LABEL; exam_subject: string | null; topic: string | null; concept: string | null; difficulty: string | null;
   stem: string; passage: string | null; options: string[]; correct_index: number; fixed_order: boolean; explanation: string; hints: string[] | null;
   misconception_tag: string | null; language: string | null; source_type: SourceType; source_detail: string | null; source_exam: string | null; source_year: number | null;
   source_reference: string | null; source_note: string | null; answer_check: AnswerCheck; verified_note: string | null; needs_review: boolean; status: QuestionStatus;
@@ -44,6 +45,10 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
   const { data: hist } = await supabase.rpc("question_history", { p_id: q.id });
   const history = (hist ?? []) as HistoryRow[];
   const quizSystem = q.source_system === "quiz";
+  const pub = publishState(q.source_system, q.legacy_id, q.status, q.content_hash);
+  const inBanks = new Set(q.question_bank_items.map((b) => b.question_banks?.slug));
+  const { data: bankData } = quizSystem && q.subject_id ? await supabase.from("question_banks").select("slug, title").eq("subject_id", q.subject_id).eq("status", "published").order("slug") : { data: [] };
+  const availableBanks = ((bankData ?? []) as { slug: string; title: string }[]).filter((b) => !inBanks.has(b.slug));
   const edited = q.source_hash ? q.content_hash !== q.source_hash : null;
 
   return (
@@ -56,6 +61,7 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
         </div>
         <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">
           {SYSTEM_LABEL[q.source_system]} · {q.subjects?.name ?? q.exam_subject ?? "—"}
+          {pub === "pending" ? " · changed since the last publish — learners do not see this yet" : pub === "synced" ? " · matches what learners see" : ""}
           {edited === true ? " · edited in admin since it was imported from the code registries" : edited === false ? " · unchanged since import" : " · created in admin"}
         </p>
       </div>
@@ -68,6 +74,7 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
             <input type="hidden" name="id" value={q.id} />
             <input type="hidden" name="expected_hash" value={q.content_hash} />
             <QuestionContentFields showDifficulty={quizSystem} d={q} />
+            {!quizSystem ? <p className="text-xs text-ink-soft dark:text-bone-soft">Exam questions must keep exactly 4 options.</p> : null}
             <button type="submit" className="rounded-lg bg-pine-600 px-4 py-2 text-sm font-medium text-paper hover:bg-pine-700 dark:bg-pine-500 dark:text-chalkboard">Save changes</button>
             {q.answer_check === "independently_checked" ? <p className="text-xs text-ink-soft dark:text-bone-soft">This answer is marked independently checked. Changing the question, passage, options or correct answer resets that check to Unchecked.</p> : null}
           </form>
@@ -139,6 +146,37 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
           {q.question_bank_items.length + q.exam_questions.length + q.question_exams.length === 0 ? <li className="list-none text-ink-soft dark:text-bone-soft">Not used anywhere yet.</li> : null}
         </ul>
       </section>
+
+      {quizSystem ? (
+        <section aria-labelledby="h-banks" className="space-y-2">
+          <h2 id="h-banks" className="font-display text-lg font-medium">Quiz banks</h2>
+          <p className="text-xs text-ink-soft dark:text-bone-soft">A quiz question reaches learners through the banks it belongs to. A bank always keeps at least one published question.</p>
+          {editor ? (
+            <>
+              <ul className="space-y-2 text-sm">
+                {q.question_bank_items.map((b, i) => (
+                  <li key={i} className="flex flex-wrap items-center gap-3">
+                    <span>{b.question_banks?.title ?? b.question_banks?.slug} <span className="text-xs text-ink-soft dark:text-bone-soft">(#{b.position + 1})</span></span>
+                    <details className="inline-block"><summary className="cursor-pointer text-xs text-red-700 underline dark:text-red-300">Remove…</summary>
+                      <form action={bankRemoveAction} className="mt-1 flex items-center gap-2"><input type="hidden" name="id" value={q.id} /><input type="hidden" name="bank" value={b.question_banks?.slug ?? ""} />
+                        <input name="reason" required minLength={5} placeholder="Reason" aria-label="Reason" className={`${inputCls} w-56`} /><button className={btn}>Confirm remove</button></form></details>
+                  </li>
+                ))}
+                {q.question_bank_items.length === 0 ? <li className="text-ink-soft dark:text-bone-soft">Not in any bank — learners can’t see it until it is added to one.</li> : null}
+              </ul>
+              {availableBanks.length ? (
+                <form action={bankAddAction} className="flex flex-wrap items-center gap-2"><input type="hidden" name="id" value={q.id} />
+                  <select name="bank" required defaultValue="" aria-label="Add to bank" className={`${inputCls} w-72`}><option value="" disabled>Add to a bank…</option>{availableBanks.map((b) => <option key={b.slug} value={b.slug}>{b.title}</option>)}</select>
+                  <button className={btn}>Add</button></form>
+              ) : null}
+            </>
+          ) : (
+            <ul className="list-disc pl-5 text-sm">{q.question_bank_items.map((b, i) => <li key={i}>{b.question_banks?.title ?? b.question_banks?.slug}</li>)}</ul>
+          )}
+        </section>
+      ) : q.source_system === "mpt" ? (
+        <p className="rounded-lg border border-ink/10 p-3 text-sm text-ink-soft dark:border-bone/15 dark:text-bone-soft">CSS MPT questions reach learners only through the stored mocks. Edits to a question already in a mock are published; a new MPT question appears to learners once a mock includes it.</p>
+      ) : null}
 
       <section aria-labelledby="h-hist" className="space-y-2">
         <h2 id="h-hist" className="font-display text-lg font-medium">History</h2>

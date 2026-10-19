@@ -1,3 +1,5 @@
+import { applyQuizOverlay } from "@/lib/content-overlay/apply";
+import { overlay } from "@/lib/content-overlay/current";
 import type { QuizMeta } from "./types";
 import { biologyWhatIsACellQuiz } from "./data/biology-what-is-a-cell-quiz";
 import { biologyCellStructureOrganizationQuiz } from "./data/biology-cell-structure-organization-quiz";
@@ -141,7 +143,8 @@ import { informationTechnologyDhcpSimulatorPracticeQuiz } from "./data/it-dhcp-s
  * `features/subjects/data/subjects.ts`: a single array, read by
  * getter functions, instead of scattered lookups.
  */
-export const quizzes: QuizMeta[] = [
+/** The questions as written in code (before any published database edits). Used by the importer. */
+export const codeQuizzes: QuizMeta[] = [
   biologyWhatIsACellQuiz,
   biologyCellStructureOrganizationQuiz,
   biologyCellOrganellesQuiz,
@@ -277,6 +280,9 @@ export const quizzes: QuizMeta[] = [
   informationTechnologyDhcpSimulatorPracticeQuiz,
   informationTechnologyDhcpSimulatorQuiz,
 ];
+
+/** What learners see: the code registry with the published content overlay applied (empty overlay = identical). */
+export const quizzes: QuizMeta[] = applyQuizOverlay(codeQuizzes, overlay.quiz);
 
 export function getQuizById(id: string): QuizMeta | undefined {
   return quizzes.find((quiz) => quiz.id === id);

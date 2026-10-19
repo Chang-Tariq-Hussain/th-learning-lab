@@ -17,6 +17,7 @@ const NAV: NavDef[] = [
   { href: "/admin", label: "Overview", exact: true, permission: "overview.view" },
   { href: "/admin/health", label: "Content Health", permission: "health.view" },
   { href: "/admin/questions", label: "Question Bank", permission: "questions.view", needsAccounts: true },
+  { href: "/admin/publishing", label: "Publishing", permission: "questions.view", needsAccounts: true },
   { href: "/admin/audit", label: "Audit Log", permission: "audit.view", needsAccounts: true },
   { href: "/admin/admins", label: "Admin Users", permission: "admins.manage", needsAccounts: true },
 ];
