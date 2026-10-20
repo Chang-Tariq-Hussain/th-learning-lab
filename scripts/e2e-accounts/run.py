@@ -115,6 +115,11 @@ check("  → database holds the edit and marks it edited since import", db(f"sel
 check("  → audit row names the actor and records before/after", dbi(f"select count(*) from public.audit_log where entity_id='{qid}' and action='question.updated' and actor_email='qm@x.com' and after ? 'explanation'") >= 1)
 st, loc = post(Q, f"/admin/questions/{qid}", save_act, [("id", qid), ("expected_hash", h0)] + content(explanation="Stale overwrite attempt")); check("a stale edit is refused (no lost update)", "changed by someone else" in unquote(msg(loc, "error")), loc)
 check("  → the database still holds the earlier edit", db(f"select explanation from public.questions where id='{qid}'") == "Rewritten by the question manager")
+body_after_fail, _ = get(Q, f"/admin/questions/{qid}")
+check("  → the failed save keeps what the admin typed (form refilled, with a notice) instead of discarding it", "Stale overwrite attempt" in body_after_fail and "your unsaved edits" in text(body_after_fail))
+st, loc = post(Q, f"/admin/questions/{qid}", save_act, [("id", qid), ("expected_hash", re.search(r'name="expected_hash" value="([^"]+)"', body_after_fail).group(1))] + content(explanation="Rewritten by the question manager")); 
+body_ok, _ = get(Q, f"/admin/questions/{qid}")
+check("  → a later successful save clears the kept draft", "your unsaved edits" not in text(body_ok))
 check("detail page now says it was edited in admin and shows the history", "edited in admin" in text(get(Q, f"/admin/questions/{qid}")[0]) and "question.updated" in text(get(Q, f"/admin/questions/{qid}")[0]))
 
 gen = db("select id from public.questions where source_type='generated' and source_system='mpt' order by legacy_id limit 1"); gb, _ = get(Q, f"/admin/questions/{gen}")
@@ -122,7 +127,7 @@ prov_f = form_with(gb, 'name="answer_check"'); prov_act = aid(prov_f); gh = re.s
 def prov(**o): d = dict(source_type="verified_past_paper", source_year="2021", source_reference="FPSC 2021 Q1", answer_check="unchecked", reason="Found it in the real paper"); d.update(o); return [("id", gen), ("expected_hash", gh)] + list(d.items())
 st, loc = post(Q, f"/admin/questions/{gen}", prov_act, prov()); check("a generated question can NOT be relabelled a verified past paper", "cannot be relabelled" in unquote(msg(loc, "error")), loc)
 check("  → still generated in the database", db(f"select source_type from public.questions where id='{gen}'") == "generated")
-st, loc = post(Q, f"/admin/questions/{gen}", prov_act, prov(source_type="generated", answer_check="independently_checked", reason="Marking it checked anyway")); check("a generated question cannot be marked independently checked", "questions_generated_never_verified" in unquote(msg(loc, "error")) or "violates check" in unquote(msg(loc, "error")), loc)
+st, loc = post(Q, f"/admin/questions/{gen}", prov_act, prov(source_type="generated", answer_check="independently_checked", reason="Marking it checked anyway")); check("a generated question cannot be marked independently checked", "cannot be marked as independently checked" in unquote(msg(loc, "error")) and "violates" not in unquote(msg(loc, "error")), loc)
 st, loc = post(Q, f"/admin/questions/{gen}", prov_act, prov(source_type="generated", answer_check="recomputed", reason="short")); check("a reason of under 10 characters is refused", "10 characters" in unquote(msg(loc, "error")), loc)
 st, loc = post(Q, f"/admin/questions/{gen}", prov_act, prov(source_type="generated", answer_check="recomputed", reason="Re-derived the answer by hand", source_year="")); check("a legitimate provenance change works", "ok=" in (loc or "") and db(f"select answer_check from public.questions where id='{gen}'") == "recomputed", loc)
 check("  → the reason is stored in the audit log", dbi(f"select count(*) from public.audit_log where entity_id='{gen}' and action='question.provenance_changed' and meta->>'reason'='Re-derived the answer by hand'") == 1)

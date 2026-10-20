@@ -18,6 +18,7 @@ import { createSessionToken, safeNextPath, verifySessionToken } from "../../src/
 import { csvCell, toCsv } from "../../src/lib/questions/csv";
 import { parseNewQuestion, parseProvenance, parseQuestionContent } from "../../src/lib/questions/form";
 import { parseFilters } from "../../src/lib/questions/query";
+import { friendlyError } from "../../src/lib/admin/errors";
 import { asUser, expectFail, newDatabase } from "./pg-harness";
 
 let passed = 0;
@@ -144,6 +145,9 @@ async function main(): Promise<void> {
     && await asUser(db, ids.analyst, async () => (await n("select count(*)::int n from public.audit_log")) === 0));
   check("nobody can insert into the audit log directly", await asUser(db, ids.super, async () => { try { await db.query("insert into public.audit_log (action, entity) values ('forged','x')"); return false; } catch { return true; } }));
   check("an admin sees only their own role row; super_admin sees all", await asUser(db, ids.content, async () => (await n("select count(*)::int n from public.admin_roles")) === 1) && await asUser(db, ids.super, async () => (await n("select count(*)::int n from public.admin_roles")) === 4));
+  for (const table of ["exam_questions", "exam_sections", "exams", "exam_types", "question_banks"]) {
+    check(`a question manager cannot write ${table} directly (no audit, no mock guard)`, await asUser(db, ids.question, async () => { try { await db.query(`delete from public.${table}`); return false; } catch (e) { return /permission denied/.test(String(e)); } }));
+  }
   check("nobody can edit admin_roles directly", await asUser(db, ids.super, async () => { try { await db.query("update public.admin_roles set role = 'analyst'"); return false; } catch { return true; } }));
   check("storage bucket exists and is private", (await n("select count(*)::int n from storage.buckets where id = 'content-media' and public = false")) === 1);
 
@@ -206,6 +210,8 @@ async function main(): Promise<void> {
   // save: concurrency, whitelist, audit, no-op, constraint rollback
   await expectFail("stale hash", () => fn(QM, "select public.question_save($1, 'e:stale', '{\"explanation\":\"x\"}')", [quizQ.id]), /changed by someone else/);
   await expectFail("non-content field", () => fn(QM, "select public.question_save($1, $2, '{\"source_type\":\"generated\"}')", [quizQ.id, quizQ.content_hash]), /cannot be edited here/);
+  await expectFail("stale hash uses PT409 (SQLSTATE 40001 hangs PostgREST)", () => fn(QM, "select public.question_save($1, 'e:stale', '{\"explanation\":\"x\"}')", [quizQ.id]), /PT409|changed by someone else/);
+  check("no function raises SQLSTATE 40001", Number((await db.query<{ n: number }>("select count(*)::int n from pg_proc p join pg_namespace s on s.oid=p.pronamespace where s.nspname='public' and p.prosrc ilike '%errcode = ''40001''%'")).rows[0]?.n) === 0);
   check("a stale edit and an edit to a non-content field are both refused", true);
   const a0 = await auditCount("question.updated");
   const saved = (await fn(QM, "select public.question_save($1, $2, $3::jsonb) r", [quizQ.id, quizQ.content_hash, JSON.stringify({ explanation: "Edited by the question manager." })])).r;
@@ -250,7 +256,12 @@ async function main(): Promise<void> {
   await expectFail("pre-checked answer", () => bad({ answer_check: "independently_checked" }), /start unchecked/);
   await expectFail("unknown subject", () => bad({ subject_slug: "astrology" }), /unknown subject_slug/);
   await expectFail("unknown field", () => bad({ status: "published" }), /unknown field "status"/);
-  await expectFail("answer index out of range", () => bad({ correct_index: 7 }), /questions_correct_in_range/);
+  await expectFail("answer index out of range", () => bad({ correct_index: 7, stem: "Unique stem for the range test" }), /questions_correct_in_range/);
+  await expectFail("exact duplicate of an existing admin question", () => bad({}), /identical question/);
+  await expectFail("repeated options", () => bad({ stem: "Repeated options probe", options: ["a", "A ", "c"], correct_index: 0 }), /two options are identical/);
+  await expectFail("blank option", () => bad({ stem: "Blank option probe", options: ["a", "  ", "c"], correct_index: 0 }), /every answer option needs text/);
+  await expectFail("blank question text", () => bad({ stem: "   " }), /question text is required/);
+  await expectFail("import row that is not an object", () => fn(QM, "select public.question_create('5'::jsonb)", []), /must be a JSON object/);
   check("creation refuses: past paper without evidence, pre-checked answers, unknown subject/field, a self-published status, bad answer index", true);
   const pastNew = (await fn(QM, "select public.question_create($1::jsonb) id", [JSON.stringify({ ...newQuiz, source_type: "verified_past_paper", source_year: 2019, source_reference: "FPSC MPT 2019, Q12", stem: "Past paper stem" })])).id;
   check("a past-paper question with year + reference is accepted (still a draft, still unchecked)", !!pastNew);
@@ -263,7 +274,7 @@ async function main(): Promise<void> {
   await expectFail("unpublish with short reason", () => st([createdId], "draft", "no"), /give a reason/);
   await expectFail("101 ids", () => st(Array.from({ length: 101 }, () => createdId), "published", null), /at most 100/);
   check("archiving/unpublishing needs a reason, and bulk actions are capped at 100", true);
-  const incomplete = (await fn(QM, "select public.question_create($1::jsonb) id", [JSON.stringify({ ...newQuiz, explanation: "" })])).id as string;
+  const incomplete = (await fn(QM, "select public.question_create($1::jsonb) id", [JSON.stringify({ ...newQuiz, stem: "An incomplete draft", explanation: "" })])).id as string;
   const dryRun = await st([createdId, incomplete, reviewQ.id as string], "published", null, true);
   check("dry-run reports what would happen and changes nothing", dryRun.dry_run === true && dryRun.changed === 1 && dryRun.skipped.length === 2 && (await one("select status from public.questions where id = $1", [createdId]))["status"] === "draft");
   const pub = await st([createdId, incomplete], "published", null);
@@ -277,7 +288,7 @@ async function main(): Promise<void> {
   check("questions are never hard-deleted: they stay in the table as archived", (await one("select status from public.questions where id = $1", [createdId]))["status"] === "archived");
 
   // import
-  const goodRows = [newQuiz, { ...newQuiz, stem: "What is velocity?" }, { ...newQuiz, stem: "What is acceleration?" }];
+  const goodRows = [{ ...newQuiz, stem: "What is distance?" }, { ...newQuiz, stem: "What is velocity?" }, { ...newQuiz, stem: "What is acceleration?" }];
   const before = await n("select count(*)::int n from public.questions");
   const dryImp = (await fn(QM, "select public.question_import($1::jsonb, true) r", [JSON.stringify(goodRows)])).r;
   check("import dry-run validates all rows and creates nothing", dryImp.errors === 0 && dryImp.committed === false && (await n("select count(*)::int n from public.questions")) === before);
@@ -334,6 +345,13 @@ async function main(): Promise<void> {
     && toCsv(["a", "b"], [[1, "x,y"]]) === 'a,b\r\n1,"x,y"\r\n');
   check("permissions: everyone may view the bank; only super_admin and question_manager may edit",
     ADMIN_ROLES.every((r) => can(r, "questions.view")) && ADMIN_ROLES.every((r) => can(r, "questions.edit") === (r === "super_admin" || r === "question_manager")));
+
+  check("errors shown to admins hide raw database text but keep our own plain-English messages",
+    friendlyError({ message: 'new row for relation "questions" violates check constraint "questions_correct_in_range"' }) === "The correct answer must be one of the options."
+    && friendlyError({ message: "TypeError: fetch failed" }).startsWith("Could not reach the database")
+    && !/relation|violates/.test(friendlyError({ message: 'duplicate key value violates unique constraint "x"' }))
+    && friendlyError({ message: "this question was changed by someone else — reload it and try again" }).includes("changed by someone else")
+    && friendlyError({ message: "x", code: "42501" }) === "You do not have permission to do that.");
 
   section("13. Publishing: database → learners (content overlay)");
   const baseline = await loadBaseline();

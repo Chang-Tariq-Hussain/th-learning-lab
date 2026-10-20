@@ -5,6 +5,8 @@ import { Flash } from "@/components/admin/flash";
 import { CheckText, SourceBadge, StatusPill } from "@/components/admin/question-badges";
 import { QuestionContentFields, inputCls, labelCls } from "@/components/admin/question-fields";
 import { requirePermission } from "@/lib/admin/auth";
+import { DraftBanner } from "@/components/admin/draft-banner";
+import { draftToDefaults, readDraft } from "@/lib/admin/draft";
 import { can } from "@/lib/admin/permissions";
 import { ANSWER_CHECKS, CHECK_LABEL, SOURCE_LABEL, SOURCE_TYPES, SYSTEM_LABEL, EXAM_LABEL, type AnswerCheck, type QuestionStatus, type SourceType } from "@/lib/questions/types";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -49,6 +51,8 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
   const inBanks = new Set(q.question_bank_items.map((b) => b.question_banks?.slug));
   const { data: bankData } = quizSystem && q.subject_id ? await supabase.from("question_banks").select("slug, title").eq("subject_id", q.subject_id).eq("status", "published").order("slug") : { data: [] };
   const availableBanks = ((bankData ?? []) as { slug: string; title: string }[]).filter((b) => !inBanks.has(b.slug));
+  const draft = editor ? readDraft(q.id) : null;
+  const provDraft = editor ? readDraft(`${q.id}:prov`) : null;
   const edited = q.source_hash ? q.content_hash !== q.source_hash : null;
 
   return (
@@ -71,9 +75,10 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
         <h2 id="h-content" className="font-display text-lg font-medium">Content</h2>
         {editor ? (
           <form action={saveQuestionAction} className="space-y-4">
+            {draft ? <DraftBanner returnTo={`/admin/questions/${q.id}`} stale /> : null}
             <input type="hidden" name="id" value={q.id} />
             <input type="hidden" name="expected_hash" value={q.content_hash} />
-            <QuestionContentFields showDifficulty={quizSystem} d={q} />
+            <QuestionContentFields showDifficulty={quizSystem} d={draft ? draftToDefaults(draft) : q} />
             {!quizSystem ? <p className="text-xs text-ink-soft dark:text-bone-soft">Exam questions must keep exactly 4 options.</p> : null}
             <button type="submit" className="rounded-lg bg-pine-600 px-4 py-2 text-sm font-medium text-paper hover:bg-pine-700 dark:bg-pine-500 dark:text-chalkboard">Save changes</button>
             {q.answer_check === "independently_checked" ? <p className="text-xs text-ink-soft dark:text-bone-soft">This answer is marked independently checked. Changing the question, passage, options or correct answer resets that check to Unchecked.</p> : null}
@@ -112,19 +117,20 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
         <p className="text-xs text-ink-soft dark:text-bone-soft">Where the question came from is separate from how far its answer has been checked. A generated question can never be relabelled as a verified past paper; a past paper needs a source year and reference.</p>
         {editor ? (
           <form action={provenanceAction} className="space-y-3 rounded-xl border border-ink/10 p-4 dark:border-bone/15">
+            {provDraft ? <DraftBanner returnTo={`/admin/questions/${q.id}`} stale /> : null}
             <input type="hidden" name="id" value={q.id} /><input type="hidden" name="expected_hash" value={q.content_hash} />
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               <div><label htmlFor="source_type" className={labelCls}>Source</label>
-                <select id="source_type" name="source_type" defaultValue={q.source_type} className={inputCls}>{SOURCE_TYPES.map((s) => <option key={s} value={s}>{SOURCE_LABEL[s]}</option>)}</select></div>
-              <div><label htmlFor="source_year" className={labelCls}>Source year</label><input id="source_year" name="source_year" type="number" defaultValue={q.source_year ?? ""} className={inputCls} /></div>
-              <div><label htmlFor="source_exam" className={labelCls}>Source exam</label><input id="source_exam" name="source_exam" defaultValue={q.source_exam ?? ""} className={inputCls} /></div>
-              <div><label htmlFor="source_reference" className={labelCls}>Source reference</label><input id="source_reference" name="source_reference" defaultValue={q.source_reference ?? ""} className={inputCls} /></div>
-              <div><label htmlFor="source_note" className={labelCls}>Source note</label><input id="source_note" name="source_note" defaultValue={q.source_note ?? ""} className={inputCls} /></div>
+                <select id="source_type" name="source_type" defaultValue={provDraft?.["source_type"] ?? q.source_type} className={inputCls}>{SOURCE_TYPES.map((s) => <option key={s} value={s}>{SOURCE_LABEL[s]}</option>)}</select></div>
+              <div><label htmlFor="source_year" className={labelCls}>Source year</label><input id="source_year" name="source_year" type="number" defaultValue={provDraft?.["source_year"] ?? q.source_year ?? ""} className={inputCls} /></div>
+              <div><label htmlFor="source_exam" className={labelCls}>Source exam</label><input id="source_exam" name="source_exam" defaultValue={provDraft?.["source_exam"] ?? q.source_exam ?? ""} className={inputCls} /></div>
+              <div><label htmlFor="source_reference" className={labelCls}>Source reference</label><input id="source_reference" name="source_reference" defaultValue={provDraft?.["source_reference"] ?? q.source_reference ?? ""} className={inputCls} /></div>
+              <div><label htmlFor="source_note" className={labelCls}>Source note</label><input id="source_note" name="source_note" defaultValue={provDraft?.["source_note"] ?? q.source_note ?? ""} className={inputCls} /></div>
               <div><label htmlFor="answer_check" className={labelCls}>Answer check</label>
-                <select id="answer_check" name="answer_check" defaultValue={q.answer_check} className={inputCls}>{ANSWER_CHECKS.map((s) => <option key={s} value={s}>{CHECK_LABEL[s]}</option>)}</select></div>
+                <select id="answer_check" name="answer_check" defaultValue={provDraft?.["answer_check"] ?? q.answer_check} className={inputCls}>{ANSWER_CHECKS.map((s) => <option key={s} value={s}>{CHECK_LABEL[s]}</option>)}</select></div>
             </div>
-            <div><label htmlFor="verified_note" className={labelCls}>How the answer was checked</label><input id="verified_note" name="verified_note" defaultValue={q.verified_note ?? ""} className={inputCls} /></div>
-            <div><label htmlFor="reason" className={labelCls}>Reason for this change (required — recorded in the audit log)</label><input id="reason" name="reason" required minLength={10} className={inputCls} /></div>
+            <div><label htmlFor="verified_note" className={labelCls}>How the answer was checked</label><input id="verified_note" name="verified_note" defaultValue={provDraft?.["verified_note"] ?? q.verified_note ?? ""} className={inputCls} /></div>
+            <div><label htmlFor="reason" className={labelCls}>Reason for this change (required — recorded in the audit log)</label><input id="reason" name="reason" required minLength={10} defaultValue={provDraft?.["reason"] ?? ""} className={inputCls} /></div>
             <button type="submit" className={btn}>Update provenance</button>
           </form>
         ) : (

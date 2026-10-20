@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { friendlyError } from "@/lib/admin/errors";
 import { redirect } from "next/navigation";
 import { requirePermission } from "@/lib/admin/auth";
 import { isAdminRole, ROLE_LABEL } from "@/lib/admin/permissions";
@@ -19,7 +20,7 @@ export async function setRoleAction(formData: FormData): Promise<void> {
   if (!isAdminRole(role)) redirect(`/admin/admins?error=${clip("Choose a role.")}`);
 
   const { error } = await createSupabaseServerClient().rpc("admin_set_role_by_email", { p_email: email, p_role: role });
-  if (error) redirect(`/admin/admins?error=${clip(error.message)}`);
+  if (error) redirect(`/admin/admins?error=${clip(friendlyError(error))}`);
   revalidatePath("/admin/admins");
   redirect(`/admin/admins?ok=${clip(`${email} is now ${ROLE_LABEL[role]}.`)}`);
 }
@@ -31,7 +32,7 @@ export async function revokeRoleAction(formData: FormData): Promise<void> {
   if (!UUID.test(userId)) redirect(`/admin/admins?error=${clip("Invalid user.")}`);
 
   const { error } = await createSupabaseServerClient().rpc("admin_revoke_role", { p_user: userId });
-  if (error) redirect(`/admin/admins?error=${clip(error.message)}`);
+  if (error) redirect(`/admin/admins?error=${clip(friendlyError(error))}`);
   revalidatePath("/admin/admins");
   redirect(`/admin/admins?ok=${clip("Admin access revoked.")}`);
 }

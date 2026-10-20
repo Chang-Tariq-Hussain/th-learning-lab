@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { friendlyError } from "@/lib/admin/errors";
 import type { Metadata } from "next";
 import { Flash } from "@/components/admin/flash";
 import { FilterBar } from "@/components/admin/filter-bar";
@@ -100,7 +101,7 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
         Sort: <Link className="underline" href={sortLink("updated")}>updated</Link> · <Link className="underline" href={sortLink("legacy")}>ID</Link> · <Link className="underline" href={sortLink("system")}>system</Link>
       </p>
 
-      {error ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">Could not load questions: {error.message}</p> : null}
+      {error ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">Could not load questions: {friendlyError(error)}</p> : null}
       <DataTable caption="Questions" columns={columns} rows={rows} rowKey={(r) => r.id} empty="No questions match these filters." />
 
       {editor ? (

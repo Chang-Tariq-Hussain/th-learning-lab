@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requirePermission } from "@/lib/admin/auth";
+import { forgetDraft, rememberDraft } from "@/lib/admin/draft";
+import { friendlyError } from "@/lib/admin/errors";
 import { parseNewQuestion, parseProvenance, parseQuestionContent } from "@/lib/questions/form";
 import { STATUSES, isOneOf } from "@/lib/questions/types";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -22,6 +24,11 @@ const back = (fd: FormData): string => {
   return /^\/admin\/questions(\?[A-Za-z0-9=&%._~-]*)?$/.test(v) ? v : "/admin/questions";
 };
 const text = (fd: FormData, k: string): string => String(fd.get(k) ?? "").trim();
+/** Fail while keeping what the admin typed, so the form can be refilled instead of starting over. */
+const fail = (path: string, scope: string, fd: FormData, msg: string): never => {
+  const kept = rememberDraft(scope, fd);
+  return to(path, "error", kept ? msg : `${msg} (Your edits were too long to keep automatically — copy them before leaving this page.)`);
+};
 
 export async function saveQuestionAction(fd: FormData): Promise<void> {
   const supabase = await editor();
@@ -29,9 +36,10 @@ export async function saveQuestionAction(fd: FormData): Promise<void> {
   if (!UUID.test(id)) redirect("/admin/questions");
   const here = `/admin/questions/${id}`;
   const parsed = parseQuestionContent(fd);
-  if (parsed.errors.length) to(here, "error", parsed.errors.join(" "));
+  if (parsed.errors.length) fail(here, id, fd, parsed.errors.join(" "));
   const { data, error } = await supabase.rpc("question_save", { p_id: id, p_expected_hash: text(fd, "expected_hash"), p_fields: parsed.fields });
-  if (error) to(here, "error", error.message);
+  if (error) fail(here, id, fd, friendlyError(error));
+  forgetDraft();
   revalidatePath(here);
   const r = data as { changed?: boolean; answer_check_reset?: boolean } | null;
   to(here, "ok", !r?.changed ? "No changes to save." : r.answer_check_reset ? "Saved. You changed what had been independently checked, so its answer check was reset to Unchecked." : "Saved.");
@@ -43,16 +51,17 @@ export async function provenanceAction(fd: FormData): Promise<void> {
   if (!UUID.test(id)) redirect("/admin/questions");
   const here = `/admin/questions/${id}`;
   const parsed = parseProvenance(fd);
-  if (parsed.errors.length) to(here, "error", parsed.errors.join(" "));
+  if (parsed.errors.length) fail(here, `${id}:prov`, fd, parsed.errors.join(" "));
   const { data, error } = await supabase.rpc("question_set_provenance", { p_id: id, p_expected_hash: text(fd, "expected_hash"), p_fields: parsed.fields, p_reason: parsed.reason });
-  if (error) to(here, "error", error.message);
+  if (error) fail(here, `${id}:prov`, fd, friendlyError(error));
+  forgetDraft();
   revalidatePath(here);
   to(here, "ok", (data as { changed?: boolean } | null)?.changed ? "Provenance updated and recorded in the audit log." : "No provenance changes.");
 }
 
 async function setStatus(supabase: Awaited<ReturnType<typeof editor>>, ids: string[], status: string, reason: string, returnTo: string): Promise<never> {
   const { data, error } = await supabase.rpc("question_set_status", { p_ids: ids, p_status: status, p_reason: reason || null, p_dry_run: false });
-  if (error) return to(returnTo, "error", error.message);
+  if (error) return to(returnTo, "error", friendlyError(error));
   const r = data as { changed: number; skipped: { why: string }[] };
   revalidatePath("/admin/questions");
   const skipped = r.skipped.length ? ` ${r.skipped.length} skipped: ${[...new Set(r.skipped.map((s) => s.why))].join("; ")}.` : "";
@@ -82,9 +91,10 @@ export async function bulkStatusAction(fd: FormData): Promise<void> {
 export async function createQuestionAction(fd: FormData): Promise<void> {
   const supabase = await editor();
   const parsed = parseNewQuestion(fd);
-  if (parsed.errors.length) to("/admin/questions/new", "error", parsed.errors.join(" "));
+  if (parsed.errors.length) fail("/admin/questions/new", "new", fd, parsed.errors.join(" "));
   const { data, error } = await supabase.rpc("question_create", { p_fields: parsed.fields });
-  if (error) to("/admin/questions/new", "error", error.message);
+  if (error) fail("/admin/questions/new", "new", fd, friendlyError(error));
+  forgetDraft();
   revalidatePath("/admin/questions");
   to(`/admin/questions/${String(data)}`, "ok", "Created as a draft. Review it, then publish when it is ready.");
 }
@@ -109,7 +119,7 @@ export async function importQuestionsAction(fd: FormData): Promise<void> {
   if (!Array.isArray(rows)) to(here, "error", 'Expected a JSON array of questions (or {"questions": [...]}).');
   const validateOnly = fd.get("validate_only") === "on";
   const { data, error } = await supabase.rpc("question_import", { p_rows: rows, p_dry_run: validateOnly });
-  if (error) to(here, "error", error.message);
+  if (error) to(here, "error", friendlyError(error));
   const r = data as { committed: boolean; created: number; errors: number; results: { row: number; ok: boolean; error?: string }[] };
   const errs = r.results.filter((x) => !x.ok).slice(0, 10).map((x) => `row ${x.row}: ${x.error}`);
   const qs = errs.map((e) => `err=${clip(e, 200)}`).join("&");
@@ -125,7 +135,7 @@ export async function bankAddAction(fd: FormData): Promise<void> {
   if (!UUID.test(id)) redirect("/admin/questions");
   if (!/^[a-z0-9-]+$/.test(bank)) to(`/admin/questions/${id}`, "error", "Choose a bank.");
   const { data, error } = await supabase.rpc("question_bank_add", { p_question: id, p_bank: bank });
-  if (error) to(`/admin/questions/${id}`, "error", error.message);
+  if (error) to(`/admin/questions/${id}`, "error", friendlyError(error));
   revalidatePath(`/admin/questions/${id}`);
   to(`/admin/questions/${id}`, "ok", (data as { changed?: boolean } | null)?.changed ? `Added to ${bank}. It reaches learners once it is published and the content is published.` : "Already in that bank.");
 }
@@ -136,7 +146,15 @@ export async function bankRemoveAction(fd: FormData): Promise<void> {
   const bank = text(fd, "bank");
   if (!UUID.test(id)) redirect("/admin/questions");
   const { error } = await supabase.rpc("question_bank_remove", { p_question: id, p_bank: bank, p_reason: text(fd, "reason") });
-  if (error) to(`/admin/questions/${id}`, "error", error.message);
+  if (error) to(`/admin/questions/${id}`, "error", friendlyError(error));
   revalidatePath(`/admin/questions/${id}`);
   to(`/admin/questions/${id}`, "ok", `Removed from ${bank}.`);
+}
+
+/** "Discard these edits" on a restored form: forget the draft and show the saved version. */
+export async function discardDraftAction(fd: FormData): Promise<void> {
+  await editor();
+  forgetDraft();
+  const back = String(fd.get("to") ?? "");
+  redirect(/^\/admin\/questions(\/[0-9a-f-]{36}|\/new)?$/i.test(back) ? back : "/admin/questions");
 }

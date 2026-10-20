@@ -30,7 +30,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   for (let from = 0; from < EXPORT_LIMIT; from += pageSize) {
     const select = f.exam ? `${SELECT}, question_exams!inner(exam_types!inner(slug))` : SELECT;
     const { data, error } = await applyFilters(supabase.from("questions").select(select), f).range(from, from + pageSize - 1);
-    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    if (error) return NextResponse.json({ error: "The export could not be read from the database. Try again." }, { status: 500 });
     const batch = (data ?? []) as unknown as Record<string, unknown>[];
     rows.push(...batch);
     if (batch.length < pageSize) break;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { friendlyError } from "@/lib/admin/errors";
 import Link from "next/link";
 import { StatCard } from "@/components/admin/stat-card";
 import { requirePermission } from "@/lib/admin/auth";
@@ -16,7 +17,7 @@ async function databaseState(): Promise<{ rows: State[]; error?: string }> {
   const rows: State[] = [];
   for (let from = 0; from < 20_000; from += 1000) {
     const { data, error } = await supabase.from("questions").select("source_system, legacy_id, status, content_hash").order("id").range(from, from + 999);
-    if (error) return { rows, error: error.message };
+    if (error) return { rows, error: friendlyError(error) };
     rows.push(...((data ?? []) as State[]));
     if ((data ?? []).length < 1000) break;
   }
