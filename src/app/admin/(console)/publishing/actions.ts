@@ -17,7 +17,7 @@ export async function publishContentAction(): Promise<void> {
   const c = cfg!;
 
   const last = await latestRun(c);
-  if ("run" in last && last.run && last.run.status !== "completed") to("error", "A publish is already running. Wait for it to finish, then check this page.");
+  if ("run" in last && last.run && last.run.status !== "completed" && Date.now() - new Date(last.run.startedAt).getTime() < 15 * 60_000) to("error", "A publish is already running. Wait for it to finish, then check this page.");
 
   const started = await startPublish(c, session.email ?? "admin");
   if (!started.ok) to("error", started.message);

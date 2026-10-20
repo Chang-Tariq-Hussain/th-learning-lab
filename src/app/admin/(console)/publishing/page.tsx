@@ -44,7 +44,10 @@ export default async function PublishingPage({ searchParams }: { searchParams: {
   const canPublish = can(session.role, "content.publish");
   const cfg = publishConfig();
   const run = cfg ? await latestRun(cfg) : null;
-  const running = !!run && "run" in run && !!run.run && run.run.status !== "completed";
+  const active = !!run && "run" in run && !!run.run && run.run.status !== "completed";
+  // A healthy publish takes a few minutes. Past 15 minutes it is stuck: say so and let the person start again.
+  const stuck = active && !!run && "run" in run && !!run.run && Date.now() - new Date(run.run.startedAt).getTime() > 15 * 60_000;
+  const running = active && !stuck;
 
   const published = manifest.generatedAt !== null;
   let changed = 0, added = 0, wentLive = 0, wentOffline = 0;
@@ -100,11 +103,12 @@ export default async function PublishingPage({ searchParams }: { searchParams: {
             <form action={publishContentAction}>
               <button disabled={running} className="rounded-lg bg-pine-600 px-4 py-2 text-sm font-medium text-paper hover:bg-pine-700 disabled:opacity-50 dark:bg-pine-500 dark:text-chalkboard">{running ? "Publishing in progress…" : "Publish to learners"}</button>
             </form>
+            {stuck && run && "run" in run && run.run ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">The last publish has been running for over 15 minutes, which is not normal — it looks stuck. <a href={run.run.url} className="underline" target="_blank" rel="noreferrer">Open it on GitHub</a> (needs GitHub access) to see why, then you can start again.</p> : null}
             {run && "error" in run ? <p className="text-xs text-ink-soft dark:text-bone-soft">{run.error}</p> : null}
             {run && "run" in run ? (
               run.run ? (
                 <p className="text-sm" role="status">
-                  Last publish: <strong>{run.run.status !== "completed" ? "running" : run.run.conclusion === "success" ? "finished (the site is redeploying or already live)" : "FAILED — nothing was changed for learners"}</strong>
+                  Last publish: <strong>{stuck ? "stuck" : run.run.status !== "completed" ? "running" : run.run.conclusion === "success" ? "finished (the site is redeploying or already live)" : "FAILED — nothing was changed for learners"}</strong>
                   {" · "}started {new Date(run.run.startedAt).toLocaleString("en-GB")}
                   {run.run.status === "completed" && run.run.conclusion !== "success" ? <> · <a href={run.run.url} className="underline" target="_blank" rel="noreferrer">see why (needs GitHub access)</a></> : null}
                 </p>

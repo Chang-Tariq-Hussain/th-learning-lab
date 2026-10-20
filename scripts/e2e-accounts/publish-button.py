@@ -52,12 +52,19 @@ ok("clicking Publish asks GitHub to run the workflow on the right repo and branc
 ok("  → it sends the token, and names who asked", posts[0][2] == "Bearer tok-secret-123" and posts[0][3]["inputs"]["requested_by"] == "qm@x.com")
 ok("  → the page says publishing started", "Publishing started" in loc)
 ok("  → the request is recorded in the audit log", int(db("select count(*) from audit_log where action='content.publish_requested' and actor_email='qm@x.com'") or 0) == before + 1)
-state["run"] = {"status": "in_progress", "conclusion": None, "html_url": "https://github.com/acme/lab/actions/runs/1", "created_at": "2026-10-20T08:00:00Z"}
+import datetime
+now = lambda m: (datetime.datetime.utcnow() - datetime.timedelta(minutes=m)).strftime("%Y-%m-%dT%H:%M:%SZ")
+state["run"] = {"status": "in_progress", "conclusion": None, "html_url": "https://github.com/acme/lab/actions/runs/1", "created_at": now(2)}
 page = get(QM, PUB)
 ok("while a publish runs, the button is disabled and says so", "Publishing in progress" in page and "disabled" in page)
 n = len([c for c in calls if c[0] == "POST"]); loc = post(QM, PUB, act)
 ok("a second click during a run is refused (no second dispatch)", len([c for c in calls if c[0] == "POST"]) == n and "already running" in loc, loc)
-state["run"] = {"status": "completed", "conclusion": "failure", "html_url": "https://github.com/acme/lab/actions/runs/1", "created_at": "2026-10-20T08:00:00Z"}
+state["run"]["created_at"] = now(40)
+page = get(QM, PUB); n = len([c for c in calls if c[0] == "POST"])
+ok("a run stuck for over 15 minutes is called stuck, links to GitHub, and the button works again", "looks stuck" in text(page) and "Publishing in progress" not in page)
+loc = post(QM, PUB, act)
+ok("  → starting again is allowed", len([c for c in calls if c[0] == "POST"]) == n + 1 and "Publishing started" in loc, loc)
+state["run"] = {"status": "completed", "conclusion": "failure", "html_url": "https://github.com/acme/lab/actions/runs/1", "created_at": now(5)}
 ok("a failed run is reported plainly: nothing changed for learners", "FAILED" in text(get(QM, PUB)) and "nothing was changed" in text(get(QM, PUB)))
 state["run"]["conclusion"] = "success"
 ok("a successful run is reported", "finished" in text(get(QM, PUB)))

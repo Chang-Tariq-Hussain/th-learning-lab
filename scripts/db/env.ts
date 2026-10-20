@@ -21,7 +21,13 @@ export async function connect(): Promise<Client> {
     console.error("DATABASE_URL is not set. Use the DIRECT Postgres connection string from Supabase (Project settings → Database), in the environment or .env.local.");
     process.exit(2);
   }
-  const client = new Client({ connectionString: url });
-  await client.connect();
+  // Fail within 20 s instead of hanging when the host is unreachable (e.g. the IPv6-only direct host from GitHub Actions).
+  const client = new Client({ connectionString: url, connectionTimeoutMillis: 20_000 });
+  try {
+    await client.connect();
+  } catch (e) {
+    console.error(`Could not connect to the database: ${e instanceof Error ? e.message : String(e)}\nIf this runs on GitHub Actions, use Supabase's SESSION POOLER connection string (not the direct one) for PUBLISH_DATABASE_URL.`);
+    process.exit(2);
+  }
   return client;
 }

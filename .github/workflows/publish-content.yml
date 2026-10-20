@@ -22,6 +22,8 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # A healthy publish takes 1-3 minutes. Fail fast instead of hanging (and blocking the next click) if something is stuck.
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
