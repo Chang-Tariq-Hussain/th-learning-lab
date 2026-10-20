@@ -1,11 +1,41 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-20T10:18:27.936Z",
+  "generatedAt": "2026-10-20T11:35:47.750Z",
   "quiz": {},
   "mpt": {},
   "teacher": {
     "jst": {
       "add": [
+        {
+          "id": "adm-97195e29f1b1",
+          "examType": "jst",
+          "examTypes": [
+            "jst"
+          ],
+          "question": "Internal communication within institutions is done through",
+          "passage": null,
+          "options": [
+            "LAN",
+            "EBB",
+            "WAN",
+            "MMS"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Home Network and Networks within a building is known as Local Area Network",
+          "subject": "Computer",
+          "topic": "Computer",
+          "subtopic": null,
+          "difficulty": "easy",
+          "sourceType": "generated_syllabus",
+          "sourceYear": 2026,
+          "sourceReference": "JST Past Paper",
+          "verified": false,
+          "verificationNote": "",
+          "syllabusClass": null,
+          "language": "en",
+          "fixedOrder": false,
+          "needsReview": false
+        },
         {
           "id": "adm-efde4159ba33",
           "examType": "jst",
