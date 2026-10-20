@@ -55,3 +55,21 @@ and `publishing-page.py` (admin counters match an independent recount, before an
   composition still come from code (later phases).
 - Quiz bank order: additions are appended; there is no reorder UI yet (the overlay supports an explicit order).
 - MFA is still not built; nothing here was run against Supabase's own hosted services.
+
+## One-click publishing (the "Publish to learners" button)
+Non-developers publish from **Admin → Publishing**. The button asks GitHub to run `.github/workflows/publish-content.yml`,
+which runs `npm run content:publish`, commits `src/content/*` to the branch, and your normal Vercel deploy makes it live.
+It refuses (job fails, nothing changes for learners) if publishing could break a quiz or mock. Undo: revert the commit.
+Who may click: super admin and question manager (`content.publish` in `src/lib/admin/permissions.ts`). Each click is audited
+as `content.publish_requested`.
+
+One-time setup:
+1. **GitHub → repo → Settings → Secrets and variables → Actions → New repository secret**: `PUBLISH_DATABASE_URL` = Supabase's
+   **Session pooler** connection string (Project settings → Database → Connection string). GitHub runners cannot use the IPv6-only direct host.
+2. **GitHub → Settings → Developer settings → Fine-grained tokens**: create a token for this ONE repository with
+   *Actions: Read and write*. (Needs nothing else.)
+3. **Vercel → Project → Settings → Environment Variables**: `GITHUB_PUBLISH_TOKEN` (the token), `GITHUB_PUBLISH_REPO` (`owner/repo`);
+   optional `GITHUB_PUBLISH_BRANCH` (default `main`). Redeploy. Never expose these as `NEXT_PUBLIC_*`.
+4. The branch must allow the workflow's push (if `main` requires pull requests, allow GitHub Actions to bypass, or publish from a branch Vercel deploys).
+Until steps 1–3 are done the page says one-click publishing is not set up and the command-line steps still work.
+Tests: `scripts/e2e-accounts/publish-button.py` (fake GitHub; start the app with `GITHUB_PUBLISH_TOKEN=tok-secret-123 GITHUB_PUBLISH_REPO=acme/lab GITHUB_API_URL=http://127.0.0.1:4010`).

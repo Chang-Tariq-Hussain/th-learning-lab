@@ -20,12 +20,12 @@ export const ROLE_SUMMARY: Record<AdminRole, string> = {
   analyst: "Read-only access.",
 };
 
-export type Permission = "overview.view" | "health.view" | "audit.view" | "admins.manage" | "questions.view" | "questions.edit";
+export type Permission = "overview.view" | "health.view" | "audit.view" | "admins.manage" | "questions.view" | "questions.edit" | "content.publish";
 
 const MATRIX: Record<AdminRole, readonly Permission[]> = {
-  super_admin: ["overview.view", "health.view", "audit.view", "admins.manage", "questions.view", "questions.edit"],
+  super_admin: ["overview.view", "health.view", "audit.view", "admins.manage", "questions.view", "questions.edit", "content.publish"],
   content_manager: ["overview.view", "health.view", "questions.view"],
-  question_manager: ["overview.view", "health.view", "questions.view", "questions.edit"],
+  question_manager: ["overview.view", "health.view", "questions.view", "questions.edit", "content.publish"],
   analyst: ["overview.view", "health.view", "questions.view"],
 };
 

@@ -1,42 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-20T07:43:33.072Z",
+  "generatedAt": null,
   "quiz": {},
   "mpt": {},
-  "teacher": {
-    "jst": {
-      "add": [
-        {
-          "id": "adm-efde4159ba33",
-          "examType": "jst",
-          "examTypes": [
-            "jst"
-          ],
-          "question": "In a Database table, single row is called:",
-          "passage": null,
-          "options": [
-            "Record",
-            "Field",
-            "Property",
-            "Data Type"
-          ],
-          "correctAnswer": 0,
-          "explanation": "Each is row in a Database table is called Row.",
-          "subject": "Computer",
-          "topic": "Computer",
-          "subtopic": null,
-          "difficulty": "easy",
-          "sourceType": "generated_syllabus",
-          "sourceYear": 2026,
-          "sourceReference": "JST Past Paper",
-          "verified": false,
-          "verificationNote": "",
-          "syllabusClass": null,
-          "language": "en",
-          "fixedOrder": false,
-          "needsReview": false
-        }
-      ]
-    }
-  }
+  "teacher": {}
 }

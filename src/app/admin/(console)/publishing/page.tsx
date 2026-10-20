@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { friendlyError } from "@/lib/admin/errors";
 import Link from "next/link";
 import { StatCard } from "@/components/admin/stat-card";
+import { Flash } from "@/components/admin/flash";
 import { requirePermission } from "@/lib/admin/auth";
+import { can } from "@/lib/admin/permissions";
+import { latestRun, publishConfig } from "@/lib/admin/github";
+import { publishContentAction } from "./actions";
 import { manifest, publishedOverlay } from "@/lib/admin/publishing";
 import { overlayIsEmpty } from "@/lib/content-overlay/apply";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -24,7 +28,7 @@ async function databaseState(): Promise<{ rows: State[]; error?: string }> {
   return { rows };
 }
 
-export default async function PublishingPage() {
+export default async function PublishingPage({ searchParams }: { searchParams: { ok?: string; error?: string } }) {
   const session = await requirePermission("questions.view");
   if (session.mode !== "accounts") {
     return (
@@ -37,6 +41,10 @@ export default async function PublishingPage() {
   const supabase = createSupabaseServerClient();
   const [{ rows, error }, latestRes] = await Promise.all([databaseState(), supabase.rpc("latest_publish")]);
   const latest = (latestRes.data ?? null) as Latest | null;
+  const canPublish = can(session.role, "content.publish");
+  const cfg = publishConfig();
+  const run = cfg ? await latestRun(cfg) : null;
+  const running = !!run && "run" in run && !!run.run && run.run.status !== "completed";
 
   const published = manifest.generatedAt !== null;
   let changed = 0, added = 0, wentLive = 0, wentOffline = 0;
@@ -68,7 +76,43 @@ export default async function PublishingPage() {
           Learners never read the database. They see the code, plus a small <em>content overlay</em> of the questions you have edited, added or withdrawn here. Edits are <strong>not live</strong> until that overlay is published and the site is deployed.
         </p>
       </div>
+      <Flash ok={searchParams.ok} error={searchParams.error} />
       {error ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">Could not read the database: {error}</p> : null}
+
+      <section aria-labelledby="h-stages" className="space-y-2">
+        <h2 id="h-stages" className="font-display text-lg font-medium">Where a change is</h2>
+        <ol className="grid gap-2 text-sm sm:grid-cols-3">
+          <li className="rounded-lg border border-ink/10 p-3 dark:border-bone/15"><strong>1. Saved</strong><br />In the database. Only admins see it.</li>
+          <li className="rounded-lg border border-ink/10 p-3 dark:border-bone/15"><strong>2. Waiting to be published</strong><br />Counted below. Learners do not see it yet.</li>
+          <li className="rounded-lg border border-ink/10 p-3 dark:border-bone/15"><strong>3. Live</strong><br />Published and the site redeployed. Learners see it.</li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="h-go" className="space-y-3 rounded-xl border border-pine-500/40 p-4">
+        <h2 id="h-go" className="font-display text-lg font-medium">Publish to learners</h2>
+        {!canPublish ? (
+          <p className="text-sm text-ink-soft dark:text-bone-soft">Your role can see this page but cannot publish. Ask a question manager or super admin.</p>
+        ) : !cfg ? (
+          <p className="text-sm text-ink-soft dark:text-bone-soft">One-click publishing is not set up yet. Ask your developer to add the GitHub publishing settings (<code className="font-mono">GITHUB_PUBLISH_TOKEN</code> and <code className="font-mono">GITHUB_PUBLISH_REPO</code>). Until then, use the command-line steps below.</p>
+        ) : (
+          <>
+            <p className="max-w-3xl text-sm">Makes every published question, edit and withdrawal available to learners. It checks for problems first and stops without changing anything if publishing could break a quiz or mock test. It takes a few minutes.</p>
+            <form action={publishContentAction}>
+              <button disabled={running} className="rounded-lg bg-pine-600 px-4 py-2 text-sm font-medium text-paper hover:bg-pine-700 disabled:opacity-50 dark:bg-pine-500 dark:text-chalkboard">{running ? "Publishing in progress…" : "Publish to learners"}</button>
+            </form>
+            {run && "error" in run ? <p className="text-xs text-ink-soft dark:text-bone-soft">{run.error}</p> : null}
+            {run && "run" in run ? (
+              run.run ? (
+                <p className="text-sm" role="status">
+                  Last publish: <strong>{run.run.status !== "completed" ? "running" : run.run.conclusion === "success" ? "finished (the site is redeploying or already live)" : "FAILED — nothing was changed for learners"}</strong>
+                  {" · "}started {new Date(run.run.startedAt).toLocaleString("en-GB")}
+                  {run.run.status === "completed" && run.run.conclusion !== "success" ? <> · <a href={run.run.url} className="underline" target="_blank" rel="noreferrer">see why (needs GitHub access)</a></> : null}
+                </p>
+              ) : <p className="text-sm text-ink-soft dark:text-bone-soft">No publish has been started from here yet.</p>
+            ) : null}
+          </>
+        )}
+      </section>
 
       <section aria-labelledby="h-pend" className="space-y-3">
         <h2 id="h-pend" className="font-display text-lg font-medium">Waiting to be published</h2>
@@ -104,8 +148,8 @@ export default async function PublishingPage() {
         </p>
       </section>
 
-      <section aria-labelledby="h-how" className="space-y-2 rounded-xl border border-ink/10 p-4 dark:border-bone/15">
-        <h2 id="h-how" className="font-display text-lg font-medium">How to publish</h2>
+      <details className="space-y-2 rounded-xl border border-ink/10 p-4 dark:border-bone/15">
+        <summary id="h-how" className="cursor-pointer font-display text-lg font-medium">Advanced: publish from the command line (developers)</summary>
         <ol className="list-decimal space-y-1 pl-5 text-sm">
           <li>On a machine with the project and <code className="font-mono">DATABASE_URL</code> set: <code className="font-mono">npm run content:publish -- --dry-run</code> to preview.</li>
           <li><code className="font-mono">npm run content:publish</code> writes <code className="font-mono">src/content/overlay.json</code> and <code className="font-mono">manifest.json</code>. It refuses, and writes nothing, if publishing could break learners (a mock losing a question, an emptied bank, a question missing from the database).</li>
@@ -113,7 +157,7 @@ export default async function PublishingPage() {
           <li>To undo: revert that commit and redeploy — the previous overlay returns exactly.</li>
         </ol>
         <p className="text-xs text-ink-soft dark:text-bone-soft">Why not live? A deploy-time publish means learner pages never depend on the database being up, are fast, and every change is reviewable and reversible in git. See <Link href="/admin/health" className="underline">Content Health</Link> for checks on what is served.</p>
-      </section>
+      </details>
     </div>
   );
 }

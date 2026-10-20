@@ -1,0 +1,51 @@
+# Started by the "Publish to learners" button on the admin Publishing page (via the GitHub API), or by hand from the
+# Actions tab. It generates src/content/overlay.json + manifest.json from the database, commits them to the branch, and
+# the normal Vercel deploy then makes them live. `npm run content:publish` REFUSES (and this job fails, writing nothing)
+# if publishing could harm learners (a mock losing a question, an emptied bank, ...). To undo: revert the commit.
+name: Publish content
+on:
+  workflow_dispatch:
+    inputs:
+      requested_by:
+        description: Who asked for this publish (recorded in the audit log)
+        required: false
+        default: manual
+
+# One publish at a time; a second click waits for the first instead of racing it.
+concurrency:
+  group: publish-content
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Generate the content overlay from the database
+        env:
+          # Use Supabase's SESSION POOLER connection string here (GitHub runners cannot reach the IPv6-only direct host).
+          DATABASE_URL: ${{ secrets.PUBLISH_DATABASE_URL }}
+          USER: ${{ inputs.requested_by }}
+        run: npm run content:publish
+      - name: Commit and push (Vercel deploys from this)
+        env:
+          REQUESTED_BY: ${{ inputs.requested_by }}
+        run: |
+          if git diff --quiet -- src/content; then
+            echo "Nothing to publish: learners already have the latest content."
+            exit 0
+          fi
+          git config user.name "TH Learning Lab publisher"
+          git config user.email "publisher@users.noreply.github.com"
+          git add src/content
+          git commit -m "content: publish questions (requested by ${REQUESTED_BY:-manual})"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
