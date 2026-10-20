@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-20T11:35:47.750Z",
+  "generatedAt": "2026-10-20T16:24:59.318Z",
   "quiz": {},
   "mpt": {},
   "teacher": {
@@ -21,7 +21,7 @@
             "MMS"
           ],
           "correctAnswer": 0,
-          "explanation": "Home Network and Networks within a building is known as Local Area Network",
+          "explanation": "Home Network and Networks within a building is known as Local Area Network whereas WAN is used for the cities",
           "subject": "Computer",
           "topic": "Computer",
           "subtopic": null,
