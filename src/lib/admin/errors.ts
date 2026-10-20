@@ -12,10 +12,16 @@ const CONSTRAINTS: [RegExp, string][] = [
   [/questions_past_paper_has_year/, "A verified past paper needs a source year."],
   [/questions_difficulty_check/, "Difficulty must be easy, medium or hard."],
   [/questions_language_check/, "Language must be English, Urdu or Sindhi."],
+  [/questions_one_subject_kind/, "Choose a subject for a quiz question, or an exam subject for an exam question — not both, and not neither."],
+  [/null value in column "?(\w+)"?/, "A required field is missing. Check the subject, exam and options."],
+  [/foreign key/i, "Something you selected (subject, bank or exam) does not exist in the database. Reload the page and choose again."],
+  [/duplicate key/i, "This question, or one of its links, already exists."],
 ];
 
 export function friendlyError(error: { message?: string; code?: string } | null | undefined): string {
   const m = String(error?.message ?? "");
+  // Full detail goes to the server log only (never to the browser).
+  if (m) console.error("[admin] database error:", error?.code ?? "", m);
   for (const [re, text] of CONSTRAINTS) if (re.test(m)) return text;
   if (error?.code === "42501" || /permission denied|forbidden|row-level security/i.test(m)) return "You do not have permission to do that.";
   if (/fetch failed|network|ECONN|ETIMEDOUT|timeout|TypeError/i.test(m)) return "Could not reach the database. Nothing was saved — please try again.";
