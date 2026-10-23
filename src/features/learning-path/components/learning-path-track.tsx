@@ -37,7 +37,7 @@ export function LearningPathTrack({ path, className }: LearningPathTrackProps) {
     >
       <div className="flex flex-wrap items-start justify-between gap-6">
         <div className="max-w-xl">
-          <p className={cn("font-mono text-[11px] uppercase tracking-[0.2em]", colors.text)}>Learning Path</p>
+          <p className={cn("font-mono text-label uppercase tracking-[0.2em]", colors.text)}>Learning Path</p>
           <h2 className="mt-1 font-display text-xl font-medium text-ink dark:text-bone sm:text-2xl">{path.title}</h2>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">{path.description}</p>
         </div>
@@ -46,7 +46,7 @@ export function LearningPathTrack({ path, className }: LearningPathTrackProps) {
           <span className="font-mono text-2xl font-semibold text-ink dark:text-bone">
             {state.startedCoreCount}/{state.totalCoreCount}
           </span>
-          <span className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+          <span className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
             topics started
           </span>
         </div>
@@ -58,7 +58,7 @@ export function LearningPathTrack({ path, className }: LearningPathTrackProps) {
           style={{ width: `${state.totalCoreCount === 0 ? 0 : Math.round((state.startedCoreCount / state.totalCoreCount) * 100)}%` }}
         />
       </div>
-      <p className="mt-1.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft/70 dark:text-bone-soft/60">
+      <p className="mt-1.5 font-mono text-label uppercase tracking-wide text-ink-soft/70 dark:text-bone-soft/60">
         {state.completedCoreCount}/{state.totalCoreCount} fully complete · {state.pathMasteryPercent}% average mastery
       </p>
 
@@ -75,7 +75,7 @@ export function LearningPathTrack({ path, className }: LearningPathTrackProps) {
 
       {challengeTopics.length > 0 ? (
         <div className="mt-6 border-t border-dashed border-line pt-5 dark:border-line-dark">
-          <p className="mb-3 font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+          <p className="mb-3 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
             Challenge topics
           </p>
           <div className="flex flex-wrap gap-2">
@@ -156,12 +156,12 @@ function TrackNode({
         </p>
         <p className="text-xs leading-relaxed text-ink-soft dark:text-bone-soft">{ref.description}</p>
         {isLocked && topicState.unmetPrerequisites.length > 0 ? (
-          <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft/70 dark:text-bone-soft/60">
+          <p className="mt-0.5 font-mono text-label uppercase tracking-wide text-ink-soft/70 dark:text-bone-soft/60">
             Locked · finish {topicState.unmetPrerequisites.map((p) => p.title).join(" & ")} first
           </p>
         ) : null}
         {!isLocked && status !== "completed" ? (
-          <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+          <p className="mt-0.5 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
             {masteryPercent}% mastery
           </p>
         ) : null}
@@ -193,7 +193,7 @@ function ChallengeChip({ topicState, colors }: { topicState: LearningPathTopicSt
   const content = (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide",
+        "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-mono text-label uppercase tracking-wide",
         status === "completed" ? cn("border-transparent", colors.bg, colors.text) : "border-line dark:border-line-dark",
         isLocked && "text-ink-soft/60 dark:text-bone-soft/50",
         !isLocked && status !== "completed" && "text-ink dark:text-bone",

@@ -6,7 +6,7 @@ import { Pagination } from "@/components/admin/pagination";
 import { requirePermission } from "@/lib/admin/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export const metadata: Metadata = { title: "Audit log" };
+export const metadata: Metadata = { title: "Audit Log" };
 
 const PAGE_SIZE = 25;
 const KNOWN_ACTIONS = ["admin.login", "admin.bootstrap", "admin.role_granted", "admin.role_changed", "admin.role_revoked", "content.import"];
@@ -48,18 +48,18 @@ export default async function AuditLogPage({ searchParams }: { searchParams: { a
   const params = { action: action || undefined, q: q || undefined };
 
   const columns: Column<AuditRow>[] = [
-    { key: "at", header: "When", className: "w-40 whitespace-nowrap text-xs", cell: (r) => new Date(r.at).toLocaleString("en-GB") },
-    { key: "actor", header: "Actor", className: "w-56", cell: (r) => <div><p className="break-all">{r.actor_email ?? "—"}</p><p className="font-mono text-[11px] uppercase text-ink-soft dark:text-bone-soft">{r.actor_role ?? ""}</p></div> },
-    { key: "action", header: "Action", className: "w-44 font-mono text-xs", cell: (r) => r.action },
+    { key: "at", header: "When", width: "md:w-44", nowrap: true, className: "text-helper", cell: (r) => new Date(r.at).toLocaleString("en-GB") },
+    { key: "actor", header: "Actor", width: "md:w-56", cell: (r) => <div><p>{r.actor_email ?? "—"}</p><p className="font-mono text-label uppercase text-ink-soft dark:text-bone-soft">{r.actor_role ?? ""}</p></div> },
+    { key: "action", header: "Action", width: "md:w-44", className: "font-mono text-helper", cell: (r) => r.action },
     {
       key: "what", header: "What",
       cell: (r) => (
-        <div className="space-y-1 text-xs">
-          <p><span className="font-mono">{r.entity}</span>{r.entity_id ? <span className="break-all text-ink-soft dark:text-bone-soft"> · {r.entity_id}</span> : null}</p>
+        <div className="space-y-1 text-helper">
+          <p><span className="font-mono">{r.entity}</span>{r.entity_id ? <span className="text-ink-soft dark:text-bone-soft"> · {r.entity_id}</span> : null}</p>
           {r.before || r.after || r.meta ? (
             <details>
-              <summary className="cursor-pointer text-pine-700 underline dark:text-pine-300">Details</summary>
-              <pre className="mt-1 max-h-60 overflow-auto rounded bg-ink/[0.04] p-2 font-mono text-[11px] dark:bg-bone/[0.06]">{[r.before ? `before: ${json(r.before)}` : "", r.after ? `after: ${json(r.after)}` : "", r.meta ? `meta: ${json(r.meta)}` : ""].filter(Boolean).join("\n")}</pre>
+              <summary className="inline-flex min-h-11 cursor-pointer items-center text-pine-700 underline md:min-h-0 dark:text-pine-300">Details</summary>
+              <pre className="mt-1 max-h-60 overflow-auto rounded bg-ink/[0.04] p-2 font-mono text-label dark:bg-bone/[0.06]">{[r.before ? `before: ${json(r.before)}` : "", r.after ? `after: ${json(r.after)}` : "", r.meta ? `meta: ${json(r.meta)}` : ""].filter(Boolean).join("\n")}</pre>
             </details>
           ) : null}
         </div>

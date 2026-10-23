@@ -22,7 +22,7 @@ export function QuestionBody({ q, selected, onSelect, reveal = false, disabled =
     <div>
       {q.passage ? (
         <div className="mb-4 max-h-56 overflow-y-auto rounded-lg border border-line bg-ink/[0.03] p-4 text-sm leading-relaxed text-ink-soft dark:border-line-dark dark:bg-bone/[0.05] dark:text-bone-soft">
-          <p className="mb-1 font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Passage</p>
+          <p className="mb-1 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Passage</p>
           {q.passage}
         </div>
       ) : null}

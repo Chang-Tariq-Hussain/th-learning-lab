@@ -139,7 +139,7 @@ export function CssMptLanding({ mocks }: { mocks: MptMockDefinition[] }) {
         <div className="mt-5 space-y-8">
           {mocks.map((m) => (
             <div key={m.id}>
-              <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">{mockLabel(m.id)} sections</h3>
+              <h3 className="font-mono text-label uppercase tracking-[0.2em] text-subject-math">{mockLabel(m.id)} sections</h3>
               <ul className="mt-2 divide-y divide-line rounded-xl border border-line dark:divide-line-dark dark:border-line-dark">
                 {getSectionTests(m).map((t) => {
                   const st = statuses[t.id];

@@ -117,7 +117,7 @@ export function Challenge({ scenario, colorToken, experiment, onVerify, alreadyS
 
         {scenario.constraints && scenario.constraints.length > 0 ? (
           <div className="mt-3">
-            <p className={cn("mb-1 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wide", colors.text)}>
+            <p className={cn("mb-1 flex items-center gap-1.5 font-mono text-label uppercase tracking-wide", colors.text)}>
               <ListChecks className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
               Constraints
             </p>
@@ -134,7 +134,7 @@ export function Challenge({ scenario, colorToken, experiment, onVerify, alreadyS
 
         {scenario.tools && scenario.tools.length > 0 ? (
           <div className="mt-3">
-            <p className={cn("mb-1 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wide", colors.text)}>
+            <p className={cn("mb-1 flex items-center gap-1.5 font-mono text-label uppercase tracking-wide", colors.text)}>
               <Wrench className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
               Available tools
             </p>

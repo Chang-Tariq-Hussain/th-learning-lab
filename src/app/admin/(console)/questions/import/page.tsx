@@ -1,3 +1,4 @@
+import { SubmitButton } from "@/components/admin/submit-button";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Flash } from "@/components/admin/flash";
@@ -5,7 +6,7 @@ import { inputCls, labelCls } from "@/components/admin/question-fields";
 import { requirePermission } from "@/lib/admin/auth";
 import { importQuestionsAction } from "../actions";
 
-export const metadata: Metadata = { title: "Import questions" };
+export const metadata: Metadata = { title: "Import Questions" };
 
 const EXAMPLE = `[
   {
@@ -21,7 +22,7 @@ const EXAMPLE = `[
   }
 ]`;
 
-export default async function ImportQuestionsPage({ searchParams }: { searchParams: { ok?: string; error?: string; err?: string | string[] } }) {
+export default async function ImportQuestionsPage({ searchParams }: { searchParams: { ok?: string; info?: string; warn?: string; error?: string; err?: string | string[] } }) {
   const session = await requirePermission("questions.edit");
   if (session.mode !== "accounts") return <p className="text-sm">Importing questions needs Supabase accounts.</p>;
   const errs = ([] as string[]).concat(searchParams.err ?? []);
@@ -32,13 +33,13 @@ export default async function ImportQuestionsPage({ searchParams }: { searchPara
         <h1 className="font-display text-2xl font-medium">Import questions</h1>
         <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">Upload JSON to add many questions at once. Everything is created as an <strong>unchecked draft</strong>. It is all-or-nothing: if any row is invalid, nothing is imported and every problem is listed. Start with “Validate only”.</p>
       </div>
-      <Flash ok={searchParams.ok} error={searchParams.error} />
+      <Flash ok={searchParams.ok} info={searchParams.info} warn={searchParams.warn} error={searchParams.error} />
       {errs.length ? <ul className="list-disc space-y-1 pl-5 text-sm text-red-700 dark:text-red-300">{errs.map((e, i) => <li key={i}>{e}</li>)}</ul> : null}
       <form action={importQuestionsAction} className="space-y-4" encType="multipart/form-data">
         <div><label htmlFor="file" className={labelCls}>JSON file (max 2 MB, 500 questions)</label><input id="file" name="file" type="file" accept=".json,application/json" className="text-sm" /></div>
         <div><label htmlFor="json" className={labelCls}>…or paste JSON</label><textarea id="json" name="json" rows={8} className={`${inputCls} font-mono text-xs`} /></div>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="validate_only" defaultChecked /> Validate only (nothing is saved)</label>
-        <button type="submit" className="rounded-lg bg-pine-600 px-4 py-2 text-sm font-medium text-paper hover:bg-pine-700 dark:bg-pine-500 dark:text-chalkboard">Check / import</button>
+        <SubmitButton variant="primary" pendingLabel={(f) => (f?.get("validate_only") === "on" ? "Validating…" : "Importing…")}>Check / import</SubmitButton>
       </form>
       <section aria-labelledby="h-fmt" className="space-y-2">
         <h2 id="h-fmt" className="font-display text-lg font-medium">Format</h2>

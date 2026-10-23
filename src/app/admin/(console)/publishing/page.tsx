@@ -1,3 +1,4 @@
+import { SubmitButton } from "@/components/admin/submit-button";
 import type { Metadata } from "next";
 import { friendlyError } from "@/lib/admin/errors";
 import Link from "next/link";
@@ -28,7 +29,7 @@ async function databaseState(): Promise<{ rows: State[]; error?: string }> {
   return { rows };
 }
 
-export default async function PublishingPage({ searchParams }: { searchParams: { ok?: string; error?: string } }) {
+export default async function PublishingPage({ searchParams }: { searchParams: { ok?: string; info?: string; warn?: string; error?: string } }) {
   const session = await requirePermission("questions.view");
   if (session.mode !== "accounts") {
     return (
@@ -79,7 +80,7 @@ export default async function PublishingPage({ searchParams }: { searchParams: {
           Learners never read the database. They see the code, plus a small <em>content overlay</em> of the questions you have edited, added or withdrawn here. Edits are <strong>not live</strong> until that overlay is published and the site is deployed.
         </p>
       </div>
-      <Flash ok={searchParams.ok} error={searchParams.error} />
+      <Flash ok={searchParams.ok} info={searchParams.info} warn={searchParams.warn} error={searchParams.error} />
       {error ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">Could not read the database: {error}</p> : null}
 
       <section aria-labelledby="h-stages" className="space-y-2">
@@ -101,10 +102,10 @@ export default async function PublishingPage({ searchParams }: { searchParams: {
           <>
             <p className="max-w-3xl text-sm">Makes every published question, edit and withdrawal available to learners. It checks for problems first and stops without changing anything if publishing could break a quiz or mock test. It takes a few minutes.</p>
             <form action={publishContentAction}>
-              <button disabled={running} className="rounded-lg bg-pine-600 px-4 py-2 text-sm font-medium text-paper hover:bg-pine-700 disabled:opacity-50 dark:bg-pine-500 dark:text-chalkboard">{running ? "Publishing in progress…" : "Publish to learners"}</button>
+              <SubmitButton variant="primary" disabled={running} pendingLabel="Starting publish…">{running ? "Publishing in progress…" : "Publish to learners"}</SubmitButton>
             </form>
             {stuck && run && "run" in run && run.run ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">The last publish has been running for over 15 minutes, which is not normal — it looks stuck. <a href={run.run.url} className="underline" target="_blank" rel="noreferrer">Open it on GitHub</a> (needs GitHub access) to see why, then you can start again.</p> : null}
-            {run && "error" in run ? <p className="text-xs text-ink-soft dark:text-bone-soft">{run.error}</p> : null}
+            {run && "error" in run ? <p className="text-helper text-ink-soft dark:text-bone-soft">{run.error}</p> : null}
             {run && "run" in run ? (
               run.run ? (
                 <p className="text-sm" role="status">
@@ -146,7 +147,7 @@ export default async function PublishingPage({ searchParams }: { searchParams: {
             {teacher.map((t) => <li key={t.e}>{t.e.toUpperCase()}: {t.r} edited, {t.x} removed, {t.a} added</li>)}
           </ul>
         )}
-        <p className="text-xs text-ink-soft dark:text-bone-soft">
+        <p className="text-helper text-ink-soft dark:text-bone-soft">
           Generated {published ? new Date(manifest.generatedAt!).toLocaleString("en-GB") : "never"}
           {latest ? ` · last publish recorded ${new Date(latest.at).toLocaleString("en-GB")} by ${latest.actor ?? "unknown"}` : ""}
         </p>
@@ -160,7 +161,7 @@ export default async function PublishingPage({ searchParams }: { searchParams: {
           <li>Review <code className="font-mono">git diff src/content</code>, commit, and deploy. Learners see the change after the deploy.</li>
           <li>To undo: revert that commit and redeploy — the previous overlay returns exactly.</li>
         </ol>
-        <p className="text-xs text-ink-soft dark:text-bone-soft">Why not live? A deploy-time publish means learner pages never depend on the database being up, are fast, and every change is reviewable and reversible in git. See <Link href="/admin/health" className="underline">Content Health</Link> for checks on what is served.</p>
+        <p className="text-helper text-ink-soft dark:text-bone-soft">Why not live? A deploy-time publish means learner pages never depend on the database being up, are fast, and every change is reviewable and reversible in git. See <Link href="/admin/health" className="underline">Content Health</Link> for checks on what is served.</p>
       </details>
     </div>
   );

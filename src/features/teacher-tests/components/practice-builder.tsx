@@ -153,7 +153,7 @@ export function PracticeBuilder({ exam }: { exam: ExamType }) {
         <p className="text-sm text-ink/70 dark:text-bone/70">
           Timed at about {cfg.practice.minutesPerQuestion} min per question. Questions you have seen least on this device are preferred.
         </p>
-        {error ? <p role="alert" className="text-sm text-red-600 dark:text-red-400">{error}</p> : null}
+        {error ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">{error}</p> : null}
         <Button type="submit" disabled={busy}>{busy ? "Preparing…" : "Start practice"}</Button>
       </form>
 

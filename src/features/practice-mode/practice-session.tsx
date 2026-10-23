@@ -88,7 +88,7 @@ export function PracticeSession() {
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-4">
-      <p className={`font-mono text-[11px] uppercase tracking-[0.2em] ${colors.text}`}>
+      <p className={`font-mono text-label uppercase tracking-[0.2em] ${colors.text}`}>
         {subject?.label ?? "Practice"} · {topicLabel}
       </p>
 

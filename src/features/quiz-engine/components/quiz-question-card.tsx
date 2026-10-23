@@ -84,7 +84,7 @@ export function QuizQuestionCard({
   return (
     <div className="w-full rounded-[1.75rem] border border-line bg-white/70 p-5 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:p-8">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <p className={`font-mono text-[11px] uppercase tracking-[0.2em] ${colors.text}`}>
+        <p className={`font-mono text-label uppercase tracking-[0.2em] ${colors.text}`}>
           {subjectLabel} · {topicLabel}
         </p>
         <div className="flex items-center gap-2">

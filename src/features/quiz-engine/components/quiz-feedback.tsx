@@ -27,9 +27,9 @@ const OUTCOME_ICON: Record<QuizFeedbackOutcome, typeof CheckCircle2> = {
 };
 
 const OUTCOME_ICON_COLOR: Record<QuizFeedbackOutcome, string> = {
-  correct: "text-emerald-600 dark:text-emerald-400",
+  correct: "text-emerald-700 dark:text-emerald-300",
   incorrect: "text-red-500 dark:text-red-400",
-  revealed: "text-amber-600 dark:text-amber-400",
+  revealed: "text-amber-700 dark:text-amber-300",
 };
 
 const OUTCOME_LABEL: Record<QuizFeedbackOutcome, string> = {

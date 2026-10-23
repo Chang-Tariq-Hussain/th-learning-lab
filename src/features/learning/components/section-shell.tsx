@@ -30,7 +30,7 @@ export function SectionShell({ icon, label, colorToken, children, className }: S
         <span className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-full", colors.bg, colors.text)}>
           {icon}
         </span>
-        <p className={cn("font-mono text-[11px] uppercase tracking-[0.2em]", colors.text)}>{label}</p>
+        <p className={cn("font-mono text-label uppercase tracking-[0.2em]", colors.text)}>{label}</p>
       </div>
       {children}
     </section>

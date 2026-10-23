@@ -47,7 +47,7 @@ export function TopicQuizPage({ quiz, backLabel }: TopicQuizPageProps) {
 
       <div className="mb-8">
         <p
-          className={`font-mono text-[11px] uppercase tracking-[0.2em] ${colors.text}`}
+          className={`font-mono text-label uppercase tracking-[0.2em] ${colors.text}`}
         >
           {quiz.subjectLabel} · {quiz.topicLabel}
         </p>

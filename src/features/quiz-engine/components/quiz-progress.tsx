@@ -16,10 +16,10 @@ export function QuizProgress({ currentIndex, totalQuestions, colorToken }: QuizP
   return (
     <div className="w-full">
       <div className="mb-2 flex items-center justify-between">
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-soft dark:text-bone-soft">
+        <span className="font-mono text-label uppercase tracking-[0.18em] text-ink-soft dark:text-bone-soft">
           Question {questionNumber} of {totalQuestions}
         </span>
-        <span className="font-mono text-[11px] tabular-nums text-ink-soft dark:text-bone-soft">
+        <span className="font-mono text-label tabular-nums text-ink-soft dark:text-bone-soft">
           {percentage}%
         </span>
       </div>

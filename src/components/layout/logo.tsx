@@ -2,7 +2,7 @@ import type { SVGProps } from "react";
 
 /**
  * Brand mark: an open notebook page with a measurement tick,
- * standing in for "fieldnotes" across the sciences.
+ * standing in for a lab notebook across the sciences.
  */
 export function Logo(props: SVGProps<SVGSVGElement>) {
   return (

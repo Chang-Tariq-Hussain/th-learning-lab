@@ -51,7 +51,7 @@ export function SearchResultsList({ matches, activeId, onSelect, emptyLabel, cla
               <span className="block truncate font-medium">{match.label}</span>
               <span className="block truncate text-xs text-ink-soft/80 dark:text-bone-soft/80">{match.subtitle}</span>
             </span>
-            <span className="shrink-0 font-mono text-[10px] uppercase tracking-wide text-ink-soft/60 dark:text-bone-soft/60">
+            <span className="shrink-0 font-mono text-label uppercase tracking-wide text-ink-soft/60 dark:text-bone-soft/60">
               {kindLabel[match.kind]}
             </span>
           </Link>

@@ -71,7 +71,7 @@ export function LearnSection({ subjectSlug, topicSlug, colorToken, content, clas
           <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {content.keyTerms.map((entry, index) => (
               <div key={index}>
-                <dt className={cn("font-mono text-[11px] uppercase tracking-wide", colors.text)}>{entry.term}</dt>
+                <dt className={cn("font-mono text-label uppercase tracking-wide", colors.text)}>{entry.term}</dt>
                 <dd className="mt-0.5 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">{entry.definition}</dd>
               </div>
             ))}

@@ -1,7 +1,7 @@
 import { CHECK_LABEL, SOURCE_LABEL, STATUS_LABEL, type AnswerCheck, type QuestionStatus, type SourceType } from "@/lib/questions/types";
 import { cn } from "@/lib/utils";
 
-const pill = "inline-flex items-center whitespace-nowrap rounded-full border px-2 py-0.5 font-mono text-[11px] font-medium";
+const pill = "inline-flex items-center whitespace-nowrap rounded-full border px-2 py-0.5 font-mono text-label font-medium";
 const SOURCE: Record<SourceType, string> = {
   verified_past_paper: "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
   existing_bank: "border-sky-500/40 bg-sky-500/10 text-sky-700 dark:text-sky-300",

@@ -6,7 +6,7 @@ import type { MockTestCategory } from "../registry";
 export function CategoryCard({ category }: { category: MockTestCategory }) {
   const body = (
     <>
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">{category.eyebrow}</p>
+      <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-math">{category.eyebrow}</p>
       <h2 className="mt-2 font-display text-2xl text-ink dark:text-bone">{category.title}</h2>
       <p className="mt-2 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">{category.description}</p>
       <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${category.title} facts`}>

@@ -1,3 +1,4 @@
+import { SubmitButton } from "@/components/admin/submit-button";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { loginAction, logoutAction } from "../actions";
@@ -8,8 +9,8 @@ import { safeNextPath } from "@/lib/admin/session";
 export const metadata: Metadata = { title: "Admin sign in", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
-const input = "mt-1 h-10 w-full rounded-lg border border-ink/15 bg-paper px-3 text-sm text-ink dark:border-bone/20 dark:bg-chalkboard dark:text-bone";
-const button = "h-10 w-full rounded-lg bg-pine-600 text-sm font-medium text-paper hover:bg-pine-700 dark:bg-pine-500 dark:text-chalkboard";
+const input = "mt-1 w-full min-h-11 rounded-lg border border-ink/15 bg-paper px-3 text-base text-ink md:text-sm dark:border-bone/20 dark:bg-chalkboard dark:text-bone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500";
+const buttonCls = "w-full";
 
 export default async function AdminLoginPage({ searchParams }: { searchParams: { error?: string; next?: string } }) {
   const mode = getAdminMode();
@@ -37,7 +38,7 @@ export default async function AdminLoginPage({ searchParams }: { searchParams: {
           <div className="mt-4 space-y-3 text-sm" role="alert">
             <p>{noAccess.email ? <><strong>{noAccess.email}</strong> is signed in</> : "This account is signed in"}, but it has no admin access.</p>
             <p className="text-ink-soft dark:text-bone-soft">Ask a super admin to grant you a role, or sign in with a different account.</p>
-            <form action={logoutAction}><button type="submit" className={button}>Sign out</button></form>
+            <form action={logoutAction}><SubmitButton variant="primary" className={buttonCls} pendingLabel="Signing out…">Sign out</SubmitButton></form>
           </div>
         ) : (
           <form action={loginAction} className="mt-4 space-y-4">
@@ -52,10 +53,10 @@ export default async function AdminLoginPage({ searchParams }: { searchParams: {
               <label htmlFor="password" className="text-sm font-medium">{mode === "accounts" ? "Password" : "Admin password"}</label>
               <input id="password" name="password" type="password" autoComplete="current-password" required className={input} />
             </div>
-            {searchParams.error === "1" ? <p role="alert" className="text-sm text-red-600 dark:text-red-400">{mode === "accounts" ? "Email or password not accepted." : "That password was not accepted."}</p> : null}
-            {searchParams.error === "noaccess" ? <p role="alert" className="text-sm text-red-600 dark:text-red-400">That account has no admin access.</p> : null}
-            <button type="submit" className={button}>Sign in</button>
-            {mode === "password" ? <p className="text-xs text-ink-soft dark:text-bone-soft">Temporary shared-password sign-in. Configure Supabase to use individual accounts and roles.</p> : null}
+            {searchParams.error === "1" ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">{mode === "accounts" ? "Email or password not accepted." : "That password was not accepted."}</p> : null}
+            {searchParams.error === "noaccess" ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">That account has no admin access.</p> : null}
+            <SubmitButton variant="primary" className={buttonCls} pendingLabel="Signing in…">Sign in</SubmitButton>
+            {mode === "password" ? <p className="text-helper text-ink-soft dark:text-bone-soft">Temporary shared-password sign-in. Configure Supabase to use individual accounts and roles.</p> : null}
           </form>
         )}
       </div>

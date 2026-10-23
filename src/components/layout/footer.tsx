@@ -29,7 +29,7 @@ export function Footer() {
 
           {columns.map((column) => (
             <div key={column.title}>
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
+              <p className="font-mono text-label uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
                 {column.title}
               </p>
               <ul className="mt-3 flex flex-col gap-2.5">

@@ -2,34 +2,42 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { isNavActive } from "@/lib/nav";
+import { NAV_ICONS, type NavIconName } from "@/components/layout/nav-icons";
+import { navBar, navIconActive, navIconCls, navIconInactive, navLinkActive, navLinkBase, navLinkInactive } from "@/components/layout/nav-styles";
 import { cn } from "@/lib/utils";
 
 export interface AdminNavItem {
   href: string;
   label: string;
+  icon: NavIconName;
   exact?: boolean;
 }
 
-export function AdminNav({ items }: { items: AdminNavItem[] }) {
+/** Admin navigation list. Used as the desktop sidebar and inside the mobile drawer. */
+export function AdminNav({ items, onNavigate, className }: { items: AdminNavItem[]; onNavigate?: () => void; className?: string }) {
   const pathname = usePathname();
   return (
-    <nav aria-label="Admin" className="flex gap-1 overflow-x-auto md:flex-col">
-      {items.map((i) => {
-        const active = i.exact ? pathname === i.href : pathname === i.href || pathname.startsWith(`${i.href}/`);
-        return (
-          <Link
-            key={i.href}
-            href={i.href}
-            aria-current={active ? "page" : undefined}
-            className={cn(
-              "whitespace-nowrap rounded-lg px-3 py-2 text-sm",
-              active ? "bg-pine-600/10 font-medium text-pine-700 dark:bg-pine-500/15 dark:text-pine-300" : "text-ink-soft hover:bg-ink/[0.04] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone",
-            )}
-          >
-            {i.label}
-          </Link>
-        );
-      })}
+    <nav aria-label="Admin" className={className}>
+      <ul className="flex flex-col gap-1">
+        {items.map((i) => {
+          const active = isNavActive(pathname, i.href, i.exact);
+          const Icon = NAV_ICONS[i.icon];
+          return (
+            <li key={i.href}>
+              <Link
+                href={i.href}
+                onClick={onNavigate}
+                aria-current={active ? "page" : undefined}
+                className={cn(navLinkBase, "min-h-11 lg:min-h-10", active ? cn(navLinkActive, navBar) : navLinkInactive)}
+              >
+                <Icon aria-hidden="true" strokeWidth={1.75} className={cn(navIconCls, active ? navIconActive : navIconInactive)} />
+                <span className="min-w-0">{i.label}</span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </nav>
   );
 }

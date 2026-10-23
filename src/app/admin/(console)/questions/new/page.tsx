@@ -1,3 +1,4 @@
+import { SubmitButton } from "@/components/admin/submit-button";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Flash } from "@/components/admin/flash";
@@ -9,9 +10,9 @@ import { EXAM_LABEL, EXAM_SLUGS, SOURCE_LABEL, SOURCE_TYPES, SUBJECT_SLUGS, SYST
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createQuestionAction } from "../actions";
 
-export const metadata: Metadata = { title: "New question" };
+export const metadata: Metadata = { title: "New Question" };
 
-export default async function NewQuestionPage({ searchParams }: { searchParams: { ok?: string; error?: string } }) {
+export default async function NewQuestionPage({ searchParams }: { searchParams: { ok?: string; info?: string; warn?: string; error?: string } }) {
   const session = await requirePermission("questions.edit");
   if (session.mode !== "accounts") return <p className="text-sm">Creating questions needs Supabase accounts.</p>;
   const { data: bankData } = await createSupabaseServerClient().from("question_banks").select("slug, title, subjects(slug)").eq("status", "published").order("slug");
@@ -25,7 +26,7 @@ export default async function NewQuestionPage({ searchParams }: { searchParams: 
         <h1 className="font-display text-2xl font-medium">New question</h1>
         <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">Created as a draft, unchecked. Exam questions need exactly 4 options. A quiz question reaches learners only once it is in a bank, published, and the content is published.</p>
       </div>
-      <Flash ok={searchParams.ok} error={searchParams.error} />
+      <Flash ok={searchParams.ok} info={searchParams.info} warn={searchParams.warn} error={searchParams.error} />
       <form action={createQuestionAction} className="space-y-6">
         {draft ? <DraftBanner returnTo="/admin/questions/new" /> : null}
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Where it belongs">
@@ -45,7 +46,7 @@ export default async function NewQuestionPage({ searchParams }: { searchParams: 
         </section>
         <QuestionContentFields d={draft ? draftToDefaults(draft) : {}} />
         <section className="space-y-3 rounded-xl border border-ink/10 p-4 dark:border-bone/15" aria-label="Source">
-          <p className="text-xs text-ink-soft dark:text-bone-soft">Be accurate about the source. Only mark “Verified past paper” if it really is one — it then needs a year and a reference. Generated or self-written questions must not claim to be past papers.</p>
+          <p className="text-helper text-ink-soft dark:text-bone-soft">Be accurate about the source. Only mark “Verified past paper” if it really is one — it then needs a year and a reference. Generated or self-written questions must not claim to be past papers.</p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <div><label htmlFor="source_type" className={labelCls}>Source</label>
               <select id="source_type" name="source_type" defaultValue={v("source_type", "platform_authored")} className={inputCls}>{SOURCE_TYPES.map((s) => <option key={s} value={s}>{SOURCE_LABEL[s]}</option>)}</select></div>
@@ -54,7 +55,7 @@ export default async function NewQuestionPage({ searchParams }: { searchParams: 
             <div><label htmlFor="source_note" className={labelCls}>Source note</label><input id="source_note" name="source_note" defaultValue={v("source_note")} className={inputCls} /></div>
           </div>
         </section>
-        <button type="submit" className="rounded-lg bg-pine-600 px-4 py-2 text-sm font-medium text-paper hover:bg-pine-700 dark:bg-pine-500 dark:text-chalkboard">Create draft</button>
+        <SubmitButton variant="primary" pendingLabel="Creating…">Create draft</SubmitButton>
       </form>
     </div>
   );

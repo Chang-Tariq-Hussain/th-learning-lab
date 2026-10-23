@@ -43,7 +43,7 @@ export function SubjectCard({ subject }: SubjectCardProps) {
         <div
           aria-hidden="true"
           className={cn(
-            "absolute -top-2.5 left-6 rounded-t-sm px-2.5 py-1 font-mono text-[10px] font-medium tracking-wide text-white/90",
+            "absolute -top-2.5 left-6 rounded-t-sm px-2.5 py-1 font-mono text-label font-medium tracking-wide text-white/90",
             colors.bar,
           )}
         >
@@ -73,7 +73,7 @@ export function SubjectCard({ subject }: SubjectCardProps) {
               {subject.notation}
             </span>
           </div>
-          <span className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+          <span className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
             {activityCount > 0 ? `${activityCount} activities` : "In development"}
           </span>
         </div>

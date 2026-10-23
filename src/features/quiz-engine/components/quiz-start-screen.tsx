@@ -45,7 +45,7 @@ export function QuizStartScreen({
 
   return (
     <div className="w-full rounded-[1.75rem] border border-line bg-white/70 p-6 text-center shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:p-10">
-      <p className={`font-mono text-[11px] uppercase tracking-[0.2em] ${colors.text}`}>
+      <p className={`font-mono text-label uppercase tracking-[0.2em] ${colors.text}`}>
         {subjectLabel} · {topicLabel}
       </p>
       <h2 className="mt-2 font-display text-2xl font-medium text-ink dark:text-bone sm:text-3xl">{title}</h2>

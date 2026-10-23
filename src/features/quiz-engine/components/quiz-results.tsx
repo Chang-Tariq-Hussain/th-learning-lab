@@ -79,7 +79,7 @@ export function QuizResults({
       className="w-full"
     >
       <div className="rounded-[1.75rem] border border-line bg-white/70 p-6 text-center shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:p-10">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
+        <p className="font-mono text-label uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
           {resultsTitle}
         </p>
         <p className="mt-3 font-display text-4xl font-semibold tabular-nums text-ink dark:text-bone sm:text-5xl">
@@ -97,11 +97,11 @@ export function QuizResults({
             <CheckCircle2 className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
             Correct: {score}
           </span>
-          <span className="flex items-center gap-1.5 text-red-600 dark:text-red-400">
+          <span className="flex items-center gap-1.5 text-red-700 dark:text-red-300">
             <XCircle className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
             Incorrect: {incorrect}
           </span>
-          <span className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
+          <span className="flex items-center gap-1.5 text-amber-700 dark:text-amber-300">
             <Eye className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
             Revealed: {revealed}
           </span>
@@ -183,7 +183,7 @@ export function QuizResults({
                       <p className="font-medium text-ink dark:text-bone">{answer.question.question}</p>
                       <span
                         className={cn(
-                          "inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide",
+                          "inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-label font-semibold uppercase tracking-wide",
                           status === "correct"
                             ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300"
                             : status === "incorrect"

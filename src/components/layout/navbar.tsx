@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Search, X } from "lucide-react";
 import { mainNav, siteConfig } from "@/config/site";
 import { Container } from "@/components/ui/container";
+import { NAV_ICONS } from "@/components/layout/nav-icons";
+import { navIconActive, navIconCls, navIconInactive, navLinkActive, navLinkBase, navLinkInactive } from "@/components/layout/nav-styles";
+import { isNavActive } from "@/lib/nav";
 import { Logo } from "@/components/layout/logo";
 import { HeaderSearch } from "@/components/layout/header-search";
 import { MobileSearchModal } from "@/components/layout/mobile-search-modal";
@@ -49,8 +52,41 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const isActive = (href: string) =>
-    href === pathname || (href === "/dashboard" && pathname === "/dashboard");
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const navRowRef = useRef<HTMLElement>(null);
+
+  // Whole-segment matching: Physics stays active on every page below /dashboard/physics, and the
+  // Dashboard item is active on the dashboard home only.
+  const isActive = (item: { href: string; exact?: boolean }) => isNavActive(pathname, item.href, item.exact);
+
+  // Choosing a page closes the mobile menu.
+  useEffect(() => setMenuOpen(false), [pathname]);
+
+  // Keep the active item visible in the scrollable row.
+  useEffect(() => {
+    navRowRef.current?.querySelector<HTMLElement>('[aria-current="page"]')?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [pathname]);
+
+  // Mobile menu: Escape (focus returns to the menu button) and a tap outside the header both close it.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    const onPointer = (e: PointerEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [menuOpen]);
 
   // The hamburger dropdown only makes sense below `sm` (see the
   // component doc comment) -- if the viewport is resized past that
@@ -66,7 +102,7 @@ export function Navbar() {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md dark:border-line-dark dark:bg-chalkboard/85">
+    <header ref={headerRef} className="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md dark:border-line-dark dark:bg-chalkboard/85">
       {/* TOP ROW -- logo left, search + avatar far right */}
       <Container>
         <div className="flex h-16 items-center justify-between gap-3">
@@ -87,18 +123,19 @@ export function Navbar() {
               type="button"
               onClick={() => setMobileSearchOpen(true)}
               aria-label="Search"
-              className="flex h-9 w-9 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/[0.06] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.08] dark:hover:text-bone sm:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/[0.06] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.08] dark:hover:text-bone sm:hidden"
             >
               <Search className="h-4 w-4" strokeWidth={1.75} />
             </button>
 
             <button
+              ref={menuButtonRef}
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 text-ink dark:border-bone/15 dark:text-bone sm:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/10 text-ink dark:border-bone/15 dark:text-bone sm:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500"
             >
               {menuOpen ? <X className="h-4 w-4" strokeWidth={1.75} /> : <Menu className="h-4 w-4" strokeWidth={1.75} />}
             </button>
@@ -112,24 +149,25 @@ export function Navbar() {
       <div className="hidden border-t border-line dark:border-line-dark sm:block">
         <Container>
           <nav
+            ref={navRowRef}
             aria-label="Primary"
             className="no-scrollbar flex h-12 items-center gap-1 overflow-x-auto"
           >
-            {mainNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive(item.href) ? "page" : undefined}
-                className={cn(
-                  "shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-sm transition-colors",
-                  isActive(item.href)
-                    ? "bg-ink/[0.06] text-ink dark:bg-bone/[0.08] dark:text-bone"
-                    : "text-ink-soft hover:bg-ink/[0.04] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone",
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {mainNav.map((item) => {
+              const active = isActive(item);
+              const Icon = NAV_ICONS[item.icon];
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(navLinkBase, "shrink-0 whitespace-nowrap py-1.5", active ? navLinkActive : navLinkInactive)}
+                >
+                  <Icon aria-hidden="true" strokeWidth={1.75} className={cn(navIconCls, active ? navIconActive : navIconInactive)} />
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
         </Container>
       </div>
@@ -146,22 +184,22 @@ export function Navbar() {
             className="overflow-hidden border-t border-line dark:border-line-dark sm:hidden"
           >
             <Container className="flex flex-col gap-1 py-3">
-              {mainNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  className={cn(
-                    "rounded-md px-3 py-2.5 text-sm transition-colors",
-                    isActive(item.href)
-                      ? "bg-ink/[0.04] text-ink dark:bg-bone/[0.06] dark:text-bone"
-                      : "text-ink-soft hover:bg-ink/[0.04] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {mainNav.map((item) => {
+                const active = isActive(item);
+                const Icon = NAV_ICONS[item.icon];
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(navLinkBase, "min-h-11 py-2.5", active ? navLinkActive : navLinkInactive)}
+                  >
+                    <Icon aria-hidden="true" strokeWidth={1.75} className={cn(navIconCls, active ? navIconActive : navIconInactive)} />
+                    {item.label}
+                  </Link>
+                );
+              })}
             </Container>
           </motion.div>
         ) : null}

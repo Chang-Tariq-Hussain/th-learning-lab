@@ -1,5 +1,5 @@
 {
-  "name": "sciencehub",
+  "name": "th-learning-lab",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "health": "tsx --tsconfig scripts/tsconfig.health.json scripts/content-health.ts",
+    "verify:nav": "tsx --tsconfig scripts/tsconfig.health.json scripts/verify-nav.ts",
     "db:verify": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/verify.ts",
     "db:import": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/import.ts",
     "db:parity": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/parity.ts",

@@ -30,7 +30,7 @@ export function generateMetadata({ params }: TopicPageProps): Metadata {
   const topic = subject && getTopicBySlug(subject, params.topic);
   if (!subject || !topic) return {};
   return {
-    title: `${topic.name} · ${subject.name}`,
+    title: `${topic.name} — ${subject.name}`,
     description: `${topic.visualizations.length} interactive ${topic.visualizations.length === 1 ? "activity" : "activities"} in ${topic.name}.`,
   };
 }

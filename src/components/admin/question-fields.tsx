@@ -1,3 +1,4 @@
+import { inputCls, labelCls } from "./form-styles";
 import { DIFFICULTIES, LANGUAGES, MAX_OPTIONS } from "@/lib/questions/types";
 
 export interface ContentDefaults {
@@ -6,8 +7,7 @@ export interface ContentDefaults {
   language?: string | null; needs_review?: boolean;
 }
 
-export const inputCls = "w-full rounded-lg border border-ink/15 bg-paper px-3 py-2 text-sm text-ink dark:border-bone/20 dark:bg-chalkboard dark:text-bone";
-export const labelCls = "mb-1 block font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft";
+export { inputCls, labelCls } from "./form-styles";
 
 /** The editable content of a question. Shared by the create and edit forms (field names match lib/questions/form.ts). */
 export function QuestionContentFields({ d, showDifficulty = true }: { d: ContentDefaults; showDifficulty?: boolean }) {
@@ -16,11 +16,11 @@ export function QuestionContentFields({ d, showDifficulty = true }: { d: Content
     <div className="space-y-4">
       <div>
         <label htmlFor="stem" className={labelCls}>Question</label>
-        <textarea id="stem" name="stem" rows={3} required defaultValue={d.stem ?? ""} className={inputCls} />
+        <textarea id="stem" name="stem" rows={5} required defaultValue={d.stem ?? ""} className={inputCls} />
       </div>
       <div>
         <label htmlFor="passage" className={labelCls}>Passage / context (optional)</label>
-        <textarea id="passage" name="passage" rows={2} defaultValue={d.passage ?? ""} className={inputCls} />
+        <textarea id="passage" name="passage" rows={4} defaultValue={d.passage ?? ""} className={inputCls} />
       </div>
       <fieldset>
         <legend className={labelCls}>Answer options — mark the correct one</legend>
@@ -36,7 +36,7 @@ export function QuestionContentFields({ d, showDifficulty = true }: { d: Content
       </fieldset>
       <div>
         <label htmlFor="explanation" className={labelCls}>Explanation (required to publish)</label>
-        <textarea id="explanation" name="explanation" rows={3} defaultValue={d.explanation ?? ""} className={inputCls} />
+        <textarea id="explanation" name="explanation" rows={5} defaultValue={d.explanation ?? ""} className={inputCls} />
       </div>
       <div>
         <label htmlFor="hints" className={labelCls}>Hints (one per line, optional)</label>

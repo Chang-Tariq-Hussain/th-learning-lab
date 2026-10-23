@@ -91,7 +91,7 @@ export function ReviewScreen({ mock, questions, session, result, onBack }: Props
                 Your answer: <strong>{given ?? "None"}</strong> · Correct answer: <strong>{q.correctAnswer}</strong>
               </p>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft dark:text-bone-soft"><span className="font-medium text-ink dark:text-bone">Explanation: </span>{q.explanation}</p>
-              <p className="mt-3 font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+              <p className="mt-3 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
                 {q.subject} · {q.topic} · {q.difficulty} · {sourceLabel(q)}
               </p>
             </article>

@@ -122,7 +122,7 @@ export function MobileSearchModal({ onClose }: MobileSearchModalProps) {
           <div className="flex flex-col gap-4">
             {groups.map((group) => (
               <div key={group.subjectName}>
-                <p className="px-3 pb-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-ink-soft dark:text-bone-soft">
+                <p className="px-3 pb-1.5 font-mono text-label uppercase tracking-[0.15em] text-ink-soft dark:text-bone-soft">
                   {group.subjectName}
                 </p>
                 <SearchResultsList matches={group.entries} activeId={null} onSelect={onClose} />

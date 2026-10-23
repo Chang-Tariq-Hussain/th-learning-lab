@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 export function StatCard({ label, value, hint, href, tone }: { label: string; value: ReactNode; hint?: ReactNode; href?: string; tone?: "alert" }) {
   const body = (
     <div className={cn("h-full rounded-xl border border-ink/10 bg-paper p-4 dark:border-bone/15 dark:bg-chalkboard", tone === "alert" && "border-red-500/40", href && "transition-colors hover:border-pine-500")}>
-      <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">{label}</p>
+      <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">{label}</p>
       <p className="mt-1 font-display text-2xl font-medium tabular-nums text-ink dark:text-bone">{value}</p>
       {hint ? <p className="mt-1 text-xs text-ink-soft dark:text-bone-soft">{hint}</p> : null}
     </div>

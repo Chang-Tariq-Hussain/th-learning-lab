@@ -16,7 +16,7 @@ export interface QuizUnavailableProps {
 export function QuizUnavailable({ backHref, backLabel }: QuizUnavailableProps) {
   return (
     <div className="flex w-full flex-col items-center gap-4 rounded-[1.75rem] border border-line bg-white/60 px-6 py-16 text-center shadow-card dark:border-line-dark dark:bg-white/[0.03]">
-      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-red-500/10 dark:text-red-400">
+      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400">
         <AlertTriangle className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
       </span>
       <div>

@@ -26,7 +26,7 @@ interface Props {
 export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onReview, onRestart, backHref, backLabel, best, attempts, extra }: Props) {
   return (
     <div className="mx-auto max-w-4xl">
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">{mock.title}</p>
+      <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-math">{mock.title}</p>
       <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone">Result</h1>
       {autoSubmitted ? (
         <p className="mt-3 rounded-lg border border-amber-500/50 bg-amber-500/10 px-4 py-2 text-sm text-ink dark:text-bone">
@@ -36,15 +36,15 @@ export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onR
 
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
         <div className="rounded-xl border border-line p-5 dark:border-line-dark">
-          <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Score</p>
+          <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Score</p>
           <p className="mt-1 font-display text-4xl text-ink dark:text-bone">{result.score} / {result.total}</p>
           <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">Percentage: {result.percentage}%</p>
         </div>
         <div className="rounded-xl border border-line p-5 dark:border-line-dark">
-          <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Status</p>
+          <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Status</p>
           {result.passMarks > 0 ? (
             <>
-              <p className={cn("mt-1 font-display text-4xl", result.passed ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400")}>
+              <p className={cn("mt-1 font-display text-4xl", result.passed ? "text-emerald-700 dark:text-emerald-300" : "text-rose-600 dark:text-rose-400")}>
                 {result.passed ? "PASS" : "FAIL"}
               </p>
               <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">
@@ -59,7 +59,7 @@ export function ResultScreen({ mock, result, timeUsedSeconds, autoSubmitted, onR
           )}
         </div>
         <div className="rounded-xl border border-line p-5 dark:border-line-dark">
-          <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Time Used</p>
+          <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Time Used</p>
           <p className="mt-1 font-mono text-3xl tabular-nums text-ink dark:text-bone">{formatClock(timeUsedSeconds)}</p>
           <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">of {formatClock(mock.timeMinutes * 60)}</p>
         </div>

@@ -53,7 +53,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.12 }}
             className="mx-auto mt-5 max-w-xl text-balance text-base leading-relaxed text-ink-soft dark:text-bone-soft sm:text-lg"
           >
-            Fieldnote is a notebook-style home for Physics, Chemistry,
+            TH Learning Lab is a notebook-style home for Physics, Chemistry,
             Biology, and Mathematics — built to hold interactive
             simulations you can nudge, break, and rebuild.
           </motion.p>
@@ -82,7 +82,7 @@ export function Hero() {
         >
           {stats.map((stat) => (
             <div key={stat.label} className="px-4 py-5 text-center">
-              <dt className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+              <dt className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
                 {stat.label}
               </dt>
               <dd className="mt-1 font-display text-2xl font-medium text-ink dark:text-bone">

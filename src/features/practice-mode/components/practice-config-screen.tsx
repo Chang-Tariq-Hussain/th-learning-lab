@@ -90,7 +90,7 @@ export function PracticeConfigScreen({ subjects, initialConfig, onStart }: Pract
 
   return (
     <div className="mx-auto w-full max-w-xl rounded-[1.75rem] border border-line bg-white/70 p-6 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:p-10">
-      <p className={cn("font-mono text-[11px] uppercase tracking-[0.2em]", colors.text)}>Practice Mode</p>
+      <p className={cn("font-mono text-label uppercase tracking-[0.2em]", colors.text)}>Practice Mode</p>
       <h2 className="mt-2 font-display text-2xl font-medium text-ink dark:text-bone sm:text-3xl">
         Choose what you want to practice
       </h2>

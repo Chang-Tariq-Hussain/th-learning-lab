@@ -86,6 +86,13 @@ const config: Config = {
           "it-soft": "#FBEBD6",
         },
       },
+      // Shared type tokens: use these instead of arbitrary sizes like text-[11px].
+      // label  = small uppercase/mono eyebrow labels and table headers
+      // helper = hints, metadata and notes under fields and in tables (was 12px; 13px reads better)
+      fontSize: {
+        label: ["0.75rem", { lineHeight: "1rem" }],
+        helper: ["0.8125rem", { lineHeight: "1.25rem" }],
+      },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
@@ -116,9 +123,19 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "drawer-in": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "toast-in": {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s ease-out forwards",
+        "toast-in": "toast-in 0.18s ease-out both",
+        "drawer-in": "drawer-in 0.2s ease-out both",
       },
     },
   },

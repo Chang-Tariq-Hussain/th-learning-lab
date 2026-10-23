@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Camera, Loader2 } from "lucide-react";
 import { useSimulationSurface } from "../../context/surface-context";
+import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 
 export interface ExportScreenshotButtonProps {
@@ -23,6 +24,7 @@ export function ExportScreenshotButton({
 }: ExportScreenshotButtonProps) {
   const { containerRef } = useSimulationSurface();
   const [isExporting, setIsExporting] = useState(false);
+  const toast = useToast();
 
   const handleExport = async () => {
     const node = containerRef.current;
@@ -41,8 +43,10 @@ export function ExportScreenshotButton({
       link.href = dataUrl;
       link.download = `${filename}-${Date.now()}.png`;
       link.click();
+      toast.success("Screenshot saved.", { id: "screenshot-export" });
     } catch (error) {
       console.error("Screenshot export failed:", error);
+      toast.error("Couldn't export the screenshot. Please try again.", { id: "screenshot-export" });
     } finally {
       setIsExporting(false);
     }
@@ -53,7 +57,8 @@ export function ExportScreenshotButton({
       type="button"
       onClick={handleExport}
       disabled={isExporting}
-      aria-label="Export screenshot"
+      aria-busy={isExporting}
+      aria-label={isExporting ? "Exporting screenshot…" : "Export screenshot"}
       title="Export screenshot"
       className={cn(
         "inline-flex h-8 w-8 items-center justify-center rounded-md text-ink-soft transition-colors hover:bg-ink/[0.04] hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 disabled:opacity-50 dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone",

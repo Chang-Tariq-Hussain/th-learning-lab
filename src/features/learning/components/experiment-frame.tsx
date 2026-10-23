@@ -28,7 +28,7 @@ export interface ExperimentFrameProps {
 export function ExperimentFrame({ label, colorTextClassName, children, className }: ExperimentFrameProps) {
   return (
     <div className={cn(className)}>
-      <p className={cn("mb-3 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wide", colorTextClassName)}>
+      <p className={cn("mb-3 flex items-center gap-1.5 font-mono text-label uppercase tracking-wide", colorTextClassName)}>
         <FlaskConical className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} aria-hidden="true" />
         {label}
       </p>

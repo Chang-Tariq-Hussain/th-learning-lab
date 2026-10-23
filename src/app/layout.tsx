@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { themeIds } from "@/config/themes";
 import { LearnerShell } from "@/components/layout/learner-shell";
+import { ToastProvider } from "@/components/ui/toast";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -25,16 +26,23 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  applicationName: siteConfig.name,
   title: {
-    default: `${siteConfig.name} — Learn science by doing it`,
-    template: `%s · ${siteConfig.name}`,
+    default: `${siteConfig.name} | Learn science by doing it`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     title: siteConfig.name,
+    siteName: siteConfig.name,
     description: siteConfig.description,
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: siteConfig.name,
+    description: siteConfig.description,
   },
 };
 
@@ -55,7 +63,9 @@ export default function RootLayout({
           disableTransitionOnChange
           themes={themeIds}
         >
-          <LearnerShell>{children}</LearnerShell>
+          <ToastProvider>
+            <LearnerShell>{children}</LearnerShell>
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>

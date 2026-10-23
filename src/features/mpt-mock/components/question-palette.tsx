@@ -24,7 +24,7 @@ export function QuestionPalette({ mock, questions, answers, marked, current, onJ
         const items = questions.slice(start, start + sec.count);
         return (
           <div key={sec.code}>
-            <p className="mb-1.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+            <p className="mb-1.5 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
               {sec.subject} · {sec.count}
             </p>
             <div className="grid grid-cols-10 gap-1">
@@ -40,7 +40,7 @@ export function QuestionPalette({ mock, questions, answers, marked, current, onJ
                     aria-label={`Question ${index + 1}${answered ? ", answered" : ", unanswered"}${isMarked ? ", marked for review" : ""}`}
                     aria-current={index === current ? "true" : undefined}
                     className={cn(
-                      "relative h-7 rounded text-[11px] font-medium transition",
+                      "relative h-7 rounded text-label font-medium transition",
                       answered
                         ? "bg-pine-600 text-paper dark:bg-pine-500 dark:text-chalkboard"
                         : "border border-line text-ink-soft dark:border-line-dark dark:text-bone-soft",
@@ -57,7 +57,7 @@ export function QuestionPalette({ mock, questions, answers, marked, current, onJ
           </div>
         );
       })}
-      <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-ink-soft dark:text-bone-soft">
+      <div className="flex flex-wrap gap-x-4 gap-y-1 text-label text-ink-soft dark:text-bone-soft">
         <span className="flex items-center gap-1"><span className="h-3 w-3 rounded bg-pine-600" /> Answered</span>
         <span className="flex items-center gap-1"><span className="h-3 w-3 rounded border border-line dark:border-line-dark" /> Unanswered</span>
         <span className="flex items-center gap-1"><span className="h-3 w-3 rounded outline outline-2 outline-amber-500" /> Marked</span>

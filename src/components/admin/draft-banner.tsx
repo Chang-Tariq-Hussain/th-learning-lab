@@ -1,3 +1,4 @@
+import { SubmitButton } from "@/components/admin/submit-button";
 import { discardDraftAction } from "@/app/admin/(console)/questions/actions";
 
 /** Shown above a form that was refilled from a failed save. */
@@ -9,7 +10,7 @@ export function DraftBanner({ returnTo, stale }: { returnTo: string; stale?: boo
         {stale ? " If someone else changed this question, saving again will replace their change with yours." : ""}
       </p>
       <form action={discardDraftAction}><input type="hidden" name="to" value={returnTo} />
-        <button className="rounded-lg border border-ink/15 px-3 py-1 text-xs hover:border-pine-500 dark:border-bone/20">Discard my edits</button></form>
+        <SubmitButton pendingLabel="Discarding…">Discard my edits</SubmitButton></form>
     </div>
   );
 }

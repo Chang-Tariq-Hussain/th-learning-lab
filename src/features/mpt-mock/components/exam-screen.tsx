@@ -75,13 +75,13 @@ export function ExamScreen({ mock, questions, session, remainingSeconds, onAnswe
       <div className="sticky top-0 z-20 -mx-5 border-b border-line bg-paper/95 px-5 py-3 backdrop-blur dark:border-line-dark dark:bg-chalkboard/95 sm:-mx-8 sm:px-8">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">{mock.title}</p>
+            <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">{mock.title}</p>
             <p className="text-sm text-ink dark:text-bone">
               Question <strong>{index + 1}</strong> of {questions.length} · Answered {answeredCount} / {questions.length}
             </p>
           </div>
           <div className="text-center">
-            <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Time Remaining</p>
+            <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Time Remaining</p>
             <p
               role="timer"
               aria-label={`Time remaining ${formatClock(remainingSeconds)}`}
@@ -92,7 +92,7 @@ export function ExamScreen({ mock, questions, session, remainingSeconds, onAnswe
           </div>
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Passing Score</p>
+              <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Passing Score</p>
               <p className="text-sm text-ink dark:text-bone">{mock.passMarks} / {mock.totalQuestions}</p>
             </div>
             <Button size="sm" variant="secondary" onClick={() => setConfirming(true)}>Submit Test</Button>
@@ -122,7 +122,7 @@ export function ExamScreen({ mock, questions, session, remainingSeconds, onAnswe
                 key={s.code}
                 type="button"
                 onClick={() => onGoTo(s.start)}
-                className="rounded-full border border-line px-2.5 py-1 text-[11px] text-ink-soft hover:border-pine-500 dark:border-line-dark dark:text-bone-soft"
+                className="rounded-full border border-line px-2.5 py-1 text-label text-ink-soft hover:border-pine-500 dark:border-line-dark dark:text-bone-soft"
               >
                 {s.code}
               </button>

@@ -44,8 +44,10 @@
   .solarized-light {
     color-scheme: light;
     --color-paper: 253 246 227; /* #FDF6E3 */
-    --color-ink: 88 110 117; /* #586E75 */
-    --color-ink-soft: 101 123 131; /* #657B83 */
+    /* Body/muted text were base01/base00 (4.99:1 / 4.13:1 on this paper — the muted text failed WCAG AA).
+       Now base02 for body and base01 for muted text (>= 4.9:1), both from the Solarized palette. */
+    --color-ink: 7 54 66; /* #073642 */
+    --color-ink-soft: 88 110 117; /* #586E75 */
     --color-line: 238 232 213; /* #EEE8D5 */
   }
 
@@ -118,7 +120,7 @@
   .one-dark {
     --color-chalkboard: 40 44 52; /* #282C34 */
     --color-bone: 171 178 191; /* #ABB2BF */
-    --color-bone-soft: 127 136 153; /* #7F8899 */
+    --color-bone-soft: 152 161 177; /* #98A1B1 — was #7F8899 (3.9:1); now >= 4.5:1 on this background */
     --color-line-dark: 62 68 81; /* #3E4451 */
   }
 
@@ -134,6 +136,17 @@
     @apply bg-paper text-ink dark:bg-chalkboard dark:text-bone;
     font-feature-settings: "cv11", "ss01";
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Placeholders stay at the muted-text colour (never lower opacity: that drops below AA contrast in
+     several themes). They are still distinct from typed text, which uses the full ink/bone colour. */
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-ink-soft dark:text-bone-soft;
+    opacity: 1;
   }
 
   /* Respect reduced-motion preferences globally */
@@ -153,6 +166,19 @@
 
   ::selection {
     @apply bg-pine-300 text-pine-900;
+  }
+}
+
+@layer components {
+  /* Long question text, passages and explanations: keep line breaks, wrap long words/URLs, and use a
+     comfortable measure and line height instead of the compact UI size. */
+  .question-text {
+    @apply whitespace-pre-wrap break-words text-base leading-relaxed text-ink dark:text-bone;
+    max-width: 75ch;
+  }
+  .explanation-text {
+    @apply whitespace-pre-wrap break-words text-sm leading-relaxed text-ink-soft dark:text-bone-soft;
+    max-width: 75ch;
   }
 }
 

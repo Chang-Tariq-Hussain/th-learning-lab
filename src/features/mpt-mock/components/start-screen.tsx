@@ -26,7 +26,7 @@ export function StartScreen({ mock, questions, onStart, test, copy }: { mock: Mp
   const gen = questions.filter((q) => q.sourceType === "Generated Practice").length;
   return (
     <div className="mx-auto max-w-3xl">
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">{copy ? copy.eyebrow : `CSS · MCQ-Based Preliminary Test${isSection ? " · Section test" : ""}`}</p>
+      <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-math">{copy ? copy.eyebrow : `CSS · MCQ-Based Preliminary Test${isSection ? " · Section test" : ""}`}</p>
       <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">{mock.title}</h1>
       <p className="mt-2 text-base text-ink-soft dark:text-bone-soft">
         {copy
@@ -43,7 +43,7 @@ export function StartScreen({ mock, questions, onStart, test, copy }: { mock: Mp
           ["Negative marking", "None"],
         ].map(([k, v]) => (
           <div key={k} className="rounded-lg border border-line p-3 dark:border-line-dark">
-            <dt className="font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">{k}</dt>
+            <dt className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">{k}</dt>
             <dd className="mt-1 text-sm font-medium text-ink dark:text-bone">{v}</dd>
           </div>
         ))}

@@ -54,12 +54,12 @@ export function TopicModeSwitch({ mode, onChange, colorToken, className }: Topic
                 : "text-ink-soft hover:bg-ink/[0.04] dark:text-bone-soft dark:hover:bg-bone/[0.06]",
             )}
           >
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em]">
+            <span className="font-mono text-label uppercase tracking-[0.2em]">
               {option.emoji} {option.label}
             </span>
             <span
               className={cn(
-                "text-[11px]",
+                "text-label",
                 isActive ? "text-white/85" : "text-ink-soft/80 dark:text-bone-soft/80",
               )}
             >

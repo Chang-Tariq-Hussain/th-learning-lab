@@ -83,7 +83,7 @@ export function LearningPathNextTopic({ className }: LearningPathNextTopicProps)
         <Link
           href={next.href}
           className={cn(
-            "group inline-flex min-w-0 max-w-full items-center gap-2 rounded-full border px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors",
+            "group inline-flex min-w-0 max-w-full items-center gap-2 rounded-full border px-5 py-2.5 font-mono text-label uppercase tracking-[0.15em] transition-colors",
             colors.border,
             colors.text,
             "border-line dark:border-line-dark",
@@ -96,7 +96,7 @@ export function LearningPathNextTopic({ className }: LearningPathNextTopicProps)
         <Link
           href={`/dashboard/${found.path.subjectSlug}`}
           className={cn(
-            "group inline-flex min-w-0 max-w-full items-center gap-2 rounded-full px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors",
+            "group inline-flex min-w-0 max-w-full items-center gap-2 rounded-full px-5 py-2.5 font-mono text-label uppercase tracking-[0.15em] transition-colors",
             colors.bg,
             colors.text,
           )}

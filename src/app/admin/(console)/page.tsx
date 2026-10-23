@@ -23,22 +23,22 @@ export default async function AdminOverviewPage() {
 
   const subjectCols: Column<SubjectRow>[] = [
     { key: "name", header: "Subject", cell: (r) => <span className="font-medium">{r.name}</span> },
-    { key: "topics", header: "Topics", className: "text-right tabular-nums", cell: (r) => r.topics },
-    { key: "sims", header: "Simulations", className: "text-right tabular-nums", cell: (r) => r.simulations },
-    { key: "gle", header: "With GLE", className: "text-right tabular-nums", cell: (r) => `${r.gle} / ${r.simulations}` },
-    { key: "banks", header: "Quiz banks", className: "text-right tabular-nums", cell: (r) => r.quizBanks },
-    { key: "q", header: "Questions", className: "text-right tabular-nums", cell: (r) => n(r.questions) },
-    { key: "paths", header: "Paths", className: "text-right tabular-nums", cell: (r) => r.paths },
+    { key: "topics", header: "Topics", align: "right", className: "tabular-nums", cell: (r) => r.topics },
+    { key: "sims", header: "Simulations", align: "right", className: "tabular-nums", cell: (r) => r.simulations },
+    { key: "gle", header: "With GLE", align: "right", className: "tabular-nums", cell: (r) => `${r.gle} / ${r.simulations}` },
+    { key: "banks", header: "Quiz banks", align: "right", className: "tabular-nums", cell: (r) => r.quizBanks },
+    { key: "q", header: "Questions", align: "right", className: "tabular-nums", cell: (r) => n(r.questions) },
+    { key: "paths", header: "Paths", align: "right", className: "tabular-nums", cell: (r) => r.paths },
   ];
   const teacherCols: Column<TeacherRow>[] = [
     { key: "exam", header: "Exam", cell: (r) => <span className="font-medium">{r.label}</span> },
-    { key: "rows", header: "Questions", className: "text-right tabular-nums", cell: (r) => n(r.questions) },
-    { key: "past", header: "Verified past paper", className: "text-right tabular-nums", cell: (r) => r.bySource["verified_past_paper"] ?? 0 },
-    { key: "existing", header: "Existing bank", className: "text-right tabular-nums", cell: (r) => r.bySource["existing_question"] ?? 0 },
-    { key: "gen", header: "Generated", className: "text-right tabular-nums", cell: (r) => (r.bySource["generated_syllabus"] ?? 0) + (r.bySource["generated_similar"] ?? 0) },
-    { key: "ver", header: "Flagged verified", className: "text-right tabular-nums", cell: (r) => r.verified },
-    { key: "rev", header: "Needs review", className: "text-right tabular-nums", cell: (r) => r.needsReview },
-    { key: "mocks", header: "Mocks", className: "text-right tabular-nums", cell: (r) => r.mocks },
+    { key: "rows", header: "Questions", align: "right", className: "tabular-nums", cell: (r) => n(r.questions) },
+    { key: "past", header: "Verified past paper", align: "right", className: "tabular-nums", cell: (r) => r.bySource["verified_past_paper"] ?? 0 },
+    { key: "existing", header: "Existing bank", align: "right", className: "tabular-nums", cell: (r) => r.bySource["existing_question"] ?? 0 },
+    { key: "gen", header: "Generated", align: "right", className: "tabular-nums", cell: (r) => (r.bySource["generated_syllabus"] ?? 0) + (r.bySource["generated_similar"] ?? 0) },
+    { key: "ver", header: "Flagged verified", align: "right", className: "tabular-nums", cell: (r) => r.verified },
+    { key: "rev", header: "Needs review", align: "right", className: "tabular-nums", cell: (r) => r.needsReview },
+    { key: "mocks", header: "Mocks", align: "right", className: "tabular-nums", cell: (r) => r.mocks },
   ];
 
   return (
@@ -74,7 +74,7 @@ export default async function AdminOverviewPage() {
           <StatCard label="Cross-subject links" value={t.connections} />
         </div>
         <div className="mt-4">
-          <DataTable caption="Content by subject" columns={subjectCols} rows={inv.subjects} rowKey={(r) => r.slug} empty="No subjects." />
+          <DataTable caption="Content by subject" columns={subjectCols} rows={inv.subjects} rowKey={(r) => r.slug} empty="No subjects." layout="scroll" />
         </div>
       </section>
 
@@ -86,9 +86,9 @@ export default async function AdminOverviewPage() {
           <StatCard label="MPT existing bank" value={inv.mpt.bySource["Existing Question Bank"] ?? 0} />
           <StatCard label="MPT generated" value={inv.mpt.bySource["Generated Practice"] ?? 0} />
         </div>
-        <h3 className="mb-2 mt-5 font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Teacher tests · question provenance</h3>
-        <DataTable caption="Teacher test banks by provenance" columns={teacherCols} rows={inv.teacher} rowKey={(r) => r.exam} empty="No teacher banks." />
-        <p className="mt-2 text-xs text-ink-soft dark:text-bone-soft">
+        <h3 className="mb-2 mt-5 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Teacher tests · question provenance</h3>
+        <DataTable caption="Teacher test banks by provenance" columns={teacherCols} rows={inv.teacher} rowKey={(r) => r.exam} empty="No teacher banks." layout="scroll" />
+        <p className="mt-2 text-helper text-ink-soft dark:text-bone-soft">
           Provenance labels: {Object.values(SOURCE_LABEL).join(" · ")}. Only genuine past-paper questions may be flagged verified; Content Health fails if anything else is.
         </p>
       </section>

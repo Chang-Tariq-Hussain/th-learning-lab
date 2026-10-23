@@ -66,7 +66,7 @@ export function ChallengeSection({
   return (
     <SectionShell icon={<Target className="h-4 w-4" strokeWidth={1.75} />} label="Challenge" colorToken={colorToken} className={className}>
       {content.intro ? <p className="mb-3 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">{content.intro}</p> : null}
-      <p className="mb-4 font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+      <p className="mb-4 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
         Score: {solvedCount}/{total} solved
       </p>
       <div className="flex flex-col gap-4">

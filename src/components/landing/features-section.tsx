@@ -36,7 +36,7 @@ export function FeaturesSection() {
         <SectionHeading
           eyebrow="How it works"
           title="Built around a simple loop: choose, open, interact."
-          description="Fieldnote's structure is designed so a new simulation can slot into any topic page without changing how the rest of the app works."
+          description="TH Learning Lab's structure is designed so a new simulation can slot into any topic page without changing how the rest of the app works."
         />
 
         <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-card border border-line bg-line dark:border-line-dark dark:bg-line-dark sm:grid-cols-3">

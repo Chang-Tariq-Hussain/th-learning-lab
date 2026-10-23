@@ -1,3 +1,5 @@
+import { SubmitButton } from "@/components/admin/submit-button";
+import { fieldCls as field, labelCls } from "@/components/admin/form-styles";
 import Link from "next/link";
 import { friendlyError } from "@/lib/admin/errors";
 import type { Metadata } from "next";
@@ -17,9 +19,8 @@ import {
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { bulkStatusAction } from "./actions";
 
-export const metadata: Metadata = { title: "Question bank" };
+export const metadata: Metadata = { title: "Question Bank" };
 
-const field = "h-9 rounded-lg border border-ink/15 bg-paper px-2 text-sm text-ink dark:border-bone/20 dark:bg-chalkboard dark:text-bone";
 
 export default async function QuestionBankPage({ searchParams }: { searchParams: Record<string, string | undefined> }) {
   const session = await requirePermission("questions.view");
@@ -45,27 +46,45 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
   const here = buildQuery("/admin/questions", { ...params, page: page > 1 ? String(page) : undefined });
   const sortLink = (sort: string): string => buildQuery("/admin/questions", { ...params, sort: sort === "updated" ? undefined : sort, dir: f.sort === sort && f.dir === "desc" ? "asc" : undefined });
 
+  const updated = (r: QuestionListRow): string => new Date(r.updated_at).toLocaleDateString("en-GB");
   const columns: Column<QuestionListRow>[] = [
-    ...(editor ? [{ key: "sel", header: "", className: "w-8", cell: (r: QuestionListRow) => <input type="checkbox" name="ids" value={r.id} form="bulk" aria-label={`Select ${r.legacy_id}`} /> }] : []),
-    { key: "id", header: "ID", className: "w-28 font-mono text-xs", cell: (r) => <Link href={`/admin/questions/${r.id}`} className="text-pine-700 underline dark:text-pine-300">{r.legacy_id}</Link> },
+    ...(editor
+      ? [{
+          key: "sel", header: "Select", hideLabel: true, width: "md:w-16",
+          cell: (r: QuestionListRow) => (
+            <label className="flex min-h-11 cursor-pointer items-center gap-3 md:min-h-0 md:justify-center">
+              <input type="checkbox" name="ids" value={r.id} form="bulk" className="h-5 w-5 shrink-0 md:h-4 md:w-4" />
+              <span className="text-sm md:sr-only">Select {r.legacy_id}</span>
+            </label>
+          ),
+        }]
+      : []),
+    { key: "id", header: "ID", width: "md:w-28", className: "font-mono text-helper", cell: (r) => <Link href={`/admin/questions/${r.id}`} className="inline-flex min-h-11 items-center text-pine-700 underline md:min-h-0 dark:text-pine-300">{r.legacy_id}</Link> },
     {
-      key: "stem", header: "Question",
+      key: "stem", header: "Question", hideLabel: true,
       cell: (r) => (
         <div>
-          <Link href={`/admin/questions/${r.id}`} className="hover:underline">{r.stem.length > 120 ? `${r.stem.slice(0, 120)}…` : r.stem}</Link>
-          <p className="mt-0.5 text-xs text-ink-soft dark:text-bone-soft">
+          {/* The whole question is in the page; it is only visually clamped. The link opens the full detail view. */}
+          <Link href={`/admin/questions/${r.id}`} className="line-clamp-4 break-words text-base leading-snug hover:underline md:line-clamp-3 md:text-sm">{r.stem}</Link>
+          <p className="mt-1 text-helper text-ink-soft dark:text-bone-soft">
             {SYSTEM_LABEL[r.source_system]} · {r.subjects?.slug ?? r.exam_subject ?? "—"}
             {r.content_hash !== r.source_hash ? (r.source_hash ? " · edited in admin" : " · created in admin") : ""}
             {r.needs_review ? " · needs review" : ""}
             {publishState(r.source_system, r.legacy_id, r.status, r.content_hash) === "pending" ? " · not yet published to learners" : ""}
           </p>
+          {/* Columns that don't fit between tablet and desktop widths move here instead of being dropped. */}
+          <div className="mt-1.5 hidden flex-wrap items-center gap-x-3 gap-y-1 md:flex xl:hidden">
+            <SourceBadge source={r.source_type} />
+            <span className="lg:hidden"><CheckText check={r.answer_check} /></span>
+            <span className="text-helper text-ink-soft dark:text-bone-soft">Updated {updated(r)}</span>
+          </div>
         </div>
       ),
     },
-    { key: "src", header: "Source", className: "w-40", cell: (r) => <SourceBadge source={r.source_type} /> },
-    { key: "chk", header: "Answer check", className: "w-36", cell: (r) => <CheckText check={r.answer_check} /> },
-    { key: "st", header: "Status", className: "w-28", cell: (r) => <StatusPill status={r.status} /> },
-    { key: "upd", header: "Updated", className: "w-28 whitespace-nowrap text-xs", cell: (r) => new Date(r.updated_at).toLocaleDateString("en-GB") },
+    { key: "src", header: "Source", width: "md:w-40", hideBelow: "xl", cell: (r) => <SourceBadge source={r.source_type} /> },
+    { key: "chk", header: "Answer check", width: "md:w-36", hideBelow: "lg", cell: (r) => <CheckText check={r.answer_check} /> },
+    { key: "st", header: "Status", width: "md:w-28", cell: (r) => <StatusPill status={r.status} /> },
+    { key: "upd", header: "Updated", width: "md:w-28", nowrap: true, hideBelow: "xl", className: "text-helper", cell: updated },
   ];
 
   return (
@@ -83,7 +102,7 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
         </div>
       </div>
 
-      <Flash ok={searchParams["ok"]} error={searchParams["error"]} />
+      <Flash ok={searchParams["ok"]} info={searchParams["info"]} warn={searchParams["warn"]} error={searchParams["error"]} />
 
       <FilterBar
         action="/admin/questions" q={f.q} qLabel="Search" qPlaceholder="Question text or ID…"
@@ -97,7 +116,7 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
           { name: "review", label: "Needs review", value: f.review, options: [{ value: "yes", label: "Yes" }, { value: "no", label: "No" }] },
         ]}
       />
-      <p className="text-xs text-ink-soft dark:text-bone-soft">
+      <p className="text-helper text-ink-soft dark:text-bone-soft">
         Sort: <Link className="underline" href={sortLink("updated")}>updated</Link> · <Link className="underline" href={sortLink("legacy")}>ID</Link> · <Link className="underline" href={sortLink("system")}>system</Link>
       </p>
 
@@ -108,7 +127,7 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
         <form id="bulk" action={bulkStatusAction} className="flex flex-wrap items-end gap-3 rounded-xl border border-ink/10 p-3 dark:border-bone/15">
           <input type="hidden" name="back" value={here} />
           <div>
-            <label htmlFor="bulk-status" className="mb-1 block font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">For the selected questions</label>
+            <label htmlFor="bulk-status" className={labelCls}>For the selected questions</label>
             <select id="bulk-status" name="status" required defaultValue="" className={field}>
               <option value="" disabled>Choose an action…</option>
               <option value="in_review">Send to review</option>
@@ -118,12 +137,12 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
             </select>
           </div>
           <div className="min-w-[200px] flex-1">
-            <label htmlFor="bulk-reason" className="mb-1 block font-mono text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Reason (required to archive / unpublish)</label>
+            <label htmlFor="bulk-reason" className={labelCls}>Reason (required to archive / unpublish)</label>
             <input id="bulk-reason" name="reason" maxLength={300} className={`${field} w-full`} />
           </div>
           <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="confirm" /> I understand this takes questions out of use</label>
-          <button type="submit" className="h-9 rounded-lg border border-ink/15 px-4 text-sm font-medium hover:border-pine-500 dark:border-bone/20">Apply to selected</button>
-          <p className="basis-full text-xs text-ink-soft dark:text-bone-soft">Selection is per page (max 100 at a time). Questions flagged “needs review” or missing an explanation are skipped when publishing, and you’ll be told why.</p>
+          <SubmitButton pendingLabel={(f) => ({ published: "Publishing…", draft: "Unpublishing…", archived: "Archiving…", in_review: "Sending…" })[String(f?.get("status"))] ?? "Applying…"}>Apply to selected</SubmitButton>
+          <p className="basis-full text-helper text-ink-soft dark:text-bone-soft">Selection is per page (max 100 at a time). Questions flagged “needs review” or missing an explanation are skipped when publishing, and you’ll be told why.</p>
         </form>
       ) : null}
 

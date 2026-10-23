@@ -40,7 +40,7 @@ export function Sidebar({ className, onNavigate }: SidebarProps) {
           Practice
         </Link>
 
-        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
+        <p className="mb-3 font-mono text-label uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
           Subjects
         </p>
         <ul className="flex flex-col gap-1">
@@ -66,7 +66,7 @@ export function Sidebar({ className, onNavigate }: SidebarProps) {
       </div>
 
       <div className="mt-auto rounded-card border border-dashed border-ink/15 p-4 dark:border-bone/20">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
+        <p className="font-mono text-label uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
           Status
         </p>
         <p className="mt-2 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">

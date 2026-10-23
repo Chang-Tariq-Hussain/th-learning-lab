@@ -1,6 +1,6 @@
-# th-learning-lab
+# TH Learning Lab
 
-# Fieldnote — Educational Platform Foundation
+_Package name and technical slug: `th-learning-lab`._
 
 A production-ready foundation for a science learning platform covering
 Physics, Chemistry, Biology, and Mathematics. This is the scaffolding —

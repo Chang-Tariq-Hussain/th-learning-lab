@@ -40,27 +40,27 @@ export default async function ContentHealthPage({ searchParams }: { searchParams
   const params = { severity: severity || undefined, area: area || undefined, check: check || undefined, subject: subject || undefined, q: q || undefined };
 
   const columns: Column<Finding>[] = [
-    { key: "sev", header: "Severity", className: "w-24", cell: (f) => <SeverityBadge severity={f.severity} /> },
+    { key: "sev", header: "Severity", width: "md:w-28", cell: (f) => <SeverityBadge severity={f.severity} /> },
     {
-      key: "finding", header: "Finding",
+      key: "finding", header: "Finding", hideLabel: true,
       cell: (f) => (
         <div>
           <p>{f.title}</p>
-          {f.detail ? <p className="mt-0.5 text-xs text-ink-soft dark:text-bone-soft">{f.detail}</p> : null}
+          {f.detail ? <p className="mt-0.5 text-helper text-ink-soft dark:text-bone-soft">{f.detail}</p> : null}
         </div>
       ),
     },
     {
-      key: "where", header: "Where", className: "w-64",
+      key: "where", header: "Where", width: "md:w-64",
       cell: (f) => (
-        <div className="space-y-0.5 text-xs">
+        <div className="space-y-0.5 text-helper">
           <p className="font-mono text-ink-soft dark:text-bone-soft">{f.check}</p>
           {f.file ? <p className="break-all font-mono">{f.file}</p> : null}
           {f.href ? <Link href={f.href} className="text-pine-700 underline dark:text-pine-300" target="_blank" rel="noreferrer">Open page</Link> : null}
         </div>
       ),
     },
-    { key: "area", header: "Area", className: "w-40 text-xs", cell: (f) => AREA_LABEL[f.area] },
+    { key: "area", header: "Area", width: "md:w-40", className: "text-helper", cell: (f) => AREA_LABEL[f.area] },
   ];
 
   return (

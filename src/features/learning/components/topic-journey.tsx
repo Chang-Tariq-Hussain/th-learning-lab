@@ -55,7 +55,7 @@ export function TopicJourney({ content, className }: TopicJourneyProps) {
           <div key={step} role="listitem" className="flex items-center">
             <div
               className={cn(
-                "flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide whitespace-nowrap transition-colors",
+                "flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-mono text-label uppercase tracking-wide whitespace-nowrap transition-colors",
                 done
                   ? cn("border-transparent", colors.bg, colors.text)
                   : isCurrent
