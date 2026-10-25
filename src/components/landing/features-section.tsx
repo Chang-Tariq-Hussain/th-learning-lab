@@ -49,7 +49,7 @@ export function FeaturesSection() {
               transition={{ duration: 0.5, delay: index * 0.08 }}
               className="relative bg-paper p-7 dark:bg-chalkboard"
             >
-              <span className="font-mono text-xs text-pine-600 dark:text-pine-300">
+              <span className="font-mono text-label text-pine-600 dark:text-pine-300">
                 {step.number}
               </span>
               <div className="mt-4 inline-flex rounded-lg bg-pine-50 p-2.5 dark:bg-pine-900/40">

@@ -46,11 +46,22 @@ export const getAdminSession = cache(async (): Promise<AdminSession | null> => {
 });
 
 /** Signed in with a valid account that has no admin role (accounts mode only). */
-export async function getSignedInWithoutAccess(): Promise<{ email: string | null } | null> {
+export async function getSignedInWithoutAccess(): Promise<{ email: string | null; unavailable: boolean } | null> {
   if (getAdminMode() !== "accounts") return null;
   try {
-    const { data } = await createSupabaseServerClient().auth.getUser();
-    return data.user ? { email: data.user.email ?? null } : null;
+    const supabase = createSupabaseServerClient();
+    const { data } = await supabase.auth.getUser();
+    if (!data.user) return null;
+    // Tell "has no role" apart from "the database could not be reached", so an outage is not reported as missing access.
+    // Access is still denied either way (getAdminSession returns null); only the message differs.
+    let unavailable = false;
+    try {
+      const { error } = await supabase.from("admin_roles").select("role").eq("user_id", data.user.id).maybeSingle();
+      unavailable = !!error;
+    } catch {
+      unavailable = true;
+    }
+    return { email: data.user.email ?? null, unavailable };
   } catch {
     return null;
   }

@@ -8,7 +8,7 @@ import { useEffect, type RefObject } from "react";
  * (user menu, edit-name modal, search results) so each one doesn't
  * reimplement its own listener.
  */
-export function useDismiss(ref: RefObject<HTMLElement | null>, active: boolean, onDismiss: () => void) {
+export function useDismiss(ref: RefObject<HTMLElement | null>, active: boolean, onDismiss: () => void, returnFocusTo?: RefObject<HTMLElement | null>) {
   useEffect(() => {
     if (!active) return;
 
@@ -16,7 +16,10 @@ export function useDismiss(ref: RefObject<HTMLElement | null>, active: boolean, 
       if (ref.current && !ref.current.contains(event.target as Node)) onDismiss();
     };
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onDismiss();
+      if (event.key === "Escape") {
+        onDismiss();
+        returnFocusTo?.current?.focus();
+      }
     };
 
     document.addEventListener("pointerdown", handlePointerDown);
@@ -25,5 +28,5 @@ export function useDismiss(ref: RefObject<HTMLElement | null>, active: boolean, 
       document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [active, ref, onDismiss]);
+  }, [active, ref, onDismiss, returnFocusTo]);
 }

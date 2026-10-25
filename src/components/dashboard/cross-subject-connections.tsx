@@ -25,7 +25,7 @@ function NodeCard({ node }: { node: ConnectionNode }) {
         colors.bg,
       )}
     >
-      <span className={cn("font-mono text-label uppercase tracking-[0.15em]", colors.text)}>
+      <span className={cn("font-mono text-label uppercase tracking-eyebrow", colors.text)}>
         {subjectLabel[node.subject]}
       </span>
       <span className="text-sm font-medium text-ink dark:text-bone">{node.label}</span>
@@ -47,7 +47,7 @@ function ConnectionCard({ connection }: { connection: CrossSubjectConnection }) 
   return (
     <div className="rounded-2xl border border-line bg-white/60 p-5 dark:border-line-dark dark:bg-white/[0.03] sm:p-6">
       {connection.prerequisite ? (
-        <p className="mb-4 text-xs text-ink-soft dark:text-bone-soft">
+        <p className="mb-4 text-helper text-ink-soft dark:text-bone-soft">
           Best understood after{" "}
           {connection.prerequisite.href ? (
             <Link
@@ -96,7 +96,7 @@ export function CrossSubjectConnections({ connections, className }: CrossSubject
     <div className={cn("mt-10", className)}>
       <div className="mb-6 flex items-center gap-2.5">
         <Waypoints className="h-4 w-4 text-ink-soft dark:text-bone-soft" strokeWidth={1.75} aria-hidden="true" />
-        <p className="font-mono text-label uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
+        <p className="font-mono text-label uppercase tracking-eyebrow text-ink-soft dark:text-bone-soft">
           Cross-subject connections
         </p>
       </div>

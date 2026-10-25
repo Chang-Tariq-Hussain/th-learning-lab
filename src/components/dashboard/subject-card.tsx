@@ -87,7 +87,7 @@ export function SubjectCard({ subject }: SubjectCardProps) {
         </div>
 
         <div className="mt-auto flex items-center justify-between pt-2">
-          <span className="text-xs text-ink-soft dark:text-bone-soft">
+          <span className="text-helper text-ink-soft dark:text-bone-soft">
             {topicCount} {topicCount === 1 ? "topic" : "topics"}
           </span>
           <span

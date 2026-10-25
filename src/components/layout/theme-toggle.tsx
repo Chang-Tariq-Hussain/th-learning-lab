@@ -22,11 +22,12 @@ export function ThemeToggle({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   // Avoid hydration mismatch: theme is only known client-side.
   useEffect(() => setMounted(true), []);
 
-  useDismiss(wrapperRef, open, () => setOpen(false));
+  useDismiss(wrapperRef, open, () => setOpen(false), triggerRef);
 
   const activeId = mounted ? resolvedTheme : undefined;
   const isDark = getThemeDefinition(activeId)?.type === "dark";
@@ -37,14 +38,13 @@ export function ThemeToggle({ className }: { className?: string }) {
       <button
         key={option.id}
         type="button"
-        role="menuitemradio"
-        aria-checked={selected}
+        aria-pressed={selected}
         onClick={() => {
           setTheme(option.id);
           setOpen(false);
         }}
         className={cn(
-          "flex w-full items-center gap-2.5 rounded-md px-2.5 py-1.5 text-left text-sm text-ink-soft transition-colors hover:bg-ink/[0.04] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone",
+          "flex min-h-11 w-full items-center gap-2.5 rounded-md px-2.5 py-1.5 text-left text-sm lg:min-h-0 text-ink-soft transition-colors hover:bg-ink/[0.04] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone",
           selected && "text-ink dark:text-bone"
         )}
       >
@@ -64,13 +64,14 @@ export function ThemeToggle({ className }: { className?: string }) {
   return (
     <div ref={wrapperRef} className="relative">
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
-        aria-haspopup="menu"
         aria-expanded={open}
+        aria-controls="theme-panel"
         aria-label="Choose theme"
         className={cn(
-          "inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 text-ink-soft transition-colors hover:border-ink/30 hover:text-ink dark:border-bone/15 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone",
+          "inline-flex h-11 w-11 items-center justify-center rounded-full lg:h-9 lg:w-9 border border-ink/10 text-ink-soft transition-colors hover:border-ink/30 hover:text-ink dark:border-bone/15 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-chalkboard",
           className
         )}
@@ -93,18 +94,19 @@ export function ThemeToggle({ className }: { className?: string }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: -4 }}
             transition={{ duration: 0.12 }}
-            role="menu"
+            id="theme-panel"
+            role="group"
             aria-label="Theme"
             className="absolute right-0 top-full z-50 mt-2 max-h-80 w-52 overflow-y-auto rounded-card border border-line bg-paper p-2 shadow-card dark:border-line-dark dark:bg-chalkboard"
           >
-            <p className="px-2.5 pb-1 pt-1 font-mono text-[0.6875rem] uppercase tracking-[0.15em] text-ink-soft/70 dark:text-bone-soft/70">
+            <p className="px-2.5 pb-1 pt-1 font-mono text-label uppercase tracking-eyebrow text-ink-soft dark:text-bone-soft">
               Light
             </p>
             {lightThemes.map(renderOption)}
 
             <div className="my-1.5 h-px bg-line dark:bg-line-dark" />
 
-            <p className="px-2.5 pb-1 pt-1 font-mono text-[0.6875rem] uppercase tracking-[0.15em] text-ink-soft/70 dark:text-bone-soft/70">
+            <p className="px-2.5 pb-1 pt-1 font-mono text-label uppercase tracking-eyebrow text-ink-soft dark:text-bone-soft">
               Dark
             </p>
             {darkThemes.map(renderOption)}

@@ -43,7 +43,7 @@ const HIDE_BELOW_HEADER: Record<NonNullable<Column<unknown>["hideBelow"]>, strin
  * layout="scroll" — for narrow numeric tables. Always a table, scrolling sideways inside its own bordered
  *   box (never the page), with the first column pinned so rows stay readable.
  */
-export function DataTable<T>({ caption, columns, rows, rowKey, empty, layout = "cards" }: { caption: string; columns: Column<T>[]; rows: T[]; rowKey: (row: T) => string; empty: string; layout?: Layout }) {
+export function DataTable<T>({ caption, columns, rows, rowKey, empty, layout = "cards" }: { caption: string; columns: Column<T>[]; rows: T[]; rowKey: (row: T) => string; empty: ReactNode; layout?: Layout }) {
   const cards = layout === "cards";
   return (
     <div
@@ -93,7 +93,7 @@ export function DataTable<T>({ caption, columns, rows, rowKey, empty, layout = "
                     role="cell"
                     {...(cards && !c.hideLabel ? { "data-label": c.header } : {})}
                     className={cn(
-                      "text-ink [overflow-wrap:anywhere] dark:text-bone",
+                      cards ? "text-ink [overflow-wrap:anywhere] dark:text-bone" : "text-ink break-words dark:text-bone",
                       cards
                         ? cn(
                             "block py-1.5 md:table-cell md:px-3 md:py-3",
@@ -115,6 +115,17 @@ export function DataTable<T>({ caption, columns, rows, rowKey, empty, layout = "
           )}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+/** A distinct, helpful empty state: say what is empty, why, and what to do next. */
+export function EmptyState({ title, hint, action }: { title: string; hint?: string; action?: ReactNode }) {
+  return (
+    <div className="mx-auto flex max-w-md flex-col items-center gap-2 py-4 text-center">
+      <p className="font-medium text-ink dark:text-bone">{title}</p>
+      {hint ? <p className="text-helper text-ink-soft dark:text-bone-soft">{hint}</p> : null}
+      {action}
     </div>
   );
 }

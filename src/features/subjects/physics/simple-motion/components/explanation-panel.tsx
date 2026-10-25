@@ -17,7 +17,7 @@ export function ExplanationPanel() {
   return (
     <div className="flex h-full flex-col gap-4 rounded-[1.75rem] border border-line bg-white/70 p-6 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04]">
       <div>
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-physics">What&apos;s happening</p>
+        <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-physics">What&apos;s happening</p>
         <h2 className="mt-1 font-display text-xl font-medium text-ink dark:text-bone">The idea of motion</h2>
       </div>
 

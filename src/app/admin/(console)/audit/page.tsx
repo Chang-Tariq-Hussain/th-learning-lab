@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { friendlyError } from "@/lib/admin/errors";
-import { DataTable, type Column } from "@/components/admin/data-table";
+import { DataTable, EmptyState, type Column } from "@/components/admin/data-table";
+import { ListError, ListNav, NavLink, Results } from "@/components/admin/list-nav";
 import { FilterBar } from "@/components/admin/filter-bar";
 import { Pagination } from "@/components/admin/pagination";
+import { linkBtnCls, summaryCls } from "@/components/admin/form-styles";
 import { requirePermission } from "@/lib/admin/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -58,7 +60,7 @@ export default async function AuditLogPage({ searchParams }: { searchParams: { a
           <p><span className="font-mono">{r.entity}</span>{r.entity_id ? <span className="text-ink-soft dark:text-bone-soft"> · {r.entity_id}</span> : null}</p>
           {r.before || r.after || r.meta ? (
             <details>
-              <summary className="inline-flex min-h-11 cursor-pointer items-center text-pine-700 underline md:min-h-0 dark:text-pine-300">Details</summary>
+              <summary className={`${summaryCls} text-pine-700 dark:text-pine-300`}>Details</summary>
               <pre className="mt-1 max-h-60 overflow-auto rounded bg-ink/[0.04] p-2 font-mono text-label dark:bg-bone/[0.06]">{[r.before ? `before: ${json(r.before)}` : "", r.after ? `after: ${json(r.after)}` : "", r.meta ? `meta: ${json(r.meta)}` : ""].filter(Boolean).join("\n")}</pre>
             </details>
           ) : null}
@@ -73,11 +75,15 @@ export default async function AuditLogPage({ searchParams }: { searchParams: { a
         <h1 className="font-display text-2xl font-medium">Audit log</h1>
         <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">Append-only record of sign-ins, role changes and content imports. Entries cannot be edited or deleted, by anyone.</p>
       </div>
+      <ListNav>
       <FilterBar action="/admin/audit" q={q} qLabel="Search" qPlaceholder="Actor email, entity id, action…"
         fields={[{ name: "action", label: "Action", value: action, options: KNOWN_ACTIONS.map((a) => ({ value: a, label: a })) }]} />
-      {error ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">Could not load the audit log: {friendlyError(error)}</p> : null}
-      <DataTable caption="Audit log" columns={columns} rows={rows} rowKey={(r) => String(r.id)} empty="No entries match." />
+      <Results>
+      {error ? <ListError message={`Could not load the audit log: ${friendlyError(error)}`} /> : null}
+      {error ? null : <DataTable caption="Audit log" columns={columns} rows={rows} rowKey={(r) => String(r.id)} empty={<EmptyState title="No entries match." hint="The log only records sign-ins, role changes and content changes." action={Object.values(params).some(Boolean) ? <NavLink href="/admin/audit" className={linkBtnCls}>Clear filters</NavLink> : undefined} />} />}
       <Pagination base="/admin/audit" params={params} page={page} pageCount={pageCount} total={total} pageSize={PAGE_SIZE} />
+      </Results>
+      </ListNav>
     </div>
   );
 }

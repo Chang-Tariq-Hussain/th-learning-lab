@@ -1,10 +1,11 @@
 "use client";
 
 import { useTransition, type FormEvent } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/ui/spinner";
 import { fieldCls, labelCls } from "./form-styles";
+import { NavLink, useListNav } from "./list-nav";
+import { primaryButtonColors } from "@/components/ui/button-styles";
 
 export interface FilterField {
   name: string;
@@ -19,7 +20,9 @@ export interface FilterField {
  */
 export function FilterBar({ action, fields, q, qLabel, qPlaceholder, label = "Filter results" }: { action: string; fields: FilterField[]; q: string; qLabel: string; qPlaceholder: string; label?: string }) {
   const router = useRouter();
-  const [pending, startTransition] = useTransition();
+  const [ownPending, startTransition] = useTransition();
+  const list = useListNav();
+  const pending = list ? list.pending : ownPending;
   const active = q !== "" || fields.some((f) => f.value !== "");
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -27,7 +30,9 @@ export function FilterBar({ action, fields, q, qLabel, qPlaceholder, label = "Fi
     const sp = new URLSearchParams();
     for (const [k, v] of new FormData(e.currentTarget).entries()) if (typeof v === "string" && v.trim() !== "") sp.set(k, v.trim());
     const qs = sp.toString();
-    startTransition(() => router.push(qs ? `${action}?${qs}` : action));
+    const href = qs ? `${action}?${qs}` : action;
+    if (list) list.navigate(href);
+    else startTransition(() => router.push(href));
   };
 
   return (
@@ -48,12 +53,12 @@ export function FilterBar({ action, fields, q, qLabel, qPlaceholder, label = "Fi
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-pine-600 px-4 text-sm font-medium text-paper hover:bg-pine-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 md:min-h-9 dark:bg-pine-500 dark:text-chalkboard"
+        className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 lg:min-h-9 ${primaryButtonColors}`}
       >
         {pending ? <Spinner /> : null}
         {pending ? "Applying…" : "Apply"}
       </button>
-      {active ? <Link href={action} className="inline-flex min-h-11 items-center text-sm text-ink-soft underline md:min-h-9 dark:text-bone-soft">Clear</Link> : null}
+      {active ? <NavLink href={action} className="inline-flex min-h-11 items-center text-sm text-ink-soft underline lg:min-h-9 dark:text-bone-soft">Clear filters</NavLink> : null}
     </form>
   );
 }

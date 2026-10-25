@@ -32,7 +32,7 @@ export default function DhcpSimulatorPage() {
       />
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-it">Information Technology · Networking Fundamentals</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-it">Information Technology · Networking Fundamentals</p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">DHCP Simulator</h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
           The eighth topic in the Networking branch. See how a device with no address gets its whole network configuration automatically: the DORA process, address pools, leases, and what happens when the pool runs out.

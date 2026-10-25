@@ -25,10 +25,10 @@ export default function SindhTeacherHub() {
           const st = BANK_STATS[e];
           return (
             <li key={e} className="rounded-lg border border-ink/10 p-5 dark:border-bone/15">
-              <p className="text-xs uppercase tracking-wide text-ink/60 dark:text-bone/60">{cfg.level}</p>
+              <p className="text-helper uppercase tracking-wide text-ink-soft dark:text-bone-soft">{cfg.level}</p>
               <h2 className="font-display text-2xl text-ink dark:text-bone">{cfg.label}</h2>
               <p className="text-sm text-ink-soft dark:text-bone-soft">{cfg.fullName}</p>
-              <ul className="mt-3 space-y-1 text-sm text-ink/80 dark:text-bone/80">
+              <ul className="mt-3 space-y-1 text-sm text-ink dark:text-bone">
                 <li>{st.total} questions in the bank</li>
                 <li>{cfg.mock.mockCount} mocks · {cfg.mock.questions} questions · {cfg.mock.durationMinutes} min</li>
                 <li>Subject, topic, difficulty and mixed practice</li>

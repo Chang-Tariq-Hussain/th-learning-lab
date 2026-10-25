@@ -28,7 +28,7 @@ export default function MidpointOfALineSegmentPage() {
       />
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">Mathematics · Coordinate Geometry</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-math">Mathematics · Coordinate Geometry</p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">Midpoint of a Line Segment</h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
           Drag point A or B and watch the midpoint M stay exactly halfway between them.

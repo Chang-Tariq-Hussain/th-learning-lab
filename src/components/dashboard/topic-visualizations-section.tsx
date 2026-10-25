@@ -60,7 +60,7 @@ export function TopicVisualizationsSection({
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search this topic…"
           aria-label="Search visualizations in this topic"
-          className="w-full rounded-full border border-line bg-white/70 py-2.5 pl-10 pr-4 text-sm text-ink outline-none transition-colors placeholder:text-ink-soft/60 focus:border-ink/30 dark:border-line-dark dark:bg-white/[0.03] dark:text-bone dark:placeholder:text-bone-soft/50 dark:focus:border-bone/30"
+          className="w-full rounded-full border border-line bg-white/70 min-h-11 py-2.5 pl-10 pr-4 text-base text-ink lg:min-h-0 lg:text-sm outline-none transition-colors focus:border-ink/30 dark:border-line-dark dark:bg-white/[0.03] dark:text-bone dark:focus:border-bone/30"
         />
       </div>
 

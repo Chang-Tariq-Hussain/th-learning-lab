@@ -28,7 +28,7 @@ export default function MitosisPage() {
       />
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-biology">
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-biology">
           Biology · Cell Division
         </p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">

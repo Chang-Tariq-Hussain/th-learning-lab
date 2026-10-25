@@ -28,7 +28,7 @@ export function FormulaCard({ formula, caption, display = true, className }: For
       )}
     >
       {caption ? (
-        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.15em] text-ink-soft dark:text-bone-soft">
+        <p className="mb-2 font-mono text-label uppercase tracking-[0.15em] text-ink-soft dark:text-bone-soft">
           {caption}
         </p>
       ) : null}

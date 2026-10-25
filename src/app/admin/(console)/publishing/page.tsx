@@ -154,7 +154,7 @@ export default async function PublishingPage({ searchParams }: { searchParams: {
       </section>
 
       <details className="space-y-2 rounded-xl border border-ink/10 p-4 dark:border-bone/15">
-        <summary id="h-how" className="cursor-pointer font-display text-lg font-medium">Advanced: publish from the command line (developers)</summary>
+        <summary id="h-how" className="min-h-11 cursor-pointer py-2.5 font-display text-lg font-medium">Advanced: publish from the command line (developers)</summary>
         <ol className="list-decimal space-y-1 pl-5 text-sm">
           <li>On a machine with the project and <code className="font-mono">DATABASE_URL</code> set: <code className="font-mono">npm run content:publish -- --dry-run</code> to preview.</li>
           <li><code className="font-mono">npm run content:publish</code> writes <code className="font-mono">src/content/overlay.json</code> and <code className="font-mono">manifest.json</code>. It refuses, and writes nothing, if publishing could break learners (a mock losing a question, an emptied bank, a question missing from the database).</li>

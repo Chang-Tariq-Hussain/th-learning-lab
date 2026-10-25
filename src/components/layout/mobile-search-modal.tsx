@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { Search, X } from "lucide-react";
 import { groupBySubject, searchIndex } from "@/lib/search-index";
+import { useModal } from "@/hooks/use-modal";
 import { SearchResultsList } from "./search-results-list";
 
 export interface MobileSearchModalProps {
@@ -41,11 +42,11 @@ export function MobileSearchModal({ onClose }: MobileSearchModalProps) {
   const matches = useMemo(() => searchIndex(query, 20), [query]);
   const groups = useMemo(() => groupBySubject(matches), [matches]);
 
+  const panelRef = useRef<HTMLDivElement>(null);
+  useModal(panelRef, onClose);
+
   useEffect(() => {
     inputRef.current?.focus();
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
     // This modal is only meant to be visible below the `sm` breakpoint
     // (see the `sm:hidden` on the root element, matching the icon
     // button that opens it). If the viewport is resized past `sm`
@@ -54,20 +55,15 @@ export function MobileSearchModal({ onClose }: MobileSearchModalProps) {
     const handleResize = () => {
       if (window.innerWidth >= 640) onClose();
     };
-    document.addEventListener("keydown", handleKeyDown);
     window.addEventListener("resize", handleResize);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("resize", handleResize);
-      document.body.style.overflow = "";
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, [onClose]);
 
   if (!mounted) return null;
 
   return createPortal(
     <motion.div
+      ref={panelRef}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -94,13 +90,13 @@ export function MobileSearchModal({ onClose }: MobileSearchModalProps) {
           placeholder="Search topics, subjects, simulations..."
           aria-label="Search subjects, topics, and simulations"
           autoComplete="off"
-          className="min-w-0 flex-1 bg-transparent text-base text-ink placeholder:text-ink-soft/60 focus:outline-none dark:text-bone dark:placeholder:text-bone-soft/50"
+          className="min-h-11 min-w-0 flex-1 bg-transparent text-base text-ink focus:outline-none dark:text-bone"
         />
         <button
           type="button"
           onClick={onClose}
           aria-label="Close search"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/[0.06] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.08] dark:hover:text-bone"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.08] dark:hover:text-bone"
         >
           <X className="h-4.5 w-4.5" strokeWidth={1.75} />
         </button>
@@ -122,7 +118,7 @@ export function MobileSearchModal({ onClose }: MobileSearchModalProps) {
           <div className="flex flex-col gap-4">
             {groups.map((group) => (
               <div key={group.subjectName}>
-                <p className="px-3 pb-1.5 font-mono text-label uppercase tracking-[0.15em] text-ink-soft dark:text-bone-soft">
+                <p className="px-3 pb-1.5 font-mono text-label uppercase tracking-eyebrow text-ink-soft dark:text-bone-soft">
                   {group.subjectName}
                 </p>
                 <SearchResultsList matches={group.entries} activeId={null} onSelect={onClose} />

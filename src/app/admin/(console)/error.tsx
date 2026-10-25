@@ -23,7 +23,7 @@ export default function AdminError({ error, reset }: { error: Error & { digest?:
       </div>
       <div className="flex flex-wrap items-center justify-center gap-3">
         <form action={reset}><SubmitButton variant="primary" pendingLabel="Retrying…">Try again</SubmitButton></form>
-        <Link href="/admin" className="inline-flex min-h-11 items-center text-sm underline md:min-h-9">Back to overview</Link>
+        <Link href="/admin" className="inline-flex min-h-11 items-center text-sm underline lg:min-h-9">Back to overview</Link>
       </div>
     </div>
   );

@@ -49,9 +49,9 @@ export function SearchResultsList({ matches, activeId, onSelect, emptyLabel, cla
             <span aria-hidden="true" className={cn("h-1.5 w-1.5 shrink-0 rounded-full", subjectDot[match.subjectSlug])} />
             <span className="min-w-0 flex-1">
               <span className="block truncate font-medium">{match.label}</span>
-              <span className="block truncate text-xs text-ink-soft/80 dark:text-bone-soft/80">{match.subtitle}</span>
+              <span className="block truncate text-helper text-ink-soft dark:text-bone-soft">{match.subtitle}</span>
             </span>
-            <span className="shrink-0 font-mono text-label uppercase tracking-wide text-ink-soft/60 dark:text-bone-soft/60">
+            <span className="shrink-0 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
               {kindLabel[match.kind]}
             </span>
           </Link>

@@ -26,7 +26,7 @@ export default function CssMixedDrillPage() {
       />
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">Mathematics · CSS Quantitative Ability</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-math">Mathematics · CSS Quantitative Ability</p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">Mixed Timed Drill</h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
           Train speed and accuracy together. Choose a length and a time per question, then review exactly what went wrong, topic by topic.

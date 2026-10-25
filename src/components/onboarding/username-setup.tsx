@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/logo";
@@ -17,8 +17,22 @@ import { siteConfig } from "@/config/site";
 export function UsernameSetup() {
   const { username, hydrated, setUsername } = useUserProfile();
   const [value, setValue] = useState("");
+  const open = hydrated && !username;
 
-  if (!hydrated || username) return null;
+  // A modal dialog: the page behind it is inert (no Tab into it, hidden from screen readers) and does not scroll.
+  useEffect(() => {
+    if (!open) return;
+    const app = document.getElementById("learner-app");
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    app?.setAttribute("inert", "");
+    return () => {
+      document.body.style.overflow = previous;
+      app?.removeAttribute("inert");
+    };
+  }, [open]);
+
+  if (!open) return null;
 
   const canContinue = sanitizeUsername(value).length > 0;
 
@@ -33,13 +47,13 @@ export function UsernameSetup() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="username-setup-heading"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-paper px-4 dark:bg-chalkboard"
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-paper px-4 py-6 dark:bg-chalkboard"
     >
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className="w-full max-w-sm rounded-card border border-line bg-paper p-8 text-center shadow-card dark:border-line-dark dark:bg-chalkboard"
+        className="my-auto w-full max-w-sm rounded-card border border-line bg-paper p-5 text-center shadow-card sm:p-8 dark:border-line-dark dark:bg-chalkboard"
       >
         <Logo className="mx-auto h-9 w-9 text-pine-600 dark:text-pine-300" />
 
@@ -52,7 +66,7 @@ export function UsernameSetup() {
 
         <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-3">
           <div className="text-left">
-            <label htmlFor="username-setup-input" className="mb-1.5 block text-xs font-medium text-ink-soft dark:text-bone-soft">
+            <label htmlFor="username-setup-input" className="mb-1.5 block text-sm font-medium text-ink-soft dark:text-bone-soft">
               What should we call you?
             </label>
             <input
@@ -63,7 +77,7 @@ export function UsernameSetup() {
               placeholder="Enter your name"
               maxLength={USERNAME_MAX_LENGTH}
               autoFocus
-              className="w-full rounded-md border border-ink/15 bg-transparent px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-soft/60 focus:border-pine-500 focus:outline-none dark:border-bone/20 dark:text-bone dark:placeholder:text-bone-soft/50"
+              className="min-h-11 w-full rounded-md border border-ink/15 bg-transparent px-3.5 py-2.5 text-base text-ink sm:text-sm focus-visible:border-pine-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 dark:border-bone/20 dark:text-bone"
             />
           </div>
           <Button type="submit" variant="primary" size="md" disabled={!canContinue} className="w-full">

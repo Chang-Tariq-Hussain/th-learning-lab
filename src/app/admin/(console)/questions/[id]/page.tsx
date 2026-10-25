@@ -4,7 +4,10 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Flash } from "@/components/admin/flash";
 import { CheckText, SourceBadge, StatusPill } from "@/components/admin/question-badges";
-import { QuestionContentFields, inputCls, labelCls } from "@/components/admin/question-fields";
+import { FieldError, QuestionContentFields, inputCls, labelCls } from "@/components/admin/question-fields";
+import { describe, fieldErrorsFor } from "@/lib/questions/field-errors";
+import { ConfirmAction } from "@/components/admin/confirm-action";
+import { summaryCls, textLinkCls } from "@/components/admin/form-styles";
 import { requirePermission } from "@/lib/admin/auth";
 import { DraftBanner } from "@/components/admin/draft-banner";
 import { draftToDefaults, readDraft } from "@/lib/admin/draft";
@@ -53,12 +56,13 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
   const availableBanks = ((bankData ?? []) as { slug: string; title: string }[]).filter((b) => !inBanks.has(b.slug));
   const draft = editor ? readDraft(q.id) : null;
   const provDraft = editor ? readDraft(`${q.id}:prov`) : null;
+  const errs = fieldErrorsFor(searchParams.error);
   const edited = q.source_hash ? q.content_hash !== q.source_hash : null;
 
   return (
     <div className="space-y-8">
       <div>
-        <p className="text-sm"><Link href="/admin/questions" className="text-pine-700 underline dark:text-pine-300">← Question bank</Link></p>
+        <p className="text-sm"><Link href="/admin/questions" className={textLinkCls}>← Question bank</Link></p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           <h1 className="font-display text-2xl font-medium">{q.legacy_id}</h1>
           <StatusPill status={q.status} /><SourceBadge source={q.source_type} /><CheckText check={q.answer_check} />
@@ -74,15 +78,18 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
       <section aria-labelledby="h-content" className="space-y-3">
         <h2 id="h-content" className="font-display text-lg font-medium">Content</h2>
         {editor ? (
-          <form action={saveQuestionAction} className="space-y-4">
-            {draft ? <DraftBanner returnTo={`/admin/questions/${q.id}`} stale /> : null}
+          <div className="space-y-4">
+          {draft ? <DraftBanner returnTo={`/admin/questions/${q.id}`} stale /> : null}
+          {/* key: remount when a draft is restored or discarded, otherwise the browser keeps showing the old typed text */}
+          <form key={draft ? "draft" : q.content_hash} action={saveQuestionAction} className="space-y-4">
             <input type="hidden" name="id" value={q.id} />
             <input type="hidden" name="expected_hash" value={q.content_hash} />
-            <QuestionContentFields showDifficulty={quizSystem} d={draft ? draftToDefaults(draft) : q} />
+            <QuestionContentFields showDifficulty={quizSystem} d={draft ? draftToDefaults(draft) : q} errors={errs} />
             {!quizSystem ? <p className="text-helper text-ink-soft dark:text-bone-soft">Exam questions must keep exactly 4 options.</p> : null}
             <SubmitButton variant="primary" pendingLabel="Saving…">Save changes</SubmitButton>
             {q.answer_check === "independently_checked" ? <p className="text-helper text-ink-soft dark:text-bone-soft">This answer is marked independently checked. Changing the question, passage, options or correct answer resets that check to Unchecked.</p> : null}
           </form>
+          </div>
         ) : (
           <div className="space-y-3 text-sm">
             <p className="question-text">{q.stem}</p>
@@ -100,12 +107,20 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
             {q.status !== "in_review" ? <form action={statusAction}><input type="hidden" name="id" value={q.id} /><input type="hidden" name="status" value="in_review" /><SubmitButton pendingLabel="Sending…">Send to review</SubmitButton></form> : null}
             {q.status !== "published" ? <form action={statusAction}><input type="hidden" name="id" value={q.id} /><input type="hidden" name="status" value="published" /><SubmitButton pendingLabel="Publishing…">Publish</SubmitButton></form> : null}
             {q.status === "published" || q.status === "in_review" ? (
-              <form action={statusAction} className="flex items-center gap-2"><input type="hidden" name="id" value={q.id} /><input type="hidden" name="status" value="draft" />
-                <input name="reason" required minLength={5} placeholder="Reason to unpublish" aria-label="Reason to unpublish" className={`${inputCls} w-56`} /><SubmitButton pendingLabel="Unpublishing…">Unpublish</SubmitButton></form>
+              <ConfirmAction label="Unpublish…" summary="Unpublish this question?">
+                <p className="text-helper text-ink-soft dark:text-bone-soft">It goes back to draft and learners stop seeing it after the next publish. Say why; it is recorded in the audit log.</p>
+                <form action={statusAction} className="flex flex-wrap items-end gap-2"><input type="hidden" name="id" value={q.id} /><input type="hidden" name="status" value="draft" />
+                  <div className="min-w-[12rem] flex-1"><label htmlFor="unpublish-reason" className={labelCls}>Reason</label><input id="unpublish-reason" name="reason" required minLength={5} className={inputCls} /></div>
+                  <SubmitButton variant="danger-solid" pendingLabel="Unpublishing…">Confirm unpublish</SubmitButton></form>
+              </ConfirmAction>
             ) : null}
             {q.status !== "archived" ? (
-              <form action={statusAction} className="flex items-center gap-2"><input type="hidden" name="id" value={q.id} /><input type="hidden" name="status" value="archived" />
-                <input name="reason" required minLength={5} placeholder="Reason to archive" aria-label="Reason to archive" className={`${inputCls} w-56`} /><SubmitButton variant="danger" pendingLabel="Archiving…">Archive</SubmitButton></form>
+              <ConfirmAction label="Archive…" summary="Archive this question?">
+                <p className="text-helper text-ink-soft dark:text-bone-soft">It is taken out of use and kept on record; questions are never deleted. Say why; it is recorded in the audit log.</p>
+                <form action={statusAction} className="flex flex-wrap items-end gap-2"><input type="hidden" name="id" value={q.id} /><input type="hidden" name="status" value="archived" />
+                  <div className="min-w-[12rem] flex-1"><label htmlFor="archive-reason" className={labelCls}>Reason</label><input id="archive-reason" name="reason" required minLength={5} className={inputCls} /></div>
+                  <SubmitButton variant="danger-solid" pendingLabel="Archiving…">Confirm archive</SubmitButton></form>
+              </ConfirmAction>
             ) : null}
           </div>
         ) : null}
@@ -116,13 +131,14 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
         <h2 id="h-prov" className="font-display text-lg font-medium">Provenance &amp; answer check</h2>
         <p className="text-helper text-ink-soft dark:text-bone-soft">Where the question came from is separate from how far its answer has been checked. A generated question can never be relabelled as a verified past paper; a past paper needs a source year and reference.</p>
         {editor ? (
-          <form action={provenanceAction} className="space-y-3 rounded-xl border border-ink/10 p-4 dark:border-bone/15">
-            {provDraft ? <DraftBanner returnTo={`/admin/questions/${q.id}`} stale /> : null}
+          <div className="space-y-3">
+          {provDraft ? <DraftBanner returnTo={`/admin/questions/${q.id}`} stale /> : null}
+          <form key={provDraft ? "draft" : q.content_hash} action={provenanceAction} className="space-y-3 rounded-xl border border-ink/10 p-4 dark:border-bone/15">
             <input type="hidden" name="id" value={q.id} /><input type="hidden" name="expected_hash" value={q.content_hash} />
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               <div><label htmlFor="source_type" className={labelCls}>Source</label>
-                <select id="source_type" name="source_type" defaultValue={provDraft?.["source_type"] ?? q.source_type} className={inputCls}>{SOURCE_TYPES.map((s) => <option key={s} value={s}>{SOURCE_LABEL[s]}</option>)}</select></div>
-              <div><label htmlFor="source_year" className={labelCls}>Source year</label><input id="source_year" name="source_year" type="number" defaultValue={provDraft?.["source_year"] ?? q.source_year ?? ""} className={inputCls} /></div>
+                <select id="source_type" name="source_type" defaultValue={provDraft?.["source_type"] ?? q.source_type} className={inputCls} {...describe("source_type", errs)}>{SOURCE_TYPES.map((s) => <option key={s} value={s}>{SOURCE_LABEL[s]}</option>)}</select></div>
+              <div><label htmlFor="source_year" className={labelCls}>Source year</label><input id="source_year" name="source_year" type="number" defaultValue={provDraft?.["source_year"] ?? q.source_year ?? ""} className={inputCls} {...describe("source_year", errs)} /><FieldError id="source_year" errors={errs} /></div>
               <div><label htmlFor="source_exam" className={labelCls}>Source exam</label><input id="source_exam" name="source_exam" defaultValue={provDraft?.["source_exam"] ?? q.source_exam ?? ""} className={inputCls} /></div>
               <div><label htmlFor="source_reference" className={labelCls}>Source reference</label><input id="source_reference" name="source_reference" defaultValue={provDraft?.["source_reference"] ?? q.source_reference ?? ""} className={inputCls} /></div>
               <div><label htmlFor="source_note" className={labelCls}>Source note</label><input id="source_note" name="source_note" defaultValue={provDraft?.["source_note"] ?? q.source_note ?? ""} className={inputCls} /></div>
@@ -130,9 +146,10 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
                 <select id="answer_check" name="answer_check" defaultValue={provDraft?.["answer_check"] ?? q.answer_check} className={inputCls}>{ANSWER_CHECKS.map((s) => <option key={s} value={s}>{CHECK_LABEL[s]}</option>)}</select></div>
             </div>
             <div><label htmlFor="verified_note" className={labelCls}>How the answer was checked</label><input id="verified_note" name="verified_note" defaultValue={provDraft?.["verified_note"] ?? q.verified_note ?? ""} className={inputCls} /></div>
-            <div><label htmlFor="reason" className={labelCls}>Reason for this change (required — recorded in the audit log)</label><input id="reason" name="reason" required minLength={10} defaultValue={provDraft?.["reason"] ?? ""} className={inputCls} /></div>
+            <div><label htmlFor="reason" className={labelCls}>Reason for this change (required — recorded in the audit log)</label><input id="reason" name="reason" required minLength={10} defaultValue={provDraft?.["reason"] ?? ""} className={inputCls} {...describe("reason", errs)} /><FieldError id="reason" errors={errs} /></div>
             <SubmitButton pendingLabel="Saving…">Update provenance</SubmitButton>
           </form>
+          </div>
         ) : (
           <dl className="grid gap-1 text-sm sm:grid-cols-2">
             <div><dt className="inline font-medium">Source: </dt><dd className="inline">{SOURCE_LABEL[q.source_type]}{q.source_year ? ` (${q.source_year})` : ""}</dd></div>
@@ -163,9 +180,10 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
                 {q.question_bank_items.map((b, i) => (
                   <li key={i} className="flex flex-wrap items-center gap-3">
                     <span>{b.question_banks?.title ?? b.question_banks?.slug} <span className="text-helper text-ink-soft dark:text-bone-soft">(#{b.position + 1})</span></span>
-                    <details className="inline-block"><summary className="cursor-pointer text-helper text-red-700 underline dark:text-red-300">Remove…</summary>
-                      <form action={bankRemoveAction} className="mt-1 flex items-center gap-2"><input type="hidden" name="id" value={q.id} /><input type="hidden" name="bank" value={b.question_banks?.slug ?? ""} />
-                        <input name="reason" required minLength={5} placeholder="Reason" aria-label="Reason" className={`${inputCls} w-56`} /><SubmitButton variant="danger" pendingLabel="Removing…">Confirm remove</SubmitButton></form></details>
+                    <ConfirmAction label="Remove…" summary={`Remove from ${b.question_banks?.title ?? b.question_banks?.slug}?`}>
+                      <form action={bankRemoveAction} className="flex flex-wrap items-end gap-2"><input type="hidden" name="id" value={q.id} /><input type="hidden" name="bank" value={b.question_banks?.slug ?? ""} />
+                        <div className="min-w-[12rem] flex-1"><label htmlFor={`remove-reason-${i}`} className={labelCls}>Reason</label><input id={`remove-reason-${i}`} name="reason" required minLength={5} className={inputCls} /></div><SubmitButton variant="danger-solid" pendingLabel="Removing…">Confirm remove</SubmitButton></form>
+                    </ConfirmAction>
                   </li>
                 ))}
                 {q.question_bank_items.length === 0 ? <li className="text-ink-soft dark:text-bone-soft">Not in any bank — learners can’t see it until it is added to one.</li> : null}
@@ -192,7 +210,7 @@ export default async function QuestionDetailPage({ params, searchParams }: { par
               <li key={i} className="rounded-lg border border-ink/10 p-3 dark:border-bone/15">
                 <p><span className="font-mono text-xs">{h.action}</span> · {h.actor_email ?? "—"} <span className="text-xs text-ink-soft dark:text-bone-soft">({h.actor_role}) · {new Date(h.at).toLocaleString("en-GB")}</span></p>
                 {h.meta?.reason ? <p className="text-ink-soft dark:text-bone-soft">Reason: {h.meta.reason}</p> : null}
-                {h.before || h.after ? <details><summary className="cursor-pointer text-helper text-pine-700 underline dark:text-pine-300">Changes</summary>
+                {h.before || h.after ? <details><summary className={`${summaryCls} text-helper text-pine-700 dark:text-pine-300`}>Changes</summary>
                   <pre className="mt-1 max-h-48 overflow-auto rounded bg-ink/[0.04] p-2 font-mono text-label dark:bg-bone/[0.06]">{JSON.stringify({ before: h.before, after: h.after }, null, 2)}</pre></details> : null}
               </li>
             ))}

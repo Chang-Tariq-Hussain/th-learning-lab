@@ -2,18 +2,19 @@ import { forwardRef } from "react";
 import type { ButtonHTMLAttributes, MouseEventHandler } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { primaryButtonColors } from "@/components/ui/button-styles";
 
 const variantStyles = {
   primary:
-    "bg-pine-600 text-paper hover:bg-pine-700 dark:bg-pine-500 dark:text-chalkboard dark:hover:bg-pine-300",
+    primaryButtonColors,
   secondary:
     "bg-transparent text-ink dark:text-bone border border-ink/15 dark:border-bone/20 hover:border-ink/40 dark:hover:border-bone/40 hover:bg-ink/[0.03] dark:hover:bg-bone/[0.06]",
   ghost:
-    "bg-transparent text-ink/70 dark:text-bone/70 hover:text-ink dark:hover:text-bone hover:bg-ink/[0.04] dark:hover:bg-bone/[0.06]",
+    "bg-transparent text-ink-soft dark:text-bone-soft hover:text-ink dark:hover:text-bone hover:bg-ink/[0.04] dark:hover:bg-bone/[0.06]",
 } as const;
 
 const sizeStyles = {
-  sm: "h-9 px-3.5 text-sm gap-1.5",
+  sm: "h-11 px-3.5 text-sm gap-1.5 lg:h-9",
   md: "h-11 px-5 text-sm gap-2",
   lg: "h-12 px-6 text-base gap-2",
 } as const;

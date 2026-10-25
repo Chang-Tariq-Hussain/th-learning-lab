@@ -36,7 +36,7 @@ export function PlanSlider({
     <div className="flex w-full flex-col items-center gap-3">
       <label
         htmlFor={id}
-        className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-physics"
+        className="font-mono text-label uppercase tracking-[0.2em] text-subject-physics"
       >
         {label}
       </label>
@@ -56,9 +56,9 @@ export function PlanSlider({
         disabled={disabled}
         onChange={(event) => onChange(Number(event.target.value))}
         aria-label={`Choose ${label.toLowerCase()} in ${unit}`}
-        className="h-3 w-full cursor-pointer touch-none appearance-none rounded-full bg-subject-physics-soft accent-subject-physics disabled:cursor-not-allowed disabled:opacity-60 dark:bg-subject-physics/20 [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-subject-physics [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:h-8 [&::-moz-range-thumb]:w-8 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-subject-physics [&::-moz-range-thumb]:shadow-md"
+        className="h-11 w-full cursor-pointer touch-none appearance-none rounded-full bg-clip-content py-4 bg-subject-physics-soft accent-subject-physics disabled:cursor-not-allowed disabled:opacity-60 dark:bg-subject-physics/20 [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-subject-physics [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:h-8 [&::-moz-range-thumb]:w-8 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-subject-physics [&::-moz-range-thumb]:shadow-md"
       />
-      <div className="flex w-full justify-between px-1 font-mono text-[11px] text-ink-soft dark:text-bone-soft">
+      <div className="flex w-full justify-between px-1 font-mono text-label text-ink-soft dark:text-bone-soft">
         <span>
           {min.toFixed(decimals)} {unit}
         </span>

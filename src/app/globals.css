@@ -12,6 +12,15 @@
     --color-subject-physics: 61 90 254; /* #3D5AFE */
     --color-subject-math: 124 79 224; /* #7C4FE0 */
 
+    /* Subject accents used AS TEXT (text-subject-*). Fills (bg-/border-/fill-subject-*) keep the values above or
+       the plain hex in tailwind.config.ts, because many fills carry white text. These are deeper on light surfaces
+       and lighter on dark ones so every themed surface reaches WCAG AA (4.5:1); npm run verify:contrast checks them. */
+    --color-subject-physics-text: 48 69 214; /* #3045D6 */
+    --color-subject-math-text: 107 63 208; /* #6B3FD0 */
+    --color-subject-chemistry-text: 22 107 60; /* #166B3C */
+    --color-subject-biology-text: 11 110 101; /* #0B6E65 */
+    --color-subject-it-text: 146 64 14; /* #92400E */
+
     /* Surface tokens (see `src/config/themes.ts` for the full theme
        registry). These defaults are the original, unchanged Light
        theme values. Every theme overrides only the half of these
@@ -47,7 +56,7 @@
     /* Body/muted text were base01/base00 (4.99:1 / 4.13:1 on this paper — the muted text failed WCAG AA).
        Now base02 for body and base01 for muted text (>= 4.9:1), both from the Solarized palette. */
     --color-ink: 7 54 66; /* #073642 */
-    --color-ink-soft: 88 110 117; /* #586E75 */
+    --color-ink-soft: 78 101 108; /* #4E656C — was #586E75 (4.46:1 on the hover tint) */
     --color-line: 238 232 213; /* #EEE8D5 */
   }
 
@@ -70,6 +79,11 @@
        sit calmly on dark backgrounds instead of vibrating against them. */
     --color-subject-physics: 129 140 248; /* #818CF8 */
     --color-subject-math: 167 139 250; /* #A78BFA */
+    --color-subject-physics-text: 165 176 255; /* #A5B0FF */
+    --color-subject-math-text: 196 176 252; /* #C4B0FC */
+    --color-subject-chemistry-text: 95 208 143; /* #5FD08F */
+    --color-subject-biology-text: 61 209 192; /* #3DD1C0 */
+    --color-subject-it-text: 245 169 74; /* #F5A94A */
   }
 
   /* The remaining dark-family themes share the same softened subject
@@ -82,6 +96,11 @@
     color-scheme: dark;
     --color-subject-physics: 129 140 248; /* #818CF8 */
     --color-subject-math: 167 139 250; /* #A78BFA */
+    --color-subject-physics-text: 165 176 255; /* #A5B0FF */
+    --color-subject-math-text: 196 176 252; /* #C4B0FC */
+    --color-subject-chemistry-text: 95 208 143; /* #5FD08F */
+    --color-subject-biology-text: 61 209 192; /* #3DD1C0 */
+    --color-subject-it-text: 245 169 74; /* #F5A94A */
   }
 
   /* Midnight — deep blue/near-black. */
@@ -96,7 +115,7 @@
   .dracula {
     --color-chalkboard: 40 42 54; /* #282A36 */
     --color-bone: 248 248 242; /* #F8F8F2 */
-    --color-bone-soft: 139 147 199; /* #8B93C7 */
+    --color-bone-soft: 156 164 214; /* #9CA4D6 — was #8B93C7 (4.05:1 on the hover tint) */
     --color-line-dark: 68 71 90; /* #44475A */
   }
 
@@ -104,7 +123,7 @@
   .nord {
     --color-chalkboard: 46 52 64; /* #2E3440 */
     --color-bone: 236 239 244; /* #ECEFF4 */
-    --color-bone-soft: 154 165 177; /* #9AA5B1 */
+    --color-bone-soft: 168 179 191; /* #A8B3BF — was #9AA5B1 (4.22:1 on the hover tint) */
     --color-line-dark: 59 66 82; /* #3B4252 */
   }
 
@@ -147,6 +166,12 @@
   textarea::placeholder {
     @apply text-ink-soft dark:text-bone-soft;
     opacity: 1;
+  }
+
+  /* Keyboard focus ring: pine-500 is >= 3:1 on the light themes but only ~2.6:1 on Nord/Dracula/One Dark. On dark
+     themes every focus ring (utility classes in components and simulations alike) uses pine-300 instead. */
+  :is(.dark, .midnight, .dracula, .nord, .monokai, .one-dark) :focus-visible {
+    --tw-ring-color: #7aa99a !important;
   }
 
   /* Respect reduced-motion preferences globally */

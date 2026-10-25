@@ -1,11 +1,12 @@
 import { SubmitButton } from "@/components/admin/submit-button";
-import { fieldCls as field, labelCls } from "@/components/admin/form-styles";
+import { checkLabelCls, fieldCls as field, labelCls, linkBtnCls, linkBtnPrimaryCls, textLinkCls } from "@/components/admin/form-styles";
 import Link from "next/link";
 import { friendlyError } from "@/lib/admin/errors";
 import type { Metadata } from "next";
 import { Flash } from "@/components/admin/flash";
 import { FilterBar } from "@/components/admin/filter-bar";
-import { DataTable, type Column } from "@/components/admin/data-table";
+import { DataTable, EmptyState, type Column } from "@/components/admin/data-table";
+import { ListError, ListNav, NavLink, Results } from "@/components/admin/list-nav";
 import { Pagination, buildQuery } from "@/components/admin/pagination";
 import { CheckText, SourceBadge, StatusPill } from "@/components/admin/question-badges";
 import { requirePermission } from "@/lib/admin/auth";
@@ -52,20 +53,20 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
       ? [{
           key: "sel", header: "Select", hideLabel: true, width: "md:w-16",
           cell: (r: QuestionListRow) => (
-            <label className="flex min-h-11 cursor-pointer items-center gap-3 md:min-h-0 md:justify-center">
-              <input type="checkbox" name="ids" value={r.id} form="bulk" className="h-5 w-5 shrink-0 md:h-4 md:w-4" />
+            <label className="flex min-h-11 min-w-11 cursor-pointer items-center gap-3 lg:justify-center">
+              <input type="checkbox" name="ids" value={r.id} form="bulk" className="h-5 w-5 shrink-0" />
               <span className="text-sm md:sr-only">Select {r.legacy_id}</span>
             </label>
           ),
         }]
       : []),
-    { key: "id", header: "ID", width: "md:w-28", className: "font-mono text-helper", cell: (r) => <Link href={`/admin/questions/${r.id}`} className="inline-flex min-h-11 items-center text-pine-700 underline md:min-h-0 dark:text-pine-300">{r.legacy_id}</Link> },
+    { key: "id", header: "ID", width: "md:w-28", className: "font-mono text-helper", cell: (r) => <Link href={`/admin/questions/${r.id}`} className={textLinkCls}>{r.legacy_id}</Link> },
     {
       key: "stem", header: "Question", hideLabel: true,
       cell: (r) => (
         <div>
           {/* The whole question is in the page; it is only visually clamped. The link opens the full detail view. */}
-          <Link href={`/admin/questions/${r.id}`} className="line-clamp-4 break-words text-base leading-snug hover:underline md:line-clamp-3 md:text-sm">{r.stem}</Link>
+          <Link href={`/admin/questions/${r.id}`} className="-my-1 block min-h-11 py-1 line-clamp-4 break-words text-base leading-snug hover:underline md:line-clamp-3 md:text-sm lg:min-h-0">{r.stem}</Link>
           <p className="mt-1 text-helper text-ink-soft dark:text-bone-soft">
             {SYSTEM_LABEL[r.source_system]} · {r.subjects?.slug ?? r.exam_subject ?? "—"}
             {r.content_hash !== r.source_hash ? (r.source_hash ? " · edited in admin" : " · created in admin") : ""}
@@ -95,15 +96,16 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
           <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">Quiz, CSS MPT and teacher-test questions in one place. Every change is audited; questions are archived, never deleted.</p>
         </div>
         <div className="flex flex-wrap gap-2 text-sm">
-          <a href={buildQuery("/admin/questions/export", { ...params, format: "csv" })} className="rounded-lg border border-ink/15 px-3 py-1.5 hover:border-pine-500 dark:border-bone/20">Export CSV</a>
-          <a href={buildQuery("/admin/questions/export", { ...params, format: "json" })} className="rounded-lg border border-ink/15 px-3 py-1.5 hover:border-pine-500 dark:border-bone/20">Export JSON</a>
-          {editor ? <Link href="/admin/questions/import" className="rounded-lg border border-ink/15 px-3 py-1.5 hover:border-pine-500 dark:border-bone/20">Import</Link> : null}
-          {editor ? <Link href="/admin/questions/new" className="rounded-lg bg-pine-600 px-3 py-1.5 font-medium text-paper hover:bg-pine-700 dark:bg-pine-500 dark:text-chalkboard">New question</Link> : null}
+          <a href={buildQuery("/admin/questions/export", { ...params, format: "csv" })} className={linkBtnCls}>Export CSV</a>
+          <a href={buildQuery("/admin/questions/export", { ...params, format: "json" })} className={linkBtnCls}>Export JSON</a>
+          {editor ? <Link href="/admin/questions/import" className={linkBtnCls}>Import</Link> : null}
+          {editor ? <Link href="/admin/questions/new" className={linkBtnPrimaryCls}>New question</Link> : null}
         </div>
       </div>
 
       <Flash ok={searchParams["ok"]} info={searchParams["info"]} warn={searchParams["warn"]} error={searchParams["error"]} />
 
+      <ListNav>
       <FilterBar
         action="/admin/questions" q={f.q} qLabel="Search" qPlaceholder="Question text or ID…"
         fields={[
@@ -116,12 +118,16 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
           { name: "review", label: "Needs review", value: f.review, options: [{ value: "yes", label: "Yes" }, { value: "no", label: "No" }] },
         ]}
       />
-      <p className="text-helper text-ink-soft dark:text-bone-soft">
-        Sort: <Link className="underline" href={sortLink("updated")}>updated</Link> · <Link className="underline" href={sortLink("legacy")}>ID</Link> · <Link className="underline" href={sortLink("system")}>system</Link>
-      </p>
+      <nav aria-label="Sort questions" className="flex flex-wrap items-center gap-x-1 text-helper text-ink-soft dark:text-bone-soft">
+        Sort:
+        {[["updated", "updated"], ["legacy", "ID"], ["system", "system"]].map(([key, label]) => (
+          <NavLink key={key} href={sortLink(key!)} aria-current={f.sort === key ? "true" : undefined} className="inline-flex min-h-11 items-center rounded px-2 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 aria-[current=true]:font-medium aria-[current=true]:text-ink lg:min-h-0 lg:px-1 dark:aria-[current=true]:text-bone">{label}</NavLink>
+        ))}
+      </nav>
 
-      {error ? <p role="alert" className="text-sm text-red-700 dark:text-red-300">Could not load questions: {friendlyError(error)}</p> : null}
-      <DataTable caption="Questions" columns={columns} rows={rows} rowKey={(r) => r.id} empty="No questions match these filters." />
+      <Results>
+      {error ? <ListError message={`Could not load questions: ${friendlyError(error)}`} /> : null}
+      {error ? null : <DataTable caption="Questions" columns={columns} rows={rows} rowKey={(r) => r.id} empty={<EmptyState title="No questions match these filters." hint="Try a shorter search or fewer filters." action={Object.keys(params).length ? <NavLink href="/admin/questions" className={linkBtnCls}>Clear filters</NavLink> : undefined} />} />}
 
       {editor ? (
         <form id="bulk" action={bulkStatusAction} className="flex flex-wrap items-end gap-3 rounded-xl border border-ink/10 p-3 dark:border-bone/15">
@@ -140,13 +146,15 @@ export default async function QuestionBankPage({ searchParams }: { searchParams:
             <label htmlFor="bulk-reason" className={labelCls}>Reason (required to archive / unpublish)</label>
             <input id="bulk-reason" name="reason" maxLength={300} className={`${field} w-full`} />
           </div>
-          <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="confirm" /> I understand this takes questions out of use</label>
-          <SubmitButton pendingLabel={(f) => ({ published: "Publishing…", draft: "Unpublishing…", archived: "Archiving…", in_review: "Sending…" })[String(f?.get("status"))] ?? "Applying…"}>Apply to selected</SubmitButton>
+          <label className={checkLabelCls}><input type="checkbox" name="confirm" className="h-5 w-5" /> I understand this takes questions out of use</label>
+          <SubmitButton pendingLabel={{ field: "status", labels: { published: "Publishing…", draft: "Unpublishing…", archived: "Archiving…", in_review: "Sending…" }, fallback: "Applying…" }}>Apply to selected</SubmitButton>
           <p className="basis-full text-helper text-ink-soft dark:text-bone-soft">Selection is per page (max 100 at a time). Questions flagged “needs review” or missing an explanation are skipped when publishing, and you’ll be told why.</p>
         </form>
       ) : null}
 
       <Pagination base="/admin/questions" params={params} page={page} pageCount={pageCount} total={total} pageSize={PAGE_SIZE} />
+      </Results>
+      </ListNav>
     </div>
   );
 }

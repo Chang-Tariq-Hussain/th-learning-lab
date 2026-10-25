@@ -1,4 +1,5 @@
-import { inputCls, labelCls } from "./form-styles";
+import { describe } from "@/lib/questions/field-errors";
+import { checkLabelCls, fieldErrorCls, inputCls, labelCls } from "./form-styles";
 import { DIFFICULTIES, LANGUAGES, MAX_OPTIONS } from "@/lib/questions/types";
 
 export interface ContentDefaults {
@@ -10,29 +11,39 @@ export interface ContentDefaults {
 export { inputCls, labelCls } from "./form-styles";
 
 /** The editable content of a question. Shared by the create and edit forms (field names match lib/questions/form.ts). */
-export function QuestionContentFields({ d, showDifficulty = true }: { d: ContentDefaults; showDifficulty?: boolean }) {
+/** Inline message for a field (empty when the field has no problem). */
+export function FieldError({ id, errors }: { id: string; errors: Record<string, string> }) {
+  return errors[id] ? <p id={`${id}-error`} className={fieldErrorCls}>{errors[id]}</p> : null;
+}
+
+export function QuestionContentFields({ d, showDifficulty = true, errors = {} }: { d: ContentDefaults; showDifficulty?: boolean; errors?: Record<string, string> }) {
   const options = d.options ?? [];
   return (
     <div className="space-y-4">
       <div>
         <label htmlFor="stem" className={labelCls}>Question</label>
-        <textarea id="stem" name="stem" rows={5} required defaultValue={d.stem ?? ""} className={inputCls} />
+        <textarea id="stem" name="stem" rows={5} required defaultValue={d.stem ?? ""} className={inputCls} {...describe("stem", errors)} />
+        <FieldError id="stem" errors={errors} />
       </div>
       <div>
         <label htmlFor="passage" className={labelCls}>Passage / context (optional)</label>
         <textarea id="passage" name="passage" rows={4} defaultValue={d.passage ?? ""} className={inputCls} />
       </div>
-      <fieldset>
+      <fieldset aria-describedby={[errors["correct"] ? "correct-error" : "", errors["option_0"] ? "option_0-error" : ""].filter(Boolean).join(" ") || undefined}>
         <legend className={labelCls}>Answer options — mark the correct one</legend>
         <div className="space-y-2">
           {Array.from({ length: MAX_OPTIONS }, (_, i) => (
             <div key={i} className="flex items-center gap-3">
-              <input type="radio" name="correct" value={i} defaultChecked={(d.correct_index ?? 0) === i && options[i] !== undefined} aria-label={`Option ${i + 1} is correct`} />
-              <input name={`option_${i}`} defaultValue={options[i] ?? ""} placeholder={i < 2 ? `Option ${i + 1} (required)` : `Option ${i + 1} (optional)`} aria-label={`Option ${i + 1}`} className={inputCls} />
+              <label className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center lg:h-6 lg:w-6">
+                <input type="radio" name="correct" value={i} defaultChecked={(d.correct_index ?? 0) === i && options[i] !== undefined} aria-label={`Option ${i + 1} is correct`} className="h-5 w-5" />
+              </label>
+              <input name={`option_${i}`} defaultValue={options[i] ?? ""} placeholder={i < 2 ? `Option ${i + 1} (required)` : `Option ${i + 1} (optional)`} aria-label={`Option ${i + 1}`} className={inputCls} {...(i === 0 ? describe("option_0", errors) : {})} />
             </div>
           ))}
         </div>
-        <label className="mt-2 flex items-center gap-2 text-sm"><input type="checkbox" name="fixed_order" defaultChecked={d.fixed_order ?? false} /> Keep options in this order (e.g. “all of the above”)</label>
+        <FieldError id="option_0" errors={errors} />
+        <FieldError id="correct" errors={errors} />
+        <label className={`${checkLabelCls} mt-2`}><input type="checkbox" name="fixed_order" defaultChecked={d.fixed_order ?? false} className="h-5 w-5" /> Keep options in this order (e.g. “all of the above”)</label>
       </fieldset>
       <div>
         <label htmlFor="explanation" className={labelCls}>Explanation (required to publish)</label>
@@ -49,7 +60,7 @@ export function QuestionContentFields({ d, showDifficulty = true }: { d: Content
         {showDifficulty ? (
           <div>
             <label htmlFor="difficulty" className={labelCls}>Difficulty</label>
-            <select id="difficulty" name="difficulty" defaultValue={d.difficulty ?? ""} className={inputCls}>
+            <select id="difficulty" name="difficulty" defaultValue={d.difficulty ?? ""} className={inputCls} {...describe("difficulty", errors)}>
               <option value="">—</option>
               {DIFFICULTIES.map((x) => <option key={x} value={x}>{x}</option>)}
             </select>
@@ -57,12 +68,12 @@ export function QuestionContentFields({ d, showDifficulty = true }: { d: Content
         ) : null}
         <div>
           <label htmlFor="language" className={labelCls}>Language</label>
-          <select id="language" name="language" defaultValue={d.language ?? ""} className={inputCls}>
+          <select id="language" name="language" defaultValue={d.language ?? ""} className={inputCls} {...describe("language", errors)}>
             <option value="">—</option>
             {LANGUAGES.map((x) => <option key={x} value={x}>{{ en: "English", ur: "Urdu", sd: "Sindhi" }[x]}</option>)}
           </select>
         </div>
-        <label className="flex items-center gap-2 self-end pb-2 text-sm"><input type="checkbox" name="needs_review" defaultChecked={d.needs_review ?? false} /> Needs review before publishing</label>
+        <label className={`${checkLabelCls} self-end`}><input type="checkbox" name="needs_review" defaultChecked={d.needs_review ?? false} className="h-5 w-5" /> Needs review before publishing</label>
       </div>
     </div>
   );

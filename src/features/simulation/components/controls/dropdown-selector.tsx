@@ -33,7 +33,7 @@ export function DropdownSelector({
           value={value}
           disabled={disabled}
           onChange={(event) => onChange(event.target.value)}
-          className="h-9 w-full appearance-none rounded-md border border-ink/15 bg-transparent pl-2.5 pr-8 text-sm text-ink outline-none transition-colors focus-visible:border-pine-500 disabled:opacity-50 dark:border-bone/20 dark:text-bone [&>option]:bg-paper dark:[&>option]:bg-chalkboard"
+          className="h-11 w-full appearance-none lg:h-9 rounded-md border border-ink/15 bg-transparent pl-2.5 pr-8 text-base text-ink lg:text-sm outline-none transition-colors focus-visible:border-pine-500 disabled:opacity-50 dark:border-bone/20 dark:text-bone [&>option]:bg-paper dark:[&>option]:bg-chalkboard"
         >
           {options.map((option) => (
             <option key={option.value} value={option.value}>

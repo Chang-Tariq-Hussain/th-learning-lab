@@ -34,7 +34,7 @@ export function QuizCta({ href, colorToken, questionCount, className }: QuizCtaP
         </span>
         <div>
           <p className="text-sm font-medium text-ink dark:text-bone">Ready to test your understanding?</p>
-          <p className="text-xs text-ink-soft dark:text-bone-soft">
+          <p className="text-helper text-ink-soft dark:text-bone-soft">
             {questionCount} {questionCount === 1 ? "question" : "questions"} · a few minutes
           </p>
         </div>

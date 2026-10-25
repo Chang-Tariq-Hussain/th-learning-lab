@@ -28,7 +28,7 @@ export default function ChainRuleExplorerPage() {
       />
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">Mathematics · Calculus</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-math">Mathematics · Calculus</p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
           Chain Rule Explorer — Differentiating Composite Functions
         </h1>

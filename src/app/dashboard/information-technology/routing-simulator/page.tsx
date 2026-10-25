@@ -26,7 +26,7 @@ export default function RoutingSimulatorPage() {
       />
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-it">Information Technology · Networking Fundamentals</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-it">Information Technology · Networking Fundamentals</p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">Routing Simulator</h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
           Follow a packet from one network to another. Watch a host decide to use its default gateway, then watch each router look up the destination IP address in its routing table, choose the best matching route and forward the packet, or drop it when no route exists.

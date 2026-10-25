@@ -34,7 +34,7 @@ export function AdminShell({ session, children }: { session: AdminSession; child
       <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper dark:border-bone/15 dark:bg-chalkboard">
         <div className="flex items-center gap-2 px-3 py-2 sm:px-5 lg:py-3">
           <AdminMobileNav items={items} who={who} roleLabel={ROLE_LABEL[session.role]} logoutAction={logoutAction} />
-          <Link href="/admin" className="min-w-0 truncate font-display text-base font-medium">
+          <Link href="/admin" className="inline-flex min-h-11 min-w-0 items-center truncate font-display text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500">
             {siteConfig.name} <span className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">· Admin</span>
           </Link>
           <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
@@ -62,7 +62,7 @@ export function AdminShell({ session, children }: { session: AdminSession; child
             <AdminNav items={items} />
           </div>
         </aside>
-        <main id="admin-main" className="min-w-0 flex-1">{children}</main>
+        <main id="admin-main" tabIndex={-1} className="min-w-0 flex-1 focus:outline-none">{children}</main>
       </div>
     </div>
   );

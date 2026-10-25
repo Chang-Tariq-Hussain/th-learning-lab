@@ -28,7 +28,7 @@ export default function DnaStructurePage() {
       />
 
       <div className="mb-8 text-center">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-biology">Biology · Cell Structure</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-biology">Biology · Cell Structure</p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
           DNA Structure &amp; Base Pairing
         </h1>

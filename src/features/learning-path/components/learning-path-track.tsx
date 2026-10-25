@@ -94,7 +94,7 @@ export function LearningPathTrack({ path, className }: LearningPathTrackProps) {
             {state.recommendation.topic ? (
               <Link
                 href={state.recommendation.topic.href}
-                className={cn("mt-1 inline-flex items-center gap-1 text-sm font-medium hover:underline", colors.text)}
+                className={cn("mt-1 inline-flex min-h-11 items-center gap-1 text-sm font-medium hover:underline lg:min-h-0", colors.text)}
               >
                 Go to {state.recommendation.topic.title}
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />

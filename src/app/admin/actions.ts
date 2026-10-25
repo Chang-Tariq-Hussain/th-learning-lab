@@ -35,7 +35,11 @@ export async function loginAction(formData: FormData): Promise<void> {
     await wait(FAIL_DELAY_MS);
     redirect(failUrl("1", next));
   }
-  const { data: row } = await supabase.from("admin_roles").select("role").eq("user_id", data.user.id).maybeSingle();
+  const { data: row, error: roleError } = await supabase.from("admin_roles").select("role").eq("user_id", data.user.id).maybeSingle();
+  if (roleError) {
+    await supabase.auth.signOut();
+    redirect(failUrl("unavailable", next));
+  }
   if (!row || !isAdminRole(row.role)) {
     await supabase.auth.signOut();
     await wait(FAIL_DELAY_MS);

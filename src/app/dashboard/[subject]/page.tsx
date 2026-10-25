@@ -48,7 +48,7 @@ export default function SubjectHubPage({ params }: SubjectPageProps) {
         <div className="relative overflow-hidden rounded-card border border-subject-it/20 bg-grid-light bg-[length:22px_22px] px-6 py-8 dark:bg-grid-dark sm:px-8 sm:py-10">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-paper via-paper/70 to-transparent dark:from-chalkboard dark:via-chalkboard/70" />
           <div className="relative">
-            <div className="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-subject-it">
+            <div className="mb-3 flex items-center gap-2 font-mono text-label uppercase tracking-eyebrow text-subject-it">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-subject-it" aria-hidden="true" />
               {subject.code}
             </div>
@@ -85,7 +85,7 @@ export default function SubjectHubPage({ params }: SubjectPageProps) {
       <RulerDivider className="my-10" />
 
       <div id="simulations" className="scroll-mt-28">
-        <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
+        <p className="mb-5 font-mono text-label uppercase tracking-eyebrow text-ink-soft dark:text-bone-soft">
           All Simulations
         </p>
         <TopicGrid subject={subject} />

@@ -85,7 +85,7 @@ export function SimulationLearnMore({
     <div className={cn("mt-10", className)}>
       <RulerDivider className="mb-8" />
 
-      <p className={cn("mb-6 font-mono text-label uppercase tracking-[0.2em]", colors.text)}>Learn more</p>
+      <p className={cn("mb-6 font-mono text-label uppercase tracking-eyebrow", colors.text)}>Learn more</p>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <SectionCard

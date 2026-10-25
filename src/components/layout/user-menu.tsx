@@ -35,6 +35,7 @@ export function UserMenu({ align = "right" }: UserMenuProps) {
   const [editing, setEditing] = useState(false);
   const [confirmingReset, setConfirmingReset] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   const name = username ?? "";
   const initials = getInitials(name);
@@ -43,19 +44,20 @@ export function UserMenu({ align = "right" }: UserMenuProps) {
     setOpen(false);
     setConfirmingReset(false);
   };
-  useDismiss(menuRef, open, close);
+  useDismiss(menuRef, open, close, triggerRef);
 
   if (!username) return null;
 
   return (
     <div ref={menuRef} className="relative">
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
-        aria-haspopup="menu"
         aria-expanded={open}
+        aria-controls="user-menu-panel"
         aria-label={`Open menu for ${name}`}
-        className="flex items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-chalkboard"
+        className="flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-chalkboard"
       >
         <UserAvatar initials={initials} />
       </button>
@@ -67,7 +69,8 @@ export function UserMenu({ align = "right" }: UserMenuProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: -4 }}
             transition={{ duration: 0.12 }}
-            role="menu"
+            id="user-menu-panel"
+            role="group"
             aria-label="User menu"
             className={cn(
               "absolute top-full z-50 mt-2 w-64 rounded-card border border-line bg-paper p-2 shadow-card dark:border-line-dark dark:bg-chalkboard",
@@ -83,12 +86,11 @@ export function UserMenu({ align = "right" }: UserMenuProps) {
 
             <button
               type="button"
-              role="menuitem"
-              onClick={() => {
+                            onClick={() => {
                 setEditing(true);
                 setOpen(false);
               }}
-              className="flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-sm text-ink-soft transition-colors hover:bg-ink/[0.04] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone"
+              className="flex min-h-11 w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-sm text-ink-soft transition-colors hover:bg-ink/[0.04] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone"
             >
               <Pencil className="h-3.5 w-3.5" strokeWidth={1.75} />
               Edit Name
@@ -103,12 +105,12 @@ export function UserMenu({ align = "right" }: UserMenuProps) {
 
             {confirmingReset ? (
               <div className="flex flex-col gap-2 px-2.5 py-1.5">
-                <p className="text-xs text-ink-soft dark:text-bone-soft">Remove your saved name from this device?</p>
+                <p className="text-helper text-ink-soft dark:text-bone-soft">Remove your saved name from this device?</p>
                 <div className="flex justify-end gap-2">
                   <button
                     type="button"
                     onClick={() => setConfirmingReset(false)}
-                    className="rounded-md px-2.5 py-1.5 text-xs text-ink-soft transition-colors hover:bg-ink/[0.04] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone"
+                    className="min-h-11 rounded-md px-3 py-1.5 text-sm text-ink-soft transition-colors hover:bg-ink/[0.04] hover:text-ink dark:text-bone-soft dark:hover:bg-bone/[0.06] dark:hover:text-bone"
                   >
                     Cancel
                   </button>
@@ -118,7 +120,7 @@ export function UserMenu({ align = "right" }: UserMenuProps) {
                       resetProfile();
                       close();
                     }}
-                    className="rounded-md bg-rose-600 px-2.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-rose-700"
+                    className="min-h-11 rounded-md bg-rose-700 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-rose-800"
                   >
                     Reset
                   </button>
@@ -127,9 +129,8 @@ export function UserMenu({ align = "right" }: UserMenuProps) {
             ) : (
               <button
                 type="button"
-                role="menuitem"
-                onClick={() => setConfirmingReset(true)}
-                className="flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-sm text-ink-soft transition-colors hover:bg-rose-50 hover:text-rose-600 dark:text-bone-soft dark:hover:bg-rose-900/20 dark:hover:text-rose-400"
+                                onClick={() => setConfirmingReset(true)}
+                className="flex min-h-11 w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-sm text-ink-soft transition-colors hover:bg-rose-50 hover:text-rose-600 dark:text-bone-soft dark:hover:bg-rose-900/20 dark:hover:text-rose-400"
               >
                 <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
                 Reset Profile
@@ -142,10 +143,14 @@ export function UserMenu({ align = "right" }: UserMenuProps) {
       {editing ? (
         <EditNameModal
           currentName={name}
-          onClose={() => setEditing(false)}
+          onClose={() => {
+            setEditing(false);
+            window.setTimeout(() => triggerRef.current?.focus(), 0); // the menu that opened it is gone, so focus the avatar
+          }}
           onSave={(next) => {
             setUsername(next);
             setEditing(false);
+            window.setTimeout(() => triggerRef.current?.focus(), 0);
           }}
         />
       ) : null}

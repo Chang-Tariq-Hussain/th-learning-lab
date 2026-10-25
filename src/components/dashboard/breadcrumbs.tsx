@@ -23,7 +23,7 @@ export function Breadcrumbs({ items, className }: { items: BreadcrumbItem[]; cla
           <span key={`${item.label}-${index}`} className="flex items-center gap-1.5">
             {index > 0 ? <ChevronRight className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} /> : null}
             {item.href && !isLast ? (
-              <Link href={item.href} className="transition-colors hover:text-ink dark:hover:text-bone">
+              <Link href={item.href} className="inline-flex min-h-11 items-center transition-colors hover:text-ink dark:hover:text-bone lg:min-h-0">
                 {item.label}
               </Link>
             ) : (

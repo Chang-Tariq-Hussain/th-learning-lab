@@ -110,7 +110,7 @@ def content(**over):
     d.update(over); return [(k, v) for k, v in d.items()]
 n_save = count_rpc("question_save")
 st, loc = post(Q, f"/admin/questions/{qid}", save_act, [("id", qid), ("expected_hash", h0)] + content(stem="", explanation="x")); check("blank question text is rejected before reaching the database", "required" in unquote(msg(loc, "error")) and count_rpc("question_save") == n_save, loc)
-st, loc = post(Q, f"/admin/questions/{qid}", save_act, [("id", qid), ("expected_hash", h0)] + content(explanation="Rewritten by the question manager")); check("save succeeds", msg(loc, "ok") == "Saved.", loc)
+st, loc = post(Q, f"/admin/questions/{qid}", save_act, [("id", qid), ("expected_hash", h0)] + content(explanation="Rewritten by the question manager")); check("save succeeds", msg(loc, "ok") == "Question updated successfully.", loc)
 check("  → database holds the edit and marks it edited since import", db(f"select explanation from public.questions where id='{qid}'") == "Rewritten by the question manager" and db(f"select content_hash like 'e:%' and content_hash <> source_hash from public.questions where id='{qid}'") == "t")
 check("  → audit row names the actor and records before/after", dbi(f"select count(*) from public.audit_log where entity_id='{qid}' and action='question.updated' and actor_email='qm@x.com' and after ? 'explanation'") >= 1)
 st, loc = post(Q, f"/admin/questions/{qid}", save_act, [("id", qid), ("expected_hash", h0)] + content(explanation="Stale overwrite attempt")); check("a stale edit is refused (no lost update)", "changed by someone else" in unquote(msg(loc, "error")), loc)
@@ -149,9 +149,9 @@ def bulk(ids, status, reason="", confirm=False): return post(Q, "/admin/question
 st, loc = bulk(ids3, "archived", "Duplicates of other questions", confirm=False); check("bulk archive without the confirmation box is refused", "confirmation" in unquote(msg(loc, "error")), loc)
 st, loc = bulk([], "published"); check("bulk with nothing selected is refused", "Select at least one" in unquote(msg(loc, "error")), loc)
 all101 = db("select id from public.questions limit 101").split("\n"); st, loc = bulk(all101, "published"); check("bulk is capped at 100 questions", "between 1 and 100" in unquote(msg(loc, "error")), loc)
-st, loc = bulk(ids3, "archived", "Duplicates of other questions", confirm=True); check("bulk archive (3) succeeds", "3 question(s) set to archived" in unquote(msg(loc, "ok")), loc)
+st, loc = bulk(ids3, "archived", "Duplicates of other questions", confirm=True); check("bulk archive (3) succeeds", "3 question(s) archived" in unquote(msg(loc, "ok")), loc)
 check("  → exactly those 3 are archived, each with its own audit entry", dbi("select count(*) from public.questions where status='archived'") == 3 and dbi("select count(*) from public.audit_log where action='question.status_changed' and after->>'status'='archived'") == 3)
-st, loc = bulk(ids3, "published"); check("bulk restore (publish) works", "3 question(s) set to published" in unquote(msg(loc, "ok")), loc)
+st, loc = bulk(ids3, "published"); check("bulk restore (publish) works", "3 question(s) published" in unquote(msg(loc, "ok")), loc)
 rv = db("select id from public.questions where needs_review and status='published' limit 1")
 bulk([rv], "draft", "Taking it offline to review it", confirm=True); st, loc = bulk([rv], "published")
 check("publishing a 'needs review' question is skipped, with the reason", "needs-review" in unquote(msg(loc, "error")) and db(f"select status from public.questions where id='{rv}'") == "draft", loc)
@@ -166,12 +166,12 @@ st, loc = post(Q, "/admin/questions/new", new_act, [x for x in newq if x[0] != "
 imp_f = form_with(get(Q, "/admin/questions/import")[0], 'name="validate_only"'); imp_act = aid(imp_f)
 good = [{"source_system": "quiz", "subject_slug": "physics", "stem": f"Imported question {i}", "options": ["a", "b"], "correct_index": 0, "explanation": "because"} for i in range(3)]
 before = dbi("select count(*) from public.questions")
-st, loc = post(Q, "/admin/questions/import", imp_act, [("json", json.dumps(good)), ("validate_only", "on")]); check("import validate-only passes and saves nothing", "All 3 rows are valid" in unquote(msg(loc, "ok")) and dbi("select count(*) from public.questions") == before, loc)
+st, loc = post(Q, "/admin/questions/import", imp_act, [("json", json.dumps(good)), ("validate_only", "on")]); check("import validate-only passes and saves nothing", "all 3 rows are valid" in unquote(msg(loc, "ok")) and dbi("select count(*) from public.questions") == before, loc)
 bad = good + [{**good[0], "source_type": "verified_past_paper"}, {**good[0], "subject_slug": "nope"}]
 st, loc = post(Q, "/admin/questions/import", imp_act, [("json", json.dumps(bad))]); errs = re.findall(r"err=([^&]*)", loc or "")
 check("a file with bad rows imports NOTHING and lists every problem", dbi("select count(*) from public.questions") == before and len(errs) == 2 and "row 4" in unquote(errs[0]) and "row 5" in unquote(errs[1]), loc)
 tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False); json.dump(good + [{**good[0], "stem": "=HYPERLINK(\"http://evil\",\"x\")"}], tmp); tmp.close()
-st, loc = post(Q, "/admin/questions/import", imp_act, [], files=[("file", tmp.name)]); check("a valid file upload imports as drafts", "Imported 4" in unquote(msg(loc, "ok")) and dbi("select count(*) from public.questions") == before + 4, loc)
+st, loc = post(Q, "/admin/questions/import", imp_act, [], files=[("file", tmp.name)]); check("a valid file upload imports as drafts", "4 question(s) added as drafts" in unquote(msg(loc, "ok")) and dbi("select count(*) from public.questions") == before + 4, loc)
 check("  → audited once", dbi("select count(*) from public.audit_log where action='question.imported'") == 1)
 st, loc = post(Q, "/admin/questions/import", imp_act, [("json", "not json")]); check("garbage input is refused with a clear message", "not valid JSON" in unquote(msg(loc, "error")), loc)
 
@@ -195,7 +195,7 @@ check("Publishing page: before any publish it says learners see the code as writ
 BANK = "biology-cell-explorer"
 first, second = db(f"select q.id from public.question_bank_items bi join public.questions q on q.id=bi.question_id join public.question_banks b on b.id=bi.bank_id where b.slug='{BANK}' order by bi.position limit 2").split("\n")
 first_legacy = db(f"select legacy_id from public.questions where id='{first}'"); second_legacy = db(f"select legacy_id from public.questions where id='{second}'")
-st, loc = edit(Q, first, stem="PHASE4-EDITED: The nucleus of a cell is best described as:"); check("edit the first question of a bank", msg(loc, "ok") == "Saved.", loc)
+st, loc = edit(Q, first, stem="PHASE4-EDITED: The nucleus of a cell is best described as:"); check("edit the first question of a bank", msg(loc, "ok") == "Question updated successfully.", loc)
 body, _ = get(Q, f"/admin/questions/{first}"); check("detail page says the change has not reached learners yet (publish state)", "Quiz banks" in body)
 html2, _ = get(Q, f"/admin/questions/{second}"); stat_f = [f for f in forms(html2) if 'name="status" value="archived"' in f][0]
 st, loc = post(Q, f"/admin/questions/{second}", aid(stat_f), [("id", second), ("status", "archived"), ("reason", "Phase 4 test: withdrawn question")]); check("archive the second question of the bank", db(f"select status from public.questions where id='{second}'") == "archived", loc)
@@ -221,7 +221,7 @@ st, loc = post(Q, "/admin/questions/new", new_act, t4); pstq = (re.search(r"/adm
 ph, _ = get(Q, f"/admin/questions/{pstq}"); pf = [f for f in forms(ph) if 'name="status" value="published"' in f][0]
 post(Q, f"/admin/questions/{pstq}", aid(pf), [("id", pstq), ("status", "published")]); check("create and publish a PST question", dbi(f"select count(*) from public.question_exams qe join public.exam_types et on et.id=qe.exam_type_id where qe.question_id='{pstq}' and et.slug='pst'") == 1 and db(f"select status from public.questions where id='{pstq}'") == "published")
 mpt_id = db("select q.id from public.questions q join public.exam_questions eq on eq.question_id=q.id where q.source_system='mpt' order by q.legacy_id limit 1"); mpt_legacy = db(f"select legacy_id from public.questions where id='{mpt_id}'")
-st, loc = edit(Q, mpt_id, explanation="PHASE4-EDITED explanation for a question inside a stored mock."); check("edit an MPT question that is part of a stored mock", msg(loc, "ok") == "Saved.", loc)
+st, loc = edit(Q, mpt_id, explanation="PHASE4-EDITED explanation for a question inside a stored mock."); check("edit an MPT question that is part of a stored mock", msg(loc, "ok") == "Question updated successfully.", loc)
 lb, _ = get(Q, "/admin/questions"); bulk_act2 = aid(form_with(lb, 'name="confirm"'))
 st, loc = post(Q, "/admin/questions", bulk_act2, [("back", "/admin/questions"), ("status", "archived"), ("reason", "Trying to archive a mock question"), ("confirm", "on"), ("ids", mpt_id)])
 check("archiving a question that a live mock uses is refused, naming the mock", "live mock" in unquote(msg(loc, "error")) and db(f"select status from public.questions where id='{mpt_id}'") == "published", loc)

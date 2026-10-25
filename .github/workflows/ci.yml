@@ -20,3 +20,32 @@ jobs:
       - run: npm run db:verify
       # Fails the build on any Critical content-health finding (broken answers, bad mocks, provenance violations).
       - run: npm run health -- --fail-on=critical
+
+  # Browser tests for the critical UI flows (admin drawer, nav state, double-submit, 320px overflow).
+  # Password mode needs no database; the tests that need Postgres (toast-after-save, question bank, ...) skip
+  # themselves. Run the full set locally in accounts mode: see docs/e2e.md. NOTE: this job has not been run on
+  # GitHub's runners yet -- check its first run.
+  e2e:
+    runs-on: ubuntu-latest
+    env:
+      E2E_MODE: password
+      ADMIN_PASSWORD: ci-password-123
+      ADMIN_SESSION_SECRET: ci-session-secret-0123456789abcdef0123456789
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report
+            test-results
+          retention-days: 7

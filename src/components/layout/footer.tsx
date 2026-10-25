@@ -29,15 +29,15 @@ export function Footer() {
 
           {columns.map((column) => (
             <div key={column.title}>
-              <p className="font-mono text-label uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
+              <p className="font-mono text-label uppercase tracking-eyebrow text-ink-soft dark:text-bone-soft">
                 {column.title}
               </p>
-              <ul className="mt-3 flex flex-col gap-2.5">
+              <ul className="mt-2 flex flex-col">
                 {column.items.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="text-sm text-ink-soft transition-colors hover:text-ink dark:text-bone-soft dark:hover:text-bone"
+                      className="inline-flex min-h-11 items-center text-sm text-ink-soft transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 lg:min-h-9 dark:text-bone-soft dark:hover:text-bone"
                     >
                       {item.label}
                     </Link>
@@ -51,11 +51,11 @@ export function Footer() {
         <RulerDivider className="my-10" />
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-xs text-ink-soft dark:text-bone-soft">
+          <p className="font-mono text-label text-ink-soft dark:text-bone-soft">
             © {new Date().getFullYear()} {siteConfig.name}. Built for
             curious minds.
           </p>
-          <p className="font-mono text-xs text-ink-soft dark:text-bone-soft">
+          <p className="font-mono text-label text-ink-soft dark:text-bone-soft">
             v0.1.0 — foundation release
           </p>
         </div>

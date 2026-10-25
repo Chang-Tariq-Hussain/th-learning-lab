@@ -2,9 +2,9 @@ import { SEVERITY_LABEL, type Severity } from "@/lib/content-health";
 import { cn } from "@/lib/utils";
 
 const STYLES: Record<Severity, string> = {
-  critical: "border-red-500/40 bg-red-500/10 text-red-700 dark:text-red-300",
-  high: "border-orange-500/40 bg-orange-500/10 text-orange-700 dark:text-orange-300",
-  medium: "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300",
+  critical: "border-red-500/40 bg-red-500/10 text-red-800 dark:text-red-300",
+  high: "border-orange-500/40 bg-orange-500/10 text-orange-800 dark:text-orange-300",
+  medium: "border-amber-500/40 bg-amber-500/10 text-amber-800 dark:text-amber-300",
   low: "border-sky-500/40 bg-sky-500/10 text-sky-700 dark:text-sky-300",
   info: "border-ink/15 bg-ink/[0.04] text-ink-soft dark:border-bone/20 dark:bg-bone/[0.06] dark:text-bone-soft",
 };

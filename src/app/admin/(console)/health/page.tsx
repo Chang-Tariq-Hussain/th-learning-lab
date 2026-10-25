@@ -1,7 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { DataTable, type Column } from "@/components/admin/data-table";
+import { DataTable, EmptyState, type Column } from "@/components/admin/data-table";
+import { ListNav, NavLink, Results } from "@/components/admin/list-nav";
 import { FilterBar } from "@/components/admin/filter-bar";
+import { linkBtnCls, textLinkCls } from "@/components/admin/form-styles";
 import { Pagination, buildQuery } from "@/components/admin/pagination";
 import { SeverityBadge } from "@/components/admin/severity-badge";
 import { requirePermission } from "@/lib/admin/auth";
@@ -56,7 +58,7 @@ export default async function ContentHealthPage({ searchParams }: { searchParams
         <div className="space-y-0.5 text-helper">
           <p className="font-mono text-ink-soft dark:text-bone-soft">{f.check}</p>
           {f.file ? <p className="break-all font-mono">{f.file}</p> : null}
-          {f.href ? <Link href={f.href} className="text-pine-700 underline dark:text-pine-300" target="_blank" rel="noreferrer">Open page</Link> : null}
+          {f.href ? <Link href={f.href} className={textLinkCls} target="_blank" rel="noreferrer">Open page</Link> : null}
         </div>
       ),
     },
@@ -72,12 +74,13 @@ export default async function ContentHealthPage({ searchParams }: { searchParams
         </p>
       </div>
 
+      <ListNav>
       <ul className="flex flex-wrap gap-2" aria-label="Findings by severity">
         {SEVERITIES.map((s) => (
           <li key={s}>
-            <Link href={buildQuery("/admin/health", { ...params, severity: s })} className="flex items-center gap-2 rounded-lg border border-ink/10 px-3 py-1.5 text-sm hover:border-pine-500 dark:border-bone/15">
+            <NavLink href={buildQuery("/admin/health", { ...params, severity: s })} className="flex min-h-11 items-center gap-2 rounded-lg border border-ink/10 px-3 py-1.5 text-sm hover:border-pine-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 lg:min-h-9 dark:border-bone/15">
               <SeverityBadge severity={s} /> <span className="tabular-nums">{report.counts[s]}</span>
-            </Link>
+            </NavLink>
           </li>
         ))}
       </ul>
@@ -99,8 +102,11 @@ export default async function ContentHealthPage({ searchParams }: { searchParams
         ]}
       />
 
-      <DataTable caption="Content health findings" columns={columns} rows={rows} rowKey={(f) => f.id} empty="No findings match these filters." />
+      <Results>
+      <DataTable caption="Content health findings" columns={columns} rows={rows} rowKey={(f) => f.id} empty={<EmptyState title="No findings match these filters." hint="That can be good news: nothing was found for this combination." action={Object.values(params).some(Boolean) ? <NavLink href="/admin/health" className={linkBtnCls}>Clear filters</NavLink> : undefined} />} />
       <Pagination base="/admin/health" params={params} page={page} pageCount={pageCount} total={filtered.length} pageSize={PAGE_SIZE} />
+      </Results>
+      </ListNav>
     </div>
   );
 }

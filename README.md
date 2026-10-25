@@ -106,6 +106,31 @@ Each `SubjectTopic` already carries a `hasSimulation` flag. The intended pattern
 - Full keyboard focus states (`focus-visible` rings) on every interactive element; a skip-to-content link is included.
 - Dark mode is class-based (`darkMode: "class"` in Tailwind config) and driven by `next-themes`, defaulting to the user's system preference.
 
+## UI conventions (reuse these; don't re-implement)
+
+- **Feedback / toasts** (`src/components/ui/toast.tsx`): server actions end in `flashRedirect(path, "ok" | "info" | "warn" | "error", message)`;
+  the page shows it once, as a toast *and* (for errors) inline. A toast appears only after the server answered — never optimistically.
+  Wrap an action body in `guardAction` so an unexpected throw becomes an error flash instead of a crash. Polite region for ok/info, assertive for warn/error.
+- **Buttons that submit** (`components/admin/submit-button.tsx`): always use `SubmitButton`. It disables itself while pending, sets `aria-busy`
+  and announces via a status region. `pendingLabel` must be serializable (a string, or `{ field, labels, fallback }` keyed on a submitter field).
+- **Tables** (`components/admin/data-table.tsx`): `DataTable` renders a real table from `lg` up and labelled cards below it (`td[data-label]`). Use
+  `EmptyState` for empty results. Long text wraps (`break-words` / `[overflow-wrap:anywhere]`); never rely on `body` hiding overflow.
+- **List navigation** (`components/admin/list-nav.tsx`): wrap list pages in `ListNav`, results in `Results`, use `NavLink` for sort/pagination links,
+  `FilterBar` for filters and `ListError` for load errors — they share one pending state and show a skeleton instead of a frozen page.
+- **Destructive actions** (`components/admin/confirm-action.tsx`): `ConfirmAction` (a `<details>` disclosure) + `SubmitButton variant="danger-solid"`.
+- **Field errors** (`lib/questions/field-errors.ts`): map the server sentence to a field id; render `FieldError` and spread `describe(id, errors)`
+  to get `aria-invalid` / `aria-describedby`.
+- **Dialogs and drawers** (`hooks/use-modal.ts`): `useModal(panelRef, onClose)` gives the Tab trap, Escape, scroll lock, `inert` background and
+  focus return. Portal fixed-position dialogs to `document.body`.
+- **Navigation styling** (`components/layout/nav-styles.ts`, `isNavActive` in `lib/nav.ts`): one definition of active/hover/focus; the active item gets
+  `aria-current="page"`. `npm run verify:nav` checks the matchers.
+- **Type and touch targets**: use `text-label` (12px) and `text-helper` (13px) instead of `text-[11px]` etc.; controls are ≥44px until `lg`;
+  form inputs are 16px until `lg` (stops iOS zooming). Shared control classes live in `components/admin/form-styles.ts` and
+  `components/ui/button-styles.ts`.
+- **Colour tokens**: change themes in `globals.css`, not in pages. `npm run verify:contrast` checks 28 foreground/background pairs across all 10
+  themes (`-- --all` lists every pair).
+- Browser tests: `docs/e2e.md`.
+
 # 2D Physics Engine — `src/features/subjects/physics/engine`
 
 A general-purpose, simulation-agnostic 2D physics engine: vectors, mass,

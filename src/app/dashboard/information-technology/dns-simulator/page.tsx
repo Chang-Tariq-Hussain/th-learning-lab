@@ -26,7 +26,7 @@ export default function DnsSimulatorPage() {
       />
 
       <div className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-it">Information Technology · Networking Fundamentals</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-it">Information Technology · Networking Fundamentals</p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">DNS Simulator</h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
           The ninth topic in the Networking branch. See how a name like www.example.com becomes an IP address: the query, the DNS hierarchy, recursive resolution, records, caching and TTL, and what happens when a lookup goes wrong.

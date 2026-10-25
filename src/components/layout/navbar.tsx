@@ -63,9 +63,31 @@ export function Navbar() {
   // Choosing a page closes the mobile menu.
   useEffect(() => setMenuOpen(false), [pathname]);
 
-  // Keep the active item visible in the scrollable row.
+  // Keep the active item visible in the scrollable row: on every route change, and when the row's width changes
+  // (rotating a tablet, resizing the window) because that can push the active item out of view.
   useEffect(() => {
-    navRowRef.current?.querySelector<HTMLElement>('[aria-current="page"]')?.scrollIntoView({ block: "nearest", inline: "nearest" });
+    const row = navRowRef.current;
+    if (!row) return;
+    const reveal = () => {
+      const active = row.querySelector<HTMLElement>('[aria-current="page"]');
+      if (!active || row.scrollWidth <= row.clientWidth) return;
+      const a = active.getBoundingClientRect();
+      const r = row.getBoundingClientRect();
+      if (a.left < r.left) row.scrollLeft -= r.left - a.left;
+      else if (a.right > r.right) row.scrollLeft += a.right - r.right;
+    };
+    reveal();
+    // The row's own box rarely changes when its content does (a web font swapping in widens the items
+    // without resizing the row), so watch the items too and re-check once fonts have loaded.
+    const ro = new ResizeObserver(reveal);
+    ro.observe(row);
+    Array.from(row.children).forEach((child) => ro.observe(child));
+    let cancelled = false;
+    document.fonts?.ready.then(() => { if (!cancelled) reveal(); });
+    return () => {
+      cancelled = true;
+      ro.disconnect();
+    };
   }, [pathname]);
 
   // Mobile menu: Escape (focus returns to the menu button) and a tap outside the header both close it.
@@ -104,19 +126,21 @@ export function Navbar() {
   return (
     <header ref={headerRef} className="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md dark:border-line-dark dark:bg-chalkboard/85">
       {/* TOP ROW -- logo left, search + avatar far right */}
-      <Container>
+      <Container className="px-4 sm:px-8">
         <div className="flex h-16 items-center justify-between gap-3">
           <Link
             href="/"
-            className="flex shrink-0 items-center gap-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-chalkboard"
+            aria-label={siteConfig.name}
+            className="flex min-h-11 min-w-0 shrink items-center gap-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-chalkboard"
           >
-            <Logo className="h-7 w-7 text-pine-600 dark:text-pine-300" />
-            <span className="font-display text-lg font-medium tracking-tight text-ink dark:text-bone">
+            <Logo className="h-7 w-7 shrink-0 text-pine-600 dark:text-pine-300" />
+            {/* Below 360px the header has room for the mark only; the link keeps its accessible name. */}
+            <span className="hidden truncate font-display text-base font-medium tracking-tight text-ink min-[360px]:inline min-[400px]:text-lg dark:text-bone">
               {siteConfig.name}
             </span>
           </Link>
 
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-1 sm:gap-3">
             <HeaderSearch className="hidden w-40 sm:block md:w-56 lg:w-64" />
 
             <button
@@ -161,7 +185,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={cn(navLinkBase, "shrink-0 whitespace-nowrap py-1.5", active ? navLinkActive : navLinkInactive)}
+                  className={cn(navLinkBase, "min-h-11 shrink-0 whitespace-nowrap py-1.5 lg:min-h-0", active ? navLinkActive : navLinkInactive)}
                 >
                   <Icon aria-hidden="true" strokeWidth={1.75} className={cn(navIconCls, active ? navIconActive : navIconInactive)} />
                   {item.label}

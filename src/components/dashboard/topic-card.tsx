@@ -46,7 +46,7 @@ export function TopicCard({ subjectSlug, colorToken, topic }: TopicCardProps) {
 
         <div className="flex-1">
           <h3 className="font-display text-lg font-medium text-ink dark:text-bone">{topic.name}</h3>
-          <p className="mt-1 font-mono text-xs uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+          <p className="mt-1 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
             {isComingSoon ? "Coming soon" : `${activityCount} ${activityCount === 1 ? "activity" : "activities"}`}
           </p>
         </div>

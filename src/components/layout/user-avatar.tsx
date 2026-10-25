@@ -12,8 +12,8 @@ export function UserAvatar({ initials, size = "sm", className }: UserAvatarProps
     <span
       aria-hidden="true"
       className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-full bg-pine-600 font-mono font-medium text-paper dark:bg-pine-500 dark:text-chalkboard",
-        size === "sm" ? "h-9 w-9 text-xs" : "h-11 w-11 text-sm",
+        "inline-flex shrink-0 items-center justify-center rounded-full bg-pine-600 font-mono font-medium text-paper dark:bg-pine-300 dark:text-chalkboard",
+        size === "sm" ? "h-9 w-9 text-helper" : "h-11 w-11 text-sm",
         className,
       )}
     >

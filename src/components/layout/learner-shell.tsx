@@ -24,9 +24,9 @@ export function LearnerShell({ children }: { children: ReactNode }) {
       <LearningProgressProvider>
         <PracticePerformanceProvider>
           <SkipLink />
-          <div className="flex min-h-screen flex-col">
+          <div id="learner-app" className="flex min-h-screen flex-col">
             <Navbar />
-            <main id="main-content" className="flex-1">
+            <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
               {children}
             </main>
             <Footer />

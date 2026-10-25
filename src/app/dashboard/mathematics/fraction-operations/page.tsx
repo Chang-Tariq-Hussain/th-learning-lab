@@ -29,7 +29,7 @@ export default function FractionOperationsPage() {
       />
 
       <div className="mb-10 text-center">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-math">Mathematics · Fractions</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-math">Mathematics · Fractions</p>
         <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
           Fraction Operations Lab
         </h1>

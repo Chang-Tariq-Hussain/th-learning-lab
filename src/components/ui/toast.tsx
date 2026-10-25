@@ -87,11 +87,11 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         Bottom of the screen so it never covers the sticky headers. Both live regions are always in the DOM:
         screen readers only announce content added to a region that already exists.
       */}
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[100] flex flex-col items-center gap-2 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:items-end sm:px-5 sm:pb-5">
-        <div role="status" aria-live="polite" aria-atomic="false" className="flex w-full flex-col items-center gap-2 sm:items-end">
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[110] flex flex-col items-center gap-2 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:items-end sm:px-5 sm:pb-5">
+        <div role="status" aria-live="polite" aria-atomic="false" data-toast-region="polite" className="flex w-full flex-col items-center gap-2 sm:items-end">
           {polite.map((t) => <ToastCard key={t.id} item={t} onClose={dismiss} />)}
         </div>
-        <div role="alert" aria-live="assertive" aria-atomic="false" className="flex w-full flex-col items-center gap-2 sm:items-end">
+        <div role="alert" aria-live="assertive" aria-atomic="false" data-toast-region="assertive" className="flex w-full flex-col items-center gap-2 sm:items-end">
           {assertive.map((t) => <ToastCard key={t.id} item={t} onClose={dismiss} />)}
         </div>
       </div>
@@ -121,7 +121,7 @@ function ToastCard({ item, onClose }: { item: ToastItem; onClose: (id: string) =
       )}
     >
       <Icon aria-hidden="true" strokeWidth={2} className={cn("mt-0.5 h-5 w-5 shrink-0", iconCls)} />
-      <p className="min-w-0 flex-1 break-words text-sm leading-snug">
+      <p className="min-w-0 flex-1 text-sm leading-snug [overflow-wrap:anywhere]">
         <span className="sr-only">{label}: </span>
         {item.message}
       </p>

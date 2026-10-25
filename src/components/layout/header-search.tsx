@@ -55,7 +55,7 @@ export function HeaderSearch({ className }: { className?: string }) {
 
   return (
     <div ref={containerRef} className={cn("relative w-56", className)}>
-      <div className="flex h-9 w-full items-center gap-2 rounded-full border border-ink/10 bg-transparent px-3.5 text-sm text-ink-soft transition-colors focus-within:border-pine-500 dark:border-bone/15 dark:text-bone-soft">
+      <div className="flex h-11 w-full items-center lg:h-9 gap-2 rounded-full border border-ink/10 bg-transparent px-3.5 text-base text-ink-soft transition-colors lg:text-sm focus-within:border-pine-500 dark:border-bone/15 dark:text-bone-soft">
         <Search className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} aria-hidden="true" />
         <input
           type="text"
@@ -73,7 +73,7 @@ export function HeaderSearch({ className }: { className?: string }) {
           aria-controls="header-search-listbox"
           aria-activedescendant={activeMatch ? `search-option-${activeMatch.id}` : undefined}
           autoComplete="off"
-          className="w-full bg-transparent text-ink placeholder:text-ink-soft/60 focus:outline-none dark:text-bone dark:placeholder:text-bone-soft/50"
+          className="h-full min-h-11 w-full bg-transparent text-ink focus:outline-none dark:text-bone lg:min-h-0"
         />
       </div>
 

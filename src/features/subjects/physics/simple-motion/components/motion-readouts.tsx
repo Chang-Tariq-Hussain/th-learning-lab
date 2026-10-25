@@ -62,7 +62,7 @@ export function MotionReadouts({
                 : "border-line bg-white/70 dark:border-line-dark dark:bg-white/[0.04]",
             )}
           >
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-physics">
+            <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-physics">
               {stat.label}
               {isUnknown ? " · ?" : ""}
             </p>
