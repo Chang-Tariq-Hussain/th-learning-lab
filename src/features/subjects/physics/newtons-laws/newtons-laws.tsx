@@ -3,9 +3,13 @@
 import {
   InstructionsPanel,
   Legend,
+  PlaybackControls,
   SimulationContainer,
+  SimulationLayout,
+  SimulationReadouts,
   Toolbar,
   useSimulation,
+  type SimulationRunState,
 } from "@/features/simulation";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
@@ -79,7 +83,9 @@ export function NewtonsLaws() {
 }
 
 function NewtonsLawsBody() {
-  const { values, frameCount } = useSimulation();
+  const { values, frameCount, status } = useSimulation();
+  const runState: SimulationRunState =
+    status === "playing" ? "running" : status === "finished" ? "finished" : status === "paused" ? "paused" : "idle";
   const [law, setLaw] = useState<Law>(1);
   const [tab, setTab] = useState<SidePanelTab>("formulas");
   const [teacher, setTeacher] = useState<TeacherSettings>({
@@ -163,21 +169,56 @@ function NewtonsLawsBody() {
         <TeacherControls settings={teacher} onChange={setTeacher} />
       </div>
 
-      <div
-        className={cn(
-          "grid gap-6",
-          !presentation && !teacher.formulasOnly && "lg:grid-cols-[1fr_360px]",
-        )}
-      >
-        {/* min-w-0: CSS Grid items default to min-width: auto, so without
-            this the track can't shrink back below its content's intrinsic
-            width once Presentation/Formulas-only mode (which drops the
-            lg:grid-cols-[1fr_360px] class above) has let it grow to full
-            width — that's what was causing the horizontal-scroll-on-exit
-            bug. See the matching comment in projectile-motion.tsx. */}
+      {teacher.formulasOnly ? (
         <div className="flex min-w-0 flex-col gap-4">
-          {!teacher.formulasOnly ? (
-            law === 3 ? (
+        {!presentation ? (
+          <div className="flex min-w-0 flex-col gap-4">
+            {!teacher.formulasOnly ? (
+              law === 1 ? (
+                <Law1Panel
+                  engine={cartEngine}
+                  readouts={cartSnapshot.readouts}
+                  viewOptions={cartView}
+                  onViewOptionsChange={setCartView}
+                />
+              ) : law === 2 ? (
+                <Law2Panel engine={cartEngine} readouts={cartSnapshot.readouts} />
+              ) : (
+                <Law3Panel engine={law3Engine} />
+              )
+            ) : null}
+
+            {law === 3 ? (
+              <Law3DataPanel readouts={law3Readouts} />
+            ) : (
+              // OPTIONAL: the full readout table (momentum, weight,
+              // normal force, elapsed time, distance...) — everything
+              // beyond the five primary numbers already shown above the
+              // canvas, collapsed by default so it doesn't compete with
+              // them.
+              <details className="group rounded-card border border-line bg-white/50 dark:border-line-dark dark:bg-white/[0.03]">
+                <summary className="cursor-pointer select-none rounded-card px-4 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink dark:text-bone-soft dark:hover:text-bone">
+                  Advanced data
+                </summary>
+                <div className="border-t border-line p-4 pt-0 dark:border-line-dark">
+                  <CartDataPanel readouts={cartSnapshot.readouts} />
+                </div>
+              </details>
+            )}
+          </div>
+        ) : null}
+
+        </div>
+      ) : (
+      <SimulationLayout
+        stageLabel="Newton's laws simulation"
+        aspect={2}
+        stageCap="30rem"
+        stageOnly={presentation}
+        runState={runState}
+        statusDetail="Simulation finished."
+        stage={
+          law === 3 ? (
               <Law3Canvas
                 engine={law3Engine}
                 readouts={law3Readouts}
@@ -190,7 +231,22 @@ function NewtonsLawsBody() {
                 options={displayOptions}
               />
             )
-          ) : null}
+        }
+        readouts={
+          !presentation && law !== 3 ? (
+            <SimulationReadouts
+              label="Net force, acceleration and velocity"
+              items={[
+                { id: "f", label: "Net force", value: cartSnapshot.readouts.netForce.toFixed(0), unit: "N" },
+                { id: "a", label: "Accel.", value: cartSnapshot.readouts.acceleration.toFixed(2), unit: "m/s²" },
+                { id: "v", label: "Velocity", value: cartSnapshot.readouts.velocity.toFixed(2), unit: "m/s" },
+              ]}
+            />
+          ) : undefined
+        }
+        actions={<PlaybackControls />}
+        controls={
+          <div className="flex min-w-0 flex-col gap-4">
           {/* PRIMARY readouts for the cart rig — the numbers Newton's
               Second Law is actually about, right under the experiment.
               Law 3's own data panel already keeps to a short, focused
@@ -248,7 +304,8 @@ function NewtonsLawsBody() {
             </>
           ) : null}
 
-          <Toolbar exportFilename="newtons-laws" />
+
+            <Toolbar exportFilename="newtons-laws" showPlayback={false} />
           {!presentation && !teacher.formulasOnly ? (
             <Legend
               items={
@@ -276,7 +333,6 @@ function NewtonsLawsBody() {
               }
             />
           ) : null}
-        </div>
 
         {!presentation ? (
           <div className="flex min-w-0 flex-col gap-4">
@@ -314,7 +370,11 @@ function NewtonsLawsBody() {
             )}
           </div>
         ) : null}
-      </div>
+
+          </div>
+        }
+      />
+      )}
 
       {!presentation ? (
         <>

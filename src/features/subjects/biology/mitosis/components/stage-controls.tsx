@@ -33,25 +33,25 @@ export function StageControls({
   onReset,
 }: StageControlsProps) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-3">
+    <div className="flex flex-wrap items-center justify-center gap-2">
       <Button
         variant="secondary"
-        size="lg"
+        size="md"
         onClick={onPreviousStage}
         disabled={running || atStart}
         aria-label="Previous stage"
       >
         <ChevronLeft className="h-4 w-4" strokeWidth={1.75} />
-        Previous
+        <span className="hidden sm:inline">Previous</span>
       </Button>
 
       {running ? (
-        <Button variant="secondary" size="lg" onClick={onPause}>
+        <Button variant="secondary" size="md" onClick={onPause}>
           <Pause className="h-4 w-4" strokeWidth={1.75} />
           Pause
         </Button>
       ) : (
-        <Button variant="primary" size="lg" onClick={onStart} disabled={finished}>
+        <Button variant="primary" size="md" onClick={onStart} disabled={finished}>
           <Play className="h-4 w-4" strokeWidth={1.75} />
           Play
         </Button>
@@ -59,16 +59,16 @@ export function StageControls({
 
       <Button
         variant="secondary"
-        size="lg"
+        size="md"
         onClick={onNextStage}
         disabled={running || finished}
         aria-label="Next stage"
       >
-        Next
+        <span className="hidden sm:inline">Next</span>
         <ChevronRight className="h-4 w-4" strokeWidth={1.75} />
       </Button>
 
-      <Button variant="ghost" size="lg" onClick={onReset}>
+      <Button variant="ghost" size="md" onClick={onReset}>
         <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
         Restart
       </Button>

@@ -1,6 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  SimulationLayout,
+  SimulationReadouts,
+  usePrefersReducedMotion,
+  type SimulationRunState,
+} from "@/features/simulation";
 import { EnergyBars } from "./components/energy-bars";
 import { EnergyControls } from "./components/energy-controls";
 import { EnergyStage } from "./components/energy-stage";
@@ -29,6 +35,7 @@ import {
  */
 export function SimpleEnergy() {
   const [state, setState] = useState<EnergyState>(INITIAL_ENERGY_STATE);
+  const reducedMotion = usePrefersReducedMotion();
   const frameRef = useRef<number | null>(null);
   const lastTickRef = useRef<number | null>(null);
 
@@ -53,7 +60,8 @@ export function SimpleEnergy() {
       if (lastTickRef.current === null) {
         lastTickRef.current = now;
       }
-      const deltaSeconds = (now - lastTickRef.current) / 1000;
+      // A hidden tab pauses rAF; clamp so the animation does not jump when the learner returns.
+      const deltaSeconds = Math.min((now - lastTickRef.current) / 1000, 0.1);
       lastTickRef.current = now;
 
       setState((prev) => {
@@ -80,6 +88,11 @@ export function SimpleEnergy() {
 
   const handleRelease = () => {
     if (finished) return;
+    // Reduced motion: no animation loop; show the finished state straight away.
+    if (reducedMotion) {
+      setState((prev) => ({ ...prev, running: false, playbackSeconds: PLAYBACK_DURATION_S }));
+      return;
+    }
     setState((prev) => ({ ...prev, running: true }));
   };
 
@@ -98,21 +111,26 @@ export function SimpleEnergy() {
     }));
   };
 
+  const runState: SimulationRunState = state.running
+    ? "running"
+    : finished
+      ? "finished"
+      : state.playbackSeconds > 0
+        ? "paused"
+        : "idle";
+
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[18rem_1fr]">
-        <ExplanationPanel />
-
-        <div className="flex flex-col gap-6">
-          <div className="h-[220px] rounded-[1.75rem] border border-line bg-white/70 p-4 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[240px]">
-            <EnergyStage plan={state} progress={progress} />
-          </div>
-
-          <EnergyBars plan={state} progress={progress} />
-        </div>
-      </div>
-
-      <div className="w-full max-w-md">
+    <SimulationLayout
+      stageLabel="Simple energy simulation"
+      aspect={3.2}
+      runState={runState}
+      statusDetail="The ball has reached the bottom of the hill."
+      stage={<EnergyStage plan={state} progress={progress} />}
+      readouts={<EnergyBars plan={state} progress={progress} />}
+      actions={
+        <EnergyControls running={state.running} finished={finished} onRelease={handleRelease} onReset={handleReset} />
+      }
+      controls={
         <PlanSlider
           id="height-slider"
           label="Height"
@@ -124,14 +142,8 @@ export function SimpleEnergy() {
           onChange={handleHeightChange}
           disabled={state.running}
         />
-      </div>
-
-      <EnergyControls
-        running={state.running}
-        finished={finished}
-        onRelease={handleRelease}
-        onReset={handleReset}
-      />
-    </div>
+      }
+      explanation={<ExplanationPanel />}
+    />
   );
 }

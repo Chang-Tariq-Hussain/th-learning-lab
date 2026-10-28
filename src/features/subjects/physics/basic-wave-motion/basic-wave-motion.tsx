@@ -2,6 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  SimulationLayout,
+  SimulationReadouts,
+  usePrefersReducedMotion,
+} from "@/features/simulation";
+import { WaveActions } from "./components/wave-actions";
+import {
+  VIEW_WIDTH,
+  VIEW_HEIGHT,
   AMPLITUDE_DEFAULT,
   ANGULAR_SPEED,
   CHALLENGE_CORRECT,
@@ -22,7 +30,12 @@ interface ChallengeFeedback {
 }
 
 export function BasicWaveMotion() {
+  const reducedMotion = usePrefersReducedMotion();
   const [running, setRunning] = useState(true);
+  // Reduced motion: do not auto-play; the learner can still press Play.
+  useEffect(() => {
+    if (reducedMotion) setRunning(false);
+  }, [reducedMotion]);
   const [phase, setPhase] = useState(0);
   const [amplitude, setAmplitude] = useState(AMPLITUDE_DEFAULT);
   const [wavelength, setWavelength] = useState(WAVELENGTH_DEFAULT);
@@ -52,7 +65,7 @@ export function BasicWaveMotion() {
 
     const tick = (now: number) => {
       if (lastTickRef.current === null) lastTickRef.current = now;
-      const dt = (now - lastTickRef.current) / 1000;
+      const dt = Math.min((now - lastTickRef.current) / 1000, 0.1);
       lastTickRef.current = now;
 
       setPhase((prev) => (prev + ANGULAR_SPEED * dt) % (Math.PI * 2 * 1000));
@@ -110,8 +123,11 @@ export function BasicWaveMotion() {
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="h-[280px] rounded-[1.75rem] border border-line bg-white/70 p-3 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[320px] sm:p-5">
+    <SimulationLayout
+      stageLabel="Basic wave motion simulation"
+      aspect={VIEW_WIDTH / VIEW_HEIGHT}
+      runState={running ? "running" : "paused"}
+      stage={
         <WaveCanvas
           phase={phase}
           amplitudePx={amplitude}
@@ -121,30 +137,41 @@ export function BasicWaveMotion() {
           challengeTarget={challengeStep === "done" ? null : challengeStep}
           onChallengeHit={handleChallengeHit}
         />
-      </div>
-
-      <p className="text-center text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
-        The wave pattern travels forward while the medium oscillates around its equilibrium position.
-      </p>
-
-      <WaveControls
-        running={running}
-        onPlayPause={handlePlayPause}
-        onReset={handleReset}
-        amplitude={amplitude}
-        onAmplitudeChange={setAmplitude}
-        wavelength={wavelength}
-        onWavelengthChange={setWavelength}
-        showParticles={showParticles}
-        onToggleParticles={() => setShowParticles((v) => !v)}
-      />
-
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <ExploreWavePanel selected={exploreSelection} onSelect={handleExploreSelect} />
-        <MiniChallenge step={challengeStep} feedback={feedback} onRestart={handleChallengeRestart} />
-      </div>
-
-      <LearningPanel />
-    </div>
+      }
+      readouts={
+        <SimulationReadouts
+          label="Wave settings"
+          items={[
+            { id: "amp", label: "Amplitude", value: String(amplitude), unit: "px" },
+            { id: "wl", label: "Wavelength", value: String(wavelength), unit: "px" },
+          ]}
+        />
+      }
+      actions={<WaveActions running={running} onPlayPause={handlePlayPause} onReset={handleReset} />}
+      controls={
+        <div className="flex flex-col gap-4">
+          <p className="text-center text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
+            The wave pattern travels forward while the medium oscillates around its equilibrium position.
+          </p>
+          <WaveControls
+            amplitude={amplitude}
+            onAmplitudeChange={setAmplitude}
+            wavelength={wavelength}
+            onWavelengthChange={setWavelength}
+            showParticles={showParticles}
+            onToggleParticles={() => setShowParticles((v) => !v)}
+          />
+        </div>
+      }
+      explanation={
+        <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 gap-4">
+            <ExploreWavePanel selected={exploreSelection} onSelect={handleExploreSelect} />
+            <MiniChallenge step={challengeStep} feedback={feedback} onRestart={handleChallengeRestart} />
+          </div>
+          <LearningPanel />
+        </div>
+      }
+    />
   );
 }

@@ -290,7 +290,7 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
   const rightPersonPercent = worldXToPercent(rightWorldX, containerWidth, viewport.zoom, viewport.offset.x);
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative h-full">
       {/*
         Pan/zoom is switched off for this canvas (`pointer-events-none`)
         so no pointer interaction on the canvas itself — background,
@@ -305,7 +305,7 @@ export function CartCanvas({ engine, snapshot, options }: CartCanvasProps) {
         render={render}
         showGrid={false}
         showAxes={false}
-        className="pointer-events-none min-h-[280px] sm:min-h-[360px]"
+        className="pointer-events-none h-full min-h-0"
       />
 
       <PersonDragHandle

@@ -3,9 +3,12 @@
 import {
   InstructionsPanel,
   Legend,
+  PlaybackControls,
   SimulationContainer,
+  SimulationLayout,
   Toolbar,
   useSimulation,
+  type SimulationRunState,
 } from "@/features/simulation";
 import { useEffect, useRef } from "react";
 import { Law3DataPanel } from "@/features/subjects/physics/newtons-laws/components/data-panel";
@@ -57,7 +60,9 @@ export function Momentum() {
 }
 
 function MomentumBody() {
-  const { values, frameCount } = useSimulation();
+  const { values, frameCount, status } = useSimulation();
+  const runState: SimulationRunState =
+    status === "playing" ? "running" : status === "finished" ? "finished" : status === "paused" ? "paused" : "idle";
   const engine = useLaw3Engine(true, "collision");
   const readouts = useLaw3Snapshot(engine, values);
 
@@ -76,29 +81,34 @@ function MomentumBody() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-        <div className="flex flex-col gap-4">
-          <Law3Canvas engine={engine} readouts={readouts} highlightVectors={false} />
-          <p className="text-sm text-ink-soft dark:text-bone-soft">
-            Pick a scenario, set masses and (for Collision) launch speed and
-            restitution, then run it — every scenario here tracks momentum
-            for each object and the total, live.
-          </p>
-          <Toolbar exportFilename="momentum" />
-          <Legend
-            items={[
-              { label: "Applied / action", color: "#3D5AFE", shape: "line" },
-              { label: "Friction / reaction", color: "#E0524F", shape: "line" },
-              { label: "Velocity", color: "#2E9E5B", shape: "line" },
-            ]}
-          />
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <Law3Panel engine={engine} />
-          <Law3DataPanel readouts={readouts} />
-        </div>
-      </div>
+      <SimulationLayout
+        stageLabel="Momentum laboratory"
+        aspect={2}
+        stageCap="30rem"
+        runState={runState}
+        statusDetail="Simulation finished."
+        stage={<Law3Canvas engine={engine} readouts={readouts} highlightVectors={false} />}
+        actions={<PlaybackControls />}
+        controls={
+          <div className="flex min-w-0 flex-col gap-4">
+            <p className="text-sm text-ink-soft dark:text-bone-soft">
+              Pick a scenario, set masses and (for Collision) launch speed and
+              restitution, then run it — every scenario here tracks momentum
+              for each object and the total, live.
+            </p>
+            <Law3Panel engine={engine} />
+            <Toolbar exportFilename="momentum" showPlayback={false} />
+            <Legend
+              items={[
+                { label: "Applied / action", color: "#3D5AFE", shape: "line" },
+                { label: "Friction / reaction", color: "#E0524F", shape: "line" },
+                { label: "Velocity", color: "#2E9E5B", shape: "line" },
+              ]}
+            />
+            <Law3DataPanel readouts={readouts} />
+          </div>
+        }
+      />
 
       <InstructionsPanel
         title="How to use this lab"

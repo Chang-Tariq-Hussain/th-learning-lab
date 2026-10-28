@@ -135,7 +135,7 @@ export function CircularMotionCanvas({ showVelocity, showAcceleration, showTrail
       ariaLabel="Circular motion simulation: an object traveling around a circular path, with velocity and acceleration vectors."
       showGrid={false}
       render={render}
-      className="min-h-[360px]"
+      className="h-full min-h-0"
     />
   );
 }

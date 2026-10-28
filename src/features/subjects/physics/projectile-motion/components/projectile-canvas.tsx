@@ -177,7 +177,7 @@ export function ProjectileCanvas({
       showGrid={false}
       showAxes={false}
       ariaLabel="Projectile trajectory view: a launcher fires a ball whose path, current position, maximum height, and landing point are shown against a ground platform."
-      className="min-h-[280px] sm:min-h-[360px] lg:min-h-[440px]"
+      className="h-full min-h-0"
     />
   );
 }

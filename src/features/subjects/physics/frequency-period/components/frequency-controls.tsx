@@ -1,15 +1,11 @@
 "use client";
 
-import { Eye, Pause, Play, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StepperControl } from "../../basic-wave-motion/components/stepper-control";
 import { FREQUENCY_MAX, FREQUENCY_MIN, FREQUENCY_STEP } from "../wave-model";
 
 interface FrequencyControlsProps {
-  running: boolean;
-  onPlayPause: () => void;
-  onReset: () => void;
   frequency: number;
   onFrequencyChange: (v: number) => void;
   watchingOneSecond: boolean;
@@ -17,9 +13,6 @@ interface FrequencyControlsProps {
 }
 
 export function FrequencyControls({
-  running,
-  onPlayPause,
-  onReset,
   frequency,
   onFrequencyChange,
   watchingOneSecond,
@@ -28,23 +21,6 @@ export function FrequencyControls({
   return (
     <div className="flex flex-col items-center gap-6 rounded-card border border-line bg-white/60 p-4 dark:border-line-dark dark:bg-white/[0.03] sm:p-5">
       <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button variant={running ? "secondary" : "primary"} size="lg" onClick={onPlayPause}>
-          {running ? (
-            <>
-              <Pause className="h-4 w-4" strokeWidth={1.75} />
-              Pause
-            </>
-          ) : (
-            <>
-              <Play className="h-4 w-4" strokeWidth={1.75} />
-              Play
-            </>
-          )}
-        </Button>
-        <Button variant="ghost" size="lg" onClick={onReset}>
-          <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
-          Reset
-        </Button>
         <button
           type="button"
           onClick={onWatchOneSecond}

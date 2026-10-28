@@ -10,6 +10,8 @@ import type { SpeedMultiplier } from "../../types";
 
 export interface ToolbarProps {
   /** Toggle individual control groups off for simulations that don't need them. */
+  /** Set false when the transport buttons live elsewhere (SimulationLayout's sticky actions slot). */
+  showPlayback?: boolean;
   showSpeed?: boolean;
   showZoom?: boolean;
   showFullscreen?: boolean;
@@ -25,6 +27,7 @@ export interface ToolbarProps {
  * line on narrow viewports rather than overflowing or squeezing controls.
  */
 export function Toolbar({
+  showPlayback = true,
   showSpeed = true,
   showZoom = true,
   showFullscreen = true,
@@ -40,7 +43,7 @@ export function Toolbar({
         className
       )}
     >
-      <PlaybackControls />
+      {showPlayback ? <PlaybackControls /> : null}
 
       <div className="flex flex-wrap items-center gap-2">
         {showSpeed ? <SpeedController options={speedOptions} /> : null}

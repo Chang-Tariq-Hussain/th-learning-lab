@@ -1,0 +1,94 @@
+ src/app/globals.css                                |  89 +++++++++++
+ .../components/controls/playback-controls.tsx      |   2 +-
+ .../simulation/components/controls/toolbar.tsx     |   5 +-
+ src/features/simulation/index.ts                   |   3 +
+ .../cellular-respiration/cellular-respiration.tsx  |  63 +++++---
+ .../components/status-message.tsx                  |   2 +-
+ .../biology/meiosis/components/stage-controls.tsx  |  10 +-
+ src/features/subjects/biology/meiosis/meiosis.tsx  |  51 +++---
+ .../biology/mitosis/components/stage-controls.tsx  |  16 +-
+ src/features/subjects/biology/mitosis/mitosis.tsx  |  45 ++++--
+ .../components/photosynthesis-controls.tsx         |   8 +-
+ .../photosynthesis/components/status-message.tsx   |   2 +-
+ .../biology/photosynthesis/photosynthesis.tsx      |  69 +++++---
+ .../basic-wave-motion/basic-wave-motion.tsx        |  83 ++++++----
+ .../basic-wave-motion/components/wave-controls.tsx |  26 +--
+ .../physics/circular-motion/circular-motion.tsx    | 108 ++++++-------
+ .../components/circular-motion-canvas.tsx          |   2 +-
+ .../physics/compass-explorer/compass-explorer.tsx  |  38 ++---
+ .../components/frequency-controls.tsx              |  26 +--
+ .../physics/frequency-period/frequency-period.tsx  | 105 ++++++------
+ .../subjects/physics/gravitation/gravitation.tsx   | 176 +++++++++++----------
+ .../physics/magnet-explorer/magnet-explorer.tsx    |  40 ++---
+ .../subjects/physics/momentum/momentum.tsx         |  58 ++++---
+ .../newtons-laws/components/cart-canvas.tsx        |   4 +-
+ .../newtons-laws/components/law3-canvas.tsx        |   2 +-
+ .../subjects/physics/newtons-laws/newtons-laws.tsx |  98 +++++++++---
+ .../components/projectile-canvas.tsx               |   2 +-
+ .../projectile-motion/projectile-motion.tsx        |  94 ++++-------
+ .../simple-energy/components/energy-controls.tsx   |   6 +-
+ .../physics/simple-energy/simple-energy.tsx        |  60 ++++---
+ .../simple-forces/components/forces-controls.tsx   |   6 +-
+ .../physics/simple-forces/simple-forces.tsx        | 119 ++++++++------
+ .../simple-motion/components/motion-controls.tsx   |   8 +-
+ .../simple-motion/components/motion-track.tsx      | 123 ++++----------
+ .../simple-motion/components/plan-slider.tsx       |  30 ++--
+ .../physics/simple-motion/simple-motion.tsx        | 174 +++++++++++---------
+ .../components/wave-controls.tsx                   |  26 +--
+ .../transverse-longitudinal-waves.tsx              |  91 ++++++-----
+ .../wave-speed/components/speed-controls.tsx       |  27 ----
+ .../subjects/physics/wave-speed/wave-speed.tsx     | 100 +++++++-----
+ .../work-energy-power/components/energy-panel.tsx  |   9 +-
+ .../work-energy-power/components/power-panel.tsx   | 130 +++++++++------
+ .../work-energy-power/components/work-panel.tsx    |  67 ++++----
+ .../work-energy-power/work-energy-power.tsx        |   2 +-
+ 44 files changed, 1232 insertions(+), 973 deletions(-)
+ M src/app/globals.css
+ M src/features/simulation/components/controls/playback-controls.tsx
+ M src/features/simulation/components/controls/toolbar.tsx
+ M src/features/simulation/index.ts
+ M src/features/subjects/biology/cellular-respiration/cellular-respiration.tsx
+ M src/features/subjects/biology/cellular-respiration/components/status-message.tsx
+ M src/features/subjects/biology/meiosis/components/stage-controls.tsx
+ M src/features/subjects/biology/meiosis/meiosis.tsx
+ M src/features/subjects/biology/mitosis/components/stage-controls.tsx
+ M src/features/subjects/biology/mitosis/mitosis.tsx
+ M src/features/subjects/biology/photosynthesis/components/photosynthesis-controls.tsx
+ M src/features/subjects/biology/photosynthesis/components/status-message.tsx
+ M src/features/subjects/biology/photosynthesis/photosynthesis.tsx
+ M src/features/subjects/physics/basic-wave-motion/basic-wave-motion.tsx
+ M src/features/subjects/physics/basic-wave-motion/components/wave-controls.tsx
+ M src/features/subjects/physics/circular-motion/circular-motion.tsx
+ M src/features/subjects/physics/circular-motion/components/circular-motion-canvas.tsx
+ M src/features/subjects/physics/compass-explorer/compass-explorer.tsx
+ M src/features/subjects/physics/frequency-period/components/frequency-controls.tsx
+ M src/features/subjects/physics/frequency-period/frequency-period.tsx
+ M src/features/subjects/physics/gravitation/gravitation.tsx
+ M src/features/subjects/physics/magnet-explorer/magnet-explorer.tsx
+ M src/features/subjects/physics/momentum/momentum.tsx
+ M src/features/subjects/physics/newtons-laws/components/cart-canvas.tsx
+ M src/features/subjects/physics/newtons-laws/components/law3-canvas.tsx
+ M src/features/subjects/physics/newtons-laws/newtons-laws.tsx
+ M src/features/subjects/physics/projectile-motion/components/projectile-canvas.tsx
+ M src/features/subjects/physics/projectile-motion/projectile-motion.tsx
+ M src/features/subjects/physics/simple-energy/components/energy-controls.tsx
+ M src/features/subjects/physics/simple-energy/simple-energy.tsx
+ M src/features/subjects/physics/simple-forces/components/forces-controls.tsx
+ M src/features/subjects/physics/simple-forces/simple-forces.tsx
+ M src/features/subjects/physics/simple-motion/components/motion-controls.tsx
+ M src/features/subjects/physics/simple-motion/components/motion-track.tsx
+ M src/features/subjects/physics/simple-motion/components/plan-slider.tsx
+ M src/features/subjects/physics/simple-motion/simple-motion.tsx
+ M src/features/subjects/physics/transverse-longitudinal-waves/components/wave-controls.tsx
+ M src/features/subjects/physics/transverse-longitudinal-waves/transverse-longitudinal-waves.tsx
+ M src/features/subjects/physics/wave-speed/components/speed-controls.tsx
+ M src/features/subjects/physics/wave-speed/wave-speed.tsx
+ M src/features/subjects/physics/work-energy-power/components/energy-panel.tsx
+ M src/features/subjects/physics/work-energy-power/components/power-panel.tsx
+ M src/features/subjects/physics/work-energy-power/components/work-panel.tsx
+ M src/features/subjects/physics/work-energy-power/work-energy-power.tsx
+?? e2e/simulation-layout.spec.ts
+?? src/features/simulation/components/layout/
+?? src/features/simulation/hooks/use-reduced-motion.ts
+?? src/features/subjects/physics/basic-wave-motion/components/wave-actions.tsx
+?? tsconfig.tsbuildinfo

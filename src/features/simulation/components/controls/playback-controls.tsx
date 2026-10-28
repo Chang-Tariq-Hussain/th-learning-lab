@@ -5,7 +5,7 @@ import { useSimulation } from "../../context/simulation-context";
 import { cn } from "@/lib/utils";
 
 const iconButtonClass =
-  "inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 text-ink transition-colors hover:border-ink/30 hover:bg-ink/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 dark:border-bone/15 dark:text-bone dark:hover:border-bone/30 dark:hover:bg-bone/[0.06]";
+  "inline-flex h-11 w-11 items-center lg:h-9 lg:w-9 justify-center rounded-full border border-ink/10 text-ink transition-colors hover:border-ink/30 hover:bg-ink/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 dark:border-bone/15 dark:text-bone dark:hover:border-bone/30 dark:hover:bg-bone/[0.06]";
 
 export function PlayPauseButton({ className }: { className?: string }) {
   const { status, toggle } = useSimulation();

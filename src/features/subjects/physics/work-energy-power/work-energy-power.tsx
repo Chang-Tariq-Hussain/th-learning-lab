@@ -19,7 +19,7 @@ export function WorkEnergyPower() {
   const [panel, setPanel] = useState<WepPanel>("work");
 
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
+    <div className="flex flex-col items-stretch gap-6 py-4">
       <PanelTabs active={panel} onChange={setPanel} />
       {panel === "work" ? <WorkPanel /> : null}
       {panel === "energy" ? <EnergyPanel /> : null}

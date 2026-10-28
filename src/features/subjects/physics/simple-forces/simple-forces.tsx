@@ -1,8 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  SimulationLayout,
+  SimulationReadouts,
+  usePrefersReducedMotion,
+  type SimulationRunState,
+} from "@/features/simulation";
 import { ExplanationPanel } from "./components/explanation-panel";
-import { ForceReadouts } from "./components/force-readouts";
 import { ForceStage } from "./components/force-stage";
 import { ForcesControls } from "./components/forces-controls";
 // Reused as-is from Simple Motion — same big-number-over-a-slider control, no need for a second copy.
@@ -15,6 +20,9 @@ import {
   FORCE_STEP,
   INITIAL_FORCES_STATE,
   PLAYBACK_DURATION_S,
+  balanceLabel,
+  netForce,
+  isBalanced,
   type ForcesState,
 } from "./forces-model";
 
@@ -30,6 +38,7 @@ import {
  */
 export function SimpleForces() {
   const [state, setState] = useState<ForcesState>(INITIAL_FORCES_STATE);
+  const reducedMotion = usePrefersReducedMotion();
   const frameRef = useRef<number | null>(null);
   const lastTickRef = useRef<number | null>(null);
 
@@ -54,7 +63,8 @@ export function SimpleForces() {
       if (lastTickRef.current === null) {
         lastTickRef.current = now;
       }
-      const deltaSeconds = (now - lastTickRef.current) / 1000;
+      // A hidden tab pauses rAF; clamp so the animation does not jump when the learner returns.
+      const deltaSeconds = Math.min((now - lastTickRef.current) / 1000, 0.1);
       lastTickRef.current = now;
 
       setState((prev) => {
@@ -81,6 +91,11 @@ export function SimpleForces() {
 
   const handleStart = () => {
     if (finished) return;
+    // Reduced motion: no animation loop; show the finished state straight away.
+    if (reducedMotion) {
+      setState((prev) => ({ ...prev, running: false, playbackSeconds: PLAYBACK_DURATION_S }));
+      return;
+    }
     setState((prev) => ({ ...prev, running: true }));
   };
 
@@ -108,51 +123,65 @@ export function SimpleForces() {
     }));
   };
 
+  const runState: SimulationRunState = state.running
+    ? "running"
+    : finished
+      ? "finished"
+      : state.playbackSeconds > 0
+        ? "paused"
+        : "idle";
+
+  const net = netForce(state);
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[18rem_1fr]">
-        <ExplanationPanel />
-
-        <div className="flex flex-col gap-6">
-          <div className="h-[220px] rounded-[1.75rem] border border-line bg-white/70 p-4 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[240px]">
-            <ForceStage plan={state} progress={progress} />
+    <SimulationLayout
+      stageLabel="Simple forces simulation"
+      aspect={3.2}
+      runState={runState}
+      statusDetail={`${balanceLabel(state)}. Net force ${net} newtons.`}
+      stage={<ForceStage plan={state} progress={progress} />}
+      readouts={
+        <SimulationReadouts
+          label="Forces"
+          items={[
+            { id: "left", label: "Left", value: String(state.leftForce), unit: "N" },
+            { id: "right", label: "Right", value: String(state.rightForce), unit: "N" },
+            { id: "net", label: "Net", value: `${net > 0 ? "+" : ""}${net}`, unit: "N", unknown: !isBalanced(state) },
+          ]}
+        />
+      }
+      actions={
+        <ForcesControls running={state.running} finished={finished} onStart={handleStart} onReset={handleReset} />
+      }
+      controls={
+        <div className="flex flex-col gap-3">
+          <p className="text-center text-sm font-medium text-ink-soft dark:text-bone-soft">{balanceLabel(state)}</p>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <PlanSlider
+              id="left-force-slider"
+              label="Left Force"
+              unit="N"
+              value={state.leftForce}
+              min={FORCE_MIN}
+              max={FORCE_MAX}
+              step={FORCE_STEP}
+              onChange={handleLeftForceChange}
+              disabled={state.running}
+            />
+            <PlanSlider
+              id="right-force-slider"
+              label="Right Force"
+              unit="N"
+              value={state.rightForce}
+              min={FORCE_MIN}
+              max={FORCE_MAX}
+              step={FORCE_STEP}
+              onChange={handleRightForceChange}
+              disabled={state.running}
+            />
           </div>
-
-          <ForceReadouts plan={state} />
         </div>
-      </div>
-
-      <div className="grid w-full max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2">
-        <PlanSlider
-          id="left-force-slider"
-          label="Left Force"
-          unit="N"
-          value={state.leftForce}
-          min={FORCE_MIN}
-          max={FORCE_MAX}
-          step={FORCE_STEP}
-          onChange={handleLeftForceChange}
-          disabled={state.running}
-        />
-        <PlanSlider
-          id="right-force-slider"
-          label="Right Force"
-          unit="N"
-          value={state.rightForce}
-          min={FORCE_MIN}
-          max={FORCE_MAX}
-          step={FORCE_STEP}
-          onChange={handleRightForceChange}
-          disabled={state.running}
-        />
-      </div>
-
-      <ForcesControls
-        running={state.running}
-        finished={finished}
-        onStart={handleStart}
-        onReset={handleReset}
-      />
-    </div>
+      }
+      explanation={<ExplanationPanel />}
+    />
   );
 }

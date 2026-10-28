@@ -18,19 +18,19 @@ export interface MotionControlsProps {
  */
 export function MotionControls({ running, finished, onStart, onPause, onReset }: MotionControlsProps) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-3">
+    <div className="flex flex-wrap items-center justify-center gap-2">
       {running ? (
-        <Button variant="secondary" size="lg" onClick={onPause}>
+        <Button variant="secondary" size="md" onClick={onPause} className="min-w-28">
           <Pause className="h-4 w-4" strokeWidth={1.75} />
           Pause
         </Button>
       ) : (
-        <Button variant="primary" size="lg" onClick={onStart} disabled={finished}>
+        <Button variant="primary" size="md" onClick={onStart} disabled={finished} className="min-w-28">
           <Play className="h-4 w-4" strokeWidth={1.75} />
           Start
         </Button>
       )}
-      <Button variant="ghost" size="lg" onClick={onReset}>
+      <Button variant="ghost" size="md" onClick={onReset}>
         <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
         Reset
       </Button>

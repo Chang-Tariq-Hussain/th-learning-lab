@@ -10,9 +10,13 @@ import {
   Legend,
   ParameterDropdownSelector,
   ParameterSlider,
+  PlaybackControls,
   SimulationContainer,
+  SimulationLayout,
+  SimulationReadouts,
   Toolbar,
   useSimulation,
+  type SimulationRunState,
 } from "@/features/simulation";
 import { circularMotionSchema } from "./schema";
 import {
@@ -51,7 +55,9 @@ export function CircularMotion() {
 }
 
 function CircularMotionBody() {
-  const { values, time } = useSimulation();
+  const { values, time, status } = useSimulation();
+  const runState: SimulationRunState =
+    status === "playing" ? "running" : status === "finished" ? "finished" : status === "paused" ? "paused" : "idle";
   const [showVelocity, setShowVelocity] = useState(true);
   const [showAcceleration, setShowAcceleration] = useState(true);
   const [showTrail, setShowTrail] = useState(true);
@@ -80,39 +86,58 @@ function CircularMotionBody() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-        <div className="flex flex-col gap-4">
+      <SimulationLayout
+        stageLabel="Circular motion simulation"
+        aspect={1.6}
+        stageCap="30rem"
+        runState={runState}
+        statusDetail="Simulation finished."
+        stage={
           <CircularMotionCanvas
             showVelocity={showVelocity}
             showAcceleration={showAcceleration}
             showTrail={showTrail}
           />
+        }
+        readouts={
+          <SimulationReadouts
+            label="Period, centripetal acceleration and force"
+            items={[
+              { id: "t", label: "Period", value: formatReadout(period), unit: "s" },
+              { id: "a", label: "Centripetal a", value: formatReadout(centripetalAcceleration), unit: "m/s²" },
+              { id: "f", label: "Centripetal F", value: formatReadout(centripetalForce), unit: "N" },
+            ]}
+          />
+        }
+        actions={<PlaybackControls />}
+        controls={
+          <div className="flex min-w-0 flex-col gap-4">
+        <div className="flex flex-col gap-4">
+          <ControlPanel title="Circle">
+            <ParameterSlider parameter={radiusParam} />
+            <ParameterSlider parameter={speedParam} />
+            <ParameterDropdownSelector parameter={directionSelect} />
+          </ControlPanel>
 
-          <dl className="grid grid-cols-3 divide-x divide-line rounded-card border border-line bg-white/50 text-center dark:divide-line-dark dark:border-line-dark dark:bg-white/[0.03]">
-            <div className="px-2 py-3">
-              <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Period</dt>
-              <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
-                {formatReadout(period)}
-                <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">s</span>
-              </dd>
-            </div>
-            <div className="px-2 py-3">
-              <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Centripetal a</dt>
-              <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
-                {formatReadout(centripetalAcceleration)}
-                <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">m/s²</span>
-              </dd>
-            </div>
-            <div className="px-2 py-3">
-              <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Centripetal F</dt>
-              <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
-                {formatReadout(centripetalForce)}
-                <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">N</span>
-              </dd>
-            </div>
-          </dl>
+          <ControlPanel title="Object">
+            <ParameterSlider parameter={massParam} />
+          </ControlPanel>
 
-          <Toolbar exportFilename="circular-motion" />
+          <InfoPanel
+            title="Live readouts"
+            stats={[
+              { label: "Angular position", value: formatReadout((state.angleRad * 180) / Math.PI), unit: "°" },
+              { label: "Angular velocity (ω)", value: formatReadout(omega), unit: "rad/s" },
+              { label: "Period (T)", value: formatReadout(period), unit: "s" },
+              { label: "Frequency (f)", value: formatReadout(frequency), unit: "Hz" },
+              { label: "Tangential speed", value: formatReadout(speedOfVelocityVector), unit: "m/s" },
+              { label: "Centripetal acceleration", value: formatReadout(centripetalAcceleration), unit: "m/s²" },
+              { label: "Centripetal force", value: formatReadout(centripetalForce), unit: "N" },
+            ]}
+          />
+        </div>
+
+          <Toolbar exportFilename="circular-motion" showPlayback={false} />
           <Legend
             items={[
               { label: "Tangential velocity", color: "#3D5AFE", shape: "line" },
@@ -145,33 +170,10 @@ function CircularMotionBody() {
               ))}
             </fieldset>
           </details>
-        </div>
 
-        <div className="flex flex-col gap-4">
-          <ControlPanel title="Circle">
-            <ParameterSlider parameter={radiusParam} />
-            <ParameterSlider parameter={speedParam} />
-            <ParameterDropdownSelector parameter={directionSelect} />
-          </ControlPanel>
-
-          <ControlPanel title="Object">
-            <ParameterSlider parameter={massParam} />
-          </ControlPanel>
-
-          <InfoPanel
-            title="Live readouts"
-            stats={[
-              { label: "Angular position", value: formatReadout((state.angleRad * 180) / Math.PI), unit: "°" },
-              { label: "Angular velocity (ω)", value: formatReadout(omega), unit: "rad/s" },
-              { label: "Period (T)", value: formatReadout(period), unit: "s" },
-              { label: "Frequency (f)", value: formatReadout(frequency), unit: "Hz" },
-              { label: "Tangential speed", value: formatReadout(speedOfVelocityVector), unit: "m/s" },
-              { label: "Centripetal acceleration", value: formatReadout(centripetalAcceleration), unit: "m/s²" },
-              { label: "Centripetal force", value: formatReadout(centripetalForce), unit: "N" },
-            ]}
-          />
-        </div>
-      </div>
+          </div>
+        }
+      />
 
       <InstructionsPanel
         title="How to use this lab"

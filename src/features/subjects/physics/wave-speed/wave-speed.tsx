@@ -1,7 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { FREQUENCY_DEFAULT, WAVELENGTH_DEFAULT } from "./wave-model";
+import {
+  SimulationLayout,
+  SimulationReadouts,
+  usePrefersReducedMotion,
+} from "@/features/simulation";
+import { WaveActions } from "../basic-wave-motion/components/wave-actions";
+import { FREQUENCY_DEFAULT, WAVELENGTH_DEFAULT, waveSpeed } from "./wave-model";
 import { WaveScene } from "./components/wave-scene";
 import { Readouts } from "./components/readouts";
 import { SpeedControls } from "./components/speed-controls";
@@ -17,7 +23,12 @@ interface ChallengeFeedback {
 }
 
 export function WaveSpeed() {
+  const reducedMotion = usePrefersReducedMotion();
   const [running, setRunning] = useState(true);
+  // Reduced motion: do not auto-play; the learner can still press Play.
+  useEffect(() => {
+    if (reducedMotion) setRunning(false);
+  }, [reducedMotion]);
   const [phase, setPhase] = useState(0);
   const [frequency, setFrequency] = useState(FREQUENCY_DEFAULT);
   const [wavelength, setWavelength] = useState(WAVELENGTH_DEFAULT);
@@ -47,7 +58,7 @@ export function WaveSpeed() {
 
     const tick = (now: number) => {
       if (lastTickRef.current === null) lastTickRef.current = now;
-      const dt = (now - lastTickRef.current) / 1000;
+      const dt = Math.min((now - lastTickRef.current) / 1000, 0.1);
       lastTickRef.current = now;
 
       setPhase((prev) => prev + 2 * Math.PI * frequencyRef.current * dt);
@@ -95,43 +106,54 @@ export function WaveSpeed() {
     if (advanceTimeoutRef.current) clearTimeout(advanceTimeoutRef.current);
   };
 
+  const speedValue = waveSpeed(frequency, wavelength);
   return (
-    <div className="flex flex-col gap-6">
-      <div className="h-[280px] rounded-[1.75rem] border border-line bg-white/70 p-3 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[320px] sm:p-5">
-        <WaveScene phase={phase} wavelength={wavelength} />
-      </div>
-
-      <Readouts frequency={frequency} wavelength={wavelength} />
-
-      <SpeedControls
-        running={running}
-        onPlayPause={handlePlayPause}
-        onReset={handleReset}
-        frequency={frequency}
-        onFrequencyChange={setFrequency}
-        wavelength={wavelength}
-        onWavelengthChange={setWavelength}
-      />
-
-      <ExperimentPanel
-        frequency={frequency}
-        wavelength={wavelength}
-        onSetFrequency={setFrequency}
-        onSetWavelength={setWavelength}
-      />
-
-      <EquationExplorer />
-
-      <SpeedChallenge
-        step={challengeStep}
-        feedback={feedback}
-        onAnswer={handleAnswer}
-        onRestart={handleChallengeRestart}
-      />
-
-      <ScienceNote />
-
-      <LearningPanel />
-    </div>
+    <SimulationLayout
+      stageLabel="Wave speed simulation"
+      aspect={800 / 280}
+      runState={running ? "running" : "paused"}
+      stage={<WaveScene phase={phase} wavelength={wavelength} />}
+      readouts={
+        <SimulationReadouts
+          label="Wave speed, frequency and wavelength"
+          items={[
+            { id: "v", label: "Speed", value: String(speedValue), unit: "m/s" },
+            { id: "f", label: "Frequency", value: String(frequency), unit: "Hz" },
+            { id: "l", label: "Wavelength", value: String(wavelength), unit: "m" },
+          ]}
+        />
+      }
+      actions={<WaveActions running={running} onPlayPause={handlePlayPause} onReset={handleReset} />}
+      controls={
+        <div className="flex flex-col gap-4">
+          <SpeedControls
+            frequency={frequency}
+            onFrequencyChange={setFrequency}
+            wavelength={wavelength}
+            onWavelengthChange={setWavelength}
+          />
+          <Readouts frequency={frequency} wavelength={wavelength} />
+        </div>
+      }
+      explanation={
+        <div className="flex flex-col gap-6">
+          <ExperimentPanel
+            frequency={frequency}
+            wavelength={wavelength}
+            onSetFrequency={setFrequency}
+            onSetWavelength={setWavelength}
+          />
+          <EquationExplorer />
+          <SpeedChallenge
+            step={challengeStep}
+            feedback={feedback}
+            onAnswer={handleAnswer}
+            onRestart={handleChallengeRestart}
+          />
+          <ScienceNote />
+          <LearningPanel />
+        </div>
+      }
+    />
   );
 }

@@ -1,0 +1,7 @@
+/dashboard/biology/photosynthesis
+/dashboard/biology/photosynthesis-factors
+/dashboard/biology/cellular-respiration
+/dashboard/biology/cellular-energy
+/dashboard/biology/atp-energy-release
+/dashboard/biology/mitosis
+/dashboard/biology/meiosis

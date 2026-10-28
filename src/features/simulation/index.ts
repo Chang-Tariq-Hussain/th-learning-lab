@@ -56,6 +56,8 @@ export type { UseCanvasResult } from "./hooks/use-canvas";
 export { usePanZoom } from "./hooks/use-pan-zoom";
 export type { UsePanZoomOptions, UsePanZoomResult } from "./hooks/use-pan-zoom";
 
+export { usePrefersReducedMotion } from "./hooks/use-reduced-motion";
+
 export { usePlayback } from "./hooks/use-playback";
 export type { UsePlaybackOptions, UsePlaybackResult } from "./hooks/use-playback";
 
@@ -82,6 +84,7 @@ export {
 // Components
 // ---------------------------------------------------------------------------
 export * from "./components/canvas";
+export * from "./components/layout";
 export * from "./components/controls";
 export * from "./components/panels";
 export * from "./components/charts";

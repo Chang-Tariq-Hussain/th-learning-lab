@@ -9,9 +9,13 @@ import {
   InstructionsPanel,
   Legend,
   ParameterSlider,
+  PlaybackControls,
   SimulationContainer,
+  SimulationLayout,
+  SimulationReadouts,
   Toolbar,
   useSimulation,
+  type SimulationRunState,
 } from "@/features/simulation";
 import { gravitationSchema } from "./schema";
 import {
@@ -53,7 +57,9 @@ export function Gravitation() {
 }
 
 function GravitationBody() {
-  const { values, frameCount } = useSimulation();
+  const { values, frameCount, status } = useSimulation();
+  const runState: SimulationRunState =
+    status === "playing" ? "running" : status === "finished" ? "finished" : status === "paused" ? "paused" : "idle";
   const [panel, setPanel] = useState<GravitationPanel>("force-lab");
   const [showForce, setShowForce] = useState(true);
   const [showVelocity, setShowVelocity] = useState(true);
@@ -100,39 +106,21 @@ function GravitationBody() {
       <PanelTabs active={panel} onChange={setPanel} />
 
       {panel === "force-lab" ? (
-        <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-          <div className="flex flex-col gap-4">
-            <div className="rounded-card border border-line bg-white/50 p-4 dark:border-line-dark dark:bg-white/[0.03]">
-              <ForceLabDiagram mass1={mass1} mass2={mass2} distance={distance} />
-            </div>
-
-            <dl className="grid grid-cols-2 divide-x divide-line rounded-card border border-line bg-white/50 text-center dark:divide-line-dark dark:border-line-dark dark:bg-white/[0.03]">
-              <div className="px-2 py-3">
-                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Gravitational force</dt>
-                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
-                  {formatScientific(forceN)}
-                  <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">N</span>
-                </dd>
-              </div>
-              <div className="px-2 py-3">
-                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">G (constant)</dt>
-                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">6.674×10⁻¹¹</dd>
-              </div>
-            </dl>
-
-            <div>
-              <h3 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
-                Weight &amp; Worlds — same mass, different weight
-              </h3>
-              <ControlPanel title="Your mass">
-                <ParameterSlider parameter={personMassParam} />
-              </ControlPanel>
-              <div className="mt-3">
-                <WeightWorldsPanel personMass={personMass} />
-              </div>
-            </div>
-          </div>
-
+        <SimulationLayout
+          stageLabel="Gravitation force simulation"
+          aspect={2.6}
+          stage={<ForceLabDiagram mass1={mass1} mass2={mass2} distance={distance} />}
+          readouts={
+            <SimulationReadouts
+              label="Gravitational force"
+              items={[
+                { id: "f", label: "Gravitational force", value: formatScientific(forceN), unit: "N" },
+                { id: "g", label: "G (constant)", value: "6.674×10⁻¹¹" },
+              ]}
+            />
+          }
+          controls={
+            <div className="flex min-w-0 flex-col gap-4">
           <div className="flex flex-col gap-4">
             <ControlPanel title="Masses & distance">
               <ParameterSlider parameter={mass1Param} />
@@ -164,62 +152,42 @@ function GravitationBody() {
               />
             </FormulaPanel>
           </div>
-        </div>
+
+            <div>
+              <h3 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft dark:text-bone-soft">
+                Weight &amp; Worlds — same mass, different weight
+              </h3>
+              <ControlPanel title="Your mass">
+                <ParameterSlider parameter={personMassParam} />
+              </ControlPanel>
+              <div className="mt-3">
+                <WeightWorldsPanel personMass={personMass} />
+              </div>
+            </div>
+            </div>
+          }
+        />
       ) : (
-        <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-          <div className="flex flex-col gap-4">
-            <OrbitCanvas engine={orbitEngine} showForce={showForce} showVelocity={showVelocity} showTrail={showTrail} />
-
-            <dl className="grid grid-cols-3 divide-x divide-line rounded-card border border-line bg-white/50 text-center dark:divide-line-dark dark:border-line-dark dark:bg-white/[0.03]">
-              <div className="px-2 py-3">
-                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Distance</dt>
-                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">{formatReadout(orbitReadouts.distance)}</dd>
-              </div>
-              <div className="px-2 py-3">
-                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Speed</dt>
-                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">{formatReadout(orbitReadouts.speed)}</dd>
-              </div>
-              <div className="px-2 py-3">
-                <dt className="text-[11px] leading-tight uppercase tracking-wide text-ink-soft dark:text-bone-soft">Circular orbit speed here</dt>
-                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">{formatReadout(orbitReadouts.circularOrbitalSpeed)}</dd>
-              </div>
-            </dl>
-
-            <Toolbar exportFilename="gravitation-orbit" />
-            <Legend
+        <SimulationLayout
+          stageLabel="Orbit simulation"
+          aspect={1.6}
+          stageCap="30rem"
+          runState={runState}
+          statusDetail="Simulation finished."
+          stage={<OrbitCanvas engine={orbitEngine} showForce={showForce} showVelocity={showVelocity} showTrail={showTrail} />}
+          readouts={
+            <SimulationReadouts
+              label="Distance, speed and circular orbit speed"
               items={[
-                { label: "Velocity (actual direction of travel)", color: "#3D5AFE", shape: "line" },
-                { label: "Gravitational force (toward center)", color: "#E0524F", shape: "line" },
-                { label: "Satellite path", color: "#2E9E5B", shape: "dot" },
+                { id: "d", label: "Distance", value: formatReadout(orbitReadouts.distance) },
+                { id: "s", label: "Speed", value: formatReadout(orbitReadouts.speed) },
+                { id: "c", label: "Circular speed", value: formatReadout(orbitReadouts.circularOrbitalSpeed) },
               ]}
             />
-
-            <details className="group rounded-card border border-line bg-white/50 dark:border-line-dark dark:bg-white/[0.03]">
-              <summary className="cursor-pointer select-none rounded-card px-4 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink dark:text-bone-soft dark:hover:text-bone">
-                Display options
-              </summary>
-              <fieldset className="flex flex-col gap-2 border-t border-line p-4 dark:border-line-dark">
-                {(
-                  [
-                    [showForce, setShowForce, "Show gravitational force vector"],
-                    [showVelocity, setShowVelocity, "Show velocity vector"],
-                    [showTrail, setShowTrail, "Show orbital trail"],
-                  ] as const
-                ).map(([checked, setter, label]) => (
-                  <label key={label} className="flex items-center gap-2 text-sm text-ink-soft dark:text-bone-soft">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={(e) => setter(e.target.checked)}
-                      className="h-4 w-4 rounded accent-pine-600 dark:accent-pine-300"
-                    />
-                    {label}
-                  </label>
-                ))}
-              </fieldset>
-            </details>
-          </div>
-
+          }
+          actions={<PlaybackControls />}
+          controls={
+            <div className="flex min-w-0 flex-col gap-4">
           <div className="flex flex-col gap-4">
             <ControlPanel title="Central body">
               <ParameterSlider parameter={centralMassParam} />
@@ -256,7 +224,43 @@ function GravitationBody() {
               />
             </FormulaPanel>
           </div>
-        </div>
+
+            <Toolbar exportFilename="gravitation-orbit" showPlayback={false} />
+            <Legend
+              items={[
+                { label: "Velocity (actual direction of travel)", color: "#3D5AFE", shape: "line" },
+                { label: "Gravitational force (toward center)", color: "#E0524F", shape: "line" },
+                { label: "Satellite path", color: "#2E9E5B", shape: "dot" },
+              ]}
+            />
+
+            <details className="group rounded-card border border-line bg-white/50 dark:border-line-dark dark:bg-white/[0.03]">
+              <summary className="cursor-pointer select-none rounded-card px-4 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink dark:text-bone-soft dark:hover:text-bone">
+                Display options
+              </summary>
+              <fieldset className="flex flex-col gap-2 border-t border-line p-4 dark:border-line-dark">
+                {(
+                  [
+                    [showForce, setShowForce, "Show gravitational force vector"],
+                    [showVelocity, setShowVelocity, "Show velocity vector"],
+                    [showTrail, setShowTrail, "Show orbital trail"],
+                  ] as const
+                ).map(([checked, setter, label]) => (
+                  <label key={label} className="flex items-center gap-2 text-sm text-ink-soft dark:text-bone-soft">
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={(e) => setter(e.target.checked)}
+                      className="h-4 w-4 rounded accent-pine-600 dark:accent-pine-300"
+                    />
+                    {label}
+                  </label>
+                ))}
+              </fieldset>
+            </details>
+            </div>
+          }
+        />
       )}
 
       <InstructionsPanel

@@ -1,0 +1,35 @@
+sim                            320x640  375x700  430x900 768x1024 1024x768 1280x800 1440x900 1366x680  844x390
+simple-motion                       YY       YY       YY       YY       YY       YY       YY       YY       YY
+simple-forces                       YY       YY       YY       YY       YY       YY       YY       nn       nn
+simple-energy                       YY       YY       YY       YY       nn       nn       YY       nn       nn
+velocity                            YY       YY       YY       YY       YY       YY       YY       YY       YY
+acceleration                        YY       YY       YY       YY       YY       YY       YY       YY       YY
+newtons-laws                        YY       YY       YY       YY       YY       YY       YY       YY       YY
+projectile-motion                   YY       YY       YY       YY       YY       YY       YY       YY       YY
+momentum                            YY       YY       YY       YY       YY       YY       YY       YY       YY
+circular-motion                     YY       YY       YY       YY       YY       YY       YY       YY       YY
+work-energy-power                   YY       YY       YY       YY       YY       YY       YY       YY       YY
+gravitation                         YY       YY       YY       YY       YY       YY       YY       YY       YY
+basic-wave-motion                   YY       YY       YY       YY       YY       YY       YY       YY       YY
+transverse-longitudinal-waves       YY       YY       YY       YY       YY       YY       YY       YY       YY
+wave-speed                          YY       YY       YY       YY       YY       YY       YY       YY       YY
+frequency-period                    YY       YY       YY       YY       YY       YY       YY       YY       YY
+magnet-explorer                     YY       YY       YY       YY       YY       YY       YY       YY       YY
+compass-explorer                    YY       YY       YY       YY       YY       YY       YY       YY       YY
+
+(a)(b): Y=stage fully visible with control / after Start; ! click failed; * page h-overflow
+cases 153 stage found 153 visible after Start 147
+stage taller than viewport: []
+overlap/clip flags: 31
+  ('projectile-motion', '320x640', ['clip:Time 0.9 seconds. He'])
+  ('velocity', '375x700', ['span:Drag to push · 0 N', 'span:Drag to push · 0 N'])
+  ('acceleration', '375x700', ['span:Drag to push · 0 N', 'span:Drag to push · 0 N'])
+  ('newtons-laws', '375x700', ['span:Drag to push · 0 N', 'span:Drag to push · 0 N'])
+  ('projectile-motion', '375x700', ['clip:Time 0.9 seconds. He'])
+  ('velocity', '430x900', ['button:Push', 'span:Drag to push · 0 N', 'button:Push'])
+  ('acceleration', '430x900', ['button:Push', 'span:Drag to push · 0 N', 'button:Push'])
+  ('newtons-laws', '430x900', ['button:Push', 'span:Drag to push · 0 N', 'button:Push'])
+  ('projectile-motion', '430x900', ['clip:Time 0.9 seconds. He'])
+  ('velocity', '768x1024', ['button:Push', 'span:Drag to push · 0 N', 'button:Push'])
+  ('acceleration', '768x1024', ['button:Push', 'span:Drag to push · 0 N', 'button:Push'])
+  ('newtons-laws', '768x1024', ['button:Push', 'span:Drag to push · 0 N', 'button:Push'])

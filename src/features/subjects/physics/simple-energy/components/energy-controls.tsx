@@ -18,17 +18,17 @@ export function EnergyControls({
   onReset,
 }: EnergyControlsProps) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-3">
+    <div className="flex flex-wrap items-center justify-center gap-2">
       <Button
         variant="primary"
-        size="lg"
+        size="md"
         onClick={onRelease}
         disabled={running || finished}
       >
         <Play className="h-4 w-4" strokeWidth={1.75} />
         Release
       </Button>
-      <Button variant="ghost" size="lg" onClick={onReset}>
+      <Button variant="ghost" size="md" onClick={onReset}>
         <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
         Reset
       </Button>

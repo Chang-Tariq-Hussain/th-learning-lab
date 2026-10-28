@@ -7,7 +7,7 @@ export interface StatusMessageProps {
 
 export function StatusMessage({ state }: StatusMessageProps) {
   return (
-    <p aria-live="polite" className="text-center text-base font-medium text-ink dark:text-bone">
+    <p aria-live="polite" className="text-center text-sm font-medium text-ink dark:text-bone">
       {statusMessage(state)}
     </p>
   );

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { RotateCcw } from "lucide-react";
+import { SimulationLayout } from "@/features/simulation";
 import { Button } from "@/components/ui/button";
 import { PLAYGROUND_HEIGHT, PLAYGROUND_WIDTH, type MagnetState } from "@/features/subjects/physics/magnet-explorer";
 import { ExperimentCards } from "./components/experiment-cards";
@@ -40,11 +41,11 @@ export function CompassExplorer() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[18rem_1fr]">
-        <InstructionsPanel />
-
-        <div className="h-[420px] sm:h-[460px]">
+    <SimulationLayout
+      stageLabel="Compass playground"
+      aspect={PLAYGROUND_WIDTH / PLAYGROUND_HEIGHT}
+      stageCap="32rem"
+      stage={
           <Playground
             magnet={magnet}
             compass={compass}
@@ -55,19 +56,20 @@ export function CompassExplorer() {
             onDragStart={setDraggingId}
             onDragEnd={() => setDraggingId(null)}
           />
-        </div>
-      </div>
-
-      <div className="w-full">
+      }
+      actions={
+        <Button variant="secondary" size="md" onClick={handleReset}>
+          <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
+          Reset
+        </Button>
+      }
+      controls={
+        <div className="flex min-w-0 flex-col gap-4">
         <InfoPanel field={field} />
-      </div>
-
-      <ExperimentCards onRun={handleExperiment} />
-
-      <Button variant="secondary" size="lg" onClick={handleReset}>
-        <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
-        Reset
-      </Button>
-    </div>
+          <ExperimentCards onRun={handleExperiment} />
+        </div>
+      }
+      explanation={<InstructionsPanel />}
+    />
   );
 }

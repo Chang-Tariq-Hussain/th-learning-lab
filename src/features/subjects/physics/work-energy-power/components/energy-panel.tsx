@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePrefersReducedMotion } from "@/features/simulation";
 import { PlanSlider } from "../../simple-motion/components/plan-slider";
 import { ReadoutCard } from "./readout-card";
 import {
@@ -28,6 +29,7 @@ const SHELF_HEIGHT_PX = 90;
  *  slider so a student can isolate "what changes KE" from "what
  *  changes PE" instead of one shared mass hiding the comparison. */
 export function EnergyPanel() {
+  const reducedMotion = usePrefersReducedMotion();
   const [keMass, setKeMass] = useState(DEFAULT_MASS);
   const [velocity, setVelocity] = useState(DEFAULT_VELOCITY);
   const [peMass, setPeMass] = useState(DEFAULT_MASS);
@@ -51,7 +53,7 @@ export function EnergyPanel() {
     <div className="grid w-full grid-cols-1 gap-6 py-4 lg:grid-cols-2">
       {/* Kinetic energy */}
       <div className="flex flex-col items-center gap-4 rounded-[1.75rem] border border-line bg-white/70 p-5 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04]">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-physics">Kinetic Energy</p>
+        <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-physics">Kinetic Energy</p>
         <svg viewBox="0 0 220 90" className="h-20 w-full" role="img" aria-label={`A ${keMass} kilogram box moving at ${velocity} meters per second`}>
           <rect x={0} y={70} width={220} height={10} rx={3} className="fill-ink/10 dark:fill-bone/10" />
           <rect
@@ -71,7 +73,8 @@ export function EnergyPanel() {
               `crossingDurationS` derived from velocity above, so
               "faster" is something visibly, continuously true rather
               than a single bigger number. */}
-          {velocity > 0
+          {/* Reduced motion: the looping streaks are skipped; the box position and the numbers still change. */}
+          {velocity > 0 && !reducedMotion
             ? Array.from({ length: 3 }).map((_, i) => (
                 <line
                   key={i}
@@ -118,7 +121,7 @@ export function EnergyPanel() {
 
       {/* Potential energy */}
       <div className="flex flex-col items-center gap-4 rounded-[1.75rem] border border-line bg-white/70 p-5 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04]">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-physics">Gravitational Potential Energy</p>
+        <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-physics">Gravitational Potential Energy</p>
         <svg viewBox="0 0 220 100" className="h-24 w-full" role="img" aria-label={`A ${peMass} kilogram ball held ${height} meters above the ground`}>
           <rect x={0} y={90} width={220} height={10} rx={3} className="fill-ink/10 dark:fill-bone/10" />
           <line x1={30} y1={90} x2={30} y2={8} strokeWidth={2} strokeDasharray="3,3" className="stroke-ink/25 dark:stroke-bone/25" />

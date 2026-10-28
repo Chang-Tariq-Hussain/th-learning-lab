@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SimulationLayout, type SimulationRunState } from "@/features/simulation";
 import { CellScene } from "./components/cell-scene";
 import { ExplanationPanel } from "./components/explanation-panel";
 import { FinalResult } from "./components/final-result";
@@ -8,7 +9,7 @@ import { StageControls } from "./components/stage-controls";
 import { StageIndicator } from "./components/stage-indicator";
 import { StructureInfoPanel } from "./components/structure-info-panel";
 import { getStructureInfo } from "./data/structure-info";
-import { INITIAL_MITOSIS_STATE, LAST_STAGE_INDEX, STAGE_ADVANCE_MS, isFinished } from "./model";
+import { INITIAL_MITOSIS_STATE, LAST_STAGE_INDEX, STAGES, STAGE_ADVANCE_MS, isFinished } from "./model";
 import type { MitosisState } from "./types";
 
 /**
@@ -84,21 +85,24 @@ export function Mitosis() {
 
   const selectedStructure = getStructureInfo(selectedId);
 
+  const runState: SimulationRunState = running ? "running" : finished ? "finished" : stageIndex > 0 ? "paused" : "idle";
+
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <StageIndicator stageIndex={stageIndex} />
-
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[18rem_1fr]">
-        <ExplanationPanel stageIndex={stageIndex} />
-
-        <div className="h-[300px] rounded-[1.75rem] border border-line bg-white/70 p-2 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[340px]">
-          <CellScene stageIndex={stageIndex} selectedId={selectedId} onSelect={handleSelect} />
-        </div>
-      </div>
-
-      <StructureInfoPanel structure={selectedStructure} />
-
-      <StageControls
+    <div className="flex flex-col gap-6 py-4">
+      <SimulationLayout
+        stageLabel="Mitosis simulation"
+        aspect={440 / 320}
+        stageCap="24rem"
+        runState={runState}
+        statusDetail="All stages complete."
+        readouts={
+          <p className="text-center text-sm font-medium text-ink dark:text-bone">
+            Stage {stageIndex + 1} of {STAGES.length}: {STAGES[stageIndex]?.label}
+          </p>
+        }
+        stage={<CellScene stageIndex={stageIndex} selectedId={selectedId} onSelect={handleSelect} />}
+        actions={
+          <StageControls
         running={running}
         finished={finished}
         atStart={stageIndex === 0}
@@ -107,9 +111,18 @@ export function Mitosis() {
         onPause={handlePause}
         onNextStage={handleNextStage}
         onReset={handleReset}
+          />
+        }
+        controls={
+          <div className="flex min-w-0 flex-col gap-4">
+        <StageIndicator stageIndex={stageIndex} />
+        <StructureInfoPanel structure={selectedStructure} />
+          </div>
+        }
+        explanation={<ExplanationPanel stageIndex={stageIndex} />}
       />
 
-      <FinalResult visible={finished} />
+        <FinalResult visible={finished} />
     </div>
   );
 }

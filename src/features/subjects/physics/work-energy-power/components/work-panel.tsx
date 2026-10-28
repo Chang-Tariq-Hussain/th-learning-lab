@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SimulationLayout, SimulationReadouts } from "@/features/simulation";
 import { PlanSlider } from "../../simple-motion/components/plan-slider";
 import { ReadoutCard } from "./readout-card";
 import {
@@ -54,12 +55,13 @@ export function WorkPanel() {
   const arrowStartY = BOX_SIZE / 2;
 
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[1fr_18rem]">
-        <div className="h-[200px] rounded-[1.75rem] border border-line bg-white/70 p-4 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04]">
+    <SimulationLayout
+      stageLabel="Work simulation"
+      aspect={VIEW_WIDTH / VIEW_HEIGHT}
+      stage={
           <svg
             viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
-            className="h-full w-full"
+            className="block h-full w-full"
             role="img"
             aria-label={`A force of ${force} newtons applied at ${angle} degrees to a box, over a displacement of ${displacement} meters`}
           >
@@ -144,27 +146,20 @@ export function WorkPanel() {
               </marker>
             </defs>
           </svg>
-        </div>
-
-        <div className="flex flex-col justify-center gap-3">
-          <ReadoutCard
-            label="Work Done"
-            value={formatEnergyValue(work)}
-            unit="J"
-            substitution={`${force} N × ${displacement} m × cos(${angle}°)`}
-            tone={tone}
-          />
-          <p className="text-center font-mono text-[11px] uppercase tracking-[0.15em] text-ink-soft dark:text-bone-soft">
-            {sign === "zero"
-              ? "No mechanical work is done"
-              : sign === "positive"
-                ? "Positive work — energy added to the box"
-                : "Negative work — energy removed from the box"}
-          </p>
-        </div>
-      </div>
-
-      <div className="grid w-full max-w-3xl grid-cols-1 gap-6 sm:grid-cols-3">
+      }
+      readouts={
+        <SimulationReadouts
+          label="Work done"
+          items={[
+            { id: "w", label: "Work done", value: formatEnergyValue(work), unit: "J" },
+            { id: "f", label: "Force", value: String(force), unit: "N" },
+            { id: "d", label: "Displacement", value: String(displacement), unit: "m" },
+          ]}
+        />
+      }
+      controls={
+        <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-1 gap-3">
         <PlanSlider
           id="work-force"
           label="Force"
@@ -195,7 +190,25 @@ export function WorkPanel() {
           step={ANGLE_STEP}
           onChange={setAngle}
         />
-      </div>
-    </div>
+          </div>
+          <div className="flex flex-col items-center gap-3">
+            <ReadoutCard
+              label="Work Done"
+              value={formatEnergyValue(work)}
+              unit="J"
+              substitution={`${force} N × ${displacement} m × cos(${angle}°)`}
+              tone={tone}
+            />
+            <p className="text-center font-mono text-label uppercase text-ink-soft dark:text-bone-soft">
+              {sign === "zero"
+                ? "No mechanical work is done"
+                : sign === "positive"
+                  ? "Positive work — energy added to the box"
+                  : "Negative work — energy removed from the box"}
+            </p>
+          </div>
+        </div>
+      }
+    />
   );
 }

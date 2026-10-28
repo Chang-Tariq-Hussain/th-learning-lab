@@ -1,10 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import {
+  SimulationLayout,
+  SimulationReadouts,
+  usePrefersReducedMotion,
+  type SimulationRunState,
+} from "@/features/simulation";
 import { ExplanationPanel } from "./components/explanation-panel";
 import { FormulaStrip } from "./components/formula-strip";
 import { MotionControls } from "./components/motion-controls";
-import { MotionReadouts } from "./components/motion-readouts";
 import { MotionTrack } from "./components/motion-track";
 import { PlanSlider } from "./components/plan-slider";
 import { UnknownSelect } from "./components/unknown-select";
@@ -47,6 +52,7 @@ export function SimpleMotion() {
   const [state, setState] = useState<MotionState>(() =>
     solve(INITIAL_MOTION_STATE),
   );
+  const reducedMotion = usePrefersReducedMotion();
   const frameRef = useRef<number | null>(null);
   const lastTickRef = useRef<number | null>(null);
 
@@ -76,7 +82,8 @@ export function SimpleMotion() {
       if (lastTickRef.current === null) {
         lastTickRef.current = now;
       }
-      const deltaSeconds = (now - lastTickRef.current) / 1000;
+      // A hidden tab pauses rAF; clamp so the car does not teleport when the learner comes back.
+      const deltaSeconds = Math.min((now - lastTickRef.current) / 1000, 0.1);
       lastTickRef.current = now;
 
       setState((prev) => {
@@ -103,6 +110,11 @@ export function SimpleMotion() {
 
   const handleStart = () => {
     if (finished) return;
+    // Reduced motion: no animation loop; go straight to the finished trip (all readouts resolve).
+    if (reducedMotion) {
+      setState((prev) => ({ ...prev, running: false, playbackSeconds: PLAYBACK_DURATION_S }));
+      return;
+    }
     setState((prev) => ({ ...prev, running: true }));
   };
 
@@ -152,29 +164,88 @@ export function SimpleMotion() {
     }));
   };
 
+  const runState: SimulationRunState = state.running
+    ? "running"
+    : finished
+      ? "finished"
+      : state.playbackSeconds > 0
+        ? "paused"
+        : "idle";
+
+  const sliders = (
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {state.unknown !== "distance" && (
+        <PlanSlider
+          id={`${instanceId}-distance-slider`}
+          label="Distance"
+          unit="m"
+          value={state.distanceM}
+          min={DISTANCE_MIN}
+          max={DISTANCE_MAX}
+          step={DISTANCE_STEP}
+          onChange={handleDistanceChange}
+          disabled={state.running}
+        />
+      )}
+      {state.unknown !== "time" && (
+        <PlanSlider
+          id={`${instanceId}-time-slider`}
+          label="Time"
+          unit="s"
+          value={state.timeSec}
+          min={TIME_MIN}
+          max={TIME_MAX}
+          step={TIME_STEP}
+          onChange={handleTimeChange}
+          disabled={state.running}
+        />
+      )}
+      {state.unknown !== "speed" && (
+        <PlanSlider
+          id={`${instanceId}-speed-slider`}
+          label="Speed"
+          unit="m/s"
+          value={state.speedMps}
+          min={SPEED_MIN}
+          max={SPEED_MAX}
+          step={SPEED_STEP}
+          onChange={handleSpeedChange}
+          disabled={state.running}
+        />
+      )}
+    </div>
+  );
+
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <UnknownSelect
-        unknown={state.unknown}
-        onChange={handleUnknownChange}
-        disabled={state.running}
-      />
-
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[18rem_1fr]">
-        <ExplanationPanel />
-
-        <div className="flex flex-col gap-6">
-          <div className="h-[220px] rounded-[1.75rem] border border-line bg-white/70 p-4 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[240px]">
-            <MotionTrack progress={progress} distanceM={state.distanceM} />
-          </div>
-
-          <MotionReadouts
-            distance={displayDistance}
-            time={displayTime}
-            speed={displaySpeed}
-            unknown={state.unknown}
-          />
-
+    <SimulationLayout
+      stageLabel="Simple motion simulation"
+      aspect={3.2}
+      runState={runState}
+      statusDetail={`Trip complete. Distance ${displayDistance?.toFixed(0)} metres, time ${displayTime?.toFixed(1)} seconds, speed ${displaySpeed?.toFixed(1)} metres per second.`}
+      stage={<MotionTrack progress={progress} distanceM={state.distanceM} />}
+      readouts={
+        <SimulationReadouts
+          label="Distance, time and speed"
+          items={[
+            { id: "distance", label: "Distance", value: displayDistance === null ? "?" : displayDistance.toFixed(0), unit: "m", unknown: state.unknown === "distance" },
+            { id: "time", label: "Time", value: displayTime === null ? "?" : displayTime.toFixed(1), unit: "s", unknown: state.unknown === "time" },
+            { id: "speed", label: "Speed", value: displaySpeed === null ? "?" : displaySpeed.toFixed(1), unit: "m/s", unknown: state.unknown === "speed" },
+          ]}
+        />
+      }
+      actions={
+        <MotionControls
+          running={state.running}
+          finished={finished}
+          onStart={handleStart}
+          onPause={handlePause}
+          onReset={handleReset}
+        />
+      }
+      controls={
+        <div className="flex flex-col gap-4">
+          <UnknownSelect unknown={state.unknown} onChange={handleUnknownChange} disabled={state.running} />
+          {sliders}
           <FormulaStrip
             distance={state.distanceM}
             time={state.timeSec}
@@ -182,57 +253,8 @@ export function SimpleMotion() {
             unknown={state.unknown}
           />
         </div>
-      </div>
-
-      <div className="grid w-full max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2">
-        {state.unknown !== "distance" && (
-          <PlanSlider
-            id={`${instanceId}-distance-slider`}
-            label="Distance"
-            unit="m"
-            value={state.distanceM}
-            min={DISTANCE_MIN}
-            max={DISTANCE_MAX}
-            step={DISTANCE_STEP}
-            onChange={handleDistanceChange}
-            disabled={state.running}
-          />
-        )}
-        {state.unknown !== "time" && (
-          <PlanSlider
-            id={`${instanceId}-time-slider`}
-            label="Time"
-            unit="s"
-            value={state.timeSec}
-            min={TIME_MIN}
-            max={TIME_MAX}
-            step={TIME_STEP}
-            onChange={handleTimeChange}
-            disabled={state.running}
-          />
-        )}
-        {state.unknown !== "speed" && (
-          <PlanSlider
-            id={`${instanceId}-speed-slider`}
-            label="Speed"
-            unit="m/s"
-            value={state.speedMps}
-            min={SPEED_MIN}
-            max={SPEED_MAX}
-            step={SPEED_STEP}
-            onChange={handleSpeedChange}
-            disabled={state.running}
-          />
-        )}
-      </div>
-
-      <MotionControls
-        running={state.running}
-        finished={finished}
-        onStart={handleStart}
-        onPause={handlePause}
-        onReset={handleReset}
-      />
-    </div>
+      }
+      explanation={<ExplanationPanel />}
+    />
   );
 }

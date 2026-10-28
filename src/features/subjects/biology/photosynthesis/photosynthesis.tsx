@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { SimulationLayout, usePrefersReducedMotion, type SimulationRunState } from "@/features/simulation";
 import { ExplanationPanel } from "./components/explanation-panel";
 import { FactorControls } from "./components/factor-controls";
 import { FormulaSection } from "./components/formula-section";
@@ -8,7 +9,7 @@ import { LeafDetail } from "./components/leaf-detail";
 import { PhotosynthesisControls } from "./components/photosynthesis-controls";
 import { PlantScene } from "./components/plant-scene";
 import { StatusMessage } from "./components/status-message";
-import { factorRate, hasFinished, progressFor, INITIAL_PHOTOSYNTHESIS_STATE, PLAYBACK_DURATION_S } from "./model";
+import { factorRate, hasFinished, progressFor, statusMessage, INITIAL_PHOTOSYNTHESIS_STATE, PLAYBACK_DURATION_S } from "./model";
 import type { PhotosynthesisFactors, PhotosynthesisState } from "./types";
 
 export interface PhotosynthesisProps {
@@ -41,6 +42,7 @@ export interface PhotosynthesisProps {
 export function Photosynthesis({ showFactorControls = false }: PhotosynthesisProps) {
   const [state, setState] = useState<PhotosynthesisState>(INITIAL_PHOTOSYNTHESIS_STATE);
   const [leafDetailOpen, setLeafDetailOpen] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
   const frameRef = useRef<number | null>(null);
   const lastTickRef = useRef<number | null>(null);
   // Mirrors `state.factors` for the rAF loop below to read live —
@@ -72,7 +74,8 @@ export function Photosynthesis({ showFactorControls = false }: PhotosynthesisPro
       if (lastTickRef.current === null) {
         lastTickRef.current = now;
       }
-      const deltaSeconds = ((now - lastTickRef.current) / 1000) * factorRate(factorsRef.current);
+      // A hidden tab pauses rAF; clamp so the scene does not jump when the learner returns.
+      const deltaSeconds = Math.min((now - lastTickRef.current) / 1000, 0.1) * factorRate(factorsRef.current);
       lastTickRef.current = now;
 
       setState((prev) => {
@@ -100,6 +103,11 @@ export function Photosynthesis({ showFactorControls = false }: PhotosynthesisPro
 
   const handleStart = () => {
     if (finished) return;
+    // Reduced motion: no animation loop; show the finished scene straight away.
+    if (reducedMotion) {
+      setState((prev) => ({ ...prev, running: false, playbackSeconds: PLAYBACK_DURATION_S }));
+      return;
+    }
     setState((prev) => ({ ...prev, running: true }));
   };
 
@@ -115,29 +123,44 @@ export function Photosynthesis({ showFactorControls = false }: PhotosynthesisPro
     setState((prev) => ({ ...INITIAL_PHOTOSYNTHESIS_STATE, factors: prev.factors }));
   };
 
+  const runState: SimulationRunState = state.running
+    ? "running"
+    : finished
+      ? "finished"
+      : state.playbackSeconds > 0
+        ? "paused"
+        : "idle";
+
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[18rem_1fr]">
-        <ExplanationPanel />
-
-        <div className="flex flex-col gap-6">
-          <div className="h-[300px] rounded-[1.75rem] border border-line bg-white/70 p-2 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[340px]">
-            <PlantScene progress={progress} onLeafClick={() => setLeafDetailOpen((open) => !open)} />
+    <>
+      <SimulationLayout
+        stageLabel="Photosynthesis simulation"
+        aspect={1.25}
+        stageCap="24rem"
+        runState={runState}
+        statusDetail={statusMessage(state)}
+        stage={<PlantScene progress={progress} onLeafClick={() => setLeafDetailOpen((open) => !open)} />}
+        readouts={<StatusMessage state={state} />}
+        actions={
+          <PhotosynthesisControls
+            running={state.running}
+            finished={finished}
+            onStart={handleStart}
+            onPause={handlePause}
+            onReset={handleReset}
+          />
+        }
+        controls={
+          <div className="flex flex-col gap-6">
+            {showFactorControls ? (
+              <FactorControls factors={state.factors} rate={rate} onChange={handleFactorsChange} />
+            ) : null}
+            <FormulaSection />
           </div>
-
-          <StatusMessage state={state} />
-
-          <FormulaSection />
-
-          {showFactorControls ? (
-            <FactorControls factors={state.factors} rate={rate} onChange={handleFactorsChange} />
-          ) : null}
-        </div>
-      </div>
-
+        }
+        explanation={<ExplanationPanel />}
+      />
       {leafDetailOpen ? <LeafDetail onClose={() => setLeafDetailOpen(false)} /> : null}
-
-      <PhotosynthesisControls running={state.running} finished={finished} onStart={handleStart} onPause={handlePause} onReset={handleReset} />
-    </div>
+    </>
   );
 }

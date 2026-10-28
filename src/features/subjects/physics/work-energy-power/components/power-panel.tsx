@@ -2,6 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Play, RotateCcw } from "lucide-react";
+import {
+  SimulationLayout,
+  SimulationReadouts,
+  usePrefersReducedMotion,
+  type SimulationRunState,
+} from "@/features/simulation";
 import { Button } from "@/components/ui/button";
 import { PlanSlider } from "../../simple-motion/components/plan-slider";
 import { ReadoutCard } from "./readout-card";
@@ -28,6 +34,7 @@ export function PowerPanel() {
   const [work, setWork] = useState(DEFAULT_WORK);
   const [timeA, setTimeA] = useState(DEFAULT_TIME_A);
   const [timeB, setTimeB] = useState(DEFAULT_TIME_B);
+  const reducedMotion = usePrefersReducedMotion();
   const [running, setRunning] = useState(false);
   const [elapsed, setElapsed] = useState(0);
 
@@ -51,7 +58,8 @@ export function PowerPanel() {
     }
     const tick = (now: number) => {
       if (lastTickRef.current === null) lastTickRef.current = now;
-      const delta = (now - lastTickRef.current) / 1000;
+      // A hidden tab pauses rAF; clamp so the race does not jump when the learner returns.
+      const delta = Math.min((now - lastTickRef.current) / 1000, 0.1);
       lastTickRef.current = now;
       setElapsed((prev) => {
         const next = Math.min(prev + delta, maxTime);
@@ -67,6 +75,11 @@ export function PowerPanel() {
 
   const handleRun = () => {
     if (finished) return;
+    // Reduced motion: no animation loop; show the finished race straight away.
+    if (reducedMotion) {
+      setElapsed(maxTime);
+      return;
+    }
     setRunning(true);
   };
   const handleReset = () => {
@@ -81,49 +94,96 @@ export function PowerPanel() {
   const fractionB = Math.min(1, elapsed / timeB);
   const winner = powerA === powerB ? null : powerA > powerB ? "A" : "B";
 
+  const runState: SimulationRunState = running ? "running" : finished ? "finished" : fractionA > 0 || fractionB > 0 ? "paused" : "idle";
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
-        <MachineCard label="Machine A" fraction={fractionA} power={powerA} time={timeA} work={work} isWinner={winner === "A"} />
-        <MachineCard label="Machine B" fraction={fractionB} power={powerB} time={timeB} work={work} isWinner={winner === "B"} />
-      </div>
-
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button variant="primary" size="lg" onClick={handleRun} disabled={running || finished}>
-          <Play className="h-4 w-4" strokeWidth={1.75} />
-          Run
-        </Button>
-        <Button variant="ghost" size="lg" onClick={handleReset}>
-          <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
-          Reset
-        </Button>
-      </div>
-
-      <div className="grid w-full max-w-3xl grid-cols-1 gap-6 sm:grid-cols-3">
+    <SimulationLayout
+      stageLabel="Power race simulation"
+      aspect={2.6}
+      runState={runState}
+      statusDetail={winner ? `Machine ${winner} is more powerful.` : "Both machines have equal power."}
+      stage={<RaceStage fractionA={fractionA} fractionB={fractionB} isWinnerA={winner === "A"} isWinnerB={winner === "B"} />}
+      readouts={
+        <SimulationReadouts
+          label="Power of each machine"
+          items={[
+            { id: "a", label: "Machine A", value: formatEnergyValue(powerA), unit: "W" },
+            { id: "b", label: "Machine B", value: formatEnergyValue(powerB), unit: "W" },
+          ]}
+        />
+      }
+      actions={
+        <>
+          <Button variant="primary" size="md" onClick={handleRun} disabled={running || finished} className="min-w-28">
+            <Play className="h-4 w-4" strokeWidth={1.75} />
+            Run
+          </Button>
+          <Button variant="ghost" size="md" onClick={handleReset}>
+            <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
+            Reset
+          </Button>
+        </>
+      }
+      controls={
+        <div className="grid grid-cols-1 gap-3">
         <PlanSlider id="power-work" label="Work (both machines)" unit="J" value={work} min={WORK_MIN} max={WORK_MAX} step={WORK_STEP} onChange={setWork} disabled={running} />
         <PlanSlider id="power-time-a" label="Machine A time" unit="s" value={timeA} min={TIME_MIN} max={TIME_MAX} step={TIME_STEP} onChange={setTimeA} disabled={running} />
         <PlanSlider id="power-time-b" label="Machine B time" unit="s" value={timeB} min={TIME_MIN} max={TIME_MAX} step={TIME_STEP} onChange={setTimeB} disabled={running} />
-      </div>
+        </div>
+      }
+      explanation={
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <MachineCard label="Machine A" power={powerA} time={timeA} work={work} isWinner={winner === "A"} />
+          <MachineCard label="Machine B" power={powerB} time={timeB} work={work} isWinner={winner === "B"} />
+        </div>
+      }
+    />
+  );
+}
+
+/** Both machines racing the same track, kept in the sticky stage so the race stays visible while sliders change. */
+function RaceStage({ fractionA, fractionB, isWinnerA, isWinnerB }: { fractionA: number; fractionB: number; isWinnerA: boolean; isWinnerB: boolean }) {
+  const lanes = [
+    { label: "Machine A", fraction: fractionA, win: isWinnerA },
+    { label: "Machine B", fraction: fractionB, win: isWinnerB },
+  ];
+  return (
+    <div className="flex h-full flex-col justify-around rounded-xl bg-white/50 px-2 py-1 dark:bg-white/[0.03]" role="img" aria-label={`Machine A has completed ${Math.round(fractionA * 100)}% of the work and Machine B ${Math.round(fractionB * 100)}%`}>
+      {lanes.map((lane) => (
+        <div key={lane.label} className="flex items-center gap-2">
+          <span className="w-20 shrink-0 font-mono text-label uppercase text-ink-soft dark:text-bone-soft">
+            {lane.label.replace("Machine ", "")}{lane.win ? " ★" : ""}
+          </span>
+          <svg viewBox="0 0 220 46" className="h-10 min-w-0 flex-1" aria-hidden="true">
+            <rect x={4} y={34} width={212} height={8} rx={3} className="fill-ink/10 dark:fill-bone/10" />
+            <rect
+              x={4 + lane.fraction * 176}
+              y={10}
+              width={28}
+              height={24}
+              rx={5}
+              className={lane.win ? "fill-subject-physics stroke-subject-physics" : "fill-subject-physics-soft stroke-subject-physics dark:fill-subject-physics/20"}
+              strokeWidth={2}
+            />
+          </svg>
+        </div>
+      ))}
     </div>
   );
 }
 
 function MachineCard({
   label,
-  fraction,
   power,
   time,
   work,
   isWinner,
 }: {
   label: string;
-  fraction: number;
   power: number;
   time: number;
   work: number;
   isWinner: boolean;
 }) {
-  const percent = Math.round(fraction * 100);
   return (
     <div
       className={`flex flex-col gap-3 rounded-[1.5rem] border p-4 shadow-card backdrop-blur ${
@@ -139,30 +199,6 @@ function MachineCard({
             More powerful
           </span>
         ) : null}
-      </div>
-      {/* A box physically crossing the same fixed track — its position
-          is `fraction` (real elapsed time / this machine's time), the
-          exact number the requestAnimationFrame loop above is already
-          driving, so a faster machine is something you watch arrive
-          first rather than a number you have to compare separately. */}
-      <svg viewBox="0 0 220 46" className="h-11 w-full" role="img" aria-label={`${label} has completed ${percent}% of ${work} joules of work`}>
-        <rect x={4} y={34} width={212} height={8} rx={3} className="fill-ink/10 dark:fill-bone/10" />
-        <rect
-          x={4 + fraction * 176}
-          y={10}
-          width={28}
-          height={24}
-          rx={5}
-          className={isWinner ? "fill-subject-physics stroke-subject-physics" : "fill-subject-physics-soft stroke-subject-physics dark:fill-subject-physics/20"}
-          strokeWidth={2}
-          style={{ transition: fraction === 0 ? "none" : "x 0.1s linear" }}
-        />
-      </svg>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/70 shadow-card dark:bg-white/[0.04]">
-        <div
-          className="h-full rounded-full bg-subject-physics transition-[width] duration-100 ease-linear"
-          style={{ width: `${percent}%` }}
-        />
       </div>
       <p className="font-mono text-[11px] text-ink-soft dark:text-bone-soft">Finishes in {time} s</p>
       <ReadoutCard label="Power" value={formatEnergyValue(power)} unit="W" substitution={`${work} J ÷ ${time} s`} />

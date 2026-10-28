@@ -176,7 +176,7 @@ export function Law3Canvas({
       render={render}
       showGrid={false}
       showAxes={false}
-      className="min-h-[280px] sm:min-h-[360px]"
+      className="h-full min-h-0"
     />
   );
 }

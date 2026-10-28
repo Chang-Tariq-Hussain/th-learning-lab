@@ -9,7 +9,11 @@ import {
   Toolbar,
   InstructionsPanel,
   Legend,
+  PlaybackControls,
+  SimulationLayout,
+  SimulationReadouts,
   useSimulation,
+  type SimulationRunState,
 } from "@/features/simulation";
 import { cn } from "@/lib/utils";
 import { projectileSchema, DEFAULT_DRAG_COEFFICIENT } from "./schema";
@@ -86,6 +90,8 @@ export function ProjectileMotion() {
 
 function ProjectileMotionBody() {
   const { values, time, status, pause } = useSimulation();
+  const runState: SimulationRunState =
+    status === "playing" ? "running" : status === "finished" ? "finished" : status === "paused" ? "paused" : "idle";
   const [mode, setMode] = useState<Mode>("explore");
   const [activeChallengeId, setActiveChallengeId] = useState<string | null>(
     null,
@@ -207,19 +213,14 @@ function ProjectileMotionBody() {
         />
       </div>
 
-      <div
-        className={cn(
-          "grid gap-6",
-          !presentation && "lg:grid-cols-[1fr_360px]",
-        )}
-      >
-        {/* min-w-0: CSS Grid items default to min-width: auto, so
-            without this the track can't shrink back below its content's
-            intrinsic width once Presentation mode (which drops the
-            lg:grid-cols-[1fr_360px] class above) has let it grow to full
-            width — that's what was causing the horizontal-scroll-on-exit
-            bug. See the matching comment in newtons-laws.tsx. */}
-        <div className="flex min-w-0 flex-col gap-4">
+      <SimulationLayout
+        stageLabel="Projectile motion simulation"
+        aspect={2.2}
+        stageCap="30rem"
+        stageOnly={presentation}
+        runState={runState}
+        statusDetail={`Flight complete. Range ${trajectory.range.toFixed(1)} metres.`}
+        stage={
           <ProjectileCanvas
             trajectory={trajectory}
             gravity={gravity}
@@ -231,49 +232,23 @@ function ProjectileMotionBody() {
             }}
             target={target}
           />
-
-          {/* SECONDARY: the three measurements every student needs at a
-              glance, right under the experiment — not buried in the full
-              data table below. */}
-          {!presentation ? (
-            <dl className="grid grid-cols-3 divide-x divide-line rounded-card border border-line bg-white/50 text-center dark:divide-line-dark dark:border-line-dark dark:bg-white/[0.03]">
-              <div className="px-2 py-3">
-                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
-                  Max height
-                </dt>
-                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
-                  {trajectory.maxHeight.toFixed(1)}
-                  <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">
-                    m
-                  </span>
-                </dd>
-              </div>
-              <div className="px-2 py-3">
-                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
-                  Range
-                </dt>
-                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
-                  {trajectory.range.toFixed(1)}
-                  <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">
-                    m
-                  </span>
-                </dd>
-              </div>
-              <div className="px-2 py-3">
-                <dt className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
-                  Flight time
-                </dt>
-                <dd className="mt-0.5 font-mono text-lg font-semibold text-ink dark:text-bone">
-                  {trajectory.timeOfFlight.toFixed(2)}
-                  <span className="ml-1 text-xs font-normal text-ink-soft dark:text-bone-soft">
-                    s
-                  </span>
-                </dd>
-              </div>
-            </dl>
-          ) : null}
-
-          <Toolbar exportFilename="projectile-motion" />
+        }
+        readouts={
+          presentation ? undefined : (
+            <SimulationReadouts
+              label="Max height, range and flight time"
+              items={[
+                { id: "h", label: "Max height", value: trajectory.maxHeight.toFixed(1), unit: "m" },
+                { id: "r", label: "Range", value: trajectory.range.toFixed(1), unit: "m" },
+                { id: "t", label: "Time", value: trajectory.timeOfFlight.toFixed(2), unit: "s" },
+              ]}
+            />
+          )
+        }
+        actions={<PlaybackControls />}
+        controls={
+          <div className="flex min-w-0 flex-col gap-4">
+            <Toolbar exportFilename="projectile-motion" showPlayback={false} />
           {!presentation ? (
             <Legend
               items={[
@@ -288,8 +263,6 @@ function ProjectileMotionBody() {
               ]}
             />
           ) : null}
-        </div>
-
         {!presentation ? (
           <div className="flex min-w-0 flex-col gap-4">
             {mode === "explore" ? (
@@ -379,7 +352,10 @@ function ProjectileMotionBody() {
             </details>
           </div>
         ) : null}
-      </div>
+
+          </div>
+        }
+      />
 
       {!presentation ? (
         <>

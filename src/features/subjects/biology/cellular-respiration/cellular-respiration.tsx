@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 // Reused as-is from Photosynthesis — identical Start/Pause/Reset control set, no need for a second copy.
+import { SimulationLayout, usePrefersReducedMotion, type SimulationRunState } from "@/features/simulation";
 import { PhotosynthesisControls as RespirationControls } from "../photosynthesis/components/photosynthesis-controls";
 import { CellScene } from "./components/cell-scene";
 import { ConnectionNote } from "./components/connection-note";
@@ -23,6 +24,7 @@ import type { RespirationState } from "./types";
  */
 export function CellularRespiration() {
   const [state, setState] = useState<RespirationState>(INITIAL_RESPIRATION_STATE);
+  const reducedMotion = usePrefersReducedMotion();
   const frameRef = useRef<number | null>(null);
   const lastTickRef = useRef<number | null>(null);
 
@@ -47,7 +49,8 @@ export function CellularRespiration() {
       if (lastTickRef.current === null) {
         lastTickRef.current = now;
       }
-      const deltaSeconds = (now - lastTickRef.current) / 1000;
+      // A hidden tab pauses rAF; clamp so the scene does not jump when the learner returns.
+      const deltaSeconds = Math.min((now - lastTickRef.current) / 1000, 0.1);
       lastTickRef.current = now;
 
       setState((prev) => {
@@ -71,6 +74,11 @@ export function CellularRespiration() {
 
   const handleStart = () => {
     if (finished) return;
+    // Reduced motion: no animation loop; show the finished scene straight away.
+    if (reducedMotion) {
+      setState((prev) => ({ ...prev, running: false, playbackSeconds: PLAYBACK_DURATION_S }));
+      return;
+    }
     setState((prev) => ({ ...prev, running: true }));
   };
 
@@ -83,27 +91,44 @@ export function CellularRespiration() {
     setState(INITIAL_RESPIRATION_STATE);
   };
 
+  const runState: SimulationRunState = state.running
+    ? "running"
+    : finished
+      ? "finished"
+      : state.playbackSeconds > 0
+        ? "paused"
+        : "idle";
+
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[18rem_1fr]">
-        <ExplanationPanel />
-
-        <div className="flex flex-col gap-6">
-          <div className="h-[300px] rounded-[1.75rem] border border-line bg-white/70 p-2 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[340px]">
-            <CellScene progress={progress} />
-          </div>
-
+    <SimulationLayout
+      stageLabel="Cellular respiration simulation"
+      aspect={400 / 320}
+      stageCap="24rem"
+      runState={runState}
+      statusDetail="Respiration complete. Energy has been released as ATP."
+      stage={<CellScene progress={progress} />}
+      readouts={
+        <div className="flex flex-col gap-2">
           <StatusMessage state={state} />
-
           <EnergyBar progress={progress} />
-
-          <FormulaSection />
         </div>
-      </div>
-
-      <RespirationControls running={state.running} finished={finished} onStart={handleStart} onPause={handlePause} onReset={handleReset} />
-
-      <ConnectionNote />
-    </div>
+      }
+      actions={
+        <RespirationControls
+          running={state.running}
+          finished={finished}
+          onStart={handleStart}
+          onPause={handlePause}
+          onReset={handleReset}
+        />
+      }
+      controls={<FormulaSection />}
+      explanation={
+        <div className="flex flex-col gap-6">
+          <ExplanationPanel />
+          <ConnectionNote />
+        </div>
+      }
+    />
   );
 }
