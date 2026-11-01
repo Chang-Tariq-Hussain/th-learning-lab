@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { ROUTER_IFACES, isDuplicated, type HostId, type IpHost, type NodeId } from "../model";
 
@@ -32,6 +33,8 @@ export interface DiagramProps {
   /** Show the gateway arrow from this host to the router. */
   gatewayFor?: HostId | null;
   showGatewayLabels?: boolean;
+  /** Fill the parent stage frame (used inside SimulationLayout) instead of sizing itself. */
+  fill?: boolean;
 }
 
 function inPath(path: NodeId[] | undefined, a: NodeId, b: NodeId): boolean {
@@ -45,14 +48,28 @@ function inPath(path: NodeId[] | undefined, a: NodeId, b: NodeId): boolean {
 }
 
 /** 2D diagram of: PC A / PC B / PC D — Switch 1 — Router — Switch 2 — PC C. Scrolls horizontally inside its own container on phones. */
-export function NetworkMapDiagram({ hosts, selected, onSelect, path, pathOk = true, gatewayFor, showGatewayLabels }: DiagramProps) {
+export function NetworkMapDiagram({ hosts, selected, onSelect, path, pathOk = true, gatewayFor, showGatewayLabels, fill = false }: DiagramProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
   const hostById = (id: NodeId) => hosts.find((h) => h.id === id);
   const gwHost = gatewayFor ? hostById(gatewayFor) : undefined;
+  const hasPath = !!path && path.length > 1;
+  useEffect(() => {
+    // In the fixed-height stage the diagram can be wider than the frame on phones: centre it on the router when a path is shown.
+    const el = scrollRef.current;
+    if (fill && hasPath && el) el.scrollTo({ left: (el.scrollWidth - el.clientWidth) / 2, behavior: "auto" });
+  }, [fill, hasPath, path]);
   const pathTone = pathOk ? "stroke-emerald-500" : "stroke-red-500";
 
   return (
-    <div className="overflow-x-auto rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard" tabIndex={0} aria-label="Scrollable network diagram">
-      <svg viewBox="0 0 740 310" className="mx-auto h-auto w-full min-w-[600px] max-w-[820px]" role="group" aria-label="Network: PC-A, PC-B and PC-D connect to Switch 1, which connects to a Router, then Switch 2 and PC-C">
+    <div
+      ref={scrollRef}
+      className={cn("overflow-x-auto rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard", fill && "overflow-y-hidden")}
+      tabIndex={0}
+      aria-label="Scrollable network diagram"
+    >
+      <svg
+        viewBox="0 0 740 310"
+        className={fill ? "mx-auto block h-full w-auto max-w-none" : "mx-auto h-auto w-full min-w-[600px] max-w-[820px]"} role="group" aria-label="Network: PC-A, PC-B and PC-D connect to Switch 1, which connects to a Router, then Switch 2 and PC-C">
         <text x="150" y="16" textAnchor="middle" className="fill-ink-soft font-mono text-[10px] dark:fill-bone-soft">LAN 1</text>
         <text x="590" y="16" textAnchor="middle" className="fill-ink-soft font-mono text-[10px] dark:fill-bone-soft">LAN 2</text>
         <rect x="8" y="22" width="292" height="284" rx="10" className="fill-none stroke-ink/20 dark:stroke-bone/20" strokeDasharray="4 4" />

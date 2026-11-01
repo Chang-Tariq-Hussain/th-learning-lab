@@ -28,14 +28,14 @@ export function DeviceInspectorPanel({
           <input
             value={device.label}
             onChange={(e) => onRename(e.target.value)}
-            className="w-full rounded-md border border-line bg-transparent px-2 py-1 text-sm font-medium text-ink dark:border-line-dark dark:text-bone"
+            className="min-h-11 w-full rounded-md border border-line bg-transparent px-2 text-base font-medium text-ink dark:border-line-dark dark:text-bone"
             aria-label="Device name"
           />
         ) : (
           <p className="text-sm font-medium text-ink dark:text-bone">{device.label}</p>
         )}
       </div>
-      <p className="mt-1 font-mono text-[10px] uppercase tracking-wide text-subject-it">
+      <p className="mt-1 font-mono text-label uppercase tracking-wide text-subject-it">
         {info.label} · {info.categoryLabel}
       </p>
       <ul className="mt-2 flex flex-col gap-1 text-sm text-ink-soft dark:text-bone-soft">
@@ -49,7 +49,7 @@ export function DeviceInspectorPanel({
       {onRemove && (
         <button
           onClick={onRemove}
-          className="mt-3 rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft"
+          className="mt-3 min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft"
         >
           Remove device
         </button>

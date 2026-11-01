@@ -59,6 +59,17 @@ const PAGES: Page_[] = [
   { path: "mathematics/midpoint-of-a-line-segment" },
   { path: "mathematics/real-life-ratios" },
   { path: "mathematics/triangle-explorer" },
+  { path: "information-technology/network-fundamentals-topologies", tab: /^Basics$/ },
+  { path: "information-technology/network-fundamentals-topologies", tab: /^Build a Network$/ },
+  { path: "information-technology/network-fundamentals-topologies", tab: /^Topologies$/ },
+  { path: "information-technology/network-fundamentals-topologies", tab: /^Failure Lab$/ },
+  { path: "information-technology/network-fundamentals-topologies", tab: /^Client–Server vs. P2P$/ },
+  { path: "information-technology/network-fundamentals-topologies", tab: /^Send Data$/ },
+  { path: "information-technology/ip-addressing-simulator", tab: /^Network Map$/ },
+  { path: "information-technology/ip-addressing-simulator", tab: /^Local vs Remote$/ },
+  { path: "information-technology/ip-addressing-simulator", tab: /^IP Configuration$/ },
+  { path: "information-technology/deadlock-simulator", tab: /^Resource Graph$/ },
+  { path: "information-technology/computer-components-explorer", tab: /^3D Hardware Lab$/ },
 ];
 
 const VIEWPORTS = [

@@ -89,7 +89,7 @@ export function CpuArchitectureInstructionCycle() {
             aria-selected={tab === t.id}
             onClick={() => setTab(t.id)}
             className={cn(
-              "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+              "min-h-11 rounded-full border px-4 text-sm font-medium transition-colors",
               tab === t.id
                 ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
                 : "border-line text-ink-soft hover:border-ink/30 dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/30",

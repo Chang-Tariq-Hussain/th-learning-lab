@@ -89,28 +89,8 @@ export function HardwareLab3DScene({
   });
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Camera presets">
-        {CAMERA_PRESETS.map((p) => (
-          <button
-            key={p.id}
-            onClick={() => {
-              onSelect(null as unknown as ComponentId);
-              onPresetChange(p.id);
-            }}
-            className={cn(
-              "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
-              preset === p.id && !selected
-                ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
-                : "border-line text-ink-soft hover:border-ink/30 dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/30"
-            )}
-          >
-            {p.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="h-[320px] w-full touch-none overflow-hidden rounded-card border border-line dark:border-line-dark sm:h-[420px]">
+    <div className="h-full w-full">
+      <div className="h-full w-full touch-none overflow-hidden rounded-card border border-line dark:border-line-dark">
         <Canvas shadows camera={{ position: focus.position, fov: 42 }} dpr={[1, 1.5]}>
           <Suspense fallback={null}>
             <ambientLight intensity={0.65} />

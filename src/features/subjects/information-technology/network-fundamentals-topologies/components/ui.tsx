@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export function Panel({ title, children, className }: { title?: string; children: ReactNode; className?: string }) {
   return (
     <div className={cn("rounded-card border border-line bg-white/60 p-3.5 dark:border-line-dark dark:bg-white/[0.03]", className)}>
-      {title && <p className="font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">{title}</p>}
+      {title && <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">{title}</p>}
       <div className={title ? "mt-2" : undefined}>{children}</div>
     </div>
   );
@@ -66,7 +66,7 @@ export function PillButton({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-40",
+        "min-h-11 rounded-full border px-4 text-sm font-medium transition-colors disabled:opacity-40",
         active
           ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
           : "border-line text-ink dark:border-line-dark dark:text-bone",
@@ -96,7 +96,7 @@ export function LabeledSlider({
 }) {
   return (
     <label className="flex flex-col gap-1.5">
-      <span className="flex items-center justify-between text-xs text-ink-soft dark:text-bone-soft">
+      <span className="flex items-center justify-between text-label text-ink-soft dark:text-bone-soft">
         <span>{label}</span>
         <span className="font-mono text-ink dark:text-bone">
           {value}
@@ -110,7 +110,7 @@ export function LabeledSlider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number.parseFloat(e.target.value))}
-        className="h-8 w-full accent-subject-it"
+        className="h-11 w-full accent-subject-it"
         aria-label={label}
       />
     </label>

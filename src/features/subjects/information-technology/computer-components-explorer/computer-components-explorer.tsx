@@ -4,7 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Tag } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { HardwareLab3D } from "./components/hardware-lab-3d";
+import { SimulationLayout } from "@/features/simulation";
+import { CameraPresetButtons, HardwareLab3D } from "./components/hardware-lab-3d";
 import { InspectorPanel } from "./components/inspector-panel";
 import { ComponentLibrary } from "./components/component-library";
 import { RelationshipsPanel } from "./components/relationships-panel";
@@ -95,7 +96,7 @@ export function ComputerComponentsExplorer() {
             aria-selected={tab === t.id}
             onClick={() => setTab(t.id)}
             className={cn(
-              "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+              "min-h-11 rounded-full border px-4 text-sm font-medium transition-colors",
               tab === t.id
                 ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
                 : "border-line text-ink-soft hover:border-ink/30 dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/30"
@@ -119,7 +120,7 @@ export function ComputerComponentsExplorer() {
               onClick={() => setDetailLevel(level)}
               title={DETAIL_LEVEL_DESCRIPTIONS[level]}
               className={cn(
-                "rounded-full border px-3 py-1 text-xs font-medium",
+                "min-h-11 rounded-full border px-4 text-sm font-medium",
                 detailLevel === level ? "border-ink dark:border-bone" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft"
               )}
             >
@@ -131,49 +132,50 @@ export function ComputerComponentsExplorer() {
 
       <div className="rounded-card border border-line bg-paper p-3 dark:border-line-dark dark:bg-chalkboard sm:p-5">
         {tab === "lab" && (
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Layer:</span>
-                {(Object.keys(LAYER_LABELS) as BoardLayer[]).map((l) => (
+          <SimulationLayout
+            stageLabel="3D motherboard"
+            stage={
+              <HardwareLab3D selected={selected} onSelect={setSelected} preset={preset} onPresetChange={setPreset} layer={layer} showLabels={showLabels} />
+            }
+            aspect={1.4}
+            stageCap="40rem"
+            controls={
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Layer:</span>
+                    {(Object.keys(LAYER_LABELS) as BoardLayer[]).map((l) => (
+                      <button
+                        key={l}
+                        onClick={() => setLayer(l)}
+                        title={LAYER_DESCRIPTIONS[l]}
+                        className={cn(
+                          "min-h-11 rounded-full border px-4 text-sm font-medium",
+                          layer === l ? "border-ink dark:border-bone" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft"
+                        )}
+                      >
+                        {LAYER_LABELS[l]}
+                      </button>
+                    ))}
+                  </div>
                   <button
-                    key={l}
-                    onClick={() => setLayer(l)}
-                    title={LAYER_DESCRIPTIONS[l]}
+                    onClick={() => setShowLabels((s) => !s)}
                     className={cn(
-                      "rounded-full border px-3 py-1 text-xs font-medium",
-                      layer === l ? "border-ink dark:border-bone" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft"
+                      "inline-flex min-h-11 items-center gap-1.5 rounded-full border px-4 text-sm font-medium",
+                      showLabels
+                        ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
+                        : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft"
                     )}
                   >
-                    {LAYER_LABELS[l]}
+                    <Tag className="h-3.5 w-3.5" />
+                    {showLabels ? "Labels on" : "Labels off"}
                   </button>
-                ))}
+                </div>
+                <CameraPresetButtons selected={selected} preset={preset} onSelect={setSelected} onPresetChange={setPreset} />
               </div>
-              <button
-                onClick={() => setShowLabels((s) => !s)}
-                className={cn(
-                  "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium",
-                  showLabels
-                    ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
-                    : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft"
-                )}
-              >
-                <Tag className="h-3.5 w-3.5" />
-                {showLabels ? "Labels on" : "Labels off"}
-              </button>
-            </div>
-
-            <HardwareLab3D
-              selected={selected}
-              onSelect={setSelected}
-              preset={preset}
-              onPresetChange={setPreset}
-              layer={layer}
-              showLabels={showLabels}
-            />
-
-            <InspectorPanel id={selected} detailLevel={detailLevel} />
-          </div>
+            }
+            explanation={<InspectorPanel id={selected} detailLevel={detailLevel} />}
+          />
         )}
 
         {tab === "library" && <ComponentLibrary detailLevel={detailLevel} />}

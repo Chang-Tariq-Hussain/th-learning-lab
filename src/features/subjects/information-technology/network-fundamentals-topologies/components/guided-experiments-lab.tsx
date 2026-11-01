@@ -114,7 +114,7 @@ export function GuidedExperimentsLab({ onJumpToTab }: { onJumpToTab: (tab: TabId
               <p><span className="font-medium text-ink dark:text-bone">Why:</span> <span className="text-ink-soft dark:text-bone-soft">{exp.explanation}</span></p>
               <button
                 onClick={() => onJumpToTab(exp.goTo)}
-                className="mt-1 self-start rounded-full border border-subject-it bg-subject-it-soft px-3 py-1.5 text-xs font-medium text-subject-it dark:bg-subject-it/20"
+                className="mt-1 min-h-11 self-start rounded-full border border-subject-it bg-subject-it-soft px-4 text-sm font-medium text-subject-it dark:bg-subject-it/20"
               >
                 {exp.goToLabel}
               </button>

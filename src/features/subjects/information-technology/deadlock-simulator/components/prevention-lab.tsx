@@ -63,7 +63,7 @@ function HoldAndWaitDemo() {
         at a time as it goes.
       </p>
 
-      <label className="mt-3 flex w-fit cursor-pointer items-center gap-2 rounded-full border border-line px-3 py-1.5 text-xs font-medium dark:border-line-dark">
+      <label className="mt-3 flex w-fit cursor-pointer items-center gap-2 min-h-11 rounded-full border border-line px-4 text-sm font-medium dark:border-line-dark">
         <input type="checkbox" checked={requireAllUpfront} onChange={(e) => setRequireAllUpfront(e.target.checked)} className="h-3.5 w-3.5 accent-subject-it" />
         Require all resources requested up front
       </label>
@@ -103,8 +103,8 @@ function CircularWaitDemo() {
       </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-3 text-xs">
-        <span className="rounded-full border border-line px-3 py-1.5 font-mono dark:border-line-dark">P1 requests: {p1Order}</span>
-        <label className="flex cursor-pointer items-center gap-2 rounded-full border border-line px-3 py-1.5 font-mono dark:border-line-dark">
+        <span className="min-h-11 rounded-full border border-line px-4 font-mono dark:border-line-dark">P1 requests: {p1Order}</span>
+        <label className="flex cursor-pointer items-center gap-2 min-h-11 rounded-full border border-line px-4 font-mono dark:border-line-dark">
           <input type="checkbox" checked={p2RequestsBackwards} onChange={(e) => setP2RequestsBackwards(e.target.checked)} className="h-3.5 w-3.5 accent-subject-it" />
           P2 requests: {p2Order}
         </label>

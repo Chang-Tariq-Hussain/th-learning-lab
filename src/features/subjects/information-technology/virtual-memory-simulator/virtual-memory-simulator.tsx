@@ -112,7 +112,7 @@ export function VirtualMemorySimulator() {
               aria-selected={tab === t.id}
               onClick={() => setTab(t.id)}
               className={cn(
-                "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+                "min-h-11 rounded-full border px-4 text-sm font-medium transition-colors",
                 tab === t.id
                   ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
                   : "border-line text-ink-soft hover:border-ink/30 dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/30",
@@ -126,14 +126,14 @@ export function VirtualMemorySimulator() {
       <p className="text-sm text-ink-soft dark:text-bone-soft">{TABS.find((t) => t.id === tab)!.blurb}</p>
 
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-medium uppercase tracking-wide text-ink-soft dark:text-bone-soft">Detail level:</span>
+        <span className="text-label font-medium uppercase tracking-wide text-ink-soft dark:text-bone-soft">Detail level:</span>
         {(Object.keys(DETAIL_LEVEL_LABELS) as DetailLevel[]).map((level) => (
           <button
             key={level}
             onClick={() => setDetailLevel(level)}
             title={DETAIL_LEVEL_DESCRIPTIONS[level]}
             className={cn(
-              "rounded-full border px-3 py-1 text-xs font-medium",
+              "min-h-11 rounded-full border px-4 text-sm font-medium",
               detailLevel === level ? "border-ink dark:border-bone" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft",
             )}
           >

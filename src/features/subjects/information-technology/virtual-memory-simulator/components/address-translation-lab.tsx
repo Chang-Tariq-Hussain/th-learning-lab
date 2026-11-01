@@ -77,7 +77,7 @@ export function AddressTranslationLab({ processes, selectedProcessId, onSelectPr
             key={p.id}
             onClick={() => { onSelectProcess(p.id); reset(); }}
             className={cn(
-              "flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium",
+              "flex min-h-11 items-center gap-1.5 rounded-full border px-4 text-sm font-medium",
               selectedProcessId === p.id ? "border-ink dark:border-bone" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft",
             )}
           >
@@ -92,7 +92,7 @@ export function AddressTranslationLab({ processes, selectedProcessId, onSelectPr
             key={r.id}
             onClick={() => changeRegion(r.id)}
             className={cn(
-              "rounded-full border px-2.5 py-1 text-xs font-medium",
+              "min-h-11 rounded-full border px-3 text-sm font-medium",
               selectedRegionId === r.id
                 ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
                 : "border-line text-ink-soft hover:border-ink/40 dark:border-line-dark dark:text-bone-soft",
@@ -121,20 +121,20 @@ export function AddressTranslationLab({ processes, selectedProcessId, onSelectPr
           <button
             onClick={() => setPlaying((p) => !p)}
             disabled={stepIndex === ACCESS_STEPS.length - 1 && !playing}
-            className="inline-flex h-8 items-center gap-1.5 rounded-full bg-subject-it px-3 text-xs font-medium text-paper hover:opacity-90 disabled:opacity-40"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-subject-it px-4 text-sm font-medium text-paper hover:opacity-90 disabled:opacity-40"
           >
             {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />} {playing ? "Pause" : "Play"}
           </button>
           <button
             onClick={() => setStepIndex((i) => Math.min(ACCESS_STEPS.length - 1, i + 1))}
             disabled={stepIndex === ACCESS_STEPS.length - 1}
-            className="inline-flex h-8 items-center gap-1.5 rounded-full border border-line px-3 text-xs font-medium text-ink hover:border-ink/40 disabled:opacity-40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-line px-4 text-sm font-medium text-ink hover:border-ink/40 disabled:opacity-40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
           >
             <StepForward className="h-3.5 w-3.5" /> Step
           </button>
           <button
             onClick={reset}
-            className="inline-flex h-8 items-center gap-1.5 rounded-full border border-line px-3 text-xs font-medium text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-line px-4 text-sm font-medium text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
           >
             <RotateCcw className="h-3.5 w-3.5" /> Reset
           </button>
@@ -144,7 +144,7 @@ export function AddressTranslationLab({ processes, selectedProcessId, onSelectPr
                 key={s.id}
                 onClick={() => setSpeedId(s.id)}
                 className={cn(
-                  "rounded-full border px-2.5 py-1 text-[11px] font-medium",
+                  "min-h-11 rounded-full border px-3 text-sm font-medium",
                   speedId === s.id ? "border-ink dark:border-bone" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft",
                 )}
               >

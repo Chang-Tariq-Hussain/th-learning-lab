@@ -62,13 +62,13 @@ export function MemoryPressureOvercommitLab({ processes, onAddPressureProcess, p
             <button
               onClick={onAddPressureProcess}
               disabled={pressureDenied}
-              className="inline-flex h-9 items-center rounded-full bg-subject-it px-4 text-sm font-medium text-paper hover:opacity-90 disabled:opacity-40"
+              className="inline-flex min-h-11 items-center rounded-full bg-subject-it px-4 text-sm font-medium text-paper hover:opacity-90 disabled:opacity-40"
             >
               Start process ({PRESSURE_REQUEST_GB} GB resident)
             </button>
             <button
               onClick={onReset}
-              className="inline-flex h-9 items-center rounded-full border border-line px-3 text-sm font-medium text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
+              className="inline-flex min-h-11 items-center rounded-full border border-line px-3 text-sm font-medium text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
             >
               Reset
             </button>
@@ -87,12 +87,12 @@ export function MemoryPressureOvercommitLab({ processes, onAddPressureProcess, p
         <p className="mb-2 text-sm font-medium text-ink dark:text-bone">Overcommit: virtual demand vs. physical capacity</p>
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="rounded-md border border-line p-3 dark:border-line-dark">
-            <p className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Total virtual address-space demand</p>
+            <p className="text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Total virtual address-space demand</p>
             <p className="font-mono text-xl text-ink dark:text-bone">{virtualDemand.toFixed(2)} GB</p>
             <p className="mt-1 text-xs text-ink-soft dark:text-bone-soft">Sum of every process&apos;s virtual address-space size.</p>
           </div>
           <div className="rounded-md border border-line p-3 dark:border-line-dark">
-            <p className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Physical RAM capacity</p>
+            <p className="text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Physical RAM capacity</p>
             <p className="font-mono text-xl text-ink dark:text-bone">{PHYSICAL_RAM_GB.toFixed(2)} GB</p>
             <p className="mt-1 text-xs text-ink-soft dark:text-bone-soft">Currently resident: {totalResidentGB(processes).toFixed(2)} GB.</p>
           </div>

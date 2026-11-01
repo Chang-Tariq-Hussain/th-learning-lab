@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PACKET_LOSS_OPTIONS_PERCENT, shortestPath, type NetworkState } from "../model";
-import { NetworkGraphSvg } from "./network-graph-svg";
+import { usePrefersReducedMotion } from "@/features/simulation";
+import { NetLayout } from "./net-layout";
 import { Callout, Panel, PillButton, SectionHeading } from "./ui";
 
 interface SendLogEntry {
@@ -22,6 +23,7 @@ export function PacketLab({ network }: { network: NetworkState }) {
   const [log, setLog] = useState<SendLogEntry[]>([]);
   const rafRef = useRef<number | null>(null);
   const counterRef = useRef(0);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     if (!network.devices.find((d) => d.id === fromId)) setFromId(network.devices[0]?.id ?? null);
@@ -43,6 +45,13 @@ export function PacketLab({ network }: { network: NetworkState }) {
     const travelPath = lossHop ? fullPath.slice(0, lossHop + 1) : fullPath;
     const segments = Math.max(1, travelPath.length - 1);
     setLost(false);
+    if (reducedMotion) {
+      setProgress(1);
+      if (lossHop) setLost(true);
+      counterRef.current += 1;
+      setLog((l) => [{ id: counterRef.current, from: fromId, to: toId, delivered: !lossHop, lossIndex: lossHop }, ...l].slice(0, 6));
+      return;
+    }
     setProgress(0);
     const start = performance.now();
     const durationMs = 900;
@@ -88,60 +97,64 @@ export function PacketLab({ network }: { network: NetworkState }) {
         independently, which later simulations cover.
       </SectionHeading>
 
-      <div className="grid gap-6 lg:grid-cols-[1.1fr,1fr]">
-        <div className="flex flex-col gap-3">
-          <NetworkGraphSvg
-            state={network}
-            pathDeviceIds={new Set(fullPath ?? [])}
-            packetAt={packetAt}
-            ariaLabel="Packet path"
-          />
-          <div className="flex flex-wrap items-center gap-2">
-            <label className="flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
-              Source
-              <select value={fromId ?? ""} onChange={(e) => setFromId(e.target.value)} className="rounded-md border border-line bg-transparent px-2 py-1 text-ink dark:border-line-dark dark:text-bone">
-                {network.devices.map((d) => (
-                  <option key={d.id} value={d.id}>{d.label}</option>
-                ))}
-              </select>
-            </label>
-            <label className="flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
-              Destination
-              <select value={toId ?? ""} onChange={(e) => setToId(e.target.value)} className="rounded-md border border-line bg-transparent px-2 py-1 text-ink dark:border-line-dark dark:text-bone">
-                {network.devices.map((d) => (
-                  <option key={d.id} value={d.id}>{d.label}</option>
-                ))}
-              </select>
-            </label>
-            <button onClick={send} disabled={!fullPath} className="rounded-full border border-subject-it bg-subject-it-soft px-3 py-1.5 text-xs font-medium text-subject-it disabled:opacity-40 dark:bg-subject-it/20">
-              Send data
-            </button>
-          </div>
-          {!fullPath && fromId && toId && (
-            <p className="text-xs text-red-600 dark:text-red-400">No path currently connects these two devices.</p>
-          )}
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <Panel title="Packet loss rate">
-            <div className="flex flex-wrap gap-2">
-              {PACKET_LOSS_OPTIONS_PERCENT.map((v) => (
-                <PillButton key={v} active={lossRate === v} onClick={() => setLossRate(v)}>{v}%</PillButton>
-              ))}
+      <NetLayout
+        stageLabel="Packet path"
+        graph={{ state: network, pathDeviceIds: new Set(fullPath ?? []), packetAt, ariaLabel: "Packet path" }}
+        runState={progress === null ? "idle" : progress < 1 ? "running" : "finished"}
+        statusDetail={progress !== null && progress >= 1 ? (lost ? "Packet lost" : "Delivered") : undefined}
+        actions={
+          <button
+            onClick={send}
+            disabled={!fullPath}
+            className="min-h-11 w-full rounded-full border border-subject-it bg-subject-it-soft px-4 text-sm font-medium text-subject-it disabled:opacity-40 dark:bg-subject-it/20"
+          >
+            Send data
+          </button>
+        }
+        controls={
+          <div className="flex flex-col gap-4">
+            <div className="grid gap-2 sm:grid-cols-2">
+              <label className="flex flex-col gap-1 text-label text-ink-soft dark:text-bone-soft">
+                Source
+                <select value={fromId ?? ""} onChange={(e) => setFromId(e.target.value)} className="min-h-11 rounded-md border border-line bg-transparent px-2 text-base text-ink dark:border-line-dark dark:text-bone">
+                  {network.devices.map((d) => (
+                    <option key={d.id} value={d.id}>{d.label}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="flex flex-col gap-1 text-label text-ink-soft dark:text-bone-soft">
+                Destination
+                <select value={toId ?? ""} onChange={(e) => setToId(e.target.value)} className="min-h-11 rounded-md border border-line bg-transparent px-2 text-base text-ink dark:border-line-dark dark:text-bone">
+                  {network.devices.map((d) => (
+                    <option key={d.id} value={d.id}>{d.label}</option>
+                  ))}
+                </select>
+              </label>
             </div>
-            <p className="mt-2 text-sm text-ink-soft dark:text-bone-soft">
-              Packet loss means a transmitted packet may fail to successfully reach its destination — at each hop here,
-              there&apos;s a {lossRate}% illustrative chance the packet is dropped. Real networks retransmit lost data
-              using higher-layer protocols not modeled in this introductory lab.
-            </p>
-          </Panel>
-
+            {!fullPath && fromId && toId && (
+              <p className="text-helper text-red-600 dark:text-red-400">No path currently connects these two devices.</p>
+            )}
+            <Panel title="Packet loss rate">
+              <div className="flex flex-wrap gap-2">
+                {PACKET_LOSS_OPTIONS_PERCENT.map((v) => (
+                  <PillButton key={v} active={lossRate === v} onClick={() => setLossRate(v)}>{v}%</PillButton>
+                ))}
+              </div>
+              <p className="mt-2 text-sm text-ink-soft dark:text-bone-soft">
+                Packet loss means a transmitted packet may fail to successfully reach its destination — at each hop here,
+                there&apos;s a {lossRate}% illustrative chance the packet is dropped. Real networks retransmit lost data
+                using higher-layer protocols not modeled in this introductory lab.
+              </p>
+            </Panel>
+          </div>
+        }
+        explanation={
           <Panel title="Recent sends">
             {log.length === 0 ? (
               <p className="text-sm text-ink-soft dark:text-bone-soft">Send some data to see results here.</p>
             ) : (
               <>
-                <p className="text-xs text-ink-soft dark:text-bone-soft">{deliveredCount}/{log.length} of the last {log.length} delivered</p>
+                <p className="text-helper text-ink-soft dark:text-bone-soft">{deliveredCount}/{log.length} of the last {log.length} delivered</p>
                 <ul className="mt-2 flex flex-col gap-1 text-sm">
                   {log.map((entry) => (
                     <li key={entry.id} className={entry.delivered ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}>
@@ -152,8 +165,8 @@ export function PacketLab({ network }: { network: NetworkState }) {
               </>
             )}
           </Panel>
-        </div>
-      </div>
+        }
+      />
 
       <Callout tone="neutral" title="Illustrative model">
         The loss percentages here are teaching values you set yourself, not a measurement of any real link — use them

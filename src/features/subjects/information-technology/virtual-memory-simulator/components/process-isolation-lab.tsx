@@ -61,13 +61,13 @@ export function ProcessIsolationLab({ processes }: ProcessIsolationLabProps) {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={tryOwnAddress}
-            className="inline-flex h-9 items-center rounded-full bg-subject-it px-4 text-sm font-medium text-paper hover:opacity-90"
+            className="inline-flex min-h-11 items-center rounded-full bg-subject-it px-4 text-sm font-medium text-paper hover:opacity-90"
           >
             {processA.name}: access its own {processA.isolationVirtualAddress}
           </button>
           <button
             onClick={tryOtherAddress}
-            className="inline-flex h-9 items-center rounded-full border border-line px-4 text-sm font-medium text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
+            className="inline-flex min-h-11 items-center rounded-full border border-line px-4 text-sm font-medium text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
           >
             {processA.name}: access {processB.name}&apos;s {processB.isolationVirtualAddress}
           </button>

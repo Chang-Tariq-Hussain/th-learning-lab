@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { TOPOLOGY_INFO, TOPOLOGY_ORDER, buildTopology, type NetworkState, type TopologyKind } from "../model";
-import { NetworkGraphSvg } from "./network-graph-svg";
+import { NetLayout } from "./net-layout";
 import { Callout, Panel, PillButton, SectionHeading } from "./ui";
 
 export function TopologyLab({
@@ -29,15 +29,19 @@ export function TopologyLab({
         affects resilience.
       </SectionHeading>
 
-      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Topology">
-        {TOPOLOGY_ORDER.map((kind) => (
-          <PillButton key={kind} active={active === kind} onClick={() => applyTopology(kind)}>
-            {TOPOLOGY_INFO[kind].label}
-          </PillButton>
-        ))}
-      </div>
-
-      <NetworkGraphSvg state={network} ariaLabel={`${info.label} topology`} />
+      <NetLayout
+        stageLabel={`${info.label} topology`}
+        graph={{ state: network, ariaLabel: `${info.label} topology` }}
+        controls={
+          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Topology">
+            {TOPOLOGY_ORDER.map((kind) => (
+              <PillButton key={kind} active={active === kind} onClick={() => applyTopology(kind)}>
+                {TOPOLOGY_INFO[kind].label}
+              </PillButton>
+            ))}
+          </div>
+        }
+      />
 
       <div className="grid gap-3 sm:grid-cols-2">
         <Panel title="Structure">

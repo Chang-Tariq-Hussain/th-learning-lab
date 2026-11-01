@@ -79,7 +79,7 @@ export function DeadlockCreationLab() {
             key={s.id}
             onClick={() => setScenarioId(s.id)}
             className={cn(
-              "rounded-full border px-3 py-1.5 text-xs font-medium",
+              "min-h-11 rounded-full border px-4 text-sm font-medium",
               scenarioId === s.id ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft",
             )}
           >
@@ -89,13 +89,13 @@ export function DeadlockCreationLab() {
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <button onClick={player.playPause} className="rounded-full border border-subject-it bg-subject-it-soft px-4 py-1.5 text-sm font-medium text-subject-it dark:bg-subject-it/20">
+        <button onClick={player.playPause} className="min-h-11 rounded-full border border-subject-it bg-subject-it-soft px-4 text-sm font-medium text-subject-it dark:bg-subject-it/20">
           {player.playLabel}
         </button>
-        <button onClick={player.stepForward} disabled={player.isFinished} className="rounded-full border border-line px-4 py-1.5 text-sm font-medium text-ink disabled:opacity-40 dark:border-line-dark dark:text-bone">
+        <button onClick={player.stepForward} disabled={player.isFinished} className="min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink disabled:opacity-40 dark:border-line-dark dark:text-bone">
           Step
         </button>
-        <button onClick={player.reset} className="rounded-full border border-line px-4 py-1.5 text-sm font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft">
+        <button onClick={player.reset} className="min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft">
           Reset — try a different order
         </button>
         <div className="flex items-center gap-1.5">
@@ -103,7 +103,7 @@ export function DeadlockCreationLab() {
             <button
               key={sp}
               onClick={() => player.setSpeed(sp)}
-              className={cn("rounded-full border px-2 py-1 font-mono text-[10px]", player.speed === sp ? "border-ink dark:border-bone" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft")}
+              className={cn("min-h-11 min-w-11 rounded-full border px-2 font-mono text-sm", player.speed === sp ? "border-ink dark:border-bone" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft")}
             >
               {sp}×
             </button>

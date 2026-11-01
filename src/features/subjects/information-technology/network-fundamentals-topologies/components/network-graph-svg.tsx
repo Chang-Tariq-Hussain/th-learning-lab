@@ -41,6 +41,8 @@ export interface NetworkGraphSvgProps {
   onMoveDevice?: (id: string, x: number, y: number) => void;
   connectFromId?: string | null;
   ariaLabel?: string;
+  /** Fill the parent frame (used inside SimulationLayout) instead of a fixed height. */
+  fill?: boolean;
 }
 
 function linkDash(type: Link["type"]): string | undefined {
@@ -67,6 +69,7 @@ export function NetworkGraphSvg({
   onMoveDevice,
   connectFromId,
   ariaLabel = "Network diagram",
+  fill = false,
 }: NetworkGraphSvgProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [dragId, setDragId] = useState<string | null>(null);
@@ -91,7 +94,10 @@ export function NetworkGraphSvg({
     <svg
       ref={svgRef}
       viewBox={`0 0 ${width} ${height}`}
-      className="h-72 w-full touch-none rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard sm:h-80"
+      className={cn(
+        "w-full touch-none rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard",
+        fill ? "h-full" : "h-72 sm:h-80",
+      )}
       role="img"
       aria-label={ariaLabel}
       onPointerMove={handlePointerMove}

@@ -8,7 +8,7 @@ import {
   type LinkType,
   type NetworkState,
 } from "../model";
-import { NetworkGraphSvg } from "./network-graph-svg";
+import { NetLayout } from "./net-layout";
 import { Callout, Panel, PillButton, SectionHeading } from "./ui";
 
 type FailureTarget = { kind: "device"; id: string } | { kind: "link"; id: string } | null;
@@ -57,44 +57,54 @@ export function FailureRedundancyLab({
         nothing about real-world timing or automatic failover.
       </SectionHeading>
 
-      <div className="flex flex-wrap items-center gap-2">
-        <PillButton active={showSpof} onClick={() => setShowSpof((v) => !v)}>
-          {showSpof ? "Hide" : "Show"} single points of failure
-        </PillButton>
-        {failure && (
-          <button onClick={() => setFailure(null)} className="rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink dark:border-line-dark dark:text-bone">
-            Restore failed {failure.kind}
-          </button>
-        )}
-        <button
-          onClick={() => setConnectFromId((v) => (v ? null : "pick"))}
-          className="rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink dark:border-line-dark dark:text-bone"
-        >
-          {connectFromId ? "Cancel add redundancy" : "Add a redundant link"}
-        </button>
-      </div>
-      {connectFromId && (
-        <p className="text-xs text-ink-soft dark:text-bone-soft">
-          Click a device, then click a second device to add a redundant link between them.
-        </p>
-      )}
-
-      <NetworkGraphSvg
-        state={network}
-        onSelectDevice={(id) => {
-          if (connectFromId === "pick") {
-            setConnectFromId(id);
-            return;
-          }
-          handleSelectDevice(id);
+      <NetLayout
+        stageLabel="Network with failure experiment"
+        graph={{
+          state: network,
+          onSelectDevice: (id) => {
+            if (connectFromId === "pick") {
+              setConnectFromId(id);
+              return;
+            }
+            handleSelectDevice(id);
+          },
+          onSelectLink: (id) => setFailure((f) => (f?.kind === "link" && f.id === id ? null : { kind: "link", id })),
+          failedDeviceIds,
+          failedLinkIds,
+          spofDeviceIds: showSpof ? new Set(spof.deviceIds) : undefined,
+          spofLinkIds: showSpof ? new Set(spof.linkIds) : undefined,
+          connectFromId: connectFromId && connectFromId !== "pick" ? connectFromId : null,
+          ariaLabel: "Network with failure experiment",
         }}
-        onSelectLink={(id) => setFailure((f) => (f?.kind === "link" && f.id === id ? null : { kind: "link", id }))}
-        failedDeviceIds={failedDeviceIds}
-        failedLinkIds={failedLinkIds}
-        spofDeviceIds={showSpof ? new Set(spof.deviceIds) : undefined}
-        spofLinkIds={showSpof ? new Set(spof.linkIds) : undefined}
-        connectFromId={connectFromId && connectFromId !== "pick" ? connectFromId : null}
-        ariaLabel="Network with failure experiment"
+        statusDetail={failure ? (disconnected ? `Split into ${after.length} groups` : "Still connected") : undefined}
+        runState={failure ? "finished" : "idle"}
+        actions={
+          failure ? (
+            <button onClick={() => setFailure(null)} className="min-h-11 w-full rounded-full border border-line px-4 text-sm font-medium text-ink dark:border-line-dark dark:text-bone">
+              Restore failed {failure.kind}
+            </button>
+          ) : undefined
+        }
+        controls={
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <PillButton active={showSpof} onClick={() => setShowSpof((v) => !v)}>
+                {showSpof ? "Hide" : "Show"} single points of failure
+              </PillButton>
+              <button
+                onClick={() => setConnectFromId((v) => (v ? null : "pick"))}
+                className="min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink dark:border-line-dark dark:text-bone"
+              >
+                {connectFromId ? "Cancel add redundancy" : "Add a redundant link"}
+              </button>
+            </div>
+            {connectFromId && (
+              <p className="text-helper text-ink-soft dark:text-bone-soft">
+                Click a device, then click a second device to add a redundant link between them.
+              </p>
+            )}
+          </div>
+        }
       />
 
       <div className="grid gap-3 sm:grid-cols-2">

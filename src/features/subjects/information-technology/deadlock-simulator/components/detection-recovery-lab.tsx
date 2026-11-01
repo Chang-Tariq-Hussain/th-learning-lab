@@ -52,10 +52,10 @@ export function DetectionRecoveryLab() {
         </p>
 
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          <button onClick={() => setHasRun(true)} className="rounded-full border border-subject-it bg-subject-it-soft px-4 py-1.5 text-sm font-medium text-subject-it dark:bg-subject-it/20">
+          <button onClick={() => setHasRun(true)} className="min-h-11 rounded-full border border-subject-it bg-subject-it-soft px-4 text-sm font-medium text-subject-it dark:bg-subject-it/20">
             Run detection
           </button>
-          <button onClick={reset} className="rounded-full border border-line px-4 py-1.5 text-sm font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft">
+          <button onClick={reset} className="min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft">
             Reset scenario
           </button>
         </div>
@@ -96,14 +96,14 @@ export function DetectionRecoveryLab() {
 
               {isDeadlocked && (
                 <div className="mt-2 flex flex-wrap gap-1.5">
-                  <button onClick={() => terminate(p.id)} className="rounded-full border border-red-400 px-2.5 py-1 text-[11px] font-medium text-red-700 dark:border-red-500/60 dark:text-red-300">
+                  <button onClick={() => terminate(p.id)} className="min-h-11 rounded-full border border-red-400 px-3 text-sm font-medium text-red-700 dark:border-red-500/60 dark:text-red-300">
                     Terminate {p.name}
                   </button>
                   {held.map((r) => (
                     <button
                       key={r.id}
                       onClick={() => preemptOneResource(p.id, r.id)}
-                      className="rounded-full border border-amber-400 px-2.5 py-1 text-[11px] font-medium text-amber-700 dark:border-amber-500/60 dark:text-amber-300"
+                      className="min-h-11 rounded-full border border-amber-400 px-3 text-sm font-medium text-amber-700 dark:border-amber-500/60 dark:text-amber-300"
                     >
                       Preempt {r.name} from {p.name}
                     </button>

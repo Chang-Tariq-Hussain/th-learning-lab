@@ -107,13 +107,13 @@ export function BankersAlgorithmLab() {
       <div>
         <h3 className="font-display text-lg font-medium text-ink dark:text-bone">Step through the safety algorithm</h3>
         <div className="mt-2 flex flex-wrap items-center gap-3">
-          <button onClick={player.playPause} className="rounded-full border border-subject-it bg-subject-it-soft px-4 py-1.5 text-sm font-medium text-subject-it dark:bg-subject-it/20">
+          <button onClick={player.playPause} className="min-h-11 rounded-full border border-subject-it bg-subject-it-soft px-4 text-sm font-medium text-subject-it dark:bg-subject-it/20">
             {player.playLabel}
           </button>
-          <button onClick={player.stepForward} disabled={player.isFinished} className="rounded-full border border-line px-4 py-1.5 text-sm font-medium text-ink disabled:opacity-40 dark:border-line-dark dark:text-bone">
+          <button onClick={player.stepForward} disabled={player.isFinished} className="min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink disabled:opacity-40 dark:border-line-dark dark:text-bone">
             Step
           </button>
-          <button onClick={player.reset} className="rounded-full border border-line px-4 py-1.5 text-sm font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft">
+          <button onClick={player.reset} className="min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft">
             Reset
           </button>
         </div>
@@ -154,7 +154,7 @@ export function BankersAlgorithmLab() {
             <select
               value={requestProcessId}
               onChange={(e) => setRequestProcessId(e.target.value)}
-              className="rounded-md border border-line bg-paper px-2 py-1.5 text-sm dark:border-line-dark dark:bg-chalkboard"
+              className="min-h-11 rounded-md border border-line bg-paper px-2 text-base dark:border-line-dark dark:bg-chalkboard"
             >
               {banker.processes.map((p) => (
                 <option key={p.id} value={p.id}>{p.name}</option>
@@ -170,14 +170,14 @@ export function BankersAlgorithmLab() {
                 max={9}
                 value={requestVector[r.id]}
                 onChange={(e) => setRequestVector((v) => ({ ...v, [r.id]: Math.max(0, Number(e.target.value) || 0) }))}
-                className="w-16 rounded-md border border-line bg-paper px-2 py-1.5 text-sm dark:border-line-dark dark:bg-chalkboard"
+                className="w-16 min-h-11 rounded-md border border-line bg-paper px-2 text-base dark:border-line-dark dark:bg-chalkboard"
               />
             </label>
           ))}
-          <button onClick={runRequest} className="rounded-full border border-subject-it bg-subject-it-soft px-4 py-1.5 text-sm font-medium text-subject-it dark:bg-subject-it/20">
+          <button onClick={runRequest} className="min-h-11 rounded-full border border-subject-it bg-subject-it-soft px-4 text-sm font-medium text-subject-it dark:bg-subject-it/20">
             Test request
           </button>
-          <button onClick={loadClassicExample} className="rounded-full border border-line px-4 py-1.5 text-xs text-ink-soft dark:border-line-dark dark:text-bone-soft">
+          <button onClick={loadClassicExample} className="min-h-11 rounded-full border border-line px-4 text-sm text-ink-soft dark:border-line-dark dark:text-bone-soft">
             Load classic example (P2 requests 1,0,2)
           </button>
         </div>

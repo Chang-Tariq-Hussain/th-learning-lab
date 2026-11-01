@@ -26,7 +26,7 @@ export function ResidentWorkingSetPanel({ processes, selectedProcessId, onSelect
             key={p.id}
             onClick={() => onSelectProcess(p.id)}
             className={cn(
-              "flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium",
+              "flex min-h-11 items-center gap-1.5 rounded-full border px-4 text-sm font-medium",
               selectedProcessId === p.id ? "border-ink dark:border-bone" : "border-line text-ink-soft dark:border-line-dark dark:text-bone-soft",
             )}
           >
@@ -89,11 +89,11 @@ export function ResidentWorkingSetPanel({ processes, selectedProcessId, onSelect
 
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-md border border-line p-3 dark:border-line-dark">
-          <p className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Resident</p>
+          <p className="text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Resident</p>
           <p className="font-mono text-base text-ink dark:text-bone">{residentGB(selectedProcess).toFixed(2)} GB</p>
         </div>
         <div className="rounded-md border border-line p-3 dark:border-line-dark">
-          <p className="text-[11px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Non-resident</p>
+          <p className="text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Non-resident</p>
           <p className="font-mono text-base text-ink dark:text-bone">{nonResidentGB(selectedProcess).toFixed(2)} GB</p>
         </div>
       </div>

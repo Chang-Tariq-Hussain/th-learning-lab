@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { buildClientServerNetwork, buildPeerToPeerNetwork, shortestPath, type NetworkState } from "../model";
-import { NetworkGraphSvg } from "./network-graph-svg";
+import { usePrefersReducedMotion } from "@/features/simulation";
+import { NetLayout } from "./net-layout";
 import { Panel, PillButton, SectionHeading } from "./ui";
 
 type Model = "client-server" | "p2p";
@@ -20,6 +21,7 @@ export function ClientServerP2pLab() {
   const [progress, setProgress] = useState<number | null>(null);
   const [stageIndex, setStageIndex] = useState(0);
   const rafRef = useRef<number | null>(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     setFromId(network.devices[0]?.id ?? null);
@@ -31,6 +33,11 @@ export function ClientServerP2pLab() {
 
   function send() {
     if (!path) return;
+    if (reducedMotion) {
+      setStageIndex(STAGES.length - 1);
+      setProgress(1);
+      return;
+    }
     setStageIndex(0);
     setProgress(0);
     const start = performance.now();
@@ -73,75 +80,82 @@ export function ClientServerP2pLab() {
         architecture.
       </SectionHeading>
 
-      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Architecture model">
-        <PillButton active={model === "client-server"} onClick={() => setModel("client-server")}>Client–Server</PillButton>
-        <PillButton active={model === "p2p"} onClick={() => setModel("p2p")}>Peer-to-Peer</PillButton>
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-[1.1fr,1fr]">
-        <div className="flex flex-col gap-3">
-          <NetworkGraphSvg state={network} pathDeviceIds={pathDeviceIds} packetAt={packetAt} ariaLabel={`${model} architecture`} />
-          <div className="flex flex-wrap items-center gap-2">
-            <label className="flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
-              From
-              <select
-                value={fromId ?? ""}
-                onChange={(e) => setFromId(e.target.value)}
-                className="rounded-md border border-line bg-transparent px-2 py-1 text-ink dark:border-line-dark dark:text-bone"
-              >
-                {network.devices.map((d) => (
-                  <option key={d.id} value={d.id}>{d.label}</option>
-                ))}
-              </select>
-            </label>
-            <label className="flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
-              To
-              <select
-                value={toId ?? ""}
-                onChange={(e) => setToId(e.target.value)}
-                className="rounded-md border border-line bg-transparent px-2 py-1 text-ink dark:border-line-dark dark:text-bone"
-              >
-                {network.devices.map((d) => (
-                  <option key={d.id} value={d.id}>{d.label}</option>
-                ))}
-              </select>
-            </label>
-            <button onClick={send} className="rounded-full border border-subject-it bg-subject-it-soft px-3 py-1.5 text-xs font-medium text-subject-it dark:bg-subject-it/20">
-              Send request
-            </button>
+      <NetLayout
+        stageLabel="Network architecture"
+        graph={{ state: network, pathDeviceIds, packetAt, ariaLabel: `${model} architecture` }}
+        runState={progress === null ? "idle" : progress < 1 ? "running" : "finished"}
+        statusDetail={progress !== null && progress < 1 ? STAGES[stageIndex] : undefined}
+        actions={
+          <button onClick={send} className="min-h-11 w-full rounded-full border border-subject-it bg-subject-it-soft px-4 text-sm font-medium text-subject-it dark:bg-subject-it/20">
+            Send request
+          </button>
+        }
+        controls={
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-wrap gap-2" role="tablist" aria-label="Architecture model">
+              <PillButton active={model === "client-server"} onClick={() => setModel("client-server")}>Client–Server</PillButton>
+              <PillButton active={model === "p2p"} onClick={() => setModel("p2p")}>Peer-to-Peer</PillButton>
+            </div>
+            <div className="grid gap-2 sm:grid-cols-2">
+              <label className="flex flex-col gap-1 text-label text-ink-soft dark:text-bone-soft">
+                From
+                <select
+                  value={fromId ?? ""}
+                  onChange={(e) => setFromId(e.target.value)}
+                  className="min-h-11 rounded-md border border-line bg-transparent px-2 text-base text-ink dark:border-line-dark dark:text-bone"
+                >
+                  {network.devices.map((d) => (
+                    <option key={d.id} value={d.id}>{d.label}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="flex flex-col gap-1 text-label text-ink-soft dark:text-bone-soft">
+                To
+                <select
+                  value={toId ?? ""}
+                  onChange={(e) => setToId(e.target.value)}
+                  className="min-h-11 rounded-md border border-line bg-transparent px-2 text-base text-ink dark:border-line-dark dark:text-bone"
+                >
+                  {network.devices.map((d) => (
+                    <option key={d.id} value={d.id}>{d.label}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
           </div>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <Panel title="Request/response sequence">
-            <ol className="flex flex-col gap-1 text-sm">
-              {STAGES.map((s, i) => (
-                <li key={i} className={i === stageIndex && progress !== null && progress < 1 ? "font-medium text-subject-it" : "text-ink-soft dark:text-bone-soft"}>
-                  {i + 1}. {s}
-                </li>
-              ))}
-            </ol>
-          </Panel>
-          {model === "client-server" ? (
-            <Panel title="Client–Server">
-              <p className="text-sm text-ink-soft dark:text-bone-soft">
-                One or more clients send requests to a central server, which provides the response. The server is the
-                dedicated provider; clients don&apos;t usually serve each other directly. Easy to secure and manage
-                centrally, but the server is a natural bottleneck and single point of failure unless it&apos;s made
-                redundant.
-              </p>
+        }
+        explanation={
+          <div className="flex flex-col gap-4">
+            <Panel title="Request/response sequence">
+              <ol className="flex flex-col gap-1 text-sm">
+                {STAGES.map((s, i) => (
+                  <li key={i} className={i === stageIndex && progress !== null && progress < 1 ? "font-medium text-subject-it" : "text-ink-soft dark:text-bone-soft"}>
+                    {i + 1}. {s}
+                  </li>
+                ))}
+              </ol>
             </Panel>
-          ) : (
-            <Panel title="Peer-to-Peer">
-              <p className="text-sm text-ink-soft dark:text-bone-soft">
-                Every device can act as both a client and a provider to the others — there&apos;s no single dedicated
-                server. This can spread load and avoid one central bottleneck, but makes management and security more
-                distributed and harder to centralize.
-              </p>
-            </Panel>
-          )}
-        </div>
-      </div>
+            {model === "client-server" ? (
+              <Panel title="Client–Server">
+                <p className="text-sm text-ink-soft dark:text-bone-soft">
+                  One or more clients send requests to a central server, which provides the response. The server is the
+                  dedicated provider; clients don&apos;t usually serve each other directly. Easy to secure and manage
+                  centrally, but the server is a natural bottleneck and single point of failure unless it&apos;s made
+                  redundant.
+                </p>
+              </Panel>
+            ) : (
+              <Panel title="Peer-to-Peer">
+                <p className="text-sm text-ink-soft dark:text-bone-soft">
+                  Every device can act as both a client and a provider to the others — there&apos;s no single dedicated
+                  server. This can spread load and avoid one central bottleneck, but makes management and security more
+                  distributed and harder to centralize.
+                </p>
+              </Panel>
+            )}
+          </div>
+        }
+      />
     </div>
   );
 }

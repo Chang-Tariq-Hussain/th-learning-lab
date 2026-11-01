@@ -5,7 +5,7 @@ import { Callout, PillButton, SectionHeading } from "../../osi-model-explorer/co
 import { findDuplicates, hostById, validateConfig, type ConfigIssue, type DetailLevel, type HostId } from "../model";
 import type { IpLab } from "../hooks/use-ip-lab";
 import { Chip, TextField } from "./parts";
-import { NetworkMapDiagram } from "./network-map-diagram";
+import { IpLayout } from "./ip-layout";
 
 const SEV_TONE = { error: "bad", warning: "warn", note: "neutral" } as const;
 const SEV_LABEL = { error: "Error", warning: "Warning", note: "Note" } as const;
@@ -61,28 +61,36 @@ export function ConfigLab({ lab, level }: { lab: IpLab; level: DetailLevel }) {
   return (
     <div className="flex flex-col gap-5">
       <SectionHeading title="IP configuration">Choose a device and edit its address, mask, and default gateway. Each problem is explained rather than just marked invalid.</SectionHeading>
-      <NetworkMapDiagram hosts={lab.hosts} selected={sel} onSelect={(id) => id !== "router" && id !== "sw1" && id !== "sw2" && setSel(id)} showGatewayLabels />
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Device to configure">
-        {lab.hosts.map((h) => <PillButton key={h.id} active={sel === h.id} onClick={() => setSel(h.id)}>{h.name}</PillButton>)}
-      </div>
-      <DeviceForm key={`${sel}-${applied}`} lab={lab} hostId={sel} level={level} onApplied={() => setApplied((n) => n + 1)} />
+      <IpLayout
+        stageLabel="IP configuration"
+        diagram={{ hosts: lab.hosts, selected: sel, onSelect: (id) => id !== "router" && id !== "sw1" && id !== "sw2" && setSel(id), showGatewayLabels: true }}
+        controls={
+          <div className="flex flex-col gap-4">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Device to configure">
+            {lab.hosts.map((h) => <PillButton key={h.id} active={sel === h.id} onClick={() => setSel(h.id)}>{h.name}</PillButton>)}
+          </div>
+          <DeviceForm key={`${sel}-${applied}`} lab={lab} hostId={sel} level={level} onApplied={() => setApplied((n) => n + 1)} />
 
-      <div className="flex flex-col gap-3 rounded-card border border-line p-3 dark:border-line-dark">
-        <p className="font-mono text-xs uppercase text-ink-soft dark:text-bone-soft">Duplicate IP experiment</p>
-        <div className="flex flex-wrap gap-2">
-          <button type="button" onClick={() => { lab.updateHost("b", { ip: a.ip, prefix: a.prefix }); setApplied((n) => n + 1); }} className="min-h-[44px] rounded-full border border-amber-500 px-4 text-sm text-ink dark:text-bone">Give PC-B the same address as PC-A ({a.ip})</button>
-          <button type="button" onClick={() => { lab.updateHost("b", { ip: "192.168.1.20" }); setApplied((n) => n + 1); }} className="min-h-[44px] rounded-full border border-line px-4 text-sm dark:border-line-dark">Restore PC-B ({b.ip === "192.168.1.20" ? "already 192.168.1.20" : "192.168.1.20"})</button>
-        </div>
-        {dups.length > 0 ? (
-          <Callout tone="bad" title="Duplicate IP address">
-            {dups.map((g) => (
-              <p key={g.ip}><span className="font-mono">{g.ip}</span> is configured on: {g.holders.map((h) => h.name).join(" and ")}. If two interfaces claim the same address, traffic meant for one may reach the other or be lost, and connections become unreliable. Real behavior varies by system, so this lab only shows the warning. Fix it by giving each interface a different address in the same network.</p>
-            ))}
-          </Callout>
-        ) : (
-          <Callout tone="good" title="No duplicates">Every interface currently has a unique IPv4 address, which is what an IP network needs.</Callout>
-        )}
-      </div>
+          <div className="flex flex-col gap-3 rounded-card border border-line p-3 dark:border-line-dark">
+            <p className="font-mono text-xs uppercase text-ink-soft dark:text-bone-soft">Duplicate IP experiment</p>
+            <div className="flex flex-wrap gap-2">
+              <button type="button" onClick={() => { lab.updateHost("b", { ip: a.ip, prefix: a.prefix }); setApplied((n) => n + 1); }} className="min-h-[44px] rounded-full border border-amber-500 px-4 text-sm text-ink dark:text-bone">Give PC-B the same address as PC-A ({a.ip})</button>
+              <button type="button" onClick={() => { lab.updateHost("b", { ip: "192.168.1.20" }); setApplied((n) => n + 1); }} className="min-h-[44px] rounded-full border border-line px-4 text-sm dark:border-line-dark">Restore PC-B ({b.ip === "192.168.1.20" ? "already 192.168.1.20" : "192.168.1.20"})</button>
+            </div>
+            {dups.length > 0 ? (
+              <Callout tone="bad" title="Duplicate IP address">
+                {dups.map((g) => (
+                  <p key={g.ip}><span className="font-mono">{g.ip}</span> is configured on: {g.holders.map((h) => h.name).join(" and ")}. If two interfaces claim the same address, traffic meant for one may reach the other or be lost, and connections become unreliable. Real behavior varies by system, so this lab only shows the warning. Fix it by giving each interface a different address in the same network.</p>
+                ))}
+              </Callout>
+            ) : (
+              <Callout tone="good" title="No duplicates">Every interface currently has a unique IPv4 address, which is what an IP network needs.</Callout>
+            )}
+          </div>
+          </div>
+        }
+      />
+
       <p className="text-xs text-ink-soft dark:text-bone-soft">Tip: in a /24 network such as 192.168.1.0/24, valid host addresses run from .1 to .254. The .0 and .255 addresses are the network and broadcast addresses.</p>
     </div>
   );

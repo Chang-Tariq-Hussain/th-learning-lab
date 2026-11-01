@@ -111,7 +111,7 @@ export function PillButton({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-40",
+        "min-h-11 rounded-full border px-4 text-sm font-medium transition-colors disabled:opacity-40",
         active
           ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
           : "border-line text-ink dark:border-line-dark dark:text-bone",

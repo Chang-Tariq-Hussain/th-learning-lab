@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { DEVICE_INFO, DEVICE_TYPE_ORDER, makeNetworkSizeScenarios, type NetworkSizeKind } from "../model";
-import { NetworkGraphSvg } from "./network-graph-svg";
+import { NetLayout } from "./net-layout";
 import { Panel, PillButton, SectionHeading } from "./ui";
 
 export function BasicsLab() {
@@ -39,18 +39,25 @@ export function BasicsLab() {
           Networks are often described by roughly how large an area they cover. These categories are useful mental
           models, but real networks don&apos;t follow strict geographic boundaries — the categories overlap in practice.
         </SectionHeading>
-        <div className="mt-3 flex flex-wrap gap-2" role="tablist" aria-label="Network size">
-          {scenarios.map((s) => (
-            <PillButton key={s.kind} active={kind === s.kind} onClick={() => setKind(s.kind)}>
-              {s.name}
-            </PillButton>
-          ))}
-        </div>
-        <div className="mt-4 grid gap-4 lg:grid-cols-[1.1fr,1fr]">
-          <NetworkGraphSvg state={active.network} ariaLabel={`${active.fullName} example`} />
-          <Panel title={active.fullName}>
-            <p className="text-sm text-ink-soft dark:text-bone-soft">{active.description}</p>
-          </Panel>
+        <div className="mt-4">
+          <NetLayout
+            stageLabel={`${active.fullName} example`}
+            graph={{ state: active.network, ariaLabel: `${active.fullName} example` }}
+            controls={
+              <div className="flex flex-wrap gap-2" role="tablist" aria-label="Network size">
+                {scenarios.map((s) => (
+                  <PillButton key={s.kind} active={kind === s.kind} onClick={() => setKind(s.kind)}>
+                    {s.name}
+                  </PillButton>
+                ))}
+              </div>
+            }
+            explanation={
+              <Panel title={active.fullName}>
+                <p className="text-sm text-ink-soft dark:text-bone-soft">{active.description}</p>
+              </Panel>
+            }
+          />
         </div>
       </div>
 

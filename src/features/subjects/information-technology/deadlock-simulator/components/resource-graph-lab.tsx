@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
+import { SimulationLayout } from "@/features/simulation";
 import {
   allocate,
   availableInstances,
@@ -66,52 +67,58 @@ export function ResourceGraphLab() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap items-center gap-2">
-        <button
-          onClick={addProcess}
-          disabled={state.processes.length >= MAX_PROCESSES}
-          className="rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink disabled:opacity-40 dark:border-line-dark dark:text-bone"
-        >
-          + Add process
-        </button>
-        <button
-          onClick={addResource}
-          disabled={state.resources.length >= MAX_RESOURCES}
-          className="rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink disabled:opacity-40 dark:border-line-dark dark:text-bone"
-        >
-          + Add resource
-        </button>
-        <button onClick={resetGraph} className="rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft">
-          Reset graph
-        </button>
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-[1.1fr,1fr]">
-        <GraphSvg state={state} cycle={cycle} sufficientForDeadlock={sufficientForDeadlock} />
-
+      <SimulationLayout
+        stageLabel="Resource Allocation Graph"
+        stage={<GraphSvg state={state} cycle={cycle} sufficientForDeadlock={sufficientForDeadlock} />}
+        aspect={340 / 260}
+        stageCap="26rem"
+        runState={cycle.hasCycle ? "finished" : "idle"}
+        statusDetail={cycle.hasCycle ? (sufficientForDeadlock ? "Cycle detected: deadlock" : "Cycle on a multi-instance resource") : undefined}
+        actions={
+<div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={addProcess}
+              disabled={state.processes.length >= MAX_PROCESSES}
+              className="min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink disabled:opacity-40 dark:border-line-dark dark:text-bone"
+            >
+              + Add process
+            </button>
+            <button
+              onClick={addResource}
+              disabled={state.resources.length >= MAX_RESOURCES}
+              className="min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink disabled:opacity-40 dark:border-line-dark dark:text-bone"
+            >
+              + Add resource
+            </button>
+            <button onClick={resetGraph} className="min-h-11 rounded-full border border-line px-4 text-sm font-medium text-ink-soft dark:border-line-dark dark:text-bone-soft">
+              Reset graph
+            </button>
+          </div>
+        }
+        controls={
         <div className="flex flex-col gap-4">
           <div className="rounded-card border border-line bg-white/60 p-3.5 dark:border-line-dark dark:bg-white/[0.03]">
-            <p className="font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Resources</p>
+            <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Resources</p>
             <div className="mt-2 flex flex-col gap-2">
               {state.resources.map((r) => (
                 <div key={r.id} className="flex items-center justify-between gap-2 text-sm">
                   <span className="font-medium text-ink dark:text-bone">{r.name}</span>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-xs text-ink-soft dark:text-bone-soft">Instances</span>
+                    <span className="text-helper text-ink-soft dark:text-bone-soft">Instances</span>
                     <button
                       onClick={() => setInstances(r.id, r.instances - 1)}
-                      className="h-6 w-6 rounded-full border border-line text-xs dark:border-line-dark"
+                      className="h-11 w-11 rounded-full border border-line text-base dark:border-line-dark"
                     >
                       −
                     </button>
-                    <span className="w-4 text-center font-mono text-xs">{r.instances}</span>
+                    <span className="w-5 text-center font-mono text-sm">{r.instances}</span>
                     <button
                       onClick={() => setInstances(r.id, r.instances + 1)}
-                      className="h-6 w-6 rounded-full border border-line text-xs dark:border-line-dark"
+                      className="h-11 w-11 rounded-full border border-line text-base dark:border-line-dark"
                     >
                       +
                     </button>
-                    <span className="ml-1 text-xs text-ink-soft dark:text-bone-soft">({availableInstances(state, r.id)} free)</span>
+                    <span className="ml-1 text-helper text-ink-soft dark:text-bone-soft">({availableInstances(state, r.id)} free)</span>
                   </div>
                 </div>
               ))}
@@ -119,7 +126,7 @@ export function ResourceGraphLab() {
           </div>
 
           <div className="rounded-card border border-line bg-white/60 p-3.5 dark:border-line-dark dark:bg-white/[0.03]">
-            <p className="font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Actions</p>
+            <p className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">Actions</p>
             <div className="mt-2 flex flex-col gap-3">
               {state.processes.map((p) => (
                 <div key={p.id} className="flex flex-col gap-1.5">
@@ -130,25 +137,25 @@ export function ResourceGraphLab() {
                       const requested = requestedCount(state, p.id, r.id);
                       const free = availableInstances(state, r.id);
                       return (
-                        <div key={r.id} className="flex items-center gap-1 rounded-full border border-line px-2 py-1 text-xs dark:border-line-dark">
-                          <span className="font-mono text-ink-soft dark:text-bone-soft">{r.name}</span>
+                        <div key={r.id} className="flex items-center gap-1 rounded-full border border-line px-3 text-sm dark:border-line-dark">
+                          <span className="font-mono text-label text-ink-soft dark:text-bone-soft">{r.name}</span>
                           {held > 0 && (
-                            <button onClick={() => setState((s) => release(s, p.id, r.id))} className="text-ink underline decoration-dotted dark:text-bone">
+                            <button onClick={() => setState((s) => release(s, p.id, r.id))} className="min-h-11 px-1 text-ink underline decoration-dotted dark:text-bone">
                               release ({held})
                             </button>
                           )}
                           {requested > 0 && (
-                            <button onClick={() => setState((s) => grantRequest(s, p.id, r.id))} className="text-emerald-600 underline decoration-dotted dark:text-emerald-400">
+                            <button onClick={() => setState((s) => grantRequest(s, p.id, r.id))} className="min-h-11 px-1 text-emerald-600 underline decoration-dotted dark:text-emerald-400">
                               grant
                             </button>
                           )}
                           {held === 0 && requested === 0 && free > 0 && (
-                            <button onClick={() => setState((s) => allocate(s, p.id, r.id))} className="text-ink underline decoration-dotted dark:text-bone">
+                            <button onClick={() => setState((s) => allocate(s, p.id, r.id))} className="min-h-11 px-1 text-ink underline decoration-dotted dark:text-bone">
                               allocate
                             </button>
                           )}
                           {held === 0 && requested === 0 && (
-                            <button onClick={() => setState((s) => requestResource(s, p.id, r.id))} className="text-amber-700 underline decoration-dotted dark:text-amber-400">
+                            <button onClick={() => setState((s) => requestResource(s, p.id, r.id))} className="min-h-11 px-1 text-amber-700 underline decoration-dotted dark:text-amber-400">
                               request
                             </button>
                           )}
@@ -161,9 +168,9 @@ export function ResourceGraphLab() {
             </div>
           </div>
         </div>
-      </div>
-
-      <StatusPanel cycle={cycle} sufficientForDeadlock={sufficientForDeadlock} multiInstanceOnCycle={multiInstanceOnCycle} />
+        }
+        explanation={<StatusPanel cycle={cycle} sufficientForDeadlock={sufficientForDeadlock} multiInstanceOnCycle={multiInstanceOnCycle} />}
+      />
     </div>
   );
 }
@@ -232,7 +239,7 @@ function GraphSvg({
   const edgeColor = sufficientForDeadlock ? "stroke-red-500" : "stroke-amber-500";
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className="h-64 w-full rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard" role="img" aria-label="Resource Allocation Graph">
+    <svg viewBox={`0 0 ${width} ${height}`} className="h-full w-full rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard" role="img" aria-label="Resource Allocation Graph">
       <defs>
         <marker id="rag-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
           <path d="M0,0 L6,3 L0,6 Z" className="fill-ink/50 dark:fill-bone/50" />

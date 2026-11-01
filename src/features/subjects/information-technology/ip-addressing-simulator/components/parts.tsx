@@ -92,7 +92,7 @@ export function OctetBits({ value, octetIndex, prefix, onToggle, showWeights, si
 export function BinaryAddress({ value, prefix, label, highlightBits }: { value: number; prefix?: number; label?: string; highlightBits?: (bitIndex: number) => boolean }) {
   return (
     <div className="min-w-0">
-      {label && <p className="mb-1 font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">{label}</p>}
+      {label && <p className="mb-1 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">{label}</p>}
       <div className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-wrap sm:gap-x-3">
         {[0, 1, 2, 3].map((i) => (
           <OctetBits key={i} value={value} octetIndex={i} prefix={prefix} highlightBits={highlightBits} />
@@ -105,7 +105,7 @@ export function BinaryAddress({ value, prefix, label, highlightBits }: { value: 
 
 export function BitLegend() {
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-ink-soft dark:text-bone-soft">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-label text-ink-soft dark:text-bone-soft">
       <span className="inline-flex items-center gap-1.5">
         <span className="inline-block h-4 w-4 rounded-[3px] border border-subject-it bg-subject-it" aria-hidden="true" /> Network bit (solid)
       </span>
@@ -142,7 +142,7 @@ export function TextField({
 }) {
   return (
     <div className={cn("flex min-w-0 flex-col gap-1", className)}>
-      <label htmlFor={id} className="font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+      <label htmlFor={id} className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
         {label}
       </label>
       <input
@@ -198,7 +198,7 @@ export function PrefixControl({ prefix, onChange, min, max, id }: { prefix: numb
   const clamp = (n: number) => Math.max(min, Math.min(max, n));
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={id} className="font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+      <label htmlFor={id} className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
         Prefix length: /{prefix}
       </label>
       <div className="flex items-center gap-2">
@@ -219,7 +219,7 @@ export function CollapsiblePanel({ title, children, defaultOpen = true, classNam
   return (
     <div className={cn("rounded-card border border-line bg-white/60 dark:border-line-dark dark:bg-white/[0.03]", className)}>
       <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} className="flex min-h-[44px] w-full items-center justify-between gap-2 px-3.5 py-2 text-left">
-        <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">{title}</span>
+        <span className="font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">{title}</span>
         <ChevronDown className={cn("h-4 w-4 shrink-0 transition-transform", open && "rotate-180")} aria-hidden="true" />
       </button>
       {open && <div className="border-t border-line px-3.5 pb-3.5 pt-2 dark:border-line-dark">{children}</div>}
