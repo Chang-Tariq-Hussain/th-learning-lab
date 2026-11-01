@@ -1,11 +1,12 @@
 "use client";
 
+import { useStageSize } from "@/features/simulation";
 import { membranePotentialAt } from "../nervous-model";
 import type { PotentialPhaseInfo } from "../types";
 
 interface ActionPotentialGraphProps {
   progress: number;
-  phase: PotentialPhaseInfo;
+  /** True once the learner has fired the neuron (shows the playhead even at progress 0). */
   running: boolean;
 }
 
@@ -33,54 +34,61 @@ const CURVE_PATH = Array.from({ length: SAMPLES + 1 }, (_, i) => {
   return `${i === 0 ? "M" : "L"} ${xFor(t).toFixed(1)} ${yFor(mv).toFixed(1)}`;
 }).join(" ");
 
-export function ActionPotentialGraph({ progress, phase, running }: ActionPotentialGraphProps) {
+/** The membrane-potential graph. It fills the SimulationLayout stage frame. */
+export function ActionPotentialGraph({ progress, running }: ActionPotentialGraphProps) {
   const currentMv = membranePotentialAt(progress);
   const px = xFor(progress);
   const py = yFor(currentMv);
-  const ionFlow = phase.ionFlow;
+  // Draw the axis labels at 12 CSS px whatever the stage size (viewBox units per CSS px = W / width).
+  const { width } = useStageSize();
+  const label = Math.round((12 * W) / Math.max(width, 240));
 
   return (
-    <div className="mx-auto mt-3 w-full max-w-md">
-      <svg
-        viewBox={`0 0 ${W} ${H}`}
-        className="h-40 w-full"
-        role="img"
-        aria-label="A graph of membrane potential over time during an action potential, with a moving playhead"
-      >
-        {/* Gridlines: resting (-70mV) and 0mV */}
-        <line x1={PAD_L} x2={W - PAD_R} y1={yFor(-70)} y2={yFor(-70)} className="stroke-ink/10 dark:stroke-bone/10" strokeWidth={1} strokeDasharray="3 3" />
-        <line x1={PAD_L} x2={W - PAD_R} y1={yFor(0)} y2={yFor(0)} className="stroke-ink/10 dark:stroke-bone/10" strokeWidth={1} strokeDasharray="3 3" />
-        <text x={PAD_L - 4} y={yFor(-70) + 3} textAnchor="end" className="fill-ink/50 dark:fill-bone/50 font-mono text-[7px]">
-          −70
-        </text>
-        <text x={PAD_L - 4} y={yFor(0) + 3} textAnchor="end" className="fill-ink/50 dark:fill-bone/50 font-mono text-[7px]">
-          0
-        </text>
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      className="h-full w-full"
+      role="img"
+      aria-label="A graph of membrane potential over time during an action potential, with a moving playhead"
+    >
+      {/* Gridlines: resting (-70mV) and 0mV */}
+      <line x1={PAD_L} x2={W - PAD_R} y1={yFor(-70)} y2={yFor(-70)} className="stroke-ink/10 dark:stroke-bone/10" strokeWidth={1} strokeDasharray="3 3" />
+      <line x1={PAD_L} x2={W - PAD_R} y1={yFor(0)} y2={yFor(0)} className="stroke-ink/10 dark:stroke-bone/10" strokeWidth={1} strokeDasharray="3 3" />
+      <text x={PAD_L - 4} y={yFor(-70) + label / 3} textAnchor="end" fontSize={label} className="fill-ink/60 dark:fill-bone/60 font-mono">
+        −70
+      </text>
+      <text x={PAD_L - 4} y={yFor(0) + label / 3} textAnchor="end" fontSize={label} className="fill-ink/60 dark:fill-bone/60 font-mono">
+        0
+      </text>
 
-        {/* Axes */}
-        <line x1={PAD_L} x2={PAD_L} y1={PAD_T} y2={H - PAD_B} className="stroke-ink/25 dark:stroke-bone/25" strokeWidth={1} />
-        <line x1={PAD_L} x2={W - PAD_R} y1={H - PAD_B} y2={H - PAD_B} className="stroke-ink/25 dark:stroke-bone/25" strokeWidth={1} />
-        <text x={PAD_L - 26} y={PAD_T + 4} className="fill-ink/50 dark:fill-bone/50 font-mono text-[7px] uppercase tracking-wide">
-          mV
-        </text>
-        <text x={W - PAD_R} y={H - PAD_B + 14} textAnchor="end" className="fill-ink/50 dark:fill-bone/50 font-mono text-[7px] uppercase tracking-wide">
-          Time
-        </text>
+      {/* Axes */}
+      <line x1={PAD_L} x2={PAD_L} y1={PAD_T} y2={H - PAD_B} className="stroke-ink/25 dark:stroke-bone/25" strokeWidth={1} />
+      <line x1={PAD_L} x2={W - PAD_R} y1={H - PAD_B} y2={H - PAD_B} className="stroke-ink/25 dark:stroke-bone/25" strokeWidth={1} />
+      <text x={PAD_L - 30} y={PAD_T + label / 3} fontSize={label} className="fill-ink/60 dark:fill-bone/60 font-mono uppercase">
+        mV
+      </text>
+      <text x={W - PAD_R} y={H - PAD_B + label + 2} textAnchor="end" fontSize={label} className="fill-ink/60 dark:fill-bone/60 font-mono uppercase">
+        Time
+      </text>
 
-        {/* Curve */}
-        <path d={CURVE_PATH} fill="none" className="stroke-subject-biology" strokeWidth={2.25} strokeLinecap="round" strokeLinejoin="round" />
+      {/* Curve */}
+      <path d={CURVE_PATH} fill="none" className="stroke-subject-biology" strokeWidth={2.25} strokeLinecap="round" strokeLinejoin="round" />
 
-        {/* Playhead */}
-        {running || progress > 0 ? (
-          <>
-            <line x1={px} x2={px} y1={PAD_T} y2={H - PAD_B} className="stroke-amber-500/60 dark:stroke-amber-300/50" strokeWidth={1} strokeDasharray="2 2" />
-            <circle cx={px} cy={py} r={4.5} className="fill-amber-500 stroke-amber-700 dark:fill-amber-300 dark:stroke-amber-600" strokeWidth={1.25} />
-          </>
-        ) : null}
-      </svg>
+      {/* Playhead */}
+      {running || progress > 0 ? (
+        <>
+          <line x1={px} x2={px} y1={PAD_T} y2={H - PAD_B} className="stroke-amber-500/60 dark:stroke-amber-300/50" strokeWidth={1} strokeDasharray="2 2" />
+          <circle cx={px} cy={py} r={4.5} className="fill-amber-500 stroke-amber-700 dark:fill-amber-300 dark:stroke-amber-600" strokeWidth={1.25} />
+        </>
+      ) : null}
+    </svg>
+  );
+}
 
-      {/* Ion channel inset */}
-      <div className="mt-2 flex items-center justify-center gap-3 rounded-lg border border-line bg-white/50 px-3 py-2 dark:border-line-dark dark:bg-white/[0.03]">
+/** Ion-channel inset: shows which ions are moving in the current phase. Sits with the controls. */
+export function IonChannelInset({ phase }: { phase: PotentialPhaseInfo }) {
+  const ionFlow = phase.ionFlow;
+  return (
+    <div className="mt-2 flex items-center justify-center gap-3 rounded-lg border border-line bg-white/50 px-3 py-2 dark:border-line-dark dark:bg-white/[0.03]">
         <svg viewBox="0 0 90 40" className="h-9 w-24" role="img" aria-label="Ion channels in the neuron membrane">
           <rect x={0} y={16} width={90} height={8} className="fill-ink/15 dark:fill-bone/15" />
           <rect x={22} y={8} width={10} height={24} rx={3} className="fill-white stroke-ink/40 dark:fill-chalkboard dark:stroke-bone/40" strokeWidth={1.25} />
@@ -106,14 +114,9 @@ export function ActionPotentialGraph({ progress, phase, running }: ActionPotenti
             </marker>
           </defs>
         </svg>
-        <p className="text-[11px] leading-tight text-ink-soft dark:text-bone-soft">
-          {ionFlow === "na-in"
-            ? "Na⁺ flows in"
-            : ionFlow === "k-out"
-              ? "K⁺ flows out"
-              : "Channels closed"}
+        <p className="text-label leading-tight text-ink-soft dark:text-bone-soft">
+          {ionFlow === "na-in" ? "Na⁺ flows in" : ionFlow === "k-out" ? "K⁺ flows out" : "Channels closed"}
         </p>
-      </div>
     </div>
   );
 }

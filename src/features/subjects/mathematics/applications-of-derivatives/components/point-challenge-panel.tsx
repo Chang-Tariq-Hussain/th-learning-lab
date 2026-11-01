@@ -6,6 +6,7 @@ import { BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { SimulationLayout } from "@/features/simulation";
 import { FunctionGraph } from "../../calculus-foundations/components/function-graph";
 import { buildColoredSegments, POINT_CHALLENGE_QUESTIONS, type PointClassification } from "../applications-model";
 
@@ -38,23 +39,40 @@ export function PointChallengePanel() {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-5">
-      <p className="max-w-md text-center text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
-        Is this point a maximum, minimum, or neither?
-      </p>
-      <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-soft dark:text-bone-soft">
-        Question {index + 1} of {POINT_CHALLENGE_QUESTIONS.length}
-      </span>
-
-      <BlockMath math={question.fn.latex} />
-
-      <div className="aspect-square w-full max-w-sm">
+    <SimulationLayout
+      stageLabel="Point to classify"
+      aspect={1}
+      stageCap="26rem"
+      stage={
         <FunctionGraph
           segments={buildColoredSegments(question.fn)}
           trackedPoint={{ x: question.pointX, y }}
           ariaLabel="A graph with one marked point to classify."
         />
-      </div>
+      }
+      readouts={
+        <p className="text-center font-mono text-label uppercase text-ink-soft dark:text-bone-soft">
+          Question {index + 1} of {POINT_CHALLENGE_QUESTIONS.length}
+        </p>
+      }
+      actions={
+        isLast && picked !== null ? (
+          <Button variant="primary" size="md" onClick={handleRestart}>
+            Restart
+          </Button>
+        ) : (
+          <Button variant="secondary" size="md" onClick={handleNext} disabled={picked === null}>
+            Next Question
+          </Button>
+        )
+      }
+      controls={
+        <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-5">
+          <p className="max-w-md text-center text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
+            Is this point a maximum, minimum, or neither?
+          </p>
+
+          <BlockMath math={question.fn.latex} />
 
       <div className="flex flex-wrap justify-center gap-2">
         {OPTIONS.map((opt) => {
@@ -67,7 +85,7 @@ export function PointChallengePanel() {
               onClick={() => handlePick(opt.id)}
               disabled={picked !== null}
               className={cn(
-                "flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors",
+                "flex min-h-11 items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors lg:min-h-0",
                 revealCorrect
                   ? "border-pine-500 bg-pine-50 text-pine-700 dark:border-pine-300 dark:bg-pine-900/30 dark:text-pine-300"
                   : isChosen
@@ -98,15 +116,8 @@ export function PointChallengePanel() {
         </p>
       ) : null}
 
-      {isLast && picked !== null ? (
-        <Button variant="primary" size="sm" onClick={handleRestart}>
-          Restart
-        </Button>
-      ) : (
-        <Button variant="secondary" size="sm" onClick={handleNext} disabled={picked === null}>
-          Next Question
-        </Button>
-      )}
-    </div>
+        </div>
+      }
+    />
   );
 }

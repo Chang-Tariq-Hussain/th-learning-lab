@@ -1,12 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { idsForLevel, relatedIds } from "./food-web-model";
+import { SimulationLayout, type SimulationRunState } from "@/features/simulation";
+import { idsForLevel, organismById, relatedIds } from "./food-web-model";
 import type { Mode, OrganismId, TrophicLevel } from "./types";
 import { ModeToggle } from "./components/mode-toggle";
-import { ScenePanel } from "./components/scene-panel";
+import { OrganismPicker } from "./components/scene-panel";
+import { Scene } from "./components/scene";
 import { TrophicLevelPicker } from "./components/trophic-level-picker";
-import { EnergyFlowPanel } from "./components/energy-flow-panel";
+import { EnergyFlowActions, EnergyFlowPanel } from "./components/energy-flow-panel";
 import { RemoveOrganismExperiment } from "./components/remove-organism-experiment";
 import { DecomposersPanel } from "./components/decomposers-panel";
 import { ChainVsWebSummary } from "./components/chain-vs-web-summary";
@@ -111,38 +113,63 @@ export function FoodChainWeb() {
       ? (elapsedSeconds / LOOP_DURATION_S) % 1
       : null;
 
+  // The status chip is only shown in Food Chain mode, where the energy-flow particles can run.
+  const runState: SimulationRunState | undefined =
+    mode === "chain" ? (flowRunning ? "running" : elapsedSeconds > 0 ? "paused" : "idle") : undefined;
+  const selected = selectedId ? organismById(selectedId) : null;
+
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 py-4">
       <ModeToggle mode={mode} onChange={handleModeChange} />
 
-      <ScenePanel
-        mode={mode}
-        selectedId={selectedId}
-        focusIds={focusIds}
-        grasshopperRemoved={grasshopperRemoved}
-        flowPhase={flowPhase}
-        onSelect={handleSelect}
+      <SimulationLayout
+        stageLabel={mode === "chain" ? "Food chain simulation" : "Food web simulation"}
+        aspect={380 / 260}
+        stageCap="26rem"
+        runState={runState}
+        stage={
+          <Scene
+            mode={mode}
+            selectedId={selectedId}
+            focusIds={focusIds}
+            grasshopperRemoved={grasshopperRemoved}
+            flowPhase={flowPhase}
+            onSelect={(id) => handleSelect(selectedId === id ? null : id)}
+          />
+        }
+        readouts={
+          <p className="truncate text-center text-sm font-medium text-ink dark:text-bone">
+            {selected ? `${selected.label} · ${selected.roleLabel}` : "Select an organism"}
+          </p>
+        }
+        actions={
+          mode === "chain" ? (
+            <EnergyFlowActions
+              running={flowRunning}
+              onPlayPause={() => setFlowRunning((v) => !v)}
+              onReset={handleFlowReset}
+            />
+          ) : undefined
+        }
+        controls={
+          <div className="flex min-w-0 flex-col gap-6">
+            <OrganismPicker mode={mode} selectedId={selectedId} onSelect={handleSelect} />
+            <TrophicLevelPicker active={level} onSelect={handleLevel} />
+            {mode === "chain" ? <EnergyFlowPanel /> : null}
+            <RemoveOrganismExperiment
+              removed={grasshopperRemoved}
+              onToggle={handleGrasshopperToggle}
+              onRestore={handleGrasshopperRestore}
+            />
+          </div>
+        }
+        explanation={
+          <div className="flex min-w-0 flex-col gap-6">
+            <DecomposersPanel />
+            <ChainVsWebSummary />
+          </div>
+        }
       />
-
-      <TrophicLevelPicker active={level} onSelect={handleLevel} />
-
-      {mode === "chain" ? (
-        <EnergyFlowPanel
-          running={flowRunning}
-          onPlayPause={() => setFlowRunning((v) => !v)}
-          onReset={handleFlowReset}
-        />
-      ) : null}
-
-      <RemoveOrganismExperiment
-        removed={grasshopperRemoved}
-        onToggle={handleGrasshopperToggle}
-        onRestore={handleGrasshopperRestore}
-      />
-
-      <DecomposersPanel />
-
-      <ChainVsWebSummary />
 
       <MiniChallenge
         step={challengeStep}

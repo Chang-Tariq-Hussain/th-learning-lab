@@ -3,8 +3,10 @@
 import { useCallback, useRef, useState } from "react";
 import { Contrast, RotateCcw, Type } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SimulationLayout, SimulationReadouts } from "@/features/simulation";
 import { cn } from "@/lib/utils";
 import { HYDROGEN_ATOM, type AtomState } from "./atom-model";
+import { getElement } from "./elements";
 import type { ParticleKind, ChangeKind } from "./particle-info";
 import { getExperimentHint } from "./particle-info";
 import { getClientPoint, isPointInRect } from "./drag-utils";
@@ -18,7 +20,7 @@ import { ZoomControls } from "./components/zoom-controls";
 
 const toggleClass = (active: boolean) =>
   cn(
-    "flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+    "flex min-h-11 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium transition-colors",
     active
       ? "border-pine-500 bg-pine-600 text-paper dark:border-pine-300 dark:bg-pine-300 dark:text-chalkboard"
       : "border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink dark:border-bone/20 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone"
@@ -80,39 +82,44 @@ export function BuildAnAtom() {
             High contrast
           </button>
         </div>
-        <Button variant="secondary" size="sm" onClick={handleReset}>
-          <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
-          Reset to Hydrogen
-        </Button>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_1fr]">
-        {/* Left: visualization */}
-        <div className="flex flex-col gap-3">
+      <SimulationLayout
+        stageLabel="Atom model: nucleus and electron shells"
+        aspect={1}
+        stageCap="26rem"
+        stage={
           <div
             ref={dropZoneRef}
             className={cn(
-              "relative flex items-center justify-center overflow-hidden rounded-card border bg-white/40 p-4 transition-colors dark:bg-white/[0.02]",
-              isDragActive
-                ? "border-dashed border-pine-500 bg-pine-50/60 dark:border-pine-300 dark:bg-pine-900/20"
-                : "border-line dark:border-line-dark"
+              "relative h-full w-full overflow-hidden rounded-xl transition-colors",
+              isDragActive && "outline-dashed outline-2 -outline-offset-2 outline-pine-500 bg-pine-50/60 dark:outline-pine-300 dark:bg-pine-900/20"
             )}
           >
-            <div
-              className="aspect-square w-full max-w-[420px] transition-transform duration-150 ease-out"
-              style={{ transform: `scale(${zoom})` }}
-            >
+            <div className="h-full w-full transition-transform duration-150 ease-out motion-reduce:transition-none" style={{ transform: `scale(${zoom})` }}>
               <AtomVisualization atom={atom} onSelectParticle={setSelectedParticle} />
             </div>
 
             {isDragActive ? (
-              <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-pine-600 px-3 py-1 text-xs font-medium text-paper dark:bg-pine-300 dark:text-chalkboard">
+              <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-pine-600 px-3 py-1 text-sm font-medium text-paper dark:bg-pine-300 dark:text-chalkboard">
                 Drop here to add
               </p>
             ) : null}
           </div>
-
-          <div className="flex justify-center">
+        }
+        readouts={
+          <SimulationReadouts
+            label="Atom"
+            items={[
+              { id: "el", label: "Element", value: getElement(atom.protons).symbol },
+              { id: "p", label: "Protons", value: String(atom.protons) },
+              { id: "n", label: "Neutrons", value: String(atom.neutrons) },
+              { id: "e", label: "Electrons", value: String(atom.electrons) },
+            ]}
+          />
+        }
+        actions={
+          <>
             <ZoomControls
               zoom={zoom}
               min={ZOOM_MIN}
@@ -121,19 +128,22 @@ export function BuildAnAtom() {
               onZoomOut={() => setZoom((z) => Math.max(ZOOM_MIN, Number((z - ZOOM_STEP).toFixed(2))))}
               onReset={() => setZoom(1)}
             />
+            <Button variant="secondary" size="md" onClick={handleReset}>
+              <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
+              Reset to Hydrogen
+            </Button>
+          </>
+        }
+        controls={
+          <div className="flex flex-col gap-4">
+            <ParticleTray onDropParticle={handleDropParticle} onDragStateChange={setIsDragActive} />
+            <InfoPanel atom={atom} />
+            <ParticleDetail selected={selectedParticle} onClose={() => setSelectedParticle(null)} />
+            <HintBanner hint={hint} />
+            <ControlsPanel onChange={handleChange} protons={atom.protons} neutrons={atom.neutrons} electrons={atom.electrons} />
           </div>
-
-          <ParticleTray onDropParticle={handleDropParticle} onDragStateChange={setIsDragActive} />
-        </div>
-
-        {/* Right: info + controls */}
-        <div className="flex flex-col gap-4">
-          <InfoPanel atom={atom} />
-          <ParticleDetail selected={selectedParticle} onClose={() => setSelectedParticle(null)} />
-          <HintBanner hint={hint} />
-          <ControlsPanel onChange={handleChange} protons={atom.protons} neutrons={atom.neutrons} electrons={atom.electrons} />
-        </div>
-      </div>
+        }
+      />
     </div>
   );
 }

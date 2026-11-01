@@ -4,45 +4,49 @@ import { Pause, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ENERGY_LADDER, organismById } from "../food-web-model";
 
-interface EnergyFlowPanelProps {
+interface EnergyFlowActionsProps {
   running: boolean;
   onPlayPause: () => void;
   onReset: () => void;
 }
 
-export function EnergyFlowPanel({ running, onPlayPause, onReset }: EnergyFlowPanelProps) {
+/** Start / Pause and Reset for the energy-flow particles: rendered in the sticky stage block. */
+export function EnergyFlowActions({ running, onPlayPause, onReset }: EnergyFlowActionsProps) {
+  return (
+    <>
+      <Button variant={running ? "secondary" : "primary"} size="md" onClick={onPlayPause}>
+        {running ? (
+          <>
+            <Pause className="h-4 w-4" strokeWidth={1.75} />
+            Pause
+          </>
+        ) : (
+          <>
+            <Play className="h-4 w-4" strokeWidth={1.75} />
+            Start Energy Flow
+          </>
+        )}
+      </Button>
+      <Button variant="ghost" size="md" onClick={onReset}>
+        <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
+        Reset
+      </Button>
+    </>
+  );
+}
+
+/** What the energy-flow particles mean, and the energy ladder. Sits with the controls. */
+export function EnergyFlowPanel() {
   return (
     <div className="rounded-card border border-line bg-white/60 p-4 dark:border-line-dark dark:bg-white/[0.03]">
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-biology">
-        Energy Flow
-      </p>
-
-      <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
-        <Button variant={running ? "secondary" : "primary"} size="sm" onClick={onPlayPause}>
-          {running ? (
-            <>
-              <Pause className="h-4 w-4" strokeWidth={1.75} />
-              Pause
-            </>
-          ) : (
-            <>
-              <Play className="h-4 w-4" strokeWidth={1.75} />
-              Start Energy Flow
-            </>
-          )}
-        </Button>
-        <Button variant="ghost" size="sm" onClick={onReset}>
-          <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
-          Reset
-        </Button>
-      </div>
+      <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-biology">Energy Flow</p>
 
       <p className="mt-3 text-center text-xs leading-relaxed text-ink-soft dark:text-bone-soft">
         Watch small particles carry energy from the Sun through each organism in the chain.
       </p>
 
       <div className="mt-4">
-        <p className="text-center font-mono text-[10px] uppercase tracking-[0.2em] text-ink-soft/70 dark:text-bone-soft/70">
+        <p className="text-center font-mono text-label uppercase tracking-[0.2em] text-ink-soft/70 dark:text-bone-soft/70">
           Illustrative energy available
         </p>
         <div className="mt-2 flex flex-col items-center gap-0.5">

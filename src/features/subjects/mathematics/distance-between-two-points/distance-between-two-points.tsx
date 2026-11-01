@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SimulationLayout, SimulationReadouts } from "@/features/simulation";
 import { DistancePlane, type Highlight } from "./components/distance-plane";
-import { CoordinateReadout } from "./components/coordinate-readout";
 import { StepCalculation } from "./components/step-calculation";
 import { ModeToggle, type Mode } from "./components/mode-toggle";
 import { SpecialCasePanel } from "./components/special-case-panel";
@@ -61,47 +61,54 @@ export function DistanceBetweenTwoPoints() {
   const challengeDone = questionIndex >= CALCULATE_QUESTIONS.length;
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 py-4">
       <ModeToggle mode={mode} onChange={handleModeChange} />
 
       {mode === "explore" ? (
-        <>
-          <CoordinateReadout a={a} b={b} />
-
-          <div className="mx-auto aspect-square w-full max-w-[560px] rounded-[1.75rem] border border-line bg-white/70 p-3 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:p-5">
-            <DistancePlane a={a} b={b} onChangeA={(x, y) => setA({ x, y })} onChangeB={(x, y) => setB({ x, y })} highlight={highlight} draggable />
-          </div>
-
-          <p className="text-center text-sm text-ink-soft dark:text-bone-soft">Drag either point and see how the distance changes.</p>
-
-          <StepCalculation a={a} b={b} selected={highlight} onSelect={setHighlight} />
-
-          <SpecialCasePanel onLoad={handleLoadSpecialCase} />
-
-          <div className="flex justify-center">
+        <SimulationLayout
+          stageLabel="Distance between two points"
+          aspect={1}
+          stageCap="30rem"
+          stage={<DistancePlane a={a} b={b} onChangeA={(x, y) => setA({ x, y })} onChangeB={(x, y) => setB({ x, y })} highlight={highlight} draggable />}
+          readouts={
+            <SimulationReadouts
+              label="Points"
+              items={[
+                { id: "a", label: "Point A", value: `(${a.x}, ${a.y})` },
+                { id: "b", label: "Point B", value: `(${b.x}, ${b.y})` },
+              ]}
+            />
+          }
+          actions={
             <Button variant="ghost" size="md" onClick={handleReset}>
               <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
               Reset
             </Button>
-          </div>
-        </>
+          }
+          controls={
+            <div className="flex min-w-0 flex-col gap-4">
+              <p className="text-center text-sm text-ink-soft dark:text-bone-soft">Drag either point and see how the distance changes.</p>
+              <StepCalculation a={a} b={b} selected={highlight} onSelect={setHighlight} />
+              <SpecialCasePanel onLoad={handleLoadSpecialCase} />
+            </div>
+          }
+        />
       ) : (
-        <>
-          <div className="mx-auto aspect-square w-full max-w-[560px] rounded-[1.75rem] border border-line bg-white/70 p-3 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:p-5">
-            <DistancePlane a={activeQuestion.a} b={activeQuestion.b} draggable={false} revealDistance={challengeDone || questionSolved} />
-          </div>
-
-          <CalculateChallenge questionIndex={questionIndex} answered={answered} onAnswer={handleAnswer} onNext={handleNext} />
-
-          {challengeDone ? (
-            <div className="flex justify-center">
+        <SimulationLayout
+          stageLabel="Distance between two points, calculate challenge"
+          aspect={1}
+          stageCap="30rem"
+          stage={<DistancePlane a={activeQuestion.a} b={activeQuestion.b} draggable={false} revealDistance={challengeDone || questionSolved} />}
+          actions={
+            challengeDone ? (
               <Button variant="ghost" size="md" onClick={handleReset}>
                 <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
                 Restart Challenge
               </Button>
-            </div>
-          ) : null}
-        </>
+            ) : undefined
+          }
+          controls={<CalculateChallenge questionIndex={questionIndex} answered={answered} onAnswer={handleAnswer} onNext={handleNext} />}
+        />
       )}
 
       <LearningPanel />

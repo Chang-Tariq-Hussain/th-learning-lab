@@ -23,7 +23,7 @@ export function ZoomControls({ zoom, onZoomIn, onZoomOut, onReset, min, max }: Z
         onClick={onZoomOut}
         disabled={zoom <= min}
         aria-label="Zoom out"
-        className="flex h-8 w-8 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/5 hover:text-ink disabled:cursor-not-allowed disabled:opacity-30 dark:text-bone-soft dark:hover:bg-bone/10 dark:hover:text-bone"
+        className="flex h-11 w-11 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/5 hover:text-ink disabled:cursor-not-allowed disabled:opacity-30 dark:text-bone-soft dark:hover:bg-bone/10 dark:hover:text-bone"
       >
         <ZoomOut className="h-4 w-4" strokeWidth={1.75} />
       </button>
@@ -35,7 +35,7 @@ export function ZoomControls({ zoom, onZoomIn, onZoomOut, onReset, min, max }: Z
         onClick={onZoomIn}
         disabled={zoom >= max}
         aria-label="Zoom in"
-        className="flex h-8 w-8 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/5 hover:text-ink disabled:cursor-not-allowed disabled:opacity-30 dark:text-bone-soft dark:hover:bg-bone/10 dark:hover:text-bone"
+        className="flex h-11 w-11 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/5 hover:text-ink disabled:cursor-not-allowed disabled:opacity-30 dark:text-bone-soft dark:hover:bg-bone/10 dark:hover:text-bone"
       >
         <ZoomIn className="h-4 w-4" strokeWidth={1.75} />
       </button>
@@ -44,7 +44,7 @@ export function ZoomControls({ zoom, onZoomIn, onZoomOut, onReset, min, max }: Z
         type="button"
         onClick={onReset}
         aria-label="Reset zoom to 100%"
-        className="flex h-8 w-8 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/5 hover:text-ink dark:text-bone-soft dark:hover:bg-bone/10 dark:hover:text-bone"
+        className="flex h-11 w-11 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/5 hover:text-ink dark:text-bone-soft dark:hover:bg-bone/10 dark:hover:text-bone"
       >
         <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
       </button>

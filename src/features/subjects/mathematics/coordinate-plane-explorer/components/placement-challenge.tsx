@@ -23,7 +23,7 @@ export function PlacementChallenge({ step, solved, onRestart }: PlacementChallen
           <button
             type="button"
             onClick={onRestart}
-            className="text-xs font-medium text-ink-soft hover:text-ink dark:text-bone-soft dark:hover:text-bone"
+            className="inline-flex min-h-11 items-center text-xs font-medium text-ink-soft hover:text-ink dark:text-bone-soft dark:hover:text-bone"
           >
             Try again
           </button>

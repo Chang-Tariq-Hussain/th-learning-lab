@@ -19,7 +19,7 @@ export function ModeToggle({ mode, onChange }: { mode: Mode; onChange: (mode: Mo
           onClick={() => onChange(option.key)}
           aria-pressed={mode === option.key}
           className={cn(
-            "rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
+            "min-h-11 rounded-full px-4 py-1.5 text-sm font-medium transition-colors lg:min-h-0",
             mode === option.key
               ? "bg-pine-600 text-paper dark:bg-pine-300 dark:text-chalkboard"
               : "text-ink-soft hover:text-ink dark:text-bone-soft dark:hover:text-bone"

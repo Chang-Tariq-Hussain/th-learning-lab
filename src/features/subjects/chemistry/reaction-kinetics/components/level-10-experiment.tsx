@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ReactionChamber } from "./reaction-chamber";
+import { ChamberLayout } from "./chamber-layout";
 import { StatReadout } from "./stat-readout";
 import { formatRateLabel } from "../model";
 import { cn } from "@/lib/utils";
@@ -30,7 +31,27 @@ export function Level10Experiment() {
   const progress = stats ? Math.round((stats.productCount / count) * 100) : 0;
 
   return (
-    <div className="flex flex-col gap-5">
+    <ChamberLayout
+      stageLabel="Your reaction chamber"
+      chambers={
+        <ReactionChamber
+        key={`experiment-${count}`}
+        numA={count}
+        numB={count}
+        tempC={tempC}
+        catalyst={catalyst}
+        label="Your Reaction"
+        onStats={setStats}
+      />
+      }
+      readouts={[
+        { id: "r0", label: "Collision Frequency", value: String(`${collisionsPerSecond.toFixed(1)}/s`) },
+        { id: "r1", label: "Successful Collisions", value: String(stats?.successfulCollisions ?? 0) },
+        { id: "r2", label: "Reaction Progress", value: String(`${Math.min(progress, 100)}%`) },
+        { id: "r3", label: "Relative Rate", value: String(formatRateLabel(rate)) },
+      ]}
+      controls={
+        <div className="flex flex-col gap-5">
       <p className="max-w-2xl text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
         Combine everything you&apos;ve explored. Adjust concentration, temperature, surface area, and the catalyst,
         then watch how the reaction responds.
@@ -54,7 +75,7 @@ export function Level10Experiment() {
             step={1}
             value={concentrationIndex}
             onChange={(e) => setConcentrationIndex(Number(e.target.value))}
-            className="mt-2 w-full accent-[#2E9E5B]"
+            className="mt-2 h-11 w-full accent-[#2E9E5B]"
           />
         </div>
         <div>
@@ -70,7 +91,7 @@ export function Level10Experiment() {
             step={5}
             value={tempC}
             onChange={(e) => setTempC(Number(e.target.value))}
-            className="mt-2 w-full accent-[#2E9E5B]"
+            className="mt-2 h-11 w-full accent-[#2E9E5B]"
           />
         </div>
       </div>
@@ -82,7 +103,7 @@ export function Level10Experiment() {
             type="button"
             onClick={() => setSurfaceAreaIndex(i)}
             className={cn(
-              "rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
+              "min-h-11 rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
               surfaceAreaIndex === i
                 ? "border-transparent bg-white shadow-card dark:bg-white/[0.08]"
                 : "border-line dark:border-line-dark"
@@ -95,32 +116,15 @@ export function Level10Experiment() {
           type="button"
           onClick={() => setCatalyst((v) => !v)}
           className={cn(
-            "rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
+            "min-h-11 rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
             catalyst ? "border-transparent bg-white shadow-card dark:bg-white/[0.08]" : "border-line dark:border-line-dark"
           )}
         >
           {catalyst ? "Catalyst: On" : "Catalyst: Off"}
         </button>
       </div>
-
-      <ReactionChamber
-        key={`experiment-${count}`}
-        numA={count}
-        numB={count}
-        tempC={tempC}
-        catalyst={catalyst}
-        label="Your Reaction"
-        onStats={setStats}
-      />
-
-      <StatReadout
-        items={[
-          { label: "Collision Frequency", value: `${collisionsPerSecond.toFixed(1)}/s` },
-          { label: "Successful Collisions", value: stats?.successfulCollisions ?? 0, accent: "#5A9E6F" },
-          { label: "Reaction Progress", value: `${Math.min(progress, 100)}%` },
-          { label: "Relative Rate", value: formatRateLabel(rate) },
-        ]}
-      />
-    </div>
+        </div>
+      }
+    />
   );
 }

@@ -31,7 +31,7 @@ export function ModeTabs({ mode, onChange, disabled = false }: ModeTabsProps) {
           disabled={disabled}
           onClick={() => onChange(tab.id)}
           className={cn(
-            "rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50",
+            "min-h-11 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50",
             mode === tab.id
               ? "bg-pine-600 text-paper dark:bg-pine-300 dark:text-chalkboard"
               : "text-ink-soft hover:text-ink dark:text-bone-soft dark:hover:text-bone"

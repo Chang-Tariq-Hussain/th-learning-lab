@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SimulationLayout } from "@/features/simulation";
 import {
   MoleculeCanvas,
   type MoleculeCanvasHandle,
@@ -88,7 +89,7 @@ export function MoleculeBuilder() {
             role="tab"
             aria-selected={mode === option.id}
             onClick={() => setMode(option.id)}
-            className={`rounded-full px-3 py-1.5 text-sm font-medium transition ${
+            className={`min-h-11 rounded-full px-3 py-1.5 text-sm font-medium transition ${
               mode === option.id
                 ? "bg-subject-chemistry text-white"
                 : "text-ink-soft hover:text-ink dark:text-bone-soft dark:hover:text-bone"
@@ -101,49 +102,46 @@ export function MoleculeBuilder() {
 
       {mode === "build" ? <MoleculeBuildLab /> : (
         <>
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <MoleculeTabs moleculeId={moleculeId} onChange={handleMoleculeChange} />
-            <p className="font-mono text-xs text-ink-soft dark:text-bone-soft">
-              {molecule.formula} · {molecule.name}
-            </p>
-          </div>
-
-          <div className="touch-none overflow-hidden rounded-card border border-line bg-white/40 dark:border-line-dark dark:bg-white/[0.02]">
-            <div className="h-[360px] w-full sm:h-[440px]">
-              <MoleculeCanvas
-                ref={canvasRef}
-                molecule={molecule}
-                selectedAtomId={selectedAtomId}
-                selectedBondId={selectedBondId}
-                onSelectAtom={handleSelectAtom}
-                onSelectBond={handleSelectBond}
-                onClearSelection={handleClearSelection}
-              />
-            </div>
-          </div>
-
-          <p className="text-center text-xs text-ink-soft/70 dark:text-bone-soft/70">
-            Drag to rotate · scroll or pinch to zoom · tap an atom or a bond to inspect it
-          </p>
-
-          <div className="flex justify-center">
-            <Button variant="ghost" size="sm" onClick={handleResetCamera}>
-              <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
-              Reset View
-            </Button>
-          </div>
-
-          <AtomDetailPanel
-            molecule={molecule}
-            selectedAtom={selectedAtom}
-            onClose={() => setSelectedAtomId(null)}
+          <SimulationLayout
+            stageLabel={`3D model of ${molecule.name}`}
+            aspect={1.2}
+            stageCap="24rem"
+            stage={
+              <div className="h-full w-full touch-none">
+                <MoleculeCanvas
+                  ref={canvasRef}
+                  molecule={molecule}
+                  selectedAtomId={selectedAtomId}
+                  selectedBondId={selectedBondId}
+                  onSelectAtom={handleSelectAtom}
+                  onSelectBond={handleSelectBond}
+                  onClearSelection={handleClearSelection}
+                />
+              </div>
+            }
+            readouts={
+              <p className="text-center font-mono text-sm text-ink-soft dark:text-bone-soft">
+                {molecule.formula} · {molecule.name}
+              </p>
+            }
+            actions={
+              <Button variant="ghost" size="md" onClick={handleResetCamera}>
+                <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
+                Reset View
+              </Button>
+            }
+            controls={
+              <div className="flex flex-col gap-4">
+                <MoleculeTabs moleculeId={moleculeId} onChange={handleMoleculeChange} />
+                <p className="text-center text-sm text-ink-soft/80 dark:text-bone-soft/80">
+                  Drag to rotate · scroll or pinch to zoom · tap an atom or a bond to inspect it
+                </p>
+                <AtomDetailPanel molecule={molecule} selectedAtom={selectedAtom} onClose={() => setSelectedAtomId(null)} />
+                <BondDetailPanel molecule={molecule} selectedBond={selectedBond} onClose={() => setSelectedBondId(null)} />
+                <GeometryPanel molecule={molecule} />
+              </div>
+            }
           />
-          <BondDetailPanel
-            molecule={molecule}
-            selectedBond={selectedBond}
-            onClose={() => setSelectedBondId(null)}
-          />
-          <GeometryPanel molecule={molecule} />
         </>
       )}
     </div>

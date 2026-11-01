@@ -8,8 +8,8 @@ import { DEVICES, formatPort, type ForwardKind, type PortStates } from "../model
 // ---------------------------------------------------------------------------
 // Layout (SVG user units)
 // ---------------------------------------------------------------------------
-const VIEW_W = 440;
-const VIEW_H = 470;
+export const VIEW_W = 440;
+export const VIEW_H = 470;
 const CARD_X = 4;
 const CARD_W = 150;
 const CARD_H = 72;
@@ -113,7 +113,7 @@ export const SwitchDiagram = memo(function SwitchDiagram({ tx, enabled }: { tx: 
   return (
     <svg
       viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-      className="mx-auto h-auto w-full max-w-[560px] rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard"
+      className="h-full w-full"
       role="img"
       aria-label="Network diagram: PC-A to PC-E are connected to switch ports Fa0/1 to Fa0/5 of one Ethernet switch."
     >

@@ -1,10 +1,18 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { GAS_EXCHANGE_DURATION_MS, INITIAL_BREATHING_STATE, breathPhase, stepBreathing } from "./respiratory-model";
+import { SimulationLayout, type SimulationRunState } from "@/features/simulation";
+import {
+  GAS_EXCHANGE_DURATION_MS,
+  INITIAL_BREATHING_STATE,
+  VIEW_HEIGHT,
+  VIEW_WIDTH,
+  breathPhase,
+  stepBreathing,
+} from "./respiratory-model";
 import type { AirStageId, BreathingState, GasId } from "./types";
 import { LungScene } from "./components/lung-scene";
-import { BreathingControls } from "./components/breathing-controls";
+import { AutoBreathingToggle, BreathingControls } from "./components/breathing-controls";
 import { AirPathway } from "./components/air-pathway";
 import { AlveoliView } from "./components/alveoli-view";
 import { GasJourney } from "./components/gas-journey";
@@ -127,32 +135,48 @@ export function RespiratorySystem() {
 
   const phase = breathPhase(breathing);
 
-  return (
-    <div className="flex flex-col gap-6">
-      <div className="mx-auto h-[380px] w-full max-w-sm rounded-[1.75rem] border border-line bg-white/70 p-3 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[420px]">
-        <LungScene phase={phase} direction={breathing.direction} running={breathing.running} activeStage={airStage} />
-      </div>
+  const runState: SimulationRunState = breathing.running ? "running" : breathing.seconds > 0 ? "paused" : "idle";
 
-      <BreathingControls
-        auto={breathing.auto}
-        running={breathing.running}
-        onInhale={handleInhale}
-        onExhale={handleExhale}
-        onAuto={handleAuto}
-        onPause={handlePause}
-        onReset={handleReset}
+  return (
+    <div className="flex flex-col gap-6 py-4">
+      <SimulationLayout
+        stageLabel="Respiratory system simulation"
+        aspect={VIEW_WIDTH / VIEW_HEIGHT}
+        stageCap="28rem"
+        runState={runState}
+        stage={<LungScene phase={phase} direction={breathing.direction} running={breathing.running} activeStage={airStage} />}
+        readouts={
+          <p className="truncate text-center text-sm font-medium text-ink dark:text-bone">
+            {breathing.running ? (breathing.direction === "in" ? "Breathing in" : "Breathing out") : "Ready"}
+          </p>
+        }
+        actions={
+          <BreathingControls
+            running={breathing.running}
+            onInhale={handleInhale}
+            onExhale={handleExhale}
+            onPause={handlePause}
+            onReset={handleReset}
+          />
+        }
+        controls={
+          <div className="flex min-w-0 flex-col gap-4">
+            <div className="flex justify-center lg:justify-start">
+              <AutoBreathingToggle auto={breathing.auto} onAuto={handleAuto} />
+            </div>
+            <AirPathway activeId={airStage} onSelect={setAirStage} />
+            <AlveoliView exchanging={exchanging} done={exchangeDone} onExchange={handleGasExchange} />
+          </div>
+        }
+        explanation={
+          <div className="flex min-w-0 flex-col gap-6">
+            <GasJourney gas={journeyGas} step={journeyStep} onSelect={handleSelectJourney} onNext={handleJourneyNext} onRestart={handleJourneyRestart} />
+            <BreathingMechanics direction={breathing.direction} running={breathing.running} />
+          </div>
+        }
       />
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <AirPathway activeId={airStage} onSelect={setAirStage} />
-        <AlveoliView exchanging={exchanging} done={exchangeDone} onExchange={handleGasExchange} />
-      </div>
-
-      <GasJourney gas={journeyGas} step={journeyStep} onSelect={handleSelectJourney} onNext={handleJourneyNext} onRestart={handleJourneyRestart} />
-
       <InhaleExhaleCompare />
-
-      <BreathingMechanics direction={breathing.direction} running={breathing.running} />
 
       <LearningPanel />
 

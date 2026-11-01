@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ReactionChamber } from "./reaction-chamber";
+import { ChamberLayout } from "./chamber-layout";
 import { PredictionPrompt } from "./prediction-prompt";
 import { PREDICTION_QUESTIONS } from "../model";
 
@@ -12,7 +13,17 @@ export function Level5Temperature() {
   const [tempC, setTempC] = useState(60);
 
   return (
-    <div className="flex flex-col gap-5">
+    <ChamberLayout
+      columns={2}
+      stageLabel="Reference and learner reaction chambers"
+      chambers={
+        <>
+        <ReactionChamber numA={5} numB={5} tempC={REFERENCE_TEMP} label={`Reference · ${REFERENCE_TEMP}°C`} showControls={false} />
+          <ReactionChamber numA={5} numB={5} tempC={tempC} label={`Your Chamber · ${tempC}°C`} />
+        </>
+      }
+      controls={
+        <div className="flex flex-col gap-5">
       <p className="max-w-2xl text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
         Temperature controls how fast particles move. Faster particles collide more often, and more of those
         collisions carry enough energy to actually react.
@@ -21,7 +32,7 @@ export function Level5Temperature() {
       <PredictionPrompt question={PREDICTION_QUESTIONS.temperature} />
 
       <div>
-        <div className="flex items-center justify-between font-mono text-xs uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+        <div className="flex items-center justify-between font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">
           <span>20°C</span>
           <span className="text-ink dark:text-bone">Temperature — {tempC}°C</span>
           <span>100°C</span>
@@ -33,14 +44,9 @@ export function Level5Temperature() {
           step={5}
           value={tempC}
           onChange={(e) => setTempC(Number(e.target.value))}
-          className="mt-2 w-full accent-[#2E9E5B]"
+          className="mt-2 h-11 w-full accent-[#2E9E5B]"
           aria-label="Temperature in degrees Celsius"
         />
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <ReactionChamber numA={5} numB={5} tempC={REFERENCE_TEMP} label={`Reference · ${REFERENCE_TEMP}°C`} showControls={false} />
-        <ReactionChamber numA={5} numB={5} tempC={tempC} label={`Your Chamber · ${tempC}°C`} />
       </div>
 
       <p className="text-center text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
@@ -48,6 +54,8 @@ export function Level5Temperature() {
         <span className="font-medium text-ink dark:text-bone">→</span> more frequent, more energetic collisions{" "}
         <span className="font-medium text-ink dark:text-bone">→</span> faster reaction.
       </p>
-    </div>
+        </div>
+      }
+    />
   );
 }

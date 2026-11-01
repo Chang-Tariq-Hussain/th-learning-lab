@@ -8,8 +8,8 @@ export function InfoCard({ angle }: { angle: number }) {
   const info = type ? ANGLE_TYPES[type] : null;
 
   return (
-    <div className="flex flex-col items-center gap-2 rounded-card border border-line bg-white/60 px-6 py-4 text-center dark:border-line-dark dark:bg-white/[0.03]">
-      <p className="font-display text-4xl font-semibold tabular-nums text-ink dark:text-bone">
+    <div className="flex min-h-12 flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-card border border-line bg-white/60 px-3 py-1.5 text-center dark:border-line-dark dark:bg-white/[0.03]">
+      <p className="font-display text-2xl font-semibold tabular-nums text-ink dark:text-bone">
         {Math.round(angle)}°
       </p>
       <AnimatePresence mode="wait">

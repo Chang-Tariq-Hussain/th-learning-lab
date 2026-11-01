@@ -1,10 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { SimulationLayout, usePrefersReducedMotion, type SimulationRunState } from "@/features/simulation";
 import { AP_DURATION_S, clamp01, phaseAt } from "./nervous-model";
 import type { NeuronPartId, NsNodeId } from "./types";
 import { NeuronExplorer } from "./components/neuron-explorer";
-import { ActionPotentialControls } from "./components/action-potential-controls";
+import { ActionPotentialActions, ActionPotentialDetails } from "./components/action-potential-controls";
+import { ActionPotentialGraph } from "./components/action-potential-graph";
 import { SynapseExplorer } from "./components/synapse-explorer";
 import { NsOrganization } from "./components/ns-organization";
 import { MiniChallenge } from "./components/mini-challenge";
@@ -17,6 +19,7 @@ export function NervousSystem() {
   const [apSeconds, setApSeconds] = useState(0);
   const [apRunning, setApRunning] = useState(false);
   const [apStarted, setApStarted] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
   const frameRef = useRef<number | null>(null);
   const lastTickRef = useRef<number | null>(null);
 
@@ -55,8 +58,14 @@ export function NervousSystem() {
   const apPhase = phaseAt(apProgress);
 
   const handleApStart = () => {
-    if (apProgress >= 1) setApSeconds(0);
     setApStarted(true);
+    // Reduced motion: no animation loop; show the finished action potential straight away.
+    if (reducedMotion) {
+      setApSeconds(AP_DURATION_S);
+      setApRunning(false);
+      return;
+    }
+    if (apProgress >= 1) setApSeconds(0);
     setApRunning(true);
   };
   const handleApPause = () => setApRunning(false);
@@ -99,18 +108,35 @@ export function NervousSystem() {
     setChallengeFeedback(null);
   };
 
+  const apRunState: SimulationRunState = apRunning ? "running" : apProgress >= 1 ? "finished" : apStarted ? "paused" : "idle";
+
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 py-4">
       <NeuronExplorer activeId={activePart} onSelect={setActivePart} />
 
-      <ActionPotentialControls
-        progress={apProgress}
-        running={apRunning}
-        started={apStarted}
-        phase={apPhase}
-        onStart={handleApStart}
-        onPause={handleApPause}
-        onReset={handleApReset}
+      <SimulationLayout
+        stageLabel="Action potential simulation"
+        aspect={320 / 170}
+        stageCap="22rem"
+        runState={apRunState}
+        statusDetail="The action potential is complete."
+        stage={<ActionPotentialGraph progress={apProgress} running={apRunning || apStarted} />}
+        readouts={
+          <p className="truncate text-center text-sm font-medium text-ink dark:text-bone">
+            {apStarted ? apPhase.label : "Ready to fire"}
+          </p>
+        }
+        actions={
+          <ActionPotentialActions
+            progress={apProgress}
+            running={apRunning}
+            started={apStarted}
+            onStart={handleApStart}
+            onPause={handleApPause}
+            onReset={handleApReset}
+          />
+        }
+        controls={<ActionPotentialDetails started={apStarted} phase={apPhase} />}
       />
 
       <SynapseExplorer stepIndex={synapseStep} onStepChange={setSynapseStep} />

@@ -2,9 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Play, Pause, RotateCcw, StepForward } from "lucide-react";
+import { SimulationLayout, usePrefersReducedMotion, type SimulationRunState } from "@/features/simulation";
 import { cn } from "@/lib/utils";
 import { StageTimeline } from "./components/stage-timeline";
-import { ComputerDiagram } from "./components/computer-diagram";
+import { COMPUTER_DIAGRAM_ASPECT, ComputerDiagram } from "./components/computer-diagram";
 import {
   BOOT_STAGES,
   BOOT_SEQUENCE_DISCLAIMER,
@@ -38,7 +39,7 @@ export function ComputerBootProcess() {
             aria-selected={mode === m.id}
             onClick={() => setMode(m.id)}
             className={cn(
-              "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+              "min-h-11 rounded-full border px-4 py-2 text-sm font-medium transition-colors",
               mode === m.id
                 ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
                 : "border-line text-ink-soft hover:border-ink/30 dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/30",
@@ -70,6 +71,7 @@ function StepThroughMode() {
   const [stageOrder, setStageOrder] = useState(-1); // -1 = not started
   const [isPlaying, setIsPlaying] = useState(false);
   const [inspectedId, setInspectedId] = useState<BootStageId | null>(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   const isFinished = stageOrder >= BOOT_STAGES.length - 1;
   const currentStage = stageOrder >= 0 ? getStageByOrder(stageOrder) : null;
@@ -86,12 +88,14 @@ function StepThroughMode() {
   }, [isPlaying, stageOrder, isFinished]);
 
   const handlePlayPause = () => {
+    // Reduced motion: no timed auto-advance; Start shows the first stage and the learner steps on.
     if (stageOrder === -1 || isFinished) {
       setStageOrder(0);
-      setIsPlaying(true);
+      setIsPlaying(!reducedMotion);
       setInspectedId(null);
       return;
     }
+    if (reducedMotion) return;
     setIsPlaying((p) => !p);
   };
 
@@ -109,16 +113,54 @@ function StepThroughMode() {
 
   const playLabel = stageOrder === -1 ? "Start" : isFinished && !isPlaying ? "Replay" : isPlaying ? "Pause" : "Resume";
 
+  const runState: SimulationRunState = isPlaying ? "running" : isFinished ? "finished" : stageOrder >= 0 ? "paused" : "idle";
+
   return (
-    <div className="flex flex-col gap-6">
-      <StageTimeline
-        reachedOrder={stageOrder + 1}
-        activeStageId={inspectedId ?? currentStage?.id ?? null}
-        onSelectStage={(id) => setInspectedId(id)}
-      />
-
-      <ComputerDiagram activeStageId={inspectedStage?.id ?? null} />
-
+    <SimulationLayout
+      stageLabel="Computer startup simulation"
+      aspect={COMPUTER_DIAGRAM_ASPECT}
+      stageCap="26rem"
+      runState={runState}
+      statusDetail="The boot sequence is complete."
+      stage={<ComputerDiagram activeStageId={inspectedStage?.id ?? null} fill />}
+      readouts={
+        <p className="truncate text-center text-sm font-medium text-ink dark:text-bone">
+          {inspectedStage ? `Stage ${inspectedStage.order + 1} of ${BOOT_STAGES.length}: ${inspectedStage.label}` : "Press Start to begin"}
+        </p>
+      }
+      actions={
+        <>
+          <button
+            onClick={handlePlayPause}
+            className="inline-flex h-11 min-w-28 items-center justify-center gap-2 rounded-full bg-subject-it px-5 text-sm font-medium text-paper hover:opacity-90"
+          >
+            {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+            {playLabel}
+          </button>
+          <button
+            onClick={handleStep}
+            disabled={isFinished}
+            className="inline-flex h-11 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium text-ink hover:border-ink/40 disabled:opacity-40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
+          >
+            <StepForward className="h-4 w-4" />
+            Step
+          </button>
+          <button
+            onClick={handleReset}
+            className="inline-flex h-11 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Reset
+          </button>
+        </>
+      }
+      controls={
+        <div className="flex min-w-0 flex-col gap-6">
+          <StageTimeline
+            reachedOrder={stageOrder + 1}
+            activeStageId={inspectedId ?? currentStage?.id ?? null}
+            onSelectStage={(id) => setInspectedId(id)}
+          />
       <div aria-live="polite" className="rounded-card bg-ink/[0.03] p-4 dark:bg-bone/[0.05]">
         {inspectedStage ? (
           <div className="flex flex-col gap-2">
@@ -150,32 +192,9 @@ function StepThroughMode() {
           </p>
         )}
       </div>
-
-      <div className="flex flex-wrap items-center gap-2">
-        <button
-          onClick={handlePlayPause}
-          className="inline-flex h-11 items-center gap-2 rounded-full bg-subject-it px-5 text-sm font-medium text-paper hover:opacity-90"
-        >
-          {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-          {playLabel}
-        </button>
-        <button
-          onClick={handleStep}
-          disabled={isFinished}
-          className="inline-flex h-11 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium text-ink hover:border-ink/40 disabled:opacity-40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
-        >
-          <StepForward className="h-4 w-4" />
-          Step
-        </button>
-        <button
-          onClick={handleReset}
-          className="inline-flex h-11 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone dark:hover:border-bone/40"
-        >
-          <RotateCcw className="h-4 w-4" />
-          Reset
-        </button>
-      </div>
-    </div>
+        </div>
+      }
+    />
   );
 }
 
@@ -229,7 +248,7 @@ function IdentifyStageMode() {
             onClick={() => !checked && setSelected(c.id)}
             disabled={checked}
             className={cn(
-              "rounded-full border-2 px-3 py-1.5 text-sm font-medium",
+              "min-h-11 rounded-full border-2 px-3 py-1.5 text-sm font-medium",
               selected === c.id
                 ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
                 : "border-line text-ink dark:border-line-dark dark:text-bone",
@@ -245,14 +264,14 @@ function IdentifyStageMode() {
           <button
             onClick={() => setChecked(true)}
             disabled={!selected}
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-subject-it px-4 text-sm font-medium text-paper disabled:opacity-40"
+            className="inline-flex h-11 items-center gap-2 rounded-full bg-subject-it px-4 text-sm font-medium text-paper disabled:opacity-40"
           >
             Check
           </button>
         ) : (
           <button
             onClick={next}
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium hover:border-ink/40 dark:border-line-dark dark:hover:border-bone/40"
+            className="inline-flex h-11 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium hover:border-ink/40 dark:border-line-dark dark:hover:border-bone/40"
           >
             Next
           </button>
@@ -306,7 +325,7 @@ function NextStageMode() {
             onClick={() => !checked && setSelected(c.id)}
             disabled={checked}
             className={cn(
-              "rounded-full border-2 px-3 py-1.5 text-sm font-medium",
+              "min-h-11 rounded-full border-2 px-3 py-1.5 text-sm font-medium",
               selected === c.id
                 ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
                 : "border-line text-ink dark:border-line-dark dark:text-bone",
@@ -322,14 +341,14 @@ function NextStageMode() {
           <button
             onClick={() => setChecked(true)}
             disabled={!selected}
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-subject-it px-4 text-sm font-medium text-paper disabled:opacity-40"
+            className="inline-flex h-11 items-center gap-2 rounded-full bg-subject-it px-4 text-sm font-medium text-paper disabled:opacity-40"
           >
             Check
           </button>
         ) : (
           <button
             onClick={next}
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium hover:border-ink/40 dark:border-line-dark dark:hover:border-bone/40"
+            className="inline-flex h-11 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium hover:border-ink/40 dark:border-line-dark dark:hover:border-bone/40"
           >
             Next
           </button>
@@ -377,7 +396,7 @@ function BootProblemsMode() {
             onClick={() => !checked && setSelected(c.id)}
             disabled={checked}
             className={cn(
-              "rounded-full border-2 px-3 py-1.5 text-sm font-medium",
+              "min-h-11 rounded-full border-2 px-3 py-1.5 text-sm font-medium",
               selected === c.id
                 ? "border-subject-it bg-subject-it-soft text-subject-it dark:bg-subject-it/20"
                 : "border-line text-ink dark:border-line-dark dark:text-bone",
@@ -393,14 +412,14 @@ function BootProblemsMode() {
           <button
             onClick={() => setChecked(true)}
             disabled={!selected}
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-subject-it px-4 text-sm font-medium text-paper disabled:opacity-40"
+            className="inline-flex h-11 items-center gap-2 rounded-full bg-subject-it px-4 text-sm font-medium text-paper disabled:opacity-40"
           >
             Check
           </button>
         ) : (
           <button
             onClick={next}
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium hover:border-ink/40 dark:border-line-dark dark:hover:border-bone/40"
+            className="inline-flex h-11 items-center gap-2 rounded-full border border-line px-4 text-sm font-medium hover:border-ink/40 dark:border-line-dark dark:hover:border-bone/40"
           >
             Next Scenario
           </button>

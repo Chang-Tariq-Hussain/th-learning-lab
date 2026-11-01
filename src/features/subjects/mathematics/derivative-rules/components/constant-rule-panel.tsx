@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { BlockMath, InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
+import { SimulationLayout } from "@/features/simulation";
 import { cn } from "@/lib/utils";
 import { FunctionGraph } from "../../calculus-foundations/components/function-graph";
 import { CONSTANT_OPTIONS } from "../derivative-rules-model";
@@ -16,14 +17,17 @@ export function ConstantRulePanel() {
   const [c, setC] = useState(5);
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
-      <div className="mx-auto aspect-square w-full max-w-md">
+    <SimulationLayout
+      stageLabel="Graph of the constant function"
+      aspect={1}
+      stageCap="26rem"
+      stage={
         <FunctionGraph
           segments={[{ evaluate: () => c, from: -9, to: 9 }]}
           ariaLabel={`A flat horizontal line at y = ${c}, the graph of f(x) = ${c}.`}
         />
-      </div>
-
+      }
+      controls={
       <div className="flex flex-col gap-4">
         <p className="text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
           A constant function never changes — no matter what x is, the output stays the same.
@@ -47,7 +51,7 @@ export function ConstantRulePanel() {
               onClick={() => setC(v)}
               aria-pressed={c === v}
               className={cn(
-                "rounded-full border px-3 py-1 font-mono text-sm transition-colors",
+                "min-h-11 rounded-full border px-3 py-1 font-mono text-sm transition-colors",
                 c === v
                   ? "border-subject-math bg-subject-math-soft text-subject-math dark:bg-subject-math/15"
                   : "border-line text-ink-soft hover:border-ink/30 dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/30",
@@ -63,6 +67,7 @@ export function ConstantRulePanel() {
           <InlineMath math="0" /> for every value you pick.
         </p>
       </div>
-    </div>
+      }
+    />
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { SimulationLayout } from "@/features/simulation";
 import { Panel } from "../osi-model-explorer/components/ui";
 import { ComparePanel } from "./components/compare-panel";
 import { DecisionPanel } from "./components/decision-panel";
@@ -8,13 +9,13 @@ import { EventLog } from "./components/event-log";
 import { EXPERIMENTS, ExperimentsPanel, type Experiment } from "./components/experiments-panel";
 import { GatewayPanel } from "./components/gateway-panel";
 import { KeyIdeas } from "./components/key-ideas";
-import { CUSTOM, PacketBuilder, resolveDestination } from "./components/packet-builder";
+import { CUSTOM, PacketActions, PacketBuilder, resolveDestination } from "./components/packet-builder";
 import { PacketInspector } from "./components/packet-inspector";
-import { RoutingDiagram } from "./components/routing-diagram";
+import { RoutingDiagram, diagramAspect } from "./components/routing-diagram";
 import { RoutingTablePanel } from "./components/routing-table-panel";
 import { StageStepper } from "./components/stage-stepper";
 import { useRoutingLab } from "./hooks/use-routing-lab";
-import { SCENARIOS, type ScenarioId } from "./model";
+import { PHASES, SCENARIOS, type ScenarioId } from "./model";
 
 /**
  * "Routing Simulator": a standalone, basic IPv4 routing lab. One or two routers, a few hosts, connected routes,
@@ -99,24 +100,32 @@ export function RoutingSimulator() {
       </p>
 
       <div className="min-w-0 rounded-card border border-line bg-paper p-3 dark:border-line-dark dark:bg-chalkboard sm:p-5">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-          <div className="flex min-w-0 flex-col gap-5">
-            <PacketBuilder lab={lab} src={src} dst={dst} custom={custom} onSrc={handleSrc} onDst={setDst} onCustom={setCustom} onScenario={changeScenario} onReset={reset} />
-            <Panel title="Live network">
-              <div className="flex flex-col gap-4">
+        <SimulationLayout
+          stageLabel="Routing simulation"
+          aspect={diagramAspect(state.scenarioId)}
+          stageCap="32rem"
+          runState={lab.inFlight ? (state.playing ? "running" : "paused") : state.plan && state.idx >= state.plan.steps.length - 1 ? "finished" : "idle"}
+          statusDetail={state.plan ? state.plan.outcome : undefined}
+          stage={<RoutingDiagram scenario={sc} plan={state.plan} idx={state.idx} txId={state.txId} step={lab.step} />}
+          readouts={
+            <p className="truncate text-center text-sm font-medium text-ink dark:text-bone">
+              {lab.step ? `Stage ${lab.step.phase} of ${PHASES.length}: ${PHASES[lab.step.phase - 1]?.label}` : "Press Send to begin"}
+            </p>
+          }
+          actions={<PacketActions lab={lab} src={src} dst={dst} custom={custom} onReset={reset} />}
+          controls={
+            <div className="flex min-w-0 flex-col gap-5">
+              <PacketBuilder lab={lab} src={src} dst={dst} custom={custom} onSrc={handleSrc} onDst={setDst} onCustom={setCustom} onScenario={changeScenario} onReset={reset} />
+              <Panel title="Packet journey">
                 <StageStepper plan={state.plan} idx={state.idx} step={lab.step} />
-                <RoutingDiagram scenario={sc} plan={state.plan} idx={state.idx} txId={state.txId} step={lab.step} />
-              </div>
-            </Panel>
-            <GatewayPanel scenario={sc} srcId={src} dstIp={target.ok ? target.ip : null} step={lab.inFlight ? lab.step : null} />
-          </div>
-
-          <div className="flex min-w-0 flex-col gap-5">
-            <RoutingTablePanel lab={lab} />
-            <DecisionPanel plan={state.plan} idx={state.idx} />
-            <PacketInspector plan={state.plan} step={lab.step} />
-          </div>
-        </div>
+              </Panel>
+              <GatewayPanel scenario={sc} srcId={src} dstIp={target.ok ? target.ip : null} step={lab.inFlight ? lab.step : null} />
+              <RoutingTablePanel lab={lab} />
+              <DecisionPanel plan={state.plan} idx={state.idx} />
+              <PacketInspector plan={state.plan} step={lab.step} />
+            </div>
+          }
+        />
       </div>
 
       <ExperimentsPanel lab={lab} activeId={activeExperiment} onStart={startExperiment} onSend={sendFromExperiment} />

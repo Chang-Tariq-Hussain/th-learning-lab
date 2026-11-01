@@ -161,7 +161,7 @@ export function StepBanner({ lab, level, idleText }: { lab: DnsLab; level: Detai
 
 const SPEEDS: PlaySpeed[] = [0.5, 1, 1.5, 2];
 
-export function Controls({ lab, canStart, onStart, hint }: { lab: DnsLab; canStart: boolean; onStart: (mode: "auto" | "step") => void; hint?: string }) {
+export function Controls({ lab, canStart, onStart }: { lab: DnsLab; canStart: boolean; onStart: (mode: "auto" | "step") => void }) {
   const { run, player } = lab;
   const finished = lab.runDone && !player.isPlaying;
   const idle = !run;
@@ -172,34 +172,39 @@ export function Controls({ lab, canStart, onStart, hint }: { lab: DnsLab; canSta
   }
   const primaryLabel = idle ? "▶ Start" : finished ? "▶ Resolve again" : player.isPlaying ? "⏸ Pause" : "▶ Resume";
 
+  // Rendered in the SimulationLayout actions slot (the sticky stage block): two compact rows on phones.
   return (
-    <div className="flex flex-col gap-1.5">
-      <div className="sticky bottom-2 z-20 flex flex-wrap items-center gap-2 rounded-card border border-line bg-paper/95 p-2.5 shadow-sm backdrop-blur dark:border-line-dark dark:bg-chalkboard/95" role="group" aria-label="Playback controls">
-        <button onClick={primary} disabled={(idle || finished) && !canStart} className={cn(BTN, PRIMARY)}>
-          {primaryLabel}
-        </button>
-        <button onClick={() => (idle ? onStart("step") : player.stepForward())} disabled={idle ? !canStart : lab.runDone} className={cn(BTN, PLAIN)}>
-          Next step ▸
-        </button>
-        <button onClick={player.stepBack} disabled={idle || player.stepIndex <= 0} className={cn(BTN, PLAIN)} aria-label="Previous step">
-          ◂ Back
-        </button>
-        <button onClick={lab.restartLookup} disabled={idle} className={cn(BTN, PLAIN)} title="Replay this lookup from its first step, with the cache it started with">
-          ↻ Restart
-        </button>
-        <label className="ml-auto flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
-          Speed
-          <select value={player.speed} onChange={(e) => player.setSpeed(Number(e.target.value) as PlaySpeed)} className="min-h-[44px] rounded-lg border border-line bg-white px-2 text-sm text-ink dark:border-line-dark dark:bg-white/[0.04] dark:text-bone">
-            {SPEEDS.map((s) => (
-              <option key={s} value={s}>
-                {s}×
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      {hint && <p className="px-1 text-xs text-ink-soft dark:text-bone-soft">{hint}</p>}
+    <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:justify-center" role="group" aria-label="Playback controls">
+      <button onClick={primary} disabled={(idle || finished) && !canStart} className={cn(BTN, PRIMARY, "w-full sm:w-auto")}>
+        {primaryLabel}
+      </button>
+      <button onClick={() => (idle ? onStart("step") : player.stepForward())} disabled={idle ? !canStart : lab.runDone} className={cn(BTN, PLAIN, "w-full sm:w-auto")}>
+        Next step ▸
+      </button>
+      <button onClick={player.stepBack} disabled={idle || player.stepIndex <= 0} className={cn(BTN, PLAIN, "w-full sm:w-auto")} aria-label="Previous step">
+        ◂ Back
+      </button>
+      <button onClick={lab.restartLookup} disabled={idle} className={cn(BTN, PLAIN, "w-full sm:w-auto")} title="Replay this lookup from its first step, with the cache it started with">
+        ↻ Restart
+      </button>
     </div>
+  );
+}
+
+/** Playback speed, kept with the controls (not the sticky stage block) so that block stays short. */
+export function SpeedSelect({ lab }: { lab: DnsLab }) {
+  const { player } = lab;
+  return (
+    <label className="flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
+      Speed
+      <select value={player.speed} onChange={(e) => player.setSpeed(Number(e.target.value) as PlaySpeed)} className="min-h-[44px] rounded-lg border border-line bg-white px-2 text-base text-ink dark:border-line-dark dark:bg-white/[0.04] dark:text-bone lg:text-sm">
+        {SPEEDS.map((s) => (
+          <option key={s} value={s}>
+            {s}×
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
 

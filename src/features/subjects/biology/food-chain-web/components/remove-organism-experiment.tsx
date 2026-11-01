@@ -17,7 +17,7 @@ export function RemoveOrganismExperiment({
 }: RemoveOrganismExperimentProps) {
   return (
     <div className="rounded-card border border-line bg-white/60 p-4 dark:border-line-dark dark:bg-white/[0.03]">
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-biology">
+      <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-biology">
         What If One Organism Disappears?
       </p>
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ReactionChamber } from "./reaction-chamber";
+import { ChamberLayout } from "./chamber-layout";
 import { ProgressGraph } from "./progress-graph";
 import { COLOR_A, COLOR_PRODUCT } from "../model";
 import type { ChamberStats } from "../types";
@@ -18,13 +19,21 @@ export function Level7Progress() {
   const productFraction = productCount / MAX_PRODUCT;
 
   return (
-    <div className="flex flex-col gap-5">
+    <ChamberLayout
+      stageLabel="Reaction chamber"
+      chambers={
+        <ReactionChamber numA={NUM_A} numB={NUM_B} tempC={55} label="Reaction Chamber" onStats={setStats} />
+      }
+      readouts={[
+        { id: "reactants", label: "Reactants", value: String(MAX_PRODUCT * 2 - productCount * 2) },
+        { id: "products", label: "Products", value: String(productCount) },
+      ]}
+      controls={
+        <div className="flex flex-col gap-5">
       <p className="max-w-2xl text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
         As the reaction proceeds, reactants are used up while products build up. The bars below track that
         macroscopic picture, driven by the same chamber you&apos;ve been watching.
       </p>
-
-      <ReactionChamber numA={NUM_A} numB={NUM_B} tempC={55} label="Reaction Chamber" onStats={setStats} />
 
       <div className="flex flex-col gap-3 rounded-card border border-line bg-white/60 p-4 dark:border-line-dark dark:bg-white/[0.03] sm:p-5">
         <div>
@@ -52,6 +61,8 @@ export function Level7Progress() {
       </div>
 
       <ProgressGraph data={stats?.history ?? [{ t: 0, product: 0 }]} maxProduct={MAX_PRODUCT} />
-    </div>
+        </div>
+      }
+    />
   );
 }

@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { SimulationLayout } from "@/features/simulation";
 import { BasePicker } from "./components/base-picker";
-import { DnaHelix } from "./components/dna-helix";
+import { DnaHelix, dnaHelixAspect } from "./components/dna-helix";
 import { FeedbackMessage } from "./components/feedback-message";
 import { InfoPanel } from "./components/info-panel";
 import { COMPLEMENT, createInitialState, firstBlankIndex, isSequenceComplete } from "./model";
@@ -80,31 +81,32 @@ export function DnaStructure() {
   const pickerDisabled = selectedIndex === null || filled[selectedIndex] !== null;
 
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[18rem_1fr]">
-        <InfoPanel />
-
-        <div className="flex flex-col gap-4 rounded-[1.75rem] border border-line bg-white/70 p-4 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:p-6">
-          <div className="h-[210px] w-full overflow-x-auto">
-            <div className="mx-auto h-full min-w-[280px] max-w-full" style={{ width: "fit-content" }}>
-              <DnaHelix sequence={sequence} filled={filled} selectedIndex={selectedIndex} onSelect={handleSelect} />
+    <div className="py-4">
+      <SimulationLayout
+        stageLabel="DNA double helix with base pairs"
+        aspect={dnaHelixAspect(sequence.length)}
+        stageCap="14rem"
+        stage={<DnaHelix sequence={sequence} filled={filled} selectedIndex={selectedIndex} onSelect={handleSelect} />}
+        readouts={
+          <div className="min-h-[3.5rem]">
+            <FeedbackMessage feedback={feedback} selectedIndex={selectedIndex} sequence={sequence} filled={filled} complete={complete} />
+          </div>
+        }
+        actions={
+          <div className="flex flex-col items-center gap-2">
+            <BasePicker onPick={handlePick} disabled={pickerDisabled} />
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <Button variant="primary" size="md" onClick={handleNewSequence}>
+                New Sequence
+              </Button>
+              <Button variant="ghost" size="md" onClick={handleReset}>
+                Reset
+              </Button>
             </div>
           </div>
-
-          <FeedbackMessage feedback={feedback} selectedIndex={selectedIndex} sequence={sequence} filled={filled} complete={complete} />
-
-          <BasePicker onPick={handlePick} disabled={pickerDisabled} />
-        </div>
-      </div>
-
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button variant="primary" size="lg" onClick={handleNewSequence}>
-          New Sequence
-        </Button>
-        <Button variant="ghost" size="lg" onClick={handleReset}>
-          Reset
-        </Button>
-      </div>
+        }
+        controls={<InfoPanel />}
+      />
     </div>
   );
 }

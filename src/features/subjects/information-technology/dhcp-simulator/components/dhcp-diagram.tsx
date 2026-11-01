@@ -21,8 +21,8 @@ import {
   type RunStep,
 } from "../model";
 
-const VIEW_W = 400;
-const VIEW_H = 372;
+export const VIEW_W = 400;
+export const VIEW_H = 372;
 
 type Pt = { x: number; y: number };
 const SW: Pt = { x: 200, y: 158 };
@@ -165,7 +165,7 @@ export function DhcpDiagram({
   return (
     <svg
       viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-      className="mx-auto h-auto w-full max-w-[560px] rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard"
+      className="h-full w-full"
       role="img"
       aria-label="Local network: a DHCP server, a router and five PCs connected to one switch"
     >

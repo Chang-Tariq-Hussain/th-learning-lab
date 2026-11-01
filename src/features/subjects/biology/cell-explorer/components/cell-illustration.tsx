@@ -89,7 +89,7 @@ export function CellIllustration({
     <svg
       ref={svgRef}
       viewBox="0 0 400 400"
-      className={`h-full w-full max-w-[26rem] ${isPannable ? "cursor-grab touch-none active:cursor-grabbing" : ""}`}
+      className={`h-full w-full ${isPannable ? "cursor-grab touch-none active:cursor-grabbing" : ""}`}
       role="img"
       aria-label={
         isPlant

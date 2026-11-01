@@ -1,12 +1,13 @@
 "use client";
 
+import { SimulationLayout, type SimulationRunState } from "@/features/simulation";
 import { cn } from "@/lib/utils";
 import { EventLog } from "../../ethernet-mac-simulator/components/event-log";
 import type { ArpLab } from "../hooks/use-arp-lab";
-import { SCENARIOS, SOURCE_IDS, nodeById, scenarioById, type DetailLevel, type ScenarioId } from "../model";
-import { ArpDiagram } from "./arp-diagram";
+import { OUTCOME_LABEL, SCENARIOS, SOURCE_IDS, nodeById, scenarioById, type DetailLevel, type ScenarioId } from "../model";
+import { ArpDiagram, VIEW_H, VIEW_W } from "./arp-diagram";
 import { CachePanel } from "./cache-panel";
-import { ChainStrip, Collapsible, Controls, KnowledgeCard, StepBanner, StepList } from "./parts";
+import { ChainStrip, Collapsible, Controls, KnowledgeCard, SpeedSelect, StepBanner, StepList } from "./parts";
 import { MessageInspector } from "./packet-view";
 
 function ScenarioPicker({ lab, ids }: { lab: ArpLab; ids: ScenarioId[] }) {
@@ -85,38 +86,41 @@ export function RunPanel({ lab, level, scenarios, remoteHint, hidePicker, allowR
   const showRemote = !!remoteHint || (lab.run ? !lab.run.local : preset.destIp.startsWith("192.168.2."));
   const stage = lab.step ? (lab.run && lab.stepIndex >= lab.run.steps.length - 1 && lab.run.outcome !== "unanswered" && lab.run.outcome !== "hit-wrong" ? "data" : lab.step.chain) : null;
 
+  const runState: SimulationRunState = !lab.run ? "idle" : lab.player.isPlaying ? "running" : lab.player.isFinished ? "finished" : "paused";
+
   return (
     <div className="flex flex-col gap-4">
-      {!hidePicker && <ScenarioPicker lab={lab} ids={scenarios} />}
-      {lab.scenario === "custom" && <CustomInputs lab={lab} />}
-
-      <div className="grid gap-3 lg:grid-cols-2">
-        <KnowledgeCard lab={lab} />
-        <div className="rounded-card border border-line bg-white/60 p-3.5 dark:border-line-dark dark:bg-white/[0.03]">
-          <p className="mb-2 font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">The key chain</p>
-          <ChainStrip run={lab.run} stage={stage} />
-        </div>
-      </div>
-
-      <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
-        <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-          <ArpDiagram nodes={lab.nodes} step={lab.step} srcId={lab.srcId} showRemote={showRemote} showIdleHint selectedId={lab.inspectId} onSelect={lab.setInspectId} />
-        </div>
-        <div className="min-w-0 lg:col-start-1 lg:row-start-2">
-          <StepBanner lab={lab} />
-        </div>
-        <div className="min-w-0 lg:col-start-1 lg:row-start-3">
-          <Controls lab={lab} />
-        </div>
-        <div className="min-w-0 lg:col-start-2 lg:row-start-1">
-          <CachePanel lab={lab} onRemove={allowRemove ? (ip) => lab.removeCacheEntry(lab.inspectId, ip) : undefined} />
-        </div>
-        <div className="min-w-0 lg:col-start-2 lg:row-start-2 lg:row-span-2">
-          <Collapsible title="Message inspector — ARP message or Ethernet frame">
-            <MessageInspector run={lab.run} message={lab.step?.message ?? null} nodes={lab.nodes} level={level} />
-          </Collapsible>
-        </div>
-      </div>
+      <SimulationLayout
+        stageLabel="ARP simulation"
+        aspect={VIEW_W / VIEW_H}
+        stageCap="32rem"
+        runState={runState}
+        statusDetail={lab.run ? OUTCOME_LABEL[lab.run.outcome] : undefined}
+        stage={<ArpDiagram nodes={lab.nodes} step={lab.step} srcId={lab.srcId} showRemote={showRemote} showIdleHint selectedId={lab.inspectId} onSelect={lab.setInspectId} />}
+        readouts={
+          <p className="truncate text-center text-sm font-medium text-ink dark:text-bone">
+            {lab.run && lab.step ? `Step ${lab.stepIndex + 1} of ${lab.run.steps.length}: ${lab.step.title}` : "Press Play or Step to begin"}
+          </p>
+        }
+        actions={<Controls lab={lab} />}
+        controls={
+          <div className="flex min-w-0 flex-col gap-4">
+            {!hidePicker && <ScenarioPicker lab={lab} ids={scenarios} />}
+            {lab.scenario === "custom" && <CustomInputs lab={lab} />}
+            <StepBanner lab={lab} />
+            <SpeedSelect lab={lab} />
+            <KnowledgeCard lab={lab} />
+            <div className="rounded-card border border-line bg-white/60 p-3.5 dark:border-line-dark dark:bg-white/[0.03]">
+              <p className="mb-2 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">The key chain</p>
+              <ChainStrip run={lab.run} stage={stage} />
+            </div>
+            <CachePanel lab={lab} onRemove={allowRemove ? (ip) => lab.removeCacheEntry(lab.inspectId, ip) : undefined} />
+            <Collapsible title="Message inspector — ARP message or Ethernet frame">
+              <MessageInspector run={lab.run} message={lab.step?.message ?? null} nodes={lab.nodes} level={level} />
+            </Collapsible>
+          </div>
+        }
+      />
 
       <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
         <Collapsible title={`Steps${lab.run ? ` · ${lab.run.steps.length}` : ""}`} defaultOpen={false}>

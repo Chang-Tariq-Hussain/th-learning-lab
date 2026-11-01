@@ -49,7 +49,7 @@ export function CalculateChallenge({ questionIndex, answered, onAnswer, onNext }
               type="button"
               onClick={() => onAnswer(option)}
               className={cn(
-                "rounded-full border px-4 py-1.5 text-sm font-medium transition-colors",
+                "min-h-11 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors",
                 isSelected
                   ? correct
                     ? "border-pine-500 bg-pine-600 text-paper dark:border-pine-300 dark:bg-pine-300 dark:text-chalkboard"
@@ -70,7 +70,7 @@ export function CalculateChallenge({ questionIndex, answered, onAnswer, onNext }
             <button
               type="button"
               onClick={onNext}
-              className="mt-1 text-xs font-medium text-ink-soft underline hover:text-ink dark:text-bone-soft dark:hover:text-bone"
+              className="mt-1 inline-flex min-h-11 items-center text-xs font-medium text-ink-soft underline hover:text-ink dark:text-bone-soft dark:hover:text-bone"
             >
               Next question
             </button>

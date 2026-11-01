@@ -121,6 +121,11 @@ function BasePill({
  * physics — same "plain lookup, no simulation" spirit as the rest of
  * the biology visualizations here.
  */
+/** Width / height of the helix drawing for a strand of this length. */
+export function dnaHelixAspect(length: number): number {
+  return (MARGIN_X * 2 + (length - 1) * SPACING) / VIEW_HEIGHT;
+}
+
 export function DnaHelix({ sequence, filled, selectedIndex, onSelect }: DnaHelixProps) {
   const width = MARGIN_X * 2 + (sequence.length - 1) * SPACING;
 

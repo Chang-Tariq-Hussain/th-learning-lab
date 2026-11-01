@@ -1,17 +1,21 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { SimulationLayout, usePrefersReducedMotion, type SimulationRunState } from "@/features/simulation";
 import {
   ABSORPTION_DURATION_MS,
   INITIAL_JOURNEY_STATE,
+  STAGES,
   TOTAL_DURATION_S,
+  VIEW_HEIGHT,
+  VIEW_WIDTH,
   clamp01,
   journeyComplete,
   stageAt,
 } from "./digestive-model";
 import type { AccessoryOrganId, NutrientId, OrganId } from "./types";
 import { DigestiveScene } from "./components/digestive-scene";
-import { JourneyControls } from "./components/journey-controls";
+import { JourneyControls, JourneyProgress } from "./components/journey-controls";
 import { OrganExplorer } from "./components/organ-explorer";
 import { AccessoryOrgans } from "./components/accessory-organs";
 import { VilliView } from "./components/villi-view";
@@ -24,6 +28,7 @@ export function DigestiveSystem() {
   const [seconds, setSeconds] = useState(INITIAL_JOURNEY_STATE.seconds);
   const [running, setRunning] = useState(INITIAL_JOURNEY_STATE.running);
   const [started, setStarted] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
 
   const [activeOrgan, setActiveOrgan] = useState<OrganId | null>(null);
   const [activeAccessoryOrgan, setActiveAccessoryOrgan] =
@@ -93,12 +98,18 @@ export function DigestiveSystem() {
   const complete = journeyComplete(progress);
 
   const handleStart = () => {
+    setStarted(true);
+    setActiveOrgan(null);
+    // Reduced motion: no animation loop; show the end of the journey straight away.
+    if (reducedMotion) {
+      setSeconds(TOTAL_DURATION_S);
+      setRunning(false);
+      return;
+    }
     if (complete) {
       setSeconds(0);
     }
-    setStarted(true);
     setRunning(true);
-    setActiveOrgan(null);
   };
 
   const handlePause = () => setRunning(false);
@@ -157,40 +168,49 @@ export function DigestiveSystem() {
   const currentStage = stageAt(progress);
   const sceneHighlight = activeOrgan ?? (started ? currentStage : null);
 
+  const stageIndex = STAGES.findIndex((stage) => stage.id === currentStage);
+  const runState: SimulationRunState = running ? "running" : complete ? "finished" : started ? "paused" : "idle";
+
   return (
-    <div className="flex flex-col gap-6">
-      <div className="mx-auto h-[420px] w-full max-w-sm rounded-[1.75rem] border border-line bg-white/70 p-3 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[460px]">
-        <DigestiveScene
-          progress={progress}
-          showFood={started}
-          highlight={sceneHighlight}
-        />
-      </div>
-
-      <JourneyControls
-        running={running}
-        started={started}
-        complete={complete}
-        currentStage={currentStage}
-        onStart={handleStart}
-        onPause={handlePause}
-        onReset={handleReset}
+    <div className="flex flex-col gap-6 py-4">
+      <SimulationLayout
+        stageLabel="Digestive system simulation"
+        aspect={VIEW_WIDTH / VIEW_HEIGHT}
+        stageCap="28rem"
+        runState={runState}
+        statusDetail="The journey is complete."
+        stage={<DigestiveScene progress={progress} showFood={started} highlight={sceneHighlight} />}
+        readouts={
+          <p className="truncate text-center text-sm font-medium text-ink dark:text-bone">
+            {started
+              ? `Stage ${stageIndex + 1} of ${STAGES.length}: ${STAGES[stageIndex]?.label}`
+              : "Press Start Journey to begin."}
+          </p>
+        }
+        actions={
+          <JourneyControls
+            running={running}
+            started={started}
+            complete={complete}
+            onStart={handleStart}
+            onPause={handlePause}
+            onReset={handleReset}
+          />
+        }
+        controls={
+          <div className="flex min-w-0 flex-col gap-6">
+            <JourneyProgress started={started} currentStage={currentStage} />
+            <OrganExplorer activeId={activeOrgan} onSelect={handleSelectOrgan} />
+          </div>
+        }
+        explanation={
+          <div className="flex min-w-0 flex-col gap-6">
+            <AccessoryOrgans activeId={activeAccessoryOrgan} onSelect={setActiveAccessoryOrgan} />
+            <VilliView exchanging={absorptionExchanging} done={absorptionDone} onExplore={handleExplore} />
+            <NutrientTypes activeId={activeNutrient} onSelect={setActiveNutrient} />
+          </div>
+        }
       />
-
-      <OrganExplorer activeId={activeOrgan} onSelect={handleSelectOrgan} />
-
-      <AccessoryOrgans
-        activeId={activeAccessoryOrgan}
-        onSelect={setActiveAccessoryOrgan}
-      />
-
-      <VilliView
-        exchanging={absorptionExchanging}
-        done={absorptionDone}
-        onExplore={handleExplore}
-      />
-
-      <NutrientTypes activeId={activeNutrient} onSelect={setActiveNutrient} />
 
       <DigestionAbsorptionCompare />
 

@@ -21,8 +21,9 @@ export function ModeToggle({ mode, onChange }: ModeToggleProps) {
           key={o.id}
           type="button"
           onClick={() => onChange(o.id)}
+          aria-pressed={mode === o.id}
           className={cn(
-            "rounded-full border px-4 py-1.5 text-sm font-medium transition-colors",
+            "min-h-11 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors lg:min-h-0",
             mode === o.id
               ? "border-subject-biology bg-subject-biology text-paper dark:text-chalkboard"
               : "border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink dark:border-bone/20 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone",

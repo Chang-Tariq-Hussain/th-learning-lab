@@ -11,6 +11,8 @@ interface Box {
   h: number;
 }
 
+export const SYSTEM_DIAGRAM_ASPECT = 940 / 400;
+
 /** Fixed layout, in a 940×400 viewBox, shared by every 2D mode. Left to
  *  right mirrors the direction a program's data travels when loading:
  *  Storage → RAM → cache hierarchy (outer to inner) → CPU internals,
@@ -132,7 +134,7 @@ export function SystemDiagram({
   };
 
   return (
-    <svg viewBox="0 0 940 400" className="mx-auto w-full max-w-4xl" role="img" aria-label="CPU, cache, RAM, and storage architecture diagram">
+    <svg viewBox="0 0 940 400" className="h-full w-full" role="img" aria-label="CPU, cache, RAM, and storage architecture diagram">
       {/* CPU package boundary */}
       <rect
         x={CPU_BOUNDARY.x}

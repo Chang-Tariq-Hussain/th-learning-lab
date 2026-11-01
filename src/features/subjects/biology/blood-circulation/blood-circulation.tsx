@@ -1,9 +1,19 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LOOP_DURATION_S, ROUTE_STAGES, TRACE_STEPS, CIRCUITS, type CircuitId, type Focus } from "./circulation-model";
+import { SimulationLayout, usePrefersReducedMotion, type SimulationRunState } from "@/features/simulation";
+import {
+  LOOP_DURATION_S,
+  ROUTE_STAGES,
+  TRACE_STEPS,
+  CIRCUITS,
+  VIEW_HEIGHT,
+  VIEW_WIDTH,
+  type CircuitId,
+  type Focus,
+} from "./circulation-model";
 import { CirculationScene } from "./components/circulation-scene";
-import { CirculationControls } from "./components/circulation-controls";
+import { CirculationControls, TraceToggle } from "./components/circulation-controls";
 import { TracePanel } from "./components/trace-panel";
 import { CircuitToggle } from "./components/circuit-toggle";
 import { FollowTheBlood } from "./components/follow-the-blood";
@@ -16,6 +26,7 @@ type Mode = "free" | "trace";
 export function BloodCirculation() {
   const [running, setRunning] = useState(true);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const reducedMotion = usePrefersReducedMotion();
 
   const [mode, setMode] = useState<Mode>("free");
   const [traceStep, setTraceStep] = useState(0);
@@ -36,6 +47,11 @@ export function BloodCirculation() {
     }
     lastTickRef.current = null;
   }, []);
+
+  // Reduced motion: the continuous loop does not start by itself; the learner presses Start.
+  useEffect(() => {
+    if (reducedMotion) setRunning(false);
+  }, [reducedMotion]);
 
   useEffect(() => {
     if (!running) {
@@ -140,26 +156,38 @@ export function BloodCirculation() {
     if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
   };
 
+  const runState: SimulationRunState = running ? "running" : elapsedSeconds > 0 ? "paused" : "idle";
+
   return (
-    <div className="flex flex-col gap-6">
-      <div className="mx-auto h-[420px] w-full max-w-sm rounded-[1.75rem] border border-line bg-white/70 p-3 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:h-[460px]">
-        <CirculationScene phase={phase} focus={focus} />
-      </div>
+    <div className="flex flex-col gap-6 py-4">
+      <SimulationLayout
+        stageLabel="Blood circulation simulation"
+        aspect={VIEW_WIDTH / VIEW_HEIGHT}
+        stageCap="28rem"
+        runState={runState}
+        stage={<CirculationScene phase={phase} focus={focus} />}
+        actions={<CirculationControls running={running} onPlayPause={handlePlayPause} onReset={handleReset} />}
+        controls={
+          <div className="flex min-w-0 flex-col gap-4">
+            <div className="flex justify-center lg:justify-start">
+              <TraceToggle tracing={mode === "trace"} onToggleTrace={handleToggleTrace} />
+            </div>
 
-      <CirculationControls running={running} onPlayPause={handlePlayPause} onReset={handleReset} tracing={mode === "trace"} onToggleTrace={handleToggleTrace} />
+            {mode === "trace" ? (
+              <TracePanel step={traceStep} complete={traceComplete} onNext={handleTraceNext} onRestart={handleTraceRestart} />
+            ) : null}
 
-      {mode === "trace" ? (
-        <TracePanel step={traceStep} complete={traceComplete} onNext={handleTraceNext} onRestart={handleTraceRestart} />
-      ) : null}
-
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <CircuitToggle active={circuit} onSelect={handleSelectCircuit} />
-        <FollowTheBlood activeId={routeStage} onSelect={handleSelectRouteStage} />
-      </div>
-
-      <HeartChambers />
-
-      <InfoCards />
+            <CircuitToggle active={circuit} onSelect={handleSelectCircuit} />
+            <FollowTheBlood activeId={routeStage} onSelect={handleSelectRouteStage} />
+          </div>
+        }
+        explanation={
+          <div className="flex min-w-0 flex-col gap-6">
+            <HeartChambers />
+            <InfoCards />
+          </div>
+        }
+      />
 
       <MiniChallenge step={challengeStep} feedback={challengeFeedback} onAnswer={handleChallengeAnswer} onRestart={handleChallengeRestart} />
     </div>

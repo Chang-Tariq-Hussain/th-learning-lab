@@ -190,11 +190,12 @@ export function Controls({ lab }: { lab: ArpLab }) {
     if (!run) lab.start("step");
     else player.stepForward();
   }
-  const btn = "min-h-[44px] rounded-full border px-4 text-sm font-medium transition-colors disabled:opacity-40";
+  const btn = "min-h-[44px] w-full rounded-full border px-2 text-sm font-medium transition-colors disabled:opacity-40 sm:w-auto sm:px-4";
   const plain = "border-line text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone";
 
+  // Rendered in the SimulationLayout actions slot (the sticky stage block): one compact row of four on phones.
   return (
-    <div className="sticky bottom-2 z-20 flex flex-wrap items-center gap-2 rounded-card border border-line bg-paper/95 p-2.5 shadow-sm backdrop-blur dark:border-line-dark dark:bg-chalkboard/95" role="group" aria-label="Playback controls">
+    <div className="grid w-full grid-cols-4 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:justify-center" role="group" aria-label="Playback controls">
       <button onClick={play} disabled={!canStart} className={cn(btn, "border-subject-it bg-subject-it text-paper")}>
         {run ? (player.isPlaying ? "Pause" : player.playLabel) : "Play"}
       </button>
@@ -208,24 +209,31 @@ export function Controls({ lab }: { lab: ArpLab }) {
         Reset
       </button>
       {finished && (
-        <button onClick={() => lab.start("auto")} disabled={!canStart} className={cn(btn, "border-emerald-500 text-emerald-700 dark:text-emerald-300")}>
+        <button onClick={() => lab.start("auto")} disabled={!canStart} className={cn(btn, "col-span-4 border-emerald-500 text-emerald-700 dark:text-emerald-300")}>
           Send another message
         </button>
       )}
-      <label className="ml-auto flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
-        Speed
-        <select
-          value={player.speed}
-          onChange={(e) => player.setSpeed(Number(e.target.value) as PlaySpeed)}
-          className="min-h-[36px] rounded-lg border border-line bg-paper px-2 text-xs text-ink dark:border-line-dark dark:bg-chalkboard dark:text-bone"
-        >
-          {SPEEDS.map((s) => (
-            <option key={s} value={s}>
-              {s}×
-            </option>
-          ))}
-        </select>
-      </label>
     </div>
+  );
+}
+
+/** Playback speed: kept with the controls (not the sticky stage block) so the block stays one row tall. */
+export function SpeedSelect({ lab }: { lab: ArpLab }) {
+  const { player } = lab;
+  return (
+    <label className="flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
+      Speed
+      <select
+        value={player.speed}
+        onChange={(e) => player.setSpeed(Number(e.target.value) as PlaySpeed)}
+        className="min-h-[44px] rounded-lg border border-line bg-paper px-2 text-base text-ink dark:border-line-dark dark:bg-chalkboard dark:text-bone lg:min-h-[36px] lg:text-xs"
+      >
+        {SPEEDS.map((s) => (
+          <option key={s} value={s}>
+            {s}×
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }

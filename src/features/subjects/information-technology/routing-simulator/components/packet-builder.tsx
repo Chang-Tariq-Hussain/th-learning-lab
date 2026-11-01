@@ -80,7 +80,7 @@ export function PacketBuilder({ lab, src, dst, custom, onSrc, onDst, onCustom, o
             {sc.hosts.map((h) => (
               <Chip key={h.id} selected={src === h.id} disabled={inFlight} onClick={() => onSrc(h.id)}>
                 <span className="font-mono text-sm font-semibold">{h.name}</span>
-                <span className="font-mono text-[10px] font-normal text-ink-soft dark:text-bone-soft">{h.ip}</span>
+                <span className="font-mono text-label font-normal text-ink-soft dark:text-bone-soft">{h.ip}</span>
               </Chip>
             ))}
           </div>
@@ -94,12 +94,12 @@ export function PacketBuilder({ lab, src, dst, custom, onSrc, onDst, onCustom, o
               .map((h) => (
                 <Chip key={h.id} selected={dst === h.id} disabled={inFlight} onClick={() => onDst(h.id)}>
                   <span className="font-mono text-sm font-semibold">{h.name}</span>
-                  <span className="font-mono text-[10px] font-normal text-ink-soft dark:text-bone-soft">{h.ip}</span>
+                  <span className="font-mono text-label font-normal text-ink-soft dark:text-bone-soft">{h.ip}</span>
                 </Chip>
               ))}
             <Chip selected={dst === CUSTOM} disabled={inFlight} onClick={() => onDst(CUSTOM)} title="Type any IPv4 address">
               <span className="font-mono text-sm font-semibold">Other IP…</span>
-              <span className="font-mono text-[10px] font-normal text-ink-soft dark:text-bone-soft">type an address</span>
+              <span className="font-mono text-label font-normal text-ink-soft dark:text-bone-soft">type an address</span>
             </Chip>
           </div>
           {dst === CUSTOM && (
@@ -137,35 +137,50 @@ export function PacketBuilder({ lab, src, dst, custom, onSrc, onDst, onCustom, o
           <p className="mt-0.5 text-ink-soft dark:text-bone-soft">Routers decide where to send a packet from its destination IP address.</p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          <button type="button" className={cn(BTN, BTN_PRIMARY)} disabled={inFlight || !target.ok} onClick={() => target.ok && lab.send(src, target.ip)}>
-            <Send className="h-4 w-4" strokeWidth={1.75} /> Send packet
-          </button>
-          {state.mode === "auto" && (
-            <button type="button" className={cn(BTN, BTN_PLAIN)} disabled={!inFlight} onClick={state.playing ? lab.pause : lab.play}>
-              {state.playing ? (
-                <>
-                  <Pause className="h-4 w-4" strokeWidth={1.75} /> Pause
-                </>
-              ) : (
-                <>
-                  <Play className="h-4 w-4" strokeWidth={1.75} /> Play
-                </>
-              )}
-            </button>
-          )}
-          <button type="button" className={cn(BTN, BTN_PLAIN)} disabled={!inFlight || state.playing} onClick={lab.next}>
-            <SkipForward className="h-4 w-4" strokeWidth={1.75} /> Next step
-          </button>
-          <button type="button" className={cn(BTN, BTN_PLAIN)} disabled={!inFlight} onClick={lab.cancel}>
-            <X className="h-4 w-4" strokeWidth={1.75} /> Cancel
-          </button>
-          <button type="button" className={cn(BTN, BTN_PLAIN)} onClick={onReset} title="Restore this scenario's routes and clear the log">
-            <RotateCcw className="h-4 w-4" strokeWidth={1.75} /> Reset
-          </button>
-        </div>
         {state.mode === "step" && inFlight && stepName && <p className="text-xs text-ink-soft dark:text-bone-soft">Now showing: {stepName}. Press Next step to continue.</p>}
       </div>
     </Panel>
+  );
+}
+
+/**
+ * Send / Play / Next step / Cancel / Reset: rendered in the SimulationLayout actions slot (the sticky stage block),
+ * so the packet can be sent and stepped while the diagram stays on screen.
+ */
+export function PacketActions({ lab, src, dst, custom, onReset }: { lab: RoutingLab; src: string; dst: string; custom: string; onReset: () => void }) {
+  const { state, inFlight } = lab;
+  const target = resolveDestination(lab, src, dst, custom);
+  const btn = "w-full px-2 sm:w-auto sm:px-4";
+
+  return (
+    <div className="grid w-full grid-cols-3 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:justify-center">
+      <button type="button" className={cn(BTN, BTN_PRIMARY, btn)} disabled={inFlight || !target.ok} onClick={() => target.ok && lab.send(src, target.ip)}>
+        <Send className="h-4 w-4" strokeWidth={1.75} /> Send
+        <span className="sr-only"> packet</span>
+      </button>
+      {state.mode === "auto" && (
+        <button type="button" className={cn(BTN, BTN_PLAIN, btn)} disabled={!inFlight} onClick={state.playing ? lab.pause : lab.play}>
+          {state.playing ? (
+            <>
+              <Pause className="h-4 w-4" strokeWidth={1.75} /> Pause
+            </>
+          ) : (
+            <>
+              <Play className="h-4 w-4" strokeWidth={1.75} /> Play
+            </>
+          )}
+        </button>
+      )}
+      <button type="button" className={cn(BTN, BTN_PLAIN, btn)} disabled={!inFlight || state.playing} onClick={lab.next}>
+        <SkipForward className="h-4 w-4" strokeWidth={1.75} /> Next
+        <span className="sr-only"> step</span>
+      </button>
+      <button type="button" className={cn(BTN, BTN_PLAIN, btn)} disabled={!inFlight} onClick={lab.cancel}>
+        <X className="h-4 w-4" strokeWidth={1.75} /> Cancel
+      </button>
+      <button type="button" className={cn(BTN, BTN_PLAIN, btn)} onClick={onReset} title="Restore this scenario's routes and clear the log">
+        <RotateCcw className="h-4 w-4" strokeWidth={1.75} /> Reset
+      </button>
+    </div>
   );
 }

@@ -18,8 +18,8 @@ import {
   type StateKind,
 } from "../model";
 
-const VIEW_W = 440;
-const VIEW_H = 440;
+export const VIEW_W = 440;
+export const VIEW_H = 440;
 
 type Pt = { x: number; y: number };
 const POS: Record<NodeId, Pt> = {
@@ -186,7 +186,7 @@ export function DnsDiagram({
   return (
     <svg
       viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-      className="mx-auto h-auto w-full max-w-[600px] rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard"
+      className="h-full w-full"
       role="img"
       aria-label="DNS network: a user PC and its DNS resolver, with the root, top-level domain and authoritative servers, a resolver cache and the website server"
     >

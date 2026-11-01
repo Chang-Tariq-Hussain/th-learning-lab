@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { SimulationLayout } from "@/features/simulation";
 import { ChallengeBanner } from "./components/challenge-banner";
 import { Pizza } from "./components/pizza";
 import { SliceControls } from "./components/slice-controls";
@@ -83,23 +84,30 @@ export function FractionPizza() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-8 py-4">
-      <ChallengeBanner challenge={challenge} celebrating={celebrating} />
-
-      <Pizza
-        sliceCount={sliceCount}
-        selected={selected}
-        onToggleSlice={handleToggleSlice}
-        celebrating={celebrating}
-        confettiKey={confettiKey}
-      />
-
-      <SliceControls
-        onIncrease={handleIncrease}
-        onDecrease={handleDecrease}
-        onReset={handleReset}
-        canIncrease={sliceCount !== SLICE_COUNTS[SLICE_COUNTS.length - 1]}
-        canDecrease={sliceCount !== SLICE_COUNTS[0]}
+    <div className="py-4">
+      <SimulationLayout
+        stageLabel="Fraction pizza"
+        aspect={1}
+        stageCap="24rem"
+        stage={
+          <Pizza
+            sliceCount={sliceCount}
+            selected={selected}
+            onToggleSlice={handleToggleSlice}
+            celebrating={celebrating}
+            confettiKey={confettiKey}
+          />
+        }
+        readouts={<ChallengeBanner challenge={challenge} celebrating={celebrating} />}
+        actions={
+          <SliceControls
+            onIncrease={handleIncrease}
+            onDecrease={handleDecrease}
+            onReset={handleReset}
+            canIncrease={sliceCount !== SLICE_COUNTS[SLICE_COUNTS.length - 1]}
+            canDecrease={sliceCount !== SLICE_COUNTS[0]}
+          />
+        }
       />
     </div>
   );

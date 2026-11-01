@@ -1,5 +1,6 @@
 "use client";
 
+import { useStageSize } from "@/features/simulation";
 import type { Mode, OrganismId } from "../types";
 import { CHAIN_SEQUENCE, edgesForMode } from "../food-web-model";
 
@@ -97,6 +98,9 @@ export function Scene({
   flowPhase,
   onSelect,
 }: SceneProps) {
+  // Organism names are drawn at 12 CSS px whatever the stage size (viewBox units per CSS px = 380 / width).
+  const { width } = useStageSize();
+  const labelSize = Math.round((12 * 380) / Math.max(width, 240));
   const opacityFor = (id: OrganismId) => {
     let base = 1;
     if (grasshopperRemoved && id === "grasshopper") base = 0.12;
@@ -249,7 +253,8 @@ export function Scene({
           x={160}
           y={236}
           textAnchor="middle"
-          className="fill-ink/60 dark:fill-bone/70 font-mono text-[9px] uppercase tracking-wide"
+          fontSize={labelSize}
+          className="fill-ink/70 dark:fill-bone/75 font-mono uppercase"
         >
           Grass
         </text>
@@ -293,7 +298,8 @@ export function Scene({
           x={POSITIONS.grasshopper.x}
           y={POSITIONS.grasshopper.y - 12}
           textAnchor="middle"
-          className="fill-ink/60 dark:fill-bone/70 font-mono text-[9px] uppercase tracking-wide"
+          fontSize={labelSize}
+          className="fill-ink/70 dark:fill-bone/75 font-mono uppercase"
         >
           Grasshopper
         </text>
@@ -329,7 +335,8 @@ export function Scene({
           x={POSITIONS.rabbit.x}
           y={POSITIONS.rabbit.y + 18}
           textAnchor="middle"
-          className="fill-ink/60 dark:fill-bone/70 font-mono text-[9px] uppercase tracking-wide"
+          fontSize={labelSize}
+          className="fill-ink/70 dark:fill-bone/75 font-mono uppercase"
         >
           Rabbit
         </text>
@@ -355,7 +362,8 @@ export function Scene({
           x={POSITIONS.frog.x}
           y={POSITIONS.frog.y + 18}
           textAnchor="middle"
-          className="fill-ink/60 dark:fill-bone/70 font-mono text-[9px] uppercase tracking-wide"
+          fontSize={labelSize}
+          className="fill-ink/70 dark:fill-bone/75 font-mono uppercase"
         >
           Frog
         </text>
@@ -399,7 +407,8 @@ export function Scene({
           x={POSITIONS.snake.x}
           y={POSITIONS.snake.y + 16}
           textAnchor="middle"
-          className="fill-ink/60 dark:fill-bone/70 font-mono text-[9px] uppercase tracking-wide"
+          fontSize={labelSize}
+          className="fill-ink/70 dark:fill-bone/75 font-mono uppercase"
         >
           Snake
         </text>
@@ -429,7 +438,8 @@ export function Scene({
           x={POSITIONS.hawk.x}
           y={POSITIONS.hawk.y - 12}
           textAnchor="middle"
-          className="fill-ink/60 dark:fill-bone/70 font-mono text-[9px] uppercase tracking-wide"
+          fontSize={labelSize}
+          className="fill-ink/70 dark:fill-bone/75 font-mono uppercase"
         >
           Hawk
         </text>
@@ -454,7 +464,8 @@ export function Scene({
           x={POSITIONS.fungi.x + 6}
           y={POSITIONS.fungi.y + 20}
           textAnchor="middle"
-          className="fill-ink/60 dark:fill-bone/70 font-mono text-[9px] uppercase tracking-wide"
+          fontSize={labelSize}
+          className="fill-ink/70 dark:fill-bone/75 font-mono uppercase"
         >
           Fungi
         </text>

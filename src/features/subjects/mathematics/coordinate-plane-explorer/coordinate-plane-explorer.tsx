@@ -6,7 +6,8 @@ import {
   type Quadrant,
 } from "./coordinate-model";
 import { CoordinatePlane } from "./components/coordinate-plane";
-import { Readouts } from "./components/readouts";
+import { PointNotes } from "./components/readouts";
+import { SimulationLayout, SimulationReadouts } from "@/features/simulation";
 import { SelectionInfo } from "./components/selection-info";
 import { Controls } from "./components/controls";
 import { PlacementChallenge } from "./components/placement-challenge";
@@ -71,29 +72,41 @@ export function CoordinatePlaneExplorer() {
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="mx-auto aspect-square w-full max-w-[560px] rounded-[1.75rem] border border-line bg-white/70 p-3 shadow-card backdrop-blur dark:border-line-dark dark:bg-white/[0.04] sm:p-5">
-        <CoordinatePlane
-          point={point}
-          onPointChange={handlePointChange}
-          onQuadrantClick={handleQuadrantClick}
-          onOriginClick={handleOriginClick}
-          onHoverChange={setHover}
-          showGuides={showGuides}
-          target={target}
-        />
-      </div>
-
-      <Readouts point={point} hover={hover} />
-
-      <SelectionInfo selection={selection} />
-
-      <Controls onReset={handleResetPoint} showGuides={showGuides} onToggleGuides={() => setShowGuides((v) => !v)} />
-
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <PlacementChallenge step={placementStep} solved={placementSolved} onRestart={handlePlacementRestart} />
-        <QuadrantChallenge answered={quadrantAnswered} onAnswer={handleQuadrantAnswer} onRestart={handleQuadrantRestart} />
-      </div>
+    <div className="flex flex-col gap-6 py-4">
+      <SimulationLayout
+        stageLabel="Coordinate plane"
+        aspect={1}
+        stageCap="30rem"
+        stage={
+          <CoordinatePlane
+            point={point}
+            onPointChange={handlePointChange}
+            onQuadrantClick={handleQuadrantClick}
+            onOriginClick={handleOriginClick}
+            onHoverChange={setHover}
+            showGuides={showGuides}
+            target={target}
+          />
+        }
+        readouts={
+          <SimulationReadouts
+            label="Point and cursor"
+            items={[
+              { id: "p", label: "Point P", value: `(${point.x}, ${point.y})` },
+              { id: "c", label: "Cursor", value: hover ? `(${hover.x}, ${hover.y})` : "—" },
+            ]}
+          />
+        }
+        actions={<Controls onReset={handleResetPoint} showGuides={showGuides} onToggleGuides={() => setShowGuides((v) => !v)} />}
+        controls={
+          <div className="flex min-w-0 flex-col gap-4">
+            <PointNotes point={point} />
+            <SelectionInfo selection={selection} />
+            <PlacementChallenge step={placementStep} solved={placementSolved} onRestart={handlePlacementRestart} />
+            <QuadrantChallenge answered={quadrantAnswered} onAnswer={handleQuadrantAnswer} onRestart={handleQuadrantRestart} />
+          </div>
+        }
+      />
 
       <LearningPanel />
     </div>

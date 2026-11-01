@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Callout, Panel, SectionHeading } from "../../osi-model-explorer/components/ui";
 import type { DhcpLab } from "../hooks/use-dhcp-lab";
 import { CLIENT_IDS, CLIENT_META, canRunDora, initialState, poolStats, withPoolSize, type DetailLevel } from "../model";
-import { LabDiagram } from "./run-panel";
+import { RunLayout } from "./run-panel";
 import { ActionButton, Controls, DoraStrip, LeaseTable, StepBanner } from "./parts";
 import { EventLog } from "../../ethernet-mac-simulator/components/event-log";
 
@@ -53,13 +53,12 @@ export function ExhaustionLab({ lab, level }: { lab: DhcpLab; level: DetailLevel
         <p className="mb-2 font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">The DORA process</p>
         <DoraStrip run={lab.run} step={lab.step} stepIndex={lab.stepIndex} />
       </div>
-      <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
-        <div className="flex min-w-0 flex-col gap-4">
-          <LabDiagram lab={lab} showIdleHint={false} />
-          <StepBanner lab={lab} level={level} readyText="Choose the numbers above and press Start DHCP. PCs ask one after another, and each sees the pool as the previous one left it." />
-          <Controls lab={lab} canStart={ready.length > 0} onStart={(m) => lab.startDora(askers, m)} startLabel={`▶ Start DHCP (${count})`} />
-        </div>
-        <div className="flex min-w-0 flex-col gap-4">
+      <RunLayout
+        lab={lab}
+        showIdleHint={false}
+        banner={<StepBanner lab={lab} level={level} readyText="Choose the numbers above and press Start DHCP. PCs ask one after another, and each sees the pool as the previous one left it." />}
+        actions={<Controls lab={lab} canStart={ready.length > 0} onStart={(m) => lab.startDora(askers, m)} startLabel={`▶ Start DHCP (${count})`} />}
+      >
           <LeaseTable state={lab.state} />
           {done && (
             <Callout tone={failed.length > 0 ? "bad" : "good"} title={failed.length > 0 ? `${failed.length} PC${failed.length === 1 ? "" : "s"} could not get an address` : "Every PC got an address"}>
@@ -95,8 +94,7 @@ export function ExhaustionLab({ lab, level }: { lab: DhcpLab; level: DetailLevel
               <p className="mt-2 text-xs text-ink-soft dark:text-bone-soft">Free addresses now: {stats.available}. A retry only succeeds when there is at least one.</p>
             </Panel>
           )}
-        </div>
-      </div>
+      </RunLayout>
       <EventLog entries={lab.log} onClear={lab.clearLog} title="DHCP event log" />
     </div>
   );

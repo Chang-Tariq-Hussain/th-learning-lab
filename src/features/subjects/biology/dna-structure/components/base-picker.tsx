@@ -19,7 +19,7 @@ export function BasePicker({ onPick, disabled }: BasePickerProps) {
           disabled={disabled}
           onClick={() => onPick(base)}
           aria-label={`Answer with ${base}`}
-          className="flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white shadow-card transition-transform duration-150 hover:scale-105 disabled:pointer-events-none disabled:opacity-40"
+          className="flex h-11 w-11 items-center justify-center rounded-full text-lg font-bold text-white shadow-card transition-transform duration-150 hover:scale-105 disabled:pointer-events-none disabled:opacity-40"
           style={{ backgroundColor: BASE_COLORS[base] }}
         >
           {base}

@@ -5,6 +5,7 @@ import { BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import { FunctionGraph } from "../../calculus-foundations/components/function-graph";
 import { XSlider } from "../../calculus-foundations/components/x-slider";
+import { SimulationLayout } from "@/features/simulation";
 import { ExampleSelector } from "./example-selector";
 import { SignBadge } from "./sign-badge";
 import { APP_FUNCTIONS, buildColoredSegments, formatValue, getAppFunction, type AppFunctionDef } from "../applications-model";
@@ -32,29 +33,34 @@ export function IncreasingDecreasingPanel() {
   const slope = fn.derivative(x);
 
   return (
-    <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-5">
-      <div className="flex flex-wrap items-center justify-center gap-4">
-        <ExampleSelector value={fnId} onChange={handleFnChange} />
-        <BlockMath math={fn.latex} />
-      </div>
-
-      <div className="aspect-square w-full max-w-md">
+    <SimulationLayout
+      stageLabel="Increasing and decreasing"
+      aspect={1}
+      stageCap="28rem"
+      stage={
         <FunctionGraph
           segments={buildColoredSegments(fn)}
           trackedPoint={{ x, y }}
           onDragTrackedPointX={(nextX) => setX(Math.min(fn.domainMax, Math.max(fn.domainMin, nextX)))}
           ariaLabel="The function's graph, colored green where increasing and red where decreasing, with a draggable point."
         />
-      </div>
+      }
+      readouts={<SignBadge slope={slope} />}
+      controls={
+        <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <ExampleSelector value={fnId} onChange={handleFnChange} />
+            <BlockMath math={fn.latex} />
+          </div>
 
-      <XSlider value={x} onChange={setX} min={fn.domainMin} max={fn.domainMax} />
+          <XSlider value={x} onChange={setX} min={fn.domainMin} max={fn.domainMax} />
 
-      <SignBadge slope={slope} />
-
-      <p className="max-w-md text-center text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
-        Drag the point, at x = {formatValue(x)}, across the curve and watch the color and the badge change
-        together.
-      </p>
-    </div>
+          <p className="max-w-md text-center text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
+            Drag the point, at x = {formatValue(x)}, across the curve and watch the color and the badge change
+            together.
+          </p>
+        </div>
+      }
+    />
   );
 }

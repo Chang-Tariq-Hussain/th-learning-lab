@@ -19,9 +19,9 @@ export function SliceControls({
   canDecrease,
 }: SliceControlsProps) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-3">
+    <>
       <Button
-        size="lg"
+        size="md"
         variant="secondary"
         onClick={onDecrease}
         disabled={!canDecrease}
@@ -29,14 +29,14 @@ export function SliceControls({
         <Minus className="h-4 w-4" strokeWidth={2} />
         Slice −
       </Button>
-      <Button size="lg" onClick={onIncrease} disabled={!canIncrease}>
+      <Button size="md" onClick={onIncrease} disabled={!canIncrease}>
         <Plus className="h-4 w-4" strokeWidth={2} />
         Slice +
       </Button>
-      <Button size="lg" variant="ghost" onClick={onReset}>
+      <Button size="md" variant="ghost" onClick={onReset}>
         <RotateCcw className="h-4 w-4" strokeWidth={2} />
         Reset
       </Button>
-    </div>
+    </>
   );
 }

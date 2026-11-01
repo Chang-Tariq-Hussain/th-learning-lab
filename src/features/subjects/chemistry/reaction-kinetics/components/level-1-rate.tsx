@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ReactionChamber } from "./reaction-chamber";
+import { ChamberLayout } from "./chamber-layout";
 import { StatReadout } from "./stat-readout";
 import { ProgressGraph } from "./progress-graph";
 import { COLOR_A, COLOR_B, COLOR_PRODUCT } from "../model";
@@ -17,7 +18,14 @@ export function Level1Rate() {
   const progress = stats ? Math.round((stats.productCount / (TOTAL / 2)) * 100) : 0;
 
   return (
-    <div className="flex flex-col gap-5">
+    <ChamberLayout
+      stageLabel="Reaction chamber"
+      chambers={
+        <ReactionChamber numA={NUM_A} numB={NUM_B} tempC={55} label="Reaction Chamber" onStats={setStats} />
+      }
+      readouts={[{ id: "r0", label: "Reactant Particles", value: String(stats?.reactantsRemaining ?? TOTAL) }, { id: "r1", label: "Product Particles", value: String(stats?.productCount ?? 0) }, { id: "r2", label: "Successful Collisions", value: String(stats?.successfulCollisions ?? 0) }, { id: "r3", label: "Reaction Progress", value: String(`${Math.min(progress, 100)}%`) }]}
+      controls={
+        <div className="flex flex-col gap-5">
       <div>
         <p className="max-w-2xl text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
           Every reaction starts the same way: reactant particles moving around a shared space, occasionally
@@ -32,17 +40,6 @@ export function Level1Rate() {
         </p>
       </div>
 
-      <ReactionChamber numA={NUM_A} numB={NUM_B} tempC={55} label="Reaction Chamber" onStats={setStats} />
-
-      <StatReadout
-        items={[
-          { label: "Reactant Particles", value: stats?.reactantsRemaining ?? TOTAL },
-          { label: "Product Particles", value: stats?.productCount ?? 0, accent: COLOR_PRODUCT },
-          { label: "Successful Collisions", value: stats?.successfulCollisions ?? 0, accent: "#5A9E6F" },
-          { label: "Reaction Progress", value: `${Math.min(progress, 100)}%` },
-        ]}
-      />
-
       <div className="rounded-card border border-line bg-white/60 p-4 dark:border-line-dark dark:bg-white/[0.03] sm:p-5">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-chemistry">Reaction rate</p>
         <p className="mt-1 text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
@@ -54,6 +51,8 @@ export function Level1Rate() {
           <ProgressGraph data={stats?.history ?? [{ t: 0, product: 0 }]} maxProduct={TOTAL / 2} />
         </div>
       </div>
-    </div>
+        </div>
+      }
+    />
   );
 }

@@ -29,7 +29,7 @@ export function ElementPalette({ onAdd }: ElementPaletteProps) {
           type="button"
           onClick={() => onAdd(element)}
           title={`Add ${capitalize(elementLabel(element))} (up to ${ATOM_INFO[element].valenceElectrons} valence electrons)`}
-          className="flex items-center gap-1.5 rounded-full border border-line bg-white/60 px-2.5 py-1.5 text-sm font-medium text-ink transition hover:border-subject-chemistry/50 hover:bg-subject-chemistry-soft dark:border-line-dark dark:bg-white/[0.03] dark:text-bone"
+          className="flex min-h-11 items-center gap-1.5 rounded-full border border-line bg-white/60 px-2.5 py-1.5 text-sm font-medium text-ink transition hover:border-subject-chemistry/50 hover:bg-subject-chemistry-soft dark:border-line-dark dark:bg-white/[0.03] dark:text-bone"
         >
           <span
             className="h-3 w-3 rounded-full"

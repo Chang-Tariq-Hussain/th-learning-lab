@@ -23,7 +23,7 @@ export function NumberField({ value, onChange, color, label }: NumberFieldProps)
         disabled={value <= FIELD_MIN}
         aria-label={`Decrease ${label}`}
         className={cn(
-          "flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink-soft transition-colors dark:border-bone/20 dark:text-bone-soft",
+          "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink-soft transition-colors dark:border-bone/20 dark:text-bone-soft",
           "hover:bg-ink/[0.04] disabled:pointer-events-none disabled:opacity-30 dark:hover:bg-bone/[0.06]",
         )}
       >
@@ -43,7 +43,7 @@ export function NumberField({ value, onChange, color, label }: NumberFieldProps)
         }}
         aria-label={label}
         style={{ color }}
-        className="h-10 w-14 rounded-xl border border-ink/15 bg-transparent text-center font-display text-2xl font-medium tabular-nums outline-none focus-visible:ring-2 focus-visible:ring-pine-500 dark:border-bone/20 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        className="h-11 w-16 rounded-xl border border-ink/15 bg-transparent text-center font-display text-2xl font-medium tabular-nums outline-none focus-visible:ring-2 focus-visible:ring-pine-500 dark:border-bone/20 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
       />
 
       <button
@@ -52,7 +52,7 @@ export function NumberField({ value, onChange, color, label }: NumberFieldProps)
         disabled={value >= FIELD_MAX}
         aria-label={`Increase ${label}`}
         className={cn(
-          "flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink-soft transition-colors dark:border-bone/20 dark:text-bone-soft",
+          "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink-soft transition-colors dark:border-bone/20 dark:text-bone-soft",
           "hover:bg-ink/[0.04] disabled:pointer-events-none disabled:opacity-30 dark:hover:bg-bone/[0.06]",
         )}
       >

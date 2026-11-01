@@ -1,19 +1,20 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import { SimulationLayout } from "@/features/simulation";
 import { Panel } from "../osi-model-explorer/components/ui";
 import { DecisionPanel } from "./components/decision-panel";
 import { EventLog } from "./components/event-log";
 import { EXPERIMENTS, ExperimentsPanel, type Experiment } from "./components/experiments-panel";
-import { FrameBuilder } from "./components/frame-builder";
+import { FrameActions, FrameBuilder } from "./components/frame-builder";
 import { FrameInspector } from "./components/frame-inspector";
 import { KeyIdeas } from "./components/key-ideas";
 import { MacTablePanel } from "./components/mac-table-panel";
 import { PortControls } from "./components/port-controls";
 import { OutcomeLegend, StageStepper } from "./components/stage-stepper";
-import { SwitchDiagram } from "./components/switch-diagram";
+import { SwitchDiagram, VIEW_H, VIEW_W } from "./components/switch-diagram";
 import { useSwitchLab } from "./hooks/use-switch-lab";
-import { DEVICES, deviceById, dstMacFor, type DeviceId, type DstChoice } from "./model";
+import { DEVICES, STAGES, deviceById, dstMacFor, type DeviceId, type DstChoice } from "./model";
 
 /**
  * "Switch & MAC Address Table Simulator": a standalone Layer 2 lab. One switch, five PCs, one broadcast domain.
@@ -68,25 +69,34 @@ export function SwitchMacTableSimulator() {
       </p>
 
       <div className="min-w-0 rounded-card border border-line bg-paper p-3 dark:border-line-dark dark:bg-chalkboard sm:p-5">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
-          <div className="flex min-w-0 flex-col gap-5">
-            <FrameBuilder lab={lab} src={src} dst={dst} onSrc={handleSrc} onDst={setDst} />
-            <Panel title="Live network">
-              <div className="flex flex-col gap-4">
-                <StageStepper tx={state.tx} />
-                <SwitchDiagram tx={state.tx} enabled={state.enabled} />
-                <OutcomeLegend tx={state.tx} />
-              </div>
-            </Panel>
-            <PortControls lab={lab} />
-          </div>
-
-          <div className="flex min-w-0 flex-col gap-5">
-            <MacTablePanel lab={lab} />
-            <DecisionPanel tx={state.tx} />
-            <FrameInspector tx={state.tx} draft={draft} />
-          </div>
-        </div>
+        <SimulationLayout
+          stageLabel="Switch MAC table simulation"
+          aspect={VIEW_W / VIEW_H}
+          stageCap="32rem"
+          runState={lab.inFlight ? (state.playing ? "running" : "paused") : state.tx ? "finished" : "idle"}
+          stage={<SwitchDiagram tx={state.tx} enabled={state.enabled} />}
+          readouts={
+            <p className="truncate text-center text-sm font-medium text-ink dark:text-bone">
+              {state.tx ? `Stage ${state.tx.stage} of ${STAGES.length}: ${STAGES[state.tx.stage - 1]?.label ?? ""}` : "Press Send to begin"}
+            </p>
+          }
+          actions={<FrameActions lab={lab} src={src} dst={dst} />}
+          controls={
+            <div className="flex min-w-0 flex-col gap-5">
+              <FrameBuilder lab={lab} src={src} dst={dst} onSrc={handleSrc} onDst={setDst} />
+              <Panel title="Frame journey">
+                <div className="flex flex-col gap-4">
+                  <StageStepper tx={state.tx} />
+                  <OutcomeLegend tx={state.tx} />
+                </div>
+              </Panel>
+              <PortControls lab={lab} />
+              <MacTablePanel lab={lab} />
+              <DecisionPanel tx={state.tx} />
+              <FrameInspector tx={state.tx} draft={draft} />
+            </div>
+          }
+        />
       </div>
 
       <ExperimentsPanel lab={lab} activeId={activeExperiment} onStart={startExperiment} onSend={sendFromExperiment} />

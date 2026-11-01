@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 import type { ArpNode, NodeId, NodeNote, NoteTone, RunStep, TokenKind } from "../model";
 import { REMOTE_SERVER } from "../model";
 
-const VIEW_W = 400;
-const VIEW_H = 452;
+export const VIEW_W = 400;
+export const VIEW_H = 452;
 const CARD_W = 128;
 const CARD_H = 66;
 
@@ -85,7 +85,7 @@ export function ArpDiagram({
   return (
     <svg
       viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-      className="mx-auto h-auto w-full max-w-[560px] rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard"
+      className="h-full w-full"
       role="img"
       aria-label="Local network: PC-A, PC-B, PC-C and PC-D and a router connected to one switch"
     >

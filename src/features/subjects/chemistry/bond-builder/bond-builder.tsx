@@ -3,15 +3,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { RotateCcw, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SimulationLayout, usePrefersReducedMotion, type SimulationRunState } from "@/features/simulation";
 import { BondStage } from "./components/bond-stage";
 import { ModeTabs } from "./components/mode-tabs";
 import { PairTabs } from "./components/pair-tabs";
-import { StatusLine } from "./components/status-line";
 import { ExplanationPanel } from "./components/explanation-panel";
 import {
   BONDING_DURATION_MS,
   COVALENT_PAIRS,
   COVALENT_PAIR_ORDER,
+  STATUS_TEXT,
   IONIC_PAIRS,
   IONIC_PAIR_ORDER,
   type BondMode,
@@ -43,6 +44,7 @@ export function BondBuilder({ lockedIonicPairId, lockedCovalentPairId }: BondBui
   );
   const [stage, setStage] = useState<Stage>("separate");
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     return () => {
@@ -70,9 +72,14 @@ export function BondBuilder({ lockedIonicPairId, lockedCovalentPairId }: BondBui
 
   const handleBringTogether = useCallback(() => {
     if (stage !== "separate") return;
+    if (reducedMotion) {
+      // No particle animation: go straight to the bonded state.
+      setStage("bonded");
+      return;
+    }
     setStage("bonding");
     timeoutRef.current = setTimeout(() => setStage("bonded"), BONDING_DURATION_MS);
-  }, [stage]);
+  }, [stage, reducedMotion]);
 
   const handleReset = useCallback(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -83,9 +90,29 @@ export function BondBuilder({ lockedIonicPairId, lockedCovalentPairId }: BondBui
   const covalentPair = COVALENT_PAIRS[covalentPairId];
   const activePair = mode === "ionic" ? ionicPair : covalentPair;
 
+  const runState: SimulationRunState = stage === "bonding" ? "running" : stage === "bonded" ? "finished" : "idle";
+
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+    <SimulationLayout
+      stageLabel="Bond formation between two atoms"
+      aspect={7 / 4}
+      stageCap="22rem"
+      runState={runState}
+      statusDetail={STATUS_TEXT[stage]}
+      stage={<BondStage mode={mode} stage={stage} ionicPair={ionicPair} covalentPair={covalentPair} />}
+      actions={
+        <>
+          <Button variant="primary" size="md" onClick={handleBringTogether} disabled={stage !== "separate"}>
+            <Zap className="h-4 w-4" strokeWidth={1.75} />
+            Bring Atoms Together
+          </Button>
+          <Button variant="secondary" size="md" onClick={handleReset} disabled={stage === "separate"}>
+            <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
+            Reset
+          </Button>
+        </>
+      }
+      controls={
         <div className="flex flex-wrap items-center gap-2">
           <ModeTabs mode={mode} onChange={handleModeChange} disabled={stage !== "separate"} />
           {mode === "ionic" && !lockedIonicPairId ? (
@@ -105,35 +132,8 @@ export function BondBuilder({ lockedIonicPairId, lockedCovalentPairId }: BondBui
             />
           ) : null}
         </div>
-        <StatusLine stage={stage} />
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.3fr_1fr]">
-        {/* Left: the simulation itself + its controls */}
-        <div className="flex flex-col gap-4">
-          <div className="relative flex items-center justify-center overflow-hidden rounded-card border border-line bg-white/40 p-4 dark:border-line-dark dark:bg-white/[0.02]">
-            <div className="aspect-[7/4] w-full max-w-[640px]">
-              <BondStage mode={mode} stage={stage} ionicPair={ionicPair} covalentPair={covalentPair} />
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button variant="primary" onClick={handleBringTogether} disabled={stage !== "separate"}>
-              <Zap className="h-4 w-4" strokeWidth={1.75} />
-              Bring Atoms Together
-            </Button>
-            <Button variant="secondary" onClick={handleReset} disabled={stage === "separate"}>
-              <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
-              Reset
-            </Button>
-          </div>
-        </div>
-
-        {/* Right: short explanation */}
-        <div className="flex flex-col gap-4">
-          <ExplanationPanel mode={mode} pair={activePair} />
-        </div>
-      </div>
-    </div>
+      }
+      explanation={<ExplanationPanel mode={mode} pair={activePair} />}
+    />
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ReactionChamber } from "./reaction-chamber";
+import { ChamberLayout } from "./chamber-layout";
 import { COLOR_A, COLOR_PRODUCT } from "../model";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +34,34 @@ export function Level9Catalyst() {
   const [chamberCatalyst, setChamberCatalyst] = useState(false);
 
   return (
-    <div className="flex flex-col gap-5">
+    <ChamberLayout
+      stageLabel={chamberCatalyst ? "Reaction chamber with catalyst" : "Reaction chamber without catalyst"}
+      chambers={
+        <ReactionChamber
+          key={chamberCatalyst ? "with" : "without"}
+          numA={5}
+          numB={5}
+          tempC={45}
+          catalyst={chamberCatalyst}
+          label={chamberCatalyst ? "Chamber · With Catalyst" : "Chamber · No Catalyst"}
+          className="w-full"
+        />
+      }
+      actions={
+        <button
+          type="button"
+          onClick={() => setChamberCatalyst((v) => !v)}
+          aria-pressed={chamberCatalyst}
+          className={cn(
+            "min-h-11 rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
+            chamberCatalyst ? "border-transparent bg-white shadow-card dark:bg-white/[0.08]" : "border-line dark:border-line-dark"
+          )}
+        >
+          {chamberCatalyst ? "Catalyst Added" : "Add Catalyst to Chamber"}
+        </button>
+      }
+      controls={
+        <div className="flex flex-col gap-5">
       <p className="max-w-2xl text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
         A catalyst provides an alternative reaction pathway with lower activation energy. It is not consumed
         overall — it speeds the reaction up without becoming part of the final product count.
@@ -44,7 +72,7 @@ export function Level9Catalyst() {
           type="button"
           onClick={() => setWithCatalyst(false)}
           className={cn(
-            "rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
+            "min-h-11 rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
             !withCatalyst ? "border-transparent bg-white shadow-card dark:bg-white/[0.08]" : "border-line dark:border-line-dark"
           )}
         >
@@ -54,7 +82,7 @@ export function Level9Catalyst() {
           type="button"
           onClick={() => setWithCatalyst(true)}
           className={cn(
-            "rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
+            "min-h-11 rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
             withCatalyst ? "border-transparent bg-white shadow-card dark:bg-white/[0.08]" : "border-line dark:border-line-dark"
           )}
         >
@@ -68,28 +96,8 @@ export function Level9Catalyst() {
           {withCatalyst ? "Lower activation barrier — the same reaction, an easier path." : "Higher activation barrier to climb before products can form."}
         </p>
       </div>
-
-      <div className="flex flex-col items-center gap-3">
-        <button
-          type="button"
-          onClick={() => setChamberCatalyst((v) => !v)}
-          className={cn(
-            "rounded-full border px-4 py-1.5 font-mono text-sm font-medium transition-colors",
-            chamberCatalyst ? "border-transparent bg-white shadow-card dark:bg-white/[0.08]" : "border-line dark:border-line-dark"
-          )}
-        >
-          {chamberCatalyst ? "Catalyst Added" : "Add Catalyst to Chamber"}
-        </button>
-        <ReactionChamber
-          key={chamberCatalyst ? "with" : "without"}
-          numA={5}
-          numB={5}
-          tempC={45}
-          catalyst={chamberCatalyst}
-          label={chamberCatalyst ? "Chamber · With Catalyst" : "Chamber · No Catalyst"}
-          className="w-full"
-        />
-      </div>
-    </div>
+        </div>
+      }
+    />
   );
 }

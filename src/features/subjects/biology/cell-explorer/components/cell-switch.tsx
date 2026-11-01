@@ -24,7 +24,7 @@ export function CellSwitch({ value, onChange }: CellSwitchProps) {
           aria-selected={value === option.kind}
           onClick={() => onChange(option.kind)}
           className={cn(
-            "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+            "min-h-11 rounded-full px-4 py-2 text-sm font-medium transition-colors",
             value === option.kind
               ? "bg-subject-biology text-white dark:text-chalkboard"
               : "text-ink-soft hover:text-ink dark:text-bone-soft dark:hover:text-bone"

@@ -43,7 +43,7 @@ export function StepCalculation({ a, b, selected, onSelect }: StepCalculationPro
           type="button"
           onClick={() => onSelect(selected === "am" ? "none" : "am")}
           className={cn(
-            "rounded-card border px-3 py-2 text-left transition-colors",
+            "min-h-11 rounded-card border px-3 py-2 text-left transition-colors",
             selected === "am"
               ? "border-pine-500/50 bg-pine-500/10 dark:border-pine-300/40 dark:bg-pine-300/10"
               : "border-line hover:border-ink/25 dark:border-line-dark dark:hover:border-bone/25"
@@ -56,7 +56,7 @@ export function StepCalculation({ a, b, selected, onSelect }: StepCalculationPro
           type="button"
           onClick={() => onSelect(selected === "mb" ? "none" : "mb")}
           className={cn(
-            "rounded-card border px-3 py-2 text-left transition-colors",
+            "min-h-11 rounded-card border px-3 py-2 text-left transition-colors",
             selected === "mb"
               ? "border-amber-500/50 bg-amber-500/10 dark:border-amber-400/40 dark:bg-amber-400/10"
               : "border-line hover:border-ink/25 dark:border-line-dark dark:hover:border-bone/25"

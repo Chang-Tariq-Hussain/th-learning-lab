@@ -26,7 +26,7 @@ export function ReactionEquationDiagram({
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 rounded-card border border-line bg-white/60 px-4 py-3 dark:border-line-dark dark:bg-white/[0.03]">
       <div className="flex flex-col items-center gap-1.5">
-        <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+        <span className="text-label font-medium uppercase tracking-wide text-ink-soft dark:text-bone-soft">
           {reaction.reactantsLabel}
         </span>
         <div className="flex flex-wrap items-center justify-center gap-1.5">
@@ -53,7 +53,7 @@ export function ReactionEquationDiagram({
       />
 
       <div className="flex flex-col items-center gap-1.5">
-        <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft dark:text-bone-soft">
+        <span className="text-label font-medium uppercase tracking-wide text-ink-soft dark:text-bone-soft">
           {reaction.productsLabel}
         </span>
         <div className="flex flex-wrap items-center justify-center gap-1.5">

@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Shuffle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { ScenarioScene } from "./components/scenario-scene";
 import { answerValue, nextChallenge, type Challenge } from "./scenarios";
 import { useChime } from "./use-chime";
@@ -57,21 +55,15 @@ export function RealLifeRatios() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="w-full max-w-2xl">
-        <ScenarioScene
-          challenge={challenge}
-          guess={guess}
-          onGuess={setGuess}
-          solved={celebrating}
-          confettiKey={confettiKey}
-        />
-      </div>
-
-      <Button size="lg" variant="ghost" onClick={handleNewScenario}>
-        <Shuffle className="h-4 w-4" strokeWidth={2} />
-        New scenario
-      </Button>
+    <div className="py-4">
+      <ScenarioScene
+        challenge={challenge}
+        guess={guess}
+        onGuess={setGuess}
+        solved={celebrating}
+        confettiKey={confettiKey}
+        onNewScenario={handleNewScenario}
+      />
     </div>
   );
 }

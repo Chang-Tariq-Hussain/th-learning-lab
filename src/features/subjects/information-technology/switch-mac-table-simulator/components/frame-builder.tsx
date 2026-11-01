@@ -33,8 +33,6 @@ export function FrameBuilder({ lab, src, dst, onSrc, onDst }: { lab: SwitchLab; 
   const srcDev = deviceById(src);
   const srcUp = state.enabled[srcDev.port] !== false;
   const dstMac = dstMacFor(dst);
-  const stage = state.tx?.stage ?? 0;
-  const nextLabel = inFlight ? STAGES[stage]?.label : undefined; // STAGES is 0-based; `stage` is the current 1-based stage = index of the next one
 
   const known = dst === "broadcast" ? undefined : lookupMac(state.table, dstMac);
   const readout =
@@ -66,26 +64,26 @@ export function FrameBuilder({ lab, src, dst, onSrc, onDst }: { lab: SwitchLab; 
         </div>
 
         <div>
-          <p className="mb-1.5 font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">From (source)</p>
+          <p className="mb-1.5 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">From (source)</p>
           <div className="grid grid-cols-5 gap-2" role="group" aria-label="Source device">
             {DEVICES.map((d) => (
               <Chip key={d.id} selected={src === d.id} disabled={inFlight} onClick={() => onSrc(d.id)} title={state.enabled[d.port] === false ? `${d.name}'s link is down` : undefined}>
                 <span className="font-mono text-sm font-semibold">{d.name}</span>
-                <span className={cn("font-mono text-[10px] font-normal", state.enabled[d.port] === false ? "text-red-600 dark:text-red-300" : "text-ink-soft dark:text-bone-soft")}>{state.enabled[d.port] === false ? "link down" : formatPort(d.port)}</span>
+                <span className={cn("font-mono text-label font-normal", state.enabled[d.port] === false ? "text-red-600 dark:text-red-300" : "text-ink-soft dark:text-bone-soft")}>{state.enabled[d.port] === false ? "link down" : formatPort(d.port)}</span>
               </Chip>
             ))}
           </div>
         </div>
 
         <div>
-          <p className="mb-1.5 font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">To (destination MAC)</p>
+          <p className="mb-1.5 font-mono text-label uppercase tracking-wide text-ink-soft dark:text-bone-soft">To (destination MAC)</p>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6" role="group" aria-label="Destination">
             {DEVICES.filter((d) => d.id !== src).map((d) => {
               const hit = lookupMac(state.table, d.mac);
               return (
                 <Chip key={d.id} selected={dst === d.id} disabled={inFlight} onClick={() => onDst(d.id)}>
                   <span className="font-mono text-sm font-semibold">{d.name}</span>
-                  <span className={cn("flex items-center gap-1 font-mono text-[10px] font-normal", hit ? "text-emerald-700 dark:text-emerald-300" : "text-ink-soft dark:text-bone-soft")}>
+                  <span className={cn("flex items-center gap-1 font-mono text-label font-normal", hit ? "text-emerald-700 dark:text-emerald-300" : "text-ink-soft dark:text-bone-soft")}>
                     <span className={cn("h-1.5 w-1.5 rounded-full", hit ? "bg-emerald-500" : "bg-ink/30 dark:bg-bone/30")} aria-hidden />
                     {hit ? `known · ${formatPort(hit.port)}` : "not learned"}
                   </span>
@@ -94,11 +92,11 @@ export function FrameBuilder({ lab, src, dst, onSrc, onDst }: { lab: SwitchLab; 
             })}
             <Chip selected={dst === "unknown"} disabled={inFlight} onClick={() => onDst("unknown")} title={`${UNKNOWN_MAC}: no device on this LAN has it`}>
               <span className="font-mono text-sm font-semibold">Unknown MAC</span>
-              <span className="font-mono text-[10px] font-normal text-ink-soft dark:text-bone-soft">…:99</span>
+              <span className="font-mono text-label font-normal text-ink-soft dark:text-bone-soft">…:99</span>
             </Chip>
             <Chip selected={dst === "broadcast"} disabled={inFlight} onClick={() => onDst("broadcast")} title={BROADCAST_MAC}>
               <span className="font-mono text-sm font-semibold">Broadcast</span>
-              <span className="font-mono text-[10px] font-normal text-ink-soft dark:text-bone-soft">FF:FF:…</span>
+              <span className="font-mono text-label font-normal text-ink-soft dark:text-bone-soft">FF:FF:…</span>
             </Chip>
           </div>
         </div>
@@ -110,34 +108,51 @@ export function FrameBuilder({ lab, src, dst, onSrc, onDst }: { lab: SwitchLab; 
           <p className="mt-0.5 text-ink-soft dark:text-bone-soft">{srcUp ? readout : `${srcDev.name}'s link is down — it can't send. Re-enable ${formatPort(srcDev.port)} below, or pick another sender.`}</p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          <button type="button" className={cn(BTN, BTN_PRIMARY)} disabled={inFlight || !srcUp} onClick={() => lab.send(src, dst)}>
-            <Send className="h-4 w-4" strokeWidth={1.75} /> Send frame
-          </button>
-          {state.mode === "auto" && (
-            <button type="button" className={cn(BTN, BTN_PLAIN)} disabled={!inFlight} onClick={state.playing ? lab.pause : lab.play}>
-              {state.playing ? (
-                <>
-                  <Pause className="h-4 w-4" strokeWidth={1.75} /> Pause
-                </>
-              ) : (
-                <>
-                  <Play className="h-4 w-4" strokeWidth={1.75} /> Play
-                </>
-              )}
-            </button>
-          )}
-          <button type="button" className={cn(BTN, BTN_PLAIN)} disabled={!inFlight || state.playing} onClick={lab.next}>
-            <SkipForward className="h-4 w-4" strokeWidth={1.75} /> {nextLabel ? `Next: ${nextLabel}` : "Next step"}
-          </button>
-          <button type="button" className={cn(BTN, BTN_PLAIN)} disabled={!inFlight} onClick={lab.cancel}>
-            <X className="h-4 w-4" strokeWidth={1.75} /> Cancel frame
-          </button>
-          <button type="button" className={cn(BTN, BTN_PLAIN)} onClick={lab.reset} title="Empty the MAC table, bring every port up, clear the log">
-            <RotateCcw className="h-4 w-4" strokeWidth={1.75} /> Reset lab
-          </button>
-        </div>
       </div>
     </Panel>
+  );
+}
+
+/**
+ * Send / Play / Next / Cancel / Reset: rendered in the SimulationLayout actions slot (the sticky stage block), so the
+ * frame can be sent and stepped while the diagram stays on screen.
+ */
+export function FrameActions({ lab, src, dst }: { lab: SwitchLab; src: DeviceId; dst: DstChoice }) {
+  const { state, inFlight } = lab;
+  const srcUp = state.enabled[deviceById(src).port] !== false;
+  const btn = "w-full px-2 sm:w-auto sm:px-4";
+
+  return (
+    <div className="grid w-full grid-cols-3 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:justify-center">
+      <button type="button" className={cn(BTN, BTN_PRIMARY, btn)} disabled={inFlight || !srcUp} onClick={() => lab.send(src, dst)}>
+        <Send className="h-4 w-4" strokeWidth={1.75} /> Send
+        <span className="sr-only"> frame</span>
+      </button>
+      {state.mode === "auto" && (
+        <button type="button" className={cn(BTN, BTN_PLAIN, btn)} disabled={!inFlight} onClick={state.playing ? lab.pause : lab.play}>
+          {state.playing ? (
+            <>
+              <Pause className="h-4 w-4" strokeWidth={1.75} /> Pause
+            </>
+          ) : (
+            <>
+              <Play className="h-4 w-4" strokeWidth={1.75} /> Play
+            </>
+          )}
+        </button>
+      )}
+      <button type="button" className={cn(BTN, BTN_PLAIN, btn)} disabled={!inFlight || state.playing} onClick={lab.next}>
+        <SkipForward className="h-4 w-4" strokeWidth={1.75} /> Next
+        <span className="sr-only"> step</span>
+      </button>
+      <button type="button" className={cn(BTN, BTN_PLAIN, btn)} disabled={!inFlight} onClick={lab.cancel}>
+        <X className="h-4 w-4" strokeWidth={1.75} /> Cancel
+        <span className="sr-only"> frame</span>
+      </button>
+      <button type="button" className={cn(BTN, BTN_PLAIN, btn)} onClick={lab.reset} title="Empty the MAC table, bring every port up, clear the log">
+        <RotateCcw className="h-4 w-4" strokeWidth={1.75} /> Reset
+        <span className="sr-only"> lab</span>
+      </button>
+    </div>
   );
 }

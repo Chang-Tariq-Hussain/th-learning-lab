@@ -15,7 +15,7 @@ export function ChallengeBanner({
     <div
       role="status"
       className={cn(
-        "mx-auto flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm transition-colors duration-300",
+        "mx-auto flex min-h-11 w-fit max-w-full items-center gap-2 rounded-full px-4 py-1 text-sm font-medium shadow-sm transition-colors duration-300",
         celebrating
           ? "bg-subject-chemistry-soft text-subject-chemistry dark:bg-subject-chemistry/15"
           : "bg-subject-math-soft text-subject-math dark:bg-subject-math/15",

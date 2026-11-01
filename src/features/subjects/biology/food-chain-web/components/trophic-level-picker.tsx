@@ -14,7 +14,7 @@ const LEVELS: TrophicLevel[] = [1, 2, 3, 4];
 export function TrophicLevelPicker({ active, onSelect }: TrophicLevelPickerProps) {
   return (
     <div className="rounded-card border border-line bg-white/60 p-4 dark:border-line-dark dark:bg-white/[0.03]">
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-subject-biology">
+      <p className="font-mono text-label uppercase tracking-[0.2em] text-subject-biology">
         Trophic Levels
       </p>
       <div className="mt-3 flex flex-wrap justify-center gap-2">
@@ -23,8 +23,9 @@ export function TrophicLevelPicker({ active, onSelect }: TrophicLevelPickerProps
             key={level}
             type="button"
             onClick={() => onSelect(active === level ? null : level)}
+            aria-pressed={active === level}
             className={cn(
-              "rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
+              "min-h-11 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors lg:min-h-0",
               active === level
                 ? "border-subject-biology bg-subject-biology text-paper dark:text-chalkboard"
                 : "border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink dark:border-bone/20 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone",

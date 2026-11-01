@@ -193,10 +193,10 @@ export function StepBanner({ lab, level, readyText }: { lab: DhcpLab; level: Det
 
 const SPEEDS: PlaySpeed[] = [0.5, 1, 1.5, 2];
 
-export function Controls({ lab, canStart, startLabel = "▶ Start DHCP", onStart, hint, showStart = true }: { lab: DhcpLab; canStart: boolean; startLabel?: string; onStart: (mode: "auto" | "step") => void; hint?: string; showStart?: boolean }) {
+export function Controls({ lab, canStart, startLabel = "▶ Start DHCP", onStart, showStart = true }: { lab: DhcpLab; canStart: boolean; startLabel?: string; onStart: (mode: "auto" | "step") => void; showStart?: boolean }) {
   const { run, player } = lab;
   const finished = !!run && player.isFinished && !player.isPlaying && player.stepIndex >= 0;
-  const btn = "min-h-[44px] rounded-full border px-4 text-sm font-medium transition-colors disabled:opacity-40";
+  const btn = "min-h-[44px] w-full rounded-full border px-2 text-sm font-medium transition-colors disabled:opacity-40 sm:w-auto sm:px-4";
   const plain = "border-line text-ink hover:border-ink/40 dark:border-line-dark dark:text-bone";
 
   function next() {
@@ -212,43 +212,48 @@ export function Controls({ lab, canStart, startLabel = "▶ Start DHCP", onStart
   }
   const started = !!run && !finished;
 
+  // Rendered in the SimulationLayout actions slot (the sticky stage block): a compact grid on phones.
   return (
-    <div className="flex flex-col gap-1.5">
-      <div className="sticky bottom-2 z-20 flex flex-wrap items-center gap-2 rounded-card border border-line bg-paper/95 p-2.5 shadow-sm backdrop-blur dark:border-line-dark dark:bg-chalkboard/95" role="group" aria-label="Playback controls">
-        {showStart && (
-          <button onClick={() => onStart("step")} disabled={!canStart || started} className={cn(btn, "border-subject-it bg-subject-it text-paper")}>
-            {startLabel}
-          </button>
-        )}
-        <button onClick={next} disabled={(!canStart && !run) || (!!run && player.isFinished)} className={cn(btn, plain)}>
-          Next Step
+    <div className="grid w-full grid-cols-3 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:justify-center" role="group" aria-label="Playback controls">
+      {showStart && (
+        <button onClick={() => onStart("step")} disabled={!canStart || started} className={cn(btn, "border-subject-it bg-subject-it text-paper")}>
+          {startLabel}
         </button>
-        <button onClick={player.stepBack} disabled={!run || player.stepIndex <= 0} className={cn(btn, plain)} aria-label="Previous step">
-          ◀ Back
-        </button>
-        <button onClick={auto} disabled={!canStart && !run} className={cn(btn, plain)}>
-          {startsNew ? "Auto-play" : player.isPlaying ? "Pause" : player.playLabel === "Play" ? "Auto-play" : player.playLabel}
-        </button>
-        <button onClick={lab.restart} className={cn(btn, plain)} title="Reset the whole lab to its starting state">
-          Restart
-        </button>
-        <label className="ml-auto flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
-          Speed
-          <select
-            value={player.speed}
-            onChange={(e) => player.setSpeed(Number(e.target.value) as PlaySpeed)}
-            className="min-h-[36px] rounded-lg border border-line bg-paper px-2 text-xs text-ink dark:border-line-dark dark:bg-chalkboard dark:text-bone"
-          >
-            {SPEEDS.map((s) => (
-              <option key={s} value={s}>
-                {s}×
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      {hint && !run && <p className="px-1 text-xs text-ink-soft dark:text-bone-soft">{hint}</p>}
+      )}
+      <button onClick={next} disabled={(!canStart && !run) || (!!run && player.isFinished)} className={cn(btn, plain)}>
+        Next Step
+      </button>
+      <button onClick={player.stepBack} disabled={!run || player.stepIndex <= 0} className={cn(btn, plain)} aria-label="Previous step">
+        ◀ Back
+      </button>
+      <button onClick={auto} disabled={!canStart && !run} className={cn(btn, plain)}>
+        {startsNew ? "Auto-play" : player.isPlaying ? "Pause" : player.playLabel === "Play" ? "Auto-play" : player.playLabel}
+      </button>
+      <button onClick={lab.restart} className={cn(btn, plain)} title="Reset the whole lab to its starting state">
+        Restart
+      </button>
     </div>
+  );
+}
+
+/** Playback speed, kept with the controls (not the sticky stage block) so that block stays short. */
+export function SpeedSelect({ lab }: { lab: DhcpLab }) {
+  const { player } = lab;
+  return (
+    <label className="flex items-center gap-1.5 text-xs text-ink-soft dark:text-bone-soft">
+      Speed
+      <select
+        value={player.speed}
+        onChange={(e) => player.setSpeed(Number(e.target.value) as PlaySpeed)}
+        className="min-h-[44px] rounded-lg border border-line bg-paper px-2 text-base text-ink dark:border-line-dark dark:bg-chalkboard dark:text-bone lg:min-h-[36px] lg:text-xs"
+      >
+        {SPEEDS.map((s) => (
+          <option key={s} value={s}>
+            {s}×
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
 

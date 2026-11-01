@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from "react";
+import { SimulationLayout } from "@/features/simulation";
 import { RotateCcw, Trash2 } from "lucide-react";
 import { BuildCanvas, type BuildCanvasHandle } from "./build/build-canvas";
 import { ElementPalette } from "./build/element-palette";
@@ -169,67 +170,70 @@ export const MoleculeBuildLab = forwardRef<MoleculeBuildLabHandle, MoleculeBuild
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <ElementPalette onAdd={handleAddAtom} />
-        <div className="flex items-center gap-2">
+    <SimulationLayout
+      stageLabel="3D molecule build area"
+      aspect={1.2}
+      stageCap="24rem"
+      stage={
+        <div className="relative h-full w-full touch-none bg-gradient-to-b from-white/40 to-white/10 dark:from-white/[0.02] dark:to-transparent">
+          {atoms.length === 0 ? (
+            <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 text-center text-sm text-ink-soft/70 dark:text-bone-soft/70">
+              Add an atom below to start building. Drag atoms to position them, select two to bond them.
+            </div>
+          ) : null}
+          <BuildCanvas
+            ref={canvasRef}
+            atoms={atoms}
+            bonds={bonds}
+            selectedAtomIds={selectedAtomIds}
+            selectedBondId={selectedBondId}
+            onSelectAtom={handleSelectAtom}
+            onSelectBond={handleSelectBond}
+            onMoveAtom={handleMoveAtom}
+            onClearSelection={handleClearSelection}
+          />
+        </div>
+      }
+      actions={
+        <>
           <button
             type="button"
             onClick={handleResetView}
-            className="flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink-soft transition hover:border-subject-chemistry/50 hover:text-subject-chemistry dark:border-line-dark dark:text-bone-soft"
+            className="flex min-h-11 items-center gap-1.5 rounded-full border border-line px-4 py-1.5 text-sm font-medium text-ink-soft transition hover:border-subject-chemistry/50 hover:text-subject-chemistry dark:border-line-dark dark:text-bone-soft"
           >
-            <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
+            <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
             Reset view
           </button>
           <button
             type="button"
             onClick={handleClearAll}
             disabled={atoms.length === 0}
-            className="flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink-soft transition hover:border-red-300 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-40 dark:border-line-dark dark:text-bone-soft"
+            className="flex min-h-11 items-center gap-1.5 rounded-full border border-line px-4 py-1.5 text-sm font-medium text-ink-soft transition hover:border-red-300 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-40 dark:border-line-dark dark:text-bone-soft"
           >
-            <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
+            <Trash2 className="h-4 w-4" strokeWidth={1.75} />
             Clear build
           </button>
+        </>
+      }
+      controls={
+        <div className="flex flex-col gap-4">
+          <ElementPalette onAdd={handleAddAtom} />
+          <p className="text-center text-sm text-ink-soft/80 dark:text-bone-soft/80">
+            Drag to rotate · scroll or pinch to zoom · drag an atom to reposition it · tap two atoms to bond them
+          </p>
+          <BuildControlsPanel
+            atoms={atoms}
+            bonds={bonds}
+            selectedAtomIds={selectedAtomIds}
+            selectedBondId={selectedBondId}
+            onRemoveAtom={handleRemoveAtom}
+            onCreateBond={handleCreateBond}
+            onChangeBondOrder={handleChangeBondOrder}
+            onBreakBond={handleBreakBond}
+          />
+          <TargetChecker atoms={atoms} bonds={bonds} lockedTargetId={lockedTargetId} />
         </div>
-      </div>
-
-      <div className="relative h-[360px] w-full overflow-hidden rounded-card border border-line bg-gradient-to-b from-white/40 to-white/10 dark:border-line-dark dark:from-white/[0.02] dark:to-transparent sm:h-[420px]">
-        {atoms.length === 0 ? (
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6 text-center text-sm text-ink-soft/70 dark:text-bone-soft/70">
-            Add an atom above to start building. Drag atoms to position them, select two to bond
-            them.
-          </div>
-        ) : null}
-        <BuildCanvas
-          ref={canvasRef}
-          atoms={atoms}
-          bonds={bonds}
-          selectedAtomIds={selectedAtomIds}
-          selectedBondId={selectedBondId}
-          onSelectAtom={handleSelectAtom}
-          onSelectBond={handleSelectBond}
-          onMoveAtom={handleMoveAtom}
-          onClearSelection={handleClearSelection}
-        />
-      </div>
-
-      <p className="text-center text-xs text-ink-soft/70 dark:text-bone-soft/70">
-        Drag to rotate · scroll or pinch to zoom · drag an atom to reposition it · tap two atoms to
-        bond them
-      </p>
-
-      <BuildControlsPanel
-        atoms={atoms}
-        bonds={bonds}
-        selectedAtomIds={selectedAtomIds}
-        selectedBondId={selectedBondId}
-        onRemoveAtom={handleRemoveAtom}
-        onCreateBond={handleCreateBond}
-        onChangeBondOrder={handleChangeBondOrder}
-        onBreakBond={handleBreakBond}
-      />
-
-      <TargetChecker atoms={atoms} bonds={bonds} lockedTargetId={lockedTargetId} />
-    </div>
+      }
+    />
   );
 });

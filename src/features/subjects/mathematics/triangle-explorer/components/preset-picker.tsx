@@ -26,7 +26,7 @@ export function PresetPicker({ activePreset, onLoad }: PresetPickerProps) {
           onClick={() => onLoad(key, preset.vertices)}
           aria-pressed={activePreset === key}
           className={cn(
-            "rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
+            "min-h-11 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
             activePreset === key
               ? "border-transparent bg-pine-600 text-paper dark:bg-pine-300 dark:text-chalkboard"
               : "border-line text-ink-soft hover:border-ink/25 hover:text-ink dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/25 dark:hover:text-bone",
@@ -38,7 +38,7 @@ export function PresetPicker({ activePreset, onLoad }: PresetPickerProps) {
       <button
         type="button"
         onClick={() => onLoad(null, randomizedTriangle())}
-        className="flex items-center gap-1.5 rounded-full border border-dashed border-line px-3.5 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:border-ink/25 hover:text-ink dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/25 dark:hover:text-bone"
+        className="flex min-h-11 items-center gap-1.5 rounded-full border border-dashed border-line px-3.5 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:border-ink/25 hover:text-ink dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/25 dark:hover:text-bone"
       >
         <Shuffle className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
         Random

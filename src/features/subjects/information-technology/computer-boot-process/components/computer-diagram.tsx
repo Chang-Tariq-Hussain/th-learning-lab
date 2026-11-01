@@ -26,6 +26,8 @@ export function computerZoneForStage(stageId: BootStageId): Zone {
 }
 
 export interface ComputerDiagramProps {
+  /** Fill the parent frame (used as a SimulationLayout stage) instead of sizing itself. */
+  fill?: boolean;
   activeStageId: BootStageId | null;
 }
 
@@ -34,12 +36,15 @@ export interface ComputerDiagramProps {
  *  model. Only the zone relevant to the active stage glows, so a
  *  student always has a concrete "where in the machine is this
  *  happening" anchor alongside the more abstract stage timeline. */
-export function ComputerDiagram({ activeStageId }: ComputerDiagramProps) {
+/** Width / height of the drawing, for a SimulationLayout stage frame. */
+export const COMPUTER_DIAGRAM_ASPECT = 320 / 220;
+
+export function ComputerDiagram({ activeStageId, fill = false }: ComputerDiagramProps) {
   const activeZone = activeStageId ? STAGE_ZONE[activeStageId] : null;
   const isActive = (zone: Zone) => zone === activeZone;
 
   return (
-    <svg viewBox="0 0 320 220" className="mx-auto h-56 w-full max-w-sm" role="img" aria-label="Simplified computer tower cross-section">
+    <svg viewBox="0 0 320 220" className={fill ? "h-full w-full" : "mx-auto h-56 w-full max-w-sm"} role="img" aria-label="Simplified computer tower cross-section">
       <defs>
         <linearGradient id="case-gradient" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="currentColor" stopOpacity="0.06" />

@@ -58,7 +58,7 @@ export function Pizza({
   const percentage = Math.round(decimal * 100);
 
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[22rem] sm:max-w-md">
+    <div className="relative h-full w-full">
       <svg
         viewBox={`0 0 ${SIZE} ${SIZE}`}
         className="h-full w-full drop-shadow-xl"
@@ -212,7 +212,7 @@ export function Pizza({
 
       <ConfettiBurst triggerKey={confettiKey} />
       {celebrating ? (
-        <div className="pointer-events-none absolute inset-0 animate-pulse rounded-full ring-4 ring-subject-math/40" />
+        <div className="pointer-events-none absolute inset-0 animate-pulse motion-reduce:animate-none rounded-full ring-4 ring-subject-math/40" />
       ) : null}
     </div>
   );

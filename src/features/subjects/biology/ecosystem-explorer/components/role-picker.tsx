@@ -24,7 +24,7 @@ export function RolePicker({ active, onSelect }: RolePickerProps) {
             type="button"
             onClick={() => onSelect(active === id ? null : id)}
             className={cn(
-              "rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
+              "min-h-11 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
               active === id
                 ? "border-subject-biology bg-subject-biology text-paper dark:text-chalkboard"
                 : "border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink dark:border-bone/20 dark:text-bone-soft dark:hover:border-bone/30 dark:hover:text-bone",

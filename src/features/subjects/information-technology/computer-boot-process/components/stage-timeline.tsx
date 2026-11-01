@@ -27,7 +27,7 @@ export function StageTimeline({ reachedOrder, activeStageId, onSelectStage }: St
               onClick={() => onSelectStage(stage.id)}
               aria-current={isActive ? "step" : undefined}
               className={cn(
-                "flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                "flex min-h-11 items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors lg:min-h-0",
                 isActive
                   ? "border-subject-it bg-subject-it text-paper"
                   : isCompleted

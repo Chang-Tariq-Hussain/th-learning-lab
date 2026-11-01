@@ -38,7 +38,7 @@ export function PairTabs({ options, selectedId, onChange, disabled = false }: Pa
           disabled={disabled}
           onClick={() => onChange(option.id)}
           className={cn(
-            "rounded-full px-3 py-1.5 text-xs font-medium transition-colors disabled:pointer-events-none disabled:opacity-50",
+            "min-h-11 rounded-full px-3 py-1.5 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50",
             selectedId === option.id
               ? "bg-subject-chemistry text-white"
               : "text-ink-soft hover:text-ink dark:text-bone-soft dark:hover:text-bone"

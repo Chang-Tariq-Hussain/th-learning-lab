@@ -33,7 +33,7 @@ export function XSlider({ value, onChange, min, max }: XSliderProps) {
             const next = Number(event.target.value);
             if (!Number.isNaN(next)) onChange(Math.min(max, Math.max(min, next)));
           }}
-          className="w-20 rounded-md border border-ink/15 bg-transparent px-2 py-1 text-center font-mono text-sm text-ink outline-none focus-visible:border-pine-500 dark:border-bone/20 dark:text-bone"
+          className="min-h-11 w-20 rounded-md border border-ink/15 bg-transparent px-2 py-1 text-center font-mono text-base lg:min-h-0 lg:text-sm text-ink outline-none focus-visible:border-pine-500 dark:border-bone/20 dark:text-bone"
         />
       </div>
       <input
@@ -45,9 +45,9 @@ export function XSlider({ value, onChange, min, max }: XSliderProps) {
         value={value}
         onChange={(event) => onChange(Number(event.target.value))}
         aria-label="Choose x"
-        className="h-3 w-full cursor-pointer touch-none appearance-none rounded-full bg-subject-math-soft accent-subject-math dark:bg-subject-math/20 [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-7 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-subject-math [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:h-7 [&::-moz-range-thumb]:w-7 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-subject-math [&::-moz-range-thumb]:shadow-md"
+        className="h-11 w-full cursor-pointer touch-none appearance-none rounded-full bg-clip-content py-4 bg-subject-math-soft accent-subject-math dark:bg-subject-math/20 [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-7 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-subject-math [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:h-7 [&::-moz-range-thumb]:w-7 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-subject-math [&::-moz-range-thumb]:shadow-md"
       />
-      <div className="flex w-full justify-between px-1 font-mono text-[11px] text-ink-soft dark:text-bone-soft">
+      <div className="flex w-full justify-between px-1 font-mono text-label text-ink-soft dark:text-bone-soft">
         <span>{formatValue(min)}</span>
         <span>{formatValue(max)}</span>
       </div>

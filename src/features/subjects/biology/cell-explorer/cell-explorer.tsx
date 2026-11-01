@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { RotateCcw, Tag, ZoomIn, ZoomOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SimulationLayout } from "@/features/simulation";
 import { ANIMAL_ORGANELLE_CENTERS } from "./components/animal-cell-organelles";
 import { CellIllustration } from "./components/cell-illustration";
 import { CellSwitch } from "./components/cell-switch";
@@ -73,23 +74,23 @@ export function CellExplorer() {
   const selectedOrganelle = getOrganelleInfo(selectedId);
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex justify-center">
-        <CellSwitch value={cellKind} onChange={handleCellChange} />
-      </div>
-
-      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_20rem]">
-        <div className="relative flex justify-center">
-          <CellIllustration
-            cellKind={cellKind}
-            selectedId={selectedId}
-            onSelect={handleSelect}
-            showLabels={showLabels}
-            zoomTransform={zoom.transform}
-            isPannable={zoom.isPannable}
-            onPanBy={zoom.panBy}
-          />
-          <div className="absolute bottom-2 right-2 flex flex-col gap-2">
+    <div className="py-2">
+      <SimulationLayout
+        stageLabel={`${cellKind === "animal" ? "Animal" : "Plant"} cell diagram`}
+        aspect={1}
+        stageCap="26rem"
+        stage={
+          <div className="relative h-full w-full">
+            <CellIllustration
+              cellKind={cellKind}
+              selectedId={selectedId}
+              onSelect={handleSelect}
+              showLabels={showLabels}
+              zoomTransform={zoom.transform}
+              isPannable={zoom.isPannable}
+              onPanBy={zoom.panBy}
+            />
+            <div className="absolute bottom-1 right-1 flex flex-col gap-1.5">
             <button
               type="button"
               onClick={zoom.zoomIn}
@@ -108,26 +109,40 @@ export function CellExplorer() {
             >
               <ZoomOut className="h-5 w-5" strokeWidth={2} />
             </button>
+            </div>
           </div>
-        </div>
-        <InfoPanel organelle={selectedOrganelle} />
-      </div>
-
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button size="lg" variant="ghost" onClick={handleReset}>
-          <RotateCcw className="h-4 w-4" strokeWidth={2} />
-          Reset
-        </Button>
-        <Button
-          size="lg"
-          variant={showLabels ? "secondary" : "ghost"}
-          onClick={() => setShowLabels((current) => !current)}
-          aria-pressed={showLabels}
-        >
-          <Tag className="h-4 w-4" strokeWidth={2} />
-          {showLabels ? "Hide labels" : "Show labels"}
-        </Button>
-      </div>
+        }
+        readouts={
+          <p className="truncate text-center font-display text-base font-medium text-ink dark:text-bone">
+            {selectedOrganelle ? selectedOrganelle.name : "Tap a part of the cell"}
+          </p>
+        }
+        actions={
+          <>
+            <Button size="md" variant="ghost" onClick={handleReset}>
+              <RotateCcw className="h-4 w-4" strokeWidth={2} />
+              Reset
+            </Button>
+            <Button
+              size="md"
+              variant={showLabels ? "secondary" : "ghost"}
+              onClick={() => setShowLabels((current) => !current)}
+              aria-pressed={showLabels}
+            >
+              <Tag className="h-4 w-4" strokeWidth={2} />
+              {showLabels ? "Hide labels" : "Show labels"}
+            </Button>
+          </>
+        }
+        controls={
+          <div className="flex flex-col gap-4">
+            <div className="flex justify-center">
+              <CellSwitch value={cellKind} onChange={handleCellChange} />
+            </div>
+            <InfoPanel organelle={selectedOrganelle} />
+          </div>
+        }
+      />
     </div>
   );
 }

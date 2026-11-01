@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SimulationLayout } from "@/features/simulation";
 import { AngleDial } from "./components/angle-dial";
 import { InfoCard } from "./components/info-card";
 import { ConfettiBurst } from "./components/confetti-burst";
@@ -23,18 +24,25 @@ export function AngleSpinner() {
   const handleReset = () => setAngle(45);
 
   return (
-    <div className="flex flex-col items-center gap-6 py-4">
-      <div className="relative w-full max-w-[320px]">
-        <ConfettiBurst triggerKey={confettiKey} />
-        <AngleDial angle={angle} onChange={setAngle} onDragEnd={handleDragEnd} />
-      </div>
-
-      <InfoCard angle={angle} />
-
-      <Button variant="secondary" onClick={handleReset}>
-        <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
-        Reset
-      </Button>
+    <div className="py-4">
+      <SimulationLayout
+        stageLabel="Angle spinner"
+        aspect={1}
+        stageCap="22rem"
+        stage={
+          <div className="relative h-full w-full">
+            <ConfettiBurst triggerKey={confettiKey} />
+            <AngleDial angle={angle} onChange={setAngle} onDragEnd={handleDragEnd} />
+          </div>
+        }
+        readouts={<InfoCard angle={angle} />}
+        actions={
+          <Button variant="secondary" size="md" onClick={handleReset}>
+            <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
+            Reset
+          </Button>
+        }
+      />
     </div>
   );
 }

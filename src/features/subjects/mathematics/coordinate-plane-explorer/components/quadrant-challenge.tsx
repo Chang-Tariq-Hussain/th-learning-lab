@@ -27,7 +27,7 @@ export function QuadrantChallenge({ answered, onAnswer, onRestart }: QuadrantCha
             type="button"
             onClick={() => onAnswer(option)}
             className={cn(
-              "rounded-full border px-4 py-1.5 text-sm font-medium transition-colors",
+              "min-h-11 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors",
               answered === option
                 ? correct
                   ? "border-pine-500 bg-pine-600 text-paper dark:border-pine-300 dark:bg-pine-300 dark:text-chalkboard"
@@ -51,7 +51,7 @@ export function QuadrantChallenge({ answered, onAnswer, onRestart }: QuadrantCha
             <button
               type="button"
               onClick={onRestart}
-              className="mt-1 text-xs font-medium text-ink-soft underline hover:text-ink dark:text-bone-soft dark:hover:text-bone"
+              className="mt-1 inline-flex min-h-11 items-center text-xs font-medium text-ink-soft underline hover:text-ink dark:text-bone-soft dark:hover:text-bone"
             >
               Try again
             </button>

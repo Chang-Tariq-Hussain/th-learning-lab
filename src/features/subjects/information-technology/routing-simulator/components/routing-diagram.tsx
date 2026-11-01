@@ -47,6 +47,11 @@ interface Layout {
 const ROUTER_X = 20;
 const ROUTER_W = 340;
 
+/** Width / height of the diagram for a scenario, so the stage frame matches the drawing. */
+export function diagramAspect(id: ScenarioId): number {
+  return VIEW_W / LAYOUTS[id].h;
+}
+
 const LAYOUTS: Record<ScenarioId, Layout> = {
   single: {
     h: 450,
@@ -183,7 +188,7 @@ export const RoutingDiagram = memo(function RoutingDiagram({ scenario, plan, idx
   return (
     <svg
       viewBox={`0 0 ${VIEW_W} ${layout.h}`}
-      className="mx-auto h-auto w-full max-w-[460px] rounded-card border border-line bg-paper dark:border-line-dark dark:bg-chalkboard"
+      className="h-full w-full"
       role="img"
       aria-label={
         scenario.id === "single"

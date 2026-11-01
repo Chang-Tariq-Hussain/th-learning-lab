@@ -20,7 +20,7 @@ export function SpecialCasePanel({ onLoad }: SpecialCasePanelProps) {
         <button
           type="button"
           onClick={() => onLoad(HORIZONTAL_CASE.a, HORIZONTAL_CASE.b)}
-          className="rounded-card border border-line px-3 py-2 text-left transition-colors hover:border-ink/25 dark:border-line-dark dark:hover:border-bone/25"
+          className="min-h-11 rounded-card border border-line px-3 py-2 text-left transition-colors hover:border-ink/25 dark:border-line-dark dark:hover:border-bone/25"
         >
           <p className="text-xs font-medium text-ink-soft dark:text-bone-soft">Horizontal segment</p>
           <p className="mt-0.5 text-xs text-ink-soft/80 dark:text-bone-soft/80">
@@ -30,7 +30,7 @@ export function SpecialCasePanel({ onLoad }: SpecialCasePanelProps) {
         <button
           type="button"
           onClick={() => onLoad(VERTICAL_CASE.a, VERTICAL_CASE.b)}
-          className="rounded-card border border-line px-3 py-2 text-left transition-colors hover:border-ink/25 dark:border-line-dark dark:hover:border-bone/25"
+          className="min-h-11 rounded-card border border-line px-3 py-2 text-left transition-colors hover:border-ink/25 dark:border-line-dark dark:hover:border-bone/25"
         >
           <p className="text-xs font-medium text-ink-soft dark:text-bone-soft">Vertical segment</p>
           <p className="mt-0.5 text-xs text-ink-soft/80 dark:text-bone-soft/80">

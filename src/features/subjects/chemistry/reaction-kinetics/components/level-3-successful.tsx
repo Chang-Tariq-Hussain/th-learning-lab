@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { ReactionChamber } from "./reaction-chamber";
+import { ChamberLayout } from "./chamber-layout";
 import { StatReadout } from "./stat-readout";
 import type { ChamberStats } from "../types";
 
@@ -16,7 +17,14 @@ export function Level3Successful() {
   const successPct = total > 0 ? Math.round(((stats?.successfulCollisions ?? 0) / total) * 100) : 0;
 
   return (
-    <div className="flex flex-col gap-5">
+    <ChamberLayout
+      stageLabel="Live reaction chamber"
+      chambers={
+        <ReactionChamber numA={NUM_A} numB={NUM_B} tempC={55} label="Live Chamber" onStats={setStats} />
+      }
+      readouts={[{ id: "r0", label: "Successful", value: String(stats?.successfulCollisions ?? 0) }, { id: "r1", label: "Unsuccessful", value: String(stats?.failedCollisions ?? 0) }, { id: "r2", label: "Success Rate", value: String(`${successPct}%`) }, { id: "r3", label: "Products Formed", value: String(stats?.productCount ?? 0) }]}
+      controls={
+        <div className="flex flex-col gap-5">
       <p className="max-w-2xl text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
         Particles must collide in a suitable way and with enough energy for a reaction to occur. Watch for the{" "}
         <Check className="inline h-4 w-4 -translate-y-0.5 text-[#5A9E6F]" strokeWidth={2.5} /> and{" "}
@@ -43,17 +51,8 @@ export function Level3Successful() {
           </div>
         </div>
       </div>
-
-      <ReactionChamber numA={NUM_A} numB={NUM_B} tempC={55} label="Live Chamber" onStats={setStats} />
-
-      <StatReadout
-        items={[
-          { label: "Successful", value: stats?.successfulCollisions ?? 0, accent: "#5A9E6F" },
-          { label: "Unsuccessful", value: stats?.failedCollisions ?? 0, accent: "#B24A3D" },
-          { label: "Success Rate", value: `${successPct}%` },
-          { label: "Products Formed", value: stats?.productCount ?? 0 },
-        ]}
-      />
-    </div>
+        </div>
+      }
+    />
   );
 }

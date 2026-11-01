@@ -24,7 +24,7 @@ export function ReactionTabs({ reactionId, onChange }: ReactionTabsProps) {
           aria-selected={reactionId === id}
           onClick={() => onChange(id)}
           className={cn(
-            "rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
+            "min-h-11 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors lg:min-h-0",
             reactionId === id
               ? "bg-pine-600 text-paper dark:bg-pine-300 dark:text-chalkboard"
               : "text-ink-soft hover:text-ink dark:text-bone-soft dark:hover:text-bone",

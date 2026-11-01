@@ -1,11 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { MotionConfig } from "framer-motion";
 import { ArrowRight, RotateCcw, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SimulationLayout, usePrefersReducedMotion } from "@/features/simulation";
 import { ReactionTabs } from "./components/reaction-tabs";
 import { ReactionEquationDiagram } from "./components/reaction-equation-diagram";
 import { ReactionStage } from "./components/reaction-stage";
+import { SCENE_HEIGHT, SCENE_WIDTH } from "./layout";
 import { ReactionStepStatus } from "./components/reaction-step-status";
 import { AtomCounter } from "./components/atom-counter";
 import { ReactionExplanation } from "./components/reaction-explanation";
@@ -37,6 +40,7 @@ export function ReactionBuilder() {
   const [step, setStep] = useState<ReactionStep>(1);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reaction = REACTIONS[reactionId];
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     return () => {
@@ -68,6 +72,11 @@ export function ReactionBuilder() {
   /** Auto-plays every remaining step, one after another. */
   const handlePlayReaction = useCallback(() => {
     clearTimer();
+    // Reduced motion: no auto-played sequence; go straight to the products (Next Step still moves one at a time).
+    if (reducedMotion) {
+      setStep(LAST_STEP);
+      return;
+    }
     const advance = (from: ReactionStep) => {
       if (from >= LAST_STEP) return;
       timeoutRef.current = setTimeout(() => {
@@ -77,7 +86,7 @@ export function ReactionBuilder() {
       }, STEP_ADVANCE_DELAY_MS);
     };
     advance(step);
-  }, [clearTimer, step]);
+  }, [clearTimer, step, reducedMotion]);
 
   const handleReset = useCallback(() => {
     clearTimer();
@@ -85,58 +94,49 @@ export function ReactionBuilder() {
   }, [clearTimer]);
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <ReactionTabs reactionId={reactionId} onChange={handleReactionChange} />
-        <ReactionStepStatus reaction={reaction} step={step} />
+    <MotionConfig reducedMotion="user">
+      <div className="flex flex-col gap-4 py-4">
+        <SimulationLayout
+          stageLabel="Chemical reaction builder"
+          aspect={SCENE_WIDTH / SCENE_HEIGHT}
+          stageCap="26rem"
+          stage={<ReactionStage reaction={reaction} step={step} />}
+          readouts={<ReactionStepStatus reaction={reaction} step={step} />}
+          actions={
+            <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:justify-center">
+              <Button
+                variant="primary"
+                onClick={handlePlayReaction}
+                disabled={step === LAST_STEP}
+                className="col-span-2 sm:col-auto"
+              >
+                <Play className="h-4 w-4" strokeWidth={1.75} />
+                {step === 1 ? "Start Reaction" : "Play Reaction"}
+              </Button>
+              <Button variant="secondary" onClick={handleNextStep} disabled={step === LAST_STEP}>
+                <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
+                Next Step
+              </Button>
+              <Button variant="ghost" onClick={handleReset} disabled={step === 1}>
+                <RotateCcw className="h-4 w-4" strokeWidth={1.75} />
+                Reset
+              </Button>
+            </div>
+          }
+          controls={
+            <div className="flex min-w-0 flex-col gap-4">
+              <ReactionTabs reactionId={reactionId} onChange={handleReactionChange} />
+              <ReactionEquationDiagram reaction={reaction} step={step} />
+              <AtomCounter reaction={reaction} />
+            </div>
+          }
+          explanation={<ReactionExplanation step={step} />}
+        />
+
+        <p className="text-center text-xs italic text-ink-soft/70 dark:text-bone-soft/70">
+          {REACTION_SCIENCE_NOTE}
+        </p>
       </div>
-
-      <ReactionEquationDiagram reaction={reaction} step={step} />
-
-      <div className="relative flex items-center justify-center overflow-hidden rounded-card border border-line bg-white/40 p-4 dark:border-line-dark dark:bg-white/[0.02]">
-        <div className="aspect-[9/4] w-full max-w-[720px]">
-          <ReactionStage reaction={reaction} step={step} />
-        </div>
-      </div>
-
-      <AtomCounter reaction={reaction} />
-
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button
-          variant="primary"
-          onClick={handlePlayReaction}
-          disabled={step === LAST_STEP}
-        >
-          <Play className="h-4 w-4" strokeWidth={1.75} />
-          {step === 1 ? "Start Reaction" : "Play Reaction"}
-        </Button>
-        <Button
-          variant="secondary"
-          onClick={handleNextStep}
-          disabled={step === LAST_STEP}
-        >
-          <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-          Next Step
-        </Button>
-      </div>
-
-      <div className="flex justify-center">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleReset}
-          disabled={step === 1}
-        >
-          <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
-          Reset
-        </Button>
-      </div>
-
-      <ReactionExplanation step={step} />
-
-      <p className="text-center text-xs italic text-ink-soft/70 dark:text-bone-soft/70">
-        {REACTION_SCIENCE_NOTE}
-      </p>
-    </div>
+    </MotionConfig>
   );
 }

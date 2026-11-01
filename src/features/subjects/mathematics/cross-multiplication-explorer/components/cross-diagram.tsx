@@ -2,17 +2,16 @@
 
 import { motion } from "framer-motion";
 import { DIAGONAL_COLORS } from "../colors";
-import { NumberField } from "./number-field";
 
 export interface CrossDiagramProps {
   a: number;
   b: number;
   c: number;
   d: number;
-  onChangeA: (value: number) => void;
-  onChangeB: (value: number) => void;
-  onChangeC: (value: number) => void;
-  onChangeD: (value: number) => void;
+  onChangeA?: (value: number) => void;
+  onChangeB?: (value: number) => void;
+  onChangeC?: (value: number) => void;
+  onChangeD?: (value: number) => void;
   /** 0 idle · 1 first diagonal drawing · 2 first done · 3 second diagonal drawing · 4 second done · 5 result revealed */
   stage: number;
 }
@@ -34,7 +33,7 @@ export function CrossDiagram({ a, b, c, d, onChangeA, onChangeB, onChangeC, onCh
   const secondDone = stage >= 4;
 
   return (
-    <div className="relative mx-auto aspect-[5/2] w-full max-w-xl select-none">
+    <div className="relative h-full w-full select-none">
       <svg
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
@@ -71,16 +70,16 @@ export function CrossDiagram({ a, b, c, d, onChangeA, onChangeB, onChangeC, onCh
       </svg>
 
       <Corner leftPct={X_LEFT} topPct={Y_NUM} active={firstDone} color={DIAGONAL_COLORS.first.hex}>
-        <NumberField value={a} onChange={onChangeA} color={DIAGONAL_COLORS.first.hex} label="Numerator a" />
+        <StaticNumber value={a} color={DIAGONAL_COLORS.first.hex} />
       </Corner>
       <Corner leftPct={X_LEFT} topPct={Y_DEN} active={secondDone} color={DIAGONAL_COLORS.second.hex}>
-        <NumberField value={b} onChange={onChangeB} color={DIAGONAL_COLORS.second.hex} label="Denominator b" />
+        <StaticNumber value={b} color={DIAGONAL_COLORS.second.hex} />
       </Corner>
       <Corner leftPct={X_RIGHT} topPct={Y_NUM} active={secondDone} color={DIAGONAL_COLORS.second.hex}>
-        <NumberField value={c} onChange={onChangeC} color={DIAGONAL_COLORS.second.hex} label="Numerator c" />
+        <StaticNumber value={c} color={DIAGONAL_COLORS.second.hex} />
       </Corner>
       <Corner leftPct={X_RIGHT} topPct={Y_DEN} active={firstDone} color={DIAGONAL_COLORS.first.hex}>
-        <NumberField value={d} onChange={onChangeD} color={DIAGONAL_COLORS.first.hex} label="Denominator d" />
+        <StaticNumber value={d} color={DIAGONAL_COLORS.first.hex} />
       </Corner>
 
       {/* Fraction bars */}
@@ -128,5 +127,13 @@ function Corner({
     >
       {children}
     </motion.div>
+  );
+}
+
+function StaticNumber({ value, color }: { value: number; color: string }) {
+  return (
+    <span className="block min-w-[3rem] text-center font-display text-3xl font-medium tabular-nums" style={{ color }}>
+      {value}
+    </span>
   );
 }

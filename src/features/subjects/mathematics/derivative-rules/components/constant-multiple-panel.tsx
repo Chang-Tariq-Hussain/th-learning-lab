@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
+import { SimulationLayout } from "@/features/simulation";
 import { cn } from "@/lib/utils";
 import { FunctionGraph } from "../../calculus-foundations/components/function-graph";
 import {
@@ -21,14 +22,17 @@ export function ConstantMultiplePanel() {
   const domain = DOMAIN_FOR_N[term.n] ?? 2;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
-      <div className="mx-auto aspect-square w-full max-w-md">
+    <SimulationLayout
+      stageLabel="Graph of the function"
+      aspect={1}
+      stageCap="26rem"
+      stage={
         <FunctionGraph
           segments={[{ evaluate: (x) => evaluateTerm(term, x), from: -domain, to: domain }]}
           ariaLabel={`The graph of f of x equals ${termLatex(term)}.`}
         />
-      </div>
-
+      }
+      controls={
       <div className="flex flex-col gap-4">
         <p className="text-sm leading-relaxed text-ink-soft dark:text-bone-soft">
           The constant stays in front while the power rule is applied to the rest.
@@ -44,7 +48,7 @@ export function ConstantMultiplePanel() {
               onClick={() => setIndex(i)}
               aria-pressed={index === i}
               className={cn(
-                "rounded-full border px-3.5 py-1.5 font-mono text-sm transition-colors",
+                "min-h-11 rounded-full border px-3.5 py-1.5 font-mono text-sm transition-colors",
                 index === i
                   ? "border-subject-math bg-subject-math-soft text-subject-math dark:bg-subject-math/15"
                   : "border-line text-ink-soft hover:border-ink/30 dark:border-line-dark dark:text-bone-soft dark:hover:border-bone/30",
@@ -65,6 +69,7 @@ export function ConstantMultiplePanel() {
           differentiated by the power rule.
         </p>
       </div>
-    </div>
+      }
+    />
   );
 }

@@ -6,7 +6,7 @@ import { Callout, Panel, SectionHeading } from "../../osi-model-explorer/compone
 import { EventLog } from "../../ethernet-mac-simulator/components/event-log";
 import type { DhcpLab } from "../hooks/use-dhcp-lab";
 import { CLIENT_IDS, CLIENT_META, canRunDora, formatDuration, leaseElapsed, leaseRemaining, type DetailLevel } from "../model";
-import { LabDiagram } from "./run-panel";
+import { RunLayout } from "./run-panel";
 import { ActionButton, Controls, DoraStrip, LeaseTable, StepBanner } from "./parts";
 
 /** Lease timer with the renewal point (T1, half of the lease) marked. */
@@ -101,16 +101,14 @@ export function LeaseLab({ lab, level }: { lab: DhcpLab; level: DetailLevel }) {
         <p className="mb-2 font-mono text-[10px] uppercase tracking-wide text-ink-soft dark:text-bone-soft">Renew and release exchanges</p>
         <DoraStrip run={lab.run} step={lab.step} stepIndex={lab.stepIndex} />
       </div>
-      <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
-        <div className="flex min-w-0 flex-col gap-4">
-          <LabDiagram lab={lab} showIdleHint={false} />
-          <StepBanner lab={lab} level={level} readyText="Press Renew or Release next to a PC above. Renewal is a short two-message exchange; release is one message the server never answers." />
-          <Controls lab={lab} canStart={false} showStart={false} onStart={() => undefined} />
-        </div>
-        <div className="flex min-w-0 flex-col gap-4">
-          <LeaseTable state={lab.state} />
-        </div>
-      </div>
+      <RunLayout
+        lab={lab}
+        showIdleHint={false}
+        banner={<StepBanner lab={lab} level={level} readyText="Press Renew or Release next to a PC above. Renewal is a short two-message exchange; release is one message the server never answers." />}
+        actions={<Controls lab={lab} canStart={false} showStart={false} onStart={() => undefined} />}
+      >
+        <LeaseTable state={lab.state} />
+      </RunLayout>
       <EventLog entries={lab.log} onClear={lab.clearLog} title="DHCP event log" />
     </div>
   );
