@@ -25,10 +25,10 @@ function sunflowerPosition(index: number, angleOffset: number, spacing: number):
   return { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius };
 }
 
-export function protonPositions(count: number, spacing = 9): NucleonPosition[] {
+export function protonPositions(count: number, spacing = 11): NucleonPosition[] {
   return Array.from({ length: count }, (_, i) => sunflowerPosition(i, 0, spacing));
 }
 
-export function neutronPositions(count: number, spacing = 9): NucleonPosition[] {
+export function neutronPositions(count: number, spacing = 11): NucleonPosition[] {
   return Array.from({ length: count }, (_, i) => sunflowerPosition(i, Math.PI, spacing));
 }

@@ -1,0 +1,6 @@
+src/features/subjects/chemistry/bond-builder/components/status-line.tsx
+src/features/subjects/mathematics/slope-of-a-line/components/coordinate-readout.tsx
+src/features/subjects/mathematics/midpoint-of-a-line-segment/components/coordinate-readout.tsx
+src/features/subjects/mathematics/distance-between-two-points/components/coordinate-readout.tsx
+src/features/subjects/information-technology/cpu-ram-storage-data-flow/components/playback-controls.tsx
+src/features/subjects/physics/simple-motion/components/motion-readouts.tsx

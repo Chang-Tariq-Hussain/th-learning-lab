@@ -12,7 +12,7 @@ interface NucleonProps {
   onSelect: (kind: ParticleKind) => void;
 }
 
-const RADIUS = 7;
+const RADIUS = 9.5;
 
 /**
  * A single proton or neutron inside the nucleus. Three animation layers,
@@ -64,7 +64,8 @@ export function Nucleon({ kind, x, y, onSelect }: NucleonProps) {
           transition={{ duration: wobble.duration, delay: wobble.delay, repeat: Infinity, ease: "easeInOut" }}
         >
           <circle r={RADIUS} fill={gradientId} stroke="rgba(0,0,0,0.18)" strokeWidth={0.5} filter="url(#glow-soft)" />
-          <text textAnchor="middle" dominantBaseline="central" fontSize={8} fontWeight={700} fill="white" pointerEvents="none">
+          <ellipse cx={-RADIUS * 0.3} cy={-RADIUS * 0.4} rx={RADIUS * 0.35} ry={RADIUS * 0.22} fill="white" opacity={0.45} pointerEvents="none" />
+          <text textAnchor="middle" dominantBaseline="central" fontSize={13} fontWeight={700} fill="white" pointerEvents="none">
             {isProton ? "+" : ""}
           </text>
         </motion.g>

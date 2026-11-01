@@ -18,7 +18,7 @@ interface AtomVisualizationProps {
 
 const SIZE = 420;
 const CENTER = SIZE / 2;
-const SHELL_RADII = [50, 85, 120, 155, 190, 225];
+const SHELL_RADII = [62, 92, 122, 152, 180, 204];
 /** Degrees per second, alternating direction shell to shell so it doesn't read as one solid spinning disc. */
 const SHELL_SPEEDS = [55, -38, 27, -20, 15, -11];
 const RING_DASH = "3 5";
@@ -67,10 +67,14 @@ export function AtomVisualization({ atom, onSelectParticle }: AtomVisualizationP
   const neutrons = neutronPositions(atom.neutrons);
   const shellCounts = distributeElectrons(atom.electrons);
   const nucleonCount = atom.protons + atom.neutrons;
+  // Fit the view to what is on screen (like PhET): a small atom is drawn large, a big one still fits.
+  const outerShell = shellCounts.length > 0 ? (SHELL_RADII[shellCounts.length - 1] ?? 204 + (shellCounts.length - 1) * 12) : 0;
+  const nucleusExtent = 11 * Math.sqrt(nucleonCount + 0.5) + 12;
+  const half = Math.min(CENTER, Math.max(outerShell + 22, nucleusExtent + 22, 90));
 
   return (
     <svg
-      viewBox={`0 0 ${SIZE} ${SIZE}`}
+      viewBox={`${CENTER - half} ${CENTER - half} ${half * 2} ${half * 2}`}
       className="h-full w-full"
       role="img"
       aria-label={`Atom diagram with ${atom.protons} protons, ${atom.neutrons} neutrons, and ${atom.electrons} electrons across ${shellCounts.length} shells`}
@@ -86,7 +90,7 @@ export function AtomVisualization({ atom, onSelectParticle }: AtomVisualizationP
           }}
           cx={CENTER}
           cy={CENTER}
-          r={SHELL_RADII[shellIndex] ?? 190 + shellIndex * 35}
+          r={SHELL_RADII[shellIndex] ?? 204 + shellIndex * 12}
           fill="none"
           stroke="currentColor"
           className="text-ink/15 dark:text-bone/20"
@@ -100,7 +104,7 @@ export function AtomVisualization({ atom, onSelectParticle }: AtomVisualizationP
         <motion.circle
           cx={CENTER}
           cy={CENTER}
-          r={18 + Math.sqrt(nucleonCount) * 4}
+          r={22 + Math.sqrt(nucleonCount) * 5}
           fill="url(#nucleus-glow)"
           animate={{ opacity: [0.6, 1, 0.6], scale: [0.95, 1.08, 0.95] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
@@ -122,7 +126,7 @@ export function AtomVisualization({ atom, onSelectParticle }: AtomVisualizationP
 
       {/* Electron shells — each in its own rotating group */}
       {shellCounts.map((countInShell, shellIndex) => {
-        const radius = SHELL_RADII[shellIndex] ?? 190 + shellIndex * 35;
+        const radius = SHELL_RADII[shellIndex] ?? 204 + shellIndex * 12;
         return (
           <g
             key={`shell-${shellIndex}`}

@@ -11,7 +11,7 @@ interface ElectronProps {
   onSelect: (kind: ParticleKind) => void;
 }
 
-const RADIUS = 5;
+const RADIUS = 7;
 
 /**
  * A single electron. The entrance is a curved swoop rather than a
@@ -57,7 +57,8 @@ export function Electron({ x, y, onSelect }: ElectronProps) {
     >
       <PopBurst color="#3D5AFE" size={RADIUS * 2.2} />
       <circle r={RADIUS} fill="url(#electron-gradient)" stroke="rgba(255,255,255,0.7)" strokeWidth={1} filter="url(#glow-strong)" />
-      <text textAnchor="middle" dominantBaseline="central" fontSize={7} fontWeight={700} fill="white" pointerEvents="none">
+      <ellipse cx={-RADIUS * 0.3} cy={-RADIUS * 0.4} rx={RADIUS * 0.35} ry={RADIUS * 0.22} fill="white" opacity={0.5} pointerEvents="none" />
+      <text textAnchor="middle" dominantBaseline="central" fontSize={11} fontWeight={700} fill="white" pointerEvents="none">
         −
       </text>
     </motion.g>

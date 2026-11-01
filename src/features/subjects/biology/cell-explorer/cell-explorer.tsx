@@ -49,7 +49,7 @@ import type { CellKind } from "./types";
 export function CellExplorer() {
   const [cellKind, setCellKind] = useState<CellKind>("animal");
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [showLabels, setShowLabels] = useState(false);
+  const [showLabels, setShowLabels] = useState(true);
 
   const centersById = cellKind === "animal" ? ANIMAL_ORGANELLE_CENTERS : PLANT_ORGANELLE_CENTERS;
   const focusPoint = selectedId ? (centersById[selectedId] ?? null) : null;

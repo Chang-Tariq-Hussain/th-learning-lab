@@ -9,44 +9,34 @@
  * (closer to how plant cells are conventionally drawn) while staying
  * organic rather than a perfect shape.
  */
-import { blobPath } from "../utils/organic-path";
 import { OrganelleHotspot } from "./organelle-hotspot";
 
-const CENTER = 200;
-const WALL_RADIUS = 182;
-const MEMBRANE_RADIUS = 170;
-const CYTOPLASM_RADIUS = 160;
 
-const WALL_PATH = blobPath(CENTER, CENTER, WALL_RADIUS, {
-  phase: 0.3,
-  amplitude: 0.035,
-  frequency: 5,
-  amplitude2: 0.015,
-  frequency2: 9,
-});
-const WALL_INNER_PATH = blobPath(CENTER, CENTER, WALL_RADIUS - 9, {
-  phase: 0.7,
-  amplitude: 0.03,
-  frequency: 5,
-  amplitude2: 0.012,
-  frequency2: 9,
-});
-const MEMBRANE_PATH = blobPath(CENTER, CENTER, MEMBRANE_RADIUS, {
-  phase: 0.55,
-  amplitude: 0.04,
-  frequency: 5,
-  amplitude2: 0.018,
-  frequency2: 8,
-});
-const CYTOPLASM_PATH = blobPath(CENTER, CENTER, CYTOPLASM_RADIUS, {
-  phase: 0.9,
-  amplitude: 0.045,
-  frequency: 6,
-  amplitude2: 0.02,
-  frequency2: 10,
-});
+/** A plant cell is drawn with a rigid, near-square rounded outline (the cell wall holds its shape), unlike the soft animal-cell blob. */
+function roundedSquarePath(inset: number, radius: number): string {
+  const lo = inset;
+  const hi = 400 - inset;
+  const r = radius;
+  return `M ${lo + r} ${lo} H ${hi - r} Q ${hi} ${lo} ${hi} ${lo + r} V ${hi - r} Q ${hi} ${hi} ${hi - r} ${hi} H ${lo + r} Q ${lo} ${hi} ${lo} ${hi - r} V ${lo + r} Q ${lo} ${lo} ${lo + r} ${lo} Z`;
+}
+
+const WALL_INSET = 20;
+const WALL_PATH = roundedSquarePath(WALL_INSET, 30);
+const WALL_INNER_PATH = roundedSquarePath(WALL_INSET + 9, 24);
+const MEMBRANE_PATH = roundedSquarePath(WALL_INSET + 14, 22);
+const CYTOPLASM_PATH = roundedSquarePath(WALL_INSET + 20, 18);
 
 const PLASMODESMATA_COUNT = 10;
+const W0 = WALL_INSET;
+const W1 = WALL_INSET + 10;
+const PLASMODESMATA: [number, number, number, number][] = [
+  ...[110, 200, 290].flatMap((t): [number, number, number, number][] => [
+    [t, W0, t, W1],
+    [t, 400 - W0, t, 400 - W1],
+    [W0, t, W1, t],
+    [400 - W0, t, 400 - W1, t],
+  ]),
+].slice(0, PLASMODESMATA_COUNT + 2);
 
 export interface PlantCellBodyProps {
   selectedId: string | null;
@@ -141,30 +131,9 @@ export function PlantCellBody({ selectedId, onSelect }: PlantCellBodyProps) {
         onSelect={onSelect}
       >
         <g>
-          {Array.from({ length: PLASMODESMATA_COUNT }, (_, i) => {
-            const theta = (i / PLASMODESMATA_COUNT) * Math.PI * 2 + 0.2;
-            const outer = {
-              x: CENTER + Math.cos(theta) * (WALL_RADIUS + 2),
-              y: CENTER + Math.sin(theta) * (WALL_RADIUS + 2),
-            };
-            const inner = {
-              x: CENTER + Math.cos(theta) * (WALL_RADIUS - 11),
-              y: CENTER + Math.sin(theta) * (WALL_RADIUS - 11),
-            };
-            return (
-              <line
-                key={i}
-                x1={outer.x}
-                y1={outer.y}
-                x2={inner.x}
-                y2={inner.y}
-                stroke="#F3E3BE"
-                strokeOpacity={0.55}
-                strokeWidth={2.5}
-                strokeLinecap="round"
-              />
-            );
-          })}
+          {PLASMODESMATA.map((l, i) => (
+            <line key={i} x1={l[0]} y1={l[1]} x2={l[2]} y2={l[3]} stroke="#F3E3BE" strokeOpacity={0.75} strokeWidth={3} strokeLinecap="round" />
+          ))}
         </g>
       </OrganelleHotspot>
 

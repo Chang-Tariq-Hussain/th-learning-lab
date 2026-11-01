@@ -51,8 +51,8 @@ export function ParticleTray({ onDropParticle, onDragStateChange }: ParticleTray
             aria-label={`Drag a ${chip.label.toLowerCase()} onto the atom, or use the + ${chip.label} button below`}
           >
             <div
-              className="flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white shadow-md"
-              style={{ backgroundColor: chip.color }}
+              className="flex h-14 w-14 items-center justify-center rounded-full text-xl font-bold text-white shadow-md"
+              style={{ backgroundColor: chip.color, backgroundImage: "radial-gradient(circle at 35% 30%, rgba(255,255,255,0.65), rgba(255,255,255,0) 45%, rgba(0,0,0,0.28) 100%)" }}
             >
               {chip.symbol}
             </div>
