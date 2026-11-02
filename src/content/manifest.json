@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-20T16:24:59.318Z",
+ "generatedAt": "2026-11-02T15:39:21.765Z",
  "questions": {
   "mpt:EN-001": "published|c556058313586fd7f124c51e207ae7f5",
   "mpt:EN-002": "published|af0b09d84574c6380d553197ec74849e",
@@ -3942,7 +3942,7 @@
   "quiz:physics-work-energy-power-quiz-034": "published|d7f803a536a432c2ef8560d30c258c24",
   "quiz:physics-work-energy-power-quiz-035": "published|3e2ca592cee7b80e4bba5f8db89d5b13",
   "quiz:physics-work-energy-power-quiz-036": "published|eaf53f8f155e41cbcd2b90b50f7c86b1",
-  "teacher:adm-8632a274cb6d": "draft|e:f1452fb073118e96f47d167a0f9243d4",
+  "teacher:adm-8632a274cb6d": "published|e:f1452fb073118e96f47d167a0f9243d4",
   "teacher:adm-97195e29f1b1": "published|e:a55de142b8d2827cb7f1430740819bd6",
   "teacher:adm-efde4159ba33": "published|e:2d614503ed0891b931510db0c380d3e1",
   "teacher:jest-cmp-0001": "published|ab275f85172095cd4cb701f72d629d15",
@@ -5151,7 +5151,7 @@
    "jst": {
     "replaced": 0,
     "removed": 0,
-    "added": 2
+    "added": 3
    }
   },
   "questionsInDatabase": 5123
