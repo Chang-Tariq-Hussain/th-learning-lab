@@ -7,16 +7,14 @@ import type { TopicContent } from "../types";
  * implementations (see `physics-gravitation.tsx`). Its Explore
  * experience is the existing `Build an Atom` lab
  * (`@/features/subjects/chemistry/build-an-atom`) — inspection found
- * a complete, working simulation (drag-and-drop or +/- particle
- * controls, live Info Panel showing Atomic number / Mass number /
- * Protons / Neutrons / Electrons / charge, particle click-to-inspect,
- * zoom, high-contrast/large-text toggles) covering the first 20
- * elements (hydrogen–calcium) with simplified 2-8-8 Bohr-model
- * shells. No new simulation or 3D upgrade was built: the existing 2D
- * shell diagram already makes electron arrangement, isotopes, and
- * ions directly visible and interactive, and a 3D orbital model would
- * risk implying electrons literally travel on fixed circular paths —
- * scientifically misleading for this level. All content below is
+ * a working simulation that has since been upgraded in place: a lazy-loaded
+ * 3D Bohr-style view (clearly labelled "simplified model, not to scale")
+ * with a 2D diagram fallback, particle controls with limits, a periodic
+ * selector (H-Ca), presets (atoms, isotopes, ions), a live info panel, a
+ * shell panel with per-shell occupancy and full-shell feedback, and optional
+ * guided experiments and challenges. Shells use a documented introductory
+ * 2-8-8-2 model (2n^2 beyond 20 electrons). The 3D view never implies real
+ * circular electron orbits. All content below is
  * grounded in that lab's real controls and readouts.
  */
 const shellDiagram = (

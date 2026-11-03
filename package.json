@@ -15,6 +15,7 @@
     "db:parity": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/parity.ts",
     "db:create-admin": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/create-super-admin.ts",
     "content:publish": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/content-publish.ts",
+    "verify:atom": "tsx --tsconfig scripts/tsconfig.health.json scripts/verify-atom-model.ts",
     "verify:contrast": "tsx --tsconfig scripts/tsconfig.health.json scripts/contrast-audit.ts",
     "test:e2e": "playwright test"
   },

@@ -5,10 +5,10 @@ export interface ElementInfo {
 }
 
 /**
- * First 20 elements (hydrogen through calcium) — the range explicitly
- * required. Beyond this, `getElement` falls back to a generic label
- * rather than erroring, so a curious student mashing the "+ Proton"
- * button past calcium still sees *something* sensible.
+ * Elements 1–36 (hydrogen through krypton), the range this lab can build.
+ * The first 20 are the "common elements" shown in the periodic selector and
+ * the ones the introductory shell model and isotope data cover. `getElement`
+ * still falls back to a generic label for anything outside the table.
  */
 export const ELEMENTS: ElementInfo[] = [
   { atomicNumber: 1, symbol: "H", name: "Hydrogen" },
@@ -31,7 +31,26 @@ export const ELEMENTS: ElementInfo[] = [
   { atomicNumber: 18, symbol: "Ar", name: "Argon" },
   { atomicNumber: 19, symbol: "K", name: "Potassium" },
   { atomicNumber: 20, symbol: "Ca", name: "Calcium" },
+  { atomicNumber: 21, symbol: "Sc", name: "Scandium" },
+  { atomicNumber: 22, symbol: "Ti", name: "Titanium" },
+  { atomicNumber: 23, symbol: "V", name: "Vanadium" },
+  { atomicNumber: 24, symbol: "Cr", name: "Chromium" },
+  { atomicNumber: 25, symbol: "Mn", name: "Manganese" },
+  { atomicNumber: 26, symbol: "Fe", name: "Iron" },
+  { atomicNumber: 27, symbol: "Co", name: "Cobalt" },
+  { atomicNumber: 28, symbol: "Ni", name: "Nickel" },
+  { atomicNumber: 29, symbol: "Cu", name: "Copper" },
+  { atomicNumber: 30, symbol: "Zn", name: "Zinc" },
+  { atomicNumber: 31, symbol: "Ga", name: "Gallium" },
+  { atomicNumber: 32, symbol: "Ge", name: "Germanium" },
+  { atomicNumber: 33, symbol: "As", name: "Arsenic" },
+  { atomicNumber: 34, symbol: "Se", name: "Selenium" },
+  { atomicNumber: 35, symbol: "Br", name: "Bromine" },
+  { atomicNumber: 36, symbol: "Kr", name: "Krypton" },
 ];
+
+/** Elements shown in the periodic-table-style selector. */
+export const COMMON_ELEMENT_COUNT = 20;
 
 export function getElement(protonCount: number): ElementInfo {
   if (protonCount <= 0) {

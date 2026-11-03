@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Minus, Plus } from "lucide-react";
+import { LIMITS, canChange, type ParticleKey } from "../atom-model";
 
 interface ControlsPanelProps {
   onChange: (
@@ -17,13 +18,14 @@ const rows: {
   key: "proton" | "neutron" | "electron";
   label: string;
   color: string;
+  limitKey: ParticleKey;
 }[] = [
-  { key: "proton", label: "Proton", color: "#E0524F" },
-  { key: "neutron", label: "Neutron", color: "#8B95A1" },
-  { key: "electron", label: "Electron", color: "#3D5AFE" },
+  { key: "proton", label: "Proton", color: "#E0524F", limitKey: "protons" },
+  { key: "neutron", label: "Neutron", color: "#8B95A1", limitKey: "neutrons" },
+  { key: "electron", label: "Electron", color: "#3D5AFE", limitKey: "electrons" },
 ];
 
-/** Six large, unambiguous buttons — the entire interaction surface of this toy. No sliders, no menus. */
+/** Six large, unambiguous buttons: add or remove each particle. They disable at the limits, so no count can go out of range. */
 export function ControlsPanel({
   onChange,
   protons,
@@ -31,9 +33,10 @@ export function ControlsPanel({
   electrons,
 }: ControlsPanelProps) {
   const counts = { proton: protons, neutron: neutrons, electron: electrons };
+  const atom = { protons, neutrons, electrons };
 
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+    <div role="group" aria-label="Particle counts" className="grid grid-cols-1 gap-3 sm:grid-cols-3">
       {rows.map((row) => (
         <div
           key={row.key}
@@ -48,7 +51,7 @@ export function ControlsPanel({
             <span className="font-display text-sm font-medium text-ink dark:text-bone">
               {row.label}s
             </span>
-            <span className="ml-auto font-mono text-sm text-ink-soft dark:text-bone-soft">
+            <span className="ml-auto font-mono text-sm text-ink dark:text-bone" aria-live="polite" aria-label={`${counts[row.key]} ${row.label.toLowerCase()}s`}>
               {counts[row.key]}
             </span>
           </div>
@@ -56,9 +59,11 @@ export function ControlsPanel({
             <button
               type="button"
               onClick={() => onChange(row.key, 1)}
+              disabled={!canChange(atom, row.limitKey, 1)}
+              title={canChange(atom, row.limitKey, 1) ? `Add a ${row.label.toLowerCase()}` : `Maximum ${LIMITS[row.limitKey].max} ${row.label.toLowerCase()}s in this lab`}
               aria-label={`Add a ${row.label.toLowerCase()}`}
               className={cn(
-                "flex h-14 items-center justify-center gap-1.5 rounded-lg text-base font-semibold text-white transition-transform active:scale-95",
+                "flex h-14 items-center justify-center gap-1.5 rounded-lg text-base font-semibold text-white transition-transform active:scale-95 disabled:cursor-not-allowed disabled:opacity-30",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-chalkboard",
               )}
               style={{ backgroundColor: row.color }}
@@ -69,7 +74,8 @@ export function ControlsPanel({
             <button
               type="button"
               onClick={() => onChange(row.key, -1)}
-              disabled={counts[row.key] <= 0}
+              disabled={!canChange(atom, row.limitKey, -1)}
+              title={canChange(atom, row.limitKey, -1) ? `Remove a ${row.label.toLowerCase()}` : row.key === "proton" ? "An atom needs at least one proton" : `No ${row.label.toLowerCase()}s left to remove`}
               aria-label={`Remove a ${row.label.toLowerCase()}`}
               className="flex h-14 items-center justify-center gap-1.5 rounded-lg border-2 text-base font-semibold transition-transform active:scale-95 disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-chalkboard"
               style={{ borderColor: row.color, color: row.color }}

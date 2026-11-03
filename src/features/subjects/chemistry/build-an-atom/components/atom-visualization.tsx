@@ -3,8 +3,9 @@
 import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAnimation } from "@/features/simulation/hooks/use-animation";
+import { usePrefersReducedMotion } from "@/features/simulation";
 import type { AtomState } from "../atom-model";
-import { distributeElectrons } from "../shells";
+import { distribute, type ShellModelId } from "../shells";
 import { protonPositions, neutronPositions } from "../nucleus-layout";
 import { Nucleon } from "./nucleon";
 import { Electron } from "./electron";
@@ -14,6 +15,10 @@ import type { ParticleKind } from "../particle-info";
 interface AtomVisualizationProps {
   atom: AtomState;
   onSelectParticle: (kind: ParticleKind) => void;
+  shellModel?: ShellModelId;
+  /** Shell number (1 = innermost) to highlight. */
+  selectedShell?: number | null;
+  showShellLabels?: boolean;
 }
 
 const SIZE = 420;
@@ -35,7 +40,8 @@ const RING_DASH = "3 5";
  * adding/removing a particle re-renders, which is exactly when Framer
  * Motion's pop/shrink/fly-in animations should run.
  */
-export function AtomVisualization({ atom, onSelectParticle }: AtomVisualizationProps) {
+export function AtomVisualization({ atom, onSelectParticle, shellModel = "intro", selectedShell = null, showShellLabels = true }: AtomVisualizationProps) {
+  const reducedMotion = usePrefersReducedMotion();
   const shellRefs = useRef<(SVGGElement | null)[]>([]);
   const ringRefs = useRef<(SVGCircleElement | null)[]>([]);
   const rotationRef = useRef<number[]>(SHELL_SPEEDS.map(() => 0));
@@ -58,14 +64,19 @@ export function AtomVisualization({ atom, onSelectParticle }: AtomVisualizationP
   });
 
   useEffect(() => {
+    if (reducedMotion) {
+      animation.pause();
+      return;
+    }
     animation.play();
     return () => animation.pause();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [reducedMotion]);
 
   const protons = protonPositions(atom.protons);
   const neutrons = neutronPositions(atom.neutrons);
-  const shellCounts = distributeElectrons(atom.electrons);
+  const shellInfos = distribute(atom.electrons, shellModel).shells;
+  const shellCounts = shellInfos.map((x) => x.count);
   const nucleonCount = atom.protons + atom.neutrons;
   // Fit the view to what is on screen (like PhET): a small atom is drawn large, a big one still fits.
   const outerShell = shellCounts.length > 0 ? (SHELL_RADII[shellCounts.length - 1] ?? 204 + (shellCounts.length - 1) * 12) : 0;
@@ -92,12 +103,31 @@ export function AtomVisualization({ atom, onSelectParticle }: AtomVisualizationP
           cy={CENTER}
           r={SHELL_RADII[shellIndex] ?? 204 + shellIndex * 12}
           fill="none"
-          stroke="currentColor"
-          className="text-ink/15 dark:text-bone/20"
-          strokeWidth={1}
-          strokeDasharray={RING_DASH}
+          stroke={selectedShell === shellIndex + 1 ? "#F0A54A" : "currentColor"}
+          className={selectedShell === shellIndex + 1 ? undefined : "text-ink/15 dark:text-bone/20"}
+          strokeWidth={selectedShell === shellIndex + 1 ? 3 : 1}
+          strokeDasharray={selectedShell === shellIndex + 1 ? undefined : RING_DASH}
         />
       ))}
+
+      {/* Shell labels sit on the ring at the upper right, outside the rotating groups so they stay readable. */}
+      {showShellLabels
+        ? shellInfos.map((info, i) => {
+            const r = SHELL_RADII[i] ?? 204 + i * 12;
+            const angle = -2.4 + i * 0.62;
+            const x = CENTER + r * Math.cos(angle);
+            const y = CENTER + r * Math.sin(angle);
+            const text = `${info.letter} · ${info.count}/${info.capacity}`;
+            return (
+              <g key={`label-${i}`} pointerEvents="none">
+                <rect x={x - 25} y={y - 8} width={50} height={16} rx={8} className="fill-paper/90 stroke-ink/25 dark:fill-chalkboard/90 dark:stroke-bone/30" strokeWidth={0.75} />
+                <text x={x} y={y + 0.5} textAnchor="middle" dominantBaseline="central" className="fill-ink font-mono dark:fill-bone" style={{ fontSize: 10 }}>
+                  {text}
+                </text>
+              </g>
+            );
+          })
+        : null}
 
       {/* Soft pulsing glow behind the nucleus, suggesting binding energy */}
       {nucleonCount > 0 ? (
@@ -106,8 +136,8 @@ export function AtomVisualization({ atom, onSelectParticle }: AtomVisualizationP
           cy={CENTER}
           r={22 + Math.sqrt(nucleonCount) * 5}
           fill="url(#nucleus-glow)"
-          animate={{ opacity: [0.6, 1, 0.6], scale: [0.95, 1.08, 0.95] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          animate={reducedMotion ? { opacity: 0.8, scale: 1 } : { opacity: [0.6, 1, 0.6], scale: [0.95, 1.08, 0.95] }}
+          transition={reducedMotion ? { duration: 0 } : { duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
           style={{ transformOrigin: `${CENTER}px ${CENTER}px` }}
         />
       ) : null}

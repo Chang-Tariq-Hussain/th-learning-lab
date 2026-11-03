@@ -20,7 +20,7 @@ export const PARTICLE_INFO: Record<ParticleKind, ParticleInfo> = {
   electron: {
     title: "Electron",
     color: "#3D5AFE",
-    facts: ["Negative charge (−1)", "Moves around the nucleus in shells", "Responsible for chemical bonding"],
+    facts: ["Negative charge (−1)", "Found in a region around the nucleus, drawn as shells in this simplified model", "Responsible for chemical bonding"],
   },
 };
 
