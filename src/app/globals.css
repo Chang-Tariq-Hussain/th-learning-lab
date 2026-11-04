@@ -281,6 +281,69 @@
       --sim-reserve: 10.5rem;
     }
   }
+
+  /* ---- Wide stage variant (SimulationLayout size="wide"; opt-in) ----
+     The default stage is bounded to 40% of the viewport height and a narrow column. "wide" gives the stage the
+     space that is actually left under the header: ~2/3 of the row from lg, and the full height remaining below
+     the sticky header (minus room for readouts and actions) instead of 40svh. Still always fully on screen.
+     Aspect: --sim-aspect-base below sm (phones: usually square so it fills the width), --sim-aspect-lg from sm. */
+  .sim-layout[data-size="wide"] .sim-stage-frame {
+    --sim-aspect: var(--sim-aspect-base, 1.1);
+    --sim-stage-max: clamp(
+      6rem,
+      min(46svh, calc(100svh - var(--app-header-h) - var(--sim-reserve) - var(--sim-peek))),
+      var(--sim-cap, 60rem)
+    );
+  }
+  @media (max-width: 1023.98px) {
+    /* Less of the controls has to peek out under the sticky stage, so the stage can use that height. */
+    .sim-layout[data-size="wide"] .sim-stage-col {
+      --sim-peek: 7rem;
+    }
+  }
+  @media (min-width: 640px) {
+    .sim-layout[data-size="wide"] .sim-stage-frame {
+      --sim-aspect: var(--sim-aspect-lg, var(--sim-aspect-base, 1.1));
+    }
+  }
+  @media (min-width: 1024px) {
+    .sim-layout[data-size="wide"] {
+      grid-template-columns: minmax(0, 1.9fr) minmax(22rem, 1fr);
+      gap: 1.25rem;
+    }
+    /* Height of everything in the stage block that is not the stage (card padding, readouts, actions), with
+       headroom for an actions row that wraps. The default 40svh bound used to hide an underestimate here. */
+    .sim-layout[data-size="wide"] .sim-stage-col {
+      --sim-reserve: 10.5rem;
+    }
+    .sim-layout[data-size="wide"] .sim-stage-col[data-has-readouts="true"] {
+      --sim-reserve: 13.75rem;
+    }
+    .sim-layout[data-size="wide"] .sim-stage-frame {
+      --sim-stage-max: clamp(
+        6rem,
+        calc(100svh - var(--app-header-h) - 0.75rem - var(--sim-reserve)),
+        var(--sim-cap, 60rem)
+      );
+    }
+  }
+  @media (min-width: 1280px) {
+    .sim-layout[data-size="wide"] {
+      grid-template-columns: minmax(0, 2.1fr) minmax(24rem, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  @media (orientation: landscape) and (max-height: 520px) and (max-width: 1023.98px) {
+    .sim-layout[data-size="wide"] {
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    }
+    .sim-layout[data-size="wide"] .sim-stage-col {
+      --sim-peek: 0rem;
+    }
+    .sim-layout[data-size="wide"] .sim-stage-frame {
+      --sim-stage-max: clamp(6rem, calc(100svh - var(--app-header-h) - 0.25rem - var(--sim-reserve)), var(--sim-cap, 60rem));
+    }
+  }
 }
 
 @layer components {

@@ -106,8 +106,19 @@ export interface SimulationLayoutProps {
   stageLabel: string;
   /** Width / height of the stage frame. */
   aspect?: number;
-  /** Frame upper bound, a CSS length. */
+  /**
+   * Width / height of the stage frame from `lg` up, when it differs from `aspect`. Only used with `size="wide"`:
+   * a wider-than-tall frame uses the extra desktop width instead of leaving it empty beside a square.
+   */
+  aspectLg?: number;
+  /** Frame upper bound, a CSS length. Defaults to 26rem, or 60rem with `size="wide"`. */
   stageCap?: string;
+  /**
+   * `"wide"` makes the stage the dominant column (about two thirds of the row from `lg`), sizes it by the
+   * space left under the header rather than a fixed 40% of the viewport, and raises the default cap. Opt-in:
+   * every simulation that does not pass it keeps the original proportions.
+   */
+  size?: "default" | "wide";
   /** Omit for simulations with nothing running (static diagrams): no status chip is shown. */
   runState?: SimulationRunState;
   statusDetail?: string;
@@ -133,7 +144,9 @@ export function SimulationLayout({
   stage,
   stageLabel,
   aspect = 2.6,
-  stageCap = "26rem",
+  aspectLg,
+  stageCap,
+  size = "default",
   runState,
   statusDetail,
   readouts,
@@ -143,8 +156,10 @@ export function SimulationLayout({
   stageOnly = false,
   className,
 }: SimulationLayoutProps) {
+  const wide = size === "wide";
+  const cap = stageCap ?? (wide ? "60rem" : "26rem");
   const frameRef = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState<StageSize>({ width: 0, height: 0 });
+  const [stageSize, setSize] = useState<StageSize>({ width: 0, height: 0 });
   useEffect(() => {
     const el = frameRef.current;
     if (!el) return;
@@ -156,7 +171,12 @@ export function SimulationLayout({
   }, []);
 
   return (
-    <div data-sim-layout data-stage-only={stageOnly ? "true" : undefined} className={cn("sim-layout", className)}>
+    <div
+      data-sim-layout
+      data-size={wide ? "wide" : undefined}
+      data-stage-only={stageOnly ? "true" : undefined}
+      className={cn("sim-layout", className)}
+    >
       <div
         data-sim-stage-col
         data-has-readouts={readouts ? "true" : "false"}
@@ -175,9 +195,18 @@ export function SimulationLayout({
             ref={frameRef}
             data-sim-stage
             className="sim-stage-frame overflow-hidden rounded-xl"
-            style={{ ["--sim-aspect" as string]: String(aspect), ["--sim-cap" as string]: stageCap }}
+            style={
+              wide
+                ? {
+                    // globals.css picks the right one per breakpoint (an inline --sim-aspect would always win).
+                    ["--sim-aspect-base" as string]: String(aspect),
+                    ["--sim-aspect-lg" as string]: String(aspectLg ?? aspect),
+                    ["--sim-cap" as string]: cap,
+                  }
+                : { ["--sim-aspect" as string]: String(aspect), ["--sim-cap" as string]: cap }
+            }
           >
-            <StageSizeContext.Provider value={size}>{stage}</StageSizeContext.Provider>
+            <StageSizeContext.Provider value={stageSize}>{stage}</StageSizeContext.Provider>
           </div>
           {readouts ? (
             <div data-sim-readouts className="mt-2">

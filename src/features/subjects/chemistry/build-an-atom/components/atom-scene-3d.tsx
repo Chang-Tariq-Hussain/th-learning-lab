@@ -16,6 +16,8 @@ const NEUTRON_COLOR = "#8B95A1";
 const ELECTRON_COLOR = "#3D5AFE";
 const SELECTED_COLOR = "#F0A54A";
 const ELECTRON_RADIUS = 0.26;
+/** Frame width / height at and above which the base `fit` distance already shows the whole outer ring. */
+const FIT_ASPECT = 1.32;
 const DEFAULT_DIRECTION = new THREE.Vector3(0, 0.62, 0.8).normalize();
 
 export interface AtomScene3DProps {
@@ -149,20 +151,26 @@ function Shell({ index, n, letter, count, capacity, radius, selected, showLabel,
 /** Camera framing, zoom, reset, keyboard rotation and touch behaviour. */
 function CameraRig({ fit, zoom, resetKey, reducedMotion, onContextLost, onContextRestored }: { fit: number; zoom: number; resetKey: number; reducedMotion: boolean; onContextLost: () => void; onContextRestored: () => void }) {
   const controls = useRef<OrbitControlsImpl | null>(null);
-  const { camera, gl } = useThree();
+  const { camera, gl, size } = useThree();
+
+  // `fit` clears the outer shell ring horizontally only for frames wider than about 1.28:1. A squarer or taller
+  // frame (phones, narrow panels) would clip the ring at the sides, so back the camera off by the shortfall.
+  // Rounded so a resize drag does not re-run the effects on every pixel.
+  const aspect = size.height > 0 ? Math.round((size.width / size.height) * 20) / 20 : 1;
+  const distance = fit * Math.max(1, FIT_ASPECT / Math.max(aspect, 0.4));
 
   // Keep the current viewing direction, change only the distance.
   useEffect(() => {
     const c = controls.current;
     const dir = camera.position.clone().sub(c?.target ?? new THREE.Vector3()).normalize();
     if (!Number.isFinite(dir.x) || dir.lengthSq() === 0) dir.copy(DEFAULT_DIRECTION);
-    camera.position.copy(c?.target ?? new THREE.Vector3()).addScaledVector(dir, fit / zoom);
+    camera.position.copy(c?.target ?? new THREE.Vector3()).addScaledVector(dir, distance / zoom);
     camera.lookAt(c?.target ?? new THREE.Vector3());
     c?.update();
-  }, [fit, zoom, camera]);
+  }, [distance, zoom, camera]);
 
   useEffect(() => {
-    camera.position.copy(DEFAULT_DIRECTION).multiplyScalar(fit / zoom);
+    camera.position.copy(DEFAULT_DIRECTION).multiplyScalar(distance / zoom);
     controls.current?.target.set(0, 0, 0);
     camera.lookAt(0, 0, 0);
     controls.current?.update();

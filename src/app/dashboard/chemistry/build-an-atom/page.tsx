@@ -13,32 +13,32 @@ export const metadata: Metadata = {
 export default function BuildAnAtomPage() {
   const content = getTopicContent("chemistry", "build-an-atom");
   return (
-    <Container className="py-10">
-      <SimulationBackLink simulationHref="/dashboard/chemistry/build-an-atom" className="mb-4" />
+    <Container size="wide" className="py-5 sm:py-6">
+      <SimulationBackLink simulationHref="/dashboard/chemistry/build-an-atom" className="mb-2" />
       <Breadcrumbs
         items={[
           { label: "Dashboard", href: "/dashboard" },
           { label: "Chemistry", href: "/dashboard/chemistry" },
           { label: "Atomic Structure", href: "/dashboard/chemistry/atomic-structure" },
         ]}
-        className="mb-6"
+        className="mb-3"
       />
 
-      <div className="mb-8">
+      <div className="mb-4">
         <p className="font-mono text-label uppercase tracking-eyebrow text-subject-chemistry">
           Chemistry · Atomic Structure
         </p>
-        <h1 className="mt-2 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
+        <h1 className="mt-1 font-display text-3xl font-medium text-ink dark:text-bone sm:text-4xl">
           Build an Atom
         </h1>
-        <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
+        <p className="mt-1 max-w-none text-sm leading-relaxed sm:text-base text-ink-soft dark:text-bone-soft">
           Add and remove protons, neutrons, and electrons and watch the
           element, mass, and charge update instantly. Click any particle
           to learn what it does.
         </p>
       </div>
 
-      {content ? <TopicExperience content={content} simulation={<BuildAnAtom />} /> : <BuildAnAtom />}
+      {content ? <TopicExperience content={content} simulation={<BuildAnAtom />} density="compact" /> : <BuildAnAtom />}
     </Container>
   );
 }

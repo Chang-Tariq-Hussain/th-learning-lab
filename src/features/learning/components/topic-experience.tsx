@@ -18,6 +18,8 @@ export interface TopicExperienceProps {
    *  doesn't render Challenge at all. */
   challengeExperimentOverrides?: Record<string, ReactNode>;
   challengeVerifiers?: Record<string, () => boolean>;
+  /** `"compact"` tightens the gap under the mode switch so a large simulation starts higher on the page. */
+  density?: "default" | "compact";
   className?: string;
 }
 
@@ -51,13 +53,14 @@ export function TopicExperience({
   simulation,
   challengeExperimentOverrides,
   challengeVerifiers,
+  density = "default",
   className,
 }: TopicExperienceProps) {
   const [mode, setMode] = useState<TopicMode>("quick");
 
   return (
     <div className={className}>
-      <TopicModeSwitch mode={mode} onChange={setMode} colorToken={content.colorToken} className="mb-8" />
+      <TopicModeSwitch mode={mode} onChange={setMode} colorToken={content.colorToken} className={density === "compact" ? "mb-4 sm:mb-5" : "mb-8"} />
 
       {mode === "quick" ? (
         <div className="flex flex-col gap-6">

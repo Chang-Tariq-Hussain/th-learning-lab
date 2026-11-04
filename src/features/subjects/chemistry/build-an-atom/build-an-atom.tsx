@@ -159,23 +159,12 @@ export function BuildAnAtom() {
 
   return (
     <div className={cn(largeText && "text-[1.0625rem] leading-relaxed", highContrast && "contrast-125 saturate-150")}>
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <div role="group" aria-label="Accessibility settings" className="flex items-center gap-2">
-          <button type="button" aria-pressed={largeText} onClick={() => setLargeText((v) => !v)} className={toggleClass(largeText)}>
-            <Type className="h-3.5 w-3.5" strokeWidth={1.75} />
-            Large text
-          </button>
-          <button type="button" aria-pressed={highContrast} onClick={() => setHighContrast((v) => !v)} className={toggleClass(highContrast)}>
-            <Contrast className="h-3.5 w-3.5" strokeWidth={1.75} />
-            High contrast
-          </button>
-        </div>
-      </div>
-
       <SimulationLayout
         stageLabel="Atom model: nucleus and electron shells"
+        size="wide"
         aspect={1}
-        stageCap="30rem"
+        aspectLg={1.45}
+        stageCap="64rem"
         stage={
           <div
             ref={dropZoneRef}
@@ -233,6 +222,16 @@ export function BuildAnAtom() {
         }
         controls={
           <div className="flex flex-col gap-4">
+            <div role="group" aria-label="Accessibility settings" className="flex flex-wrap items-center gap-2">
+              <button type="button" aria-pressed={largeText} onClick={() => setLargeText((v) => !v)} className={toggleClass(largeText)}>
+                <Type className="h-3.5 w-3.5" strokeWidth={1.75} />
+                Large text
+              </button>
+              <button type="button" aria-pressed={highContrast} onClick={() => setHighContrast((v) => !v)} className={toggleClass(highContrast)}>
+                <Contrast className="h-3.5 w-3.5" strokeWidth={1.75} />
+                High contrast
+              </button>
+            </div>
             <div className="flex flex-wrap items-center gap-2" role="group" aria-label="View options">
               <button type="button" aria-pressed={view === "3d"} onClick={() => setView("3d")} className={toggleClass(view === "3d")}>
                 <Box className="h-3.5 w-3.5" strokeWidth={1.75} />
