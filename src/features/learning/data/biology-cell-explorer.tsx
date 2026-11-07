@@ -4,13 +4,13 @@ import type { TopicContent } from "../types";
  * Interactive Cell Explorer — Biology GLE Batch 4 ("DNA & Cell
  * Exploration"), topic 2 of 2.
  *
- * Reuses the existing `CellExplorer` simulation
- * (`@/features/subjects/biology/cell-explorer`) exactly as-is: it
- * already supports switching between Animal and Plant cell views,
- * clicking any organelle for a name/description/fact info panel,
- * a "Show labels" toggle to see every organelle name at once, and
- * zoom/pan controls that re-center on whatever's selected — so no
- * simulation code changes were needed.
+ * Reuses the `CellExplorer` simulation
+ * (`@/features/subjects/biology/cell-explorer`). It supports switching
+ * between Animal and Plant cell views, selecting any structure for a
+ * function / explanation / analogy panel, a "Show labels" toggle, zoom
+ * and pan, and four activities (Explore, Identify, Function, Compare).
+ * This topic's content only relies on those capabilities, so it needed
+ * no changes when the simulation was upgraded.
  *
  * Per the batch's scope, this topic is positioned as an *interactive
  * application* of cell-biology concepts already taught in depth by

@@ -10,17 +10,14 @@ import type { TopicContent } from "../types";
  * part of the lesson rather than a plain "open simulation" link: the
  * Explore step's `howToUse` and this topic's Challenge scenarios send
  * the student to find specific structures. The mission is deliberately
- * scoped to what the simulation actually supports — the Animal Cell
- * view only exposes 5 clickable organelles (nucleus, mitochondria,
- * ribosomes, rough ER, Golgi apparatus) and doesn't have separately
- * clickable membrane/cytoplasm hotspots, while the Plant Cell view
- * additionally exposes the cell wall, cell membrane, cytoplasm, and
- * plasmodesmata as their own clickable regions (see
- * `cell-explorer/components/animal-cell-organelles.tsx` and
- * `plant-cell-body.tsx`) — so the "find the boundary and the fluid
- * interior" mission below is written for the Plant Cell view
- * specifically, where those structures actually exist as separate
- * targets.
+ * scoped to what the simulation actually supports. Since the Cell
+ * Explorer upgrade, BOTH the Animal Cell and Plant Cell views expose the
+ * cell membrane, cytoplasm, nucleus (with nuclear envelope and nucleolus)
+ * and the other organelles as clickable structures; the cell wall and
+ * plasmodesmata remain Plant-Cell-only (see `cell-explorer/data/
+ * organelles.ts` and `cell-explorer/scene/`). The "find the boundary and
+ * the fluid interior" mission below is written for the Plant Cell view,
+ * where the cell wall adds a second boundary layer to find.
  *
  * `practice.quizId` points at a new, dedicated 30-question bank
  * (`@/features/quiz-engine/data/biology-cell-structure-organization-quiz.ts`).
