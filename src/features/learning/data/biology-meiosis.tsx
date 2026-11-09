@@ -2,27 +2,20 @@ import type { TopicContent } from "../types";
 
 /**
  * Meiosis — Biology GLE Batch 3 ("Cell Division"), topic 2 of 2.
- * Reuses the existing `Meiosis` simulation
- * (`@/features/subjects/biology/meiosis`) exactly as-is: it already
- * models the correct nine-stage sequence (DNA Replication, then
- * Prophase I → Telophase I, then Prophase II → Telophase II), a
- * MEIOSIS I / MEIOSIS II / 4 Haploid Cells overview strip with the
- * 2n → n chromosome reminder, color-coded homologous pairs (by both
- * size and maternal/paternal color, satisfying the "matching
- * colors/shapes" visual requirement), key-concept callouts on the two
- * anaphase stages, a Why It Matters card, and a built-in four-row
- * Mitosis-vs-Meiosis comparison table linking back to the Mitosis
- * page — so no simulation code changes were needed. This topic's
+ * Wraps the upgraded `Meiosis` lab (`@/features/subjects/biology/meiosis`):
+ * a nine-stage / sixteen-step chromosome animation (interphase replication,
+ * synapsis, crossing over, independent assortment, both divisions, four
+ * haploid cells), a crossing-over lab, a 2n-vs-n explorer, and Explore /
+ * Predict / Identify / Arrange / Challenge activities. This topic's
  * Learn/Explain content below adds the two comparison rows (genetic
- * similarity, homologous pairing) the simulation's compact table
- * doesn't show, without touching the simulation itself.
+ * similarity, homologous pairing) that the lab's compact table doesn't show.
  *
- * `practice.quizId` points at a new, dedicated 30-question bank,
+ * `practice.quizId` points at a dedicated 30-question bank,
  * `biology-meiosis-gle` (`@/features/quiz-engine/data/biology-
  * meiosis-gle-quiz.ts`) — deliberately a different id from the
- * pre-existing 5-question `biology-meiosis` bank (still linked from
- * the standalone `/dashboard/biology/meiosis-quiz` page, left
- * unmodified) so the two banks don't collide.
+ * pre-existing 5-question `biology-meiosis` bank (still linked from the
+ * standalone `/dashboard/biology/meiosis-quiz` page, left unmodified)
+ * so the two banks don't collide.
  */
 export const biologyMeiosisContent: TopicContent = {
   subjectSlug: "biology",
@@ -196,17 +189,17 @@ export const biologyMeiosisContent: TopicContent = {
   // -------------------------------------------------------------
   explore: {
     howToUse: [
-      "Press Start to watch a diploid cell move automatically through all nine stages, or use Next Stage to step through them one at a time.",
-      "Watch the MEIOSIS I / MEIOSIS II / 4 Haploid Cells overview strip at the top to track which phase you're in, and the 2n → n reminder underneath it.",
-      "Notice the color-coded chromosome pairs — each homologous pair shares a size (large or small) but has two different colors, one for each parent's contribution.",
-      "Read the 'What happens?' explanation for each stage, and watch for the amber Key Concept callouts on Anaphase I and Anaphase II — these mark the two most important separation events.",
-      "Reach Telophase II and read the Final Result flow summary, the Why It Matters card, and the built-in Mitosis-vs-Meiosis comparison table.",
-      "Use Reset to return to the start and try predicting each stage's outcome again before it happens.",
+      "Press Play to watch one diploid cell move through all nine stages, or use Step forward / Next stage to go at your own pace. Turn on Step-by-step to move one sub-step at a time, and use the speed buttons to slow down.",
+      "Click the numbered stage chips or the progress bar's stage buttons to jump to any stage. Labels show the cell membrane, nucleus, centrosomes, spindle fibers and more.",
+      "Blue chromosomes are maternal and orange are paternal. Each homologous pair has its own length and gene letters. Click a chromatid to see its sister chromatid and its homologous partner highlighted.",
+      "Use the Predict tab: the simulation pauses before important events and asks what happens next. Use Identify to find sister chromatids, homologs, tetrads and spindle fibers.",
+      "Open 'Crossing over & variation' to choose which non-sister chromatids exchange DNA and where, and to explore independent assortment. Open '2n vs n' to compare chromosome number with DNA amount for 2n = 4, 6 or 8.",
+      "Reach Telophase II to see the four haploid cells and their allele combinations, then press New cell to run a different random meiosis. Use Practice for Arrange the Stages and the Meiosis Challenge.",
     ],
     tryThis: [
-      "Step through Prophase I → Metaphase I → Anaphase I → Telophase I one click at a time, describing in your own words what happens to the homologous pairs.",
-      "Once in Meiosis II, compare Metaphase II to Metaphase I — what's different about what's lining up in the middle of the cell?",
-      "At the end, use the built-in comparison table's 'Open Mitosis' link to compare this whole process side by side with mitosis.",
+      "Step through Prophase I one sub-step at a time and describe what happens between non-sister chromatids. Then press New cell and see how the crossovers differ.",
+      "Compare Metaphase I with Metaphase II: what is lining up in the middle, and what separates in the anaphase that follows each one?",
+      "In '2n vs n', pick 2n = 6 and track the chromosome number and the DNA per cell from stage to stage. Which stage changes the chromosome number, and which stage only changes the DNA?",
     ],
   },
 

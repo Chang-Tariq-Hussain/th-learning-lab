@@ -9,7 +9,7 @@ const SIMULATION_HREF = "/dashboard/biology/meiosis";
 
 export const metadata: Metadata = {
   title: "Meiosis",
-  description: "Watch one diploid cell divide through meiosis into four haploid cells used in sexual reproduction.",
+  description: "Step through meiosis in an interactive chromosome lab: pairing, crossing over, independent assortment and four haploid cells.",
 };
 
 export default function MeiosisPage() {
@@ -35,7 +35,7 @@ export default function MeiosisPage() {
           Meiosis: How Sex Cells Are Formed
         </h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
-          Press Start and watch a diploid cell move through meiosis, or step through each stage one at a time.
+          Watch chromosomes pair, cross over and separate in a large, step-by-step lab: play the whole division, step through it, explore crossing over, count chromosomes and test yourself.
         </p>
       </div>
 
