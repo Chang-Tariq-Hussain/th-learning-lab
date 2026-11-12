@@ -3,7 +3,7 @@
 import { Check, X, RotateCcw, ArrowUp, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { STAGES } from "../data/stages";
+import { STAGES as MEIOSIS_STAGES } from "../data/stages";
 import {
   arrangeCorrectCount,
   type ArrangeAction,
@@ -199,15 +199,22 @@ export function IdentifyPanel({ questions, index, feedback, nameChoice, score, d
 export interface ArrangePanelProps {
   state: ArrangeState;
   dispatch: (a: ArrangeAction) => void;
+  /** Stage cards (defaults to the nine meiosis stages). */
+  stages?: { label: string }[];
+  title?: string;
+  intro?: string;
+  solvedNote?: string;
+  hint?: string;
 }
 
-export function ArrangePanel({ state, dispatch }: ArrangePanelProps) {
+export function ArrangePanel({ state, dispatch, stages: stagesProp, title, intro, solvedNote, hint }: ArrangePanelProps) {
+  const STAGES: { label: string }[] = stagesProp ?? MEIOSIS_STAGES;
   const full = state.placed.length === STAGES.length;
   const correct = arrangeCorrectCount(state.placed);
   return (
     <div className={card} data-testid="arrange-panel">
-      <p className="font-mono text-label uppercase tracking-eyebrow text-subject-biology">Arrange the stages</p>
-      <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">Put the nine stages of meiosis in order, from the first to the last. Tap a card to place it; tap a placed card&apos;s arrows to move it.</p>
+      <p className="font-mono text-label uppercase tracking-eyebrow text-subject-biology">{title ?? "Arrange the stages"}</p>
+      <p className="mt-1 text-sm text-ink-soft dark:text-bone-soft">{intro ?? "Put the nine stages of meiosis in order, from the first to the last. Tap a card to place it; tap a placed card's arrows to move it."}</p>
 
       <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-ink-soft dark:text-bone-soft">Stages to place</p>
       <ul className="mt-1 flex min-h-11 flex-wrap gap-1.5" aria-label="Stages to place">
@@ -272,11 +279,11 @@ export function ArrangePanel({ state, dispatch }: ArrangePanelProps) {
       {state.checked ? (
         state.solved ? (
           <Verdict ok>
-            All nine stages are in the right order{state.attempts > 1 ? ` (after ${state.attempts} tries)` : ""}. Remember: DNA is copied once, in interphase. Meiosis I separates homologous chromosomes; meiosis II separates sister chromatids.
+            {state.solved && !solvedNote ? `All nine stages are in the right order${state.attempts > 1 ? ` (after ${state.attempts} tries)` : ""}. Remember: DNA is copied once, in interphase. Meiosis I separates homologous chromosomes; meiosis II separates sister chromatids.` : `All ${STAGES.length} stages are in the right order${state.attempts > 1 ? ` (after ${state.attempts} tries)` : ""}. ${solvedNote}`}
           </Verdict>
         ) : (
           <Verdict ok={false}>
-            {correct} of {STAGES.length} are in the right place. Hint: Interphase comes first, then all of meiosis I (prophase, metaphase, anaphase, telophase), then all of meiosis II in the same four-step pattern. Fix the cards marked with a cross and check again.
+            {correct} of {STAGES.length} are in the right place. {hint ?? "Hint: Interphase comes first, then all of meiosis I (prophase, metaphase, anaphase, telophase), then all of meiosis II in the same four-step pattern."} Fix the cards marked with a cross and check again.
           </Verdict>
         )
       ) : null}
@@ -289,14 +296,17 @@ export function ArrangePanel({ state, dispatch }: ArrangePanelProps) {
 export interface ChallengePanelProps {
   round: ChallengeRound;
   dispatch: (a: ChallengeAction) => void;
+  title?: string;
+  /** Extra content shown under the explanation once a question is answered (e.g. where the idea appears). */
+  renderExtra?: (questionId: string) => React.ReactNode;
 }
 
-export function ChallengePanel({ round, dispatch }: ChallengePanelProps) {
+export function ChallengePanel({ round, dispatch, title = "Meiosis challenge", renderExtra }: ChallengePanelProps) {
   if (round.finished) {
     const score = round.results.filter(Boolean).length;
     return (
       <div className={card} data-testid="challenge-panel">
-        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-biology">Meiosis challenge</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-biology">{title}</p>
         <p className="mt-2 font-display text-2xl font-medium text-ink dark:text-bone" data-testid="challenge-score">
           {score} / {round.questions.length}
         </p>
@@ -314,7 +324,7 @@ export function ChallengePanel({ round, dispatch }: ChallengePanelProps) {
   return (
     <div className={card} data-testid="challenge-panel">
       <div className="flex items-center justify-between">
-        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-biology">Meiosis challenge</p>
+        <p className="font-mono text-label uppercase tracking-eyebrow text-subject-biology">{title}</p>
         <p className="text-xs text-ink-soft dark:text-bone-soft">
           Question {round.index + 1} of {round.questions.length}
         </p>
@@ -349,6 +359,7 @@ export function ChallengePanel({ round, dispatch }: ChallengePanelProps) {
           <Verdict ok={round.picked === q.correct}>
             {round.picked !== q.correct && pickedOpt?.why ? <p className="mb-1">{pickedOpt.why}</p> : null}
             <p>{q.explanation}</p>
+            {renderExtra ? renderExtra(q.id) : null}
           </Verdict>
           <Button className="mt-3" onClick={() => dispatch({ type: "next" })} data-testid="challenge-next">
             {round.index + 1 >= round.questions.length ? "See score" : "Next question"}

@@ -17,6 +17,11 @@ type Listener = () => void;
  * tree around it only re-renders when the rounded beat or the playing flag changes.
  */
 export class BeatClock {
+  /** Number of beats this clock runs over (defaults to the meiosis lab's 16). */
+  readonly beatCount: number;
+  constructor(beatCount: number = BEAT_COUNT) {
+    this.beatCount = beatCount;
+  }
   private pos = 0;
   private target = 0;
   private playing = false;
@@ -112,7 +117,7 @@ export class BeatClock {
   /** Try to move the target one beat on (honours the Predict gate). Returns false if it could not. */
   private advance(): boolean {
     const next = Math.round(this.target) + 1;
-    if (next >= BEAT_COUNT) {
+    if (next >= this.beatCount) {
       this.playing = false;
       this.stepOnce = false;
       return false;
@@ -132,7 +137,7 @@ export class BeatClock {
   }
 
   private jump(to: number) {
-    this.setTarget(Math.min(BEAT_COUNT - 1, Math.max(0, to)));
+    this.setTarget(Math.min(this.beatCount - 1, Math.max(0, to)));
     if (this.reduced) this.pos = this.target;
     this.hold = 0;
     this.emit();
@@ -140,7 +145,7 @@ export class BeatClock {
   }
 
   play(stepOnly = false) {
-    if (Math.round(this.target) >= BEAT_COUNT - 1) return;
+    if (Math.round(this.target) >= this.beatCount - 1) return;
     this.playing = true;
     this.stepOnce = stepOnly;
     if (Math.abs(this.target - this.pos) < 1e-3) {
@@ -169,7 +174,7 @@ export class BeatClock {
   goTo(beat: number, opts: { ignoreGate?: boolean; immediate?: boolean } = {}) {
     this.playing = false;
     this.stepOnce = false;
-    let b = Math.min(BEAT_COUNT - 1, Math.max(0, beat));
+    let b = Math.min(this.beatCount - 1, Math.max(0, beat));
     let blocked = false;
     if (!opts.ignoreGate && this.gate) {
       // moving forward must not skip past an unanswered prediction
@@ -203,9 +208,9 @@ export class BeatClock {
   }
 }
 
-export function useBeatClock(reducedMotion: boolean, speed: Speed): BeatClock {
+export function useBeatClock(reducedMotion: boolean, speed: Speed, beatCount: number = BEAT_COUNT): BeatClock {
   const ref = useRef<BeatClock | null>(null);
-  if (!ref.current) ref.current = new BeatClock();
+  if (!ref.current) ref.current = new BeatClock(beatCount);
   const clock = ref.current;
   useEffect(() => clock.setReduced(reducedMotion), [clock, reducedMotion]);
   useEffect(() => clock.setSpeed(speed), [clock, speed]);

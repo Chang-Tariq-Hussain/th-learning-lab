@@ -16,6 +16,7 @@
     "db:create-admin": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/create-super-admin.ts",
     "content:publish": "tsx --tsconfig scripts/tsconfig.health.json scripts/db/content-publish.ts",
     "verify:atom": "tsx --tsconfig scripts/tsconfig.health.json scripts/verify-atom-model.ts",
+    "verify:mitosis": "tsx --tsconfig scripts/tsconfig.health.json scripts/verify-mitosis.ts",
     "verify:meiosis": "tsx --tsconfig scripts/tsconfig.health.json scripts/verify-meiosis.ts",
     "verify:cell": "tsx --tsconfig scripts/tsconfig.health.json scripts/verify-cell-explorer.ts",
     "verify:contrast": "tsx --tsconfig scripts/tsconfig.health.json scripts/contrast-audit.ts",

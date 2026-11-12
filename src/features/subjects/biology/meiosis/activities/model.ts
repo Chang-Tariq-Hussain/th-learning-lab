@@ -256,6 +256,8 @@ export function shuffled<T>(items: readonly T[], seed: number): T[] {
 
 export interface ArrangeState {
   seed: number;
+  /** Number of stage cards (defaults to the nine meiosis stages). */
+  count?: number;
   pool: number[];
   placed: number[];
   checked: boolean;
@@ -263,11 +265,12 @@ export interface ArrangeState {
   solved: boolean;
 }
 
-export function newArrange(seed: number): ArrangeState {
-  let pool = shuffled(STAGES.map((_, i) => i), seed);
+export function newArrange(seed: number, count: number = STAGES.length): ArrangeState {
+  const idx = Array.from({ length: count }, (_, i) => i);
+  let pool = shuffled(idx, seed);
   // never start already solved
   if (pool.every((v, i) => v === i)) pool = shuffled(pool, seed + 1);
-  return { seed, pool, placed: [], checked: false, attempts: 0, solved: false };
+  return { seed, count, pool, placed: [], checked: false, attempts: 0, solved: false };
 }
 
 export type ArrangeAction =
@@ -295,15 +298,15 @@ export function arrangeReducer(s: ArrangeState, a: ArrangeAction): ArrangeState 
       return { ...s, placed, checked: false };
     }
     case "check": {
-      if (s.placed.length !== STAGES.length) return s;
+      if (s.placed.length !== (s.count ?? STAGES.length)) return s;
       const solved = s.placed.every((v, i) => v === i);
       return { ...s, checked: true, attempts: s.attempts + 1, solved };
     }
     case "retry":
       // keep nothing: return every card to the pool so the learner can try again
-      return { ...s, pool: shuffled(STAGES.map((_, i) => i), s.seed + s.attempts + 1), placed: [], checked: false, solved: false };
+      return { ...s, pool: shuffled(Array.from({ length: s.count ?? STAGES.length }, (_, i) => i), s.seed + s.attempts + 1), placed: [], checked: false, solved: false };
     case "reshuffle":
-      return { ...newArrange(s.seed + 17), attempts: 0 };
+      return { ...newArrange(s.seed + 17, s.count ?? STAGES.length), attempts: 0 };
   }
 }
 

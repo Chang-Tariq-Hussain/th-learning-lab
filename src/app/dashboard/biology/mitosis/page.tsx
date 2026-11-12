@@ -9,7 +9,7 @@ const SIMULATION_HREF = "/dashboard/biology/mitosis";
 
 export const metadata: Metadata = {
   title: "Mitosis",
-  description: "Watch one parent cell divide into two daughter cells through the stages of mitosis.",
+  description: "Follow a dividing cell through every stage of mitosis in a large, zoomable lab: chromosomes, sister chromatids, spindle, counting and a comparison with meiosis.",
 };
 
 export default function MitosisPage() {
@@ -35,7 +35,7 @@ export default function MitosisPage() {
           Mitosis: How One Cell Becomes Two
         </h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
-          Press Start and watch a cell move through the stages of mitosis, or step through them one at a time.
+          Watch chromosomes condense, line up, separate and move into two new nuclei in a large lab: play the whole division, step through it, zoom in, count chromosomes and test yourself.
         </p>
       </div>
 

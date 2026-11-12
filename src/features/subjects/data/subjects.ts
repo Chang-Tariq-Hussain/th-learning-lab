@@ -418,7 +418,7 @@ export const subjects: Subject[] = [
             slug: "mitosis",
             title: "Mitosis",
             description:
-              "Watch one parent cell divide into two daughter cells through the stages of mitosis.",
+              "Follow a dividing cell through every stage of mitosis in a large, zoomable lab: chromosomes, sister chromatids, spindle, counting and a comparison with meiosis.",
             href: "/dashboard/biology/mitosis",
           },
           {

@@ -2,16 +2,14 @@ import type { TopicContent } from "../types";
 
 /**
  * Mitosis — Biology GLE Batch 3 ("Cell Division"), topic 1 of 2.
- * Reuses the existing `Mitosis` simulation
- * (`@/features/subjects/biology/mitosis`) exactly as-is: it already
- * models the correct five-stage sequence (Prophase → Metaphase →
- * Anaphase → Telophase → Cytokinesis) plus Interphase as a clearly
- * separate, earlier stage rather than a stage of mitosis itself, with
- * Start/Pause/Next Stage/Previous Stage/Reset controls, a per-stage
- * "What happens?" explanation panel, click-to-inspect structures
- * (chromosome, spindle fibers, centrosome, nucleus), and a final
- * "one parent cell → two daughter cells" summary — so no simulation
- * code changes were needed.
+ * Wraps the upgraded `Mitosis` lab (`@/features/subjects/biology/mitosis`),
+ * the companion to the Meiosis lab: a large zoomable SVG cell with a
+ * seven-step navigator (Interphase, Prophase, Prometaphase, Metaphase,
+ * Anaphase, Telophase, Cytokinesis), play / step / speed controls, labels
+ * and spindle toggles, a Chromosome explorer, a chromosome-counting lab,
+ * Explore / Predict / Identify modes, Arrange-the-stages and a Mitosis
+ * Challenge, an animal / plant cytokinesis switch, and a Mitosis-vs-Meiosis
+ * comparison that links to the Meiosis lab.
  */
 export const biologyMitosisContent: TopicContent = {
   subjectSlug: "biology",
@@ -31,8 +29,9 @@ export const biologyMitosisContent: TopicContent = {
       "State what mitosis produces: two genetically identical daughter cells.",
       "Explain that DNA replication happens during interphase, before mitosis begins — not during mitosis itself.",
       "Describe a sister chromatid and how it relates to a duplicated chromosome.",
-      "List the five stages of mitosis in the correct order: Prophase, Metaphase, Anaphase, Telophase, Cytokinesis.",
-      "Describe what happens to chromosomes at each of those five stages.",
+      "List the stages in the correct order: Interphase (preparation), then the five phases of mitosis (Prophase, Prometaphase, Metaphase, Anaphase, Telophase), then Cytokinesis.",
+      "Describe what happens to the chromosomes at each stage, and explain that a duplicated chromosome (two sister chromatids) counts as one chromosome.",
+      "Explain that mitosis keeps the chromosome number the same, and that cytokinesis (division of the cytoplasm) is a separate step from mitosis (division of the nucleus).",
     ],
     concepts: [
       {
@@ -51,9 +50,14 @@ export const biologyMitosisContent: TopicContent = {
           "Once DNA replicates, each chromosome consists of two identical copies — sister chromatids — joined together at a point called the centromere. They stay joined through prophase and metaphase, and are only pulled apart from each other during anaphase.",
       },
       {
-        term: "The five stages, in order",
+        term: "The stages, in order",
         explanation:
-          "Prophase (chromosomes condense and become visible), Metaphase (chromosomes line up along the cell's middle), Anaphase (sister chromatids separate and move to opposite poles), Telophase (two new nuclei form around each set of chromosomes), and Cytokinesis (the cell physically splits into two).",
+          "Prophase (chromosomes condense and become visible; the spindle begins to form), Prometaphase (the nuclear envelope breaks down and spindle fibers attach to the kinetochores), Metaphase (chromosomes line up one by one along the cell's middle), Anaphase (sister chromatids separate, and each becomes a chromosome moving to a pole), Telophase (two new nuclei form around each set of chromosomes), and Cytokinesis (the cytoplasm divides into two cells: a cleavage furrow in animal cells, a cell plate in plant cells).",
+      },
+      {
+        term: "Chromosome, chromatid and DNA counts",
+        explanation:
+          "A chromosome is counted by its centromere. DNA replication doubles the DNA and gives every chromosome two sister chromatids, but it does not change the number of chromosomes. When the centromeres split in anaphase each chromatid becomes a chromosome, so the cell briefly holds twice as many. After cytokinesis each daughter cell has the same chromosome number as the parent.",
       },
       {
         term: "The result: two identical daughter cells",
@@ -90,6 +94,18 @@ export const biologyMitosisContent: TopicContent = {
           "Mitosis maintains the chromosome number — each daughter cell ends up with exactly the same number of chromosomes as the parent cell. Reducing chromosome number by half is specific to meiosis.",
       },
       {
+        id: "misconception-replication-doubles-chromosomes",
+        misconception: "When DNA is copied, the number of chromosomes doubles.",
+        correction:
+          "Copying doubles the DNA, not the number of chromosomes. Each chromosome now has two sister chromatids joined at one centromere, and it still counts as one chromosome. The number only doubles momentarily in anaphase, when the centromeres split and each chromatid is counted as a chromosome.",
+      },
+      {
+        id: "misconception-homologs-pair-in-mitosis",
+        misconception: "Homologous chromosomes pair up in mitosis, as they do in meiosis.",
+        correction:
+          "In mitosis each chromosome lines up on its own at the metaphase plate and homologs are not paired. Pairing (and crossing over) happens in prophase I of meiosis.",
+      },
+      {
         id: "misconception-chromatids-separate-metaphase",
         misconception: "Sister chromatids separate from each other during metaphase, once they're lined up.",
         correction:
@@ -120,7 +136,7 @@ export const biologyMitosisContent: TopicContent = {
       },
       {
         id: "biology-mitosis-predict-002",
-        scenario: "The simulation moves from Prophase to Metaphase.",
+        scenario: "The simulation moves from Prometaphase to Metaphase.",
         question: "What will the chromosomes do during Metaphase?",
         options: [
           { id: "line-up-middle", label: "Line up along the middle of the cell" },
@@ -168,17 +184,19 @@ export const biologyMitosisContent: TopicContent = {
   // -------------------------------------------------------------
   explore: {
     howToUse: [
-      "Press Start to watch a cell move automatically through all six stages (Interphase through Cytokinesis), or use Next Stage / Previous Stage to step through them one at a time.",
-      "Read the 'Current Stage' and 'What happens?' panel each time the stage changes.",
-      "Click on chromosomes, spindle fibers, the centrosome, or the nucleus in the scene to open the structure info panel and read what each one is and does.",
+      "Press Start to watch the cell move through all seven stages (Interphase through Cytokinesis), or use Step forward, Next stage and Step-by-step mode to go one step at a time. Change the speed if you like.",
+      "Read the stage explanation each time the stage changes. Switch the Labels and Spindle displays on and off, and zoom in with the zoom buttons (drag to pan).",
+      "Click on chromosomes, spindle fibers, centrosomes, kinetochores or the nucleus in the picture to read what each one is and does. Try the Plant cell option to see a cell plate instead of a cleavage furrow.",
+      "Open the Chromosome explorer and Counting tabs to see how a duplicated chromosome separates and how chromosome, chromatid and DNA counts change.",
       "Watch specifically what the chromosomes are doing at each stage — condensing, aligning, separating, or being enclosed in new nuclei.",
-      "Reach Cytokinesis and read the Final Result card describing the two daughter cells.",
-      "Use Reset to return to Interphase and try predicting each stage's outcome again before it happens.",
+      "Reach Cytokinesis and read the summary of the two daughter cells. Use the Predict tab to be asked what happens next before each key event, or the Identify tab to find chromatids, centromeres, kinetochores and spindle fibers.",
+      "Use Restart to return to Interphase, then try Practice (Arrange the stages and the Mitosis Challenge). The Mitosis vs meiosis tab compares the two divisions and opens the Meiosis lab.",
     ],
     tryThis: [
-      "Step through Prophase → Metaphase → Anaphase → Telophase one click at a time, narrating in your own words what changes about the chromosomes at each step.",
-      "Click each of the four inspectable structures (chromosome, spindle fibers, centrosome, nucleus) at least once and note one fact about each.",
-      "Predict, before pressing Next Stage from Telophase, exactly what Cytokinesis will look like — then check.",
+      "Step through Prophase → Prometaphase → Metaphase → Anaphase → Telophase one click at a time, narrating in your own words what changes about the chromosomes at each step.",
+      "Click a chromosome, a spindle fiber, a centrosome, a kinetochore and the nucleus at least once and note one fact about each.",
+      "Choose 2n = 6 in the Counting tab and write down the chromosomes, chromatids and DNA at every step; find the one step where the chromosome count briefly doubles.",
+      "Predict, before stepping on from Telophase, exactly what Cytokinesis will look like in an animal cell and in a plant cell, then check with the Cell switch.",
     ],
   },
 
@@ -285,7 +303,7 @@ export const biologyMitosisContent: TopicContent = {
           correctOptionId: "a",
         },
         explanation: "Telophase follows anaphase: once chromosomes reach the poles, new nuclear envelopes form around each set.",
-        hints: ["What comes right after Anaphase in the five-stage sequence?"],
+        hints: ["What comes right after Anaphase in the sequence of mitosis?"],
       },
       {
         id: "biology-mitosis-challenge-004",

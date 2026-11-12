@@ -20,7 +20,9 @@ export interface PlaybackControlsProps {
   onStepMode: () => void;
   onSpeed: (s: Speed) => void;
   onLabels: () => void;
-  onNewCell: () => void;
+  onNewCell?: () => void;
+  /** Extra buttons appended to the second row (e.g. zoom controls). */
+  extra?: React.ReactNode;
 }
 
 const iconBtn = "px-3 sm:px-3.5";
@@ -79,10 +81,13 @@ export function PlaybackControls(p: PlaybackControlsProps) {
           <Tag className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
           Labels
         </Button>
+{p.onNewCell ? (
         <Button size="sm" variant="ghost" onClick={p.onNewCell} disabled={off} data-testid="new-cell" title="Run a different random meiosis">
           <Shuffle className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
           New cell
         </Button>
+        ) : null}
+        {p.extra}
       </div>
     </div>
   );

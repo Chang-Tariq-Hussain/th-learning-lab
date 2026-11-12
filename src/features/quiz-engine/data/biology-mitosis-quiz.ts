@@ -5,8 +5,9 @@ import type { QuizMeta, QuizQuestion } from "../types";
  * Batch 3, "Cell Division"). No pre-existing Mitosis quiz bank
  * existed before this topic, so this bank is entirely new — nothing
  * duplicated from anywhere else. Scoped to the purpose of mitosis,
- * chromosome/sister-chromatid behavior, the five-stage sequence
- * (Prophase → Metaphase → Anaphase → Telophase → Cytokinesis), why
+ * chromosome/sister-chromatid behavior, the stage sequence
+ * (Interphase, then Prophase → Prometaphase → Metaphase → Anaphase →
+ * Telophase, then Cytokinesis), why
  * interphase is not itself a stage of mitosis, and common
  * misconceptions.
  */
@@ -80,7 +81,7 @@ const questions: QuizQuestion[] = [
     question: "Is interphase considered one of the stages of mitosis?",
     options: [
       "No — interphase happens before mitosis begins, as the cell prepares for division",
-      "Yes — it's the first of the five stages of mitosis",
+      "Yes — it's the first phase of mitosis",
       "Yes — it's the final stage, after cytokinesis",
       "Interphase and mitosis are the same process, just different names",
     ],
@@ -433,15 +434,15 @@ const questions: QuizQuestion[] = [
   {
     id: "biology-mitosis-028",
     type: "multiple-choice",
-    question: "Which of the following correctly lists all five stages of mitosis (excluding interphase)?",
+    question: "Which of the following lists the phases of mitosis (nuclear division) in the correct order, with cytokinesis after them?",
     options: [
-      "Prophase, Metaphase, Anaphase, Telophase, Cytokinesis",
-      "Interphase, Prophase, Metaphase, Anaphase, Telophase",
-      "Prophase, Interphase, Metaphase, Anaphase, Telophase",
-      "Prophase, Metaphase, Telophase, Anaphase, Cytokinesis",
+      "Prophase, Prometaphase, Metaphase, Anaphase, Telophase, then Cytokinesis",
+      "Interphase, Prophase, Metaphase, Anaphase, Telophase, then Cytokinesis",
+      "Prophase, Metaphase, Prometaphase, Anaphase, Telophase, then Cytokinesis",
+      "Prophase, Prometaphase, Metaphase, Telophase, Anaphase, then Cytokinesis",
     ],
-    correctAnswer: "Prophase, Metaphase, Anaphase, Telophase, Cytokinesis",
-    explanation: "The five stages of mitosis, in order, are Prophase, Metaphase, Anaphase, Telophase, and Cytokinesis. Interphase happens before mitosis and isn't one of its stages.",
+    correctAnswer: "Prophase, Prometaphase, Metaphase, Anaphase, Telophase, then Cytokinesis",
+    explanation: "Mitosis proceeds Prophase, Prometaphase, Metaphase, Anaphase, Telophase. Cytokinesis, the division of the cytoplasm, follows (and overlaps with) telophase. Interphase happens before mitosis and isn't one of its phases.",
     difficulty: "medium",
     subject: "biology",
     topic: "mitosis",
@@ -468,9 +469,9 @@ const questions: QuizQuestion[] = [
     id: "biology-mitosis-030",
     type: "multiple-choice",
     question: "A cell is observed with condensed chromosomes visible but not yet aligned in the middle of the cell, and the nuclear envelope has just broken down. What stage is this most likely?",
-    options: ["Prophase", "Metaphase", "Anaphase", "Telophase"],
-    correctAnswer: "Prophase",
-    explanation: "Condensing chromosomes and a breaking-down nuclear envelope, before alignment at the cell's middle, describes prophase — the stage right before metaphase.",
+    options: ["Prophase", "Prometaphase", "Metaphase", "Anaphase"],
+    correctAnswer: "Prometaphase",
+    explanation: "Condensed chromosomes with a nuclear envelope that has broken down, but not yet lined up at the cell's middle, describes prometaphase — the stage between prophase and metaphase, when spindle fibers attach to the kinetochores.",
     difficulty: "hard",
     subject: "biology",
     topic: "mitosis",
@@ -486,7 +487,7 @@ export const biologyMitosisQuiz: QuizMeta = {
   topicLabel: "Cell Division",
   colorToken: "biology",
   backHref: "/dashboard/biology/mitosis",
-  description: "Test your understanding of mitosis, chromosome and sister chromatid behavior, and the five-stage sequence from prophase through cytokinesis.",
+  description: "Test your understanding of mitosis, chromosome and sister chromatid behavior, and the sequence of stages from interphase through prophase, prometaphase, metaphase, anaphase, telophase and cytokinesis.",
   difficulty: "medium",
   estimatedTime: 12,
   questions,
