@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
-import { CellularRespiration } from "@/features/subjects/biology/cellular-respiration";
+import { CellularEnergy } from "@/features/subjects/biology/cellular-energy";
 import { TopicExperience, getTopicContent } from "@/features/learning";
 
 const SIMULATION_HREF = "/dashboard/biology/cellular-energy";
 
 export const metadata: Metadata = {
   title: "Introduction to Cellular Energy",
-  description: "Why cells need energy, where it comes from, and what ATP does — predict, observe, and explain.",
+  description: "How cells obtain, transform and use energy: nutrients, mitochondria, ATP, catabolism and anabolism, with an energy-flow challenge.",
 };
 
 export default function CellularEnergyPage() {
@@ -35,19 +35,17 @@ export default function CellularEnergyPage() {
           Introduction to Cellular Energy
         </h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
-          Every cell needs energy to do its work. See where that energy
-          comes from, and what ATP does with it, using the same cell scene
-          from the Cellular Respiration simulation.
+          Follow energy from nutrients through mitochondria to ATP and cellular work, and compare catabolism with anabolism, in one animated cell.
         </p>
       </div>
 
       {content ? (
-        <TopicExperience content={content} simulation={<CellularRespiration />} />
+        <TopicExperience content={content} simulation={<CellularEnergy />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page
         // from 404ing outright.
-        <CellularRespiration />
+        <CellularEnergy />
       )}
     </Container>
   );

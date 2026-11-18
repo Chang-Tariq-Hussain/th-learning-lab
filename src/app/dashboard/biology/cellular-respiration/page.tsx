@@ -9,7 +9,7 @@ const SIMULATION_HREF = "/dashboard/biology/cellular-respiration";
 
 export const metadata: Metadata = {
   title: "Cellular Respiration",
-  description: "Watch a cell use glucose and oxygen to release energy, carbon dioxide, and water — predict, run, and explain the process.",
+  description: "A detailed lab of all five stages of cellular respiration with zoom levels, proton-flow control, ATP yield explorer and aerobic vs fermentation.",
 };
 
 export default function CellularRespirationPage() {
@@ -35,9 +35,7 @@ export default function CellularRespirationPage() {
           Cellular Respiration
         </h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
-          How a cell uses glucose and oxygen to release usable energy,
-          producing ATP, carbon dioxide, and water. Predict what will
-          happen, then run the simulation to check yourself.
+          Follow glucose-derived carbon, electrons and energy through glycolysis, pyruvate oxidation, the citric acid cycle, the electron transport chain and ATP synthase, from the whole cell down to the molecule.
         </p>
       </div>
 

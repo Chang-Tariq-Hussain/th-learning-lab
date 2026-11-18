@@ -40,10 +40,10 @@ import type { LearningPath } from "../types";
  *   5. ATP & Energy Release
  *   6. Photosynthesis vs Cellular Respiration
  *
- * Topic 1 reuses the Cellular Respiration simulation purely for its
+ * Topic 1 (Introduction to Cellular Energy) now has its own dedicated lab; it formerly reused the Cellular Respiration simulation for its
  * energy-release visual, kept at an introductory level; Topic 4 gives
  * that same simulation its full, dedicated lesson; Topic 5 revisits
- * it again, focused specifically on the Energy bar / ATP step.
+ * it again, focused specifically on the Energy bar / ATP step. (Superseded: ATP & Energy Release, Introduction to Cellular Energy and Cellular Respiration now each have a dedicated laboratory.)
  * Topics 2–3 reuse the Photosynthesis simulation, with Topic 3
  * additionally using its new (additive, opt-in) environmental-factor
  * controls. Topic 6 uses a new, deliberately lightweight comparison

@@ -1,24 +1,10 @@
 import type { TopicContent } from "../types";
 
 /**
- * Cellular Respiration — Biology Batch 2 ("Cellular Energy & Life
- * Processes"), topic 4 of 6 (see
- * `@/features/learning-path/data/biology-cell-foundations`).
- *
- * Reuses the existing Cellular Respiration simulation
- * (`@/features/subjects/biology/cellular-respiration`) — the same
- * component Topic 1 (Introduction to Cellular Energy) already reused
- * for an introductory glimpse. This topic is where that simulation
- * gets its full, dedicated lesson: the complete glucose + oxygen →
- * ATP + CO2 + H2O story, the balanced equation, and the mitochondria
- * connection back to Batch 1 — still without glycolysis/Krebs-cycle
- * detail, matching the simulation's own doc comment ("no glycolysis/
- * Krebs-cycle detail"). No new simulation was built for this topic.
- *
- * `practice.quizId` points at the existing
- * `biology-cellular-respiration` quiz bank (already registered from
- * an earlier pass), extended from 5 to 15 questions for this topic
- * rather than creating a second, duplicate bank for the same simulation.
+ * Cellular Respiration — Biology Batch 2. Uses the dedicated Cellular Respiration laboratory
+ * (`@/features/subjects/biology/cellular-respiration`): five stages with zoom levels, a citric-acid-cycle explorer,
+ * electron transport and chemiosmosis, ATP yield explorer, overall equation with carbon accounting, aerobic vs
+ * fermentation and practice. `practice.quizId` points at the existing dedicated bank.
  */
 export const biologyCellularRespirationContent: TopicContent = {
   subjectSlug: "biology",
@@ -105,95 +91,89 @@ export const biologyCellularRespirationContent: TopicContent = {
   },
 
   // -------------------------------------------------------------
-  // PREDICT
+  // PREDICT / EXPLORE / EXPLAIN
   // -------------------------------------------------------------
   predict: {
-    intro: "Predict first, then confirm by running the simulation below.",
+    intro: "Commit to a prediction, then step through the laboratory above to check it.",
     scenarios: [
       {
         id: "biology-cellular-respiration-predict-001",
-        scenario: "A cell has plenty of glucose available, but no oxygen at all.",
-        question: "Can this cell carry out aerobic cellular respiration?",
+        scenario: "Glycolysis is about to begin in the cytosol.",
+        question: "What is the net ATP yield per glucose?",
         options: [
-          { id: "no-oxygen-required", label: "No — aerobic respiration specifically requires oxygen to proceed" },
-          { id: "yes-glucose-enough", label: "Yes — glucose alone is enough, oxygen isn't actually needed" },
+          { id: "two", label: "2 ATP (4 made − 2 invested)" },
+          { id: "thirty", label: "30 ATP" },
+          { id: "zero", label: "0 ATP" },
         ],
-        actualResultOptionId: "no-oxygen-required",
-        explanation: "This process is called \"aerobic\" precisely because it requires oxygen — without it, a cell can't carry it out, no matter how much glucose is available.",
-        hint: "What does the word \"aerobic\" itself tell you this process needs?",
+        actualResultOptionId: "two",
+        explanation: "Glycolysis invests 2 ATP and makes 4: net 2 ATP, 2 NADH and 2 pyruvate.",
+        hint: "Invest first, then pay off.",
       },
       {
         id: "biology-cellular-respiration-predict-002",
-        scenario: "You're about to press Start on the Cellular Respiration simulation. Glucose and oxygen are positioned near the cell, and the Energy bar reads empty.",
-        question: "What will happen once glucose and oxygen reach the mitochondrion?",
+        scenario: "Pyruvate enters the mitochondrial matrix and is oxidised to acetyl-CoA.",
+        question: "What is released?",
         options: [
-          { id: "mitochondrion-highlights-energy-fills", label: "The mitochondrion highlights, and the Energy bar fills" },
-          { id: "nothing-visible", label: "Nothing visible happens at that point" },
-          { id: "glucose-and-oxygen-vanish", label: "Glucose and oxygen simply vanish with no further effect" },
+          { id: "co2-nadh", label: "CO₂ and NADH (one of each per pyruvate)" },
+          { id: "o2", label: "O₂" },
+          { id: "atp-30", label: "About 30 ATP" },
         ],
-        actualResultOptionId: "mitochondrion-highlights-energy-fills",
-        explanation: "As glucose and oxygen reach the mitochondrion, it highlights to show respiration taking place, and the Energy bar fills to represent the cell releasing usable energy.",
-        hint: "What usually happens at the moment two inputs reach the \"reaction\" step in these simulations?",
+        actualResultOptionId: "co2-nadh",
+        explanation: "Each pyruvate loses a carbon as CO₂ and reduces NAD⁺ to NADH.",
+        hint: "Which carbon-containing gas appears?",
       },
       {
         id: "biology-cellular-respiration-predict-003",
-        scenario: "After the mitochondrion highlights and the Energy bar fills, the simulation continues.",
-        question: "What two substances will appear next, as byproducts?",
+        scenario: "Electrons reach the end of the electron transport chain.",
+        question: "What accepts them?",
         options: [
-          { id: "co2-and-water", label: "Carbon dioxide and water" },
-          { id: "more-glucose-and-oxygen", label: "More glucose and oxygen" },
-          { id: "atp-and-adp", label: "ATP and ADP, shown as separate visible particles" },
+          { id: "oxygen", label: "Oxygen, forming water" },
+          { id: "glucose", label: "Glucose" },
+          { id: "co2", label: "CO₂" },
         ],
-        actualResultOptionId: "co2-and-water",
-        explanation: "Carbon dioxide and water are cellular respiration's byproducts, released once the usable energy has been captured.",
-        hint: "What does the balanced equation list on the output side, alongside ATP/energy?",
+        actualResultOptionId: "oxygen",
+        explanation: "Oxygen is the final electron acceptor. Without it the chain stops and the gradient cannot be maintained.",
+        hint: "Which gas does an aerobic cell need?",
       },
     ],
   },
-
-  // -------------------------------------------------------------
-  // EXPLORE
-  // -------------------------------------------------------------
   explore: {
     howToUse: [
-      "Before pressing anything, notice where glucose and oxygen start, and that the Energy bar reads empty.",
-      "Press Start and watch glucose and oxygen travel toward the mitochondrion.",
-      "Watch the mitochondrion highlight, and watch the Energy bar fill as usable energy is released.",
-      "Watch carbon dioxide and water appear and leave the cell afterward.",
-      "Read the connection note comparing this process to photosynthesis.",
+      "Press Play or use the stage list to go through glycolysis, pyruvate oxidation, the citric acid cycle, the electron transport chain and chemiosmosis.",
+      "Use Whole cell, Mitochondrion and Molecular zoom to see where each stage happens; click a stage badge on the mitochondrion.",
+      "In the citric acid cycle, select intermediates and switch between Per turn and Per glucose.",
+      "In Chemiosmosis choose Take control, change the proton flow and remove oxygen to see what happens to the gradient and ATP.",
+      "Open ATP yield, Overall equation and Aerobic vs no oxygen to compare totals, carbon accounting and fermentation.",
     ],
     tryThis: [
-      "🔬 Cellular Respiration Mission — identify each of these as you watch: (1) What molecule provides stored chemical energy? (2) What gas is required? (3) Where is the process strongly associated within the cell? (4) What usable energy carrier is produced? (5) Which waste products are formed?",
-      "Before pressing Start, predict what the Energy bar will do.",
-      "After it finishes, say the full equation out loud in your own words — what went in, what came out.",
+      "Use the Carbon overlay to follow all 6 carbons of glucose to CO₂.",
+      "Switch Predict mode on and answer before each key step.",
+      "Change the shuttle system in ATP yield and explain why the total changes between 30 and 32.",
     ],
   },
-
-  // -------------------------------------------------------------
-  // EXPLAIN
-  // -------------------------------------------------------------
   explain: {
     questions: [
       {
         id: "biology-cellular-respiration-explain-001",
-        question: "Why is oxygen specifically necessary for this process, and not just helpful?",
+        question: "Why is oxygen necessary for the full process?",
         answer:
-          "This is aerobic respiration, defined by requiring oxygen. Without it, the chemical steps that release glucose's energy this way can't proceed — a cell would have to fall back on separate, much less efficient pathways instead.",
+          "Oxygen is the final electron acceptor of the electron transport chain. Without it the chain backs up, NADH and FADH₂ are not recycled and oxidative phosphorylation stops.",
       },
       {
         id: "biology-cellular-respiration-explain-002",
-        question: "Why does the topic say the mitochondrion is 'strongly associated with' respiration, rather than simply 'where respiration happens'?",
+        question: "Why is the ATP yield given as 30–32 rather than an exact number?",
         answer:
-          "It's scientifically more careful: the mitochondrion is central to cellular respiration and a fair shorthand for where it happens, but not every single step of the process occurs exclusively inside it.",
+          "The yield depends on how glycolytic NADH enters mitochondria, proton leak and the cost of moving ADP, Pi and ATP. 30–32 per glucose is a commonly taught estimate, not a constant.",
       },
       {
         id: "biology-cellular-respiration-explain-003",
-        question: "How does cellular respiration connect back to Batch 1's Cell Organelles topic?",
+        question: "How is fermentation different from anaerobic respiration?",
         answer:
-          "Cell Organelles introduced the mitochondrion as a structure; this topic explains its function — why that particular organelle's structure makes it so central to releasing usable energy from glucose. Structure enabling function, the same idea Batch 1 built toward.",
+          "Fermentation regenerates NAD⁺ without an electron transport chain, so glycolysis can continue (2 ATP per glucose). Anaerobic respiration uses an electron transport chain with a final acceptor other than oxygen.",
       },
     ],
   },
+
 
   // -------------------------------------------------------------
   // PRACTICE
@@ -203,68 +183,83 @@ export const biologyCellularRespirationContent: TopicContent = {
   },
 
   // -------------------------------------------------------------
-  // CHALLENGE — Predict → Observe → Explain mission
+  // CHALLENGE
   // -------------------------------------------------------------
   challenge: {
     intro:
-      "Run the simulation above, then answer each question. Use the hints if you get stuck.",
+      "Use the laboratory above to answer each question.",
     scenarios: [
       {
         id: "biology-cellular-respiration-challenge-001",
-        title: "Identify the Inputs",
-        scenario: "Before pressing Start, look at what's positioned near the cell, ready to travel toward the mitochondrion.",
-        objective: "Identify the two substances the cell is about to use.",
-        tools: [{ id: "cellular-respiration-scene-inputs", label: "Cell scene, before pressing Start" }],
-        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
+        title: "Carbon accounting",
+        scenario: "Follow the carbon overlay from glucose through all stages.",
+        objective: "How do all 6 carbons of glucose leave?",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
         answer: {
           mode: "choice",
           options: [
-            { id: "glucose-oxygen-inputs", label: "Glucose and oxygen" },
-            { id: "co2-water-inputs", label: "Carbon dioxide and water" },
-            { id: "atp-adp-inputs", label: "ATP and ADP" },
+            { id: "six-co2", label: "As 6 CO₂: 2 in pyruvate oxidation and 4 in the citric acid cycle" },
+            { id: "water", label: "As water" },
+            { id: "atp", label: "As ATP" },
           ],
-          correctOptionId: "glucose-oxygen-inputs",
+          correctOptionId: "six-co2",
         },
-        explanation: "Glucose (stored food energy) and oxygen are cellular respiration's two inputs.",
-        hints: ["Which two substances are shown entering the cell, before anything is produced?"],
+        explanation: "2 CO₂ leave in pyruvate oxidation and 2 per turn × 2 turns in the cycle.",
+        hints: ["Count the CO₂ chips in the carbon tracker."],
       },
       {
         id: "biology-cellular-respiration-challenge-002",
-        title: "Observe the Mitochondrion",
-        scenario: "Press Start and watch what happens once glucose and oxygen reach the mitochondrion.",
-        objective: "Identify what the mitochondrion's highlight, together with the filling Energy bar, represents.",
-        tools: [{ id: "cellular-respiration-mitochondrion", label: "Mitochondrion, during the reaction step" }],
-        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
+        title: "Citric acid cycle yield",
+        scenario: "Switch the cycle to Per glucose.",
+        objective: "What does the cycle produce per glucose?",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
         answer: {
           mode: "choice",
           options: [
-            { id: "respiration-releasing-energy", label: "Cellular respiration taking place, releasing usable energy" },
-            { id: "unrelated-highlight", label: "A highlight unrelated to energy or respiration" },
-            { id: "photosynthesis-occurring", label: "Photosynthesis, occurring inside the mitochondrion" },
+            { id: "per-glucose", label: "4 CO₂, 6 NADH, 2 FADH₂, 2 ATP" },
+            { id: "per-turn", label: "2 CO₂, 3 NADH, 1 FADH₂, 1 ATP" },
+            { id: "none", label: "Nothing" },
           ],
-          correctOptionId: "respiration-releasing-energy",
+          correctOptionId: "per-glucose",
         },
-        explanation: "The mitochondrion highlighting represents cellular respiration actively taking place there, releasing usable energy from glucose.",
-        hints: ["What process is this simulation named after, and what organelle is it strongly associated with?"],
+        explanation: "The cycle turns twice per glucose; the per-turn values are half these.",
+        hints: ["Check the unit selector."],
       },
       {
         id: "biology-cellular-respiration-challenge-003",
-        title: "Identify the Waste Products",
-        scenario: "Continue watching the simulation after the Energy bar fills.",
-        objective: "Identify the two substances released as the process's byproducts.",
-        tools: [{ id: "cellular-respiration-byproducts", label: "Cell scene, after the reaction step" }],
-        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
+        title: "Proton pumping",
+        scenario: "In the electron transport chain, compare Complex I and Complex II.",
+        objective: "Which complex does not pump protons?",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
         answer: {
           mode: "choice",
           options: [
-            { id: "co2-water-byproducts", label: "Carbon dioxide and water" },
-            { id: "glucose-oxygen-byproducts", label: "Glucose and oxygen" },
-            { id: "atp-byproduct", label: "ATP, released as a waste product" },
+            { id: "complex-ii", label: "Complex II" },
+            { id: "complex-i", label: "Complex I" },
+            { id: "complex-iv", label: "Complex IV" },
           ],
-          correctOptionId: "co2-water-byproducts",
+          correctOptionId: "complex-ii",
         },
-        explanation: "Carbon dioxide and water are the byproducts released once the usable energy has been captured — ATP is the useful product, not a waste product.",
-        hints: ["Which two substances does the balanced equation list on the output side, alongside ATP/energy?"],
+        explanation: "Complex II passes electrons to ubiquinone without pumping, so FADH₂ supports fewer protons pumped than NADH.",
+        hints: ["Read the labels under each complex."],
+      },
+      {
+        id: "biology-cellular-respiration-challenge-004",
+        title: "No oxygen",
+        scenario: "In Chemiosmosis, switch to Take control and remove oxygen.",
+        objective: "What happens to ATP production over time?",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
+        answer: {
+          mode: "choice",
+          options: [
+            { id: "falls", label: "It stops as the gradient is used up and not rebuilt" },
+            { id: "rises", label: "It rises" },
+            { id: "same", label: "It is unchanged" },
+          ],
+          correctOptionId: "falls",
+        },
+        explanation: "Without oxygen the chain stops pumping, so the gradient cannot be maintained.",
+        hints: ["Watch the gradient readout."],
       },
     ],
   },

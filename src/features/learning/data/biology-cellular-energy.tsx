@@ -1,26 +1,10 @@
 import type { TopicContent } from "../types";
 
 /**
- * Introduction to Cellular Energy — Biology Batch 2 ("Cellular Energy
- * & Life Processes"), topic 1 of 3 (see
- * `@/features/learning-path/data/biology-cellular-energy-life-processes`).
- *
- * Reuses the existing Cellular Respiration simulation
- * (`@/features/subjects/biology/cellular-respiration`) as this
- * topic's Explore experience — that simulation already shows exactly
- * what this topic needs (glucose + oxygen enter a cell, the
- * mitochondrion lights up, an Energy bar fills, CO2 and water are
- * produced) and its own doc comment confirms it was deliberately kept
- * simplified with "no glycolysis/Krebs-cycle detail." This topic's
- * authored content stays at that same conceptual altitude — cells
- * need energy, food stores it, cells convert it, ATP is the usable
- * form — and does not teach the full cellular respiration pathway.
- * The dedicated Cellular Respiration *topic* (with its own deeper
- * lesson reusing this same simulation) is future work, not part of
- * this one.
- *
- * `practice.quizId` points at a new, dedicated 30-question bank
- * (`@/features/quiz-engine/data/biology-cellular-energy-quiz.ts`).
+ * Introduction to Cellular Energy — Biology Batch 2. Uses the dedicated Introduction to Cellular Energy
+ * laboratory (`@/features/subjects/biology/cellular-energy`): an animated energy-system cell, transformation explorer,
+ * catabolism/anabolism comparison, ATP-as-currency link to the ATP lab and an Energy Flow Challenge.
+ * `practice.quizId` points at the dedicated 30-question bank (`biology-cellular-energy`).
  */
 export const biologyCellularEnergyContent: TopicContent = {
   subjectSlug: "biology",
@@ -100,95 +84,89 @@ export const biologyCellularEnergyContent: TopicContent = {
   },
 
   // -------------------------------------------------------------
-  // PREDICT
+  // PREDICT / EXPLORE / EXPLAIN
   // -------------------------------------------------------------
   predict: {
-    intro: "Predict first, then confirm by running the experiment below.",
+    intro: "Commit to a prediction, then check it in the cellular energy system above.",
     scenarios: [
       {
         id: "biology-cellular-energy-predict-001",
-        scenario: "A cell has plenty of glucose stored, but none of it has been converted into ATP yet.",
-        question: "Can the cell immediately use that stored glucose to power a task like moving a substance across its membrane?",
+        scenario: "In the Energy system section a nutrient molecule is about to enter the cell.",
+        question: "Where is the energy stored in that molecule?",
         options: [
-          { id: "no-needs-conversion", label: "No — the energy needs to be converted into a usable form like ATP first" },
-          { id: "yes-directly", label: "Yes — glucose can power cellular work directly, with no conversion needed" },
+          { id: "bonds", label: "In its chemical bonds (chemical energy)" },
+          { id: "heat", label: "As heat" },
+          { id: "none", label: "It stores no energy" },
         ],
-        actualResultOptionId: "no-needs-conversion",
-        explanation: "Cells convert the chemical energy in food molecules into ATP before spending it — glucose itself isn't the form of energy most cellular work runs on directly.",
-        hint: "What did the Learn section say has to happen to food energy before a cell can spend it?",
+        actualResultOptionId: "bonds",
+        explanation: "Nutrients such as glucose store chemical energy in the arrangement of their atoms and bonds.",
+        hint: "What type of energy does food contain?",
       },
       {
         id: "biology-cellular-energy-predict-002",
-        scenario: "The Cellular Respiration simulation below is about to run: glucose and oxygen are positioned near the cell, and the Energy bar reads empty.",
-        question: "What will happen to the Energy bar once you press Start?",
+        scenario: "The animation reaches the ATP step.",
+        question: "Part of the released energy is captured in ATP. What happens to the rest?",
         options: [
-          { id: "fills-as-energy-released", label: "It will fill as the cell releases usable energy from glucose" },
-          { id: "stays-empty", label: "It will stay empty — the simulation only shows glucose entering, not energy being released" },
-          { id: "empties-further", label: "It's already empty and has nowhere further to go" },
+          { id: "heat", label: "It is released as heat" },
+          { id: "destroyed", label: "It is destroyed" },
+          { id: "created", label: "It becomes new energy" },
         ],
-        actualResultOptionId: "fills-as-energy-released",
-        explanation: "As glucose and oxygen reach the mitochondrion, the cell releases usable energy — the Energy bar fills to represent that, standing in for ATP being made available to the cell.",
-        hint: "What does an empty-to-full bar usually represent in these simulations?",
+        actualResultOptionId: "heat",
+        explanation: "Energy is conserved. Whatever is not captured in ATP or used for work is released as heat.",
+        hint: "Can energy be destroyed?",
       },
       {
         id: "biology-cellular-energy-predict-003",
-        scenario: "Recall Active Transport from Batch 1: moving substances against their concentration gradient, which — unlike diffusion — requires the cell to spend energy.",
-        question: "Where would that spent energy most directly come from?",
+        scenario: "In the Metabolism section you choose Anabolism.",
+        question: "Will the building-up process require or release free energy?",
         options: [
-          { id: "atp", label: "ATP, the cell's immediate energy carrier" },
-          { id: "directly-from-sunlight", label: "Sunlight, absorbed directly by the membrane" },
-          { id: "no-source-needed", label: "No energy source is actually needed for active transport" },
+          { id: "require", label: "Require it (coupled to ATP)" },
+          { id: "release", label: "Release it" },
+          { id: "neither", label: "Neither" },
         ],
-        actualResultOptionId: "atp",
-        explanation: "Active transport needs energy precisely because it moves substances against their gradient — and ATP is the form of energy a cell typically spends to do that kind of work.",
-        hint: "What's the cell's usual \"spendable\" form of energy?",
+        actualResultOptionId: "require",
+        explanation: "Anabolic reactions build larger molecules and need an energy input, which ATP hydrolysis provides.",
+        hint: "Which direction is more ordered: small pieces or one large molecule?",
       },
     ],
   },
-
-  // -------------------------------------------------------------
-  // EXPLORE
-  // -------------------------------------------------------------
   explore: {
     howToUse: [
-      "Before pressing anything, notice where glucose and oxygen start, and that the Energy bar reads empty.",
-      "Press Start and watch glucose and oxygen travel toward the mitochondrion.",
-      "Watch the mitochondrion highlight, and watch the Energy bar fill as usable energy is released.",
-      "Notice what else appears once energy has been released: carbon dioxide and water leaving the cell.",
-      "Read the connection note comparing this process to photosynthesis — you'll explore photosynthesis itself next.",
+      "Open Energy system and press Play. Follow nutrients, mitochondria, ATP and cellular work through five steps.",
+      "Select the nutrient, mitochondrion, ATP, cellular work and heat in the picture to read what each does.",
+      "In Transformations, click each of the five boxes and switch the free-energy diagram between alone and coupled.",
+      "In Metabolism, compare catabolism and anabolism side by side.",
+      "In ATP currency, step through production, hydrolysis, recycling and coupling, then open the ATP & Energy Release lab.",
     ],
     tryThis: [
-      "Before pressing Start, predict what the Energy bar will do.",
-      "After it finishes, describe in your own words what the cell converted, and into what.",
-      "Compare the two equations in the connection note — what's the same about them, and what's reversed?",
+      "Before step 4, predict what share of the energy goes to heat.",
+      "Decide for ten processes whether each releases or requires free energy.",
+      "Explain how a cell can build a protein even though building needs energy.",
     ],
   },
-
-  // -------------------------------------------------------------
-  // EXPLAIN
-  // -------------------------------------------------------------
   explain: {
     questions: [
       {
         id: "biology-cellular-energy-explain-001",
-        question: "Why can't a cell just use the chemical energy in glucose directly, without converting any of it?",
+        question: "Why do we say cells transform energy rather than make it?",
         answer:
-          "A cell's machinery is built to run on ATP, not on glucose itself. Converting glucose's stored energy into ATP puts that energy into a form the cell's existing machinery can actually spend on its immediate jobs.",
+          "Energy is conserved. Cells change chemical energy in nutrients into ATP, work and heat.",
       },
       {
         id: "biology-cellular-energy-explain-002",
-        question: "The simulation's Energy bar only fills once — it doesn't drain back out afterward. What does that represent?",
+        question: "What is the difference between catabolism and anabolism?",
         answer:
-          "It represents that usable energy has been produced and is now available to the cell, not that it's being spent moment-to-moment in the scene. The simulation is deliberately simplified to show \"energy was released,\" not a full accounting of every ATP molecule made and spent.",
+          "Catabolism breaks large molecules into smaller ones and usually releases free energy; anabolism builds large molecules from small ones and requires free energy.",
       },
       {
         id: "biology-cellular-energy-explain-003",
-        question: "How does this topic connect back to Active Transport from Batch 1?",
+        question: "Why do cells use ATP as an energy currency?",
         answer:
-          "Active transport is defined by needing energy — it's what makes it different from diffusion. This topic explains where that energy ultimately comes from: food molecules are converted, and the resulting ATP is what active transport (and other cellular work) actually spends.",
+          "ATP couples energy-releasing reactions to energy-requiring ones: it is made where energy is released and spent where work is done, then recycled as ADP and Pi.",
       },
     ],
   },
+
 
   // -------------------------------------------------------------
   // PRACTICE
@@ -198,72 +176,102 @@ export const biologyCellularEnergyContent: TopicContent = {
   },
 
   // -------------------------------------------------------------
-  // CHALLENGE — guided mission on the Cellular Respiration simulation
+  // CHALLENGE
   // -------------------------------------------------------------
   challenge: {
     intro:
-      "Run the simulation above, then answer each question. Use the hints if you get stuck.",
+      "Use the lab above to answer each question.",
     scenarios: [
       {
         id: "biology-cellular-energy-challenge-001",
-        title: "Identify the Inputs",
-        scenario: "Before pressing Start, look at what's positioned near the cell, ready to travel toward the mitochondrion.",
-        objective: "Identify the two substances the cell is about to use to release energy.",
-        tools: [{ id: "cellular-respiration-scene", label: "Cell scene, before pressing Start" }],
-        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
+        title: "Source of energy",
+        scenario: "Look at the first step of the energy flow.",
+        objective: "Identify where the energy that is eventually used comes from.",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
         answer: {
           mode: "choice",
           options: [
-            { id: "glucose-oxygen", label: "Glucose and oxygen" },
-            { id: "co2-water", label: "Carbon dioxide and water" },
-            { id: "atp-adp", label: "ATP and ADP" },
+            { id: "nutrients", label: "Chemical energy stored in nutrient molecules" },
+            { id: "atp-first", label: "ATP made from nothing" },
+            { id: "heat-first", label: "Heat from the cell" },
           ],
-          correctOptionId: "glucose-oxygen",
+          correctOptionId: "nutrients",
         },
-        explanation: "Glucose (the stored food energy) and oxygen are the two inputs the cell uses — carbon dioxide and water are what come out afterward.",
-        hints: ["Which two substances are shown entering the cell, before anything is produced?"],
+        explanation: "Energy starts as chemical energy in nutrients.",
+        hints: ["What enters the cell at the start?"],
       },
       {
         id: "biology-cellular-energy-challenge-002",
-        title: "Observe the Energy Release",
-        scenario: "Press Start and watch the Energy bar as glucose and oxygen reach the mitochondrion.",
-        objective: "Observe what happens to the Energy bar, and connect it to what the cell is doing with the ATP it produces.",
-        tools: [{ id: "cellular-respiration-energy-bar", label: "Energy bar, during and after the run" }],
-        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
+        title: "Where does it go?",
+        scenario: "Watch the heat symbol.",
+        objective: "Identify what happens to energy not captured in ATP.",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
         answer: {
           mode: "choice",
           options: [
-            { id: "fills-represents-atp", label: "It fills, representing usable energy (ATP) the cell can now spend on cellular work" },
-            { id: "unrelated", label: "It fills for a reason unrelated to energy" },
-            { id: "stays-empty-observed", label: "It stays empty throughout" },
+            { id: "lost-heat", label: "Released as heat" },
+            { id: "destroyed", label: "Destroyed" },
+            { id: "stored-co2", label: "Stored in CO₂" },
           ],
-          correctOptionId: "fills-represents-atp",
+          correctOptionId: "lost-heat",
         },
-        explanation: "The Energy bar filling represents the cell releasing usable energy from glucose — conceptually, this is where ATP becomes available for the cell to spend on jobs like active transport.",
-        hints: ["What did the Energy bar do once glucose and oxygen reached the mitochondrion?"],
+        explanation: "Energy is conserved; the uncaptured part is dissipated as heat.",
+        hints: ["Which symbol appears in steps 3 to 5?"],
       },
       {
         id: "biology-cellular-energy-challenge-003",
-        title: "Connect to Active Transport",
-        scenario: "Recall from Batch 1 that active transport — unlike diffusion — requires the cell to spend energy to move substances against their concentration gradient.",
-        objective: "Explain which molecule most directly supplies the energy active transport spends.",
-        requiresExperiment: false,
+        title: "Release or require?",
+        scenario: "In Transformations, compare the two free-energy diagrams.",
+        objective: "Decide which reaction type needs ATP coupling.",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
         answer: {
           mode: "choice",
           options: [
-            { id: "atp-supplies", label: "ATP — the cell's immediate, spendable energy carrier" },
-            { id: "glucose-directly-supplies", label: "Glucose, spent directly with no conversion" },
-            { id: "co2-supplies", label: "Carbon dioxide, released during the process" },
+            { id: "endergonic", label: "Energy-requiring (endergonic) reactions" },
+            { id: "exergonic", label: "Energy-releasing (exergonic) reactions" },
+            { id: "both-same", label: "Both equally" },
           ],
-          correctOptionId: "atp-supplies",
+          correctOptionId: "endergonic",
         },
-        explanation: "ATP is the form of energy a cell typically spends on jobs like active transport — this is exactly why active transport requires energy in the first place, while diffusion doesn't.",
-        hints: ["What did this topic identify as the cell's immediate, spendable form of energy?"],
+        explanation: "Endergonic reactions (ΔG > 0) are made possible by coupling to ATP hydrolysis.",
+        hints: ["Which diagram goes up?"],
+      },
+      {
+        id: "biology-cellular-energy-challenge-004",
+        title: "Catabolic or anabolic?",
+        scenario: "In Metabolism, look at the comparison table.",
+        objective: "Classify glucose breakdown during cellular respiration.",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
+        answer: {
+          mode: "choice",
+          options: [
+            { id: "catabolic", label: "Catabolic — it breaks a large molecule down and releases energy" },
+            { id: "anabolic", label: "Anabolic — it builds a large molecule" },
+            { id: "neither", label: "Neither" },
+          ],
+          correctOptionId: "catabolic",
+        },
+        explanation: "Glucose is broken down into smaller molecules (CO₂ and H₂O), releasing free energy.",
+        hints: ["Is a large molecule being built or broken?"],
       },
     ],
   },
 
   relatedTopics: [
+    {
+      subjectSlug: "biology",
+      topicSlug: "atp-energy-release",
+      label: "ATP & Energy Release",
+      href: "/dashboard/biology/atp-energy-release",
+      reason: "Next in the sequence: ATP's structure, hydrolysis, free energy and energy coupling in detail.",
+    },
+    {
+      subjectSlug: "biology",
+      topicSlug: "cellular-respiration",
+      label: "Cellular Respiration",
+      href: "/dashboard/biology/cellular-respiration",
+      reason: "Follows glucose through glycolysis, the citric acid cycle and the electron transport chain to ATP.",
+    },
     {
       subjectSlug: "biology",
       topicSlug: "active-transport",

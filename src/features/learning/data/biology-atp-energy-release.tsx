@@ -1,27 +1,10 @@
 import type { TopicContent } from "../types";
 
 /**
- * ATP & Energy Release — Biology Batch 2 ("Cellular Energy & Life
- * Processes"), topic 5 of 6 (see
- * `@/features/learning-path/data/biology-cell-foundations`).
- *
- * Reuses the same Cellular Respiration simulation as Topic 4 — not a
- * new "ATP visualization." The brief's rule 19 says to reuse an
- * existing ATP/energy visualization if one exists; the simulation's
- * own `EnergyBar` component *is* that visualization (it's what
- * represents ATP becoming available as the mitochondrion releases
- * energy). Rather than building a second, parallel "ATP simulator,"
- * this topic revisits the identical simulation with its lesson
- * content and Explore guidance shifted to focus specifically on the
- * Energy bar / ATP step and where that energy goes afterward —
- * active transport, movement, building molecules — building on Topic
- * 4's full-process lesson instead of repeating it. No new simulation
- * was built for this topic.
- *
- * `practice.quizId` points at a new, dedicated 30-question bank
- * (`@/features/quiz-engine/data/biology-atp-energy-release-quiz.ts`),
- * since this topic tests different material (ATP's role and its
- * connections) than Topic 4's full-process quiz.
+ * ATP & Energy Release — Biology Batch 2. Uses the dedicated ATP & Energy Release laboratory
+ * (`@/features/subjects/biology/atp-energy-release`): a rotatable ATP/ADP model, a stepped hydrolysis animation
+ * with free energy and energy coupling, the ATP cycle with regeneration, four cellular-work examples and practice.
+ * `practice.quizId` points at the dedicated 30-question bank (`biology-atp-energy-release`).
  */
 export const biologyAtpEnergyReleaseContent: TopicContent = {
   subjectSlug: "biology",
@@ -100,95 +83,89 @@ export const biologyAtpEnergyReleaseContent: TopicContent = {
   },
 
   // -------------------------------------------------------------
-  // PREDICT
+  // PREDICT / EXPLORE / EXPLAIN
   // -------------------------------------------------------------
   predict: {
-    intro: "Predict first, then confirm by running the simulation below.",
+    intro: "Commit to a prediction, then check it in the ATP laboratory above.",
     scenarios: [
       {
         id: "biology-atp-energy-release-predict-001",
-        scenario: "A cell has just used up the ATP it had available on an energy-requiring task.",
-        question: "What happens to the cell's ATP supply after that?",
+        scenario: "In the Hydrolysis section, ATP is about to react with a water molecule.",
+        question: "What will the products be?",
         options: [
-          { id: "regenerated-via-respiration", label: "It gets regenerated, mainly through cellular respiration" },
-          { id: "gone-forever", label: "It's gone forever — the cell can never make more ATP" },
-          { id: "instantly-refills-from-nothing", label: "It refills instantly from nothing, with no process required" },
+          { id: "adp-pi", label: "ADP and inorganic phosphate (Pi)" },
+          { id: "amp-glucose", label: "AMP and glucose" },
+          { id: "adenine-p3", label: "Adenine and three separate phosphates" },
         ],
-        actualResultOptionId: "regenerated-via-respiration",
-        explanation: "ATP is continually used and regenerated — cellular respiration is the process that remakes a cell's ATP supply after it's spent.",
-        hint: "What process, covered in the previous topic, produces ATP?",
+        actualResultOptionId: "adp-pi",
+        explanation: "ATP + H₂O → ADP + Pi (+ H⁺). Only the terminal phosphate leaves.",
+        hint: "How many phosphates does ADP have?",
       },
       {
         id: "biology-atp-energy-release-predict-002",
-        scenario: "You're about to press Start on the same Cellular Respiration simulation from Topic 4. This time, focus on the Energy bar specifically.",
-        question: "What will the Energy bar represent as it fills?",
+        scenario: "A student says ATP hydrolysis releases energy 'because the bond breaks'.",
+        question: "Which statement is the best correction?",
         options: [
-          { id: "atp-becoming-available", label: "Usable energy (ATP) becoming available to the cell" },
-          { id: "amount-of-glucose-remaining", label: "How much glucose is left in the cell" },
-          { id: "unrelated-to-atp", label: "Something unrelated to ATP" },
+          { id: "net-dg", label: "Breaking bonds costs energy; the overall reaction has a negative ΔG because the products are more stable" },
+          { id: "student-right", label: "The student is correct" },
+          { id: "only-heat", label: "Hydrolysis releases no free energy, only heat" },
         ],
-        actualResultOptionId: "atp-becoming-available",
-        explanation: "The Energy bar filling represents usable energy — conceptually, ATP — becoming available to the cell to spend on its work.",
-        hint: "What did Topic 4 say the Energy bar represents?",
+        actualResultOptionId: "net-dg",
+        explanation: "The overall reaction has a negative change in Gibbs free energy (about −30.5 kJ/mol standard; −50 to −65 kJ/mol in cells).",
+        hint: "Does breaking a bond release or require energy?",
       },
       {
         id: "biology-atp-energy-release-predict-003",
-        scenario: "Recall Active Transport from Batch 1: moving substances against their concentration gradient, unlike diffusion.",
-        question: "What form of energy does active transport most directly spend?",
+        scenario: "The ATP cycle section is running with regeneration set to 0 and demand set to 5.",
+        question: "What happens to the ATP share of the pool?",
         options: [
-          { id: "atp-spent", label: "ATP" },
-          { id: "glucose-spent-directly", label: "Glucose, spent directly with no conversion" },
-          { id: "no-energy-needed", label: "No energy is actually needed" },
+          { id: "falls", label: "It falls: ATP is not a long-term store" },
+          { id: "rises", label: "It rises" },
+          { id: "same", label: "It stays the same" },
         ],
-        actualResultOptionId: "atp-spent",
-        explanation: "ATP is the form of energy a cell typically spends on active transport — exactly why active transport requires energy in the first place.",
-        hint: "What's the cell's immediate, spendable form of energy?",
+        actualResultOptionId: "falls",
+        explanation: "Without an energy input ADP + Pi are not rebuilt into ATP, so the ATP pool is used up.",
+        hint: "Is ATP a store or a carrier?",
       },
     ],
   },
-
-  // -------------------------------------------------------------
-  // EXPLORE
-  // -------------------------------------------------------------
   explore: {
     howToUse: [
-      "Press Start and this time, follow the energy specifically: watch where it begins, and where it ends up.",
-      "Notice the Energy bar filling once glucose and oxygen reach the mitochondrion — this is the ATP-becoming-available step.",
-      "Notice that the bar stays full afterward rather than draining — a simplified way of showing energy has been made available, not a full accounting of every ATP molecule made and spent.",
-      "Reread the connection note, this time focusing on what happens to that energy next, beyond this one scene.",
+      "Open the ATP laboratory. Drag the molecule (or use the arrow keys) to rotate it, and use zoom to look closer.",
+      "Select adenine, ribose and each phosphate. Use Highlight phosphates to see the terminal phosphate that hydrolysis removes.",
+      "Switch to Compare ATP and ADP and note the number of phosphates and the net charge.",
+      "In Hydrolysis, step through the seven steps. Read the free-energy diagram and the coupling step.",
+      "In ATP cycle, change regeneration and demand. In Cellular work, play all four examples.",
     ],
     tryThis: [
-      "⚡ ATP Mission — Follow the energy: (1) Identify where stored chemical energy begins. (2) Identify how it becomes available to the cell. (3) Identify ATP. (4) Identify a cellular process that uses ATP. (5) Explain why ATP is important.",
-      "Before pressing Start, predict exactly when the Energy bar will begin to fill.",
-      "After it finishes, name one specific example of cellular work this energy could go on to power.",
+      "Predict what the free-energy diagram will look like before you reach step 5.",
+      "In the Na⁺/K⁺ pump, count the ions moved per ATP.",
+      "Explain, in your own words, why ATP hydrolysis alone only produces heat but coupled hydrolysis does work.",
     ],
   },
-
-  // -------------------------------------------------------------
-  // EXPLAIN
-  // -------------------------------------------------------------
   explain: {
     questions: [
       {
         id: "biology-atp-energy-release-explain-001",
-        question: "Why doesn't the simulation show the Energy bar draining back down after it fills?",
+        question: "Why isn't ATP hydrolysis simply 'a bond breaking and releasing energy'?",
         answer:
-          "The simulation is a simplified way to show that usable energy has been released and made available — not a full accounting of every ATP molecule made and individually spent afterward. In a real cell, that available energy would then be spent on various jobs, which is what the ATP Mission above asks you to reason through.",
+          "Breaking bonds requires energy. The overall reaction ATP + H₂O → ADP + Pi has a negative ΔG because the products are more stable (less charge repulsion, resonance stabilisation of Pi and better hydration).",
       },
       {
         id: "biology-atp-energy-release-explain-002",
-        question: "Why is it more accurate to describe ATP as 'continually used and regenerated' rather than as a permanent battery?",
+        question: "Why does a cell keep ATP so far above equilibrium with ADP and Pi?",
         answer:
-          "A cell doesn't make one fixed batch of ATP that lasts indefinitely. It constantly spends ATP on ongoing work and constantly remakes more through cellular respiration — an ongoing cycle rather than a one-time charge.",
+          "It makes ΔG of hydrolysis more negative in cells (about −50 to −65 kJ/mol) than the standard value, so ATP can drive more work.",
       },
       {
         id: "biology-atp-energy-release-explain-003",
-        question: "How does this topic finally answer a question Batch 1 left open about active transport?",
+        question: "Why is ATP regenerated constantly rather than stored?",
         answer:
-          "Batch 1 established that active transport requires energy, without fully explaining where that energy comes from. This topic makes the answer explicit: ATP, produced through cellular respiration, is the form of energy active transport spends.",
+          "Cells hold a small ATP pool and turn it over very rapidly. Fuel oxidation, mostly in respiration, supplies the energy to rebuild ATP from ADP and Pi.",
       },
     ],
   },
+
 
   // -------------------------------------------------------------
   // PRACTICE
@@ -198,72 +175,95 @@ export const biologyAtpEnergyReleaseContent: TopicContent = {
   },
 
   // -------------------------------------------------------------
-  // CHALLENGE — Follow-the-energy mission
+  // CHALLENGE
   // -------------------------------------------------------------
   challenge: {
     intro:
-      "Run the simulation above, then answer each question, following the energy from start to finish.",
+      "Use the lab above to answer each question.",
     scenarios: [
       {
         id: "biology-atp-energy-release-challenge-001",
-        title: "Where Stored Energy Begins",
-        scenario: "Before pressing Start, look at what's positioned near the cell.",
-        objective: "Identify which of the two inputs is the source of stored chemical energy.",
-        tools: [{ id: "atp-energy-release-scene", label: "Cell scene, before pressing Start" }],
-        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
+        title: "Count the phosphates",
+        scenario: "Rotate the ATP model and compare it with ADP.",
+        objective: "Identify how many phosphates ADP has and which one was removed.",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
         answer: {
           mode: "choice",
           options: [
-            { id: "glucose-source", label: "Glucose" },
-            { id: "oxygen-source", label: "Oxygen" },
-            { id: "co2-source", label: "Carbon dioxide" },
+            { id: "two-gamma", label: "Two; the terminal γ-phosphate was removed" },
+            { id: "three", label: "Three; none removed" },
+            { id: "one", label: "One; the β-phosphate was removed" },
           ],
-          correctOptionId: "glucose-source",
+          correctOptionId: "two-gamma",
         },
-        explanation: "Glucose is the molecule storing chemical energy — oxygen is needed for the reaction to proceed, but it isn't itself the energy source.",
-        hints: ["Which of the two inputs stores energy in its chemical bonds?"],
+        explanation: "ADP has two phosphates. Hydrolysis removes the terminal (γ) phosphate as Pi.",
+        hints: ["Compare the Compare view for ATP and ADP."],
       },
       {
         id: "biology-atp-energy-release-challenge-002",
-        title: "Identify ATP",
-        scenario: "Press Start and watch the Energy bar as glucose and oxygen reach the mitochondrion.",
-        objective: "Identify what the Energy bar filling represents.",
-        tools: [{ id: "atp-energy-release-bar", label: "Energy bar, during and after the run" }],
-        requiresExperiment: false, // Explore above already embeds the live simulation on this page — a second copy would be redundant.
+        title: "Free energy sign",
+        scenario: "In the Hydrolysis section, reach the free-energy diagram.",
+        objective: "Decide the sign of ΔG for ATP hydrolysis under cellular conditions.",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
         answer: {
           mode: "choice",
           options: [
-            { id: "atp-available", label: "Usable energy (ATP) becoming available to the cell" },
-            { id: "co2-produced-bar", label: "The amount of carbon dioxide produced" },
-            { id: "unrelated-bar", label: "Something unrelated to energy" },
+            { id: "negative", label: "Negative" },
+            { id: "positive", label: "Positive" },
+            { id: "zero", label: "Zero" },
           ],
-          correctOptionId: "atp-available",
+          correctOptionId: "negative",
         },
-        explanation: "The Energy bar represents usable energy — conceptually, ATP — becoming available to the cell once respiration has taken place.",
-        hints: ["What did Topic 4's Cellular Respiration lesson say this bar stands for?"],
+        explanation: "ATP + H₂O sits at a higher free energy than ADP + Pi, so ΔG is negative.",
+        hints: ["Does the arrow go up or down?"],
       },
       {
         id: "biology-atp-energy-release-challenge-003",
-        title: "A Process That Uses ATP",
-        scenario: "Recall active transport from Batch 1 — moving substances against their concentration gradient.",
-        objective: "Identify why active transport is a process that requires ATP specifically.",
-        requiresExperiment: false,
+        title: "Why couple?",
+        scenario: "In the Hydrolysis section, step 6 shows energy coupling.",
+        objective: "Explain what coupling achieves.",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
         answer: {
           mode: "choice",
           options: [
-            { id: "against-gradient-needs-energy", label: "It moves substances against their gradient, which takes energy that ATP supplies" },
-            { id: "diffusion-similarity", label: "It works exactly like diffusion, so it needs no extra energy" },
-            { id: "atp-unrelated-active-transport", label: "Active transport doesn't actually use ATP" },
+            { id: "net-neg", label: "The combined reaction has a negative ΔG, so the energy-requiring process can proceed" },
+            { id: "heat", label: "It converts all the energy to heat" },
+            { id: "store", label: "It stores the ATP permanently" },
           ],
-          correctOptionId: "against-gradient-needs-energy",
+          correctOptionId: "net-neg",
         },
-        explanation: "Active transport moves substances against their concentration gradient — unlike diffusion, that takes energy, and ATP is the form of energy a cell typically spends to do it.",
-        hints: ["What makes active transport different from diffusion?"],
+        explanation: "Coupling pairs an energy-requiring reaction with ATP hydrolysis so the total ΔG is negative.",
+        hints: ["Think of the three bars in step 6."],
+      },
+      {
+        id: "biology-atp-energy-release-challenge-004",
+        title: "Regeneration",
+        scenario: "In the ATP cycle section, set regeneration to 0.",
+        objective: "Predict what this shows about ATP.",
+        requiresExperiment: false, // the live lab is already embedded in Explore above
+        answer: {
+          mode: "choice",
+          options: [
+            { id: "not-store", label: "ATP is a carrier that must be regenerated, not a long-term store" },
+            { id: "unlimited", label: "ATP is an unlimited supply" },
+            { id: "irrelevant", label: "Regeneration has no effect" },
+          ],
+          correctOptionId: "not-store",
+        },
+        explanation: "With no energy input the ATP share of the pool collapses.",
+        hints: ["Which slider did you change?"],
       },
     ],
   },
 
   relatedTopics: [
+    {
+      subjectSlug: "biology",
+      topicSlug: "cellular-energy",
+      label: "Introduction to Cellular Energy",
+      href: "/dashboard/biology/cellular-energy",
+      reason: "The big picture of how cells obtain, transform and use energy, before and after the details of ATP.",
+    },
     {
       subjectSlug: "biology",
       topicSlug: "cellular-respiration",

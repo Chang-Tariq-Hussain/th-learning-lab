@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/dashboard/breadcrumbs";
 import { SimulationBackLink } from "@/components/dashboard/simulation-back-link";
-import { CellularRespiration } from "@/features/subjects/biology/cellular-respiration";
+import { AtpEnergyRelease } from "@/features/subjects/biology/atp-energy-release";
 import { TopicExperience, getTopicContent } from "@/features/learning";
 
 const SIMULATION_HREF = "/dashboard/biology/atp-energy-release";
 
 export const metadata: Metadata = {
   title: "ATP & Energy Release",
-  description: "Follow the energy: how ATP is released and made available for a cell to spend on its work.",
+  description: "ATP structure, hydrolysis, free energy, energy coupling and regeneration: a rotatable molecule lab, step-by-step hydrolysis, the ATP cycle and four cellular-work examples.",
 };
 
 export default function AtpEnergyReleasePage() {
@@ -35,18 +35,17 @@ export default function AtpEnergyReleasePage() {
           ATP & Energy Release
         </h1>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-soft dark:text-bone-soft">
-          Follow the energy from glucose to ATP to cellular work, using
-          the same cell scene from the Cellular Respiration simulation.
+          Explore ATP in a rotatable molecule lab, watch hydrolysis release free energy, follow the ATP cycle and see how ATP is coupled to cellular work.
         </p>
       </div>
 
       {content ? (
-        <TopicExperience content={content} simulation={<CellularRespiration />} />
+        <TopicExperience content={content} simulation={<AtpEnergyRelease />} />
       ) : (
         // Falls back to the bare simulation if this topic's learning
         // content is ever removed from the registry — keeps the page
         // from 404ing outright.
-        <CellularRespiration />
+        <AtpEnergyRelease />
       )}
     </Container>
   );
